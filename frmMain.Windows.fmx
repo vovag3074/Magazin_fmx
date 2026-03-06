@@ -1,0 +1,25 @@
+inherited fmMain_Windows: TfmMain_Windows
+  ClientHeight = 140
+  Constraints.MaxHeight = 140.000000000000000000
+  DesignerMasterStyle = 0
+  inherited sbMain: TStatusBar
+    Position.Y = 107.000000000000000000
+  end
+  inherited TMSFNCToolBar1: TTMSFNCToolBar
+    inherited TMSFNCToolBarButton1: TTMSFNCToolBarButton
+      ControlIndex = 0
+    end
+    inherited TMSFNCToolBarButton2: TTMSFNCToolBarButton
+      ControlIndex = 1
+    end
+    inherited TMSFNCToolBarSeparator1: TTMSFNCToolBarSeparator
+      ControlIndex = 2
+    end
+    inherited TMSFNCToolBarButton3: TTMSFNCToolBarButton
+      ControlIndex = 3
+    end
+    inherited TMSFNCToolBarButton4: TTMSFNCToolBarButton
+      ControlIndex = 4
+    end
+  end
+end
