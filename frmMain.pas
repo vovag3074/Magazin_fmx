@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCToolBar,
-  FMX.TMSFNCCustomControl, FMX.TMSFNCCustomComponent, FMX.TMSFNCStyles;
+  FMX.TMSFNCCustomControl, FMX.TMSFNCCustomComponent, FMX.TMSFNCStyles,
+  FMX.TMSFNCHint;
 
 type
   TfmMain = class(TForm)
@@ -45,6 +46,7 @@ begin
  fmInpMag.Align:= TAlignLayout.Client;
  fmInpMag.eScan.SetFocus;
  fmInpMag.ModList.AdaptToStyle:=True;
+ fmInpMag.readSclad;
 end;
 
 end.

@@ -23,12 +23,21 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure readSclad;
   end;
 
  var fmInpMag:TfmInpMag;
 
+
 implementation
 
 {$R *.fmx}
+
+{ TfmInpMag }
+
+procedure TfmInpMag.readSclad;
+begin
+ ModList.Nodes.Clear;
+end;
 
 end.
