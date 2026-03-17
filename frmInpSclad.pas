@@ -13,12 +13,21 @@ uses
 type
   TfmInpMag = class(TFrame)
     Panel1: TPanel;
-    TMSFNCButton1: TTMSFNCButton;
+    btAssept: TTMSFNCButton;
     Panel2: TPanel;
-    eScan: TEdit;
+    eTxt: TEdit;
     EditButton1: TTMSFNCButton;
     ModList: TTMSFNCTreeView;
     TMSFNCSplitter1: TTMSFNCSplitter;
+    TMSFNCButton1: TTMSFNCButton;
+    pmRep: TPopup;
+    pnRep: TPanel;
+    TMSFNCButton2: TTMSFNCButton;
+    TMSFNCButton3: TTMSFNCButton;
+    TMSFNCButton4: TTMSFNCButton;
+    procedure TMSFNCButton1Click(Sender: TObject);
+    procedure EditButton1Click(Sender: TObject);
+    procedure TMSFNCButton4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,13 +40,34 @@ type
 
 implementation
 
+uses
+  frmSynhro;
+
 {$R *.fmx}
 
 { TfmInpMag }
 
+procedure TfmInpMag.EditButton1Click(Sender: TObject);
+begin
+ eTxt.Text:='';
+end;
+
 procedure TfmInpMag.readSclad;
 begin
  ModList.Nodes.Clear;
+end;
+
+procedure TfmInpMag.TMSFNCButton1Click(Sender: TObject);
+begin
+ pmRep.Popup();
+end;
+
+procedure TfmInpMag.TMSFNCButton4Click(Sender: TObject);
+begin
+  fmSync := TfmSync.Create(fmInpMag);
+  fmSync.ShowModal;
+  FreeAndNil(fmSync);
+  eTxt.SetFocus;
 end;
 
 end.

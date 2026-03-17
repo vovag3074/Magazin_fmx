@@ -4,7 +4,8 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   frmMain in 'frmMain.pas' {fmMain},
-  frmInpSclad in 'frmInpSclad.pas' {fmInpMag: TFrame};
+  frmInpSclad in 'frmInpSclad.pas' {fmInpMag: TFrame},
+  frmSynhro in 'frmSynhro.pas' {fmSync};
 
 {$R *.res}
 

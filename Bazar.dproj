@@ -320,6 +320,10 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="frmSynhro.pas">
+            <Form>fmSync</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -375,6 +379,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Bazar.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>Bazar.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Linux64\Release\Bazar" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Linux64">
                         <RemoteName>Bazar</RemoteName>
@@ -383,12 +393,6 @@
                 </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Bazar.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Bazar.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win64\Release\Bazar.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win64">
                         <RemoteName>Bazar.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>

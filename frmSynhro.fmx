@@ -1,0 +1,407 @@
+object fmSync: TfmSync
+  Left = 0
+  Top = 0
+  BorderStyle = ToolWindow
+  Caption = #1057#1080#1085#1093#1088#1086#1085#1080#1079#1072#1094#1080#1103' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1086#1074
+  ClientHeight = 296
+  ClientWidth = 717
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Bottom
+    Position.Y = 218.000000000000000000
+    Size.Width = 717.000000000000000000
+    Size.Height = 78.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 0
+    object dxOK: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Default = True
+      Size.Width = 157.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      Margins.Left = 15.000000000000000000
+      Margins.Top = 15.000000000000000000
+      Margins.Right = 15.000000000000000000
+      Margins.Bottom = 15.000000000000000000
+      Position.X = 358.000000000000000000
+      Position.Y = 15.000000000000000000
+      TabOrder = 1
+      Text = #1054#1050
+      OnClick = dxOKClick
+    end
+    object dxCancel: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Cancel = True
+      Size.Width = 157.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      ModalResult = 2
+      Margins.Left = 15.000000000000000000
+      Margins.Top = 15.000000000000000000
+      Margins.Right = 15.000000000000000000
+      Margins.Bottom = 15.000000000000000000
+      Position.X = 545.000000000000000000
+      Position.Y = 15.000000000000000000
+      TabOrder = 0
+      Text = #1054#1090#1082#1072#1079
+    end
+    object lbInfo: TLabel
+      Align = Left
+      StyledSettings = [Family, FontColor]
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 329.000000000000000000
+      Size.Height = 74.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TabOrder = 2
+    end
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 32.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = #1059#1082#1072#1078#1080#1090#1077' '#1073#1072#1079#1091' "'#1052#1072#1089#1090#1077#1088#1072' '#1086#1073#1091#1074#1080'"'
+    TabOrder = 1
+  end
+  object CheckBox1: TCheckBox
+    IsChecked = True
+    Position.X = 48.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #1048#1075#1085#1086#1088#1080#1088#1086#1074#1072#1090#1100' '#1094#1077#1085#1091
+  end
+  object pb: TTMSFNCWaitingIndicator
+    AdaptToStyle = True
+    AllowFocus = False
+    Color = xB30F1620
+    Align = Bottom
+    Margins.Left = 2.000000000000000000
+    Margins.Right = 2.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 2.000000000000000000
+    Position.Y = 184.000000000000000000
+    Size.Width = 713.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Active = True
+    Appearance.Indicators = 10
+    Appearance.IndicatorShape = wisCircle
+    Appearance.MoveShape = wmsLine
+    AnimationSpeed = 4.000000000000000000
+  end
+  object eDB: TComboBox
+    Images = ImageList1
+    ItemHeight = 33.000000000000000000
+    DropDownKind = Custom
+    Position.X = 56.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 617.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+  end
+  object qDB: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    SQL.Strings = (
+      'select DB.NAME'
+      'from MOBV4 DB'
+      'order by DB.NAME  ')
+    Left = 24
+    Top = 10
+  end
+  object ImageList1: TImageList
+    Source = <
+      item
+        MultiResBitmap.Height = 24
+        MultiResBitmap.Width = 24
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 24
+            Height = 24
+            PNG = {
+              89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+              F80000000473424954080808087C086488000001EE494441544889CD94B16B14
+              4114C67F6F6E13B383602CCE22E9ACD48056768A8D4510AB1C16162AD8FAAF88
+              82923668A2951C1622A4116DD480BD65BADBE2D258C8AE86BD79163B7BCE2E37
+              C7262AF89A7933EF9BF9DE7B33DFC03F3689056EA99EB4B9BBA386330178A2EA
+              DE6DDB85CF5D315182BB79F906B83123541ADCB5677671AF0B2689D726EBE317
+              DB8C9E3C5211110093A65CFAF06941E95D07F680F5F1CB1DB2A78F5155151131
+              69CAC5F71F13950A63A2E743CF1579636D92E70AE0A0DE67DA18571484982881
+              AA6AE8D7F370BD8DF563231EAFC0B7A5F6EB79B8DEC6FAB1118FDF81EAF8D495
+              ABFD7083496D75178E03AAC081C750E34C6A696166DBBDBC1C009B0AFD60D901
+              BB45DABBFD4AE47B174CB480BF65D30AEEFFD0B3A57303041B452B7962CC706B
+              49F6398AD0AAC3275F80E50E497D4B4CEFF2D692EC77165AE9DC0058FEBA7193
+              C32C9B8A06FFF46A7F716585B5D76F4F4F9CDB001E76179A6FCB6196CD4DFDE7
+              685409ED771B8F2FB479D665538D69E8A0ADDE98AF2DAD854AAE35E76611CCEA
+              FB2CBF660B84168AB11ABDD0E24AEE660FECB90B9BF6FC5A5F551111141CAABB
+              B9353BC76E11BE45CF6D320486F33268DC57FB538BF94729B1225072FC3BF787
+              84A453FFC4EA6A45A2145D09FE48C99D0908FE22155282DE39EF3B9F79F817FD
+              17F60B64A336F5026C948C0000000049454E44AE426082}
+            FileName = 'C:\Users\vovag\Pictures\MyIcon\png\24px\large\deploy.png'
+          end>
+        Name = 'deploy'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'deploy'
+            SourceRect.Right = 24.000000000000000000
+            SourceRect.Bottom = 24.000000000000000000
+          end>
+      end>
+    Left = 584
+    Top = 152
+  end
+  object IBC_Read: TFDConnection
+    Params.Strings = (
+      'DriverID=FB'
+      'User_Name=sysdba'
+      'Password=masterkey')
+    LoginPrompt = False
+    Left = 8
+    Top = 240
+  end
+  object qDelOldZak: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandKind = skDelete
+    CommandText.Strings = (
+      'delete from ZAKAZ_LIST ZL'
+      'where ZL.DATA_END <= :ED and'
+      '      ZL.IS_PROD = 1  ')
+    ParamData = <
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+    Left = 72
+    Top = 8
+  end
+  object qRSity: TFDQuery
+    Connection = IBC_Read
+    Transaction = IBT_Read
+    SQL.Strings = (
+      'select ST.ST_NAME, ST.IS_DEL, ST.IS_STAR, ST.BAR_CODE'
+      'from SITY_TABLE ST'
+      'order by ST.ST_NAME  '
+      '')
+    Left = 98
+    Top = 72
+  end
+  object qTSity: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select ST.NO_ST'
+      'from SITY_TABLE ST'
+      'where ((ST.BAR_CODE = :STN))   '
+      '')
+    Left = 98
+    Top = 116
+    ParamData = <
+      item
+        Name = 'STN'
+        ParamType = ptInput
+      end>
+  end
+  object qWSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandKind = skInsert
+    CommandText.Strings = (
+      'insert into SITY_TABLE (ST_NAME, IS_DEL, IS_STAR, BAR_CODE)'
+      'values (:ST_NAME, :IS_DEL, :IS_STAR, :BAR_CODE)'
+      '')
+    ParamData = <
+      item
+        Name = 'ST_NAME'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_DEL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_STAR'
+        ParamType = ptInput
+      end
+      item
+        Name = 'BAR_CODE'
+        ParamType = ptInput
+      end>
+    Left = 98
+    Top = 168
+  end
+  object IBT_Read: TFDTransaction
+    Options.ReadOnly = True
+    Connection = IBC_Read
+    Left = 64
+    Top = 240
+  end
+  object qRVal: TFDQuery
+    Connection = IBC_Read
+    Transaction = IBT_Read
+    SQL.Strings = (
+      'select V.NAZVAN'
+      'from VALUT_TABLE V'
+      'order by v.NAZVAN'
+      '')
+    Left = 144
+    Top = 72
+  end
+  object qTVal: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select V.NO_VAL'
+      'from VALUT_TABLE V'
+      'where V.NAZVAN = :NV '
+      '')
+    Left = 144
+    Top = 112
+    ParamData = <
+      item
+        Name = 'NV'
+        ParamType = ptInput
+      end>
+  end
+  object qWVal: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandKind = skInsert
+    CommandText.Strings = (
+      'insert into VALUT_TABLE (NAZVAN)'
+      'values (:NZV)'
+      '')
+    ParamData = <
+      item
+        Name = 'NZV'
+        ParamType = ptInput
+      end>
+    Left = 144
+    Top = 168
+  end
+  object qRAgn: TFDQuery
+    Connection = IBC_Read
+    Transaction = IBT_Read
+    FetchOptions.AssignedValues = [evMode, evRecordCountMode]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RecordCountMode = cmTotal
+    SQL.Strings = (
+      'SELECT '
+      '    AG.AG_NAME,'
+      '    ST.BAR_CODE ST_BAR_CODE,'
+      '    AG.BAR_CODE AG_BAR_CODE,'
+      '    AG.IS_DEL,'
+      '    AG.AG_DOP,'
+      '    AG.IS_SKIDKA,'
+      '    V.NAZVAN V_NAME'
+      'FROM VALUT_TABLE V'
+      '   INNER JOIN AGENTS AG ON (V.NO_VAL = AG.PRED_VAL)'
+      '   INNER JOIN SITY_TABLE ST ON (AG.NO_SITY = ST.NO_ST)'
+      'WHERE '
+      '   ('
+      '      (AG.IS_PROD = 0)'
+      '   )'
+      'order by ST.ST_NAME, AG.AG_NAME  '
+      '')
+    Left = 184
+    Top = 72
+  end
+  object qTAgn: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select AG.NO_AGN'
+      'from SITY_TABLE ST'
+      'inner join AGENTS AG on (ST.NO_ST = AG.NO_SITY)'
+      'where ((AG.BAR_CODE = :AGN) and'
+      '      (ST.BAR_CODE = :STN))   '
+      '')
+    Left = 184
+    Top = 120
+    ParamData = <
+      item
+        Name = 'AGN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'STN'
+        ParamType = ptInput
+      end>
+  end
+  object qWAgn: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandKind = skInsert
+    CommandText.Strings = (
+      
+        'insert into AGENTS (NO_SITY, PRED_VAL, AG_NAME, AG_DOP, IS_DEL, ' +
+        'IS_SKIDKA, BAR_CODE)'
+      
+        'values (:NO_SITY, :PRED_VAL, :AG_NAME, :AG_DOP, :IS_DEL, :IS_SKI' +
+        'DKA, :BAR_CODE)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_SITY'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRED_VAL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'AG_NAME'
+        ParamType = ptInput
+      end
+      item
+        Name = 'AG_DOP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_DEL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_SKIDKA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'BAR_CODE'
+        ParamType = ptInput
+      end>
+    Left = 184
+    Top = 168
+  end
+end
