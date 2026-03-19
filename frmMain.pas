@@ -36,6 +36,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure StartMainTransaction;
   end;
 
 procedure ShowInfo(T: string);
@@ -64,6 +65,16 @@ procedure TfmMain.FormCreate(Sender: TObject);
 begin
  myINI := TIniFile.Create(getStartProgrammDir + PathDelim +'Bazar.ini');
  IBC.Connected:=True;
+end;
+
+procedure TfmMain.StartMainTransaction;
+begin
+  if fmMain.IBT.Active then
+  begin
+    fmMain.IBT.Commit;
+    Application.ProcessMessages;
+  end;
+  fmMain.IBT.StartTransaction;
 end;
 
 procedure TfmMain.TMSFNCToolBarButton1Click(Sender: TObject);
