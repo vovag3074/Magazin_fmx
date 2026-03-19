@@ -99,7 +99,6 @@ object fmSync: TfmSync
   object pb: TTMSFNCWaitingIndicator
     AdaptToStyle = True
     AllowFocus = False
-    Color = xB30F1620
     Align = Bottom
     Margins.Left = 2.000000000000000000
     Margins.Right = 2.000000000000000000
@@ -184,9 +183,20 @@ object fmSync: TfmSync
   end
   object IBC_Read: TFDConnection
     Params.Strings = (
-      'DriverID=FB'
       'User_Name=sysdba'
-      'Password=masterkey')
+      'Password=masterkey'
+      'DriverID=FB')
+    FormatOptions.AssignedValues = [fvMapRules]
+    FormatOptions.OwnMapRules = True
+    FormatOptions.MapRules = <
+      item
+        SourceDataType = dtBCD
+        TargetDataType = dtDouble
+      end
+      item
+        SourceDataType = dtFmtBCD
+        TargetDataType = dtDouble
+      end>
     LoginPrompt = False
     Left = 8
     Top = 240
@@ -703,14 +713,18 @@ object fmSync: TfmSync
     ParamData = <
       item
         Name = 'NO_KAT'
+        DataType = ftInteger
         ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'NAZVAN'
         ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'M_CENA'
+        DataType = ftFloat
         ParamType = ptInput
       end
       item
@@ -970,7 +984,9 @@ object fmSync: TfmSync
       end
       item
         Name = 'CNT_MOD'
+        DataType = ftFloat
         ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'DATA_END'

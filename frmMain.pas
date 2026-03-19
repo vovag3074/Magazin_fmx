@@ -11,13 +11,14 @@ uses
   FMX.TMSFNCHint, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
   FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Phys,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
-  FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB;
+  FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf;
 
 type
   TfmMain = class(TForm)
     sbMain: TStatusBar;
     stbMain: TStyleBook;
-    TMSFNCToolBar1: TTMSFNCToolBar;
+    tbMain: TTMSFNCToolBar;
     TMSFNCToolBarButton1: TTMSFNCToolBarButton;
     TMSFNCToolBarButton2: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator1: TTMSFNCToolBarSeparator;
@@ -29,6 +30,7 @@ type
     IBC: TFDConnection;
     IBT: TFDTransaction;
     IBT_Read: TFDTransaction;
+    qUpdSclad: TFDCommand;
     procedure TMSFNCToolBarButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -37,6 +39,8 @@ type
   public
     { Public declarations }
     procedure StartMainTransaction;
+    procedure UpdateSclad;
+    procedure ClearOldFrame;
   end;
 
 procedure ShowInfo(T: string);
@@ -55,6 +59,17 @@ uses
   frmInpSclad;
 
 {$R *.fmx}
+
+procedure TfmMain.ClearOldFrame;
+begin
+ tbMain.Visible:=true;
+ if Assigned(fmInpMag) then
+ begin
+   fmInpMag.SaveINI;
+   fmInpMag.Free;
+   fmInpMag:=nil;
+ end;
+end;
 
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -79,12 +94,23 @@ end;
 
 procedure TfmMain.TMSFNCToolBarButton1Click(Sender: TObject);
 begin
+ tbMain.Visible:=False;
  fmInpMag := TfmInpMag.Create(pMain);
  fmInpMag.Parent := pMain;
  fmInpMag.Align:= TAlignLayout.Client;
  fmInpMag.eTxt.SetFocus;
  fmInpMag.ModList.AdaptToStyle:=True;
+ fmInpMag.LoadINI;
  fmInpMag.readSclad;
+end;
+
+procedure TfmMain.UpdateSclad;
+begin
+  StartMainTransaction;
+  qUpdSclad.Active := false;
+  qUpdSclad.Prepare;
+  qUpdSclad.Execute;
+  IBT.Commit;
 end;
 
 procedure ShowInfo(T: string);

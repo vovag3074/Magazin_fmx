@@ -379,8 +379,11 @@ begin
     qRAgn.First;
     repeat
       inc(K);
-      lbInfo.Text := 'Чтение покупателя № ' + IntToStr(K) + ' из ' + IntToStr(T);
-      Application.ProcessMessages;
+      if(K mod 10 = 0) then
+      begin
+        lbInfo.Text := 'Чтение покупателя № ' + IntToStr(K) + ' из ' + IntToStr(T);
+        Application.ProcessMessages;
+      end;
       qTAgn.Close;
       qTAgn.Prepare;
       qTAgn.ParamByName('AGN').AsString := qRAgn.FieldByName('AG_BAR_CODE').AsString;
@@ -404,7 +407,6 @@ begin
       end;
       // if qTAgn.FieldByName('NO_AGN').IsNull
       qRAgn.Next;
-      Application.ProcessMessages;
     until (qRAgn.Eof);
   end;
   // if qRAgn.RecordCount>0
@@ -456,9 +458,12 @@ begin
         qUCode.Execute;
       end;
       qRCode.Next;
-      lbInfo.Text:='Обновляем код № '+K.ToString+' из '+J.ToString;
+      if(K mod 10 = 0) then
+      begin
+        lbInfo.Text:='Обновляем код № '+K.ToString+' из '+J.ToString;
+        Application.ProcessMessages;
+      end;
       Inc(K);
-      Application.ProcessMessages;
     until (qRCode.Eof);
     fmMain.IBT.Commit;
   end;
@@ -560,14 +565,16 @@ const
   qsStd = 'update MODEL_TABLE' + #13#10 + 'set IS_DEL = :IS_DEL,' + #13#10 + '    BARCODE = :BARCODE,' + #13#10 + '    M_CENA = :M_CENA' + #13#10 + 'where ((NAZVAN = :NAZVAN) and' + #13#10 + '      (NO_KAT = :NO_KAT))  ';
   qsIgn = 'update MODEL_TABLE' + #13#10 + 'set IS_DEL = :IS_DEL,' + #13#10 + '    BARCODE = :BARCODE ' + #13#10 + 'where ((NAZVAN = :NAZVAN) and' + #13#10 + '      (NO_KAT = :NO_KAT))  ';
 var
-  I, J: Integer;
+  I, J, F, K: Integer;
 begin
   fmMain.StartMainTransaction;
   // 10.10.2013 Этап первый. Проверяем Barcode моделей и корректируем имя
   qRMod.Close;
   qRMod.Prepare;
   qRMod.Active := true;
-  if qRMod.RecordCount > 0 then
+  K:=0;
+  F:=qRMod.RecordCount;
+  if F > 0 then
   begin
     qUMod.Active := False; // 02.04.2014 если поставили опцию игнорировать цены,
     qUMod.SQL.Text := qsStd; // то меняем запрос на тот, который без цены.
@@ -590,7 +597,12 @@ begin
           qUMod2.Execute;
         end;
       end;
-      Application.ProcessMessages;
+      if(K mod 10 = 0) then
+      begin
+        lbInfo.Text:='Синхронизация модели № '+K.ToString+' из '+F.ToString;
+        Application.ProcessMessages;
+      end;
+      Inc(K);
       qRMod.Next;
     until qRMod.Eof;
     fmMain.IBT.Commit;
@@ -609,8 +621,11 @@ begin
     qRMod.First;
     repeat
       inc(J);
-      lbInfo.Text := 'Обновление модели № ' + IntToStr(J) + ' из ' + IntToStr(I);
-      Application.ProcessMessages;
+      if(J mod 10 = 0) then
+      begin
+        lbInfo.Text := 'Обновление модели № ' + IntToStr(J) + ' из ' + IntToStr(I);
+        Application.ProcessMessages;
+      end;
       if GetModByName(qRMod.FieldByName('M_NAME').AsString, qRMod.FieldByName('K_NAME').AsString) = -1 then // новая модель
       begin
         if qRMod.FieldByName('IS_DEL').AsInteger = 0 then
@@ -622,7 +637,7 @@ begin
           qWMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
           // в новой цена копируется по любому.....
           qWMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
-          qWMod.ParamByName('IS_DEL').AsInteger := qRMod.FieldByName('IS_DEL').AsInteger;
+          qWMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
           qWMod.Execute;
         end; // if qRMod.FieldByName('IS_DEL').AsInteger=0
       end
@@ -630,7 +645,7 @@ begin
       begin // Старая модель
         qUMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
         qUMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-        qUMod.ParamByName('IS_DEL').AsInteger := qRMod.FieldByName('IS_DEL').AsInteger;
+        qUMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
         if not cbIgn.isChecked then // а тут проверяем нужно ли копировать цену.
         begin
           qUMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
@@ -780,15 +795,14 @@ begin
       Zak_Code := qExpZak.FieldByName('BAR_CODE').AsString;
       if not isIgnoreZakaz(Zak_Code) then
       begin
+        fmMain.StartMainTransaction;
         qInsZak.Active := False;
         qInsZak.Prepare;
         qInsZak.ParamByName('CODE_ZAK').AsString := Zak_Code;
-        qInsZak.ParamByName('CODE_AGN').AsString :=
-          qExpZak.FieldByName('AGENT_CODE').AsString;
-        qInsZak.ParamByName('CNT_MOD').AsFloat :=
-          qExpZak.FieldByName('CNT_MOD').AsFloat;
+        qInsZak.ParamByName('CODE_AGN').AsString := qExpZak.FieldByName('AGENT_CODE').AsString;
+        qInsZak.ParamByName('CNT_MOD').Value := qExpZak.FieldByName('CNT_MOD').Value;
         qInsZak.ParamByName('DATA_END').AsDate := MyDate;
-        qInsZak.ParamByName('IS_MOVE').AsInteger := 0;
+        qInsZak.ParamByName('IS_MOVE').AsSmallInt:= 0;
         qInsZak.Execute;
         fmMain.IBT.Commit;
         Application.ProcessMessages;
@@ -870,31 +884,38 @@ begin
   lbInfo.Text := 'Читаем покупателей';
   Application.ProcessMessages;
   CopyAgn;
-  // -----------------------------------
+
   lbInfo.Text := 'Читаем типы';
   Application.ProcessMessages;
   CopyType;
+
   lbInfo.Text := 'Читаем категории';
   Application.ProcessMessages;
   CopyKat;
+
   lbInfo.Text := 'Читаем модели';
   Application.ProcessMessages;
   CopyMod;
+
   lbInfo.Text := 'Читаем размеры';
   Application.ProcessMessages;
   CopySize;
+
   lbInfo.Text := 'Читаем разрешенные размеры';
   Application.ProcessMessages;
   CopyEnableType;
+
   lbInfo.Text := 'Читаем коды';
   Application.ProcessMessages;
   CopyCode;
+
   lbInfo.Text := 'Читаем заказы';
   Application.ProcessMessages;
   CopyZakaz;
+
   lbInfo.Text := 'Обновляем склад';
   Application.ProcessMessages;
- // fmMain.UpdateSclad;
+  fmMain.UpdateSclad;
   // -----------------------------------
   lbInfo.Text := '';
   Application.ProcessMessages;
