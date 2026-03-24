@@ -1057,7 +1057,9 @@ object fmSync: TfmSync
       end
       item
         Name = 'CNT_MOD'
+        DataType = ftFloat
         ParamType = ptInput
+        Value = Null
       end>
     Left = 584
     Top = 72

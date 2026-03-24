@@ -683,8 +683,8 @@ begin
         qWSity.Close;
         qWSity.Prepare;
         qWSity.ParamByName('st_name').AsString := qRSity.FieldByName('st_name').AsString;
-        qWSity.ParamByName('IS_DEL').AsInteger := qRSity.FieldByName('IS_DEL').AsInteger;
-        qWSity.ParamByName('IS_STAR').AsInteger := qRSity.FieldByName('IS_STAR').AsInteger;
+        qWSity.ParamByName('IS_DEL').AsSmallInt := qRSity.FieldByName('IS_DEL').AsInteger;
+        qWSity.ParamByName('IS_STAR').AsSmallInt := qRSity.FieldByName('IS_STAR').AsInteger;
         qWSity.ParamByName('BAR_CODE').AsString := qRSity.FieldByName('BAR_CODE').AsString;
         qWSity.Execute;
       end;
