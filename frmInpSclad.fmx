@@ -1,10 +1,10 @@
 object fmInpMag: TfmInpMag
-  Size.Width = 855.000000000000000000
+  Size.Width = 953.000000000000000000
   Size.Height = 532.000000000000000000
   Size.PlatformDefault = False
   object Panel1: TPanel
     Align = MostTop
-    Size.Width = 855.000000000000000000
+    Size.Width = 953.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -45,7 +45,7 @@ object fmInpMag: TfmInpMag
         F5418757C637AAF6BFD2DF38F76A9C6CDCB3AD0000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
-      Size.Width = 127.000000000000000000
+      Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Align = Left
@@ -86,7 +86,7 @@ object fmInpMag: TfmInpMag
         3941E773FD130000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
-      Size.Width = 127.000000000000000000
+      Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Align = Left
@@ -95,7 +95,7 @@ object fmInpMag: TfmInpMag
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 181.000000000000000000
+      Position.X = 204.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 2
       Text = #1054#1090#1095#1077#1090#1099
@@ -136,7 +136,7 @@ object fmInpMag: TfmInpMag
         377FCDFEB7EB69847340E69D856E0000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
-      Size.Width = 127.000000000000000000
+      Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Align = Right
@@ -145,7 +145,7 @@ object fmInpMag: TfmInpMag
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 726.000000000000000000
+      Position.X = 801.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 1
       Text = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
@@ -207,7 +207,7 @@ object fmInpMag: TfmInpMag
   object Panel2: TPanel
     Align = MostBottom
     Position.Y = 484.000000000000000000
-    Size.Width = 855.000000000000000000
+    Size.Width = 953.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -276,6 +276,22 @@ object fmInpMag: TfmInpMag
         Text = #1042#1074#1086#1076
         OnClick = EditButton1Click
       end
+    end
+    object TMSFNCButton6: TTMSFNCButton
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      CanFocus = False
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 801.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 2
+      Text = #1057#1086#1075#1083#1072#1089#1086#1074#1072#1090#1100
+      OnClick = TMSFNCButton6Click
     end
   end
   object pmRep: TPopup
@@ -670,10 +686,11 @@ object fmInpMag: TfmInpMag
   end
   object lbZak: TListBox
     Align = Client
-    Size.Width = 539.000000000000000000
+    Size.Width = 637.000000000000000000
     Size.Height = 436.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
+    Columns = 2
     DisableFocusEffect = True
     ItemIndex = 0
     ItemHeight = 99.000000000000000000
@@ -681,7 +698,7 @@ object fmInpMag: TfmInpMag
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 535.000000000000000000
+    Viewport.Width = 633.000000000000000000
     Viewport.Height = 432.000000000000000000
     object ListBoxItem1: TListBoxItem
       IsSelected = True
@@ -693,7 +710,7 @@ object fmInpMag: TfmInpMag
       Text = 'ListBoxItem1'
     end
     object ListBoxItem2: TListBoxItem
-      Position.Y = 99.000000000000000000
+      Position.X = 300.000000000000000000
       Size.Width = 300.000000000000000000
       Size.Height = 99.000000000000000000
       Size.PlatformDefault = False
@@ -779,6 +796,12 @@ object fmInpMag: TfmInpMag
         Size.PlatformDefault = False
         Stroke.Color = claWhite
       end
+    end
+    object OD: TOpenDialog
+      DefaultExt = '*.bxml'
+      Filter = #1060#1072#1081#1083' '#1087#1088#1086#1090#1086#1082#1086#1083#1072' (*.bxml)|*.bxml'
+      Left = 424
+      Top = 240
     end
   end
   object qList: TFDQuery

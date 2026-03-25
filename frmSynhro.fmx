@@ -186,6 +186,8 @@ object fmSync: TfmSync
     Params.Strings = (
       'User_Name=sysdba'
       'Password=masterkey'
+      'CharacterSet=UNICODE_FSS'
+      'Protocol=TCPIP'
       'DriverID=FB')
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -334,7 +336,9 @@ object fmSync: TfmSync
       '    ST.BAR_CODE ST_BAR_CODE,'
       '    AG.BAR_CODE AG_BAR_CODE,'
       '    AG.IS_DEL,'
-      '    AG.AG_DOP,'
+      
+        '    CAST(AG.AG_DOP AS varchar(200) CHARACTER SET win1251) AG_DOP' +
+        '1,'
       '    AG.IS_SKIDKA,'
       '    V.NAZVAN V_NAME'
       'FROM VALUT_TABLE V'

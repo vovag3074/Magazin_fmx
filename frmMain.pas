@@ -24,7 +24,7 @@ uses
   Macapi.AppKit, //You need it to create an '''NSApplication''' instance.
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
-FMX.DialogService;
+FMX.DialogService, FireDAC.Phys.IBBase;
 
 type
   TfmMain = class(TForm)
@@ -45,6 +45,7 @@ type
     qUpdSclad: TFDCommand;
     TMSFNCToolBarButton5: TTMSFNCToolBarButton;
     qTestZal: TFDQuery;
+    FBDriver: TFDPhysFBDriverLink;
     procedure TMSFNCToolBarButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -284,12 +285,12 @@ begin
   end;
   {$ENDIF}
   {$IFDEF LINUX}
-   if not Assigned(fmNotify) then
-   begin
-    fmNotify := TfmNotify.Create(fmMain);
-    fmNotify.lbNotyfy.Text:=S;
-    fmNotify.Show;
-   end;
+//   if not Assigned(fmNotify) then
+//   begin
+//    fmNotify := TfmNotify.Create(fmMain);
+//    fmNotify.lbNotyfy.Text:=S;
+//    fmNotify.Show;
+//   end;
   {$ENDIF}
 end;
 

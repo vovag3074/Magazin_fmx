@@ -5,11 +5,10 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Linux64</Platform>
         <TargetedPlatforms>693395</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>Bazar.dpr</MainSource>
-        <ProjectName Condition="'$(ProjectName)'==''">Bazar</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -404,13 +403,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Bazar" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="OSX64">
+                    <Platform Name="Linux64">
                         <RemoteName>Bazar</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Linux64\Release\Bazar" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Linux64">
+                <DeployFile LocalName="Bazar" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="OSX64">
                         <RemoteName>Bazar</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>

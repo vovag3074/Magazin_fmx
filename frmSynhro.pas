@@ -115,7 +115,7 @@ type
     /// Копирование активных заказов
     /// </summary>
     procedure CopyZakaz;
-    procedure CopyZakDetail(CodeZakaza: String);
+    procedure CopyZakDetail(CodeZakaza: string);
 
     /// <summary>
     /// Получение кода размера по названию
@@ -188,7 +188,7 @@ type
     /// <param name="MyCode">
     /// uin размера
     /// </param>
-    function GetSizeModByCode(const MyCode: String): Integer;
+    function GetSizeModByCode(const MyCode: string): Integer;
     /// <summary>
     /// проверка на существующий заказ
     /// </summary>
@@ -198,7 +198,7 @@ type
     /// <remarks>
     /// если заказ такой есть он игнорируется в дальнейшем
     /// </remarks>
-    function isIgnoreZakaz(CodeZakaz: String): Boolean;
+    function isIgnoreZakaz(CodeZakaz: string): Boolean;
   public
     { Public declarations }
   end;
@@ -317,7 +317,7 @@ end;
 
 function TfmSync.GetSize(const No_Size: Integer): Integer;
 begin
- Result := -1;
+  Result := -1;
   qTSize.Close;
   qTSize.Prepare;
   qTSize.ParamByName('NS').AsInteger := No_Size;
@@ -326,7 +326,7 @@ begin
     Result := qTSize.FieldByName('NO_SMT').AsInteger;
 end;
 
-function TfmSync.GetSizeModByCode(const MyCode: String): Integer;
+function TfmSync.GetSizeModByCode(const MyCode: string): Integer;
 begin
   Result := -1;
   qTCode.Close;
@@ -348,7 +348,7 @@ begin
     Result := qTVal.FieldByName('NO_VAL').AsInteger;
 end;
 
-function TfmSync.isIgnoreZakaz(CodeZakaz: String): Boolean;
+function TfmSync.isIgnoreZakaz(CodeZakaz: string): Boolean;
 begin
   qTZakList.Close;
   qTZakList.Prepare;
@@ -379,7 +379,7 @@ begin
     qRAgn.First;
     repeat
       inc(K);
-      if(K mod 10 = 0) then
+      if (K mod 10 = 0) then
       begin
         lbInfo.Text := 'Чтение покупателя № ' + IntToStr(K) + ' из ' + IntToStr(T);
         Application.ProcessMessages;
@@ -396,7 +396,7 @@ begin
           qWAgn.Close;
           qWAgn.ParamByName('AG_NAME').AsString := qRAgn.FieldByName('AG_NAME').AsString;
           qWAgn.ParamByName('NO_SITY').AsInteger := I;
-          qWAgn.ParamByName('AG_DOP').AsString := qRAgn.FieldByName('AG_DOP').AsString;
+          qWAgn.ParamByName('AG_DOP').AsString := qRAgn.FieldByName('AG_DOP1').AsString;
           qWAgn.ParamByName('IS_DEL').AsInteger := qRAgn.FieldByName('IS_DEL').AsInteger;
           qWAgn.ParamByName('IS_SKIDKA').AsInteger := qRAgn.FieldByName('IS_SKIDKA').AsInteger;
           qWAgn.ParamByName('PRED_VAL').AsInteger := GetValByName(qRAgn.FieldByName('V_NAME').AsString);
@@ -415,14 +415,14 @@ end;
 
 procedure TfmSync.CopyCode;
 var
-  I,J,K: Integer;
+  I, J, K: Integer;
 begin
   fmMain.StartMainTransaction;
   qRCode.Close;
   qRCode.Prepare;
   qRCode.Active := true;
-  J:= qRCode.RecordCount;
-  K:=0;
+  J := qRCode.RecordCount;
+  K := 0;
   if J > 0 then
   begin
     qRCode.First;
@@ -433,15 +433,10 @@ begin
         // Если нет - вставляем
         qWCode.Active := False;
         qWCode.Prepare;
-        qWCode.ParamByName('NO_MOD').AsInteger :=
-          GetModByName(qRCode.FieldByName('M_NAZVAN').AsString,
-          qRCode.FieldByName('K_NAZVAN').AsString);
-        qWCode.ParamByName('NO_SIZE').AsInteger :=
-          GetSize(qRCode.FieldByName('NO_SIZE').AsInteger);
-        qWCode.ParamByName('UN_CODE').AsString :=
-          qRCode.FieldByName('UN_SM').AsString;
-        qWCode.ParamByName('IS_ENABLE').AsSmallInt :=
-          qRCode.FieldByName('IS_ENABLE').AsInteger;
+        qWCode.ParamByName('NO_MOD').AsInteger := GetModByName(qRCode.FieldByName('M_NAZVAN').AsString, qRCode.FieldByName('K_NAZVAN').AsString);
+        qWCode.ParamByName('NO_SIZE').AsInteger := GetSize(qRCode.FieldByName('NO_SIZE').AsInteger);
+        qWCode.ParamByName('UN_CODE').AsString := qRCode.FieldByName('UN_SM').AsString;
+        qWCode.ParamByName('IS_ENABLE').AsSmallInt := qRCode.FieldByName('IS_ENABLE').AsInteger;
         try
           qWCode.Execute;
         except
@@ -453,14 +448,13 @@ begin
         qUCode.Active := False;
         qUCode.Prepare;
         qUCode.ParamByName('NO_MST').AsInteger := I;
-        qUCode.ParamByName('IS_ENABLE').AsSmallInt :=
-          qRCode.FieldByName('IS_ENABLE').AsInteger;
+        qUCode.ParamByName('IS_ENABLE').AsSmallInt := qRCode.FieldByName('IS_ENABLE').AsInteger;
         qUCode.Execute;
       end;
       qRCode.Next;
-      if(K mod 10 = 0) then
+      if (K mod 10 = 0) then
       begin
-        lbInfo.Text:='Обновляем код № '+K.ToString+' из '+J.ToString;
+        lbInfo.Text := 'Обновляем код № ' + K.ToString + ' из ' + J.ToString;
         Application.ProcessMessages;
       end;
       Inc(K);
@@ -481,10 +475,8 @@ begin
     repeat
       qInsType.Active := False;
       qInsType.Prepare;
-      qInsType.ParamByName('BAR_CODE').AsString :=
-        qTEnable.FieldByName('BAR_CODE').AsString;
-      qInsType.ParamByName('NO_SIZE').AsInteger :=
-        qTEnable.FieldByName('NO_SIZE').AsInteger;
+      qInsType.ParamByName('BAR_CODE').AsString := qTEnable.FieldByName('BAR_CODE').AsString;
+      qInsType.ParamByName('NO_SIZE').AsInteger := qTEnable.FieldByName('NO_SIZE').AsInteger;
       qInsType.Execute;
       qTEnable.Next;
     until (qTEnable.Eof);
@@ -572,8 +564,8 @@ begin
   qRMod.Close;
   qRMod.Prepare;
   qRMod.Active := true;
-  K:=0;
-  F:=qRMod.RecordCount;
+  K := 0;
+  F := qRMod.RecordCount;
   if F > 0 then
   begin
     qUMod.Active := False; // 02.04.2014 если поставили опцию игнорировать цены,
@@ -584,26 +576,34 @@ begin
     end;
     qRMod.First;
     repeat
-      if GetNoModFromBarcode(qRMod.FieldByName('barcode').AsString) > -1 then
-      begin
-        var N: Integer;
-        N := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-        // 18,03,2026 модель можно прицепить к категории материалы, защита от дурака
-        if N <> -1 then
+      try
+        if GetNoModFromBarcode(qRMod.FieldByName('barcode').AsString) > -1 then
         begin
-          qUMod2.ParamByName('NK').AsInteger := N;
-          qUMod2.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
-          qUMod2.ParamByName('NO_MOD').AsInteger := GetNoModFromBarcode(qRMod.FieldByName('barcode').AsString);
-          qUMod2.Execute;
+          var N: Integer;
+          N := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
+        // 18,03,2026 модель можно прицепить к категории материалы, защита от дурака
+          if N <> -1 then
+          begin
+            qUMod2.ParamByName('NK').AsInteger := N;
+            qUMod2.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
+            qUMod2.ParamByName('NO_MOD').AsInteger := GetNoModFromBarcode(qRMod.FieldByName('barcode').AsString);
+            qUMod2.Execute;
+          end;
+        end;
+        if (K mod 10 = 0) then
+        begin
+          lbInfo.Text := 'Синхронизация модели № ' + K.ToString + ' из ' + F.ToString;
+          Application.ProcessMessages;
+        end;
+        Inc(K);
+        qRMod.Next;
+      except
+        on E: Exception do
+        begin
+         // ShowError(E.Message + ' на модели:' + qRMod.FieldByName('M_NAME').AsString);
+          qRMod.Next;
         end;
       end;
-      if(K mod 10 = 0) then
-      begin
-        lbInfo.Text:='Синхронизация модели № '+K.ToString+' из '+F.ToString;
-        Application.ProcessMessages;
-      end;
-      Inc(K);
-      qRMod.Next;
     until qRMod.Eof;
     fmMain.IBT.Commit;
   end; // if qRMod.RecordCount > 0
@@ -620,42 +620,50 @@ begin
   begin
     qRMod.First;
     repeat
-      inc(J);
-      if(J mod 10 = 0) then
-      begin
-        lbInfo.Text := 'Обновление модели № ' + IntToStr(J) + ' из ' + IntToStr(I);
-        Application.ProcessMessages;
-      end;
-      if GetModByName(qRMod.FieldByName('M_NAME').AsString, qRMod.FieldByName('K_NAME').AsString) = -1 then // новая модель
-      begin
-        if qRMod.FieldByName('IS_DEL').AsInteger = 0 then
-        // удаленные модели не читаем
+      try
+        inc(J);
+        if (J mod 10 = 0) then
         begin
-          qWMod.Prepare;
-          qWMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
-          qWMod.ParamByName('BARCODE').AsString := qRMod.FieldByName('BARCODE').AsString;
-          qWMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-          // в новой цена копируется по любому.....
-          qWMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
-          qWMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
-          qWMod.Execute;
-        end; // if qRMod.FieldByName('IS_DEL').AsInteger=0
-      end
-      else // -1
-      begin // Старая модель
-        qUMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
-        qUMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-        qUMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
-        if not cbIgn.isChecked then // а тут проверяем нужно ли копировать цену.
-        begin
-          qUMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
+          lbInfo.Text := 'Обновление модели № ' + IntToStr(J) + ' из ' + IntToStr(I);
+          Application.ProcessMessages;
         end;
-        qUMod.ParamByName('barcode').AsString := qRMod.FieldByName('barcode').AsString;
-        qUMod.Execute;
+        if GetModByName(qRMod.FieldByName('M_NAME').AsString, qRMod.FieldByName('K_NAME').AsString) = -1 then // новая модель
+        begin
+          if qRMod.FieldByName('IS_DEL').AsInteger = 0 then
+        // удаленные модели не читаем
+          begin
+            qWMod.Prepare;
+            qWMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
+            qWMod.ParamByName('BARCODE').AsString := qRMod.FieldByName('BARCODE').AsString;
+            qWMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
+          // в новой цена копируется по любому.....
+            qWMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
+            qWMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
+            qWMod.Execute;
+          end; // if qRMod.FieldByName('IS_DEL').AsInteger=0
+        end
+        else // -1
+        begin // Старая модель
+          qUMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
+          qUMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
+          qUMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
+          if not cbIgn.isChecked then // а тут проверяем нужно ли копировать цену.
+          begin
+            qUMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
+          end;
+          qUMod.ParamByName('barcode').AsString := qRMod.FieldByName('barcode').AsString;
+          qUMod.Execute;
+        end;
+        qRMod.Next;
+        fmMain.IBT.Commit;
+      except
+        on E: Exception do
+        begin
+          //ShowError(E.Message + ' на модели:' + qRMod.FieldByName('M_NAME').AsString);
+          qRMod.Next;
+        end;
       end;
-      qRMod.Next;
     until (qRMod.Eof);
-    fmMain.IBT.Commit;
   end;
 end;
 
@@ -710,8 +718,7 @@ begin
       begin
         qWSize.Active := False;
         qWSize.Prepare;
-        qWSize.ParamByName('NO_SIZE').AsInteger := qRSize.FieldByName('NO_SIZE')
-          .AsInteger;
+        qWSize.ParamByName('NO_SIZE').AsInteger := qRSize.FieldByName('NO_SIZE').AsInteger;
         qWSize.Execute;
       end;
       qRSize.Next;
@@ -781,7 +788,7 @@ end;
 
 procedure TfmSync.CopyZakaz;
 var
-  Zak_Code: String;
+  Zak_Code: string;
   MyDate: TDate;
 begin
   MyDate := IncDay(Date, 60);
@@ -802,7 +809,7 @@ begin
         qInsZak.ParamByName('CODE_AGN').AsString := qExpZak.FieldByName('AGENT_CODE').AsString;
         qInsZak.ParamByName('CNT_MOD').Value := qExpZak.FieldByName('CNT_MOD').Value;
         qInsZak.ParamByName('DATA_END').AsDate := MyDate;
-        qInsZak.ParamByName('IS_MOVE').AsSmallInt:= 0;
+        qInsZak.ParamByName('IS_MOVE').AsSmallInt := 0;
         qInsZak.Execute;
         fmMain.IBT.Commit;
         Application.ProcessMessages;
@@ -816,7 +823,7 @@ begin
   end;
 end;
 
-procedure TfmSync.CopyZakDetail(CodeZakaza: String);
+procedure TfmSync.CopyZakDetail(CodeZakaza: string);
 begin
   fmMain.StartMainTransaction;
   qExpZalList.Close;
@@ -828,12 +835,9 @@ begin
     repeat
       qInsDetZak.Active := False;
       qInsDetZak.Prepare;
-      qInsDetZak.ParamByName('CODE_ZAK').AsString :=
-        qExpZalList.FieldByName('BAR_CODE').AsString;
-      qInsDetZak.ParamByName('CODE_MOD').AsString :=
-        qExpZalList.FieldByName('UN_SM').AsString;
-      qInsDetZak.ParamByName('CNT_MOD').AsFloat :=
-        qExpZalList.FieldByName('CNT_MOD_SIZE').AsFloat;
+      qInsDetZak.ParamByName('CODE_ZAK').AsString := qExpZalList.FieldByName('BAR_CODE').AsString;
+      qInsDetZak.ParamByName('CODE_MOD').AsString := qExpZalList.FieldByName('UN_SM').AsString;
+      qInsDetZak.ParamByName('CNT_MOD').AsFloat := qExpZalList.FieldByName('CNT_MOD_SIZE').AsFloat;
       qInsDetZak.Execute;
       qExpZalList.Next;
     until (qExpZalList.Eof);
@@ -862,7 +866,13 @@ end;
 procedure TfmSync.dxOKClick(Sender: TObject);
 begin
   dxOK.Enabled := False;
-  ibc_Read.Params.Database := eDB.Text;
+  var Sv, T: string;
+  var i: Integer;
+  i := Pos(':', eDB.Text);
+  Sv := Copy(eDB.Text, 1, i - 1);
+  T := Copy(eDB.Text, i + 1, Length(eDB.Text));
+  ibc_Read.Params.Database := T;
+  IBC_Read.Params.Values['Server'] := Sv;
   ibc_Read.Params.Username := fmMain.IBC.Params.Username;
   ibc_Read.Params.Password := fmMain.IBC.Params.Password;
   ibc_Read.Connected := True;

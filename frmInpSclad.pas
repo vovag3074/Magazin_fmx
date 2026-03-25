@@ -10,7 +10,7 @@ uses
   FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
   FMX.TMSFNCTreeView, FMX.TMSFNCSplitter, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, NativeXml,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.TMSFNCCustomComponent,
   FMX.TMSFNCBitmapContainer, FMX.Layouts, FMX.ListBox, FMX.Objects;
 
@@ -47,12 +47,15 @@ type
     edSum: TEdit;
     qDet: TFDQuery;
     qIns: TFDCommand;
+    TMSFNCButton6: TTMSFNCButton;
     Layout1: TLayout;
+    OD: TOpenDialog;
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
     procedure TMSFNCButton4Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure tlMoveBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure TMSFNCButton6Click(Sender: TObject);
   private
     { Private declarations }
     FSum: Double;
@@ -63,6 +66,7 @@ type
     procedure SaveINI;
     procedure ListMoveTov;
     procedure InsertTovar;
+    procedure ImportMove;
   end;
 
 var
@@ -89,6 +93,92 @@ uses
 procedure TfmInpMag.EditButton1Click(Sender: TObject);
 begin
   InsertTovar;
+end;
+
+procedure TfmInpMag.ImportMove;
+var
+  XMLDoc: TNativeXml; // объект XML-документа
+  NodeList: TsdNodeList; // список узлов
+  S: String;
+  miniLoad: Boolean;
+begin
+  miniLoad := False;
+  if OD.Execute then
+  begin
+    XMLDoc := TNativeXml.Create(Self); // создаем экземпляр класса
+    XMLDoc.BinaryMethod := bmZlib;
+    XMLDoc.LoadFromBinaryFile(OD.FileName); // загружаем данные из потока
+    if XMLDoc.IsEmpty then
+      Exit;
+    //XMLDoc.XmlFormat := xfReadable;
+    //XMLDoc.SaveToFile('d:\debug.xml');
+    NodeList := TsdNodeList.Create;
+    // -------------19.07.2013---------------------
+//    try
+//      XMLDoc.Root.FindNodes('UUID_Move', NodeList);
+//      S := NodeList.Items[0].Value;
+//      if isUzeRead(S) then
+//      begin
+//        if not ShowQuestionEx('Этот протокол прочитан ранее.' +
+//          ' Вы уверены, что надо его прочитать еще раз?') then
+//        begin
+//          Exit;
+//        end;
+//      end;
+//    except
+//    end;
+//    // ===========================================================
+//    try
+//      fmMain.isShowError := False;
+//      qInsCode.Active := False;
+//      qInsCode.Prepare;
+//      qInsCode.ParamByName('CODE_READ').AsString := S;
+//      qInsCode.Execute;
+//      fmMain.IBT.Commit;
+//    except
+//    end;
+//     miniLoad := ShowQuestionEx('Для экономии времени попробовать упрощенный импорт?');
+//    try
+//      if not miniLoad then
+//      begin
+//        // ---------------------------------------------
+//        // надо бы проверить список категорий и спрашивать если новая
+//        ShowWaitP(True, 'Чтение списка категорий');
+//        ReadImpKat(XMLDoc, NodeList);
+//        // ----------------------------------------------
+//        ShowWaitP(True, 'Чтение списка покупателей');
+//        Application.ProcessMessages;
+//        ReadAgentList(XMLDoc, NodeList);
+//        ibt_Write.Commit;
+//        ShowWaitP(True, 'Чтение списка моделей');
+//        Application.ProcessMessages;
+//        ReadMoveModelList(XMLDoc, NodeList);
+//        ibt_Write.Commit;
+//        Application.ProcessMessages;
+//      end;
+//      ShowWaitP(True, 'Чтение списка заказов');
+//      Application.ProcessMessages;
+//      ReadMyZakazList(XMLDoc, NodeList, 1);
+//      ibt_Write.Commit;
+//      Application.ProcessMessages;
+//
+//      ShowWaitP(True, 'Чтение списка отправок');
+//      Application.ProcessMessages;
+//      ReadMoveTov(XMLDoc, NodeList);
+//      ibt_Write.Commit;
+//      Application.ProcessMessages;
+//      fmMain.IBT.Commit;
+//      Application.ProcessMessages;
+//      fmMain.UpdateSclad;
+//      Application.ProcessMessages;
+//    finally
+//      ShowWaitP(False);
+//      FreeAndNil(NodeList);
+//      FreeAndNil(XMLDoc);
+//      ListMoveTov;
+//      eTxt.SetFocus;
+//    end;
+  end;
 end;
 
 procedure TfmInpMag.InsertTovar;
@@ -275,6 +365,11 @@ end;
 procedure TfmInpMag.TMSFNCButton5Click(Sender: TObject);
 begin
   fmMain.ClearOldFrame;
+end;
+
+procedure TfmInpMag.TMSFNCButton6Click(Sender: TObject);
+begin
+  ImportMove;
 end;
 
 end.
