@@ -14,7 +14,7 @@ uses
   FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
 {$IFDEF LINUX}
-  FMUX.Api, FMUX.Config,
+  FMUX.Api, FMUX.Config,   Posix.Stdlib,
 {$ENDIF}
 {$IFDEF MSWindows}
   Winapi.DwmApi, FMX.Platform.Win, System.Notification,
@@ -266,6 +266,8 @@ begin
 end;
 
 procedure ShowNotify(S: string);
+var
+  LChannel: TChannel;
 begin
   // создаем немодальное окно с иконкой
   // для windows -позиция - справа внизу
@@ -288,20 +290,24 @@ begin
   end;
   if NtC.Supported then
   begin
+    LChannel := NtC.CreateChannel;
+  try
+    LChannel.Id := 'MyChannel';
+    LChannel.Title := LChannel.Id;
+    LChannel.Importance := TImportance.High;
+    NtC.CreateOrUpdateChannel(LChannel);
     Nt := NtC.CreateNotification;
     Nt.Name := 'Рабочее место продавца';
     Nt.Title := 'Информация';
     Nt.AlertBody := S;
     NtC.PresentNotification(Nt);
+  finally
+    LChannel.Free;
+  end;
   end;
   {$ENDIF}
   {$IFDEF LINUX}
-//   if not Assigned(fmNotify) then
-//   begin
-//    fmNotify := TfmNotify.Create(fmMain);
-//    fmNotify.lbNotyfy.Text:=S;
-//    fmNotify.Show;
-//   end;
+    _system(PAnsiChar(AnsiString('notify-send "Информация" "' + S + '"')));
   {$ENDIF}
 end;
 
