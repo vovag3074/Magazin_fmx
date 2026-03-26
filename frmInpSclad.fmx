@@ -278,6 +278,40 @@ object fmInpMag: TfmInpMag
       end
     end
     object TMSFNCButton6: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C086488000003A0494441544889BD556D6853
+        67147ECE7B6F9AB5AB318D9ADB361853059DD8AE8375088E6DD81FD3E2BA4D6B
+        41FDE184AD94FA4B61B0F9CB8F3F951554DCD6C1641BD8CE1F8A050DCE21A5DB
+        74AC7E20C1526DE71C699C86246D93344DDB7C34F7EC4772AF699A7E286CE7CF
+        7D0FEFB9E7799FE79CF3BEC07F6C34D786FF142BC682643D432A078104001580
+        C88AD17C1500184C4879E30983533940FE790182EDD375049C03607A81434718
+        D863D92F5FCD0BE03FC34A4132353810E837B5F61C8627EC662D8E999988F47F
+        727C5E65AEA043B547B1DE5A194918A4579426F28B5C006332590F404B0E665E
+        D4B199199EB01BAD3D8701C094C90379562049654807B3969CB35038073177CF
+        137603003149657901B43A5E6F71895C19E69328770D4ACB3A0B606C62F4F6D0
+        D850C4F5F44E7681798E75DEBD7D35CD7AB7CD02707C6ABDFAEE9B5B5DBE71EF
+        3B79D82D6844847D35CD50D53900068E3FDD144B45D7D94C760A4D05F9F2C045
+        9C73FD0095555AAC440058883C00A1D3896AC8E2DA5068A2B0D3F51DAF34AFC2
+        C76FB4C0645C8AF6DE132F42288781411C1889060A5BBA3EE2894414448491E8
+        303554EDC2D9BB67783C1E59B08B34129A4433E78061FF3BF80899E40480FA7C
+        2E14C8462A29B2504663DDB27D6DAD0DA526510E00BB5E2D7D0D0ECB9A748B09
+        1975EBDEC7582CCCFE71DFE2266E3E890C05721BA868FBB70D9D8E7EDF3D949B
+        6C2833D9F0C5AFC79048C5294F8B2E6833181437913F3019D878C3FDCB7D22C2
+        83403F0E3A9BF1D3E0255D6BCEB26C1FCFEAC1C8AA81CE60E41BB649AABAF371
+        642870F9FEF9EEF2A5F60DDEC813F8C6BDD8FBFA27F468F421DFF4FC9EBE9533
+        96AF4DED6607030021E5D501C25F720573EAD6D4F4E4B27FC29E697F34E03BFD
+        E1F7B8F6F00AFFFCA793DE5BBF8395E2523ADFD7C9EDBD2775C65923012282DD
+        ECE0439B8F0240246E30389F31106A038397EDFAB11EA1A9A004C0169C1CE5BF
+        460671F7C96D6EECA8C3C1B73EC7071B1AF9425FE76FD144146DDBBEDE58A954
+        BF94A72E1106F6284DE947470600261E26104A0A2D08C7422491C42585165A5E
+        64E5CCE9C852B41C46C9F8B8FB8FEE5A00501AAD3B00AE1442A45F34352D4BDC
+        60706AC9758069A3D425C753478E6D69B39FBC711C81A80F9290A02C29C58A97
+        ADD450B51B6FAFAE05483DA5FDB8F6B3955D00BA16EA225DC4E1AF626B652177
+        00A861A46F5BED0B6092C1AD252D722B113D57ABCE7832F9088B7069B20A2951
+        0D412B98118360B750A55EF37E0A3D4FE2FFCDFE05A9A0D67F160E2CDE000000
+        0049454E44AE426082}
+      ShowImage = True
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -292,6 +326,16 @@ object fmInpMag: TfmInpMag
       TabOrder = 2
       Text = #1057#1086#1075#1083#1072#1089#1086#1074#1072#1090#1100
       OnClick = TMSFNCButton6Click
+    end
+    object lbInfo: TLabel
+      Align = Client
+      StyledSettings = [Family, Size, Style]
+      Size.Width = 476.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Center
+      TabOrder = 3
     end
   end
   object pmRep: TPopup
@@ -800,8 +844,8 @@ object fmInpMag: TfmInpMag
     object OD: TOpenDialog
       DefaultExt = '*.bxml'
       Filter = #1060#1072#1081#1083' '#1087#1088#1086#1090#1086#1082#1086#1083#1072' (*.bxml)|*.bxml'
-      Left = 424
-      Top = 240
+      Left = 416
+      Top = 208
     end
   end
   object qList: TFDQuery
@@ -890,5 +934,525 @@ object fmInpMag: TfmInpMag
       end>
     Left = 168
     Top = 320
+  end
+  object qCodeRead: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select LRP.NORP'
+      'from LOG_READ_PEREM LRP'
+      'where LRP.CODE_READ = :MCR'
+      '')
+    Left = 24
+    Top = 376
+    ParamData = <
+      item
+        Name = 'MCR'
+        ParamType = ptInput
+      end>
+  end
+  object qInsCode: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'insert into LOG_READ_PEREM (CODE_READ)'
+      'values (:CODE_READ)'
+      '')
+    ParamData = <
+      item
+        Name = 'CODE_READ'
+        ParamType = ptInput
+      end>
+    Left = 72
+    Top = 376
+  end
+  object qTType: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select'
+      '    TM.NO_TM'
+      'from TYPE_MOD TM'
+      'where tm.code_type = :UN'
+      '')
+    Left = 128
+    Top = 376
+    ParamData = <
+      item
+        Name = 'UN'
+        ParamType = ptInput
+      end>
+  end
+  object qTKat: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select KT.NO_KAT'
+      'from KATEGORY_TABLE KT'
+      'where KT.NAZVAN = :NT   '
+      '')
+    Left = 208
+    Top = 280
+    ParamData = <
+      item
+        Name = 'NT'
+        ParamType = ptInput
+      end>
+  end
+  object qUpdKat: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update KATEGORY_TABLE'
+      'set SUM_SKID = :SUM_SKID,'
+      '    UIN_KAT = :UIN_KAT'
+      'where (NO_KAT = :NO_KAT)'
+      '')
+    ParamData = <
+      item
+        Name = 'SUM_SKID'
+        ParamType = ptInput
+      end
+      item
+        Name = 'UIN_KAT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_KAT'
+        ParamType = ptInput
+      end>
+    Left = 208
+    Top = 376
+  end
+  object qInsKat: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'insert into KATEGORY_TABLE (NAZVAN, SUM_SKID, UIN_KAT, NO_TYPE)'
+      'values (:NAZVAN, :SUM_SKID, :UIN_KAT, :NO_TYPE)'
+      '')
+    ParamData = <
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SUM_SKID'
+        ParamType = ptInput
+      end
+      item
+        Name = 'UIN_KAT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_TYPE'
+        ParamType = ptInput
+      end>
+    Left = 208
+    Top = 328
+  end
+  object qTAgn: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AG.NO_AGN'
+      'FROM AGENTS AG'
+      'WHERE ((AG.BAR_CODE = :NG))   '
+      '')
+    Left = 256
+    Top = 280
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end>
+  end
+  object qTSity: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT ST.NO_ST'
+      'FROM SITY_TABLE ST'
+      'WHERE ((ST.BAR_CODE = :NC)) '
+      '')
+    Left = 332
+    Top = 280
+    ParamData = <
+      item
+        Name = 'NC'
+        ParamType = ptInput
+      end>
+  end
+  object qInsSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_SITY_TABLE_ID'
+    UpdateOptions.KeyFields = 'NO_ST'
+    CommandText.Strings = (
+      
+        'INSERT INTO SITY_TABLE (NO_ST, ST_NAME, IS_DEL, IS_STAR, BAR_COD' +
+        'E)'
+      'VALUES (:NO_ST, :ST_NAME, 0, :IS_STAR, :BAR_CODE)'
+      'RETURNING NO_ST {INTO :NO_ST}')
+    ParamData = <
+      item
+        Name = 'NO_ST'
+        DataType = ftInteger
+        ParamType = ptInputOutput
+        Value = Null
+      end
+      item
+        Name = 'ST_NAME'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 60
+      end
+      item
+        Name = 'IS_STAR'
+        DataType = ftSmallint
+        ParamType = ptInput
+      end
+      item
+        Name = 'BAR_CODE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 60
+      end>
+    Left = 332
+    Top = 336
+  end
+  object qInsAgn: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'INSERT INTO AGENTS (NO_SITY, PRED_VAL, AG_NAME, AG_DOP, IS_DEL, ' +
+        'IS_SKIDKA, IS_DEF_PROD, AG_DOLG, BAR_CODE, AG_PRED)'
+      
+        'VALUES (:NO_SITY, :PRED_VAL, :AG_NAME, :AG_DOP, 1, :IS_SKIDKA, 0' +
+        ', 0, :BAR_CODE, 0)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_SITY'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRED_VAL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'AG_NAME'
+        ParamType = ptInput
+      end
+      item
+        Name = 'AG_DOP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_SKIDKA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'BAR_CODE'
+        ParamType = ptInput
+      end>
+    Left = 256
+    Top = 328
+  end
+  object qTVal: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT V.NO_VAL'
+      'FROM VALUT_TABLE V'
+      'WHERE ((V.NAZVAN = :NV))   '
+      '')
+    Left = 380
+    Top = 280
+    ParamData = <
+      item
+        Name = 'NV'
+        ParamType = ptInput
+      end>
+  end
+  object qInsVal: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_valut_table_id'
+    UpdateOptions.KeyFields = 'NO_VAL'
+    CommandText.Strings = (
+      'INSERT INTO VALUT_TABLE (NO_VAL, NAZVAN)'
+      'VALUES (:NO_VAL, :NAZVAN)'
+      'RETURNING NO_VAL {INTO :NO_VAL} ')
+    ParamData = <
+      item
+        Name = 'NO_VAL'
+        ParamType = ptInputOutput
+        Value = Null
+      end
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end>
+    Left = 380
+    Top = 336
+  end
+  object qTMod: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select MST.UN_CODE,'
+      '       MST.NO_MOD'
+      'from MODEL_SIZE_TABLE MST'
+      'where ((MST.UN_CODE = :UC))'
+      'order by MST.UN_CODE  '
+      '')
+    Left = 420
+    Top = 280
+    ParamData = <
+      item
+        Name = 'UC'
+        ParamType = ptInput
+      end>
+  end
+  object qModByCode: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      ' select MT.NO_MOD'
+      'from MODEL_TABLE MT'
+      'where MT.BARCODE = :BC '
+      '')
+    Left = 328
+    Top = 400
+    ParamData = <
+      item
+        Name = 'BC'
+        ParamType = ptInput
+      end>
+  end
+  object qUpdMod3: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update MODEL_TABLE'
+      'set NAZVAN = :NAZVAN,'
+      '    M_CENA = :M_CENA'
+      'where (NO_MOD = :NO_MOD)'
+      '')
+    ParamData = <
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'M_CENA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_MOD'
+        ParamType = ptInput
+      end>
+    Left = 428
+    Top = 336
+  end
+  object qInsMod: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_model_table_id'
+    UpdateOptions.KeyFields = 'NO_MOD'
+    CommandText.Strings = (
+      
+        'insert into MODEL_TABLE (NO_MOD, NO_KAT, NAZVAN, M_CENA, IS_DEL,' +
+        ' BARCODE)'
+      'values (:NO_MOD, :NO_KAT, :NAZVAN, :M_CENA, 0, :BARCODE)'
+      'RETURNING NO_MOD {INTO :NO_MOD}')
+    ParamData = <
+      item
+        Name = 'NO_MOD'
+        ParamType = ptInputOutput
+        Value = Null
+      end
+      item
+        Name = 'NO_KAT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'M_CENA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'BARCODE'
+        ParamType = ptInput
+      end>
+    Left = 436
+    Top = 392
+  end
+  object qUpdMod2: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update MODEL_TABLE'
+      'set NAZVAN = :NAZVAN,'
+      '    M_CENA = :M_CENA,'
+      '    IS_DEL = 0'
+      'where (NO_MOD = :NO_MOD)   '
+      '')
+    ParamData = <
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'M_CENA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_MOD'
+        ParamType = ptInput
+      end>
+    Left = 476
+    Top = 336
+  end
+  object qUpdMod: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update MODEL_TABLE'
+      'set NAZVAN = :NAZVAN,'
+      '    IS_DEL = 0'
+      'where (NO_MOD = :NO_MOD)'
+      '')
+    ParamData = <
+      item
+        Name = 'NAZVAN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_MOD'
+        ParamType = ptInput
+      end>
+    Left = 524
+    Top = 336
+  end
+  object qInsSize: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'execute procedure INS_NEW_MOD_SIZE_CODE(:NO_MOD, :NO_SIZE, :BAR_' +
+        'CODE)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_MOD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_SIZE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'BAR_CODE'
+        ParamType = ptInput
+      end>
+    Left = 476
+    Top = 392
+  end
+  object qTZakList: TFDQuery
+    Connection = fmMain.IBC
+    UpdateTransaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select ZK.NO_ZAK'
+      'from ZAKAZ_LIST ZK'
+      'where zk.code_zak = :CZ'
+      '')
+    Left = 604
+    Top = 336
+    ParamData = <
+      item
+        Name = 'CZ'
+        ParamType = ptInput
+      end>
+  end
+  object qInsZak: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'execute procedure INS_ZAK_LIST(:CODE_ZAK, :CODE_AGN, :CNT_MOD, :' +
+        'DATA_END, :IS_MOVE)'
+      '')
+    ParamData = <
+      item
+        Name = 'CODE_ZAK'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CODE_AGN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CNT_MOD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DATA_END'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_MOVE'
+        ParamType = ptInput
+      end>
+    Left = 660
+    Top = 336
+  end
+  object qInsDetZak: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'execute procedure INS_ZAK_DETAIL(:CODE_ZAK, :CODE_MOD, :CNT_MOD)'
+      '')
+    ParamData = <
+      item
+        Name = 'CODE_ZAK'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CODE_MOD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CNT_MOD'
+        ParamType = ptInput
+      end>
+    Left = 716
+    Top = 336
+  end
+  object qImp: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'execute procedure IMPORT_TOV(:NO_CODE, :DATA_MOV)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_CODE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DATA_MOV'
+        ParamType = ptInput
+      end>
+    Left = 540
+    Top = 400
   end
 end

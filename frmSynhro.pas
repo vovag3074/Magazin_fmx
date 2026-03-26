@@ -222,6 +222,8 @@ procedure TfmSync.FormCreate(Sender: TObject);
 var
   MyItem: TListBoxItem;
 begin
+  fmMain.StartMainTransaction;
+  fmMain.StartReadTransaction;
   pb.Visible := False;
   eDB.Items.Clear;
   qDB.Close;

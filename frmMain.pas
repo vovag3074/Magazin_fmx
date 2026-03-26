@@ -55,6 +55,7 @@ type
   public
     { Public declarations }
     procedure StartMainTransaction;
+    procedure StartReadTransaction;
     procedure UpdateSclad;
     procedure ClearOldFrame;
      /// <summary>
@@ -165,6 +166,16 @@ begin
     Application.ProcessMessages;
   end;
   fmMain.IBT.StartTransaction;
+end;
+
+procedure TfmMain.StartReadTransaction;
+begin
+  if fmMain.IBT_Read.Active then
+  begin
+    fmMain.IBT_Read.Rollback;
+    Application.ProcessMessages;
+    fmMain.IBT_Read.StartTransaction;
+  end;
 end;
 
 function TfmMain.TestZakaz(NoZakaz: String; var isMove, isProd: Boolean;
