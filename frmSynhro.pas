@@ -1,4 +1,4 @@
-unit frmSynhro;
+п»їunit frmSynhro;
 
 interface
 
@@ -76,127 +76,127 @@ type
     { Private declarations }
     procedure DeleteOldZakaz;
     /// <summary>
-    /// Синхронизацияч городов
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏС‡ РіРѕСЂРѕРґРѕРІ
     /// </summary>
     procedure CopySity;
     /// <summary>
-    /// Синхронизация валют
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РІР°Р»СЋС‚
     /// </summary>
     procedure CopyVal;
      /// <summary>
-    /// Синхронизация покупателей
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РїРѕРєСѓРїР°С‚РµР»РµР№
     /// </summary>
     procedure CopyAgn;
      /// <summary>
-    /// Синхронизация типов категорий моделей
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ С‚РёРїРѕРІ РєР°С‚РµРіРѕСЂРёР№ РјРѕРґРµР»РµР№
     /// </summary>
     procedure CopyType;
     /// <summary>
-    /// Синхронизация категорий
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РєР°С‚РµРіРѕСЂРёР№
     /// </summary>
     procedure CopyKat;
     /// <summary>
-    /// Синхронизация моделей
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РјРѕРґРµР»РµР№
     /// </summary>
     procedure CopyMod;
     /// <summary>
-    /// Синхронизация размеров
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ СЂР°Р·РјРµСЂРѕРІ
     /// </summary>
     procedure CopySize;
     /// <summary>
-    /// Копироватние списка разрешенных моделей
+    /// РљРѕРїРёСЂРѕРІР°С‚РЅРёРµ СЃРїРёСЃРєР° СЂР°Р·СЂРµС€РµРЅРЅС‹С… РјРѕРґРµР»РµР№
     /// </summary>
     procedure CopyEnableType;
     /// <summary>
-    /// Синхронизация штрих кодов моделей
+    /// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ С€С‚СЂРёС… РєРѕРґРѕРІ РјРѕРґРµР»РµР№
     /// </summary>
     procedure CopyCode;
     /// <summary>
-    /// Копирование активных заказов
+    /// РљРѕРїРёСЂРѕРІР°РЅРёРµ Р°РєС‚РёРІРЅС‹С… Р·Р°РєР°Р·РѕРІ
     /// </summary>
     procedure CopyZakaz;
     procedure CopyZakDetail(CodeZakaza: string);
 
     /// <summary>
-    /// Получение кода размера по названию
+    /// РџРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° СЂР°Р·РјРµСЂР° РїРѕ РЅР°Р·РІР°РЅРёСЋ
     /// </summary>
     /// <param name="No_Size">
-    /// название размера
+    /// РЅР°Р·РІР°РЅРёРµ СЂР°Р·РјРµСЂР°
     /// </param>
     function GetSize(const No_Size: Integer): Integer;
     /// <summary>
-    /// Получить код города по названию
+    /// РџРѕР»СѓС‡РёС‚СЊ РєРѕРґ РіРѕСЂРѕРґР° РїРѕ РЅР°Р·РІР°РЅРёСЋ
     /// </summary>
     /// <param name="ST_Name">
-    /// название города
+    /// РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°
     /// </param>
     function GetSityByName(const ST_Name: string): Integer;
     /// <summary>
-    /// получить код валюты по названию
+    /// РїРѕР»СѓС‡РёС‚СЊ РєРѕРґ РІР°Р»СЋС‚С‹ РїРѕ РЅР°Р·РІР°РЅРёСЋ
     /// </summary>
     /// <param name="V_Name">
-    /// название валюты
+    /// РЅР°Р·РІР°РЅРёРµ РІР°Р»СЋС‚С‹
     /// </param>
     function GetValByName(const V_Name: string): Integer;
     /// <summary>
-    /// получение кода типа модели по uin
+    /// РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° С‚РёРїР° РјРѕРґРµР»Рё РїРѕ uin
     /// </summary>
     /// <param name="Barcode">
     /// uin
     /// </param>
     function GetNoTypeByCode(Barcode: string): Integer;
      /// <summary>
-    /// получение категории по уникальному коду
+    /// РїРѕР»СѓС‡РµРЅРёРµ РєР°С‚РµРіРѕСЂРёРё РїРѕ СѓРЅРёРєР°Р»СЊРЅРѕРјСѓ РєРѕРґСѓ
     /// </summary>
     /// <param name="UIN_Name">
-    /// уникальный код
+    /// СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРґ
     /// </param>
     /// <remarks>
-    /// код не повторяется в отличие от ключа
+    /// РєРѕРґ РЅРµ РїРѕРІС‚РѕСЂСЏРµС‚СЃСЏ РІ РѕС‚Р»РёС‡РёРµ РѕС‚ РєР»СЋС‡Р°
     /// </remarks>
     function GetKatByUIN(const UIN_Name: string): Integer;
      /// <summary>
-    /// Получение кода категории по названию
+    /// РџРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° РєР°С‚РµРіРѕСЂРёРё РїРѕ РЅР°Р·РІР°РЅРёСЋ
     /// </summary>
     /// <param name="K_Name">
-    /// имя категории
+    /// РёРјСЏ РєР°С‚РµРіРѕСЂРёРё
     /// </param>
     function GetKatByName(const K_Name: string): Integer;
     /// <summary>
-    /// получение кода модели по штрих-коду
+    /// РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° РјРѕРґРµР»Рё РїРѕ С€С‚СЂРёС…-РєРѕРґСѓ
     /// </summary>
     /// <param name="Barcode">
-    /// штрих - код
+    /// С€С‚СЂРёС… - РєРѕРґ
     /// </param>
     /// <remarks>
-    /// штрих код иникален. первая цифра соответствует № цеха
+    /// С€С‚СЂРёС… РєРѕРґ РёРЅРёРєР°Р»РµРЅ. РїРµСЂРІР°СЏ С†РёС„СЂР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ в„– С†РµС…Р°
     /// </remarks>
     function GetNoModFromBarcode(Barcode: string): Integer;
     /// <summary>
-    /// Получение кода модели по названию
+    /// РџРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° РјРѕРґРµР»Рё РїРѕ РЅР°Р·РІР°РЅРёСЋ
     /// </summary>
     /// <param name="Mod_Name">
-    /// название модели
+    /// РЅР°Р·РІР°РЅРёРµ РјРѕРґРµР»Рё
     /// </param>
     /// <param name="Kat_Name">
-    /// название категории
+    /// РЅР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё
     /// </param>
     function GetModByName(const Mod_Name: string; const Kat_Name: string): Integer;
       /// <summary>
-    /// получение кода размера по uin
+    /// РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° СЂР°Р·РјРµСЂР° РїРѕ uin
     /// </summary>
     /// <param name="MyCode">
-    /// uin размера
+    /// uin СЂР°Р·РјРµСЂР°
     /// </param>
     function GetSizeModByCode(const MyCode: string): Integer;
     /// <summary>
-    /// проверка на существующий заказ
+    /// РїСЂРѕРІРµСЂРєР° РЅР° СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ Р·Р°РєР°Р·
     /// </summary>
     /// <param name="CodeZakaz">
-    /// код заказа
+    /// РєРѕРґ Р·Р°РєР°Р·Р°
     /// </param>
     /// <remarks>
-    /// если заказ такой есть он игнорируется в дальнейшем
+    /// РµСЃР»Рё Р·Р°РєР°Р· С‚Р°РєРѕР№ РµСЃС‚СЊ РѕРЅ РёРіРЅРѕСЂРёСЂСѓРµС‚СЃСЏ РІ РґР°Р»СЊРЅРµР№С€РµРј
     /// </remarks>
     function isIgnoreZakaz(CodeZakaz: string): Boolean;
   public
@@ -256,7 +256,7 @@ begin
   end
   else
   begin
-    //ShowInfo('Категория : '+K_Name+' не вернула значение');
+    //ShowInfo('РљР°С‚РµРіРѕСЂРёСЏ : '+K_Name+' РЅРµ РІРµСЂРЅСѓР»Р° Р·РЅР°С‡РµРЅРёРµ');
     Result := -1;
   end;
 end;
@@ -364,7 +364,7 @@ procedure TfmSync.CopyAgn;
 var
   I, T, K: Integer;
 begin
-  // Переписываем ПОКУПАТЕЛЕЙ
+  // РџРµСЂРµРїРёСЃС‹РІР°РµРј РџРћРљРЈРџРђРўР•Р›Р•Р™
   K := 0;
   if fmMain.IBT.Active then
   begin
@@ -383,7 +383,7 @@ begin
       inc(K);
       if (K mod 10 = 0) then
       begin
-        lbInfo.Text := 'Чтение покупателя № ' + IntToStr(K) + ' из ' + IntToStr(T);
+        lbInfo.Text := 'Р§С‚РµРЅРёРµ РїРѕРєСѓРїР°С‚РµР»СЏ в„– ' + IntToStr(K) + ' РёР· ' + IntToStr(T);
         Application.ProcessMessages;
       end;
       qTAgn.Close;
@@ -432,7 +432,7 @@ begin
       I := GetSizeModByCode(qRCode.FieldByName('UN_SM').AsString);
       if I = -1 then
       begin
-        // Если нет - вставляем
+        // Р•СЃР»Рё РЅРµС‚ - РІСЃС‚Р°РІР»СЏРµРј
         qWCode.Active := False;
         qWCode.Prepare;
         qWCode.ParamByName('NO_MOD').AsInteger := GetModByName(qRCode.FieldByName('M_NAZVAN').AsString, qRCode.FieldByName('K_NAZVAN').AsString);
@@ -446,7 +446,7 @@ begin
       end
       else
       begin
-        // если этот размер есть - обновим разрешения
+        // РµСЃР»Рё СЌС‚РѕС‚ СЂР°Р·РјРµСЂ РµСЃС‚СЊ - РѕР±РЅРѕРІРёРј СЂР°Р·СЂРµС€РµРЅРёСЏ
         qUCode.Active := False;
         qUCode.Prepare;
         qUCode.ParamByName('NO_MST').AsInteger := I;
@@ -456,7 +456,7 @@ begin
       qRCode.Next;
       if (K mod 10 = 0) then
       begin
-        lbInfo.Text := 'Обновляем код № ' + K.ToString + ' из ' + J.ToString;
+        lbInfo.Text := 'РћР±РЅРѕРІР»СЏРµРј РєРѕРґ в„– ' + K.ToString + ' РёР· ' + J.ToString;
         Application.ProcessMessages;
       end;
       Inc(K);
@@ -505,7 +505,7 @@ begin
       begin
         if GetKatByName(qRKat.FieldByName('NAZVAN').AsString) = -1 then
         begin
-          // если не нашли не по имени не по коду, то категория новая
+          // РµСЃР»Рё РЅРµ РЅР°С€Р»Рё РЅРµ РїРѕ РёРјРµРЅРё РЅРµ РїРѕ РєРѕРґСѓ, С‚Рѕ РєР°С‚РµРіРѕСЂРёСЏ РЅРѕРІР°СЏ
           qWKat.Close;
           qWKat.Prepare;
           qWKat.ParamByName('NAZVAN').AsString := qRKat.FieldByName('NAZVAN').AsString;
@@ -516,7 +516,7 @@ begin
         end
         else
         begin
-          // категория есть, кода нет - обновляем код
+          // РєР°С‚РµРіРѕСЂРёСЏ РµСЃС‚СЊ, РєРѕРґР° РЅРµС‚ - РѕР±РЅРѕРІР»СЏРµРј РєРѕРґ
           qUpdKat2.Active := False;
           qUpdKat2.Prepare;
           qUpdKat2.ParamByName('NO_KAT').AsInteger := GetKatByName(qRKat.FieldByName('NAZVAN').AsString);
@@ -529,7 +529,7 @@ begin
       begin
         if GetKatByName(qRKat.FieldByName('NAZVAN').AsString) = -1 then
         begin
-          // код есть имени нет - меняем имя
+          // РєРѕРґ РµСЃС‚СЊ РёРјРµРЅРё РЅРµС‚ - РјРµРЅСЏРµРј РёРјСЏ
           qUpdKat3.Active := False;
           qUpdKat3.Prepare;
           qUpdKat3.ParamByName('NAZVAN').AsString := qRKat.FieldByName('NAZVAN').AsString;
@@ -539,7 +539,7 @@ begin
         end
         else
         begin
-          // есть и имя и код - обновляем тип
+          // РµСЃС‚СЊ Рё РёРјСЏ Рё РєРѕРґ - РѕР±РЅРѕРІР»СЏРµРј С‚РёРї
           qUpdKat4.Active := False;
           qUpdKat4.Prepare;
           qUpdKat4.ParamByName('NO_TYPE').AsInteger := GetNoTypeByCode(qRKat.FieldByName('BAR_CODE').AsString);
@@ -562,7 +562,7 @@ var
   I, J, F, K: Integer;
 begin
   fmMain.StartMainTransaction;
-  // 10.10.2013 Этап первый. Проверяем Barcode моделей и корректируем имя
+  // 10.10.2013 Р­С‚Р°Рї РїРµСЂРІС‹Р№. РџСЂРѕРІРµСЂСЏРµРј Barcode РјРѕРґРµР»РµР№ Рё РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј РёРјСЏ
   qRMod.Close;
   qRMod.Prepare;
   qRMod.Active := true;
@@ -570,9 +570,9 @@ begin
   F := qRMod.RecordCount;
   if F > 0 then
   begin
-    qUMod.Active := False; // 02.04.2014 если поставили опцию игнорировать цены,
-    qUMod.SQL.Text := qsStd; // то меняем запрос на тот, который без цены.
-    if cbIgn.IsChecked then // иначе цена будет нулевая.
+    qUMod.Active := False; // 02.04.2014 РµСЃР»Рё РїРѕСЃС‚Р°РІРёР»Рё РѕРїС†РёСЋ РёРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ С†РµРЅС‹,
+    qUMod.SQL.Text := qsStd; // С‚Рѕ РјРµРЅСЏРµРј Р·Р°РїСЂРѕСЃ РЅР° С‚РѕС‚, РєРѕС‚РѕСЂС‹Р№ Р±РµР· С†РµРЅС‹.
+    if cbIgn.IsChecked then // РёРЅР°С‡Рµ С†РµРЅР° Р±СѓРґРµС‚ РЅСѓР»РµРІР°СЏ.
     begin
       qUMod.SQL.Text := qsIgn;
     end;
@@ -583,7 +583,7 @@ begin
         begin
           var N: Integer;
           N := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-        // 18,03,2026 модель можно прицепить к категории материалы, защита от дурака
+        // 18,03,2026 РјРѕРґРµР»СЊ РјРѕР¶РЅРѕ РїСЂРёС†РµРїРёС‚СЊ Рє РєР°С‚РµРіРѕСЂРёРё РјР°С‚РµСЂРёР°Р»С‹, Р·Р°С‰РёС‚Р° РѕС‚ РґСѓСЂР°РєР°
           if N <> -1 then
           begin
             qUMod2.ParamByName('NK').AsInteger := N;
@@ -594,7 +594,7 @@ begin
         end;
         if (K mod 10 = 0) then
         begin
-          lbInfo.Text := 'Синхронизация модели № ' + K.ToString + ' из ' + F.ToString;
+          lbInfo.Text := 'РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РјРѕРґРµР»Рё в„– ' + K.ToString + ' РёР· ' + F.ToString;
           Application.ProcessMessages;
         end;
         Inc(K);
@@ -602,15 +602,15 @@ begin
       except
         on E: Exception do
         begin
-         // ShowError(E.Message + ' на модели:' + qRMod.FieldByName('M_NAME').AsString);
+         // ShowError(E.Message + ' РЅР° РјРѕРґРµР»Рё:' + qRMod.FieldByName('M_NAME').AsString);
           qRMod.Next;
         end;
       end;
     until qRMod.Eof;
     fmMain.IBT.Commit;
   end; // if qRMod.RecordCount > 0
-  // проверяем № модели и категории, если категория меняется, то переносим
-  // Старая часть. Считается, что название модели не меняется
+  // РїСЂРѕРІРµСЂСЏРµРј в„– РјРѕРґРµР»Рё Рё РєР°С‚РµРіРѕСЂРёРё, РµСЃР»Рё РєР°С‚РµРіРѕСЂРёСЏ РјРµРЅСЏРµС‚СЃСЏ, С‚Рѕ РїРµСЂРµРЅРѕСЃРёРј
+  // РЎС‚Р°СЂР°СЏ С‡Р°СЃС‚СЊ. РЎС‡РёС‚Р°РµС‚СЃСЏ, С‡С‚Рѕ РЅР°Р·РІР°РЅРёРµ РјРѕРґРµР»Рё РЅРµ РјРµРЅСЏРµС‚СЃСЏ
   Application.ProcessMessages;
   fmMain.IBT.StartTransaction;
   qRMod.Close;
@@ -626,30 +626,30 @@ begin
         inc(J);
         if (J mod 10 = 0) then
         begin
-          lbInfo.Text := 'Обновление модели № ' + IntToStr(J) + ' из ' + IntToStr(I);
+          lbInfo.Text := 'РћР±РЅРѕРІР»РµРЅРёРµ РјРѕРґРµР»Рё в„– ' + IntToStr(J) + ' РёР· ' + IntToStr(I);
           Application.ProcessMessages;
         end;
-        if GetModByName(qRMod.FieldByName('M_NAME').AsString, qRMod.FieldByName('K_NAME').AsString) = -1 then // новая модель
+        if GetModByName(qRMod.FieldByName('M_NAME').AsString, qRMod.FieldByName('K_NAME').AsString) = -1 then // РЅРѕРІР°СЏ РјРѕРґРµР»СЊ
         begin
           if qRMod.FieldByName('IS_DEL').AsInteger = 0 then
-        // удаленные модели не читаем
+        // СѓРґР°Р»РµРЅРЅС‹Рµ РјРѕРґРµР»Рё РЅРµ С‡РёС‚Р°РµРј
           begin
             qWMod.Prepare;
             qWMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
             qWMod.ParamByName('BARCODE').AsString := qRMod.FieldByName('BARCODE').AsString;
             qWMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
-          // в новой цена копируется по любому.....
+          // РІ РЅРѕРІРѕР№ С†РµРЅР° РєРѕРїРёСЂСѓРµС‚СЃСЏ РїРѕ Р»СЋР±РѕРјСѓ.....
             qWMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
             qWMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
             qWMod.Execute;
           end; // if qRMod.FieldByName('IS_DEL').AsInteger=0
         end
         else // -1
-        begin // Старая модель
+        begin // РЎС‚Р°СЂР°СЏ РјРѕРґРµР»СЊ
           qUMod.ParamByName('NAZVAN').AsString := qRMod.FieldByName('M_Name').AsString;
           qUMod.ParamByName('NO_KAT').AsInteger := GetKatByName(qRMod.FieldByName('K_NAME').AsString);
           qUMod.ParamByName('IS_DEL').AsSmallInt := qRMod.FieldByName('IS_DEL').AsInteger;
-          if not cbIgn.isChecked then // а тут проверяем нужно ли копировать цену.
+          if not cbIgn.isChecked then // Р° С‚СѓС‚ РїСЂРѕРІРµСЂСЏРµРј РЅСѓР¶РЅРѕ Р»Рё РєРѕРїРёСЂРѕРІР°С‚СЊ С†РµРЅСѓ.
           begin
             qUMod.ParamByName('M_CENA').AsFloat := qRMod.FieldByName('M_CENA').AsFloat;
           end;
@@ -661,7 +661,7 @@ begin
       except
         on E: Exception do
         begin
-          //ShowError(E.Message + ' на модели:' + qRMod.FieldByName('M_NAME').AsString);
+          //ShowError(E.Message + ' РЅР° РјРѕРґРµР»Рё:' + qRMod.FieldByName('M_NAME').AsString);
           qRMod.Next;
         end;
       end;
@@ -698,7 +698,7 @@ begin
         qWSity.ParamByName('BAR_CODE').AsString := qRSity.FieldByName('BAR_CODE').AsString;
         qWSity.Execute;
       end;
-      // ВСТАВЛЯЕМ ГОРОД
+      // Р’РЎРўРђР’Р›РЇР•Рњ Р“РћР РћР”
       qRSity.Next;
       Application.ProcessMessages;
     until (qRSity.Eof);
@@ -816,7 +816,7 @@ begin
         fmMain.IBT.Commit;
         Application.ProcessMessages;
         // ----------------------------------------------------------
-        // Пишем список моделей с заказом
+        // РџРёС€РµРј СЃРїРёСЃРѕРє РјРѕРґРµР»РµР№ СЃ Р·Р°РєР°Р·РѕРј
         // ----------------------------------------------------------
         CopyZakDetail(Zak_Code);
       end;
@@ -881,51 +881,51 @@ begin
   pb.Visible := true;
   pb.Active := true;
   Application.ProcessMessages;
-  lbInfo.Text := 'Удаляем устаревшие заказы';
+  lbInfo.Text := 'РЈРґР°Р»СЏРµРј СѓСЃС‚Р°СЂРµРІС€РёРµ Р·Р°РєР°Р·С‹';
   Application.ProcessMessages;
   DeleteOldZakaz;
   // ------------------------------
-  lbInfo.Text := 'Читаем города';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РіРѕСЂРѕРґР°';
   Application.ProcessMessages;
   CopySity;
 
-  lbInfo.Text := 'Читаем валюты';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РІР°Р»СЋС‚С‹';
   Application.ProcessMessages;
   CopyVal;
 
-  lbInfo.Text := 'Читаем покупателей';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РїРѕРєСѓРїР°С‚РµР»РµР№';
   Application.ProcessMessages;
   CopyAgn;
 
-  lbInfo.Text := 'Читаем типы';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј С‚РёРїС‹';
   Application.ProcessMessages;
   CopyType;
 
-  lbInfo.Text := 'Читаем категории';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РєР°С‚РµРіРѕСЂРёРё';
   Application.ProcessMessages;
   CopyKat;
 
-  lbInfo.Text := 'Читаем модели';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РјРѕРґРµР»Рё';
   Application.ProcessMessages;
   CopyMod;
 
-  lbInfo.Text := 'Читаем размеры';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј СЂР°Р·РјРµСЂС‹';
   Application.ProcessMessages;
   CopySize;
 
-  lbInfo.Text := 'Читаем разрешенные размеры';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј СЂР°Р·СЂРµС€РµРЅРЅС‹Рµ СЂР°Р·РјРµСЂС‹';
   Application.ProcessMessages;
   CopyEnableType;
 
-  lbInfo.Text := 'Читаем коды';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј РєРѕРґС‹';
   Application.ProcessMessages;
   CopyCode;
 
-  lbInfo.Text := 'Читаем заказы';
+  lbInfo.Text := 'Р§РёС‚Р°РµРј Р·Р°РєР°Р·С‹';
   Application.ProcessMessages;
   CopyZakaz;
 
-  lbInfo.Text := 'Обновляем склад';
+  lbInfo.Text := 'РћР±РЅРѕРІР»СЏРµРј СЃРєР»Р°Рґ';
   Application.ProcessMessages;
   fmMain.UpdateSclad;
   // -----------------------------------

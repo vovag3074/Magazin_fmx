@@ -325,6 +325,10 @@
             <Form>fmSync</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSaveMove.pas">
+            <Form>fmSMove</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

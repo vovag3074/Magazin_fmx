@@ -1,4 +1,4 @@
-unit frmMain;
+п»їunit frmMain;
 
 interface
 
@@ -59,22 +59,22 @@ type
     procedure UpdateSclad;
     procedure ClearOldFrame;
      /// <summary>
-    /// Тест заказа на уже проданный или уже переданный
+    /// РўРµСЃС‚ Р·Р°РєР°Р·Р° РЅР° СѓР¶Рµ РїСЂРѕРґР°РЅРЅС‹Р№ РёР»Рё СѓР¶Рµ РїРµСЂРµРґР°РЅРЅС‹Р№
     /// </summary>
     /// <param name="NoZakaz">
-    /// № заказа
+    /// в„– Р·Р°РєР°Р·Р°
     /// </param>
     /// <param name="isMove">
-    /// 1 - уже переданный
+    /// 1 - СѓР¶Рµ РїРµСЂРµРґР°РЅРЅС‹Р№
     /// </param>
     /// <param name="isProd">
-    /// 1 - уже проданный
+    /// 1 - СѓР¶Рµ РїСЂРѕРґР°РЅРЅС‹Р№
     /// </param>
     /// <param name="NoAgn">
-    /// № агента
+    /// в„– Р°РіРµРЅС‚Р°
     /// </param>
     /// <param name="NameAgn">
-    /// Имя агента
+    /// РРјСЏ Р°РіРµРЅС‚Р°
     /// </param>
     function TestZakaz(NoZakaz: String; var isMove, isProd: Boolean;
       var NoAgn: Integer; var NameAgn: String): Integer;
@@ -86,6 +86,11 @@ procedure ShowError(T: string);
 function ShowQuestion(T: string): Boolean;
 procedure ShowNotify(S:String);
 function getStartProgrammDir: string;
+/// <summary>
+/// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ РїСЂРѕС†РµРґСѓСЂР°. РџРѕР·РІРѕР»СЏРµС‚ РёР·Р±Р°РІРёС‚СЊСЃСЏ РѕС‚ РЅРµРЅСѓР¶РЅС‹С… РґР»СЏ С…СЂР°РЅРµРЅРёСЏ
+/// Р·РЅР°РєРѕРІ СЂР°Р·РґРµР»РµРЅРёСЏ UIN
+/// </summary>
+procedure myCreateGUID(var P: string);
 
 
 var
@@ -269,14 +274,14 @@ procedure ShowNotify(S: string);
 var
   LChannel: TChannel;
 begin
-  // создаем немодальное окно с иконкой
-  // для windows -позиция - справа внизу
-  // для macOS - справа вверху
-  // Linux - вверху по центру
+  // СЃРѕР·РґР°РµРј РЅРµРјРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ СЃ РёРєРѕРЅРєРѕР№
+  // РґР»СЏ windows -РїРѕР·РёС†РёСЏ - СЃРїСЂР°РІР° РІРЅРёР·Сѓ
+  // РґР»СЏ macOS - СЃРїСЂР°РІР° РІРІРµСЂС…Сѓ
+  // Linux - РІРІРµСЂС…Сѓ РїРѕ С†РµРЅС‚СЂСѓ
   {$IFDEF MACOS}
   var ANotification: NSUserNotification := TNSUserNotification.Wrap(TNSUserNotification.Alloc.init);
-  ANotification.setTitle(StrToNSStr('Мастер обуви'));
-  ANotification.setSubtitle(StrToNSStr('Предупреждение'));
+  ANotification.setTitle(StrToNSStr('РњР°СЃС‚РµСЂ РѕР±СѓРІРё'));
+  ANotification.setSubtitle(StrToNSStr('РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ'));
   ANotification.setInformativeText(StrToNSStr(S));
   ANotification.setSoundName(NSUserNotificationDefaultSoundName);
   var ANotificationCenter: NSUserNotificationCenter := TNSUserNotificationCenter.Wrap(TNSUserNotificationCenter.OCClass.defaultUserNotificationCenter);
@@ -297,8 +302,8 @@ begin
     LChannel.Importance := TImportance.High;
     NtC.CreateOrUpdateChannel(LChannel);
     Nt := NtC.CreateNotification;
-    Nt.Name := 'Рабочее место продавца';
-    Nt.Title := 'Информация';
+    Nt.Name := 'Р Р°Р±РѕС‡РµРµ РјРµСЃС‚Рѕ РїСЂРѕРґР°РІС†Р°';
+    Nt.Title := 'РРЅС„РѕСЂРјР°С†РёСЏ';
     Nt.AlertBody := S;
     NtC.PresentNotification(Nt);
   finally
@@ -307,8 +312,19 @@ begin
   end;
   {$ENDIF}
   {$IFDEF LINUX}
-    _system(PAnsiChar(AnsiString('notify-send "Информация" "' + S + '"')));
+    _system(PAnsiChar(AnsiString('notify-send "РРЅС„РѕСЂРјР°С†РёСЏ" "' + S + '"')));
   {$ENDIF}
+end;
+
+procedure myCreateGUID(var P: string);
+var
+  S: string[36];
+  MyGuid0 : TGUID;
+begin
+  CreateGUID(MyGuid0);
+  S := GUIDToString(MyGuid0);
+  s:=Copy(s, 2, length(s)-1);
+  P := StringReplace(S,'-','',[rfReplaceAll]);
 end;
 
 

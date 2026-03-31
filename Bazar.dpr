@@ -5,7 +5,8 @@ uses
   FMX.Forms,
   frmMain in 'frmMain.pas' {fmMain},
   frmInpSclad in 'frmInpSclad.pas' {fmInpMag: TFrame},
-  frmSynhro in 'frmSynhro.pas' {fmSync};
+  frmSynhro in 'frmSynhro.pas' {fmSync},
+  frmSaveMove in 'frmSaveMove.pas' {fmSMove};
 
 {$R *.res}
 

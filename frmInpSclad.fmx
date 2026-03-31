@@ -58,6 +58,7 @@ object fmInpMag: TfmInpMag
       Position.Y = 2.000000000000000000
       TabOrder = 3
       Text = #1055#1088#1080#1085#1103#1090#1100
+      OnClick = btAsseptClick
     end
     object TMSFNCButton1: TTMSFNCButton
       Bitmap.PNG = {
@@ -1454,5 +1455,13 @@ object fmInpMag: TfmInpMag
       end>
     Left = 540
     Top = 400
+  end
+  object spSetMove: TFDStoredProc
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateTransaction = fmMain.IBT
+    StoredProcName = 'SET_MOVE'
+    Left = 468
+    Top = 280
   end
 end

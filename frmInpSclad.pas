@@ -1,4 +1,4 @@
-unit frmInpSclad;
+п»їunit frmInpSclad;
 
 interface
 
@@ -73,6 +73,7 @@ type
     qInsZak: TFDCommand;
     qInsDetZak: TFDCommand;
     qImp: TFDCommand;
+    spSetMove: TFDStoredProc;
     Layout1: TLayout;
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
@@ -80,6 +81,7 @@ type
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure tlMoveBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure TMSFNCButton6Click(Sender: TObject);
+    procedure btAsseptClick(Sender: TObject);
   private
     { Private declarations }
     FSum: Double;
@@ -92,7 +94,7 @@ type
     function GetNoModByCode(BarCode: string): Integer;
     function GetNoModByBarcode(BarCodeMod: string): Integer;
      /// <summary>
-    /// получение кода типа модели по uin
+    /// РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° С‚РёРїР° РјРѕРґРµР»Рё РїРѕ uin
     /// </summary>
     /// <param name="Barcode">
     /// uin
@@ -104,19 +106,23 @@ type
     procedure ReadMoveModelList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList);
     procedure ReadMyZakazList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList; is_Move: Integer);
     /// <summary>
-    /// Сохраняем подробности для выбранного заказа
+    /// РЎРѕС…СЂР°РЅСЏРµРј РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р·Р°РєР°Р·Р°
     /// </summary>
     /// <param name="XMLDoc">
-    /// Протокол
+    /// РџСЂРѕС‚РѕРєРѕР»
     /// </param>
     /// <param name="NodeList">
-    /// Узел
+    /// РЈР·РµР»
     /// </param>
     /// <param name="ZakCode">
-    /// № заказа
+    /// в„– Р·Р°РєР°Р·Р°
     /// </param>
     procedure SaveZakDetail(var XMLDoc: TNativeXml; ZakCode: string);
     procedure ReadMoveTov(var XMLDoc: TNativeXml; var NodeList: TsdNodeList);
+     /// <summary>
+    /// Р’С‹Р·РѕРІ С„РѕСЂРјС‹ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РїСЂРѕС‚РѕРєРѕР»Р° РїРµСЂРµРґР°С‡Рё РѕР±СѓРІРё РЅР° РјР°РіР°Р·РёРЅ
+    /// </summary>
+    procedure SaveLogMove;
   public
     { Public declarations }
     procedure readSclad;
@@ -142,11 +148,33 @@ type
 implementation
 
 uses
-  frmSynhro, frmMain;
+  frmSynhro, frmMain, frmSaveMove;
 
 {$R *.fmx}
 
 { TfmInpMag }
+
+procedure TfmInpMag.btAsseptClick(Sender: TObject);
+begin
+ if tlMove.Nodes.Count = 0 then
+    Exit;
+  if ShowQuestion('РџСЂРёРЅСЏС‚СЊ СЌС‚РѕС‚ СЃРїРёСЃРѕРє РЅР° СЃРєР»Р°Рґ? РџСЂРѕРІРµСЂС‚Рµ РµРіРѕ РЅР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ. ' +
+    'Р’С‹ СѓРІРµСЂРµРЅС‹? ') then
+  begin
+    SaveLogMove;
+    // Рђ С‚СѓС‚ РІРєР»СЋС‡Р°РµРј РїРµСЂРµРЅРѕСЃ РІРѕ РІРЅСѓС‚СЂРµРЅРЅРёР№ Р¶СѓСЂРЅР°Р»
+    fmMain.StartMainTransaction;
+    spSetMove.Close;
+    spSetMove.Prepare;
+    spSetMove.Execute;
+    fmMain.IBT.Commit;
+    ListMoveTov;
+  end;
+  fmMain.StartReadTransaction;
+  fmMain.UpdateSclad;
+  Application.ProcessMessages;
+  eTxt.SetFocus;
+end;
 
 procedure TfmInpMag.EditButton1Click(Sender: TObject);
 begin
@@ -256,17 +284,17 @@ end;
 
 procedure TfmInpMag.ImportMove;
 var
-  XMLDoc: TNativeXml; // объект XML-документа
-  NodeList: TsdNodeList; // список узлов
+  XMLDoc: TNativeXml; // РѕР±СЉРµРєС‚ XML-РґРѕРєСѓРјРµРЅС‚Р°
+  NodeList: TsdNodeList; // СЃРїРёСЃРѕРє СѓР·Р»РѕРІ
   S: string;
   miniLoad: Boolean;
 begin
   miniLoad := False;
   if OD.Execute then
   begin
-    XMLDoc := TNativeXml.Create(Self); // создаем экземпляр класса
+    XMLDoc := TNativeXml.Create(Self); // СЃРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
     XMLDoc.BinaryMethod := bmZlib;
-    XMLDoc.LoadFromBinaryFile(OD.FileName); // загружаем данные из потока
+    XMLDoc.LoadFromBinaryFile(OD.FileName); // Р·Р°РіСЂСѓР¶Р°РµРј РґР°РЅРЅС‹Рµ РёР· РїРѕС‚РѕРєР°
     if XMLDoc.IsEmpty then
       Exit;
     //XMLDoc.XmlFormat := xfReadable;
@@ -278,7 +306,7 @@ begin
       S := NodeList.Items[0].Value;
       if isUzeRead(S) then
       begin
-        if not ShowQuestion('Этот протокол прочитан ранее.' + ' Вы уверены, что надо его прочитать еще раз?') then
+        if not ShowQuestion('Р­С‚РѕС‚ РїСЂРѕС‚РѕРєРѕР» РїСЂРѕС‡РёС‚Р°РЅ СЂР°РЅРµРµ.' + ' Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ РЅР°РґРѕ РµРіРѕ РїСЂРѕС‡РёС‚Р°С‚СЊ РµС‰Рµ СЂР°Р·?') then
         begin
           Exit;
         end;
@@ -295,30 +323,30 @@ begin
       fmMain.IBT.Commit;
     except
     end;
-    miniLoad := ShowQuestion('Для экономии времени попробовать упрощенный импорт?');
+    miniLoad := ShowQuestion('Р”Р»СЏ СЌРєРѕРЅРѕРјРёРё РІСЂРµРјРµРЅРё РїРѕРїСЂРѕР±РѕРІР°С‚СЊ СѓРїСЂРѕС‰РµРЅРЅС‹Р№ РёРјРїРѕСЂС‚?');
     try
       if not miniLoad then
       begin
         // ---------------------------------------------
-        // надо бы проверить список категорий и спрашивать если новая
-        lbInfo.Text := 'Чтение списка категорий';
+        // РЅР°РґРѕ Р±С‹ РїСЂРѕРІРµСЂРёС‚СЊ СЃРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№ Рё СЃРїСЂР°С€РёРІР°С‚СЊ РµСЃР»Рё РЅРѕРІР°СЏ
+        lbInfo.Text := 'Р§С‚РµРЅРёРµ СЃРїРёСЃРєР° РєР°С‚РµРіРѕСЂРёР№';
         Application.ProcessMessages;
         ReadImpKat(XMLDoc, NodeList);
         // ----------------------------------------------
-        lbInfo.Text := 'Чтение списка покупателей';
+        lbInfo.Text := 'Р§С‚РµРЅРёРµ СЃРїРёСЃРєР° РїРѕРєСѓРїР°С‚РµР»РµР№';
         Application.ProcessMessages;
         ReadAgentList(XMLDoc, NodeList);
-        lbInfo.Text := 'Чтение списка моделей';
+        lbInfo.Text := 'Р§С‚РµРЅРёРµ СЃРїРёСЃРєР° РјРѕРґРµР»РµР№';
         Application.ProcessMessages;
         ReadMoveModelList(XMLDoc, NodeList);
         Application.ProcessMessages;
       end;
-      lbInfo.Text := 'Чтение списка заказов';
+      lbInfo.Text := 'Р§С‚РµРЅРёРµ СЃРїРёСЃРєР° Р·Р°РєР°Р·РѕРІ';
       Application.ProcessMessages;
       ReadMyZakazList(XMLDoc, NodeList, 1);
 
       Application.ProcessMessages;
-      lbInfo.Text := 'Чтение списка отправок';
+      lbInfo.Text := 'Р§С‚РµРЅРёРµ СЃРїРёСЃРєР° РѕС‚РїСЂР°РІРѕРє';
       Application.ProcessMessages;
       ReadMoveTov(XMLDoc, NodeList);
       Application.ProcessMessages;
@@ -348,7 +376,7 @@ begin
     fmMain.TestZakaz(IntToStr(eTxt.Text.ToInt64), isMove, isProd, FAgn, NAgn);
     if isMove then
     begin
-      if not ShowQuestion('Заказ №  ' + eTxt.Text + ' уже принимался. Принять еще раз?') then
+      if not ShowQuestion('Р—Р°РєР°Р· в„–  ' + eTxt.Text + ' СѓР¶Рµ РїСЂРёРЅРёРјР°Р»СЃСЏ. РџСЂРёРЅСЏС‚СЊ РµС‰Рµ СЂР°Р·?') then
       begin
         eTxt.Text := '';
         eTxt.SetFocus;
@@ -501,18 +529,18 @@ begin
     AgentOpis := NodeList.Items[I].AttributeValueByName['AgentOpis'];
     isSkidka := StrToBool(NodeList.Items[I].AttributeValueByName['isSkidka']);
     ValName := NodeList.Items[I].AttributeValueByName['ValName'];
-    // проверяем - если агент есть, то идем далее....
+    // РїСЂРѕРІРµСЂСЏРµРј - РµСЃР»Рё Р°РіРµРЅС‚ РµСЃС‚СЊ, С‚Рѕ РёРґРµРј РґР°Р»РµРµ....
     NoUser := GetNoAgnByCode(AgentCode);
     if NoUser <> -1 then
     begin
       Continue;
     end;
-    // если агента нет, то
-    // проверяем - этот город есть?
+    // РµСЃР»Рё Р°РіРµРЅС‚Р° РЅРµС‚, С‚Рѕ
+    // РїСЂРѕРІРµСЂСЏРµРј - СЌС‚РѕС‚ РіРѕСЂРѕРґ РµСЃС‚СЊ?
     NoSity := GetNoSityByCode(SityCode);
     if NoSity = -1 then
     begin
-      // города тоже нет - вставляем
+      // РіРѕСЂРѕРґР° С‚РѕР¶Рµ РЅРµС‚ - РІСЃС‚Р°РІР»СЏРµРј
       fmMain.StartMainTransaction;
       qInsSity.Active := False;
       qInsSity.Prepare;
@@ -524,8 +552,8 @@ begin
       fmMain.IBT.Commit;
       Application.ProcessMessages;
     end;
-    // вставляем агента. Для скрытия из списка - агенты вставляются с признаком
-    // удален.
+    // РІСЃС‚Р°РІР»СЏРµРј Р°РіРµРЅС‚Р°. Р”Р»СЏ СЃРєСЂС‹С‚РёСЏ РёР· СЃРїРёСЃРєР° - Р°РіРµРЅС‚С‹ РІСЃС‚Р°РІР»СЏСЋС‚СЃСЏ СЃ РїСЂРёР·РЅР°РєРѕРј
+    // СѓРґР°Р»РµРЅ.
     fmMain.StartMainTransaction;
     qInsAgn.Active := False;
     qInsAgn.Prepare;
@@ -560,7 +588,7 @@ begin
     J := GetNoKatByNamme(KatName);
     if J > -1 then
     begin
-      // есть категория - проверяем скидки
+      // РµСЃС‚СЊ РєР°С‚РµРіРѕСЂРёСЏ - РїСЂРѕРІРµСЂСЏРµРј СЃРєРёРґРєРё
       fmMain.StartMainTransaction;
       qUpdKat.Active := False;
       qUpdKat.Prepare;
@@ -572,8 +600,8 @@ begin
     end
     else
     begin
-      // Нет категории, вставляем новую
-      if ShowQuestion('Добавить категорию: ' + KatName + ' ?') then
+      // РќРµС‚ РєР°С‚РµРіРѕСЂРёРё, РІСЃС‚Р°РІР»СЏРµРј РЅРѕРІСѓСЋ
+      if ShowQuestion('Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ: ' + KatName + ' ?') then
       begin
         fmMain.StartMainTransaction;
         qInsKat.Active := False;
@@ -641,11 +669,11 @@ var
   No_Kat, No_Mod: Integer;
   isCena: Boolean;
 begin
-  // 28.03.2015 спрашиваем нужно ли учитывать цену
-  isCena := ShowQuestion('Нужно ли при приеме учитывать цену?');
-  // читаем список моделей
+  // 28.03.2015 СЃРїСЂР°С€РёРІР°РµРј РЅСѓР¶РЅРѕ Р»Рё СѓС‡РёС‚С‹РІР°С‚СЊ С†РµРЅСѓ
+  isCena := ShowQuestion('РќСѓР¶РЅРѕ Р»Рё РїСЂРё РїСЂРёРµРјРµ СѓС‡РёС‚С‹РІР°С‚СЊ С†РµРЅСѓ?');
+  // С‡РёС‚Р°РµРј СЃРїРёСЃРѕРє РјРѕРґРµР»РµР№
   XMLDoc.Root.FindNodes('Model', NodeList);
-  // получаем список узлов Item
+  // РїРѕР»СѓС‡Р°РµРј СЃРїРёСЃРѕРє СѓР·Р»РѕРІ Item
   for I := 0 to NodeList.Count - 1 do
   begin
     Bar_Code := NodeList.Items[I].AttributeValueByName['ModCode'];
@@ -666,20 +694,20 @@ begin
         qUpdMod.ParamByName('NAZVAN').AsString := NodeList.Items[I].AttributeValueByName['ModName'];
         qUpdMod.Execute;
       end;
-      // если такая модель есть, то можно обновить цену и название
+      // РµСЃР»Рё С‚Р°РєР°СЏ РјРѕРґРµР»СЊ РµСЃС‚СЊ, С‚Рѕ РјРѕР¶РЅРѕ РѕР±РЅРѕРІРёС‚СЊ С†РµРЅСѓ Рё РЅР°Р·РІР°РЅРёРµ
       fmMain.IBT.Commit;
     end
     else
     begin
-      // если нет, то будем вставлять
-      // 1 - ищем модель если она есть - вставляем новый штрих-код
-      // иначе вставляем новую модель
+      // РµСЃР»Рё РЅРµС‚, С‚Рѕ Р±СѓРґРµРј РІСЃС‚Р°РІР»СЏС‚СЊ
+      // 1 - РёС‰РµРј РјРѕРґРµР»СЊ РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ - РІСЃС‚Р°РІР»СЏРµРј РЅРѕРІС‹Р№ С€С‚СЂРёС…-РєРѕРґ
+      // РёРЅР°С‡Рµ РІСЃС‚Р°РІР»СЏРµРј РЅРѕРІСѓСЋ РјРѕРґРµР»СЊ
       Name_Mod := NodeList.Items[I].AttributeValueByName['ModName'];
       BarCodeMod := NodeList.Items[I].AttributeValueByName['Mod_Barcode'];
       No_Mod := GetNoModByBarcode(BarCodeMod);
       if No_Mod > 0 then
       begin
-        // такая модель уже есть, вставляем штрих-код с новым размером  и все
+        // С‚Р°РєР°СЏ РјРѕРґРµР»СЊ СѓР¶Рµ РµСЃС‚СЊ, РІСЃС‚Р°РІР»СЏРµРј С€С‚СЂРёС…-РєРѕРґ СЃ РЅРѕРІС‹Рј СЂР°Р·РјРµСЂРѕРј  Рё РІСЃРµ
         fmMain.StartMainTransaction;
         qInsSize.Active := False;
         qInsSize.Prepare;
@@ -691,15 +719,15 @@ begin
       end // if No_Mod > 0 then
       else
       begin
-        // если этой модели нет, то процесс удлиняется... :)
-        // 2- ищем категорию (она должна быть!)
+        // РµСЃР»Рё СЌС‚РѕР№ РјРѕРґРµР»Рё РЅРµС‚, С‚Рѕ РїСЂРѕС†РµСЃСЃ СѓРґР»РёРЅСЏРµС‚СЃСЏ... :)
+        // 2- РёС‰РµРј РєР°С‚РµРіРѕСЂРёСЋ (РѕРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ!)
         Name_Kat := NodeList.Items[I].AttributeValueByName['KatName'];
         No_Kat := GetNoKatByNamme(Name_Kat);
         if No_Kat <= 0 then
         begin
-          // тупо пропускаем категории
-          // ShowMyError('Категория ' + Name_Kat +
-          // ' не найдена. Синхронизируйте справочники!');
+          // С‚СѓРїРѕ РїСЂРѕРїСѓСЃРєР°РµРј РєР°С‚РµРіРѕСЂРёРё
+          // ShowMyError('РљР°С‚РµРіРѕСЂРёСЏ ' + Name_Kat +
+          // ' РЅРµ РЅР°Р№РґРµРЅР°. РЎРёРЅС…СЂРѕРЅРёР·РёСЂСѓР№С‚Рµ СЃРїСЂР°РІРѕС‡РЅРёРєРё!');
         end // if No_Kat <= 0 then
         else
         begin
@@ -737,9 +765,9 @@ var
   I: Integer;
 begin
   try
-    // читаем список передачи
+    // С‡РёС‚Р°РµРј СЃРїРёСЃРѕРє РїРµСЂРµРґР°С‡Рё
     XMLDoc.Root.FindNodes('Tovar', NodeList);
-    // получаем список узлов Item
+    // РїРѕР»СѓС‡Р°РµРј СЃРїРёСЃРѕРє СѓР·Р»РѕРІ Item
     fmMain.StartMainTransaction;
     for I := 0 to NodeList.Count - 1 do
     begin
@@ -776,7 +804,7 @@ begin
     J := StrToFloat(NodeList[I].AttributeValueByName['CountMod']);
     MyDate := IncDay(Date, 60);
     myIgnore := isIgnoreZakaz(Zak_Code);
-    // 25.02.2017 новый заказ вставляем - если его еще не вставляли
+    // 25.02.2017 РЅРѕРІС‹Р№ Р·Р°РєР°Р· РІСЃС‚Р°РІР»СЏРµРј - РµСЃР»Рё РµРіРѕ РµС‰Рµ РЅРµ РІСЃС‚Р°РІР»СЏР»Рё
     if not myIgnore then
     begin
       fmMain.StartMainTransaction;
@@ -790,9 +818,9 @@ begin
       qInsZak.Execute;
       fmMain.IBT.Commit;
       Application.ProcessMessages;
-      // 25,02,2017 Сохраняем детали заказа сразу после сохранения заказа
-      // возможны задержки из-за лишних циклов, но циклы в памяти и не нужен список
-      // заказов для игнорирования.
+      // 25,02,2017 РЎРѕС…СЂР°РЅСЏРµРј РґРµС‚Р°Р»Рё Р·Р°РєР°Р·Р° СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ Р·Р°РєР°Р·Р°
+      // РІРѕР·РјРѕР¶РЅС‹ Р·Р°РґРµСЂР¶РєРё РёР·-Р·Р° Р»РёС€РЅРёС… С†РёРєР»РѕРІ, РЅРѕ С†РёРєР»С‹ РІ РїР°РјСЏС‚Рё Рё РЅРµ РЅСѓР¶РµРЅ СЃРїРёСЃРѕРє
+      // Р·Р°РєР°Р·РѕРІ РґР»СЏ РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёСЏ.
       SaveZakDetail(XMLDoc, Zak_Code);
     end;
   end;
@@ -809,6 +837,13 @@ begin
   myINI.WriteInteger('Move', 'TreeWidth', Trunc(pnTree.Width));
 end;
 
+procedure TfmInpMag.SaveLogMove;
+begin
+  fmSMove := TfmSMove.Create(fmInpMag);
+  fmSMove.ShowModal;
+  fmSMove.Free;
+end;
+
 procedure TfmInpMag.SaveZakDetail(var XMLDoc: TNativeXml; ZakCode: string);
 var
   Zak_Code, Mod_Code: string;
@@ -816,7 +851,7 @@ var
   I: Integer;
   NodeList: TsdNodeList;
 begin
-  // теперь записываем подробности
+  // С‚РµРїРµСЂСЊ Р·Р°РїРёСЃС‹РІР°РµРј РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё
   NodeList := TsdNodeList.Create;
   XMLDoc.Root.FindNodes('ZakDetail', NodeList);
   for I := 0 to NodeList.Count - 1 do
