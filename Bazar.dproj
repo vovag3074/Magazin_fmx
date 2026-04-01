@@ -384,6 +384,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\delphi_PROJECTICNS.icns" Configuration="Release" Class="ProjectOSXResource">
+                    <Platform Name="OSXARM64">
+                        <RemoteName>Bazar.icns</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="..\..\..\..\..\Pictures\MyIcon\png\128px\large\bank.png" Configuration="Release" Class="UWP_DelphiLogo150">
                     <Platform Name="Win64">
                         <RemoteDir>Assets\</RemoteDir>
@@ -403,6 +409,11 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Bazar.entitlements" Configuration="Release" Class="ProjectOSXEntitlements">
+                    <Platform Name="OSXARM64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Bazar.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>Bazar.exe</RemoteName>
@@ -411,6 +422,12 @@
                 </DeployFile>
                 <DeployFile LocalName="Bazar.info.plist" Configuration="Release" Class="ProjectOSXInfoPList">
                     <Platform Name="OSX64">
+                        <RemoteName>Info.plist</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Bazar.info.plist" Configuration="Release" Class="ProjectOSXInfoPList">
+                    <Platform Name="OSXARM64">
                         <RemoteName>Info.plist</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -424,6 +441,96 @@
                 <DeployFile LocalName="Bazar" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="OSX64">
                         <RemoteName>Bazar</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Bazar" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="OSXARM64">
+                        <RemoteName>Bazar</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepResMove.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepResMove.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepResMove.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepResMove.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepResMove.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepResMove.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepResMove.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepResMove.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove2.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove2.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove2.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove2.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove2.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove2.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepTmpMove2.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepTmpMove2.fr3</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
