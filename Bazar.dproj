@@ -329,6 +329,14 @@
             <Form>fmSMove</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmReport.pas">
+            <Form>fmReport</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmReportList.pas">
+            <Form>fmRepList</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

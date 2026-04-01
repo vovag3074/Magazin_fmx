@@ -6,7 +6,9 @@ uses
   frmMain in 'frmMain.pas' {fmMain},
   frmInpSclad in 'frmInpSclad.pas' {fmInpMag: TFrame},
   frmSynhro in 'frmSynhro.pas' {fmSync},
-  frmSaveMove in 'frmSaveMove.pas' {fmSMove};
+  frmSaveMove in 'frmSaveMove.pas' {fmSMove},
+  frmReport in 'frmReport.pas' {fmReport},
+  frmReportList in 'frmReportList.pas' {fmRepList};
 
 {$R *.res}
 

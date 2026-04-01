@@ -74,6 +74,14 @@ type
     qInsDetZak: TFDCommand;
     qImp: TFDCommand;
     spSetMove: TFDStoredProc;
+    btDel: TTMSFNCButton;
+    pmDel: TPopup;
+    Panel4: TPanel;
+    TMSFNCButton7: TTMSFNCButton;
+    qDelLast: TFDQuery;
+    qDelAll: TFDQuery;
+    qDelAll2: TFDQuery;
+    TMSFNCButton8: TTMSFNCButton;
     Layout1: TLayout;
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
@@ -82,6 +90,11 @@ type
     procedure tlMoveBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure btAsseptClick(Sender: TObject);
+    procedure btDelClick(Sender: TObject);
+    procedure TMSFNCButton7Click(Sender: TObject);
+    procedure TMSFNCButton8Click(Sender: TObject);
+    procedure TMSFNCButton2Click(Sender: TObject);
+    procedure TMSFNCButton3Click(Sender: TObject);
   private
     { Private declarations }
     FSum: Double;
@@ -123,6 +136,8 @@ type
     /// Вызов формы для сохранения протокола передачи обуви на магазин
     /// </summary>
     procedure SaveLogMove;
+    procedure DeleteLast;
+    procedure DeleteAll;
   public
     { Public declarations }
     procedure readSclad;
@@ -148,7 +163,7 @@ type
 implementation
 
 uses
-  frmSynhro, frmMain, frmSaveMove;
+  frmSynhro, frmMain, frmSaveMove, frmReport;
 
 {$R *.fmx}
 
@@ -174,6 +189,41 @@ begin
   fmMain.UpdateSclad;
   Application.ProcessMessages;
   eTxt.SetFocus;
+end;
+
+procedure TfmInpMag.btDelClick(Sender: TObject);
+begin
+ pmDel.Popup();
+end;
+
+procedure TfmInpMag.DeleteAll;
+begin
+  if ShowQuestion('Удалить ВСЕ записи из журнала передачи?') then
+  begin
+   fmMain.StartMainTransaction;
+    qDelAll.Active := False;
+    qDelAll.Prepare;
+    qDelAll.Execute;
+    Application.ProcessMessages;
+    qDelAll2.Active := False;
+    qDelAll2.Prepare;
+    qDelAll2.Execute;
+    fmMain.IBT.Commit;
+    ListMoveTov;
+  end;
+end;
+
+procedure TfmInpMag.DeleteLast;
+begin
+  if ShowQuestion('Удалить последнюю запись из журнала передачи?') then
+  begin
+    fmMain.StartMainTransaction;
+    qDelLast.Active := False;
+    qDelLast.Prepare;
+    qDelLast.Execute;
+    fmMain.IBT.Commit;
+    ListMoveTov;
+  end;
 end;
 
 procedure TfmInpMag.EditButton1Click(Sender: TObject);
@@ -647,7 +697,6 @@ begin
     end
     else
     begin
-      //J := fmMain.IBC.Gen_ID('gen_model_table_id', 1);
       fmMain.StartMainTransaction;
       qInsMod.Active := False;
       qInsMod.Prepare;
@@ -912,6 +961,16 @@ begin
   pmRep.Popup();
 end;
 
+procedure TfmInpMag.TMSFNCButton2Click(Sender: TObject);
+begin
+ ShowReportJson('SRepTmpMove*.fr3','');
+end;
+
+procedure TfmInpMag.TMSFNCButton3Click(Sender: TObject);
+begin
+ ShowReportJson('SRepResMove.fr3', '');
+end;
+
 procedure TfmInpMag.TMSFNCButton4Click(Sender: TObject);
 begin
   fmSync := TfmSync.Create(fmInpMag);
@@ -927,6 +986,16 @@ end;
 procedure TfmInpMag.TMSFNCButton6Click(Sender: TObject);
 begin
   ImportMove;
+end;
+
+procedure TfmInpMag.TMSFNCButton7Click(Sender: TObject);
+begin
+ DeleteLast;
+end;
+
+procedure TfmInpMag.TMSFNCButton8Click(Sender: TObject);
+begin
+ DeleteAll;
 end;
 
 end.

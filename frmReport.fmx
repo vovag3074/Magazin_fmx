@@ -1,0 +1,198 @@
+object fmReport: TfmReport
+  Left = 0
+  Top = 0
+  Caption = #1054#1090#1095#1077#1090#1099
+  ClientHeight = 480
+  ClientWidth = 640
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object myRep: TfrxReport
+    Version = '2025.2.2'
+    DotMatrixReport = False
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFullScreen, pbOutline, pbThumbnails, pbPageSetup, pbEdit, pbNavigator, pbClose]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44903.452576018520000000
+    ReportOptions.LastChange = 44903.452576018520000000
+    ReportOptions.IsFMXReport = True
+    ScriptLanguage = 'PascalScript'
+    StoreInDFM = False
+    OnGetValue = myRepGetValue
+    Left = 72
+    Top = 64
+  end
+  object myDis: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Name = 'Arial'
+    DefaultFont.PixelsPerInch = 96.000000000000000000
+    DefaultFont.Style = []
+    DefaultFont.Color = claBlack
+    DefaultFont.Height = -18.666666030883790000
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 72
+    Top = 136
+  end
+  object frxCrossObject1: TfrxCrossObject
+    Left = 64
+    Top = 208
+  end
+  object frxGradientObject1: TfrxGradientObject
+    Left = 64
+    Top = 264
+  end
+  object frx2DBarCodeObject1: Tfrx2DBarCodeObject
+    Left = 56
+    Top = 320
+  end
+  object frxBarCodeObject1: TfrxBarCodeObject
+    Left = 48
+    Top = 384
+  end
+  object frxCheckBoxObject1: TfrxCheckBoxObject
+    Left = 176
+    Top = 384
+  end
+  object frxDialogControls1: TfrxDialogControls
+    Left = 192
+    Top = 320
+  end
+  object frxXMLExport1: TfrxXMLExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Background = True
+    Creator = 'FastReport'
+    EmptyLines = True
+    SuppressPageHeadersFooters = False
+    RowsCount = 0
+    Split = ssNotSplit
+    Left = 560
+    Top = 256
+  end
+  object frxRTFExport1: TfrxRTFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PictureType = gpPNG
+    Wysiwyg = True
+    Creator = 'FastReport'
+    SuppressPageHeadersFooters = False
+    HeaderFooterMode = hfText
+    AutoSize = False
+    Left = 560
+    Top = 312
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    Left = 544
+    Top = 376
+  end
+  object frxHTMLExport1: TfrxHTMLExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    FixedWidth = True
+    Background = False
+    Centered = False
+    EmptyLines = True
+    Print = False
+    PictureType = gpPNG
+    Left = 472
+    Top = 264
+  end
+  object frxBMPExport1: TfrxBMPExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Left = 456
+    Top = 328
+  end
+  object frxJPEGExport1: TfrxJPEGExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Left = 448
+    Top = 392
+  end
+  object frxSimpleTextExport1: TfrxSimpleTextExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Frames = False
+    EmptyLines = False
+    OEMCodepage = False
+    DeleteEmptyColumns = True
+    Left = 400
+    Top = 264
+  end
+  object frxCSVExport1: TfrxCSVExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Separator = ';'
+    OEMCodepage = False
+    NoSysSymbols = True
+    ForcedQuotes = False
+    Left = 392
+    Top = 320
+  end
+  object fsPascal1: TfsPascal
+    Left = 160
+    Top = 216
+  end
+  object fsDialogsRTTI1: TfsDialogsRTTI
+    Left = 216
+    Top = 216
+  end
+  object fsMenusRTTI1: TfsMenusRTTI
+    Left = 280
+    Top = 216
+  end
+  object frLocalizationController1: TfrLocalizationController
+    Language = 'Russian'
+    Left = 376
+    Top = 136
+  end
+  object frxFDComponents1: TfrxFDComponents
+    DefaultDatabase = fmMain.IBC
+    Left = 480
+    Top = 184
+  end
+end
