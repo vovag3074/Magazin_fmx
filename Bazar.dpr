@@ -8,7 +8,8 @@ uses
   frmSynhro in 'frmSynhro.pas' {fmSync},
   frmSaveMove in 'frmSaveMove.pas' {fmSMove},
   frmReport in 'frmReport.pas' {fmReport},
-  frmReportList in 'frmReportList.pas' {fmRepList};
+  frmReportList in 'frmReportList.pas' {fmRepList},
+  frmInvScald in 'frmInvScald.pas' {fmInv: TFrame};
 
 {$R *.res}
 

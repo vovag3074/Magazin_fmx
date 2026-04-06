@@ -6,15 +6,16 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
-  FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCToolBar,System.IniFiles,
-  FMX.TMSFNCCustomControl, FMX.TMSFNCCustomComponent, FMX.TMSFNCStyles,
-  FMX.TMSFNCHint, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
-  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Phys,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
-  FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB, FireDAC.Stan.Param,
-  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCToolBar,
+  System.IniFiles, FMX.TMSFNCCustomControl, FMX.TMSFNCCustomComponent,
+  FMX.TMSFNCStyles, FMX.TMSFNCHint, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Phys, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet,
 {$IFDEF LINUX}
-  FMUX.Api, FMUX.Config,   Posix.Stdlib,
+  FMUX.Api, FMUX.Config, Posix.Stdlib,
 {$ENDIF}
 {$IFDEF MSWindows}
   Winapi.DwmApi, FMX.Platform.Win, System.Notification,
@@ -24,17 +25,17 @@ uses
   Macapi.AppKit, //You need it to create an '''NSApplication''' instance.
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
-FMX.DialogService, FireDAC.Phys.IBBase;
+  FMX.DialogService, FireDAC.Phys.IBBase;
 
 type
   TfmMain = class(TForm)
     sbMain: TStatusBar;
     stbMain: TStyleBook;
     tbMain: TTMSFNCToolBar;
-    TMSFNCToolBarButton1: TTMSFNCToolBarButton;
+    btMoveToSclad: TTMSFNCToolBarButton;
     TMSFNCToolBarButton2: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator1: TTMSFNCToolBarSeparator;
-    TMSFNCToolBarButton3: TTMSFNCToolBarButton;
+    btInvSclad: TTMSFNCToolBarButton;
     TMSFNCToolBarButton4: TTMSFNCToolBarButton;
     pMain: TPanel;
     TMSFNCStylesManager1: TTMSFNCStylesManager;
@@ -46,12 +47,16 @@ type
     TMSFNCToolBarButton5: TTMSFNCToolBarButton;
     qTestZal: TFDQuery;
     FBDriver: TFDPhysFBDriverLink;
-    procedure TMSFNCToolBarButton1Click(Sender: TObject);
+    Lang1: TLang;
+    procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TMSFNCToolBarButton5Click(Sender: TObject);
+    procedure btInvScladClick(Sender: TObject);
   private
     { Private declarations }
+    procedure LoadFormMoveToSclad;
+    procedure LoadFormInv;
   public
     { Public declarations }
     procedure StartMainTransaction;
@@ -76,22 +81,25 @@ type
     /// <param name="NameAgn">
     /// Имя агента
     /// </param>
-    function TestZakaz(NoZakaz: String; var isMove, isProd: Boolean;
-      var NoAgn: Integer; var NameAgn: String): Integer;
-    procedure ShowIBError(SError:String);
+    function TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;
+    procedure ShowIBError(SError: string);
   end;
 
 procedure ShowInfo(T: string);
+
 procedure ShowError(T: string);
+
 function ShowQuestion(T: string): Boolean;
-procedure ShowNotify(S:String);
+
+procedure ShowNotify(S: string);
+
 function getStartProgrammDir: string;
 /// <summary>
 /// Вспомогательная процедура. Позволяет избавиться от ненужных для хранения
 /// знаков разделения UIN
 /// </summary>
-procedure myCreateGUID(var P: string);
 
+procedure myCreateGUID(var P: string);
 
 var
   fmMain: TfmMain;
@@ -101,38 +109,66 @@ var
   Nt: TNotification;
  {$ENDIF}
 
-
 implementation
 
 uses
-  frmInpSclad;
+  frmInpSclad, frmInvScald;
 
 {$R *.fmx}
 
 procedure TfmMain.ClearOldFrame;
 begin
- tbMain.Visible:=true;
- if Assigned(fmInpMag) then
- begin
-   fmInpMag.SaveINI;
-   fmInpMag.Free;
-   fmInpMag:=nil;
- end;
+  tbMain.Visible := true;
+  if Assigned(fmInpMag) then
+  begin
+    fmInpMag.SaveINI;
+    fmInpMag.Free;
+    fmInpMag := nil;
+  end
+  else if Assigned(fmInv) then
+  begin
+    fmInv.SaveINI;
+    fmInv.Free;
+    fmInv := nil;
+  end;
 end;
 
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
- myINI.Free;
+  myINI.Free;
 end;
 
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
- myINI := TIniFile.Create(getStartProgrammDir + PathDelim +'Bazar.ini');
- IBC.Connected:=True;
+  myINI := TIniFile.Create(getStartProgrammDir + PathDelim + 'Bazar.ini');
+  IBC.Connected := True;
 end;
 
-procedure TfmMain.ShowIBError(SError: String);
- var
+procedure TfmMain.LoadFormInv;
+begin
+  tbMain.Visible := False;
+  fmInv := TfmInv.Create(pMain);
+  fmInv.Parent := pMain;
+  fmInv.Align := TAlignLayout.Client;
+  fmInv.tlMod.AdaptToStyle := True;
+  fmInv.LoadINI;
+  fmInv.ListMod;
+end;
+
+procedure TfmMain.LoadFormMoveToSclad;
+begin
+  tbMain.Visible := False;
+  fmInpMag := TfmInpMag.Create(pMain);
+  fmInpMag.Parent := pMain;
+  fmInpMag.Align := TAlignLayout.Client;
+  fmInpMag.eTxt.SetFocus;
+  fmInpMag.tlMove.AdaptToStyle := True;
+  fmInpMag.LoadINI;
+  fmInpMag.readSclad;
+end;
+
+procedure TfmMain.ShowIBError(SError: string);
+var
   My: tStringList;
   I, J: Integer;
   S: string;
@@ -183,8 +219,7 @@ begin
   end;
 end;
 
-function TfmMain.TestZakaz(NoZakaz: String; var isMove, isProd: Boolean;
-  var NoAgn: Integer; var NameAgn: String): Integer;
+function TfmMain.TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;
 begin
   Result := -1;
   isMove := false;
@@ -200,28 +235,25 @@ begin
     Result := qTestZal.FieldByName('NO_AGN').AsInteger;
     isMove := qTestZal.FieldByName('IS_MOVE').AsInteger = 1;
     isProd := qTestZal.FieldByName('IS_PROD').AsInteger = 1;
-    NameAgn := qTestZal.FieldByName('AG_NAME').AsString + ' (' +
-      qTestZal.FieldByName('ST_NAME').AsString + ')';
+    NameAgn := qTestZal.FieldByName('AG_NAME').AsString + ' (' + qTestZal.FieldByName('ST_NAME').AsString + ')';
     NoAgn := qTestZal.FieldByName('NO_AGN').AsInteger;
   end;
   qTestZal.Close;
 end;
 
-procedure TfmMain.TMSFNCToolBarButton1Click(Sender: TObject);
+procedure TfmMain.btInvScladClick(Sender: TObject);
 begin
- tbMain.Visible:=False;
- fmInpMag := TfmInpMag.Create(pMain);
- fmInpMag.Parent := pMain;
- fmInpMag.Align:= TAlignLayout.Client;
- fmInpMag.eTxt.SetFocus;
- fmInpMag.tlMove.AdaptToStyle:=True;
- fmInpMag.LoadINI;
- fmInpMag.readSclad;
+ LoadFormInv;
+end;
+
+procedure TfmMain.btMoveToScladClick(Sender: TObject);
+begin
+ LoadFormMoveToSclad;
 end;
 
 procedure TfmMain.TMSFNCToolBarButton5Click(Sender: TObject);
 begin
- Application.Terminate;
+  Application.Terminate;
 end;
 
 procedure TfmMain.UpdateSclad;
@@ -296,36 +328,36 @@ begin
   if NtC.Supported then
   begin
     LChannel := NtC.CreateChannel;
-  try
-    LChannel.Id := 'MyChannel';
-    LChannel.Title := LChannel.Id;
-    LChannel.Importance := TImportance.High;
-    NtC.CreateOrUpdateChannel(LChannel);
-    Nt := NtC.CreateNotification;
-    Nt.Name := 'Рабочее место продавца';
-    Nt.Title := 'Информация';
-    Nt.AlertBody := S;
-    NtC.PresentNotification(Nt);
-  finally
-    LChannel.Free;
-  end;
+    try
+      LChannel.Id := 'MyChannel';
+      LChannel.Title := LChannel.Id;
+      LChannel.Importance := TImportance.High;
+      NtC.CreateOrUpdateChannel(LChannel);
+      Nt := NtC.CreateNotification;
+      Nt.Name := 'Рабочее место продавца';
+      Nt.Title := 'Информация';
+      Nt.AlertBody := S;
+      NtC.PresentNotification(Nt);
+    finally
+      LChannel.Free;
+    end;
   end;
   {$ENDIF}
   {$IFDEF LINUX}
-    _system(PAnsiChar(AnsiString('notify-send "Информация" "' + S + '"')));
+  _system(PAnsiChar(AnsiString('notify-send "Информация" "' + S + '"')));
   {$ENDIF}
 end;
 
 procedure myCreateGUID(var P: string);
 var
   S: string[36];
-  MyGuid0 : TGUID;
+  MyGuid0: TGUID;
 begin
   CreateGUID(MyGuid0);
   S := GUIDToString(MyGuid0);
-  s:=Copy(s, 2, length(s)-1);
-  P := StringReplace(S,'-','',[rfReplaceAll]);
+  S := Copy(S, 2, length(S) - 1);
+  P := StringReplace(S, '-', '', [rfReplaceAll]);
 end;
 
-
 end.
+
