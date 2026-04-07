@@ -151,6 +151,7 @@ begin
   fmInv.Parent := pMain;
   fmInv.Align := TAlignLayout.Client;
   fmInv.tlMod.AdaptToStyle := True;
+  fmInv.tlSize.AdaptToStyle := True;
   fmInv.LoadINI;
   fmInv.ListMod;
 end;
