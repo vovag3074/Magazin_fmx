@@ -25,7 +25,8 @@ uses
   Macapi.AppKit, //You need it to create an '''NSApplication''' instance.
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
-  FMX.DialogService, FireDAC.Phys.IBBase;
+  FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
+  FMX.TMSFNCTileList;
 
 type
   TfmMain = class(TForm)
@@ -48,11 +49,13 @@ type
     qTestZal: TFDQuery;
     FBDriver: TFDPhysFBDriverLink;
     Lang1: TLang;
+    myList: TTMSFNCTileList;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TMSFNCToolBarButton5Click(Sender: TObject);
     procedure btInvScladClick(Sender: TObject);
+    procedure myListItemClick(Sender: TObject; AItemIndex: Integer);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -119,6 +122,7 @@ uses
 procedure TfmMain.ClearOldFrame;
 begin
   tbMain.Visible := true;
+  myList.Visible := True;
   if Assigned(fmInpMag) then
   begin
     fmInpMag.SaveINI;
@@ -147,6 +151,7 @@ end;
 procedure TfmMain.LoadFormInv;
 begin
   tbMain.Visible := False;
+  myList.Visible := False;
   fmInv := TfmInv.Create(pMain);
   fmInv.Parent := pMain;
   fmInv.Align := TAlignLayout.Client;
@@ -159,6 +164,7 @@ end;
 procedure TfmMain.LoadFormMoveToSclad;
 begin
   tbMain.Visible := False;
+  myList.Visible := False;
   fmInpMag := TfmInpMag.Create(pMain);
   fmInpMag.Parent := pMain;
   fmInpMag.Align := TAlignLayout.Client;
@@ -166,6 +172,22 @@ begin
   fmInpMag.tlMove.AdaptToStyle := True;
   fmInpMag.LoadINI;
   fmInpMag.readSclad;
+end;
+
+procedure TfmMain.myListItemClick(Sender: TObject; AItemIndex: Integer);
+begin
+  if AItemIndex = 0 then    //получение
+  begin
+    btMoveToSclad.OnClick(Sender);
+  end;
+  if AItemIndex = 4 then  // возврат
+  begin
+
+  end;
+  if AItemIndex = 1 then  //склад
+  begin
+    btInvSclad.OnClick(Sender);
+  end;
 end;
 
 procedure TfmMain.ShowIBError(SError: string);
@@ -244,12 +266,12 @@ end;
 
 procedure TfmMain.btInvScladClick(Sender: TObject);
 begin
- LoadFormInv;
+  LoadFormInv;
 end;
 
 procedure TfmMain.btMoveToScladClick(Sender: TObject);
 begin
- LoadFormMoveToSclad;
+  LoadFormMoveToSclad;
 end;
 
 procedure TfmMain.TMSFNCToolBarButton5Click(Sender: TObject);
