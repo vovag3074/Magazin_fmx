@@ -139,6 +139,8 @@ end;
 
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  ClearOldFrame;
+  Application.ProcessMessages;
   myINI.Free;
 end;
 
@@ -329,10 +331,7 @@ procedure ShowNotify(S: string);
 var
   LChannel: TChannel;
 begin
-  // создаем немодальное окно с иконкой
-  // для windows -позиция - справа внизу
-  // для macOS - справа вверху
-  // Linux - вверху по центру
+   // Оповещение немодальное
   {$IFDEF MACOS}
   var ANotification: NSUserNotification := TNSUserNotification.Wrap(TNSUserNotification.Alloc.init);
   ANotification.setTitle(StrToNSStr('Мастер обуви'));
