@@ -302,8 +302,8 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1049</VerInfo_Locale>
-        <Icon_MainIcon>Bazar_Icon.ico</Icon_MainIcon>
-        <Icns_MainIcns>Bazar_Icns.icns</Icns_MainIcns>
+        <Icon_MainIcon>Bazar_Icon1.ico</Icon_MainIcon>
+        <Icns_MainIcns>Bazar_Icns1.icns</Icns_MainIcns>
         <UWP_DelphiLogo44>..\..\..\..\..\Pictures\MyIcon\png\64px\large\bank.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\..\..\..\Pictures\MyIcon\png\128px\large\bank.png</UWP_DelphiLogo150>
         <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=1.0.0.0;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -363,6 +363,33 @@
                     <Source Name="MainSource">Bazar.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\accessprovider370.bpl">UniDAC Access Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\adsprovider370.bpl">UniDAC Advantage Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\aseprovider370.bpl">UniDAC ASE Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\bigcommerceprovider370.bpl">UniDAC BigCommerce Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\bigqueryprovider370.bpl">UniDAC BigQuery Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\db2provider370.bpl">UniDAC DB2 Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\dbfprovider370.bpl">UniDAC DBF Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\dynamicsprovider370.bpl">UniDAC Dynamics CRM Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\exacttargetprovider370.bpl">UniDAC Salesforce MC Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\excelprovider370.bpl">UniDAC Excel Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\freshbooksprovider370.bpl">UniDAC FreshBooks Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\hubspotprovider370.bpl">UniDAC HubSpot Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\ibprovider370.bpl">UniDAC InterBase Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\liteprovider370.bpl">UniDAC SQLite Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\magentoprovider370.bpl">UniDAC Magento Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\mailchimpprovider370.bpl">UniDAC MailChimp Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\mongoprovider370.bpl">UniDAC MongoDB Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\myprovider370.bpl">UniDAC MySQL Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\netsuiteprovider370.bpl">UniDAC NetSuite Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\nexusprovider370.bpl">UniDAC NexusDB Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\oraprovider370.bpl">UniDAC Oracle Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\pgprovider370.bpl">UniDAC PostgreSQL Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\quickbooksprovider370.bpl">UniDAC QuickBooks Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\rsprovider370.bpl">UniDAC Redshift Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\salesforceprovider370.bpl">UniDAC Salesforce Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\sugarprovider370.bpl">UniDAC SugarCRM Provider</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\zohoprovider370.bpl">UniDAC Zoho CRM Provider</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k370.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp370.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
