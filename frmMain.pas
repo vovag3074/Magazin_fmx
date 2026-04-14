@@ -50,6 +50,8 @@ type
     FBDriver: TFDPhysFBDriverLink;
     Lang1: TLang;
     myList: TTMSFNCTileList;
+    TMSFNCToolBarSeparator2: TTMSFNCToolBarSeparator;
+    TMSFNCToolBarButton1: TTMSFNCToolBarButton;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
