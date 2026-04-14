@@ -411,6 +411,35 @@ object fmInv: TfmInv
               0049454E44AE426082}
             Name = 'Item2'
             Tag = 0
+          end
+          item
+            Bitmap.PNG = {
+              89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+              F80000000473424954080808087C0864880000029D494441544889B5544D4854
+              51183DDFBDF346A9100C37AEDB546E827410AD162224D8BA089B37810416B8B1
+              50DAB5082B08820289162E9CE987846A911B2DDA34E6735A548B40AA45142E2A
+              42FA419BF7EE3D2D66469CF7A6719AE8AC3EEE77EE3DF73BF7FB2EF09F2135B1
+              48719FFB1D02DD0D0084C94EB53B3988F09F050616D8A4954903E80FA5668CD5
+              C99B9DF2ADDA7EB5998056260D41AFC08E2847B72847B708EC0804BD45E1FAE1
+              E6F2097731085C2F3F1CC979F961773108DC5C3E51770584EE0200157722370D
+              F24E6623A72E0155E58DE2DBC0CD389B0A10260B0036EF27C3B9D25A89F32754
+              EF2252DC9C7900A05760CF8AE34C0100D6823D8CF9AD56D63EA4F73667ABB56B
+              CD6D2A22FD24A1C0A7F8F9B14F373CDE12D7EFDA605614F0A3408E153705404C
+              73E55A22F3EAAF078DF6EB8C63D2B641BDC8026C11112950C8500C4B5EAD4D20
+              8493CF4E8C89AC8DD740FD150BAF243DFFA088BA08A04D043A7CB3A9442C26CA
+              340A442ADCBA2C26D9502690CAF9DDA4DC07B024B0172C9501045C7FC252C1B6
+              E66ACB04483907603996570726F7E9EF359F5205E57320E8267877729F440E77
+              3D7FCC5D0C82D236B250178BA81447052810A2624F0734F700989240C96F29A2
+              521C15005F42A4A792C0ADCEC63700966B74661DA10A701D4047D20B06C3C481
+              053601685DA7D663D1EA7B9D01F1500413C73C7FECF8133696725AFB3B373645
+              5D164D1F16B36AF4518ABDA3951AB75BCDEB54CE3F9FF4FC1E52EFDFC40D0B44
+              DF2FF29B4E77C96ABA239E32C6F6115822E5B488CC0A78A9CCCD725B1EC17297
+              2552243F6FCC4726B9844CA73307606E709EDB0315B443A91D143417B2018A93
+              FA09C2D18944260D0101BC1DCA2667B5C2152A390252EAFA8B4E79C951B1DCED
+              3BE6CC8DF6DB5F2A7186E6070E29A52EFF06A8976562862D13E5000000004945
+              4E44AE426082}
+            Name = 'Item3'
+            Tag = 0
           end>
       end
     end
@@ -483,8 +512,18 @@ object fmInv: TfmInv
     Size.Height = 536.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
+    object Panel6: TPanel
+      Align = Bottom
+      Position.Y = 503.000000000000000000
+      Size.Width = 341.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'OfficePanel'
+      TabOrder = 1
+    end
     object cxZakList: TListBox
       Align = Client
+      PopupMenu = pmZak
       Size.Width = 341.000000000000000000
       Size.Height = 503.000000000000000000
       Size.PlatformDefault = False
@@ -580,15 +619,6 @@ object fmInv: TfmInv
         end
       end
     end
-    object Panel6: TPanel
-      Align = Bottom
-      Position.Y = 503.000000000000000000
-      Size.Width = 341.000000000000000000
-      Size.Height = 33.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'OfficePanel'
-      TabOrder = 1
-    end
   end
   object Panel4: TPanel
     Align = Client
@@ -676,21 +706,27 @@ object fmInv: TfmInv
           Appearance.BandLayout.Font.Color = claNull
           Appearance.FixedLayout.Font.Size = 16.000000000000000000
           Appearance.FixedLayout.Font.Color = claNull
+          Appearance.FixedLayout.TextAlign = gtaCenter
           Appearance.FixedSelectedLayout.Font.Size = 14.000000000000000000
           Appearance.FixedSelectedLayout.Font.Color = claNull
+          Appearance.FixedSelectedLayout.TextAlign = gtaCenter
           Appearance.FocusedLayout.Font.Size = 14.000000000000000000
           Appearance.FocusedLayout.Font.Color = claNull
+          Appearance.FocusedLayout.TextAlign = gtaCenter
           Appearance.GroupLayout.Font.Size = 14.000000000000000000
           Appearance.GroupLayout.Font.Color = claNull
           Appearance.NormalLayout.Font.Size = 14.000000000000000000
           Appearance.NormalLayout.Font.Color = claNull
+          Appearance.NormalLayout.TextAlign = gtaCenter
           Appearance.SelectedLayout.Font.Size = 14.000000000000000000
           Appearance.SelectedLayout.Font.Color = claNull
           Appearance.SummaryLayout.Font.Size = 14.000000000000000000
           Appearance.SummaryLayout.Font.Color = claNull
+          Editor = getFloatEdit
+          Formatting.Type = gdftFloat
           Header = #1050'-'#1074#1086
-          Settings = [gcsEditorItems, gcsReadOnly]
-          Width = 122.000000000000000000
+          Settings = [gcsEditor, gcsEditorItems, gcsReadOnly, gcsFormatting]
+          Width = 64.000000000000000000
         end
         item
           Appearance.FilterMatchLayout.Font.Size = 14.000000000000000000
@@ -1178,6 +1214,98 @@ object fmInv: TfmInv
       Options.Column.Stretching.Enabled = True
       Options.Editing.Enabled = False
     end
+    object tlZak: TTMSFNCTreeView
+      Align = Client
+      Size.Width = 263.000000000000000000
+      Size.Height = 231.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Stroke.Color = claDarkgray
+      BitmapContainer = TMSFNCBitmapContainer1
+      HorizontalScrollBarVisible = False
+      Groups = <>
+      GroupsAppearance.TopSize = 50.000000000000000000
+      GroupsAppearance.BottomSize = 50.000000000000000000
+      GroupsAppearance.TopFill.Kind = gfkNone
+      GroupsAppearance.BottomFill.Kind = gfkNone
+      GroupsAppearance.TopFont.Size = 16.000000000000000000
+      GroupsAppearance.TopFont.Color = xFF454545
+      GroupsAppearance.BottomFont.Size = 16.000000000000000000
+      GroupsAppearance.BottomFont.Color = xFF454545
+      Columns = <
+        item
+          Name = 'Column0'
+          Text = #1040#1075#1077#1085#1090
+          Width = 100.000000000000000000
+        end
+        item
+          Name = 'Column1'
+          Text = #1050'-'#1074#1086
+          HorizontalTextAlign = gtaTrailing
+          Width = 100.000000000000000000
+        end>
+      Nodes = <>
+      ColumnsAppearance.StretchColumn = 0
+      ColumnsAppearance.StretchAll = False
+      ColumnsAppearance.TopSize = 36.000000000000000000
+      ColumnsAppearance.BottomSize = 25.000000000000000000
+      ColumnsAppearance.TopFont.Size = 16.000000000000000000
+      ColumnsAppearance.TopFont.Color = xFF454545
+      ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+      ColumnsAppearance.BottomFont.Size = 16.000000000000000000
+      ColumnsAppearance.BottomFont.Color = xFF454545
+      ColumnsAppearance.TopFill.Color = xFFEEF2F9
+      ColumnsAppearance.BottomFill.Kind = gfkNone
+      ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+      ColumnsAppearance.TopStroke.Kind = gskNone
+      NodesAppearance.ShowFocus = False
+      NodesAppearance.ExpandWidth = 18.000000000000000000
+      NodesAppearance.ExpandHeight = 18.000000000000000000
+      NodesAppearance.LevelIndent = 20.000000000000000000
+      NodesAppearance.FixedHeight = 25.000000000000000000
+      NodesAppearance.VariableMinimumHeight = 33.000000000000000000
+      NodesAppearance.Font.Size = 16.000000000000000000
+      NodesAppearance.Font.Color = xFF7A7A7A
+      NodesAppearance.TitleFont.Size = 16.000000000000000000
+      NodesAppearance.SelectedFontColor = xFF454545
+      NodesAppearance.ExtendedFontColor = xFF454545
+      NodesAppearance.SelectedFill.Color = xFFF6F8FC
+      NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+      NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+      NodesAppearance.ExtendedFont.Size = 16.000000000000000000
+      NodesAppearance.ExpandNodeIcon.PNG = {
+        89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+        260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+        CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+        66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+        01E68213FFE244E4900000000049454E44AE426082}
+      NodesAppearance.CollapseNodeIcon.PNG = {
+        89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+        260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+        CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+        8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+        49454E44AE426082}
+      NodesAppearance.ExpandNodeIconLarge.PNG = {
+        89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+        3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+        CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+        3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+        6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+        611914FBCBE520D20000000049454E44AE426082}
+      NodesAppearance.CollapseNodeIconLarge.PNG = {
+        89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+        3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+        CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+        2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+        2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+      Interaction.AutoOpenURL = False
+      Interaction.ReadOnly = True
+      Interaction.ExpandCollapseOnDblClick = False
+      GlobalFont.Size = 16.000000000000000000
+      GlobalFont.Name = 'Segoe UI'
+      DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+      DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+    end
   end
   object qKat: TFDQuery
     Connection = fmMain.IBC
@@ -1285,5 +1413,121 @@ object fmInv: TfmInv
         Name = 'IV'
         ParamType = ptInput
       end>
+  end
+  object qModZak: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT COUNT(MST.NO_MST) CNT_NO_MST,'
+      '       AGENTS.FULL_NAME_STD'
+      'FROM AGENTS'
+      'INNER JOIN ZAKAZ_LIST ZL ON (AGENTS.NO_AGN = ZL.NO_AGN)'
+      'INNER JOIN ZAKAZ_LIST_DETAIL ZLD ON (ZL.NO_ZAK = ZLD.NO_ZAKAZ)'
+      
+        'INNER JOIN MODEL_SIZE_TABLE MST ON (ZLD.NO_MOD_SIZE = MST.NO_MST' +
+        ')'
+      'WHERE ((ZL.IS_MOVE = 1) AND'
+      '      (ZL.IS_PROD = 0) AND'
+      '      (ZL.DATA_END >= '#39'now'#39') AND'
+      '      (MST.NO_MOD = :NM))'
+      'GROUP BY AGENTS.FULL_NAME_STD'
+      'ORDER BY AGENTS.FULL_NAME_STD  '
+      '')
+    Left = 576
+    Top = 392
+    ParamData = <
+      item
+        Name = 'NM'
+        ParamType = ptInput
+      end>
+  end
+  object pmZak: TPopupMenu
+    Images = SVGIconImageList1
+    Left = 680
+    Top = 392
+    object miCopyCode: TMenuItem
+      Text = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1082#1086#1076
+      ImageIndex = 0
+    end
+  end
+  object SVGIconImageList1: TSVGIconImageList
+    Source = <
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'clipboard-barcode-filled'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 24 24">'#10'  <g id="main">'#10'    <g id' +
+          '="icon">'#10'      <path fill="#000000" d="M10.4,2.33L10.12,2.42L9.8' +
+          '6,2.56L9.64,2.74L9.46,2.96L9.32,3.22L9.23,3.5L9.2,3.8L6.5,3.8L6.' +
+          '14,3.84L5.8,3.94L5.49,4.11L5.23,4.33L5.01,4.59L4.84,4.9L4.74,5.2' +
+          '4L4.7,5.6L4.7,19.5L4.74,19.86L4.84,20.2L5.01,20.51L5.23,20.77L5.' +
+          '49,20.99L5.8,21.16L6.14,21.26L6.5,21.3L10,21.3L10,13.5L10.03,13.' +
+          '2L10.12,12.92L10.26,12.66L10.44,12.44L10.66,12.26L10.92,12.12L11' +
+          '.2,12.03L11.5,12L12.5,12L12.78,12.03L13.04,12.1L13.5,12.38L13.96' +
+          ',12.1L14.22,12.03L14.5,12L14.78,12.03L15.04,12.1L15.5,12.38L15.9' +
+          '6,12.1L16.22,12.03L16.5,12L17.5,12L17.78,12.03L18.04,12.1L18.5,1' +
+          '2.38L18.96,12.1L19.22,12.03L19.5,12L19.78,12.03L20.04,12.1L20.2,' +
+          '12.2L20.2,5.6L20.16,5.24L20.06,4.9L19.89,4.59L19.67,4.33L19.41,4' +
+          '.11L19.1,3.94L18.76,3.84L18.4,3.8L15.8,3.8L15.77,3.5L15.68,3.22L' +
+          '15.54,2.96L15.36,2.74L15.14,2.56L14.88,2.42L14.6,2.33L14.3,2.3L1' +
+          '0.7,2.3z"/>'#10'      <path fill="#60CDFF" d="M10.34,1.529L10,1.612L' +
+          '9.682,1.745L9.39,1.923L9.13,2.142L8.906,2.397L8.721,2.685L8.581,' +
+          '3L6.55,3L6.036,3.052L5.557,3.2L5.124,3.436L4.747,3.747L4.436,4.1' +
+          '24L4.2,4.557L4.052,5.036L4,5.55L4,19.45L4.052,19.96L4.2,20.44L4.' +
+          '436,20.88L4.747,21.25L5.124,21.56L5.557,21.8L6.036,21.95L6.55,22' +
+          'L10,22L10,20.5L6.55,20.5L6.141,20.42L5.808,20.19L5.582,19.86L5.5' +
+          ',19.45L5.5,5.55L5.582,5.141L5.808,4.808L6.141,4.582L6.55,4.5L8.6' +
+          '31,4.5L8.771,4.815L8.956,5.103L9.18,5.358L9.44,5.577L9.732,5.755' +
+          'L10.05,5.888L10.39,5.971L10.75,6L14.35,6L14.71,5.971L15.05,5.888' +
+          'L15.37,5.755L15.66,5.577L15.92,5.358L16.14,5.103L16.33,4.815L16.' +
+          '47,4.5L18.45,4.5L18.86,4.582L19.19,4.808L19.42,5.141L19.5,5.55L1' +
+          '9.5,12L19.78,12.03L20.04,12.1L20.5,12.38L20.96,12.1L21,12.09L21,' +
+          '5.55L20.95,5.036L20.8,4.557L20.56,4.124L20.25,3.747L19.88,3.436L' +
+          '19.44,3.2L18.96,3.052L18.45,3L16.42,3L16.28,2.685L16.09,2.397L15' +
+          '.87,2.142L15.61,1.923L15.32,1.745L15,1.612L14.66,1.529L14.3,1.5L' +
+          '10.7,1.5zM14.3,3L14.59,3.059L14.83,3.22L14.99,3.458L15.05,3.75L1' +
+          '4.99,4.042L14.83,4.28L14.59,4.441L14.3,4.5L10.7,4.5L10.41,4.441L' +
+          '10.17,4.28L10.01,4.042L9.95,3.75L10.01,3.458L10.17,3.22L10.41,3.' +
+          '059L10.7,3zz"/>'#10'      <path fill="#60CDFF" d="M9.258,9.059L9.02,' +
+          '9.22L8.859,9.458L8.8,9.75L8.859,10.04L9.02,10.28L9.258,10.44L9.5' +
+          '5,10.5L15.55,10.5L15.84,10.44L16.08,10.28L16.24,10.04L16.3,9.75L' +
+          '16.24,9.458L16.08,9.22L15.84,9.059L15.55,9L9.55,9zM9.258,12.06L9' +
+          '.02,12.22L8.859,12.46L8.8,12.75L8.859,13.04L9.02,13.28L9.258,13.' +
+          '44L9.55,13.5L10,13.5L10.03,13.2L10.12,12.92L10.26,12.66L10.44,12' +
+          '.44L10.66,12.26L10.92,12.12L11.2,12.03L11.5,12L9.55,12zM12.78,12' +
+          '.03L13.04,12.1L13.5,12.38L13.96,12.1L14.22,12.03L14.5,12L12.5,12' +
+          'zM14.5,12L14.78,12.03L15.04,12.1L15.5,12.38L15.93,12.12L15.84,12' +
+          '.06L15.55,12L14.5,12zM9.258,15.06L9.02,15.22L8.859,15.46L8.8,15.' +
+          '75L8.859,16.04L9.02,16.28L9.258,16.44L9.55,16.5L10,16.5L10,15L9.' +
+          '55,15zz"/>'#10'    </g>'#10'    <g id="overlay">'#10'      <path fill="#FAFA' +
+          'FA" d="M11.5,13h1c0.2761,0,0.5,0.2239,0.5,0.5v9c0,0.2761,-0.2239' +
+          ',0.5,-0.5,0.5h-1c-0.2761,0,-0.5,-0.2239,-0.5,-0.5v-9C11,13.2239,' +
+          '11.2239,13,11.5,13zM21,13.5v9c0,0.2761,0.2239,0.5,0.5,0.5h1c0.27' +
+          '61,0,0.5,-0.2239,0.5,-0.5v-9c0,-0.2761,-0.2239,-0.5,-0.5,-0.5h-1' +
+          'C21.2239,13,21,13.2239,21,13.5zM16.5,23h1c0.2761,0,0.5,-0.2239,0' +
+          '.5,-0.5v-9c0,-0.2761,-0.2239,-0.5,-0.5,-0.5h-1c-0.2761,0,-0.5,0.' +
+          '2239,-0.5,0.5v9C16,22.7761,16.2239,23,16.5,23zM14,13.5v9c0,0.276' +
+          '1,0.2239,0.5,0.5,0.5l0,0c0.2761,0,0.5,-0.2239,0.5,-0.5v-9c0,-0.2' +
+          '761,-0.2239,-0.5,-0.5,-0.5l0,0C14.2239,13,14,13.2239,14,13.5zM19' +
+          ',13.5v9c0,0.2761,0.2239,0.5,0.5,0.5l0,0c0.2761,0,0.5,-0.2239,0.5' +
+          ',-0.5v-9c0,-0.2761,-0.2239,-0.5,-0.5,-0.5l0,0C19.2239,13,19,13.2' +
+          '239,19,13.5z"/>'#10'    </g>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'clipboard-barcode-filled'
+          end>
+      end>
+    Left = 680
+    Top = 464
   end
 end

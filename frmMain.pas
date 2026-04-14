@@ -45,7 +45,7 @@ type
     IBT: TFDTransaction;
     IBT_Read: TFDTransaction;
     qUpdSclad: TFDCommand;
-    TMSFNCToolBarButton5: TTMSFNCToolBarButton;
+    btClose: TTMSFNCToolBarButton;
     qTestZal: TFDQuery;
     FBDriver: TFDPhysFBDriverLink;
     Lang1: TLang;
@@ -55,7 +55,7 @@ type
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure TMSFNCToolBarButton5Click(Sender: TObject);
+    procedure btCloseClick(Sender: TObject);
     procedure btInvScladClick(Sender: TObject);
     procedure myListItemClick(Sender: TObject; AItemIndex: Integer);
   private
@@ -161,6 +161,7 @@ begin
   fmInv.Align := TAlignLayout.Client;
   fmInv.tlMod.AdaptToStyle := True;
   fmInv.tlSize.AdaptToStyle := True;
+  fmInv.tlZak.AdaptToStyle:= True;
   fmInv.LoadINI;
   fmInv.ListMod;
 end;
@@ -278,7 +279,7 @@ begin
   LoadFormMoveToSclad;
 end;
 
-procedure TfmMain.TMSFNCToolBarButton5Click(Sender: TObject);
+procedure TfmMain.btCloseClick(Sender: TObject);
 begin
   Application.Terminate;
 end;

@@ -16,7 +16,8 @@ uses
   FMX.TMSFNCDataGridCell, FMX.TMSFNCDataGridData, FMX.TMSFNCDataGridBase,
   FMX.TMSFNCDataGridCore, FMX.TMSFNCDataGridRenderer, FMX.TMSFNCDataGrid,
   FMX.TMSFNCGridCell, FMX.TMSFNCGridOptions, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCGridData, FMX.TMSFNCCustomGrid, FMX.TMSFNCGrid;
+  FMX.TMSFNCGridData, FMX.TMSFNCCustomGrid, FMX.TMSFNCGrid, FMX.TMSFNCPopupMenu,
+  FMX.Menus, System.ImageList, FMX.ImgList, FMX.SVGIconImageList;
 
 type
   TfmInv = class(TFrame)
@@ -50,7 +51,12 @@ type
     Splitter3: TSplitter;
     tlSize: TTMSFNCDataGrid;
     qSize: TFDQuery;
+    tlZak: TTMSFNCTreeView;
+    qModZak: TFDQuery;
     myZakList: TLayout;
+    pmZak: TPopupMenu;
+    miCopyCode: TMenuItem;
+    SVGIconImageList1: TSVGIconImageList;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure cbAllChange(Sender: TObject);
@@ -63,6 +69,7 @@ type
     /// Читаем список активных заказов на складе.
     /// </summary>
     procedure ListActiveZakaz;
+    procedure ListModZakInfo;
   public
     { Public declarations }
     procedure LoadINI;
@@ -219,6 +226,31 @@ begin
   ListActiveZakaz;
 end;
 
+procedure TfmInv.ListModZakInfo;
+var
+  Node, ANode: TTMSFNCTreeViewNode;
+begin
+  tlZak.Nodes.Clear;
+  ANode := tlMod.FocusedNode;
+  qModZak.Close;
+  qModZak.Prepare;
+  qModZak.ParamByName('NM').AsInteger := ANode.DataInteger;
+  qModZak.Active := true;
+  if qModZak.RecordCount > 0 then
+  begin
+    qModZak.First;
+    repeat
+      Node := tlZak.AddNode();
+      Node.Text[0] := qModZak.FieldByName('FULL_NAME_STD').AsString;
+      Node.Text[1] := qModZak.FieldByName('CNT_NO_MST').AsInteger.ToString;
+      Node.Values[0].CollapsedIconName := 'Item3';
+      Node.Values[0].ExpandedIconName := 'Item3';
+      qModZak.Next;
+    until (qModZak.Eof);
+//    tlZak.GotoBOF;
+  end;
+end;
+
 procedure TfmInv.LoadINI;
 begin
   pnMod.Width := myINI.ReadInteger('Sclad', 'ModList', 300).ToSingle;
@@ -274,11 +306,16 @@ begin
         finally
           tlSize.EndUpdate;
         end;
-//        tlSize.GotoBOF;
+        if tlSize.RowCount>0 then
+         begin
+           tlSize.SelectedRows[0];
+         end;
+         ListModZakInfo;
       end;
     end;
   except
   end;
+  ListModZakInfo;
 end;
 
 procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
