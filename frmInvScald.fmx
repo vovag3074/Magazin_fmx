@@ -77,10 +77,11 @@ object fmInv: TfmInv
       Size.PlatformDefault = False
       StyleLookup = 'TopPanel'
       TabOrder = 0
-      object Edit1: TEdit
+      object eFind: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Client
         TabOrder = 0
+        Hint = 'Enter - '#1087#1086#1080#1089#1082#13#10'Up - '#1074#1074#1077#1088#1093#13#10'Doun - '#1074#1085#1080#1079#13#10'Esc - '#1086#1095#1080#1089#1090#1080#1090#1100
         Margins.Left = 8.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 8.000000000000000000
@@ -88,6 +89,9 @@ object fmInv: TfmInv
         Size.Width = 241.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
+        TextPrompt = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102' '#1084#1086#1076#1077#1083#1080
+        CharCase = ecUpperCase
+        OnKeyDown = eFindKeyDown
         object TMSFNCButton1: TTMSFNCButton
           ImageAlign = Client
           Bitmap.PNG = {
@@ -130,6 +134,7 @@ object fmInv: TfmInv
           Position.X = 208.000000000000000000
           TabOrder = 0
           Text = #1054#1095#1080#1089#1090#1080#1090#1100
+          OnClick = TMSFNCButton1Click
         end
       end
     end
@@ -368,11 +373,13 @@ object fmInv: TfmInv
         CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
         2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
         2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+      Interaction.ExtendedSelectable = True
+      Interaction.KeyboardEdit = False
       GlobalFont.Color = claWhite
       GlobalFont.Size = 16.000000000000000000
       GlobalFont.Name = 'Segoe UI'
-      OnFocusedNodeChanged = tlModFocusedNodeChanged
       OnBeforeExpandNode = tlModBeforeExpandNode
+      OnAfterSelectNode = tlModAfterSelectNode
       DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
       DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
       object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
@@ -1307,6 +1314,15 @@ object fmInv: TfmInv
       DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
     end
   end
+  object pmZak: TPopupMenu
+    Images = SVGIconImageList1
+    Left = 680
+    Top = 392
+    object miCopyCode: TMenuItem
+      Text = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1082#1086#1076
+      ImageIndex = 0
+    end
+  end
   object qKat: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -1441,21 +1457,11 @@ object fmInv: TfmInv
         ParamType = ptInput
       end>
   end
-  object pmZak: TPopupMenu
-    Images = SVGIconImageList1
-    Left = 680
-    Top = 392
-    object miCopyCode: TMenuItem
-      Text = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1082#1086#1076
-      ImageIndex = 0
-    end
-  end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'clipboard-barcode-filled'
         SVGText = 
@@ -1525,6 +1531,8 @@ object fmInv: TfmInv
         Layers = <
           item
             Name = 'clipboard-barcode-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 680

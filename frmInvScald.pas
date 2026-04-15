@@ -29,7 +29,7 @@ type
     pnZakList: TPanel;
     Panel4: TPanel;
     Panel2: TPanel;
-    Edit1: TEdit;
+    eFind: TEdit;
     TMSFNCButton1: TTMSFNCButton;
     tlMod: TTMSFNCTreeView;
     qKat: TFDQuery;
@@ -53,14 +53,17 @@ type
     qSize: TFDQuery;
     tlZak: TTMSFNCTreeView;
     qModZak: TFDQuery;
-    myZakList: TLayout;
     pmZak: TPopupMenu;
     miCopyCode: TMenuItem;
     SVGIconImageList1: TSVGIconImageList;
+    myZakList: TLayout;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure cbAllChange(Sender: TObject);
-    procedure tlModFocusedNodeChanged(Sender: TObject;
+    procedure TMSFNCButton1Click(Sender: TObject);
+    procedure eFindKeyDown(Sender: TObject; var Key: Word;
+      var KeyChar: WideChar; Shift: TShiftState);
+    procedure tlModAfterSelectNode(Sender: TObject;
       ANode: TTMSFNCTreeViewVirtualNode);
   private
     { Private declarations }
@@ -70,6 +73,9 @@ type
     /// </summary>
     procedure ListActiveZakaz;
     procedure ListModZakInfo;
+    procedure goUp;
+    procedure goDown;
+    procedure ViewDetNode(Node: TTMSFNCTreeViewNode);
   public
     { Public declarations }
     procedure LoadINI;
@@ -97,6 +103,59 @@ uses
 procedure TfmInv.cbAllChange(Sender: TObject);
 begin
  ListMod;
+end;
+
+procedure TfmInv.eFindKeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: WideChar; Shift: TShiftState);
+begin
+if Key = vkReturn then
+  begin
+    tlMod.LookupNode(eFind.Text.Trim,False,0,False,true);
+    eFind.SetFocus;
+  end
+  else if Key = vkUp then
+  begin
+    goUp;
+    Key := 0;
+    eFind.SetFocus;
+  end
+  else if Key = vkDown then
+  begin
+    goDown;
+    Key := 0;
+    eFind.SetFocus;
+  end
+  else if Key = vkEscape then
+  begin
+    eFind.Text := '';
+    Key := 0;
+    eFind.SetFocus;
+  end;
+  ViewDetNode(tlMod.FocusedNode);
+end;
+
+procedure TfmInv.goDown;
+var
+  Node: TTMSFNCTreeViewNode;
+begin
+  Node := tlMod.GetNextNode(tlMod.FocusedNode);
+  if Assigned(Node) then
+  begin
+    tlMod.SelectNode(Node);
+    tlMod.ScrollToNode(Node, True);
+  end;
+end;
+
+procedure TfmInv.goUp;
+var
+  Node: tTmsFNCTreeViewNode;
+begin
+  Node := tlMod.GetPreviousNode(tlMod.FocusedNode);
+  if Assigned(Node) then
+  begin
+    tlMod.SelectNode(Node);
+    tlMod.ScrollToNode(Node, True);
+  end;
 end;
 
 procedure TfmInv.ListActiveZakaz;
@@ -265,25 +324,40 @@ begin
   myINI.WriteInteger('Sclad', 'SizeList', Trunc(tlSize.Height));
 end;
 
+procedure TfmInv.tlModAfterSelectNode(Sender: TObject;
+  ANode: TTMSFNCTreeViewVirtualNode);
+begin
+  ViewDetNode(ANode.Node);
+end;
+
 procedure TfmInv.tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 begin
   ListDet(ANode.Node);
 end;
 
-procedure TfmInv.tlModFocusedNodeChanged(Sender: TObject;
-  ANode: TTMSFNCTreeViewVirtualNode);
+procedure TfmInv.TMSFNCButton1Click(Sender: TObject);
+begin
+  eFind.Text:='';
+  eFind.SetFocus;
+end;
+
+procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
+begin
+  fmMain.ClearOldFrame;
+end;
+
+procedure TfmInv.ViewDetNode(Node: TTMSFNCTreeViewNode);
 var
-  Node: TTMSFNCTreeViewVirtualNode;
   myCol:Integer;
 begin
-  try
+     try
     tlSize.RowCount:=1;
-    if ANode.Node.DataBoolean then
+    if Node.DataBoolean then
     begin
       qSize.Close;
       qSize.Prepare;
       qSize.ParamByName('IV').AsSmallInt:=0;
-      qSize.ParamByName('NM').AsInteger := ANode.Node.DataInteger;
+      qSize.ParamByName('NM').AsInteger := Node.DataInteger;
       qSize.Active := true;
       var R:Integer;
       R := qSize.RecordCount;
@@ -315,12 +389,6 @@ begin
     end;
   except
   end;
-  ListModZakInfo;
-end;
-
-procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
-begin
-  fmMain.ClearOldFrame;
 end;
 
 end.
