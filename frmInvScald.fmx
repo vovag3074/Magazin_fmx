@@ -340,8 +340,8 @@ object fmInv: TfmInv
       NodesAppearance.TitleFont.Color = claWhite
       NodesAppearance.SelectedFontColor = claBlack
       NodesAppearance.SelectedTitleFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F0078D7
-      NodesAppearance.SelectedStroke.Color = x7F0078D7
+      NodesAppearance.SelectedFill.Color = x7F2A96FF
+      NodesAppearance.SelectedStroke.Color = x7F2A96FF
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
       NodesAppearance.ExtendedFill.Color = xFFF0F0F0
       NodesAppearance.ExtendedStroke.Color = xFFF0F0F0
@@ -1321,6 +1321,20 @@ object fmInv: TfmInv
     object miCopyCode: TMenuItem
       Text = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1082#1086#1076
       ImageIndex = 0
+      OnClick = miCopyCodeClick
+    end
+    object MenuItem1: TMenuItem
+      Text = '-'
+    end
+    object MenuItem2: TMenuItem
+      Text = #1059#1073#1088#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085#1099#1081' '#1079#1072#1082#1072#1079
+      ImageIndex = 1
+      OnClick = MenuItem2Click
+    end
+    object MenuItem3: TMenuItem
+      Text = #1059#1073#1088#1072#1090#1100' '#1074#1089#1077' '#1079#1072#1082#1072#1079#1099
+      ImageIndex = 2
+      OnClick = MenuItem3Click
     end
   end
   object qKat: TFDQuery
@@ -1462,6 +1476,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'clipboard-barcode-filled'
         SVGText = 
@@ -1525,17 +1540,123 @@ object fmInv: TfmInv
           ',-0.5v-9c0,-0.2761,-0.2239,-0.5,-0.5,-0.5l0,0C19.2239,13,19,13.2' +
           '239,19,13.5z"/>'#10'    </g>'#10'  </g>'#10'</svg>'#10
         Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'close'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 24 24">'#10'  <g id="icon">'#10'    <path' +
+          ' fill="#000000" d="M18.75,20.25L5.25,20.25C4.42,20.25,3.75,19.58' +
+          ',3.75,18.75L3.75,5.25C3.75,4.42,4.42,3.75,5.25,3.75L18.75,3.75C1' +
+          '9.58,3.75,20.25,4.42,20.25,5.25L20.25,18.75C20.25,19.58,19.58,20' +
+          '.25,18.75,20.25z"/>'#10'    <path fill="#FF99A4" d="M18,21H6c-1.6542' +
+          ',0,-3,-1.3458,-3,-3V6c0,-1.6542,1.3458,-3,3,-3h12c1.6542,0,3,1.3' +
+          '458,3,3v12C21,19.6542,19.6542,21,18,21zM6,4.5c-0.8271,0,-1.5,0.6' +
+          '729,-1.5,1.5v12c0,0.8271,0.6729,1.5,1.5,1.5h12c0.8271,0,1.5,-0.6' +
+          '729,1.5,-1.5V6c0,-0.8271,-0.6729,-1.5,-1.5,-1.5H6z"/>'#10'    <path ' +
+          'fill="#FF99A4" d="M7.74,15.17L10.91,12L7.74,8.83C7.48,8.57,7.42,' +
+          '8.16,7.62,7.86C7.89,7.43,8.47,7.39,8.81,7.73L12,10.91L15.17,7.74' +
+          'C15.43,7.48,15.84,7.42,16.14,7.62C16.57,7.9,16.61,8.48,16.27,8.8' +
+          '1L13.09,12L16.26,15.17C16.52,15.43,16.58,15.84,16.38,16.14C16.1,' +
+          '16.57,15.52,16.61,15.19,16.27L12,13.09L8.81,16.27C8.47,16.61,7.8' +
+          '9,16.57,7.62,16.14C7.42,15.84,7.48,15.43,7.74,15.17z"/>'#10'  </g>'#10'<' +
+          '/svg>'#10
+        Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'close-all'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 24 24">'#10'  <g id="icon">'#10'    <path' +
+          ' fill="#000000" d="M19,2.75L8,2.75C6.76,2.75,5.75,3.76,5.75,5L5.' +
+          '75,6.75L15,6.75C16.24,6.75,17.25,7.76,17.25,9L17.25,18.25L19,18.' +
+          '25C20.24,18.25,21.25,17.24,21.25,16L21.25,5C21.25,3.76,20.24,2.7' +
+          '5,19,2.75z"/>'#10'    <path fill="#FF99A4" d="M19,2L8,2C6.35,2,5,3.3' +
+          '5,5,5L5,6.75L6.5,6.75L6.5,5C6.5,4.17,7.17,3.5,8,3.5L19,3.5C19.83' +
+          ',3.5,20.5,4.17,20.5,5L20.5,16C20.5,16.83,19.83,17.5,19,17.5L17.2' +
+          '5,17.5L17.25,19L19,19C20.65,19,22,17.65,22,16L22,5C22,3.35,20.65' +
+          ',2,19,2z"/>'#10'    <path fill="#000000" d="M15.75,21.25L4.25,21.25C' +
+          '3.42,21.25,2.75,20.58,2.75,19.75L2.75,8.25C2.75,7.42,3.42,6.75,4' +
+          '.25,6.75L15.75,6.75C16.58,6.75,17.25,7.42,17.25,8.25L17.25,19.75' +
+          'C17.25,20.58,16.58,21.25,15.75,21.25z"/>'#10'    <path fill="#FF99A4' +
+          '" d="M15,22H5c-1.6542,0,-3,-1.3458,-3,-3V9c0,-1.6542,1.3458,-3,3' +
+          ',-3h10c1.6542,0,3,1.3458,3,3v10C18,20.6542,16.6542,22,15,22zM5,7' +
+          '.5c-0.8271,0,-1.5,0.6729,-1.5,1.5v10c0,0.8271,0.6729,1.5,1.5,1.5' +
+          'h10c0.8271,0,1.5,-0.6729,1.5,-1.5V9c0,-0.8271,-0.6729,-1.5,-1.5,' +
+          '-1.5H5z"/>'#10'    <path fill="#FF99A4" d="M6.42,16.6L9.01,14L6.42,1' +
+          '1.4C6.18,11.17,6.13,10.8,6.31,10.52C6.56,10.14,7.08,10.1,7.39,10' +
+          '.4L10,13.01L12.6,10.42C12.83,10.18,13.2,10.13,13.48,10.31C13.86,' +
+          '10.56,13.9,11.08,13.6,11.39L10.98,14L13.58,16.6C13.82,16.83,13.8' +
+          '7,17.2,13.69,17.48C13.44,17.86,12.92,17.9,12.61,17.6L10,14.99L7.' +
+          '39,17.6C7.08,17.9,6.56,17.86,6.31,17.48C6.13,17.2,6.18,16.83,6.4' +
+          '2,16.6z"/>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
       end>
     Destination = <
       item
         Layers = <
           item
             Name = 'clipboard-barcode-filled'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'close'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'close-all'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
       end>
-    Left = 680
-    Top = 464
+    Left = 576
+    Top = 328
+  end
+  object qDelSelZak: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update ZAKAZ_LIST ZL'
+      '      set ZL.IS_PROD = 1'
+      '      where (ZL.NO_ZAK = :NZ)')
+    ParamData = <
+      item
+        Name = 'NZ'
+        ParamType = ptInput
+      end>
+    Left = 584
+    Top = 472
+  end
+  object qDelAllZakaz: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update ZAKAZ_LIST ZL'
+      'set ZL.IS_PROD = 1'
+      'where ZL.IS_PROD = 0')
+    Left = 648
+    Top = 472
   end
 end
