@@ -45,21 +45,136 @@ object fmInv: TfmInv
         0486A7EECA27A3A14D05818B878E64A1C50701137EEDC6F38AC0BFA5E8439C70
         9C3FFB5BBEF9FFBFB0B7A6FA2F073C8A5E64BCB5E18AE3AD2DC65B8BF9230CF4
         8F9FFE033208EDC6B2C59B230000000049454E44AE426082}
+      BitmapSize = 24
       ShowImage = True
       ShowText = False
       Size.Width = 44.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Align = MostLeft
+      CanFocus = False
       Margins.Left = 2.000000000000000000
       Margins.Top = 2.000000000000000000
-      Margins.Right = 2.000000000000000000
+      Margins.Right = 16.000000000000000000
       Margins.Bottom = 2.000000000000000000
       Position.X = 2.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 3
       Text = #1053#1072' '#1075#1083#1072#1074#1085#1091#1102
       OnClick = TMSFNCButton5Click
+    end
+    object btUpdSclad: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C086488000002E7494441544889B5553D6814
+        5110FEBEB7BB31E1028A55143187A8082A12914BC01FD4C2D416A6D178166261
+        EC45C44610D14A245888A0312212B10A220654D0C2E414443844ACEE54348522
+        086A6EF7F67D167B7BB7B797C41075AAB7336FBE99F966671EF09F857FBA7060
+        4CCE92EE6013697A0076455A4D4BF655A5EC15EF0E305C5480C1D7CA70C69E10
+        758C4076B63B024A14AFAADD0C8F6EE18F0507383415EC34E44D92DD92449200
+        903C27BF2595AD74F856AFF72C8D65D28A7CA13A60C80992DDF354DE9C25D96D
+        C8897CA13A306F05B5CC2700B42D143C25BE95F6252BA907187CAD0C2B617136
+        5A20FC04F048D41B037408EC059983440001001F4026A64B4B9C4D714FDC7AEC
+        193B44D3428B208CFB5EE5F89DAD994F49C39149BFCF1ADE00354CDA07B2EEBB
+        982ECDD8210017EB151C1893D39E0DDFA5FF1602F77F969CFD9D59AC0C119E21
+        B4DD823F28DD5BBADCBDF4E52B96B96E9085E7155909BF37B24269A6E4ACBF3B
+        C0D00040C76A7F23812C6B12D764E00C75AC4257887092E451811B0CB98DC69C
+        FFFE2D1CAFBEC797D16D6D53F5841A00D98ED5FE46D4FF223A3DB334ECF1F51C
+        3FC00D4F935CD1C49BEC650B7BBB732D96CFD9EE1A66D403875DB08A1ADA8029
+        4617B55B425DAF486E8DF6B6BD8C754E255867619AFD9D68EADD1A6764ADC43A
+        08EAA04C0F1AE914F22FC2C6A0D58C297F3628B29A6EA910DC1CA5CC2773D230
+        9FD4304D14D1BE6AE5107B0F4E6A15AACE39499FD36649CF017B7B2EFC18D300
+        40A5EC1505946AFC46D408EDAE09AFFCFA8869074E9FA46B84DECAAA20E0E4AF
+        8CB3A76AED594136F65103A054297B452427F9F0547092C69C47F35293ACC6FD
+        A072FCCE8EE6411B9C0C76D0F006C935291FC8DA53377BBD0B58CCAA20D929A1
+        CF905BE39E23B55993ABA269D9E50BC12E810FFF66D911EA1FC9794F6345D3BA
+        1EC9794F09E441F8C9A99EEDDC62237C02F924784B8028883B46A95F5279A169
+        4B2A53EA1FC9B96369DB1F9ECCEA0991FFFEC94CCADF3EFAFF5D7E031F38B5C5
+        DE4BEA8D0000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      CanFocus = False
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 62.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 4
+      Text = #1054#1073#1085#1086#1074#1080#1090#1100
+      OnClick = btUpdScladClick
+    end
+    object btSetModSize: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000106494441544889ED93C17183
+        301444DF06933E0245B99274905BDAC878261DA417C6D086716C6F2E600B0563
+        149C9BF724ED97B4A3277D78E83FD5D6BCB50DEDBEE1D4D654BB8A325EF3B428
+        41BC0AF26E5628631D2F592D0A302B8383C05FE72DBB012021095D3B6CD60D76
+        15A532D6881CB37D7E6123719AB377568032BE80A287B16F00F800B02F88C612
+        672192287B0C124214416D12D19FDE2065D32C4421061B5BE3B59B88FAC6696B
+        8E61E3841824146E4A42A4A071A4EEE72C541C9A0F66238D93AAC101316B34EE
+        A7BCC120A067696309E9861FD7EEF64D533489C8774014FFA2C3A063CD61CAA7
+        F3FBDAD9BF1660F36EF8EEC65B1FF99CF2B9F806EAB3FF508A7E00A602893802
+        BD66830000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      CanFocus = False
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 216.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 5
+      Text = #1056#1072#1079#1084#1077#1088#1099
+      OnClick = btSetModSizeClick
+    end
+    object btRep: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000212494441544889B5953F6814
+        5110C6BF6FEF729ADD8D85DD1D4421A55DF62E224490B4223696FE6B128C8D20
+        DA9A2275403B1372105053A6F15F2B81048470975C6319D0E06D2A8578B7A797
+        DC8E4D76F3F66577BD3BBCAF7AF3DEEC9B99DF9B6580018BFAC66DAF7D25CBCC
+        9400B91E2F6A1F49E7D3AA99FB9C18E04EB33D6DD07809C0E83361DF17FFE11B
+        2B578E0D70CF3BDA6B54B60ABB4F1FC36F790000111192D4D7BA6D0C9B185B78
+        0EBB38517F656647039F6CA41CB2D0D8AEA2E33565A43841DB29EA49E8480900
+        8D6A05BF2A5BD2D8AE72A474B9A03A6401E06EEBF01A85CF44243C185B7801C3
+        34BBE3E279A84D4D065545CE2215E0A47A642C8BEEF2A2B8CB8BA988F233B3CC
+        4F3F200039A6703AC0EBE1A17500EBF75B1D3F701411D84E09F999D95444B653
+        8220593AA2D0F7607343CE4D5EC5F13BA4EA607323FCAE6B44BB4F1E8518BAE9
+        A2932BBA44F4BF9488A89B75827D3A4028A53C15CBA5B5B73C3B7A812A92DF7B
+        DFE4CBAD9B117CE817D1FE4A1967F285605F00E08F5BEF0351CCE524F1F3C3BB
+        9080DAAA7AB689014229FC4444CE5FBFC18B73F354D051F3E7D7F939FCF8F83E
+        BD4DE3109164B3B683FDF252E46DF4849AB51D9064EA1B24216AD7BFC32D2FF5
+        F41FF484E85FEB043B1551273888CB3AAD82244491C92522AE3DEE20635AB19D
+        A27FACDA19D3A23DEE4044DC888F6A0C7C644219FA3E306400F09568BE1659B3
+        0FE386FEC0F517CD675B53744053890000000049454E44AE426082}
+      ShowImage = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      CanFocus = False
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 370.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 6
+      Text = #1054#1090#1095#1077#1090#1099
+      OnClick = btRepClick
     end
   end
   object pnMod: TPanel
@@ -141,6 +256,7 @@ object fmInv: TfmInv
     object tlMod: TTMSFNCTreeView
       AdaptToStyle = True
       Align = Client
+      PopupMenu = pmMod
       Size.Width = 257.000000000000000000
       Size.Height = 407.000000000000000000
       Size.PlatformDefault = False
@@ -340,8 +456,8 @@ object fmInv: TfmInv
       NodesAppearance.TitleFont.Color = claWhite
       NodesAppearance.SelectedFontColor = claBlack
       NodesAppearance.SelectedTitleFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F2A96FF
-      NodesAppearance.SelectedStroke.Color = x7F2A96FF
+      NodesAppearance.SelectedFill.Color = x7F0078D7
+      NodesAppearance.SelectedStroke.Color = x7F0078D7
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
       NodesAppearance.ExtendedFill.Color = xFFF0F0F0
       NodesAppearance.ExtendedStroke.Color = xFFF0F0F0
@@ -527,6 +643,19 @@ object fmInv: TfmInv
       Size.PlatformDefault = False
       StyleLookup = 'OfficePanel'
       TabOrder = 1
+      object lbSumZak: TLabel
+        Align = Right
+        StyledSettings = [Family, Style]
+        Position.X = 176.000000000000000000
+        Size.Width = 165.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = '0'
+        TabOrder = 0
+      end
     end
     object cxZakList: TListBox
       Align = Client
@@ -1337,6 +1466,50 @@ object fmInv: TfmInv
       OnClick = MenuItem3Click
     end
   end
+  object ppRep: TTMSFNCPopup
+    Size.Width = 26.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 48.000000000000000000
+    Position.Y = 120.000000000000000000
+    DropDownHeight = 120.000000000000000000
+    DropDownWidth = 217.000000000000000000
+    PlacementControl = btRep
+    ContentControl = pnRep
+  end
+  object pnRep: TPanel
+    Position.X = 65.000000000000000000
+    Position.Y = 265.000000000000000000
+    Size.Width = 200.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 17
+    object repOst: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 200.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Align = Top
+      CanFocus = False
+      TabOrder = 0
+      Text = #1054#1089#1090#1072#1090#1086#1082' '#1085#1072' '#1089#1082#1083#1072#1076#1077
+      OnClick = repOstClick
+    end
+    object repZak: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 200.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Align = Top
+      CanFocus = False
+      Margins.Top = 2.000000000000000000
+      Position.Y = 35.000000000000000000
+      TabOrder = 1
+      Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
+    end
+  end
   object qKat: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -1476,7 +1649,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
+            Size = 20
           end>
         IconName = 'clipboard-barcode-filled'
         SVGText = 
@@ -1544,7 +1717,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
+            Size = 20
           end>
         IconName = 'close'
         SVGText = 
@@ -1572,7 +1745,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
+            Size = 20
           end>
         IconName = 'close-all'
         SVGText = 
@@ -1603,24 +1776,134 @@ object fmInv: TfmInv
           '39,17.6C7.08,17.9,6.56,17.86,6.31,17.48C6.13,17.2,6.18,16.83,6.4' +
           '2,16.6z"/>'#10'  </g>'#10'</svg>'#10
         Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'bars-3-filled'
+        SVGText = 
+          '<?xml version="1.0" encoding="UTF-8"?>'#10'<!DOCTYPE svg PUBLIC "-//' +
+          'W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/sv' +
+          'g11.dtd">'#10'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.o' +
+          'rg/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" ' +
+          'y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-ba' +
+          'ckground="new 0 0 16 16" xml:space="preserve">'#10'  <g id="icon">'#10' ' +
+          '   <path d="M4,14H3c-0.5514,0,-1,-0.4486,-1,-1V9c0,-0.5514,0.448' +
+          '6,-1,1,-1h1c0.5514,0,1,0.4486,1,1v4C5,13.5514,4.5514,14,4,14z" f' +
+          'ill="#FCE100"/>'#10'    <path d="M8,14H7c-0.5514,0,-1,-0.4486,-1,-1V' +
+          '6c0,-0.5514,0.4486,-1,1,-1h1c0.5514,0,1,0.4486,1,1v7C9,13.5514,8' +
+          '.5514,14,8,14z" fill="#FCE100"/>'#10'    <path d="M12,14h-1c-0.5514,' +
+          '0,-1,-0.4486,-1,-1V3c0,-0.5514,0.4486,-1,1,-1h1c0.5514,0,1,0.448' +
+          '6,1,1v10C13,13.5514,12.5514,14,12,14z" fill="#FCE100"/>'#10'  </g>'#10'<' +
+          '/svg>'#10
+        Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'button-refresh-filled'
+        SVGText = 
+          '<?xml version="1.0" encoding="UTF-8"?>'#10'<!DOCTYPE svg PUBLIC "-//' +
+          'W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/sv' +
+          'g11.dtd">'#10'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.o' +
+          'rg/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" ' +
+          'y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-ba' +
+          'ckground="new 0 0 16 16" xml:space="preserve">'#10'  <g id="icon">'#10' ' +
+          '   <path d="M8,1c-3.8598,0,-7,3.1402,-7,7c0,3.8598,3.1402,7,7,7s' +
+          '7,-3.1402,7,-7C15,4.1402,11.8598,1,8,1zM11.9692,7.475c0,0.2899,-' +
+          '0.2351,0.525,-0.525,0.525H9.248c-0.2328,0,-0.4492,-0.1435,-0.518' +
+          '5,-0.3657c-0.1157,-0.3708,0.1582,-0.7112,0.5116,-0.7112h0.9855c-' +
+          '0.4122,-0.9077,-1.3155,-1.5077,-2.3496,-1.5077C6.4518,5.4154,5.4' +
+          ',6.5749,5.4,8s1.0518,2.5846,2.4769,2.5846c0.6983,0,1.3526,-0.274' +
+          '2,1.8424,-0.7719c0.2085,-0.212,0.5495,-0.2147,0.7615,-0.0062c0.2' +
+          '12,0.2086,0.2147,0.5495,0.0062,0.7615c-0.6939,0.7052,-1.6209,1.0' +
+          '935,-2.6101,1.0935c-2.019,0,-3.5538,-1.6426,-3.5538,-3.6615S5.85' +
+          '8,4.3385,7.8769,4.3385c1.2405,0,2.3499,0.6088,3.0154,1.5766v-0.7' +
+          '799c0,-0.2328,0.1435,-0.4492,0.3657,-0.5185c0.3708,-0.1157,0.711' +
+          '2,0.1582,0.7112,0.5116V7.475z" fill="#60CDFF"/>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'report'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 16 16">'#10'  <g id="icon">'#10'    <path' +
+          ' fill="#000000" d="M12.35,14.4L3.65,14.4C3.07,14.4,2.6,13.93,2.6' +
+          ',13.35L2.6,2.65C2.6,2.07,3.07,1.6,3.65,1.6L12.35,1.6C12.93,1.6,1' +
+          '3.4,2.07,13.4,2.65L13.4,13.35C13.4,13.93,12.93,14.4,12.35,14.4z"' +
+          '/>'#10'    <path fill="#60F9FF" d="M4,3.75v1.5c0,0.4142,0.3358,0.75,' +
+          '0.75,0.75h6.5c0.4142,0,0.75,-0.3358,0.75,-0.75v-1.5c0,-0.4142,-0' +
+          '.3358,-0.75,-0.75,-0.75h-6.5C4.3358,3,4,3.3358,4,3.75zM5,5V4h6v1' +
+          'H5zM3.75,1h8.5c0.9665,0,1.75,0.7835,1.75,1.75v10.5c0,0.9665,-0.7' +
+          '835,1.75,-1.75,1.75h-8.5c-0.9665,0,-1.75,-0.7835,-1.75,-1.75v-10' +
+          '.5C2,1.7835,2.7835,1,3.75,1zM3,2.75v10.5c0,0.4142,0.3358,0.75,0.' +
+          '75,0.75h8.5c0.4142,0,0.75,-0.3358,0.75,-0.75v-10.5c0,-0.4142,-0.' +
+          '3358,-0.75,-0.75,-0.75h-8.5C3.3358,2,3,2.3358,3,2.75z"/>'#10'    <pa' +
+          'th fill="#60F9FF" d="M2,4.5h-0.5c-0.2761,0,-0.5,-0.2239,-0.5,-0.' +
+          '5v0c0,-0.2761,0.2239,-0.5,0.5,-0.5h0.5V4.5zM2,5.5h-0.5c-0.2761,0' +
+          ',-0.5,0.2239,-0.5,0.5v0c0,0.2761,0.2239,0.5,0.5,0.5h0.5V5.5zM2,7' +
+          '.5h-0.5c-0.2761,0,-0.5,0.2239,-0.5,0.5v0c0,0.2761,0.2239,0.5,0.5' +
+          ',0.5h0.5V7.5zM2,9.5h-0.5c-0.2761,0,-0.5,0.2239,-0.5,0.5v0c0,0.27' +
+          '61,0.2239,0.5,0.5,0.5h0.5V9.5zM2,11.5h-0.5c-0.2761,0,-0.5,0.2239' +
+          ',-0.5,0.5v0c0,0.2761,0.2239,0.5,0.5,0.5h0.5V11.5z"/>'#10'    <path f' +
+          'ill="#60F9FF" d="M9.5,9H6.5c-0.2761,0,-0.5,-0.2239,-0.5,-0.5s0.2' +
+          '239,-0.5,0.5,-0.5h3c0.2761,0,0.5,0.2239,0.5,0.5S9.7761,9,9.5,9zM' +
+          '11,10.5c0,-0.2761,-0.2239,-0.5,-0.5,-0.5H5.5c-0.2761,0,-0.5,0.22' +
+          '39,-0.5,0.5s0.2239,0.5,0.5,0.5h5C10.7761,11,11,10.7761,11,10.5z"' +
+          '/>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
       end>
     Destination = <
       item
         Layers = <
           item
             Name = 'clipboard-barcode-filled'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close-all'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'bars-3-filled'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'button-refresh-filled'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'report'
           end>
       end
       item
@@ -1658,5 +1941,34 @@ object fmInv: TfmInv
       'where ZL.IS_PROD = 0')
     Left = 648
     Top = 472
+  end
+  object pmMod: TPopupMenu
+    Images = SVGIconImageList1
+    OnPopup = pmModPopup
+    Left = 72
+    Top = 432
+    object MenuItem4: TMenuItem
+      Text = #1054#1073#1085#1086#1074#1080#1090#1100' '#1089#1082#1083#1072#1076
+      ImageIndex = 4
+      OnClick = MenuItem4Click
+    end
+    object MenuItem5: TMenuItem
+      Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1088#1072#1079#1084#1077#1088#1099
+      ImageIndex = 3
+      OnClick = MenuItem5Click
+    end
+    object MenuItem7: TMenuItem
+      Text = #1054#1090#1095#1077#1090#1099
+      ImageIndex = 5
+      object MenuItem6: TMenuItem
+        Locked = True
+        Text = #1054#1089#1090#1072#1090#1086#1082' '#1085#1072' '#1089#1082#1083#1072#1076#1077
+        OnClick = MenuItem6Click
+      end
+      object miRepSize: TMenuItem
+        Locked = True
+        Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
+      end
+    end
   end
 end

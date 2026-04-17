@@ -18,7 +18,7 @@ uses
   FMX.TMSFNCGridCell, FMX.TMSFNCGridOptions, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCGridData, FMX.TMSFNCCustomGrid, FMX.TMSFNCGrid, FMX.TMSFNCPopupMenu,
   FMX.Menus, System.ImageList, FMX.ImgList, FMX.SVGIconImageList, FMX.Platform,
-  FMX.Clipboard;
+  FMX.Clipboard, FMX.TMSFNCPopup;
 
 type
   TfmInv = class(TFrame)
@@ -62,6 +62,20 @@ type
     MenuItem3: TMenuItem;
     qDelSelZak: TFDCommand;
     qDelAllZakaz: TFDCommand;
+    btUpdSclad: TTMSFNCButton;
+    btSetModSize: TTMSFNCButton;
+    lbSumZak: TLabel;
+    pmMod: TPopupMenu;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    btRep: TTMSFNCButton;
+    ppRep: TTMSFNCPopup;
+    pnRep: TPanel;
+    repOst: TTMSFNCButton;
+    repZak: TTMSFNCButton;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    miRepSize: TMenuItem;
     myZakList: TLayout;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode:
@@ -74,6 +88,14 @@ type
     procedure miCopyCodeClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
+    procedure btUpdScladClick(Sender: TObject);
+    procedure btSetModSizeClick(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
+    procedure btRepClick(Sender: TObject);
+    procedure pmModPopup(Sender: TObject);
+    procedure repOstClick(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
   private
     { Private declarations }
     function ListDet(ANode: TTMSFNCTreeViewNode): Float64;
@@ -93,6 +115,14 @@ type
     /// Отметить все заказы как проданные
     /// </summary>
     procedure DelAllZakaz;
+    /// <summary>
+    /// Настройка размеров
+    /// </summary>
+    procedure SetModSize;
+     /// <summary>
+    /// Отчет о наличии на складе
+    /// </summary>
+    procedure RepOstSclad;
   public
     { Public declarations }
     procedure LoadINI;
@@ -113,7 +143,7 @@ var
 implementation
 
 uses
-  frmMain;
+  frmMain, frmSetModSizeSclad, frmReport;
 
 {$R *.fmx}
 
@@ -242,6 +272,7 @@ begin
       until (qZakList.Eof);
     finally
       cxZakList.EndUpdate;
+      lbSumZak.Text := FCountZak.ToString;
     end;
     if cxZakList.Items.Count > 0 then
     begin
@@ -386,6 +417,21 @@ begin
  DelAllZakaz;
 end;
 
+procedure TfmInv.MenuItem4Click(Sender: TObject);
+begin
+  btUpdScladClick(Sender);
+end;
+
+procedure TfmInv.MenuItem5Click(Sender: TObject);
+begin
+ btSetModSizeClick(Sender);
+end;
+
+procedure TfmInv.MenuItem6Click(Sender: TObject);
+begin
+ RepOstSclad;
+end;
+
 procedure TfmInv.miCopyCodeClick(Sender: TObject);
 var
   item: TListBoxItem;
@@ -406,6 +452,21 @@ begin
   end;
 end;
 
+procedure TfmInv.pmModPopup(Sender: TObject);
+begin
+ miRepSize.Enabled := not tlMod.FocusedNode.Extended;
+end;
+
+procedure TfmInv.repOstClick(Sender: TObject);
+begin
+ RepOstSclad;
+end;
+
+procedure TfmInv.RepOstSclad;
+begin
+ ShowReportJson('ShRepOstMag.fr3', '[{"IV":"0"}]');
+end;
+
 procedure TfmInv.SaveINI;
 begin
   myINI.WriteInteger('Sclad', 'ModList', Trunc(pnMod.Width));
@@ -413,8 +474,27 @@ begin
   myINI.WriteInteger('Sclad', 'SizeList', Trunc(tlSize.Height));
 end;
 
+procedure TfmInv.SetModSize;
+begin
+  if not tlMod.FocusedNode.Extended then
+  begin
+    fmSetSize := TfmSetSize.Create(fmInv);
+    fmSetSize.ListSize(tlMod.FocusedNode.DataInteger, 0);
+    if fmSetSize.ShowModal = mrOk then
+    begin
+      tlMod.FocusedNode.Text[1]:=fmSetSize.SizeListSum.ToString;
+      fmMain.StartReadTransaction;
+      ViewDetNode(tlMod.FocusedNode);
+      ShowNotify('После изменения размеров не забудьте обновить склад...');
+    end;
+    fmSetSize.Free;
+    fmSetSize:=nil;
+  end;
+end;
+
 procedure TfmInv.tlModAfterSelectNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
 begin
+  fmMain.StartReadTransaction;
   ViewDetNode(ANode.Node);
 end;
 
@@ -428,6 +508,23 @@ procedure TfmInv.TMSFNCButton1Click(Sender: TObject);
 begin
   eFind.Text := '';
   eFind.SetFocus;
+end;
+
+procedure TfmInv.btUpdScladClick(Sender: TObject);
+begin
+ fmMain.UpdateSclad;
+ ListMod;
+end;
+
+procedure TfmInv.btRepClick(Sender: TObject);
+begin
+ repZak.Enabled := not  tlMod.FocusedNode.Extended;
+ ppRep.Popup();
+end;
+
+procedure TfmInv.btSetModSizeClick(Sender: TObject);
+begin
+  SetModSize;
 end;
 
 procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
