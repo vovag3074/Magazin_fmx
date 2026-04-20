@@ -53,17 +53,19 @@ type
     TMSFNCToolBarSeparator2: TTMSFNCToolBarSeparator;
     TMSFNCToolBarButton1: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator3: TTMSFNCToolBarSeparator;
-    TMSFNCToolBarButton3: TTMSFNCToolBarButton;
+    btBank: TTMSFNCToolBarButton;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btCloseClick(Sender: TObject);
     procedure btInvScladClick(Sender: TObject);
     procedure myListItemClick(Sender: TObject; AItemIndex: Integer);
+    procedure btBankClick(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
     procedure LoadFormInv;
+    procedure ShowBank;
   public
     { Public declarations }
     procedure StartMainTransaction;
@@ -119,7 +121,7 @@ var
 implementation
 
 uses
-  frmInpSclad, frmInvScald;
+  frmInpSclad, frmInvScald, frmBank;
 
 {$R *.fmx}
 
@@ -138,6 +140,12 @@ begin
     fmInv.SaveINI;
     fmInv.Free;
     fmInv := nil;
+  end
+  else if Assigned(fmBank) then
+  begin
+    fmBank.SaveINI;
+    fmBank.Free;
+    fmBank := nil;
   end;
 end;
 
@@ -195,6 +203,19 @@ begin
   begin
     btInvSclad.OnClick(Sender);
   end;
+end;
+
+procedure TfmMain.ShowBank;
+begin
+  tbMain.Visible := False;
+  myList.Visible := False;
+  fmBank := TfmBank.Create(pMain);
+  fmBank.Parent := pMain;
+  fmBank.Align := TAlignLayout.Client;
+ // fmInv.tlMod.AdaptToStyle := True;
+ // fmInv.tlSize.AdaptToStyle := True;
+  fmBank.LoadINI;
+//  fmInv.ListMod;
 end;
 
 procedure TfmMain.ShowIBError(SError: string);
@@ -269,6 +290,11 @@ begin
     NoAgn := qTestZal.FieldByName('NO_AGN').AsInteger;
   end;
   qTestZal.Close;
+end;
+
+procedure TfmMain.btBankClick(Sender: TObject);
+begin
+ ShowBank;
 end;
 
 procedure TfmMain.btInvScladClick(Sender: TObject);

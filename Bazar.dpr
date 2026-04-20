@@ -10,7 +10,8 @@ uses
   frmReport in 'frmReport.pas' {fmReport},
   frmReportList in 'frmReportList.pas' {fmRepList},
   frmInvScald in 'frmInvScald.pas' {fmInv: TFrame},
-  frmSetModSizeSclad in 'frmSetModSizeSclad.pas' {fmSetSize};
+  frmSetModSizeSclad in 'frmSetModSizeSclad.pas' {fmSetSize},
+  frmBank in 'frmBank.pas' {fmBank: TFrame};
 
 {$R *.res}
 
