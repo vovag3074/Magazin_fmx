@@ -84,7 +84,6 @@ type
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
       Shift: TShiftState);
-    procedure tlModAfterSelectNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
     procedure miCopyCodeClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
@@ -96,6 +95,8 @@ type
     procedure pmModPopup(Sender: TObject);
     procedure repOstClick(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
+    procedure tlModFocusedNodeChanged(Sender: TObject;
+      ANode: TTMSFNCTreeViewVirtualNode);
   private
     { Private declarations }
     function ListDet(ANode: TTMSFNCTreeViewNode): Float64;
@@ -492,16 +493,17 @@ begin
   end;
 end;
 
-procedure TfmInv.tlModAfterSelectNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
-begin
-  fmMain.StartReadTransaction;
-  ViewDetNode(ANode.Node);
-end;
-
 procedure TfmInv.tlModBeforeExpandNode(Sender: TObject; ANode:
   TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 begin
   ListDet(ANode.Node);
+end;
+
+procedure TfmInv.tlModFocusedNodeChanged(Sender: TObject;
+  ANode: TTMSFNCTreeViewVirtualNode);
+begin
+  fmMain.StartReadTransaction;
+  ViewDetNode(ANode.Node);
 end;
 
 procedure TfmInv.TMSFNCButton1Click(Sender: TObject);
@@ -543,7 +545,7 @@ begin
       qSize.Close;
       qSize.Prepare;
       qSize.ParamByName('IV').AsSmallInt := 0;
-      qSize.ParamByName('NM').AsInteger := Node.DataInteger;
+      qSize.ParamByName('NM').AsInteger := tlMod.FocusedNode.DataInteger;
       qSize.Active := true;
       var R: Integer;
       R := qSize.RecordCount;

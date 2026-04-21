@@ -494,8 +494,8 @@ object fmInv: TfmInv
       GlobalFont.Color = claWhite
       GlobalFont.Size = 16.000000000000000000
       GlobalFont.Name = 'Segoe UI'
+      OnFocusedNodeChanged = tlModFocusedNodeChanged
       OnBeforeExpandNode = tlModBeforeExpandNode
-      OnAfterSelectNode = tlModAfterSelectNode
       DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
       DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
       object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
@@ -1398,7 +1398,7 @@ object fmInv: TfmInv
       NodesAppearance.ExpandWidth = 18.000000000000000000
       NodesAppearance.ExpandHeight = 18.000000000000000000
       NodesAppearance.LevelIndent = 20.000000000000000000
-      NodesAppearance.FixedHeight = 25.000000000000000000
+      NodesAppearance.FixedHeight = 33.000000000000000000
       NodesAppearance.VariableMinimumHeight = 33.000000000000000000
       NodesAppearance.Font.Size = 16.000000000000000000
       NodesAppearance.Font.Color = xFF7A7A7A
@@ -1472,8 +1472,8 @@ object fmInv: TfmInv
     Size.PlatformDefault = False
     Position.X = 48.000000000000000000
     Position.Y = 120.000000000000000000
-    DropDownHeight = 120.000000000000000000
-    DropDownWidth = 217.000000000000000000
+    DropDownHeight = 72.000000000000000000
+    DropDownWidth = 200.000000000000000000
     PlacementControl = btRep
     ContentControl = pnRep
   end
@@ -1483,6 +1483,7 @@ object fmInv: TfmInv
     Size.Width = 200.000000000000000000
     Size.Height = 72.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
     TabOrder = 17
     object repOst: TTMSFNCButton
       Font.Size = 14.000000000000000000
@@ -1508,6 +1509,35 @@ object fmInv: TfmInv
       Position.Y = 35.000000000000000000
       TabOrder = 1
       Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
+    end
+  end
+  object pmMod: TPopupMenu
+    Images = SVGIconImageList1
+    OnPopup = pmModPopup
+    Left = 72
+    Top = 432
+    object MenuItem4: TMenuItem
+      Text = #1054#1073#1085#1086#1074#1080#1090#1100' '#1089#1082#1083#1072#1076
+      ImageIndex = 4
+      OnClick = MenuItem4Click
+    end
+    object MenuItem5: TMenuItem
+      Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1088#1072#1079#1084#1077#1088#1099
+      ImageIndex = 3
+      OnClick = MenuItem5Click
+    end
+    object MenuItem7: TMenuItem
+      Text = #1054#1090#1095#1077#1090#1099
+      ImageIndex = 5
+      object MenuItem6: TMenuItem
+        Locked = True
+        Text = #1054#1089#1090#1072#1090#1086#1082' '#1085#1072' '#1089#1082#1083#1072#1076#1077
+        OnClick = MenuItem6Click
+      end
+      object miRepSize: TMenuItem
+        Locked = True
+        Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
+      end
     end
   end
   object qKat: TFDQuery
@@ -1649,7 +1679,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'clipboard-barcode-filled'
         SVGText = 
@@ -1717,7 +1746,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'close'
         SVGText = 
@@ -1745,7 +1773,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'close-all'
         SVGText = 
@@ -1780,7 +1807,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'bars-3-filled'
         SVGText = 
@@ -1803,7 +1829,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'button-refresh-filled'
         SVGText = 
@@ -1830,7 +1855,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report'
         SVGText = 
@@ -1868,48 +1892,46 @@ object fmInv: TfmInv
         Layers = <
           item
             Name = 'clipboard-barcode-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close-all'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'bars-3-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'button-refresh-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'report'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
@@ -1941,34 +1963,5 @@ object fmInv: TfmInv
       'where ZL.IS_PROD = 0')
     Left = 648
     Top = 472
-  end
-  object pmMod: TPopupMenu
-    Images = SVGIconImageList1
-    OnPopup = pmModPopup
-    Left = 72
-    Top = 432
-    object MenuItem4: TMenuItem
-      Text = #1054#1073#1085#1086#1074#1080#1090#1100' '#1089#1082#1083#1072#1076
-      ImageIndex = 4
-      OnClick = MenuItem4Click
-    end
-    object MenuItem5: TMenuItem
-      Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1088#1072#1079#1084#1077#1088#1099
-      ImageIndex = 3
-      OnClick = MenuItem5Click
-    end
-    object MenuItem7: TMenuItem
-      Text = #1054#1090#1095#1077#1090#1099
-      ImageIndex = 5
-      object MenuItem6: TMenuItem
-        Locked = True
-        Text = #1054#1089#1090#1072#1090#1086#1082' '#1085#1072' '#1089#1082#1083#1072#1076#1077
-        OnClick = MenuItem6Click
-      end
-      object miRepSize: TMenuItem
-        Locked = True
-        Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
-      end
-    end
   end
 end

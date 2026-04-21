@@ -1,10 +1,10 @@
 object fmBank: TfmBank
-  Size.Width = 839.000000000000000000
+  Size.Width = 1035.000000000000000000
   Size.Height = 616.000000000000000000
   Size.PlatformDefault = False
   object Panel1: TPanel
     Align = Top
-    Size.Width = 839.000000000000000000
+    Size.Width = 1035.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -66,7 +66,7 @@ object fmBank: TfmBank
       Align = Right
       TabOrder = 4
       ReadOnly = True
-      Position.X = 616.000000000000000000
+      Position.X = 812.000000000000000000
       Position.Y = 10.000000000000000000
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
@@ -74,6 +74,7 @@ object fmBank: TfmBank
       Size.Width = 213.000000000000000000
       Size.Height = 28.000000000000000000
       Size.PlatformDefault = False
+      OnChange = eDataChange
       object DropDownEditButton1: TDropDownEditButton
         Touch.InteractiveGestures = [LongTap]
         CanFocus = False
@@ -85,10 +86,72 @@ object fmBank: TfmBank
         OnClick = DropDownEditButton1Click
       end
     end
+    object TMSFNCButton2: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000000473424954080808087C0864880000051E494441545885E5966B6C14
+        651486DFF3CDCEB2DB622F4B49A1F406F4B2A848AC2001228170293440C35D03
+        6D6940125290108D3511B106898DD11091449BC8450444CAC528011B4D8A5142
+        ACBD98C684A5AD8582B42E6DC9B6DDEDEECECE7CC71F6D91C236BB60F18FE7EF
+        BCE77D9F7C33DF3903FCDF8B1EA5A984595CD7B40C4357D2014031198DA96673
+        4309917CEC00EBDD5AA110F43A9148BFA79F9965A394FCFED191E6438F056035
+        B3D9EA35BE20A255CC0C6F63037BAF3A0000D64C3BACE919444460E6535EAB92
+        574EA485E36B0A17C0EA35F612D12AADAD955B76BF0D774DF5A0E7239F9BCA29
+        6FBD03F3D8845556AFD101A0281CDFB04E60BD47CB528452A5BB5CB8BA611DB4
+        B6D6A03AF3D804641E3E06534C0C0C693C7F34D25C1BCA5B84032048140220E7
+        918343860380D6D60AE791830040FD3DA1BDC3110198C6CC705DAC0C29745DAC
+        043303C0B4E103201A090046775748E95D4D7FCFF00048BE4544B0A44E0829B5
+        A44E001101926F0D1B00117D0F00A356AC0CA91DD00CF40C0B4040130798B9D3
+        B67809D996E60EA9B32DCD856DF11262E6CE80260E84E31DF620CAF7E8B9209C
+        04B372E7FC39B47F751CDEC6060080353D836DD93997E2E62DF8C11A13D32C88
+        AE7C1A1B5937AC000050E0D19731E133221A05006CE8609FFF97C8BABAA24FE6
+        CFFEED7279C5C478A9D923FD7E58033E47F4A6BCA66105008097BA394E55F5CD
+        605AA248D990D2D2B839AFBEF985C42E57A989396BF07E400D3317AB450543DE
+        DF47DA86F7D6EDCF4F6DB7797A3FF4E901BAD07805F5CEBE4135654C0216A54D
+        824555258177285B0AF63F34C036E611DD3E63AD046611231A80A1DD767E7022
+        755C1D0004F61F9E478AA868BED341DBCF9FC5AD9EC17322312A06FB72962335
+        D626197281BAA5F0E2FD1943DE82F53E4EEBEAD5EB003A24409B88683511BDE8
+        AAB870EAD9E9D377A3EFAA95FA0281A0E100F067B70BDBCF9F855FD705B1280D
+        9613741BCE6136914F9E2121325D3F56727BF909E89D9D6029E1BFD192A232FB
+        2BDF2849234159171C5782860FD4CD6E172A9A1C58667F7AAAF7E323E3ADDBF2
+        AF850448EA35160A414FF5D4FCCAD78A5F05FA66FBDD32AB6A739C25C20E80EA
+        9DAD1CCCE3DEAAFFAB0DB9F6C9C2248C4C00830082BE0222B20340F7A59F1F08
+        BF5B4AA8D87F8AD1EF219407CC820330DC00A044470735D47439A1C3D3EB6006
+        3F139F101260CA9871608634198A232C000346350044CD9819D430C0C6FCB9A5
+        254D06CB9AC5E99390181533647872742CB2D33201E62ADABAAE252C80A391E6
+        5A66FC1E9161A798F90B834966ADC8CECEBAE9F3175B5455EECB598EA42010C9
+        D1B1F82867392C269558D0CE604643CE813C77209B143A273D1E6A7E6D07DCB5
+        83FF01E3725754CD9EFCE49C57DCD81CE5F7EEF5EBBAA86874A0DED906F40FA2
+        856999B0985442DF7770427126E753C95C3D2C0000C877078A49883D2C0D749C
+        3E89F6D3E5F05FEFFB8893DEDCC5F1394BCF2CBAD19437A3B661667C4F4FA900
+        A612F59D2A031292AB58D04E62F93291581B0C22E428CE73EB7924B097886299
+        1901A793BD7F34C232310DE6F83110CCD5E33A5D5BF7248FAE769CFC66BCCDEB
+        B747F83519A9C131F0CEB9A4D2648CBE718C04AD6689E34A7BD2860188B076C1
+        C62EB60554B911E05C00538828E23E0943F2656B40FB36D6EDF9FABDC4D10DF7
+        7B0C8260FE5289B3E6D39A35C6432FA30DCC16DD8F14D2F55412F4447FBC472A
+        4AB369045A0E13F986EAE5B232D59096E3045A2925BFAB1615ECFAD7DBF0618B
+        CBCA54DDB09480E54F6A51E177FF75FE03F537C3B04075AB0CEAAB0000000049
+        454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 58.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 5
+      Text = #1055#1086#1083#1091#1095#1077#1085#1080#1103
+      OnClick = TMSFNCButton2Click
+    end
   end
   object tlDop: TListBox
     Align = Client
-    Size.Width = 839.000000000000000000
+    Size.Width = 1035.000000000000000000
     Size.Height = 568.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -96,12 +159,12 @@ object fmBank: TfmBank
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 835.000000000000000000
+    Viewport.Width = 1031.000000000000000000
     Viewport.Height = 564.000000000000000000
     object ListBoxGroupHeader1: TListBoxGroupHeader
       TextSettings.Font.Size = 16.000000000000000000
       StyledSettings = [Family, Style, FontColor, Other]
-      Size.Width = 835.000000000000000000
+      Size.Width = 1031.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'myHeader'
@@ -113,23 +176,26 @@ object fmBank: TfmBank
       StyledSettings = [Family, Style, FontColor, Other]
       ItemData.Accessory = aMore
       Position.Y = 65.000000000000000000
-      Size.Width = 835.000000000000000000
-      Size.Height = 94.000000000000000000
+      Size.Width = 1031.000000000000000000
+      Size.Height = 90.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = 'miItem'
       TabOrder = 1
       Text = 'ListBoxItem1'
+      OnClick = ListBoxItem1Click
     end
     object ListBoxGroupFooter1: TListBoxGroupFooter
       TextSettings.Font.Size = 16.000000000000000000
       StyledSettings = [Family, Style, FontColor, Other]
-      Position.Y = 159.000000000000000000
-      Size.Width = 835.000000000000000000
-      Size.Height = 34.000000000000000000
+      Position.Y = 155.000000000000000000
+      Size.Width = 1031.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = 'myFooter'
       TabOrder = 2
       Text = 'ListBoxGroupFooter1'
     end
-    object Layout1: TLayout
+    object ltHeader: TLayout
       StyleName = 'myHeader'
       Position.X = 136.000000000000000000
       Position.Y = 312.000000000000000000
@@ -142,8 +208,11 @@ object fmBank: TfmBank
         Corners = [TopLeft, TopRight]
         Fill.Color = x47FBE521
         HitTest = False
-        Size.Width = 529.000000000000000000
-        Size.Height = 65.000000000000000000
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Size.Width = 519.000000000000000000
+        Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         Stroke.Color = claWhite
         XRadius = 10.000000000000000000
@@ -151,7 +220,7 @@ object fmBank: TfmBank
         object TMSFNCImage1: TTMSFNCImage
           Align = MostLeft
           Size.Width = 65.000000000000000000
-          Size.Height = 65.000000000000000000
+          Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           Bitmap.PNG = {
@@ -232,14 +301,14 @@ object fmBank: TfmBank
         end
         object Label1: TLabel
           StyleName = 'Text'
-          Align = Top
-          StyledSettings = [Family, Style]
+          Align = Client
+          StyledSettings = [Family]
           Margins.Left = 10.000000000000000000
-          Position.X = 75.000000000000000000
-          Size.Width = 454.000000000000000000
-          Size.Height = 33.000000000000000000
+          Size.Width = 444.000000000000000000
+          Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
-          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.Size = 24.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.FontColor = claWhite
           TextSettings.HorzAlign = Center
           Text = 'Label1'
@@ -269,5 +338,671 @@ object fmBank: TfmBank
       Visible = False
       OnDateSelected = myCalendarDateSelected
     end
+    object ltItem: TLayout
+      StyleName = 'miItem'
+      Position.X = 136.000000000000000000
+      Position.Y = 416.000000000000000000
+      Size.Width = 529.000000000000000000
+      Size.Height = 90.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object Rectangle2: TRectangle
+        Align = Client
+        Fill.Kind = None
+        HitTest = False
+        Margins.Left = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Size.Width = 519.000000000000000000
+        Size.Height = 90.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        object TMSFNCImage2: TTMSFNCImage
+          Align = MostLeft
+          Size.Width = 90.000000000000000000
+          Size.Height = 90.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+            DE0000000473424954080808087C08648800000A0649444154789CED5A7B7054
+            D519FF7DE7DEBB9BBB8F6C4830CB2311C24331A0A353509490890EDA3232BE1D
+            5B1EF135D511873A43453B6DC7C974D4A9D8964111466BD104C53AB63356A53E
+            981658A2E040077CF1F045040928F2D84DB2CF7BCFD73F92DDDC25C9B277F72E
+            FF98DF5FF7FBF69CDFF9CEB7E7F57DE700C318C63086F123069DCDC66E65D6F5
+            58EA42009701623280117D3F9D04E417003E8CE9DA27AF11C5CE964D67C5013F
+            8F466B5DD01603741B118DCBD12E33F33700BF9A446AF5DF3D9E43A5B6ADA40E
+            B89559D1A3C6C32CE821012AB753578223247979CCA33EF11A91592A1B4BE680
+            5F74735013C6AB44A2B1181E66194A49F5B6577CF49D73D6F5A3240E688EF258
+            26F9B600A659F56C9A88EEF98CC3EF6F456CFF5EA47EF80100A08D1C09FDFC0B
+            1098351B9EFAA9448A92C527814F89C5DC360F1D76DA56C71D700FB327163336
+            0A1297A775CC8CEE5DFFE323CFAE46CFEE5D39EB7B2FBE04A3EF5D0CDF253F21
+            A27EF324CB6DBAAE5EFD1C51D4497B85936400108D255B0489996999A5C477AD
+            6BF9AB25F79DB1F300D0B37B17BE5A721FBE6B5DCB2C65BFA124664663C916A7
+            ED7574042C4870BD2AE56E006A5A77E4D9D57C74ED5F0BE21B75D72F31FADEC5
+            561B0D43888B5F76D31E27EC85D3234031CC87AC9D3F15DAC2475F78BE60BEA3
+            2F3C8F70680B5B546A5F1B8EC13107DC1DE64A28B83E2DCB789C3B9F590930E7
+            AE980BCC38FCCC4AC878BC9F44C1F57787B9B26883FBE09803126AA281980269
+            39F2E176243A0E14CFDB7100910FB76764620A24D44443D1C47D70CC01046586
+            553EB5F93F4E510FE03ABDAD62E0DC1A405C97FE6466C4F6EF738C3AB67F1FD8
+            3A952C6D150B074780F065042961F6743B45DDCB65D912B3DA2A124EEE02897E
+            5601A1B91C23169A0B1059A626862E6D93DB292229F9DBF43711C13DDEB1510A
+            F7F83A649D0A2D6D150BC71CA028F491550E3414150365E174AED3DB2A068E39
+            2005650B83536939D0D8042510C85D290F288100028D4D1999C1A914942D4513
+            F7C13107AC2FC341480EA565ADB292828BEE2C9A37B8E84E689595D6A828B4BE
+            0C078B26EE8383DB20312978D2AAAA9EBF90CA8B980AE50D8DA89EBF302B5E21
+            054F82A888E365361C8D055ADDEA46C972435A2645C1B89647518813CA1B1A31
+            AEE551587303CC7243AB5BDDE89CC525C8072C8AC5CE25D63E20A231699D4C26
+            F9FBF5EBF0FD4B6D30BB2239EB2BFE72542F6C46F5FC45102E57C63E66EE6452
+            AE58A79363C31FA5CA08DD1E49CD6295DE22A2AC553075FC389FD8F006C2ED5B
+            11DDB7079CE8DDCEC9ED86674A3D020DB35179ED75D0AAAAB2EC62E630193CAF
+            B55C7BDF695B4B96136C8E442F87E6FA0781460FF63B3343F69D1685D797B5CF
+            6795031F01276F69F378B695C2CE926685EF8C466B4D723D0BA66B88ECAD37CC
+            90207E4FE1E4BD2F94303D5EF27B81DED4B8390F8487004C27222D5779664E01
+            D809C6F2984779AB9429719CED9BA1455D896942517F26C13309341140250160
+            E00483BF12A0EDD234DE59E7777F7A36ED1AC68F198E4C8125CCEE53494C10D2
+            18C34CE90B4F90E008B9D5D08B44F14C61669A1F4BCD5021CECD2231F978CCA7
+            86AC73FE0EE6324E188D2CFBAFD588F8A4146A67850B5F3F4D547458ACE65166
+            482C88466B54B87E138E99F304512D20B277332618DDF18D4D9B365DBBF9CA2B
+            0D00B865C7C75729D3A6BE0DA2ECEB1F9558741C5E02600D00346DDAA41AE1E8
+            BF1477D9D5D93B244148C9E1181F6A8E1A6F9A483EF1B2C75370785C90035A98
+            C5D7B1D4FD80F82388F45CC34828DA1C7E77E323D3E7CEEB168A40787BFBC5FA
+            B4A9CA2045A9E7E3DD37CD5CB0C06F9C38017E73834F5C367BCE10B44444E702
+            B85F61D75DCDD1E4C313746D750B911CA2FC90B03F0598A93966FC09241EA03C
+            6289AE9D3BF8CB5FDD0798BD235BF8FD3CF5F57F43F1F9B24F7BA681FDCDF339
+            FEE517BD7A45C1A4A7D6C03F7DC6196D644082E5CA365D7DD06EA064DB010B7B
+            92F70821561328D379A3AB8BC3A1CD88EEDD03E3D4C94C59198BA27BE70EC878
+            3C8BA3EE2F4F7160D6ECACB6E307BFE17DB7DD044899D18BB232F8A6CF80D03D
+            99726AC50878EAEB1198DD04D5EFEF8F15C0524AB9F825AFEB393BFDB135059A
+            235C05613E66ED7CF883763EF4F81F903A762C6F9E48FB160466CDCED67DD09E
+            D579F45EAE20D2BE75500EED9C7350FBDB47387045030100818420F1587384FF
+            D9564EC7F3B5C55E38ACCA8504AA4A8BDD1FEDE603CB96DAEA3C00746DDB0699
+            4C66862A332312B297E4491D3B8603CB96A2FBA3DD191E22AA92AA5C6887C79E
+            0398E7653E4D139DAB56828D54EE3A832075E238CC88252C364D24BEB57FDC67
+            2385CE675682CDFED3B2B0D8980FF2764013B30AE2CCDE6D767571CF679FD869
+            2B03C5EB85F0F6CF6B5255A82346E4AC33147A3EFD04665757FFC2475CDBC49C
+            F7D4CEDB01E30115206F5A96F1786665B70BC55F0E5196BD7B6AC151851DCA4C
+            F3B445967CE36DAC6D793BA0033000EE49CB8ACF0BD272067643420B8E1A10FF
+            BBAA8305E5F948D3A0F8BC160DF7F4DA9A1FF276C0662203A0CC894B94E9708D
+            ADB1636B06AEEAE0009D161CA8CB8B6B6C0D44996ED1D0B7BDB6E6075B8B2081
+            7766BE5595FC332EB5533D83C13AEB2AD001FE19978254D5329C78879DFAF6B2
+            3426DEB1CA236FB8D94EF50C5CD5C101F35DAB1E5510D7001B4CBC6BA7BE2D07
+            4CF0A95B98B9232DEB932653C59C6BEC5000BD2360C07C77058360B6F79CA462
+            CE35D0274DB6668E3B26F8545B070A5B0E68219226E40A66640CAD59BACCF6FC
+            D58203FF6DA53C00A1EB83961F9C23889AA5CBFA150C06E40ABB0191ED8B11A1
+            6B6B41D89B31A46A24D53DBE1C4A45459E040A6B552307A8C9A5913A22BFA73F
+            4A4505EA1E5B0EAD6A64FFBF4FD85BA66B7FCBCF088B39762BAC23EA21C8C50C
+            CE6CBEDE6917D1C415ABF2DA15D48A0084DB3D404FAA06ADF2CC0E708DADC1C4
+            15ABE0BDF0226B201427C8C5853CA22CE86AAC55D74290F2C1DE57ACBDF0D64F
+            A5296DAFA0EAC69B418374300D754425C872E3930611411B647BCCFCEE76A3EA
+            C69B31A5ED1578EBA75A3A0F09291F6CD5B5D0909573A0E08C509B475BD3DC93
+            F493501F05410100C5E7A3DA877F87EA05CD7CE28DD7116E0F21FE4D47D68951
+            3BA71A2406F7FB80B5445150366E3C020D8DA8BCEE06B86B6AB39ECF8261421A
+            BF6FF3BAD614DA8FA27382CD31E37606560EF61C9E4D13C9239D1CFB7C3FA25F
+            7C8EC4A183D0279D87E0ED7DD7E6E9CEF42DFE27DF7B07E1AD9BE1AE1D07CFE4
+            F3A09F773E5CA3C70C783C8DF4737AE081365D6D2DC67E4792A28BBA12179022
+            9E26125739C1772630CBFFB22997ACF3BBF7E6513C279CBB1861A63B7A8C9F4A
+            C2AF41D478A61B20FBF49C02734830FEFCA2577DD7A93702CEDF0C31D3FC44A2
+            4E31C55C90B812C02502340684A157C641799090E04E00BBC07293A9C8B7D7BB
+            DD079C7C1C81B37135D6C4AC8E8D61149151079326290A8D95CC5308387D8498
+            20DE2F410701FE92593D7058C7513B81CD3086318C610CC326FE0F1814ABBCF1
+            6742780000000049454E44AE426082}
+          Bitmaps = <>
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+        end
+        object Label2: TLabel
+          StyleName = 'Text'
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 10.000000000000000000
+          Position.X = 100.000000000000000000
+          Size.Width = 419.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Text = 'Label2'
+          TabOrder = 1
+        end
+        object Rectangle4: TRectangle
+          Align = Right
+          Fill.Kind = None
+          HitTest = False
+          Position.X = 368.000000000000000000
+          Position.Y = 41.000000000000000000
+          Size.Width = 151.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claYellow
+          object Label4: TLabel
+            StyleName = 'mySum'
+            Align = Client
+            StyledSettings = [Family, Style, FontColor]
+            Size.Width = 151.000000000000000000
+            Size.Height = 49.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.HorzAlign = Center
+            Text = '0'
+            TabOrder = 0
+          end
+        end
+      end
+    end
+    object ltFooter: TLayout
+      StyleName = 'myFooter'
+      Position.X = 136.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 529.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object Rectangle3: TRectangle
+        Align = Client
+        Corners = [BottomLeft, BottomRight]
+        Fill.Color = x68028FC5
+        HitTest = False
+        Margins.Left = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 519.000000000000000000
+        Size.Height = 45.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        object Label3: TLabel
+          StyleName = 'Text'
+          Align = Left
+          StyledSettings = [Family]
+          Margins.Left = 15.000000000000000000
+          Position.X = 15.000000000000000000
+          Size.Width = 273.000000000000000000
+          Size.Height = 45.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claAqua
+          Text = 'Label3'
+          TabOrder = 0
+        end
+      end
+    end
+    object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
+      Size.Width = 26.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      Position.X = 288.000000000000000000
+      Position.Y = 510.000000000000000000
+      Items = <
+        item
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000002B4494441544889B5943D6893
+            5114869F736F3E4D541CA45D557012D7B65815FF681574D1C1606BF359715004
+            972CA2939B82509C62BB884DA3882076D02EAD756A6D8C0E8E82E01F08FE2128
+            34E5FB3B0E26927E699252E93B9D7BCFB9E7BDE7DCF75C5865C8B2A254C57DE9
+            770A76378012CEE43B9C1222FADF04A7E674A335E1187034E67A1246367377A7
+            FC6A76DEB422B0261C43E811A2AC716C9B716C9B1065117A2AC42B875BF2BADC
+            1741E016BD8B75BEA277D17D11046EC9EB5A71058ADD0560D63875370D3CA750
+            1BB32202D3E48DD66C405BC5B42450C21980C8F333715F75AF1AD308CD55A42A
+            6E291C077A84E8B2384E1E407DDF55CC35602ADF698F35936B7315896818D90C
+            3085D8A1C80FBF6B10FD40EC1030154636D36A16567DD0561D7515648AFE6111
+            731DD821825555151101A8B5F9BB911FED4A9C0972F94944DFD92F9B2FC8D503
+            416DBE44EDE274C9DFAD2A8F803742742D521382A0954618046A9A92505E5598
+            B6A31C0CDB3FADD391913372EE9CBF2481AA5C053E273CB3F7F61EFB7BB96D50
+            5404410CFD41984AEA8307FD924E7B752D724BC1BCAADE1CEB72AEC4930C3E2F
+            6FBDD39D7AEFE546C70CF4B510C8845D48A5259B2E2F96A90AA22CA98C3BDDA9
+            F70056E4A48898EA5B480531FB48982C8FEB8DFCFAD81CE86B440EB6E848CB1F
+            B842D61B6ED0F158050C039D996270B6D14155452BA8AC1BDA68EC36E50FB680
+            F25884DC40D1BF34F84C934BDC2C6AD0964536AA4FADA68ED73DD489594D251D
+            7FD8600754F58388DE8B22A6350C3F167625DFCEDF2AE4D712F503A2AA54732F
+            9E1726EC42F28464D3E5864A1898F37BC54856603FE0000B6DE5F94343FB36CE
+            C66383DCE834B0AF927C3CD19EEAABCA34B1547280C24E6712983C3BAB9B0213
+            7460CCB66FA9F5DD401D410DEE27120B83923EFD6FD096F7D9B540901B7D08FA
+            D37EDD723EFE55FC014CBD427F021A301A0000000049454E44AE426082}
+          Name = 'Item1'
+          Tag = 0
+        end>
+    end
+  end
+  object ppinfo: TPopup
+    Position.X = 24.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 969.000000000000000000
+    Size.Height = 265.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    object Panel2: TPanel
+      Align = Client
+      Size.Width = 969.000000000000000000
+      Size.Height = 265.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'TopPanel'
+      TabOrder = 0
+      object Panel3: TPanel
+        Align = Top
+        Size.Width = 969.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'oFFICEpANEL'
+        TabOrder = 0
+        object lbInfo: TLabel
+          Align = Client
+          StyledSettings = [Family, Style]
+          Size.Width = 921.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claPaleturquoise
+          TextSettings.HorzAlign = Center
+          Text = 'lbInfo'
+          TabOrder = 0
+        end
+        object TMSFNCButton1: TTMSFNCButton
+          ImageAlign = Client
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000002FE494441544889B555CD6E13
+            57183DE7DEF144105688052C02AC0920E50DD820E50950919271429A48B5632A
+            2440E201BA40A86A8B6D90508C3D8605F805402A1B9E201284AE69583448153B
+            6379E2B9A70BFF3033B60345CAD9CCBD73BFDF73BFEF7EC021835F1350AB65F7
+            3F75CF1B698174A70003C5F8C7596EE78ECFECF0CA95F8BB1CA8DA3AD6E3E712
+            C1750067A688FD2DE191F79965DE0ADADFEC60FF61FD12654292739244920090
+            5C27F7923E080C7285E075D696C9FEE8551B5729F382E4DCB4ECC6A224E708BD
+            EC3D6CFE706006FDC8ED0B40FEB71ACF2012B898CCE44BBAF79AB3F1ACFE3A88
+            966914214DD7AE6D737E7827238A7A47551AA3457A23E93741BD6CA8927A027E
+            85F436450979DACD6A73B837189422890D0D308CC8017FE68A2B379DD38F52DF
+            C940A4E79C5BCB15F2B71DF02AA9D337C00DB55A76E460FF53F73C80331C6010
+            0909FC1C55EACB7E71A5E980750031C0D839B7E66FAE3E89AA8D806429A54312
+            D0D9E863FB1C00780060622D4C2A58929E31A6D62987F20BF9307A100272F237
+            579F4495FAB221B738B09185355C00F0D603001A9D94FA29262F70289BB3A875
+            AA35F9857C08009D72B8640CB600D8293A20CC4964FB608CA251C590C67DA91E
+            4B47605C2EA533F87A0020C73D509882D8B9786DA674ED69546D049034E09F86
+            DCC2148A04B737CAC0596E4F14926207AC273937C6D4BAE570C92FAE349DDC86
+            84898F5D0C6C8F1CE48ECFECF41FAE74990AF8DD2FE4C3A8525F36C6D4005800
+            D65A3EEE94C325BFB8DA90DC1FD93205F8DE3F71E41D929DBCFFA071C7D0FC82
+            64874A6F9CF48AE475925EA6737B92EE1BF232C80BA92E97EED842FE6EEA92BD
+            B6B92FE9432A4FF222C91B24C77826E991BC01F24286D65DD36665B81F39E0AD
+            A02D3090D44DA73B793DF10CEA0ACC276743AA4C7385E035C85500D1B4F26302
+            99B3080E2BD99930360FBC9F82670217C7E83A009276052E7AC5FCF3312AA72A
+            DD6BCEBA632A495C077476B214DF137A64DAACFCAF919972D46AD9E8DFCEBC05
+            1686ED2FB8BD18D8F64F1C79F7B5A17FE8F80FD8C3E1516F86771A0000000049
+            454E44AE426082}
+          BitmapSize = 24
+          ShowImage = True
+          ShowText = False
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          Align = Right
+          Position.X = 921.000000000000000000
+          TabOrder = 1
+          Text = #1047#1072#1082#1088#1099#1090#1100
+          OnClick = TMSFNCButton1Click
+        end
+      end
+      object tlDet: TTMSFNCTreeView
+        Align = Client
+        Size.Width = 969.000000000000000000
+        Size.Height = 217.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Stroke.Color = claDarkgray
+        BitmapContainer = TMSFNCBitmapContainer1
+        Groups = <>
+        GroupsAppearance.TopSize = 50.000000000000000000
+        GroupsAppearance.BottomSize = 50.000000000000000000
+        GroupsAppearance.TopFill.Kind = gfkNone
+        GroupsAppearance.TopFill.ColorTo = claWhite
+        GroupsAppearance.BottomFill.Kind = gfkNone
+        GroupsAppearance.BottomFill.ColorTo = claWhite
+        GroupsAppearance.TopFont.Color = xFF454545
+        GroupsAppearance.BottomFont.Color = xFF454545
+        Columns = <
+          item
+            Name = 'Column0'
+            Text = #1060#1048#1054
+            Width = 100.000000000000000000
+          end
+          item
+            Name = 'Column1'
+            Text = #1043#1086#1088#1086#1076
+            HorizontalTextAlign = gtaTrailing
+            Width = 90.000000000000000000
+          end
+          item
+            Name = 'Column2'
+            Text = #1057#1091#1084#1084#1072
+            HorizontalTextAlign = gtaCenter
+            Width = 80.000000000000000000
+          end
+          item
+            Name = 'Column3'
+            Text = #1050#1091#1088#1089
+            Width = 100.000000000000000000
+          end
+          item
+            Name = 'Column4'
+            Text = #1057#1091#1084#1084#1072' '#1087#1086' '#1082#1091#1088#1089#1091
+            Width = 100.000000000000000000
+          end
+          item
+            Name = 'Column5'
+            Text = #1044#1072#1090#1072' '#1087#1086#1089#1090#1091#1087#1083#1077#1085#1080#1103
+            Width = 100.000000000000000000
+          end>
+        Nodes = <
+          item
+            Values = <
+              item
+                Text = 'Managers'
+              end>
+            Expanded = True
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Omar Gonzales'
+                  end
+                  item
+                    Text = 'Manufactering'
+                  end
+                  item
+                    Text = 'On Leave'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Omar Smith'
+                  end
+                  item
+                    Text = 'Customers'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Arthur Ali'
+                  end
+                  item
+                    Text = 'Manufactering'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end
+          item
+            Values = <
+              item
+                Text = 'Specialists'
+              end>
+            Expanded = True
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Isabella Moyo'
+                  end
+                  item
+                    Text = 'Customers'
+                  end
+                  item
+                    Text = 'On Leave'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Yusuf Wang'
+                  end
+                  item
+                    Text = 'Marketing'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end
+          item
+            Values = <
+              item
+                Text = 'Assistants'
+              end>
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Arthur Wang'
+                  end
+                  item
+                    Text = 'Finance'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Arthur Smith'
+                  end
+                  item
+                    Text = 'Finance'
+                  end
+                  item
+                    Text = 'On Leave'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Fatma Ali'
+                  end
+                  item
+                    Text = 'Manufactering'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end>
+        ColumnsAppearance.StretchColumn = 0
+        ColumnsAppearance.TopSize = 36.000000000000000000
+        ColumnsAppearance.BottomSize = 25.000000000000000000
+        ColumnsAppearance.TopFont.Size = 14.000000000000000000
+        ColumnsAppearance.TopFont.Color = xFF454545
+        ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+        ColumnsAppearance.BottomFont.Color = xFF454545
+        ColumnsAppearance.TopFill.Color = xFFEEF2F9
+        ColumnsAppearance.TopFill.ColorTo = claWhite
+        ColumnsAppearance.BottomFill.Kind = gfkNone
+        ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+        ColumnsAppearance.BottomFill.ColorTo = claWhite
+        ColumnsAppearance.TopStroke.Kind = gskNone
+        NodesAppearance.ShowFocus = False
+        NodesAppearance.ExpandWidth = 18.000000000000000000
+        NodesAppearance.ExpandHeight = 18.000000000000000000
+        NodesAppearance.LevelIndent = 20.000000000000000000
+        NodesAppearance.FixedHeight = 33.000000000000000000
+        NodesAppearance.VariableMinimumHeight = 33.000000000000000000
+        NodesAppearance.Font.Color = xFF7A7A7A
+        NodesAppearance.SelectedFontColor = xFF454545
+        NodesAppearance.SelectedTitleFontColor = claBlack
+        NodesAppearance.ExtendedFontColor = xFF454545
+        NodesAppearance.SelectedFill.Color = xFFF6F8FC
+        NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+        NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+        NodesAppearance.ExtendedStroke.Color = xFFF0F0F0
+        NodesAppearance.ExpandNodeIcon.PNG = {
+          89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+          260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+          CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+          66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+          01E68213FFE244E4900000000049454E44AE426082}
+        NodesAppearance.CollapseNodeIcon.PNG = {
+          89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+          260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+          CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+          8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+          49454E44AE426082}
+        NodesAppearance.ExpandNodeIconLarge.PNG = {
+          89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+          3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+          CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+          3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+          6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+          611914FBCBE520D20000000049454E44AE426082}
+        NodesAppearance.CollapseNodeIconLarge.PNG = {
+          89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+          3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+          CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+          2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+          2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+        GlobalFont.Name = 'Segoe UI'
+        DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+        DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+      end
+    end
+  end
+  object qBank: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select distinct LB.MY_BANK'
+      'from LOG_BANK_OPLATA LB'
+      'where ((LB.DATA_POL = :SD))'
+      'order by LB.MY_BANK  ')
+    Left = 24
+    Top = 552
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end>
+  end
+  object qPol: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT DISTINCT LB.MY_USER'
+      'FROM LOG_BANK_OPLATA LB'
+      'WHERE ((LB.DATA_POL = :SD) AND'
+      '      (LB.MY_BANK = :MB))'
+      'ORDER BY LB.MY_USER  ')
+    Left = 80
+    Top = 552
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MB'
+        ParamType = ptInput
+      end>
+  end
+  object qSumBank: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      ' SELECT SUM(LB.SUM_OPL) SUM_OF_SUM_OPL,'
+      '       SUM(LB.VSUM_OPL) SUM_OF_VSUM_OPL'
+      'FROM LOG_BANK_OPLATA LB'
+      'WHERE ((LB.DATA_POL = :SD) AND'
+      '      (LB.MY_BANK = :MB))')
+    Left = 136
+    Top = 560
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MB'
+        ParamType = ptInput
+      end>
+  end
+  object qSumPol: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT SUM(LB.SUM_OPL) SUM_OF_SUM_OPL,'
+      '       SUM(LB.VSUM_OPL) SUM_OF_VSUM_OPL'
+      'FROM LOG_BANK_OPLATA LB'
+      'WHERE (((LB.DATA_POL = :SD) AND'
+      '      (LB.MY_USER = :MU)) AND'
+      '      (LB.MY_BANK = :MB))   ')
+    Left = 192
+    Top = 560
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MU'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MB'
+        ParamType = ptInput
+      end>
+  end
+  object qUsr: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT SUM_OPL,'
+      '       DOP_STR,'
+      '       AG_NAME,'
+      '       ST_NAME,'
+      '       LBO,'
+      '       NO_AG,'
+      '       DATA_NAK,'
+      '       KURS_VAL,'
+      '       VSUM_OPL'
+      'FROM RET_INFO_BANK_OPL(:SD, :MY, :MB)  '
+      ''
+      '')
+    Left = 240
+    Top = 560
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MY'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MB'
+        ParamType = ptInput
+      end>
   end
 end

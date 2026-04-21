@@ -11,7 +11,9 @@ uses
   frmReportList in 'frmReportList.pas' {fmRepList},
   frmInvScald in 'frmInvScald.pas' {fmInv: TFrame},
   frmSetModSizeSclad in 'frmSetModSizeSclad.pas' {fmSetSize},
-  frmBank in 'frmBank.pas' {fmBank: TFrame};
+  frmBank in 'frmBank.pas' {fmBank: TFrame},
+  frmAddDop in 'frmAddDop.pas' {fmAddDop},
+  frmCalc in 'frmCalc.pas' {fmCalc};
 
 {$R *.res}
 

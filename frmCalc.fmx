@@ -1,0 +1,539 @@
+object fmCalc: TfmCalc
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
+  ClientHeight = 254
+  ClientWidth = 407
+  StyleBook = dmTheme.SB
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Client
+    Size.Width = 407.000000000000000000
+    Size.Height = 221.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 0
+    object btCancel: TButton
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      ModalResult = 2
+      Position.X = 319.000000000000000000
+      Position.Y = 47.064815521240230000
+      Size.Width = 80.000000000000000000
+      Size.Height = 37.856479644775390000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #1054#1090#1082#1072#1079
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claOrangered
+      TextSettings.Trimming = None
+    end
+    object btOk: TButton
+      Align = Scale
+      CanFocus = False
+      Default = True
+      StyledSettings = [Family, Size]
+      ModalResult = 1
+      Position.X = 319.000000000000000000
+      Position.Y = 5.115740776062012000
+      Size.Width = 80.000000000000000000
+      Size.Height = 36.833335876464840000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #1054#1050
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claChartreuse
+      TextSettings.Trimming = None
+      OnClick = btOkClick
+    end
+    object eRes: TTMSFNCEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 2
+      KeyboardType = NumberPad
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Position.X = 8.000000000000000000
+      Position.Y = 8.185185432434082000
+      Size.Width = 297.000000000000000000
+      Size.Height = 33.763889312744140000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style, FontColor]
+      OnChange = eResChange
+      Text = '0,0000'
+      Lookup.Separator = ';'
+      Precision = 4
+      PrecisionDisplay = pdShortest
+      object TMSFNCButton18: TTMSFNCButton
+        ImageAlign = Client
+        Bitmap.PNG = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+          013949444154484BED956B4EC3400C845D6E93A2BE4ECAD5B804503801B43462
+          BE681C1525DADD407F7624CB2BDB33DE4DD649DCB108E788A7EF88E7AF888D43
+          CD8003170D87A6B0782F7B933D3A5C05B5E6F468383C850A36B2E367C445FE55
+          566D420DB5E61C65E5D353201B76232B3621E79A3C75DBA355E156F66E22BB5B
+          3B35821839D750BBECBD89B083C8D14F112FF29D5388778EF15810DF39B50CD9
+          44D667931427E6DCDFC4130848F4239BA4B863FF134F48E880A0EC6243FCE074
+          110FF6359C57126621BFF25A33750368A7E310D973D773DD3C8CB34040965771
+          18225B36691AC659404480672EFF6B425913736E7913113B13F32A6E9D1A41CC
+          B9E124709C2A83C2D67B4ECE35E39C38358F14976F9ED06C02A7DA243FD72AE2
+          9EEF1DAE825A73CA9FEBAB1F4ED3105D030EDCE20FE78E29227E008C7BF691F7
+          D4812A0000000049454E44AE426082}
+        BitmapSize = 24
+        ShowImage = True
+        ShowText = False
+        Font.Color = claWhite
+        Font.Name = 'Segoe UI'
+        Size.Width = 33.000000000000000000
+        Size.Height = 33.763889312744140000
+        Size.PlatformDefault = False
+        Align = Scale
+        CanFocus = False
+        Cursor = crArrow
+        TabOrder = 0
+        Text = 'X'
+        OnClick = TMSFNCButton18Click
+      end
+    end
+    object TMSFNCButton1: TTMSFNCButton
+      Tag = 1
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 8.000000000000000000
+      Position.Y = 50.134262084960940000
+      TabOrder = 19
+      Text = '1'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton10: TTMSFNCButton
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 82.000000000000000000
+      Position.Y = 175.981491088867200000
+      TabOrder = 6
+      Text = '0'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton11: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        00DC49444154484BED933B0E8141148587200AFB50689516A1B6076B505B862D
+        28ED4129A1D07ABF830882EF24A37467122A99937C39F98BB967EEBDF3BBA4A4
+        3F53D7B96707FC679432DE4D0D297AC7F7B08439CCA015713EEBFDA3C6142FE3
+        152841110A9087664437C1806F6506F4B8E10E1FC1008E70812BDC3CF5401766
+        808A6BE653D0DCD7A03D28E80C0A1396CC80F742152016A010051FE01D6429F8
+        0ADA8C20873F40A3515175B105853146B34670C9BAF9C4BB9EA6BA58C1061412
+        52D47FD0A00B6D524BD5CC4FA011F523CF47AB465035F06A92927E2DE75EA9AF
+        4401337E84F10000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family]
+      Position.X = 8.000000000000000000
+      Position.Y = 175.981491088867200000
+      TabOrder = 3
+      Text = '.'
+      OnClick = TMSFNCButton11Click
+    end
+    object TMSFNCButton12: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        010E49444154484BED94BD4E025110850F86502226B6C6DE04FC2979130A7D06
+        131FC007B3A1025A7AB533462D24A151D6DDF59BCD5CB2210412B8108AFD92C9
+        CC9DB399C39D9BA08AC3E657BAF9934633E9DE5BF160F8F58FF449A498F4BD1D
+        071FFE45CE88F74CBA70697BC22F0FC389B64BDBC3B02BE2C3D66299E8B8B431
+        35CF36FC32979E689C92D3BAF4C06AC6A65117F016F3DA289F43EDF9F9487AB3
+        7E61C0C07A22BD90CFFC9C23046D696DACF86ED290CE31991205198519E416D6
+        58572F9ECB353778C589A594601D4D763FA09B9113AE7AEB523CBEA59699F823
+        CF30B973291E5CB1C57B0CED26BB3439C6646437F175F55C8A072627C10483A1
+        B7E362EBE28FEE91E87AABA262EF48FF84C1894E2398B7E50000000049454E44
+        AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      Position.X = 156.000000000000000000
+      Position.Y = 175.981491088867200000
+      TabOrder = 5
+      Text = '<-'
+      OnClick = TMSFNCButton12Click
+    end
+    object TMSFNCButton13: TTMSFNCButton
+      Tag = 1
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        009049444154484B63183CE01F8322C31F8658288F06E00F432DC31720492260
+        82D2C400905A46089378408A056481510B0882A16F0124D98132D13F8618200B
+        B7858C0CF60CDF819883A1092A820BDC676061580465432D00E5D01F0CF3E17C
+        4A003BC35D06560635288F04F087A11E9893FF42794483D15444108C5A40100C
+        220BFE339C01E6E2ED50DE28A01660600000228015FBED239C43000000004945
+        4E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      Position.X = 239.000000000000000000
+      Position.Y = 50.134262084960940000
+      TabOrder = 13
+      Text = '+'
+      OnClick = TMSFNCButton13Click
+    end
+    object TMSFNCButton14: TTMSFNCButton
+      Tag = 2
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        005849444154484B631805A360148C82410018A13404FC635065F8C6701EC8E2
+        04CA40E4FE0321363608A0CB31307C67E06230646062B80D160302740B388138
+        07C8E28408900CBE030D9F02C4DFA1FC51300A46C130000C0C00750B120339BA
+        1B120000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763893127441410000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      Position.X = 239.000000000000000000
+      Position.Y = 92.083335876464840000
+      TabOrder = 10
+      Text = '-'
+      OnClick = TMSFNCButton13Click
+    end
+    object TMSFNCButton15: TTMSFNCButton
+      Tag = 3
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        011349444154484BCD95A14E034114452F24144C1B4CD3D4626A51685431B80A
+        12924A4C83E103EAEAEBFA03287EA0418082D414816A020287C09140177667BA
+        DBBBCDFD84BB49CF66929923DE7D99ECBEC5F693A3C1D5D2A90252DC23E25927
+        33015D2CB162C0B58C91023B2C3C67C83BAF685FD648C4057E37DD5FCA182950
+        63E76F2CFEC2FDAEAC9188C1E6EE03CE648CE4A823C327431E64CC440C79F781
+        21273246723491E09BC5EF64CC048CD9FD3F9F8E8C913F1CB178C290898C990C
+        B70CF8E135B5658CA438E66B99B1FB918C99882943BEF8511DCA180938D540BB
+        9131528E818819433EB83F903512D0D340EBCB1829B0C780058BBF5633D0525C
+        69A09DCB988978E27AD4A902CA1F79F943DF6E803528D262208F08129C000000
+        0049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      Position.X = 239.000000000000000000
+      Position.Y = 134.032409667968800000
+      TabOrder = 8
+      Text = '/'
+      OnClick = TMSFNCButton13Click
+    end
+    object TMSFNCButton16: TTMSFNCButton
+      Tag = 4
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        017D49444154484BED94BF2F045110C7BF8BE53A855069E424148244A1A7A111
+        7F81FA22519028545A098D90F03F688820E20F906868484EC855222EA192D8BD
+        B7677DDFDB7172B2B97BBBCE55F7D94C767EBC99D99DB93DB4681C0116A0702F
+        96356D72B761003EB2A25B93A4412A9ADC20C012E584A318174F7D426450C22A
+        F32EA9778BB7427583100F286382CBBCA2ECE113BD128947618E856FD86083D6
+        13F3BD28500BFD140A5B78C707AF57262FD3D7C942EBF495CD191F23B4CF8DAD
+        1B284C1B7F223C0C33F9D81451B8A57E2AFA0EEF1EAF229B2FB2B92B19295198
+        310D74F1487CDADB1C5F8F9CA889CDAF288463C4115B138AFC010F431CC1918C
+        E58E233A137DD7BC858F17C6736CD3211996444BDE6411BDE437165EA1EFF792
+        47695F183BC035CF4F197F5D146699FCCCC412F57DCEB94F22FA1BF969F08DC2
+        3C252F8D0E78BE4B2215AA77E06010ED7C221793941CA34589C4E3E290031AE3
+        A7B646AB9FF999289086B837B0A0C9FF45FF40920605AEF051F4168D02F80231
+        CF94B4E14B77690000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      StyledSettings = [Family, Size]
+      Position.X = 239.000000000000000000
+      Position.Y = 175.981491088867200000
+      TabOrder = 4
+      Text = '*'
+      OnClick = TMSFNCButton13Click
+    end
+    object TMSFNCButton17: TTMSFNCButton
+      Tag = 3
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        006F49444154484B631805A360F00346280D06FF1E3170FEF9C390F38F81818B
+        092606C4D8D8208045EE1B0B0BC314263986EF1051340B7EDC6150FDCDC070FE
+        FF6F064EA81049809195E13B2B038321870AC36DA8D02818055400344FA6B832
+        1A279919ED3B7A461B05A360D0030606003A0B2805B275608E0000000049454E
+        44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Font.StyleExt = {00070000000000000004000000}
+      Size.Width = 80.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 319.000000000000000000
+      Position.Y = 175.981491088867200000
+      TabOrder = 7
+      Text = '='
+      OnClick = TMSFNCButton17Click
+    end
+    object TMSFNCButton2: TTMSFNCButton
+      Tag = 2
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 82.000000000000000000
+      Position.Y = 50.134262084960940000
+      TabOrder = 17
+      Text = '2'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton3: TTMSFNCButton
+      Tag = 3
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 156.000000000000000000
+      Position.Y = 50.134262084960940000
+      TabOrder = 14
+      Text = '3'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton4: TTMSFNCButton
+      Tag = 4
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763893127441410000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 8.000000000000000000
+      Position.Y = 92.083335876464840000
+      TabOrder = 18
+      Text = '4'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton5: TTMSFNCButton
+      Tag = 5
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763893127441410000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 82.000000000000000000
+      Position.Y = 92.083335876464840000
+      TabOrder = 16
+      Text = '5'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton6: TTMSFNCButton
+      Tag = 6
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763893127441410000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 156.000000000000000000
+      Position.Y = 92.083335876464840000
+      TabOrder = 11
+      Text = '6'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton7: TTMSFNCButton
+      Tag = 7
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 8.000000000000000000
+      Position.Y = 134.032409667968800000
+      TabOrder = 15
+      Text = '7'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton8: TTMSFNCButton
+      Tag = 8
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 82.000000000000000000
+      Position.Y = 134.032409667968800000
+      TabOrder = 12
+      Text = '8'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton9: TTMSFNCButton
+      Tag = 9
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 66.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      CanFocus = False
+      Position.X = 156.000000000000000000
+      Position.Y = 134.032409667968800000
+      TabOrder = 9
+      Text = '9'
+      OnClick = TMSFNCButton9Click
+    end
+    object TMSFNCButton19: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        00C549444154484BED94EF09C23010C52FA1D03514DD4317F1CF2245DCA53BB8
+        8413F8C5290A85C6C497E6BE24A424158582F941B87BBD700FCA5D6831684D6B
+        A5E8C0F2FBA079D375A458662339E660EF0A97E633C7E0238A41929F1B785331
+        0CF4C0D91A434608579BCA2D414DD7359DAB8ADAB1C8780698F523C2CA291F34
+        DAF73DEDD0E4CA9F428C94D4E23C59CF03E6172CDA8B6536658A92FC9101E6FC
+        8E11BDB15C0EE1A29D10A28B96818E2D9A67C04FC506BFC36EEEC8546E096A26
+        F654141210BD012A4945DAA988A0DA0000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Color = claWhite
+      Font.Name = 'Segoe UI'
+      Size.Width = 80.000000000000000000
+      Size.Height = 33.763885498046880000
+      Size.PlatformDefault = False
+      Align = Scale
+      Position.X = 319.000000000000000000
+      Position.Y = 134.032409667968800000
+      TabOrder = 20
+      Text = '+\-'
+      OnClick = TMSFNCButton19Click
+    end
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 221.000000000000000000
+    ShowSizeGrip = False
+    Size.Width = 407.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Panel2: TPanel
+      Align = Client
+      Size.Width = 407.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lbAkum: TLabel
+        Align = Right
+        Margins.Right = 10.000000000000000000
+        Position.X = 277.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        TextSettings.Trimming = None
+        Text = '0'
+        TabOrder = 0
+      end
+      object lbOper: TLabel
+        Align = Left
+        Margins.Left = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 64.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = ' '
+        TabOrder = 2
+      end
+    end
+  end
+end
