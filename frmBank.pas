@@ -53,6 +53,7 @@ type
     ltHeader: TLayout;
     ltItem: TLayout;
     ltFooter: TLayout;
+    Rectangle5: TRectangle;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);

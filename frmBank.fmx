@@ -580,9 +580,23 @@ object fmBank: TfmBank
       Size.PlatformDefault = False
       StyleLookup = 'TopPanel'
       TabOrder = 0
+      object Rectangle5: TRectangle
+        Align = Client
+        Fill.Kind = None
+        Size.Width = 969.000000000000000000
+        Size.Height = 214.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claLightblue
+        Stroke.Thickness = 2.000000000000000000
+      end
       object Panel3: TPanel
         Align = Top
-        Size.Width = 969.000000000000000000
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Position.X = 3.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 963.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'oFFICEpANEL'
@@ -590,7 +604,7 @@ object fmBank: TfmBank
         object lbInfo: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 921.000000000000000000
+          Size.Width = 915.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 20.000000000000000000
@@ -636,7 +650,7 @@ object fmBank: TfmBank
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           Align = Right
-          Position.X = 921.000000000000000000
+          Position.X = 915.000000000000000000
           TabOrder = 1
           Text = #1047#1072#1082#1088#1099#1090#1100
           OnClick = TMSFNCButton1Click
@@ -644,8 +658,11 @@ object fmBank: TfmBank
       end
       object tlDet: TTMSFNCTreeView
         Align = Client
-        Size.Width = 969.000000000000000000
-        Size.Height = 217.000000000000000000
+        Margins.Left = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Size.Width = 963.000000000000000000
+        Size.Height = 211.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         Stroke.Color = claDarkgray
