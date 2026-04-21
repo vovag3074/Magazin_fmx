@@ -212,10 +212,7 @@ begin
   fmBank := TfmBank.Create(pMain);
   fmBank.Parent := pMain;
   fmBank.Align := TAlignLayout.Client;
- // fmInv.tlMod.AdaptToStyle := True;
- // fmInv.tlSize.AdaptToStyle := True;
   fmBank.LoadINI;
-//  fmInv.ListMod;
 end;
 
 procedure TfmMain.ShowIBError(SError: string);
@@ -252,22 +249,28 @@ end;
 
 procedure TfmMain.StartMainTransaction;
 begin
+try
   if fmMain.IBT.Active then
   begin
     fmMain.IBT.Commit;
     Application.ProcessMessages;
   end;
   fmMain.IBT.StartTransaction;
+except
+end;
 end;
 
 procedure TfmMain.StartReadTransaction;
 begin
+try
   if fmMain.IBT_Read.Active then
   begin
     fmMain.IBT_Read.Rollback;
     Application.ProcessMessages;
     fmMain.IBT_Read.StartTransaction;
   end;
+except
+end;
 end;
 
 function TfmMain.TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;

@@ -335,10 +335,10 @@ var
   FSumMod: Double;
 begin
   FSumMod := 0;
-  tlMod.BeginUpdate;
   tlMod.Nodes.Clear;
+  tlMod.BeginUpdate;
   fmMain.StartReadTransaction;
-  qKat.Active := false;
+  qKat.Close;
   qKat.Prepare;
   qKat.ParamByName('IV').AsSmallInt := 0;
   qKat.Active := true;
@@ -531,6 +531,10 @@ end;
 
 procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
 begin
+ tlMod.Nodes.Clear;
+ cxZakList.Items.Clear;
+ tlZak.Nodes.Clear;
+ fmMain.IBT_Read.Rollback;
   fmMain.ClearOldFrame;
 end;
 
