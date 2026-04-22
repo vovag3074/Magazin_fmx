@@ -359,6 +359,10 @@
             <Form>fmCalc</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelectAgent.pas">
+            <Form>fmSelAgn</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -203,6 +203,10 @@ begin
   begin
     btInvSclad.OnClick(Sender);
   end;
+  if AItemIndex = 3 then  //банк
+  begin
+    btBank.OnClick(Sender);
+  end;
 end;
 
 procedure TfmMain.ShowBank;

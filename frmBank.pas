@@ -50,10 +50,10 @@ type
     qUsr: TFDQuery;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     TMSFNCButton2: TTMSFNCButton;
+    Rectangle5: TRectangle;
     ltHeader: TLayout;
     ltItem: TLayout;
     ltFooter: TLayout;
-    Rectangle5: TRectangle;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
