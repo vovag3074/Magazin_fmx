@@ -97,6 +97,9 @@ type
     procedure MenuItem6Click(Sender: TObject);
     procedure tlModFocusedNodeChanged(Sender: TObject;
       ANode: TTMSFNCTreeViewVirtualNode);
+    procedure tlModGetNodeTextColor(Sender: TObject;
+      ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer;
+      var ATextColor: TTMSFNCGraphicsColor);
   private
     { Private declarations }
     function ListDet(ANode: TTMSFNCTreeViewNode): Float64;
@@ -504,6 +507,19 @@ procedure TfmInv.tlModFocusedNodeChanged(Sender: TObject;
 begin
   fmMain.StartReadTransaction;
   ViewDetNode(ANode.Node);
+end;
+
+procedure TfmInv.tlModGetNodeTextColor(Sender: TObject;
+  ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer;
+  var ATextColor: TTMSFNCGraphicsColor);
+begin
+try
+ if ANode.Node.Text[1].ToDouble <=0  then
+ begin
+   ATextColor := TAlphaColors.Yellow;
+ end;
+except
+end;
 end;
 
 procedure TfmInv.TMSFNCButton1Click(Sender: TObject);

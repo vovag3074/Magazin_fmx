@@ -39,6 +39,7 @@ type
     TMSFNCButton6: TTMSFNCButton;
     qVal: TFDQuery;
     SVGIconImageList1: TSVGIconImageList;
+    Panel1: TPanel;
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

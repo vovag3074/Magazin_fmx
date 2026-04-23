@@ -2,8 +2,8 @@ object fmAddDop: TfmAddDop
   Left = 0
   Top = 0
   BorderStyle = ToolWindow
-  Caption = 'S'
-  ClientHeight = 504
+  Caption = #1053#1086#1074#1086#1077' '#1087#1086#1083#1091#1095#1077#1085#1080#1077
+  ClientHeight = 444
   ClientWidth = 811
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
@@ -54,7 +54,7 @@ object fmAddDop: TfmAddDop
       Size.Width = 197.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Label1'
+      Text = ' '
       TabOrder = 1
     end
   end
@@ -294,10 +294,11 @@ object fmAddDop: TfmAddDop
     Items.Strings = (
       #1055#1088#1103#1084#1086#1081' (*)'
       #1054#1073#1088#1072#1090#1085#1099#1081' (/)')
-    ItemIndex = 0
+    Images = SVGIconImageList1
+    ItemIndex = 1
     ItemHeight = 33.000000000000000000
     Position.X = 312.000000000000000000
-    Position.Y = 320.000000000000000000
+    Position.Y = 319.000000000000000000
     Size.Width = 161.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
@@ -355,6 +356,15 @@ object fmAddDop: TfmAddDop
       OnClick = TMSFNCButton6Click
     end
   end
+  object Panel1: TPanel
+    Align = Bottom
+    Position.Y = 372.000000000000000000
+    Size.Width = 811.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 18
+  end
   object qVal: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -371,6 +381,7 @@ object fmAddDop: TfmAddDop
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'money-2'
         SVGText = 
@@ -462,14 +473,49 @@ object fmAddDop: TfmAddDop
           '2,1.553,0.4064,2.5424,0.4064l0.0145,-0.0001L4.4091,8.9732z"/>'#10'  ' +
           '</g>'#10'</svg>'#10
         Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'select-inverse'
+        SVGText = 
+          '<?xml version="1.0" encoding="UTF-8"?>'#10'<!DOCTYPE svg PUBLIC "-//' +
+          'W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/sv' +
+          'g11.dtd">'#10'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.o' +
+          'rg/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" ' +
+          'y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-ba' +
+          'ckground="new 0 0 16 16" xml:space="preserve">'#10'  <g id="icon">'#10' ' +
+          '   <path d="M6.5,6.5H2.5V2.5h4V6.5zM13.5,9.5H9.5v4h4V9.5z" fill=' +
+          '"#60F9FF"/>'#10'    <path d="M6.5,7H2.5c-0.2761,0,-0.5,-0.2239,-0.5,' +
+          '-0.5V2.5c0,-0.2761,0.2239,-0.5,0.5,-0.5h4c0.2761,0,0.5,0.2239,0.' +
+          '5,0.5v4C7,6.7761,6.7761,7,6.5,7zM3,6h3V3H3V6zM13.5,14H9.5c-0.276' +
+          '1,0,-0.5,-0.2239,-0.5,-0.5V9.5c0,-0.2761,0.2239,-0.5,0.5,-0.5h4c' +
+          '0.2761,0,0.5,0.2239,0.5,0.5v4C14,13.7761,13.7761,14,13.5,14zM10,' +
+          '13h3v-3h-3V13z" fill="#60F9FF"/>'#10'    <path d="M13,3h-3v3h3V3zM6,' +
+          '10H3v3h3V10z" fill="#60F9FF" opacity="0.3"/>'#10'    <path d="M13.5,' +
+          '2H9.5c-0.2761,0,-0.5,0.2239,-0.5,0.5v4c0,0.2761,0.2239,0.5,0.5,0' +
+          '.5h4c0.2761,0,0.5,-0.2239,0.5,-0.5V2.5C14,2.2239,13.7761,2,13.5,' +
+          '2zM13,6h-3V3h3V6zM6.5,9H2.5c-0.2761,0,-0.5,0.2239,-0.5,0.5v4c0,0' +
+          '.2761,0.2239,0.5,0.5,0.5h4c0.2761,0,0.5,-0.2239,0.5,-0.5V9.5C7,9' +
+          '.2239,6.7761,9,6.5,9zM6,13H3v-3h3V13z" fill="#60F9FF" opacity="0' +
+          '.3"/>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
       end>
     Destination = <
       item
         Layers = <
           item
             Name = 'money-2'
-            SourceRect.Right = 34.000000000000000000
-            SourceRect.Bottom = 34.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'select-inverse'
           end>
       end
       item
@@ -480,7 +526,7 @@ object fmAddDop: TfmAddDop
             SourceRect.Bottom = 32.000000000000000000
           end>
       end>
-    Left = 80
+    Left = 88
     Top = 368
   end
 end

@@ -496,6 +496,7 @@ object fmInv: TfmInv
       GlobalFont.Name = 'Segoe UI'
       OnFocusedNodeChanged = tlModFocusedNodeChanged
       OnBeforeExpandNode = tlModBeforeExpandNode
+      OnGetNodeTextColor = tlModGetNodeTextColor
       DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
       DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
       object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
