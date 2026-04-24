@@ -372,6 +372,7 @@ begin
     Application.ProcessMessages;
   end;
   fmMain.IBT.StartTransaction;
+  fmMain.StartReadTransaction;
   qRAgn.Close;
   qRAgn.Prepare;
   qRAgn.Active := true;
@@ -413,12 +414,14 @@ begin
   end;
   // if qRAgn.RecordCount>0
   fmMain.IBT.Commit;
+  fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmSync.CopyCode;
 var
   I, J, K: Integer;
 begin
+  fmMain.StartReadTransaction;
   fmMain.StartMainTransaction;
   qRCode.Close;
   qRCode.Prepare;
@@ -462,6 +465,7 @@ begin
       Inc(K);
     until (qRCode.Eof);
     fmMain.IBT.Commit;
+    fmMain.IBT_Read.Rollback;
   end;
 end;
 
@@ -562,6 +566,7 @@ var
   I, J, F, K: Integer;
 begin
   fmMain.StartMainTransaction;
+  fmMain.StartReadTransaction;
   // 10.10.2013 Этап первый. Проверяем Barcode моделей и корректируем имя
   qRMod.Close;
   qRMod.Prepare;
@@ -608,11 +613,13 @@ begin
       end;
     until qRMod.Eof;
     fmMain.IBT.Commit;
+    fmMain.IBT_Read.Rollback;
   end; // if qRMod.RecordCount > 0
   // проверяем № модели и категории, если категория меняется, то переносим
   // Старая часть. Считается, что название модели не меняется
   Application.ProcessMessages;
   fmMain.IBT.StartTransaction;
+  fmMain.StartReadTransaction;
   qRMod.Close;
   qRMod.Prepare;
   qRMod.Active := true;
@@ -658,6 +665,7 @@ begin
         end;
         qRMod.Next;
         fmMain.IBT.Commit;
+        fmMain.IBT_Read.Rollback;
       except
         on E: Exception do
         begin
@@ -677,6 +685,7 @@ begin
     Application.ProcessMessages;
   end;
   fmMain.IBT.StartTransaction;
+  fmMain.StartReadTransaction;
   qRSity.Close;
   qRSity.Prepare;
   qRSity.Active := true;
@@ -703,12 +712,14 @@ begin
       Application.ProcessMessages;
     until (qRSity.Eof);
     fmMain.IBT.Commit;
+    fmMain.IBT_Read.Rollback;
   end;
 end;
 
 procedure TfmSync.CopySize;
 begin
   fmMain.StartMainTransaction;
+  fmMain.StartReadTransaction;
   qRSize.Close;
   qRSize.Prepare;
   qRSize.Active := true;
@@ -726,6 +737,7 @@ begin
       qRSize.Next;
     until (qRSize.Eof);
     fmMain.IBT.Commit;
+    fmMain.IBT_Read.Rollback;
   end;
 end;
 
