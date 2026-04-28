@@ -269,6 +269,7 @@ procedure TfmBank.TMSFNCButton2Click(Sender: TObject);
 begin
  fmAddDop := TfmAddDop.Create(fmBank);
  fmAddDop.eDate.Date := StrToDate(eData.Text);
+ fmAddDop.eDPol.Date := StrToDate(eData.Text);
  if fmAddDop.ShowModal=mrOk then
  begin
 

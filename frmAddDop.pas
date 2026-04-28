@@ -42,13 +42,13 @@ type
     SVGIconImageList1: TSVGIconImageList;
     Panel1: TPanel;
     qRead: TFDQuery;
-    eDPol: TEdit;
-    TMSFNCButton7: TTMSFNCButton;
+    Z: TGroupBox;
+    eDPol: TDateEdit;
+    Label1: TLabel;
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
-    procedure TMSFNCButton7Click(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -152,11 +152,6 @@ end;
 procedure TfmAddDop.TMSFNCButton6Click(Sender: TObject);
 begin
   showCalc(eCurs);
-end;
-
-procedure TfmAddDop.TMSFNCButton7Click(Sender: TObject);
-begin
-  showCalc(eDPol);
 end;
 
 end.

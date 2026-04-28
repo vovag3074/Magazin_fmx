@@ -45,7 +45,6 @@ type
     IBT: TFDTransaction;
     IBT_Read: TFDTransaction;
     qUpdSclad: TFDCommand;
-    btClose: TTMSFNCToolBarButton;
     qTestZal: TFDQuery;
     FBDriver: TFDPhysFBDriverLink;
     Lang1: TLang;

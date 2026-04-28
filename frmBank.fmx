@@ -202,6 +202,7 @@ object fmBank: TfmBank
       Size.Width = 529.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
+      Visible = False
       TabOrder = 0
       object Rectangle1: TRectangle
         Align = Client
@@ -345,6 +346,7 @@ object fmBank: TfmBank
       Size.Width = 529.000000000000000000
       Size.Height = 90.000000000000000000
       Size.PlatformDefault = False
+      Visible = False
       TabOrder = 3
       object Rectangle2: TRectangle
         Align = Client
@@ -496,6 +498,7 @@ object fmBank: TfmBank
       Size.Width = 529.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      Visible = False
       TabOrder = 4
       object Rectangle3: TRectangle
         Align = Client
