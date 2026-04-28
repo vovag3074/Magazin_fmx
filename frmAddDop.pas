@@ -10,17 +10,18 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
-  FMX.ImgList, FMX.SVGIconImageList;
+  FMX.ImgList, FMX.SVGIconImageList, FMX.Calendar.Helpers,
+  FMX.CalendarHolidayDays.Style, System.Rtti;
 
 type
   TfmAddDop = class(TForm)
     Rectangle1: TRectangle;
     TMSFNCButton1: TTMSFNCButton;
-    Label1: TLabel;
+    eDolg: TLabel;
     eAgn: TEdit;
     TMSFNCButton2: TTMSFNCButton;
     Label2: TLabel;
-    DateEdit1: TDateEdit;
+    eDate: TDateEdit;
     Label3: TLabel;
     eSum: TEdit;
     Label4: TLabel;
@@ -40,10 +41,14 @@ type
     qVal: TFDQuery;
     SVGIconImageList1: TSVGIconImageList;
     Panel1: TPanel;
+    qRead: TFDQuery;
+    eDPol: TEdit;
+    TMSFNCButton7: TTMSFNCButton;
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
+    procedure TMSFNCButton7Click(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -85,12 +90,6 @@ begin
   begin
     qVal.First;
     repeat
-//      Item := TListBoxItem.Create(eVal);
-//      Item.Height := 33;
-//      Item.Tag := ValutList.getID(I);
-//      Item.Text := ValutList.getItem(I);
-//      Item.ImageIndex := 0;
-//      eVal.AddObject(Item);
       MyVal := TListBoxItem.Create(eVal);
       MyVal.Height := 36;
       MyVal.Tag := qVal.FieldByName('NO_VAL').AsInteger;
@@ -105,8 +104,28 @@ begin
 end;
 
 procedure TfmAddDop.ShowDolg;
+var Item:TListBoxItem;
 begin
-
+  fmMain.StartReadTransaction;
+  qRead.Close;
+  qRead.Prepare;
+  qRead.ParamByName('NG').AsInteger := FAgent;
+  qRead.Active := true;
+  FDolg := qRead.FieldByName('AG_DOLG').AsFloat;
+  eDolg.Text := FloatToStr(FDolg);
+  FValut := qRead.FieldByName('PRED_VAL').AsInteger;
+  var I:Integer;
+  for I := 0 to eVal.Items.Count-1 do
+    begin
+      Item := eVal.ListItems[I];
+      if Item.Tag=FValut then
+      begin
+        eVal.ItemIndex:=I;
+        Break;
+      end;
+    end;
+  eCurs.Text := '1';
+  fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmAddDop.TMSFNCButton2Click(Sender: TObject);
@@ -133,6 +152,11 @@ end;
 procedure TfmAddDop.TMSFNCButton6Click(Sender: TObject);
 begin
   showCalc(eCurs);
+end;
+
+procedure TfmAddDop.TMSFNCButton7Click(Sender: TObject);
+begin
+  showCalc(eDPol);
 end;
 
 end.

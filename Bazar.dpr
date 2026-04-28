@@ -14,13 +14,13 @@ uses
   frmBank in 'frmBank.pas' {fmBank: TFrame},
   frmAddDop in 'frmAddDop.pas' {fmAddDop},
   frmCalc in 'frmCalc.pas' {fmCalc},
-  frmSelectAgent in 'frmSelectAgent.pas' {fmSelAgn};
+  frmSelectAgent in 'frmSelectAgent.pas' {fmSelAgn},
+  frmAddString in 'frmAddString.pas' {fmGetStr};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
-  Application.CreateForm(TfmSelAgn, fmSelAgn);
   Application.Run;
 end.

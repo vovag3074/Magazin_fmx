@@ -13,7 +13,8 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Effects,
   FMX.Filter.Effects, FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData,
-  FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer;
+  FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer,
+  FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style, System.Rtti;
 
 type
   TfmBank = class(TFrame)
@@ -178,6 +179,8 @@ begin
 end;
 
 procedure TfmBank.LoadINI;
+var
+  Events: TArray<TDateTime>;
 begin
  //
   eData.Text := DateToStr(now);
@@ -185,6 +188,12 @@ begin
   ltItem.Visible := False;
   ltHeader.Visible := False;
   ltFooter.Visible := False;
+
+  SetLength(Events, 1);
+  Events[0] := now-5;
+  myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+  myCalendar.Model.ShowEvents := True;
+  myCalendar.Model.ShowWeekends:=False;
 end;
 
 procedure TfmBank.myCalendarDateSelected(Sender: TObject);
@@ -250,6 +259,7 @@ begin
  //
 end;
 
+
 procedure TfmBank.TMSFNCButton1Click(Sender: TObject);
 begin
  ppinfo.IsOpen:=False;
@@ -258,6 +268,7 @@ end;
 procedure TfmBank.TMSFNCButton2Click(Sender: TObject);
 begin
  fmAddDop := TfmAddDop.Create(fmBank);
+ fmAddDop.eDate.Date := StrToDate(eData.Text);
  if fmAddDop.ShowModal=mrOk then
  begin
 

@@ -13,7 +13,7 @@ uses
   FireDAC.Phys, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.FMXUI.Wait, FireDAC.Comp.Client, Data.DB,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet,
+  FireDAC.Comp.DataSet, System.Generics.Collections,
 {$IFDEF LINUX}
   FMUX.Api, FMUX.Config, Posix.Stdlib,
 {$ENDIF}
@@ -54,6 +54,7 @@ type
     TMSFNCToolBarButton1: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator3: TTMSFNCToolBarSeparator;
     btBank: TTMSFNCToolBarButton;
+    qVal: TFDQuery;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -66,6 +67,7 @@ type
     procedure LoadFormMoveToSclad;
     procedure LoadFormInv;
     procedure ShowBank;
+    procedure BuildValList;
   public
     { Public declarations }
     procedure StartMainTransaction;
@@ -117,6 +119,10 @@ var
   NtC: TNotificationCenter;
   Nt: TNotification;
  {$ENDIF}
+   // словарь ключ = значение
+  DistValut: TDictionary<integer, string>;
+
+
 
 implementation
 
@@ -154,12 +160,16 @@ begin
   ClearOldFrame;
   Application.ProcessMessages;
   myINI.Free;
+  DistValut.Free;
 end;
 
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
   myINI := TIniFile.Create(getStartProgrammDir + PathDelim + 'Bazar.ini');
   IBC.Connected := True;
+  DistValut := TDictionary<integer, string>.Create;
+  DistValut.Clear;
+  BuildValList;
 end;
 
 procedure TfmMain.LoadFormInv;
@@ -312,6 +322,21 @@ end;
 procedure TfmMain.btMoveToScladClick(Sender: TObject);
 begin
   LoadFormMoveToSclad;
+end;
+
+procedure TfmMain.BuildValList;
+begin
+  qVal.Close;
+  qVal.Prepare;
+  qVal.Active := true;
+  if qVal.RecordCount > 0 then
+  begin
+    qVal.First;
+    repeat
+      DistValut.Add(qVal.FieldByName('NO_VAL').AsInteger, qVal.FieldByName('NAZVAN').AsString);
+      qVal.Next;
+    until qVal.Eof;
+  end;
 end;
 
 procedure TfmMain.btCloseClick(Sender: TObject);

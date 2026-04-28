@@ -1,6 +1,7 @@
 object fmSelAgn: TfmSelAgn
   Left = 0
   Top = 0
+  ActiveControl = eFind
   Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
   ClientHeight = 637
   ClientWidth = 1117
@@ -62,6 +63,7 @@ object fmSelAgn: TfmSelAgn
       TextPrompt = #1055#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
       CharCase = ecUpperCase
       OnTyping = eFindTyping
+      OnKeyDown = eFindKeyDown
       object EditButton2: TEditButton
         Touch.InteractiveGestures = [LongTap]
         CanFocus = False
@@ -72,9 +74,10 @@ object fmSelAgn: TfmSelAgn
         StyleLookup = 'trashtoolbutton'
         TabOrder = 0
         Text = 'trashtoolbutton'
+        OnClick = EditButton2Click
       end
     end
-    object TMSFNCButton1: TTMSFNCButton
+    object btFTS: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -116,15 +119,17 @@ object fmSelAgn: TfmSelAgn
       Size.Height = 52.000000000000000000
       Size.PlatformDefault = False
       Align = Left
+      CanFocus = False
       Margins.Left = 40.000000000000000000
       Margins.Top = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
       Position.X = 273.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 3
-      Text = #1055#1086#1083#1085#1086#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1087#1086#1080#1089#1082
+      Text = #1055#1088#1080#1073#1083#1080#1079#1080#1090#1077#1083#1100#1085#1099#1081' '#1087#1086#1080#1089#1082
+      OnClick = btFTSClick
     end
-    object TMSFNCButton2: TTMSFNCButton
+    object btFTS2: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -174,13 +179,15 @@ object fmSelAgn: TfmSelAgn
       Size.Height = 52.000000000000000000
       Size.PlatformDefault = False
       Align = Left
+      CanFocus = False
       Margins.Left = 10.000000000000000000
       Margins.Top = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
       Position.X = 335.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 2
-      Text = #1055#1086#1083#1085#1086#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1087#1086#1080#1089#1082
+      Text = #1055#1086#1083#1085#1086#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1087#1086#1080#1089#1082' '#1089' '#1089#1080#1085#1086#1085#1080#1084#1072#1084#1080
+      OnClick = btFTS2Click
     end
   end
   object tlSity: TTMSFNCTreeView
@@ -637,7 +644,9 @@ object fmSelAgn: TfmSelAgn
         3E53EBB6F14B962444D5F6DED152E56DFECD0F67250D1F1B6ECB57FF364808DB
         315D4027300FFE5C217977A43876AE56FB37C1DB66A6B5083D0E000000004945
         4E44AE426082}
+      BitmapSize = 24
       ShowImage = True
+      Font.Size = 14.000000000000000000
       Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
@@ -649,8 +658,9 @@ object fmSelAgn: TfmSelAgn
       Margins.Bottom = 10.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 10.000000000000000000
-      TabOrder = 1
+      TabOrder = 3
       Text = #1044#1086#1073#1072#1074#1080#1090#1100
+      OnClick = TMSFNCButton3Click
     end
     object dxAdd: TTMSFNCButton
       Bitmap.PNG = {
@@ -683,7 +693,9 @@ object fmSelAgn: TfmSelAgn
         C1874933D7B9D2240B5595EA9DF15CE943ACD6161BD4D099A13BC2F61B799CDB
         87E804B6028BA02973FEA363DD85EF6AB17F0355F6A367BBDAFEB90000000049
         454E44AE426082}
+      BitmapSize = 24
       ShowImage = True
+      Font.Size = 14.000000000000000000
       Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
@@ -695,8 +707,99 @@ object fmSelAgn: TfmSelAgn
       Margins.Bottom = 10.000000000000000000
       Position.X = 165.000000000000000000
       Position.Y = 10.000000000000000000
-      TabOrder = 0
+      TabOrder = 2
       Text = #1044#1086#1073#1072#1074#1080#1090#1100
+    end
+    object btOK: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000271494441544889C595CD6B13
+        5114C5CF7D53AB4950287EA50A26587063A17425B108AECCDA458296C4ECAC36
+        0511BAF03F7013572606BA6C43C1042D6E535DB42E5257A5903FA001C12C0A52
+        A56913FBE6B8E84C9C269349AB14CFEA7DCDB9F7FEE67D00272CE9B720568C19
+        C1D0E9516DCA3804410000513714D7EBB566B5142FE9BF0A30BB910CEC343823
+        228F01847B2CDB243917F04B3633B6B073E4004FBF24EE08655E444224292202
+        00CEB6B34FB246E1A3FCADC2E74E2FD53990AE24E202298B48A857755D598A84
+        04524E571271CF0AACCCCB00068F6ADEA11685F79C95B403CC6E24038D5D54BD
+        B0F442840E5C7E1F46ED7FD246D4D843FA38587A4944428D3DA4EDBE82B51541
+        4CD1929D9157FB60801592D5AE75C454AC1833DA012E5CF3DD0410164B56269E
+        6D824B9777BFDE85C9972EEBC296A78548307E1C0CA669BEDF3ADB9CFCE6BB7A
+        034A65DC591D782AEB8B600F14AF859C21B9EF185FDA3AD79C1CDA1EB86EC058
+        06187443697B2ABB34371426F1331729E4414942F00BE487FD01DF838B3FCE8C
+        0CA8539F0006BD50FEA980A8BB55A9145E3CA94C3E7F13997F4B8DA8F17DE8E1
+        60AB3502C1B208863D395A9E0A000CC575778CA2943232D36B8967F9DB0B2BE6
+        F9ED90A9F44711B9D2EF3FD99E0A00EAB566D5BAB8BAB72601405E4DAF25DF91
+        5C01307C84EDBC69791E0428C54B9AE49C074F2522F7015C1287DCB85BA779CE
+        BEC6DB2739E0972CC95ABFD2FB89642DE097ACDD6F07C88C2DEC88D629924D8F
+        D20F9DE4AE39B0295AA79C6FC3A1EB3A37B1B82A640A40AB1F0697B996984CE5
+        2616579D9E5DEF412E52288AD6D1E3E0225913ADA3B948A1D839F77F9E4CA7FE
+        F5D13F71FD066531C997119BF0D70000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Default = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 802.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 1
+      Text = #1054#1050
+      OnClick = btOKClick
+    end
+    object TMSFNCButton4: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C086488000002FE494441544889B555CD6E13
+        57183DE7DEF144105688052C02AC0920E50DD820E50950919271429A48B5632A
+        2440E201BA40A86A8B6D90508C3D8605F805402A1B9E201284AE69583448153B
+        6379E2B9A70BFF3033B60345CAD9CCBD73BFDF73BFEF7EC021835F1350AB65F7
+        3F75CF1B698174A70003C5F8C7596EE78ECFECF0CA95F8BB1CA8DA3AD6E3E712
+        C1750067A688FD2DE191F79965DE0ADADFEC60FF61FD12654292739244920090
+        5C27F7923E080C7285E075D696C9FEE8551B5729F382E4DCB4ECC6A224E708BD
+        EC3D6CFE706006FDC8ED0B40FEB71ACF2012B898CCE44BBAF79AB3F1ACFE3A88
+        966914214DD7AE6D737E7827238A7A47551AA3457A23E93741BD6CA8927A027E
+        85F436450979DACD6A73B837189422890D0D308CC8017FE68A2B379DD38F52DF
+        C940A4E79C5BCB15F2B71DF02AA9D337C00DB55A76E460FF53F73C80331C6010
+        0909FC1C55EACB7E71A5E980750031C0D839B7E66FAE3E89AA8D806429A54312
+        D0D9E863FB1C00780060622D4C2A58929E31A6D62987F20BF9307A100272F237
+        579F4495FAB221B738B09185355C00F0D603001A9D94FA29262F70289BB3A875
+        AA35F9857C08009D72B8640CB600D8293A20CC4964FB608CA251C590C67DA91E
+        4B47605C2EA533F87A0020C73D509882D8B9786DA674ED69546D049034E09F86
+        DCC2148A04B737CAC0596E4F14926207AC273937C6D4BAE570C92FAE349DDC86
+        84898F5D0C6C8F1CE48ECFECF41FAE74990AF8DD2FE4C3A8525F36C6D4005800
+        D65A3EEE94C325BFB8DA90DC1FD93205F8DE3F71E41D929DBCFFA071C7D0FC82
+        64874A6F9CF48AE475925EA6737B92EE1BF232C80BA92E97EED842FE6EEA92BD
+        B6B92FE9432A4FF222C91B24C77826E991BC01F24286D65DD36665B81F39E0AD
+        A02D3090D44DA73B793DF10CEA0ACC276743AA4C7385E035C85500D1B4F26302
+        99B3080E2BD99930360FBC9F82670217C7E83A009276052E7AC5FCF3312AA72A
+        DD6BCEBA632A495C077476B214DF137A64DAACFCAF919972D46AD9E8DFCEBC05
+        1686ED2FB8BD18D8F64F1C79F7B5A17FE8F80FD8C3E1516F86771A0000000049
+        454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Cancel = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      ModalResult = 2
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 962.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 0
+      Text = #1054#1090#1082#1072#1079
     end
   end
   object tlAgn: TTMSFNCTreeView
@@ -705,6 +808,7 @@ object fmSelAgn: TfmSelAgn
     Size.Height = 501.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
+    OnDblClick = tlAgnDblClick
     Stroke.Color = claDarkgray
     BitmapContainer = TMSFNCBitmapContainer1
     Groups = <>
@@ -720,24 +824,24 @@ object fmSelAgn: TfmSelAgn
       item
         Name = 'Column0'
         Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
-        Width = 250.000000000000000000
+        Width = 180.000000000000000000
       end
       item
         Name = 'Column1'
         Text = #1044#1086#1083#1075
         HorizontalTextAlign = gtaTrailing
-        Width = 50.000000000000000000
+        Width = 90.000000000000000000
       end
       item
         Name = 'Column2'
-        Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
+        Text = #1055#1088#1077#1076
         HorizontalTextAlign = gtaCenter
-        Width = 50.000000000000000000
+        Width = 90.000000000000000000
       end
       item
         Name = 'Column3'
         Text = 'Column 3'
-        Width = 100.000000000000000000
+        Width = 50.000000000000000000
         Visible = False
       end>
     Nodes = <
@@ -879,7 +983,8 @@ object fmSelAgn: TfmSelAgn
             Nodes = <>
           end>
       end>
-    ColumnsAppearance.StretchColumn = 1
+    ColumnsAppearance.StretchColumn = 0
+    ColumnsAppearance.StretchAll = False
     ColumnsAppearance.TopSize = 36.000000000000000000
     ColumnsAppearance.BottomSize = 25.000000000000000000
     ColumnsAppearance.TopFont.Size = 16.000000000000000000
@@ -939,6 +1044,365 @@ object fmSelAgn: TfmSelAgn
     DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
     DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
   end
+  object myFTS: TPopup
+    PlacementTarget = btFTS
+    Position.X = 224.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 737.000000000000000000
+    Size.Height = 393.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    object pnFTS: TPanel
+      Align = Client
+      Padding.Left = 2.000000000000000000
+      Padding.Top = 2.000000000000000000
+      Padding.Right = 2.000000000000000000
+      Padding.Bottom = 2.000000000000000000
+      Size.Width = 737.000000000000000000
+      Size.Height = 393.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      object Panel3: TPanel
+        Align = Bottom
+        Position.X = 2.000000000000000000
+        Position.Y = 318.000000000000000000
+        Size.Width = 733.000000000000000000
+        Size.Height = 73.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'OfficePanel'
+        TabOrder = 1
+        object TMSFNCButton1: TTMSFNCButton
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000002FE494441544889B555CD6E13
+            57183DE7DEF144105688052C02AC0920E50DD820E50950919271429A48B5632A
+            2440E201BA40A86A8B6D90508C3D8605F805402A1B9E201284AE69583448153B
+            6379E2B9A70BFF3033B60345CAD9CCBD73BFDF73BFEF7EC021835F1350AB65F7
+            3F75CF1B698174A70003C5F8C7596EE78ECFECF0CA95F8BB1CA8DA3AD6E3E712
+            C1750067A688FD2DE191F79965DE0ADADFEC60FF61FD12654292739244920090
+            5C27F7923E080C7285E075D696C9FEE8551B5729F382E4DCB4ECC6A224E708BD
+            EC3D6CFE706006FDC8ED0B40FEB71ACF2012B898CCE44BBAF79AB3F1ACFE3A88
+            966914214DD7AE6D737E7827238A7A47551AA3457A23E93741BD6CA8927A027E
+            85F436450979DACD6A73B837189422890D0D308CC8017FE68A2B379DD38F52DF
+            C940A4E79C5BCB15F2B71DF02AA9D337C00DB55A76E460FF53F73C80331C6010
+            0909FC1C55EACB7E71A5E980750031C0D839B7E66FAE3E89AA8D806429A54312
+            D0D9E863FB1C00780060622D4C2A58929E31A6D62987F20BF9307A100272F237
+            579F4495FAB221B738B09185355C00F0D603001A9D94FA29262F70289BB3A875
+            AA35F9857C08009D72B8640CB600D8293A20CC4964FB608CA251C590C67DA91E
+            4B47605C2EA533F87A0020C73D509882D8B9786DA674ED69546D049034E09F86
+            DCC2148A04B737CAC0596E4F14926207AC273937C6D4BAE570C92FAE349DDC86
+            84898F5D0C6C8F1CE48ECFECF41FAE74990AF8DD2FE4C3A8525F36C6D4005800
+            D65A3EEE94C325BFB8DA90DC1FD93205F8DE3F71E41D929DBCFFA071C7D0FC82
+            64874A6F9CF48AE475925EA6737B92EE1BF232C80BA92E97EED842FE6EEA92BD
+            B6B92FE9432A4FF222C91B24C77826E991BC01F24286D65DD36665B81F39E0AD
+            A02D3090D44DA73B793DF10CEA0ACC276743AA4C7385E035C85500D1B4F26302
+            99B3080E2BD99930360FBC9F82670217C7E83A009276052E7AC5FCF3312AA72A
+            DD6BCEBA632A495C077476B214DF137A64DAACFCAF919972D46AD9E8DFCEBC05
+            1686ED2FB8BD18D8F64F1C79F7B5A17FE8F80FD8C3E1516F86771A0000000049
+            454E44AE426082}
+          ShowImage = True
+          Font.Color = claWhite
+          Cancel = True
+          Size.Width = 130.000000000000000000
+          Size.Height = 53.000000000000000000
+          Size.PlatformDefault = False
+          Align = Right
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 593.000000000000000000
+          Position.Y = 10.000000000000000000
+          TabOrder = 0
+          Text = #1054#1090#1082#1072#1079
+          OnClick = TMSFNCButton1Click
+        end
+        object btOk2: TTMSFNCButton
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C08648800000271494441544889C595CD6B13
+            5114C5CF7D53AB4950287EA50A26587063A17425B108AECCDA458296C4ECAC36
+            0511BAF03F7013572606BA6C43C1042D6E535DB42E5257A5903FA001C12C0A52
+            A56913FBE6B8E84C9C269349AB14CFEA7DCDB9F7FEE67D00272CE9B720568C19
+            C1D0E9516DCA3804410000513714D7EBB566B5142FE9BF0A30BB910CEC343823
+            228F01847B2CDB243917F04B3633B6B073E4004FBF24EE08655E444224292202
+            00CEB6B34FB246E1A3FCADC2E74E2FD53990AE24E202298B48A857755D598A84
+            04524E571271CF0AACCCCB00068F6ADEA11685F79C95B403CC6E24038D5D54BD
+            B0F442840E5C7E1F46ED7FD246D4D843FA38587A4944428D3DA4EDBE82B51541
+            4CD1929D9157FB60801592D5AE75C454AC1833DA012E5CF3DD0410164B56269E
+            6D824B9777BFDE85C9972EEBC296A78548307E1C0CA669BEDF3ADB9CFCE6BB7A
+            034A65DC591D782AEB8B600F14AF859C21B9EF185FDA3AD79C1CDA1EB86EC058
+            06187443697B2ABB34371426F1331729E4414942F00BE487FD01DF838B3FCE8C
+            0CA8539F0006BD50FEA980A8BB55A9145E3CA94C3E7F13997F4B8DA8F17DE8E1
+            60AB3502C1B208863D395A9E0A000CC575778CA2943232D36B8967F9DB0B2BE6
+            F9ED90A9F44711B9D2EF3FD99E0A00EAB566D5BAB8BAB72601405E4DAF25DF91
+            5C01307C84EDBC69791E0428C54B9AE49C074F2522F7015C1287DCB85BA779CE
+            BEC6DB2739E0972CC95ABFD2FB89642DE097ACDD6F07C88C2DEC88D629924D8F
+            D20F9DE4AE39B0295AA79C6FC3A1EB3A37B1B82A640A40AB1F0697B996984CE5
+            2616579D9E5DEF412E52288AD6D1E3E0225913ADA3B948A1D839F77F9E4CA7FE
+            F5D13F71FD066531C997119BF0D70000000049454E44AE426082}
+          BitmapSize = 24
+          ShowImage = True
+          Font.Color = claWhite
+          Size.Width = 130.000000000000000000
+          Size.Height = 53.000000000000000000
+          Size.PlatformDefault = False
+          Align = Right
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 453.000000000000000000
+          Position.Y = 10.000000000000000000
+          TabOrder = 1
+          Text = #1054#1050
+          OnClick = btOk2Click
+        end
+      end
+      object tlFind: TTMSFNCTreeView
+        Align = Client
+        Size.Width = 733.000000000000000000
+        Size.Height = 316.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        OnDblClick = tlFindDblClick
+        Stroke.Color = claDarkgray
+        BitmapContainer = TMSFNCBitmapContainer1
+        Groups = <>
+        GroupsAppearance.TopSize = 50.000000000000000000
+        GroupsAppearance.BottomSize = 50.000000000000000000
+        GroupsAppearance.TopFill.Kind = gfkNone
+        GroupsAppearance.BottomFill.Kind = gfkNone
+        GroupsAppearance.TopFont.Size = 14.000000000000000000
+        GroupsAppearance.TopFont.Color = xFF454545
+        GroupsAppearance.BottomFont.Size = 14.000000000000000000
+        GroupsAppearance.BottomFont.Color = xFF454545
+        Columns = <
+          item
+            Name = 'Column0'
+            Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
+            Width = 100.000000000000000000
+          end
+          item
+            Name = 'Column1'
+            Text = #1044#1086#1083#1075
+            HorizontalTextAlign = gtaTrailing
+            Width = 80.000000000000000000
+          end
+          item
+            Name = 'Column2'
+            Text = #1055#1088#1077#1076'.'
+            HorizontalTextAlign = gtaCenter
+            Width = 80.000000000000000000
+          end
+          item
+            Name = 'Column3'
+            Text = #1057#1082#1080#1076#1082#1072
+            Width = 100.000000000000000000
+            Visible = False
+          end>
+        Nodes = <
+          item
+            Values = <
+              item
+                Text = 'Managers'
+              end>
+            Expanded = True
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Marie Moyo'
+                  end
+                  item
+                    Text = 'Customers'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Fatma Ali'
+                  end
+                  item
+                    Text = 'Sales'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Liam Gonzales'
+                  end
+                  item
+                    Text = 'Manufactering'
+                  end
+                  item
+                    Text = 'Flight'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end
+          item
+            Values = <
+              item
+                Text = 'Specialists'
+              end>
+            Expanded = True
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Fatma Smith'
+                  end
+                  item
+                    Text = 'Marketing'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Marie Ali'
+                  end
+                  item
+                    Text = 'Sales'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end
+          item
+            Values = <
+              item
+                Text = 'Assistants'
+              end>
+            Tag = 0
+            Nodes = <
+              item
+                Values = <
+                  item
+                    Text = 'Omar Ali'
+                  end
+                  item
+                    Text = 'Sales'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Fatma Wang'
+                  end
+                  item
+                    Text = 'Marketing'
+                  end
+                  item
+                    Text = 'Abroad'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Omar Gonzales'
+                  end
+                  item
+                    Text = 'Customers'
+                  end
+                  item
+                    Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end>
+          end>
+        ColumnsAppearance.StretchColumn = 0
+        ColumnsAppearance.StretchAll = False
+        ColumnsAppearance.TopSize = 36.000000000000000000
+        ColumnsAppearance.BottomSize = 25.000000000000000000
+        ColumnsAppearance.TopFont.Size = 14.000000000000000000
+        ColumnsAppearance.TopFont.Color = xFF454545
+        ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+        ColumnsAppearance.BottomFont.Size = 14.000000000000000000
+        ColumnsAppearance.BottomFont.Color = xFF454545
+        ColumnsAppearance.TopFill.Color = xFFEEF2F9
+        ColumnsAppearance.BottomFill.Kind = gfkNone
+        ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+        ColumnsAppearance.TopStroke.Kind = gskNone
+        NodesAppearance.ShowFocus = False
+        NodesAppearance.ExpandWidth = 18.000000000000000000
+        NodesAppearance.ExpandHeight = 18.000000000000000000
+        NodesAppearance.LevelIndent = 20.000000000000000000
+        NodesAppearance.FixedHeight = 25.000000000000000000
+        NodesAppearance.VariableMinimumHeight = 25.000000000000000000
+        NodesAppearance.Font.Size = 14.000000000000000000
+        NodesAppearance.Font.Color = xFF7A7A7A
+        NodesAppearance.TitleFont.Size = 14.000000000000000000
+        NodesAppearance.SelectedFontColor = xFF454545
+        NodesAppearance.ExtendedFontColor = xFF454545
+        NodesAppearance.SelectedFill.Color = xFFF6F8FC
+        NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+        NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+        NodesAppearance.ExtendedFont.Size = 14.000000000000000000
+        NodesAppearance.ExpandNodeIcon.PNG = {
+          89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+          260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+          CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+          66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+          01E68213FFE244E4900000000049454E44AE426082}
+        NodesAppearance.CollapseNodeIcon.PNG = {
+          89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+          260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+          CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+          8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+          49454E44AE426082}
+        NodesAppearance.ExpandNodeIconLarge.PNG = {
+          89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+          3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+          CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+          3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+          6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+          611914FBCBE520D20000000049454E44AE426082}
+        NodesAppearance.CollapseNodeIconLarge.PNG = {
+          89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+          3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+          CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+          2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+          2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+        GlobalFont.Size = 14.000000000000000000
+        GlobalFont.Name = 'Segoe UI'
+        OnGetNodeSelectedColor = tlAgnGetNodeSelectedColor
+        OnGetNodeTextColor = tlAgnGetNodeTextColor
+        OnGetNodeSelectedTextColor = tlAgnGetNodeSelectedTextColor
+        DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+        DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+      end
+    end
+  end
   object qRead: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -997,5 +1461,30 @@ object fmSelAgn: TfmSelAgn
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object qFTS: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    Left = 949
+    Top = 400
+  end
+  object qAddSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'insert into SITY_TABLE (ST_NAME, IS_DEL, IS_STAR)'
+      'values (:ST_NAME, 0, :IS_STAR)'
+      '')
+    ParamData = <
+      item
+        Name = 'ST_NAME'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_STAR'
+        ParamType = ptInput
+      end>
+    Left = 176
+    Top = 416
   end
 end
