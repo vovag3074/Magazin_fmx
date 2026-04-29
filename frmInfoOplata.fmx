@@ -1,0 +1,197 @@
+﻿object fmInfoOpl: TfmInfoOpl
+  Left = 0
+  Top = 0
+  BorderStyle = ToolWindow
+  Caption = #1055#1086#1076#1088#1086#1073#1085#1086#1089#1090#1080' '#1086#1087#1083#1072#1090#1099
+  ClientHeight = 493
+  ClientWidth = 676
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = MostRight
+    Position.X = 472.000000000000000000
+    Size.Width = 204.000000000000000000
+    Size.Height = 493.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 0
+    object TMSFNCButton1: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 184.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      Align = Top
+      ModalResult = 1
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 1
+      Text = #1054#1050
+    end
+    object TMSFNCButton2: TTMSFNCButton
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Cancel = True
+      Default = True
+      Size.Width = 184.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      Align = Bottom
+      ModalResult = 2
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 438.000000000000000000
+      TabOrder = 0
+      Text = #1054#1090#1082#1072#1079
+    end
+  end
+  object Panel2: TPanel
+    Align = Top
+    Size.Width = 472.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 1
+    object TMSFNCHTMLText1: TTMSFNCHTMLText
+      Align = Client
+      Size.Width = 472.000000000000000000
+      Size.Height = 120.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      TextIndentMargins.Top = 10.000000000000000000
+      Font.Size = 18.000000000000000000
+      Font.Color = claWhite
+      Fill.Kind = gfkNone
+      Stroke.Kind = gskNone
+      Stroke.Color = claNull
+      Text = 
+        '<FONT size="24"><P align="center"><B>'#1059#1090#1086#1095#1085#1077#1085#1080#1077'</B></FONT>'#13#10'<FONT' +
+        ' size="18">'#1087#1086' '#1074#1074#1086#1076#1091' '#1087#1086#1075#1072#1096#1077#1085#1080#1103' '#1076#1086#1083#1075#1072#13#10#1045#1089#1083#1080' '#1074#1089#1077' '#1074' '#1087#1086#1088#1103#1076#1082#1077', '#1090#1086' '#1085#1072#1078#1084 +
+        #1080#1090#1077' <B>OK</B></P></FONT>'
+    end
+  end
+  object Оплата: TGroupBox
+    Position.X = 8.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 456.000000000000000000
+    Size.Height = 177.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1054#1087#1083#1072#1090#1072
+    TabOrder = 3
+    object eStartDolg: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Position.X = 168.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object eCursCum: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 168.000000000000000000
+      Position.Y = 136.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object eSum: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 43
+      Position.X = 168.000000000000000000
+      Position.Y = 88.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Label3: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 46.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = #1058#1077#1082#1091#1097#1080#1081' '#1076#1086#1083#1075
+      TabOrder = 46
+    end
+    object Label4: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 94.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = #1042#1085#1077#1089#1077#1085#1085#1072#1103' '#1089#1091#1084#1084#1072
+      TabOrder = 45
+    end
+    object Label5: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 142.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = #1057#1091#1084#1084#1072' '#1087#1086' '#1082#1091#1088#1089#1091
+      TabOrder = 44
+    end
+  end
+  object GroupBox1: TGroupBox
+    Position.X = 8.000000000000000000
+    Position.Y = 324.000000000000000000
+    Size.Width = 456.000000000000000000
+    Size.Height = 133.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1057#1086#1089#1090#1086#1103#1085#1080#1077
+    TabOrder = 2
+    object eDolg: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      ReadOnly = True
+      Position.X = 168.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object ePred: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 43
+      ReadOnly = True
+      Position.X = 168.000000000000000000
+      Position.Y = 81.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Label1: TLabel
+      Position.Y = 84.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
+      TabOrder = 45
+    end
+    object Label2: TLabel
+      Position.Y = 45.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = #1044#1086#1083#1075
+      TabOrder = 44
+    end
+  end
+end

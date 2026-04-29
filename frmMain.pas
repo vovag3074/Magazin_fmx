@@ -54,6 +54,7 @@ type
     TMSFNCToolBarSeparator3: TTMSFNCToolBarSeparator;
     btBank: TTMSFNCToolBarButton;
     qVal: TFDQuery;
+    qTran: TFDQuery;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -93,6 +94,7 @@ type
     /// </param>
     function TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;
     procedure ShowIBError(SError: string);
+    function GetTranID: string;
   end;
 
 procedure ShowInfo(T: string);
@@ -120,8 +122,6 @@ var
  {$ENDIF}
    // словарь ключ = значение
   DistValut: TDictionary<integer, string>;
-
-
 
 implementation
 
@@ -171,6 +171,15 @@ begin
   BuildValList;
 end;
 
+function TfmMain.GetTranID: string;
+begin
+  StartReadTransaction;
+  qTran.Active := True;
+  Result := qTran.FieldByName('UUIN_CODE_128').AsString;
+  qTran.Close;
+  IBT_Read.Rollback;
+end;
+
 procedure TfmMain.LoadFormInv;
 begin
   tbMain.Visible := False;
@@ -180,7 +189,7 @@ begin
   fmInv.Align := TAlignLayout.Client;
   fmInv.tlMod.AdaptToStyle := True;
   fmInv.tlSize.AdaptToStyle := True;
-  fmInv.tlZak.AdaptToStyle:= True;
+  fmInv.tlZak.AdaptToStyle := True;
   fmInv.LoadINI;
   fmInv.ListMod;
 end;
@@ -262,28 +271,28 @@ end;
 
 procedure TfmMain.StartMainTransaction;
 begin
-try
-  if fmMain.IBT.Active then
-  begin
-    fmMain.IBT.Commit;
-    Application.ProcessMessages;
+  try
+    if fmMain.IBT.Active then
+    begin
+      fmMain.IBT.Commit;
+      Application.ProcessMessages;
+    end;
+    fmMain.IBT.StartTransaction;
+  except
   end;
-  fmMain.IBT.StartTransaction;
-except
-end;
 end;
 
 procedure TfmMain.StartReadTransaction;
 begin
-try
-  if fmMain.IBT_Read.Active then
-  begin
-    fmMain.IBT_Read.Rollback;
-    Application.ProcessMessages;
-    fmMain.IBT_Read.StartTransaction;
+  try
+    if fmMain.IBT_Read.Active then
+    begin
+      fmMain.IBT_Read.Rollback;
+      Application.ProcessMessages;
+      fmMain.IBT_Read.StartTransaction;
+    end;
+  except
   end;
-except
-end;
 end;
 
 function TfmMain.TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;
@@ -310,7 +319,7 @@ end;
 
 procedure TfmMain.btBankClick(Sender: TObject);
 begin
- ShowBank;
+  ShowBank;
 end;
 
 procedure TfmMain.btInvScladClick(Sender: TObject);

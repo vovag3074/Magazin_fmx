@@ -15,12 +15,15 @@ uses
   frmAddDop in 'frmAddDop.pas' {fmAddDop},
   frmCalc in 'frmCalc.pas' {fmCalc},
   frmSelectAgent in 'frmSelectAgent.pas' {fmSelAgn},
-  frmAddString in 'frmAddString.pas' {fmGetStr};
+  frmAddString in 'frmAddString.pas' {fmGetStr},
+  frmSelectBankAttribyte in 'frmSelectBankAttribyte.pas' {fmSelBank},
+  frmInfoOplata in 'frmInfoOplata.pas' {fmInfoOpl};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
+  Application.CreateForm(TfmInfoOpl, fmInfoOpl);
   Application.Run;
 end.

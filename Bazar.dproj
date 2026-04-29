@@ -367,6 +367,14 @@
             <Form>fmGetStr</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelectBankAttribyte.pas">
+            <Form>fmSelBank</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmInfoOplata.pas">
+            <Form>fmInfoOpl</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -492,12 +500,6 @@
                 <DeployFile LocalName="Bazar.info.plist" Configuration="Release" Class="ProjectOSXInfoPList">
                     <Platform Name="OSXARM64">
                         <RemoteName>Info.plist</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Bazar.rsm" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win64">
-                        <RemoteName>Bazar.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

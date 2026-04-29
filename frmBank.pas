@@ -272,7 +272,7 @@ begin
  fmAddDop.eDPol.Date := StrToDate(eData.Text);
  if fmAddDop.ShowModal=mrOk then
  begin
-
+   ReadBankList;
  end;
  fmAddDop.Free;
  fmAddDop:=nil;
