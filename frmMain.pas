@@ -137,19 +137,19 @@ begin
   if Assigned(fmInpMag) then
   begin
     fmInpMag.SaveINI;
-    fmInpMag.Free;
+    fmInpMag.Release;
     fmInpMag := nil;
   end
   else if Assigned(fmInv) then
   begin
     fmInv.SaveINI;
-    fmInv.Free;
+    fmInv.Release;
     fmInv := nil;
   end
   else if Assigned(fmBank) then
   begin
     fmBank.SaveINI;
-    fmBank.Free;
+    fmBank.Release;
     fmBank := nil;
   end;
 end;
