@@ -134,10 +134,13 @@ object fmBank: TfmBank
         454E44AE426082}
       BitmapSize = 24
       ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Align = Left
+      CanFocus = False
       Margins.Left = 10.000000000000000000
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
@@ -161,40 +164,6 @@ object fmBank: TfmBank
     DefaultItemStyles.GroupFooterStyle = ''
     Viewport.Width = 1031.000000000000000000
     Viewport.Height = 564.000000000000000000
-    object ListBoxGroupHeader1: TListBoxGroupHeader
-      TextSettings.Font.Size = 16.000000000000000000
-      StyledSettings = [Family, Style, FontColor, Other]
-      Size.Width = 1031.000000000000000000
-      Size.Height = 65.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'myHeader'
-      TabOrder = 0
-      Text = 'ListBoxGroupHeader1'
-    end
-    object ListBoxItem1: TListBoxItem
-      TextSettings.Font.Size = 16.000000000000000000
-      StyledSettings = [Family, Style, FontColor, Other]
-      ItemData.Accessory = aMore
-      Position.Y = 65.000000000000000000
-      Size.Width = 1031.000000000000000000
-      Size.Height = 90.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'miItem'
-      TabOrder = 1
-      Text = 'ListBoxItem1'
-      OnClick = ListBoxItem1Click
-    end
-    object ListBoxGroupFooter1: TListBoxGroupFooter
-      TextSettings.Font.Size = 16.000000000000000000
-      StyledSettings = [Family, Style, FontColor, Other]
-      Position.Y = 155.000000000000000000
-      Size.Width = 1031.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'myFooter'
-      TabOrder = 2
-      Text = 'ListBoxGroupFooter1'
-    end
     object ltHeader: TLayout
       StyleName = 'myHeader'
       Position.X = 136.000000000000000000
@@ -1024,5 +993,16 @@ object fmBank: TfmBank
         Name = 'MB'
         ParamType = ptInput
       end>
+  end
+  object qDataPol: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT first(10) DISTINCT LOG_BANK_OPLATA.DATA_POL'
+      'FROM LOG_BANK_OPLATA'
+      'WHERE ((LOG_BANK_OPLATA.DATA_POL <= CURRENT_DATE))'
+      'ORDER BY LOG_BANK_OPLATA.DATA_POL desc')
+    Left = 352
+    Top = 544
   end
 end

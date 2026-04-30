@@ -298,7 +298,7 @@ begin
     eAgn.Text := fmSelAgn.NameAgent;
     FAgent := fmSelAgn.NoAgent;
     ShowDolg;
-    fmSelAgn.Release;
+    fmSelAgn.DisposeOf;
     fmSelAgn := nil;
   end;
 end;

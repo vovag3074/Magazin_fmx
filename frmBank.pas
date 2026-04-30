@@ -21,9 +21,6 @@ type
     Panel1: TPanel;
     TMSFNCButton5: TTMSFNCButton;
     tlDop: TListBox;
-    ListBoxGroupHeader1: TListBoxGroupHeader;
-    ListBoxItem1: TListBoxItem;
-    ListBoxGroupFooter1: TListBoxGroupFooter;
     Rectangle1: TRectangle;
     TMSFNCImage1: TTMSFNCImage;
     Label1: TLabel;
@@ -55,6 +52,7 @@ type
     ltHeader: TLayout;
     ltItem: TLayout;
     ltFooter: TLayout;
+    qDataPol: TFDQuery;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -103,18 +101,19 @@ procedure TfmBank.GetBankSum(NBank: string);
 var
   Item: TListBoxGroupFooter;
 begin
+try
   qSumBank.Close;
-  qSumBank.ParamByName('MB').AsString := NBank;
+  qSumBank.ParamByName('MB').AsWideString := NBank;
   qSumBank.ParamByName('SD').AsDate := StrToDate(eData.Text);
   qSumBank.Active := True;
   Item := TListBoxGroupFooter.Create(tlDop);
   Item.StyleLookup := 'myFooter';
   Item.Height := ltFooter.Height;
-
   Item.Text := 'Сумма по банку = ' + qSumBank.FieldByName('SUM_OF_VSUM_OPL').AsFloat.ToString;
-
   tlDop.AddObject(Item);
   qSumBank.Close;
+except
+end;
 end;
 
 procedure TfmBank.GetPolSum(NBank, NPol: string; myItem: TListBoxItem);
@@ -187,6 +186,7 @@ end;
 procedure TfmBank.LoadINI;
 var
   Events: TArray<TDateTime>;
+  I: Integer;
 begin
  //
   eData.Text := DateToStr(now);
@@ -194,12 +194,25 @@ begin
   ltItem.Visible := False;
   ltHeader.Visible := False;
   ltFooter.Visible := False;
-
-  SetLength(Events, 1);
-  Events[0] := now - 5;
-  myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
-  myCalendar.Model.ShowEvents := True;
-  myCalendar.Model.ShowWeekends := False;
+  qDataPol.Close;
+  fmMain.StartReadTransaction;
+  qDataPol.Active := True;
+  I := qDataPol.RecordCount;
+  if I > 0 then
+  begin
+    SetLength(Events, I);
+    qDataPol.First;
+    I := 0;
+   repeat
+      Events[I] := qDataPol.FieldByName('DATA_POL').AsDateTime;
+      inc(I);
+      qDataPol.Next;
+   until qDataPol.Eof;
+    myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+    myCalendar.Model.ShowEvents := True;
+    myCalendar.Model.ShowWeekends := False;
+  end;
+  fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmBank.myCalendarDateSelected(Sender: TObject);
@@ -226,7 +239,7 @@ begin
       Item := TListBoxGroupHeader.Create(tlDop);
       Item.StyleLookup := 'myHeader';
       Item.Height := ltHeader.Height;
-      S := qBank.FieldByName('MY_BANK').AsString;
+      S := qBank.FieldByName('MY_BANK').AsWideString;
       Item.Text := S;
       tlDop.AddObject(Item);
       ReadPolList(S);
@@ -241,7 +254,7 @@ var
   Item: TListBoxItem;
 begin
   qPol.Close;
-  qPol.ParamByName('MB').AsString := NBank;
+  qPol.ParamByName('MB').AsWideString := NBank;
   qPol.ParamByName('SD').AsDate := StrToDate(eData.Text);
   qPol.Active := True;
   if qPol.RecordCount > 0 then
@@ -250,10 +263,10 @@ begin
       Item := TListBoxItem.Create(tlDop);
       Item.StyleLookup := 'miItem';
       Item.Height := ltItem.Height;
-      Item.Text := qPol.FieldByName('MY_USER').AsString;
+      Item.Text := qPol.FieldByName('MY_USER').AsWideString;
       Item.TagString := NBank;
       tlDop.AddObject(Item);
-      GetPolSum(NBank, qPol.FieldByName('MY_USER').AsString, Item);
+      GetPolSum(NBank, qPol.FieldByName('MY_USER').AsWideString, Item);
       Item.OnClick := ListBoxItem1Click;
       qPol.Next;
     until qPol.Eof;
@@ -283,7 +296,7 @@ begin
     fmMain.IBT_Read.Rollback;
     fmMain.IBT.Commit;
   end;
-  fmAddDop.Release;
+  fmAddDop.DisposeOf;
   fmAddDop := nil;
 end;
 
