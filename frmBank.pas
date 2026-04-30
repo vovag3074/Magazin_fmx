@@ -93,8 +93,6 @@ begin
   fmMain.StartMainTransaction;
   fmMain.StartReadTransaction;
   ReadBankList;
-  fmMain.IBT_Read.Rollback;
-  fmMain.IBT.Commit;
 end;
 
 procedure TfmBank.GetBankSum(NBank: string);
@@ -225,7 +223,6 @@ procedure TfmBank.ReadBankList;
 var
   Item: TListBoxGroupHeader;
   S: string;
-  I: Double;
 begin
   qBank.close;
   tlDop.Items.Clear;
@@ -294,10 +291,8 @@ begin
     fmMain.StartMainTransaction;
     fmMain.StartReadTransaction;
     ReadBankList;
-    fmMain.IBT_Read.Rollback;
-    fmMain.IBT.Commit;
   end;
-  fmAddDop.DisposeOf;
+  fmAddDop.Free;
   fmAddDop := nil;
 end;
 
