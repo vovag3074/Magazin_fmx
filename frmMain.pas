@@ -137,19 +137,22 @@ begin
   if Assigned(fmInpMag) then
   begin
     fmInpMag.SaveINI;
-    fmInpMag.Free;
+    pMain.SetFocus;
+    fmInpMag.Release;
     fmInpMag := nil;
   end
   else if Assigned(fmInv) then
   begin
     fmInv.SaveINI;
-    fmInv.Free;
+    pMain.SetFocus;
+    fmInv.Release;
     fmInv := nil;
   end
   else if Assigned(fmBank) then
   begin
     fmBank.SaveINI;
-    fmBank.Free;
+    pMain.SetFocus;
+    fmBank.Release;
     fmBank := nil;
   end;
 end;
@@ -399,8 +402,10 @@ begin
 end;
 
 procedure ShowNotify(S: string);
+{$IFDEF MSWindows}
 var
   LChannel: TChannel;
+{$ENDIF}
 begin
    // Оповещение немодальное
   {$IFDEF MACOS}

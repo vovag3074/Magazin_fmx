@@ -41,7 +41,7 @@ begin
   fmGetStr.eString.Text := myStr.Trim;
   Result := fmGetStr.ShowModal;
   myStr :=  fmGetStr.eString.Text.Trim;
-  fmGetStr.free;
+  fmGetStr.DisposeOf;
   fmGetStr:=nil;
 end;
 
