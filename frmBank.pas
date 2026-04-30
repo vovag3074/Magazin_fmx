@@ -228,6 +228,7 @@ begin
       qBank.Next;
     until qBank.Eof;
   end;
+  fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmBank.ReadPolList(NBank: string);
