@@ -1,4 +1,4 @@
-unit frmBank;
+п»їunit frmBank;
 
 interface
 
@@ -107,7 +107,7 @@ try
   Item := TListBoxGroupFooter.Create(tlDop);
   Item.StyleLookup := 'myFooter';
   Item.Height := ltFooter.Height;
-  Item.Text := 'Сумма по банку = ' + qSumBank.FieldByName('SUM_OF_VSUM_OPL').AsFloat.ToString;
+  Item.Text := 'РЎСѓРјРјР° РїРѕ Р±Р°РЅРєСѓ = ' + qSumBank.FieldByName('SUM_OF_VSUM_OPL').AsFloat.ToString;
   tlDop.AddObject(Item);
   qSumBank.Close;
 except
@@ -145,7 +145,7 @@ procedure TfmBank.ListDetail(NBank, NPol: string);
 var
   Node: TTMSFNCTreeViewNode;
 begin
-  lbInfo.Text := 'Получения на ' + NPol + ' по банку ' + NBank;
+  lbInfo.Text := 'РџРѕР»СѓС‡РµРЅРёСЏ РЅР° ' + NPol + ' РїРѕ Р±Р°РЅРєСѓ ' + NBank;
   tlDet.Nodes.Clear;
   qUsr.Close;
   qUsr.Prepare;
@@ -161,17 +161,17 @@ begin
       Node.DataInteger := qUsr.FieldByName('NO_AG').AsInteger;
       Node.Text[0] := qUsr.FieldByName('AG_NAME').AsString;
       Node.Text[1] := qUsr.FieldByName('ST_NAME').AsString;
-      Node.Text[2] := qUsr.FieldByName('SUM_OPL').AsFloat.ToString;
+      Node.Text[4] := qUsr.FieldByName('SUM_OPL').AsFloat.ToString;
       Node.Text[5] := DateToStr(qUsr.FieldByName('DATA_NAK').AsDateTime);
-      if qUsr.FieldByName('KURS_VAL').IsNull then   // если запись старая то курс = 1, а сумма олаты = сумме с учетом курса
+      if qUsr.FieldByName('KURS_VAL').IsNull then   // РµСЃР»Рё Р·Р°РїРёСЃСЊ СЃС‚Р°СЂР°СЏ С‚Рѕ РєСѓСЂСЃ = 1, Р° СЃСѓРјРјР° РѕР»Р°С‚С‹ = СЃСѓРјРјРµ СЃ СѓС‡РµС‚РѕРј РєСѓСЂСЃР°
       begin
         Node.Text[3] := '1';
-        Node.Text[4] := qUsr.FieldByName('SUM_OPL').AsFloat.ToString;
+        Node.Text[2] := qUsr.FieldByName('SUM_OPL').AsFloat.ToString;
       end
       else
       begin
         Node.Text[3] := qUsr.FieldByName('KURS_VAL').AsFloat.ToString;
-        Node.Text[4] := qUsr.FieldByName('VSUM_OPL').AsFloat.ToString;
+        Node.Text[2] := qUsr.FieldByName('VSUM_OPL').AsFloat.ToString;
       end;
 
       Node.Values[0].CollapsedIconName := 'Item1';

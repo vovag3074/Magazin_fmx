@@ -26,7 +26,7 @@ uses
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCTileList;
+  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents;
 
 type
   TfmMain = class(TForm)
@@ -55,6 +55,7 @@ type
     btBank: TTMSFNCToolBarButton;
     qVal: TFDQuery;
     qTran: TFDQuery;
+    ApplicationEvents1: TApplicationEvents;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -62,16 +63,24 @@ type
     procedure btInvScladClick(Sender: TObject);
     procedure myListItemClick(Sender: TObject; AItemIndex: Integer);
     procedure btBankClick(Sender: TObject);
+    procedure TMSFNCToolBarButton1Click(Sender: TObject);
+    procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
     procedure LoadFormInv;
     procedure ShowBank;
     procedure BuildValList;
+    procedure ShowProdaga;
   public
     { Public declarations }
     procedure StartMainTransaction;
     procedure StartReadTransaction;
+    procedure StartAllTransaction;
+    procedure EndMainTransaction;
+    procedure EndReadTransaction;
+    procedure EndAllTransaction;
+
     procedure UpdateSclad;
     procedure ClearOldFrame;
      /// <summary>
@@ -126,7 +135,7 @@ var
 implementation
 
 uses
-  frmInpSclad, frmInvScald, frmBank;
+  frmInpSclad, frmInvScald, frmBank, frmProdaga;
 
 {$R *.fmx}
 
@@ -154,7 +163,32 @@ begin
     pMain.SetFocus;
     fmBank.Release;
     fmBank := nil;
+  end
+  else if Assigned(fmProd) then
+  begin
+    fmProd.SaveINI;
+    pMain.SetFocus;
+    fmProd.Release;
+    fmProd := nil;
   end;
+end;
+
+procedure TfmMain.EndAllTransaction;
+begin
+  EndMainTransaction;
+  EndReadTransaction;
+end;
+
+procedure TfmMain.EndMainTransaction;
+begin
+  if fmMain.IBT.Active then
+  fmMain.IBT.Commit;
+end;
+
+procedure TfmMain.EndReadTransaction;
+begin
+  if fmMain.IBT_Read.Active then
+  fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -272,6 +306,22 @@ begin
   end;
 end;
 
+procedure TfmMain.ShowProdaga;
+begin
+  tbMain.Visible := False;
+  myList.Visible := False;
+  fmProd := TfmProd.Create(pMain);
+  fmProd.Parent := pMain;
+  fmProd.Align := TAlignLayout.Client;
+  fmProd.LoadINI;
+end;
+
+procedure TfmMain.StartAllTransaction;
+begin
+  fmMain.StartMainTransaction;
+  fmMain.StartReadTransaction;
+end;
+
 procedure TfmMain.StartMainTransaction;
 begin
   try
@@ -292,8 +342,8 @@ begin
     begin
       fmMain.IBT_Read.Rollback;
       Application.ProcessMessages;
-      fmMain.IBT_Read.StartTransaction;
     end;
+    fmMain.IBT_Read.StartTransaction;
   except
   end;
 end;
@@ -318,6 +368,19 @@ begin
     NoAgn := qTestZal.FieldByName('NO_AGN').AsInteger;
   end;
   qTestZal.Close;
+end;
+
+procedure TfmMain.TMSFNCToolBarButton1Click(Sender: TObject);
+begin
+  ShowProdaga;
+end;
+
+procedure TfmMain.ApplicationEvents1Exception(Sender: TObject; E: Exception);
+begin
+  try
+
+  except
+  end;
 end;
 
 procedure TfmMain.btBankClick(Sender: TObject);

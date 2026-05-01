@@ -1,0 +1,645 @@
+object fmProd: TfmProd
+  Size.Width = 1039.000000000000000000
+  Size.Height = 575.000000000000000000
+  Size.PlatformDefault = False
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 1039.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 0
+    object TMSFNCButton5: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D494844520000001E0000001E08060000003B30AE
+        A20000000473424954080808087C086488000003CF494441544889E5965F685B
+        551CC7BFDF9BDC4893EAFE34AB0F6DA70FFDB3760FCE35A5656C62DD9C5B5BBA
+        3DD931656348D1618DC21E74039F7415C187D94EE608222B5A5CD18768830F09
+        9BB4082DA45384A5345010DA8286166DD3642C37F7FE7C4873D7E6A64DBAEE41
+        D8F7F59CF3FDDCDF39E79EDF1778DCC4CD4C96BEBE27D27CCA431BEB49B80140
+        04F3A2CBA45D96C2F47AEF3F5270AA7FC0A328780F9413245D793F4A2401A1DF
+        3070C5F1CE99F096C0727DD0AD1B5A1FC12E004C6A2999989BC1E47C0C0BC904
+        00A0CCE942BDBB1C8D155570AA0E6636416EDA14D5CB374FCF6F1A9CFAE2EB7D
+        0A951F4956C696E3E29B1843201AC1BDB496777E895D457B6D03BA1B5B505EFA
+        244564D610A3D3F1F6B9DF8B06AF406F93DC168846A4772488A4961F982BA7AA
+        E2D20B2FA3BDB68122B26888D19A0F6E01CBF541B7AE6B7748567E75675CAE8E
+        8F1605CC554FF321BCB1BF9922326BB3A9FB73B75DC95DA01B5A1FC9CA4034F2
+        D05000B83A3E8A403422242B7543EBCB1D5F034EF50F780876C51271E91D09AE
+        6B6A23E5C2811771665FD386F0DE91206289B810EC4AF50F78D6052B36791700
+        7DE1B175CFD446CAE523ED7CFD390F5B9FADDE109CD434F8C26300C0156F2B58
+        86861C204E26B59404A291BC460A291F1F6EE72BD57B38B3F88FBC1FFC694330
+        0004A21124B59480382943430E0B38BD906C22E89A989BC9FBCB28A45C3EDCC6
+        63357B38B3F8AF74FB6F2296582E08BE97D63031370382AEF442D23C1B134C61
+        3D004CCEC7D6A9B48DC76AEA4DE8DF4540B3CA7A6619006037C1401900F3455A
+        AD0B075A79BCA69E00F07469297E38756E5D482C11C76BDF7FB366D7B29E8452
+        66A918CCFCD392C74CD9542BB1CAF4A4613A99158B609E04DC4E6B0FF8ECD7DB
+        B2B3C485A3D575FC6B398E62CF37ABACA708CC47E4C1ADA64C02409DBBDCB250
+        17E1A5D0B004A7A764F7B61DF475766197ABB46870D653F40C630DD8AE2D8545
+        24D154518512BB9A177E311890D0F494ECDEBE83BECE57B1CB59185E6257D154
+        51051149D865C96C970F6EB5D77B1F42BF5375B0ADB621AF892E063F08062434
+        1D9567B6EFE4A7473B0A82DB6A1B32ED52E85F1D14D6BC5C06F4CF014877630B
+        9CAAB56A131E1A966FFF98905FFE9CDE10EA54557437B60080AC789BB2DCD7F4
+        B51B83044F0D4FDD950F6FFD5CB0A28DF4D14BC7D151B79702F9CE7EFEECE9D5
+        6396EE645354AF88CC76D4ED654FF3C18786F6341FCC4045666D8AEACD1D2F18
+        0486A7EECA27A3A14D05818B878E64A1C50701137EEDC6F38AC0BFA5E8439C70
+        9C3FFB5BBEF9FFBFB0B7A6FA2F073C8A5E64BCB5E18AE3AD2DC65B8BF9230CF4
+        8F9FFE033208EDC6B2C59B230000000049454E44AE426082}
+      ShowImage = True
+      ShowText = False
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = MostLeft
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 3
+      Text = #1053#1072' '#1075#1083#1072#1074#1085#1091#1102
+      OnClick = TMSFNCButton5Click
+    end
+    object eData: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Right
+      TabOrder = 4
+      ReadOnly = True
+      Position.X = 816.000000000000000000
+      Position.Y = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Size.Width = 213.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
+      OnChange = eDataChange
+      object DropDownEditButton1: TDropDownEditButton
+        Touch.InteractiveGestures = [LongTap]
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 28.000000000000000000
+        Size.Height = 24.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnClick = DropDownEditButton1Click
+      end
+    end
+    object TMSFNCButton2: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C0864880000038F494441544889B5945D6C54
+        6510869FF9CE6E7F76FB6F966E4CABA54D53095513B5ADA8A9557A438C377861
+        4253A845A324A64649D49888D1D8688C9144131514490A04E39D571A0D142C45
+        BAE00F6BA4446B150B953F53D8B6B4BB7BCE375EB48BBBD42EB5CA5C4D4ECECC
+        73DE77660E5CE39005BDA52AEDDFB877634D9381A4A7DEFE9D4D3947FF17C0FA
+        835A96F47BBB5156A623C1EE2A2EF53FFE4EADC4B3D59BAB7DB9EBF33E16A455
+        44044066C28838ED17C7BCCDFF49417B2479AF207B52CD555553F98C0C4D3AEA
+        D46E6F9491C5298015A9C6AAAAE9B9AA2A8ACFC56BC8D6C0771500CCDAF28F0A
+        66A1D922AB0255FAB39371C57506160DD8D9E83B007C31AF45B0B5E72E39B568
+        00226AFCCE1AE0B3943322220856615B9E381BB3D6FF9B43EB389CBCC38AD304
+        24D5355FED5821830BAABDD691A1A023A26115EF3D55EE17111F339E93B24755
+        716C7C7F73F927AB1F9AEE0AE6E68C3FA6C22A6099082508712C230AFD56D816
+        58CAA18C35B5E27D28C82A504D832B20133F7F97183F36E0ABA82E79B23EBFE7
+        C69CC289BD40D808B32B8C0A04116E42A9F3091DD3C3BC70C5906525F3C4A513
+        C7ED1F9FBE7FE6A3CEB6E14A39F8C4C8A83F9CCD9A58CC31F1B86CBAE2D0D451
+        E5F23A5E7EAAAAC5B7DC23A776BF910410EB065E7EBB0A11686E886955459C82
+        A087EB8A9EFDD34FF47880BEC345BCBAF1F74026C0322A462AD32F3695E79495
+        8F5634DFF75C341A2590ABC90F5EFB458E0E06F54834C897078A999C72701C25
+        549AA4BEEE121BDA4E535AEC253286DC1E71B7189147E702F487EBEDB7AD2D17
+        5E9CAE5FB2AF3554923881F2B94248D2679099AB5A5EC950E059F74D11DF1A84
+        FC748B0266ACEB81C2CDB9B787F6F61BDC5A55BA9370ABB1AC35C22A11960141
+        555C554E027DA26CCFADE1C89C435B7B28D189315B44C4A414544FF6E5AD2F6F
+        7B3A3E76FEF58A70428C01D765782A6E765935BD5349F7A7F1B34C8FC48A08E4
+        D8F075B51343CB979360BE4B5E1771DB14DE15910255D59E469FEFCC60D1A6EE
+        B74A5F3A7DCE4FCB9D316A6E98A6B0C0C35AE1FC988FE860C0EE8B14CB339DA3
+        D2547FB132741BA3F302001E8968A587F73CF0707583B3A46BA8E8D9A033DE7D
+        6C289F81EF0BF9ED642EE3930EC62865252E754BA7686E8C112A734978840B6B
+        399715908A8E5ECDAB6A21F1D4AFA59501B9B047A0FAEFF59D3358AC656B5E0D
+        1B52EF2CEC67976AF82305F17CD6093C08DC0C8410122823085F5B61477E15BD
+        E9357F015CC3B5A7E78551840000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 150.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      CanFocus = False
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Position.X = 58.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 5
+      Text = #1055#1088#1086#1076#1072#1078#1072
+    end
+  end
+  object ppCalendar: TTMSFNCPopup
+    Size.Width = 26.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 40.000000000000000000
+    Position.Y = 424.000000000000000000
+    DropDownHeight = 202.000000000000000000
+    DropDownWidth = 302.000000000000000000
+    PlacementControl = eData
+    ContentControl = myCalendar
+  end
+  object myCalendar: TCalendar
+    Date = 46132.000000000000000000
+    Position.X = 200.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 302.000000000000000000
+    Size.Height = 202.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Visible = False
+    OnDateSelected = myCalendarDateSelected
+  end
+  object tlProd: TListBox
+    Align = Client
+    Size.Width = 1039.000000000000000000
+    Size.Height = 527.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    DisableFocusEffect = True
+    ItemHeight = 40.000000000000000000
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 1035.000000000000000000
+    Viewport.Height = 523.000000000000000000
+    object ltProd: TLayout
+      StyleName = 'prodItem'
+      Position.X = 16.000000000000000000
+      Position.Y = 200.000000000000000000
+      Size.Width = 1009.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 1
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Kind = None
+        HitTest = False
+        Margins.Left = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Size.Width = 1005.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        object TMSFNCImage1: TTMSFNCImage
+          Align = Left
+          Size.Width = 40.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F40000000473424954080808087C0864880000045E494441545885E5974B6C55
+            551486BFB5CFB98F3E69CBA3501A8B0584A641A0A1A045A8F822150D91A432B0
+            5C99A831042138123171448C03632444648008445E2660EB8B01964488942244
+            2BA001ADC402168ABD94DE5BEEBDE79CE5A0542ABD6D2F4D61E23F3B67AFFDAF
+            6FAF93BDF63EF07F970C7562CD0F3726896B975868C2D8F64F5BCAE4E23D0108
+            35C667E2990F30F2B0DC9CAFA883472DAEB57A5B855CB86B00A1A3890518A913
+            91B464E3AA7A5135317FFB9CB4E6543D4DAA81D5C7750446B6F7971C40440A44
+            7C5B514D7961290304D5AB11917183068ACC7DF1B85331EC0006AD4C254E4050
+            337FD80150CD493DD4CB1D7600455A528D05FD73D80150EA520A53753CD7FB7A
+            D801BACE5BB5AADA3028006CDD51113C37EC007B9F1717C7AA56E54CBFC9550F
+            58116B55AA9E0CA51356D76B6630C359232ACB30727F7723A44960D3F988D972
+            68813877EA39642DAFD7E0CBC7D577CF12DE0D25FD04CB8EE818F1B9EF025522
+            92959A9576FAE8DA5C649FF8E4AD999567E9DE8C6944B0B188CB64622901549F
+            527F7AC4FB1E61C640E9DCE8F5841BEF520063D9BF15649F5FFC74DA96D6A9FE
+            BA508E7D6991F19CE9087908364A1C68051A51F6FA8BD92F829B1420D4E03C23
+            463E1F70ADA04D2BE7C7DDE8753FE04CAC2899B5EEA5B381D2DC93FB8DE8F841
+            6BA534C4123C9B3D85B6BEDB50E4BEC10C04247D4269CFE3A97D9B76FF5C927D
+            62532AC9BB5330C76FF326C9FA8080A662923DBDFBBC51D50E802BED7641CD9A
+            495A7B3057DBAF59AAB7B9A8426B9B4FB7EF1BA52BDF9EA08E630A00ECBE787A
+            3995F63062DA5CB9B0F3166C7E9EC30B8BDBD855378AF51BC7332ACFD191390E
+            01BFC78D98E1F2551F1D9D1665A511424B2E83F1480AA009EB283ED711A42F5C
+            6F59563C63F4C80D8581E6F79A9A400CAD5595E1715595612251A3CD2D01C21D
+            3637628680DF63745E8209853182819B9715E52FFADB86A146E70B41AA06489F
+            488FFCF2DC6C5D51FF44D6E155234738CD96E10CB04B0C2583144F55F9CA6F11
+            9222DA93AED215F70DCBB31E139140B27121F1F1ECA2BDF54BF5C8215B9CD90A
+            71F158E3F3288B7A2C34C2226328030A013F105168061A0C7C1628E6D82DAF7E
+            146A745F11D8982C26209DCB56673D15CE4F34D6F96CFDB7AC8EC3B948CCEC54
+            CF3BE887A69C0769EF9953FF65C6D892C2C8F5B1D389F4F6EAF734DC566E7DA4
+            B04255E37D2AA04E3C43AFA67F5A3B9A25AF4EE1C31DF97AECC74C6D0BFB265A
+            B0CE36A6BE23E66B3BB827AB6BFDDA82F02315A5D196E6E085F42033FB567310
+            2D3F162FF7D46C1023E53DEF828497AECDA920DFFA75F7D113991CF82E97D3E7
+            D268B9E4C771BB2D6D5B193F26CEB4A95116CE0B336746A7B81EF3D22771E48E
+            007A54D39878D2A88480C7FD26F2CEEB198BBE290E1E3E29F09F6B7A2C2EA842
+            C0AF482F7755FE8EBB94644DE6CA90007A54BD47ADDC623237CF926BD1661EB2
+            94F745281FC04B51EAD5E2B54011A76F1F1CF2BF616FC5FEA0445C1E4598AA90
+            07A8086D28A73D876F830FF0FB70E4B92BFA07CC09B2AA4EE0FF2F0000000049
+            454E44AE426082}
+          Bitmaps = <>
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+        end
+        object Label1: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family, Style]
+          Size.Width = 335.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          Text = 'Label1'
+          TabOrder = 1
+        end
+        object Line1: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 588.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label2: TLabel
+          StyleName = 'sumDolg'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 741.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = '40'
+          TabOrder = 6
+        end
+        object Line2: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 846.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label3: TLabel
+          StyleName = 'prodOpl'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 597.000000000000000000
+          Size.Width = 130.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 5
+        end
+        object Line3: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 380.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label4: TLabel
+          StyleName = 'prodCnt'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 389.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 3
+        end
+        object Line4: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 732.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label5: TLabel
+          StyleName = 'prodSum'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 483.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 2
+        end
+        object Line5: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 474.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label6: TLabel
+          StyleName = 'sumPred'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 855.000000000000000000
+          Size.Width = 150.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 4
+        end
+      end
+    end
+    object tlHead: TLayout
+      StyleName = 'prodHead'
+      Position.X = 24.000000000000000000
+      Position.Y = 208.000000000000000000
+      Size.Width = 1009.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 0
+      object Rectangle2: TRectangle
+        Align = Client
+        Corners = [TopLeft, TopRight]
+        Fill.Color = xFF0C024A
+        HitTest = False
+        Margins.Left = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Size.Width = 1005.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        object Label7: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family]
+          Size.Width = 376.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
+          TabOrder = 0
+        end
+        object Line6: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 733.000000000000000000
+          Size.Width = 3.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label8: TLabel
+          StyleName = 'sumDolg'
+          Align = Right
+          StyledSettings = [Family]
+          Position.X = 741.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1044#1086#1083#1075
+          TabOrder = 5
+        end
+        object Line7: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 846.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label9: TLabel
+          StyleName = 'prodOpl'
+          Align = Right
+          StyledSettings = [Family]
+          Position.X = 598.000000000000000000
+          Size.Width = 130.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1054#1087#1083#1072#1095#1077#1085#1086
+          TabOrder = 4
+        end
+        object Line8: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 381.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label10: TLabel
+          StyleName = 'prodCnt'
+          Align = Right
+          StyledSettings = [Family]
+          Position.X = 390.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1050'-'#1074#1086
+          TabOrder = 2
+        end
+        object Line9: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 589.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label11: TLabel
+          StyleName = 'prodSum'
+          Align = Right
+          StyledSettings = [Family]
+          Position.X = 484.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1057#1091#1084#1084#1072
+          TabOrder = 1
+        end
+        object Line10: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 475.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label12: TLabel
+          StyleName = 'sumPred'
+          Align = Right
+          StyledSettings = [Family]
+          Position.X = 855.000000000000000000
+          Size.Width = 150.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
+          TabOrder = 3
+        end
+      end
+    end
+    object ltPred: TLayout
+      StyleName = 'predItem'
+      Position.X = 16.000000000000000000
+      Position.Y = 416.000000000000000000
+      Size.Width = 977.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 2
+      object Rectangle3: TRectangle
+        Align = Client
+        Fill.Color = xAB006400
+        HitTest = False
+        Size.Width = 977.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGold
+        object Label13: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family]
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Size.Width = 967.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claGold
+          Text = 'Label13'
+          TabOrder = 0
+        end
+      end
+    end
+  end
+  object qUsr: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select count(LP.NO_MOD_SIZE) COUNT_OF_NO_MOD_SIZE,'
+      '       AG.AG_NAME,'
+      '       V.NAZVAN,'
+      '       LP.NO_AGN,'
+      '       AG.AG_DOLG,'
+      '       sum(LP.CENA_PROD) SUM_TOV,'
+      '       sum(LP.OPLATA) SUM_OPL,'
+      '       S.ST_NAME,'
+      '       AG.IS_SKIDKA,'
+      '       LOP.DOP_OPIS,'
+      '       (AG.AG_PRED + AG.AG_BANK_PRED) AG_PRED'
+      'from SITY_TABLE S'
+      'inner join AGENTS AG on (S.NO_ST = AG.NO_SITY)'
+      'inner join LOG_PROD_TABLE LP on (AG.NO_AGN = LP.NO_AGN)'
+      'left outer join LOG_OTP_AGN LOP on ((AG.NO_AGN = LOP.NO_AGN) and'
+      '      (LOP.DATA_OTP = :SD))'
+      'inner join VALUT_TABLE V on (AG.PRED_VAL = V.NO_VAL)'
+      'where ((LP.DATA_PROD = :SD) and'
+      '      (LP.IS_TEMP = 0))'
+      
+        'group by AG.AG_NAME, V.NAZVAN, LP.NO_AGN, S.ST_NAME, AG.AG_DOLG,' +
+        ' AG.IS_SKIDKA, LOP.DOP_OPIS, AG_PRED'
+      'order by AG.AG_NAME  '
+      '')
+    Left = 72
+    Top = 240
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end>
+  end
+  object qPred: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT (AG.FULL_NAME_STD) AG_NAME,'
+      '                          AG.NO_AGN,'
+      '                          LP.NO_PRGN,'
+      '                          LP.POL_PRED,'
+      '                          LP.SUM_PRED'
+      'FROM AGENTS AG'
+      'INNER JOIN LOG_PRED_AGN LP ON (AG.NO_AGN = LP.NO_AGN)'
+      'WHERE ((LP.DATA_PRED = :DS) AND'
+      '      (LP.IS_VIRT = 0))'
+      'ORDER BY AG.AG_NAME'
+      '')
+    Left = 128
+    Top = 240
+    ParamData = <
+      item
+        Name = 'DS'
+        ParamType = ptInput
+      end>
+  end
+end
