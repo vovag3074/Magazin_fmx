@@ -11,7 +11,8 @@ uses
   FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCImage,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
-  FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FMX.TabControl, FMX.ExtCtrls, FMX.Effects;
 
 type
   TfmProd = class(TFrame)
@@ -22,7 +23,12 @@ type
     TMSFNCButton2: TTMSFNCButton;
     ppCalendar: TTMSFNCPopup;
     myCalendar: TCalendar;
+    qUsr: TFDQuery;
+    qPred: TFDQuery;
+    qPredBank: TFDQuery;
+    qSumSend: TFDQuery;
     tlProd: TListBox;
+    ltProd: TLayout;
     Rectangle1: TRectangle;
     TMSFNCImage1: TTMSFNCImage;
     Label1: TLabel;
@@ -36,6 +42,7 @@ type
     Label5: TLabel;
     Line5: TLine;
     Label6: TLabel;
+    tlHead: TLayout;
     Rectangle2: TRectangle;
     Label7: TLabel;
     Line6: TLine;
@@ -48,22 +55,32 @@ type
     Label11: TLabel;
     Line10: TLine;
     Label12: TLabel;
-    qUsr: TFDQuery;
-    ltProd: TLayout;
-    tlHead: TLayout;
     ltPred: TLayout;
     Rectangle3: TRectangle;
     Label13: TLabel;
-    qPred: TFDQuery;
+    Layout1: TLayout;
+    Rectangle4: TRectangle;
+    Label14: TLabel;
+    Label15: TLabel;
+    TMSFNCImage2: TTMSFNCImage;
+    ListBoxItem1: TListBoxItem;
+    pmProd: TPopup;
+    tbInfo: TTabControl;
+    tbNow: TTabItem;
+    TabItem2: TTabItem;
+    Panel2: TPanel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure eDataChange(Sender: TObject);
+    procedure ListBoxItem1Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
     FNewCashe: Double;
     procedure ListInfoMoney;
+    procedure ListInfoBankPred;
+    procedure ListSendMoney;
   public
     { Public declarations }
     procedure LoadINI;
@@ -93,6 +110,47 @@ end;
 procedure TfmProd.eDataChange(Sender: TObject);
 begin
   ReadProd;
+end;
+
+procedure TfmProd.ListBoxItem1Click(Sender: TObject);
+begin
+//Для покупателей в продаже
+ if Sender is TListBoxItem then
+ begin
+   //ShowInfo(TListBoxItem(Sender).Tag.ToString);
+   pmProd.Width:=tlProd.Width-40;
+   tbInfo.TabIndex:=0;
+   pmProd.PlacementTarget:= TListBoxItem(Sender);
+   pmProd.Popup();
+ end;
+end;
+
+procedure TfmProd.ListInfoBankPred;
+var
+  Node: TListBoxItem;
+begin
+    qPredBank.Close;
+    qPredBank.Prepare;
+    qPredBank.ParamByName('DS').AsDate := StrToDate(eData.Text);
+    qPredBank.Active := True;
+    if qPredBank.RecordCount > 0 then
+    begin
+      qPredBank.First;
+      repeat
+         Node := TListBoxItem.Create(tlProd);
+         Node.StyleLookup := 'predItem';
+         Node.Tag := qPredBank.FieldByName('NO_PRGN').AsInteger;
+         Node.Text := qPredBank.FieldByName('AG_NAME').AsString +' '+
+           qPredBank.FieldByName('SUM_PRED').AsFloat.ToString;
+        if qPredBank.FieldByName('POL_PRED').IsNull then
+          Node.Text := Node.Text+ ' <Получатель не назначен>'
+        else
+          Node.Text := Node.Text+' '+ qPredBank.FieldByName('POL_PRED').AsString;
+        qPredBank.Next;
+      until qPredBank.Eof;
+    end;
+    // А тут показываем отдачу денег
+    // Тут суммарная информация по передаче денег
 end;
 
 procedure TfmProd.ListInfoMoney;
@@ -127,6 +185,28 @@ begin
   end;
 end;
 
+procedure TfmProd.ListSendMoney;
+var
+  Node: TListBoxItem;
+begin
+    qSumSend.Close;
+    qSumSend.Prepare;
+    qSumSend.ParamByName('DS').AsDate := StrToDate(eData.Text);
+    qSumSend.Active := True;
+    if qSumSend.RecordCount > 0 then
+    begin
+      qSumSend.First;
+      repeat
+        Node := TListBoxItem.Create(tlProd);
+        Node.StyleLookup := 'sndItem';
+        Node.Text := 'Отдано на руки валюта: ' +  qSumSend.FieldByName('NAZVAN').AsString;
+        Node.StylesData['tVal'] := qSumSend.FieldByName('SUM_OF_SUM_SND').AsFloat.ToString;
+        qSumSend.Next;
+        tlProd.AddObject(Node);
+      until (qSumSend.Eof);
+    end;
+end;
+
 procedure TfmProd.LoadINI;
 var
   Header: TListBoxHeader;
@@ -157,7 +237,7 @@ begin
   try
     tlProd.BeginUpdate;
     tlProd.Clear;
-
+    fmMain.StartReadTransaction;
     qUsr.Close;
     qUsr.Prepare;
     qUsr.ParamByName('SD').AsDate := StrToDate(eData.Text);
@@ -183,13 +263,21 @@ begin
         FSum := FSum + qUsr.FieldByName('SUM_TOV').AsFloat;
         FOpl := FOpl + qUsr.FieldByName('SUM_OPL').AsFloat;
         FCnt := FCnt + qUsr.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger;
+        Node.OnClick :=  ListBoxItem1Click;
         tlProd.AddObject(Node);
         qUsr.Next;
       until (qUsr.Eof);
     end;
     ListInfoMoney;
+    ListInfoBankPred;
+    ListSendMoney;
   finally
     tlProd.EndUpdate;
+    if tlProd.Items.Count > 0 then
+    begin
+      tlProd.ItemIndex:=0;
+    end;
+    fmMain.EndReadTransaction;
   end;
   tlProd.ShowScrollBars:=True;
 end;

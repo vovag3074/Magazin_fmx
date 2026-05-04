@@ -556,7 +556,7 @@ object fmProd: TfmProd
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      TabOrder = 2
+      TabOrder = 3
       object Rectangle3: TRectangle
         Align = Client
         Fill.Color = xAB006400
@@ -579,6 +579,173 @@ object fmProd: TfmProd
           TextSettings.FontColor = claGold
           Text = 'Label13'
           TabOrder = 0
+        end
+      end
+    end
+    object Layout1: TLayout
+      StyleName = 'sndItem'
+      Position.X = 24.000000000000000000
+      Position.Y = 424.000000000000000000
+      Size.Width = 977.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 2
+      object Rectangle4: TRectangle
+        Align = Client
+        Fill.Color = xCC023E4A
+        HitTest = False
+        Size.Width = 977.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGold
+        object Label14: TLabel
+          StyleName = 'Text'
+          Align = Left
+          AutoSize = True
+          StyledSettings = [Family]
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 55.000000000000000000
+          Size.Width = 524.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claGold
+          Text = 'Label13'
+          TabOrder = 0
+        end
+        object Label15: TLabel
+          StyleName = 'tVal'
+          Align = Client
+          StyledSettings = [Family]
+          Size.Width = 393.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          Text = 'Label15'
+          TabOrder = 1
+        end
+        object TMSFNCImage2: TTMSFNCImage
+          Align = MostLeft
+          Size.Width = 50.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F40000000473424954080808087C08648800000453494441545885ED564B6C94
+            55183DE7DEBFF4018660020BEB90A009185CB82975A6A0868740627CC4B456B0
+            338DDD48079BB85063A2518C518C31A281B6D80D309DF02841A224C605C65428
+            33454D64A13146484879440D06625B4AE79F7B5CD02933FF4C6178ADE4ECFEFB
+            9DFB9D731FFFF75DE00EEEE0FF0E167C095C975ABBC83326E46038E5AC1B8081
+            93EFCCD0D648E207102A3620707DBA651B8C69293276EB203897EC0C275FCC99
+            98145A77646DBDB1F608850B220F4AAED6D044040D4148177B52E0BB449C0813
+            0C39B914694E535A2162A6CBB2616B43E228007839BA674C4820451CEC7A38D1
+            1C4FC59A414424A4BAC3BD6B4A2DA7E3EB8ECACADAF3DEC70FF58E948AB7A7A3
+            BB488428B3B92B9CD8131F8CED21D0E81917027014004C8E9C3B73C9D55E1677
+            71002071BC54F2B6C36D7765EF3EDF3F328663ED87D6CE2AC5999C4B178FA762
+            CD92ABCDD72A3030394013A1C14ED22C9174C6B7EA0C72E283D1D7ABBCCC2992
+            8B0C388F15F6E4FAC1D86B50E139F8569D92CE9066090D761A9A48915E7040D2
+            9093FA046DF43DD5F7D425CF1688A75E6806F001002B2823C881B0003E5C9F8E
+            76E4737BEA92677D4FF582363AA94FD25050CF0B0E00484F75E60000B29120B3
+            CC468DCC6610B320AC02F4AE687E0BD22716F01600C4D3D1DD0042D73070F53F
+            90E23808189905B91DAC74633F6D6AD8BBFCAA13A7C85D7404D782137A046548
+            BE0F720E01EF122B9F6DFAA569DAF5E6BA2103DD0DBDFDA45929A91F92007A34
+            2631FBDFAA631D03ADF7E778D191F1BAD8A87F2E3A9C59754B0D004067FD8EEF
+            BBC2BDCB00FC09C8973440727ED6BAAD93249A792467D1705FEB5866250008D3
+            3E95D06C914DE768A52E61F92020E1B8EF55AFF6FCD1CF01BA5C48D92CE17920
+            592387FDB1E1B1A7BB67541D0CA62861205862AF207EA4A501965BE0F04E57A4
+            F7004DC567B387E76EDAB074830F209ACF35F6CA8D23592DE3ED6FBD98796647
+            75C5B781354C244FC71A49EC7172298A9FC0DA135DF5DB7FCE27B7A75A9E3286
+            FB04420E1F7547126FB65E38F79E2A66BE4AB2F25A1B266914D49389EA8AEF26
+            8D0649972B21F7C2657F6C4F477735F535D95CAC3B92FC0A4214D230A8050050
+            AEF8C44ED440FC327A31F3D89406200D49EE0B00E70DF9DCEC50555B7EB833DC
+            BBDB8E7BF3ADCCA689A46589E7999841F140EB686671490302D25DE16413A537
+            0040C42341CEE647B7FDBD25B263E07A84832600AE41C125746E18D600C0C2F6
+            C1689384072E5F10DD174FC71A8B8D9A53DDE1EDE9E078399070AC2263DF2E30
+            50339D87462FEA04C90709ECCE5DCF890E56D4C508F70D802720FD05724ED9E2
+            C0AF1967562766F21F048BF3CB879FBF27EB79AF109C9B93990A24463276F1BA
+            4B0BDBEA05BE04A092CC7FE1E95E8205C625F7BBD3F8D2E4F4E9931DF676BDFD
+            101BF51B49F65D11D7710BBB6C5B0D0B5AF2CD55C23221E9A44FBB2251CDB2DE
+            03B7049C28A9924E3B631FDF59C593A57837D48CCAC1B86FFB05F5C0D8E5C92A
+            FE71BB746E1AFF01AAF3BE2FC124AA160000000049454E44AE426082}
+          Bitmaps = <>
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+        end
+      end
+    end
+    object pmProd: TPopup
+      Position.X = 32.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 929.000000000000000000
+      Size.Height = 377.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object ListBoxItem1: TListBoxItem
+        Size.Width = 1035.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 90
+        Text = 'ListBoxItem1'
+        OnClick = ListBoxItem1Click
+      end
+      object Panel2: TPanel
+        Align = Client
+        Margins.Left = 2.000000000000000000
+        Margins.Top = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Margins.Bottom = 2.000000000000000000
+        Size.Width = 925.000000000000000000
+        Size.Height = 373.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'TopPanel'
+        TabOrder = 91
+        object tbInfo: TTabControl
+          Align = Client
+          Size.Width = 925.000000000000000000
+          Size.Height = 373.000000000000000000
+          Size.PlatformDefault = False
+          TabIndex = 0
+          TabOrder = 90
+          TabPosition = PlatformDefault
+          Sizes = (
+            925s
+            347s
+            925s
+            347s)
+          object tbNow: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = True
+            Size.Width = 119.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = #1058#1077#1082#1091#1097#1072#1103' '#1087#1088#1086#1076#1072#1078#1072
+            ExplicitSize.cx = 119.000000000000000000
+            ExplicitSize.cy = 26.000000000000000000
+          end
+          object TabItem2: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = False
+            Size.Width = 60.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = #1054#1087#1083#1072#1090#1072
+            ExplicitSize.cx = 60.000000000000000000
+            ExplicitSize.cy = 26.000000000000000000
+          end
         end
       end
     end
@@ -636,6 +803,46 @@ object fmProd: TfmProd
       '')
     Left = 128
     Top = 240
+    ParamData = <
+      item
+        Name = 'DS'
+        ParamType = ptInput
+      end>
+  end
+  object qPredBank: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select (AG.AG_NAME || '#39' '#39' || ST.ST_NAME) AG_NAME,'
+      '                                         LP.NO_PRGN,'
+      '                                         LP.POL_PRED,'
+      '                                         LP.SUM_PRED'
+      'from AGENTS AG'
+      'inner join LOG_PRED_AGN LP on (AG.NO_AGN = LP.NO_AGN)'
+      'inner join SITY_TABLE ST on (AG.NO_SITY = ST.NO_ST)'
+      'where ((LP.DATA_PRED = :DS) and (LP.IS_VIRT = 1))'
+      'order by ST.ST_NAME, AG.AG_NAME  ')
+    Left = 128
+    Top = 296
+    ParamData = <
+      item
+        Name = 'DS'
+        ParamType = ptInput
+      end>
+  end
+  object qSumSend: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select VT.NAZVAN,'
+      '       sum(LS.SUM_SND) SUM_OF_SUM_SND'
+      'from LOG_SEND_CASHE_BAZ LS'
+      'inner join VALUT_TABLE VT on (LS.NO_VAL = VT.NO_VAL)'
+      'where ((LS.DATA_SND = :DS))'
+      'group by VT.NAZVAN'
+      '')
+    Left = 128
+    Top = 360
     ParamData = <
       item
         Name = 'DS'
