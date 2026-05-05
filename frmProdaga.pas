@@ -69,6 +69,9 @@ type
     tbNow: TTabItem;
     TabItem2: TTabItem;
     Panel2: TPanel;
+    ltFooter: TLayout;
+    Rectangle5: TRectangle;
+    Label16: TLabel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -271,6 +274,12 @@ begin
     ListInfoMoney;
     ListInfoBankPred;
     ListSendMoney;
+    //-------------------------------------
+    Node := TListBoxItem.Create(tlProd);
+    Node.StyleLookup := 'ftrProd';
+    Node.Text:='Продано: '+FCnt.ToString+' |  На сумму: '+FSum.ToString+' |  Оплачено: '+
+    FOpl.ToString;
+    tlProd.AddObject(Node);
   finally
     tlProd.EndUpdate;
     if tlProd.Items.Count > 0 then

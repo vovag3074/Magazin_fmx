@@ -749,6 +749,43 @@ object fmProd: TfmProd
         end
       end
     end
+    object ltFooter: TLayout
+      StyleName = 'ftrProd'
+      Position.X = 38.000000000000000000
+      Position.Y = 160.000000000000000000
+      Size.Width = 987.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 5
+      object Rectangle5: TRectangle
+        Align = Client
+        Corners = [BottomLeft, BottomRight]
+        Fill.Color = xCE680168
+        HitTest = False
+        Margins.Bottom = 2.000000000000000000
+        Size.Width = 987.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claKhaki
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        object Label16: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family, Style]
+          Margins.Right = 10.000000000000000000
+          Size.Width = 977.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Trailing
+          Text = 'Label16'
+          TabOrder = 0
+        end
+      end
+    end
   end
   object qUsr: TFDQuery
     Connection = fmMain.IBC
