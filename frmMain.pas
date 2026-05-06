@@ -50,7 +50,7 @@ type
     Lang1: TLang;
     myList: TTMSFNCTileList;
     TMSFNCToolBarSeparator2: TTMSFNCToolBarSeparator;
-    TMSFNCToolBarButton1: TTMSFNCToolBarButton;
+    btProd: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator3: TTMSFNCToolBarSeparator;
     btBank: TTMSFNCToolBarButton;
     qVal: TFDQuery;
@@ -63,7 +63,7 @@ type
     procedure btInvScladClick(Sender: TObject);
     procedure myListItemClick(Sender: TObject; AItemIndex: Integer);
     procedure btBankClick(Sender: TObject);
-    procedure TMSFNCToolBarButton1Click(Sender: TObject);
+    procedure btProdClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
   private
     { Private declarations }
@@ -262,6 +262,10 @@ begin
   begin
     btBank.OnClick(Sender);
   end;
+  if AItemIndex = 5 then  //продажа
+  begin
+    btProd.OnClick(Sender);
+  end;
 end;
 
 procedure TfmMain.ShowBank;
@@ -370,7 +374,7 @@ begin
   qTestZal.Close;
 end;
 
-procedure TfmMain.TMSFNCToolBarButton1Click(Sender: TObject);
+procedure TfmMain.btProdClick(Sender: TObject);
 begin
   ShowProdaga;
 end;

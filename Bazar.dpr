@@ -18,7 +18,8 @@ uses
   frmAddString in 'frmAddString.pas' {fmGetStr},
   frmSelectBankAttribyte in 'frmSelectBankAttribyte.pas' {fmSelBank},
   frmInfoOplata in 'frmInfoOplata.pas' {fmInfoOpl},
-  frmProdaga in 'frmProdaga.pas' {fmProd: TFrame};
+  frmProdaga in 'frmProdaga.pas' {fmProd: TFrame},
+  frmAddProdaga in 'frmAddProdaga.pas' {fmAddProdAgn};
 
 {$R *.res}
 

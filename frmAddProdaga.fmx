@@ -1,0 +1,14 @@
+object fmAddProdAgn: TfmAddProdAgn
+  Left = 0
+  Top = 0
+  BorderStyle = ToolWindow
+  Caption = #1055#1088#1086#1076#1072#1078#1072
+  ClientHeight = 480
+  ClientWidth = 856
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+end

@@ -2,7 +2,7 @@ object fmProd: TfmProd
   Size.Width = 1039.000000000000000000
   Size.Height = 575.000000000000000000
   Size.PlatformDefault = False
-  object Panel1: TPanel
+  object pnTool: TPanel
     Align = Top
     Size.Width = 1039.000000000000000000
     Size.Height = 48.000000000000000000
@@ -136,6 +136,7 @@ object fmProd: TfmProd
       Position.Y = 2.000000000000000000
       TabOrder = 5
       Text = #1055#1088#1086#1076#1072#1078#1072
+      OnClick = TMSFNCButton2Click
     end
   end
   object ppCalendar: TTMSFNCPopup
@@ -582,7 +583,7 @@ object fmProd: TfmProd
         end
       end
     end
-    object Layout1: TLayout
+    object ltSend: TLayout
       StyleName = 'sndItem'
       Position.X = 24.000000000000000000
       Position.Y = 424.000000000000000000
@@ -707,22 +708,28 @@ object fmProd: TfmProd
         TabOrder = 91
         object tbInfo: TTabControl
           Align = Client
-          Size.Width = 925.000000000000000000
-          Size.Height = 373.000000000000000000
+          Margins.Left = 2.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Right = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Size.Width = 921.000000000000000000
+          Size.Height = 369.000000000000000000
           Size.PlatformDefault = False
-          TabIndex = 0
+          TabIndex = 2
           TabOrder = 90
           TabPosition = PlatformDefault
           Sizes = (
-            925s
-            347s
-            925s
-            347s)
+            921s
+            343s
+            921s
+            343s
+            921s
+            343s)
           object tbNow: TTabItem
             CustomIcon = <
               item
               end>
-            IsSelected = True
+            IsSelected = False
             Size.Width = 119.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
@@ -731,20 +738,900 @@ object fmProd: TfmProd
             Text = #1058#1077#1082#1091#1097#1072#1103' '#1087#1088#1086#1076#1072#1078#1072
             ExplicitSize.cx = 119.000000000000000000
             ExplicitSize.cy = 26.000000000000000000
+            object tlPMod: TTMSFNCTreeView
+              Align = Client
+              Size.Width = 921.000000000000000000
+              Size.Height = 343.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Stroke.Color = claDarkgray
+              BitmapContainer = TMSFNCBitmapContainer1
+              Groups = <>
+              GroupsAppearance.TopSize = 50.000000000000000000
+              GroupsAppearance.BottomSize = 50.000000000000000000
+              GroupsAppearance.TopFill.Kind = gfkNone
+              GroupsAppearance.BottomFill.Kind = gfkNone
+              GroupsAppearance.TopFont.Size = 18.000000000000000000
+              GroupsAppearance.TopFont.Color = xFF454545
+              GroupsAppearance.BottomFont.Size = 18.000000000000000000
+              GroupsAppearance.BottomFont.Color = xFF454545
+              Columns = <
+                item
+                  Name = 'Column0'
+                  Text = #1052#1086#1076#1077#1083#1100
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column1'
+                  Text = #1050'-'#1074#1086
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column2'
+                  Text = #1062#1077#1085#1072
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column3'
+                  Text = #1057#1091#1084#1084#1072
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column4'
+                  Text = #1054#1087#1083#1072#1095#1077#1085#1086
+                  Width = 100.000000000000000000
+                end>
+              Nodes = <
+                item
+                  Values = <
+                    item
+                      Text = 'Managers'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Omar Smith'
+                        end
+                        item
+                          Text = 'Customers'
+                        end
+                        item
+                          Text = 'Office'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Arthur Ali'
+                        end
+                        item
+                          Text = 'Manufactering'
+                        end
+                        item
+                          Text = 'Office'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Isabella Moyo'
+                        end
+                        item
+                          Text = 'Customers'
+                        end
+                        item
+                          Text = 'On Leave'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'Specialists'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Yusuf Wang'
+                        end
+                        item
+                          Text = 'Marketing'
+                        end
+                        item
+                          Text = 'Abroad'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Arthur Wang'
+                        end
+                        item
+                          Text = 'Finance'
+                        end
+                        item
+                          Text = 'Abroad'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'Assistants'
+                    end>
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Arthur Smith'
+                        end
+                        item
+                          Text = 'Finance'
+                        end
+                        item
+                          Text = 'On Leave'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Fatma Ali'
+                        end
+                        item
+                          Text = 'Manufactering'
+                        end
+                        item
+                          Text = 'Abroad'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Isabella Gonzales'
+                        end
+                        item
+                          Text = 'Marketing'
+                        end
+                        item
+                          Text = 'Office'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end>
+              ColumnsAppearance.StretchColumn = 0
+              ColumnsAppearance.StretchAll = False
+              ColumnsAppearance.TopSize = 36.000000000000000000
+              ColumnsAppearance.BottomSize = 25.000000000000000000
+              ColumnsAppearance.TopFont.Size = 18.000000000000000000
+              ColumnsAppearance.TopFont.Color = xFF454545
+              ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+              ColumnsAppearance.BottomFont.Size = 18.000000000000000000
+              ColumnsAppearance.BottomFont.Color = xFF454545
+              ColumnsAppearance.TopFill.Color = xFFEEF2F9
+              ColumnsAppearance.BottomFill.Kind = gfkNone
+              ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+              ColumnsAppearance.TopStroke.Kind = gskNone
+              NodesAppearance.ShowFocus = False
+              NodesAppearance.ExpandWidth = 18.000000000000000000
+              NodesAppearance.ExpandHeight = 18.000000000000000000
+              NodesAppearance.LevelIndent = 20.000000000000000000
+              NodesAppearance.FixedHeight = 40.000000000000000000
+              NodesAppearance.VariableMinimumHeight = 40.000000000000000000
+              NodesAppearance.Font.Size = 18.000000000000000000
+              NodesAppearance.Font.Color = xFF7A7A7A
+              NodesAppearance.TitleFont.Size = 18.000000000000000000
+              NodesAppearance.SelectedFontColor = xFF454545
+              NodesAppearance.ExtendedFontColor = xFF454545
+              NodesAppearance.SelectedFill.Color = xFFF6F8FC
+              NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+              NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+              NodesAppearance.ExtendedFont.Size = 18.000000000000000000
+              NodesAppearance.ExpandNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+                66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+                01E68213FFE244E4900000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+                8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+                49454E44AE426082}
+              NodesAppearance.ExpandNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+                3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+                6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+                611914FBCBE520D20000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+                2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+                2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+              GlobalFont.Size = 18.000000000000000000
+              GlobalFont.Name = 'Segoe UI'
+              OnGetNodeSelectedColor = tlPModGetNodeSelectedColor
+              OnGetNodeTextColor = tlPModGetNodeTextColor
+              OnGetNodeSelectedTextColor = tlPModGetNodeSelectedTextColor
+              DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+              DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+              object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
+                Size.Width = 26.000000000000000000
+                Size.Height = 26.000000000000000000
+                Size.PlatformDefault = False
+                Position.X = 94.000000000000000000
+                Position.Y = 313.000000000000000000
+                Items = <
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C0864880000021A494441544889ED953F4F14
+                      4118C67FEFDE61A22E098486434BD4822B74EFFC53592848BCE4624C8CA53146
+                      502A8DB6147C064C3C44132FF21188207E0524DA9C3DD5498114C484539CC782
+                      BD73765D4442EC789A7DFFECCC33EF33F3CEC021F680F9CE9D6FDFCF61B93A68
+                      C8CC020049C2C03093243333002121E8F892036BA09F77DF1C3FF2B13D673E49
+                      97ABFFF8D22CAE2FCC83736A870B630F6D73E5833657966566845199EE52D99A
+                      AF6604ECFC1704D657A916BBFA0BAF81B3D90468687D619EE68BE7F2A3FDF71F
+                      B0B9B2ACE6CB9D0907C6272C8C4AC47E6289FDF7C68A7E204864CD029C6BDBD6
+                      2E3F6D0366B1BC7E0EE73A92ED524136E41C615466607CC2000BA332527AF1D9
+                      4810C81BE5DB1B4B8BEA1DBD4E18952C4EB2B1B4A8F47FB1BF3B415C9E3C1B49
+                      5A9D9A64756A12FF14A5C6748852E9E41EFC0F24083224927575A11800E4F38A
+                      D31D8952E37627F0CB37330BCF5FB4C1E99A5FB3069FCD5858BE9079C2D88F44
+                      96CF73F2F153C2A844CFD511007A4746AD3B2AD989474F2097DBBF443E7A86AF
+                      7174F0940114C6278C5C6EE70B1C3B7DC67AAE0CEF9FC0D7F2EBE25B35676B02
+                      F87CFBA6D3F6B61AB76E38496ACED6B4F1FEDDC1F7C0B7539DCC81F700C0B55A
+                      A8D54AC6B6B6E452B1BF21DDC98E20E834CEDA5C9DB5B97AA2C24F972FA53BF7
+                      B71F047F7476EA2EB2465FA55A04AC7DE9FD338280BE4A15B0466246DF493D38
+                      ED4A3ABAFA76464E590FCE21F6C42F326810D7A19B238A0000000049454E44AE
+                      426082}
+                    Name = 'Item1'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C086488000003E3494441544889D5555B4C5C
+                      55145DFBDC7BE7C1A510860E09B122689A14AB30A6161A35AD094D3421363129
+                      584A80DA26F55913FDA8D4A81FD657DA0F9A2A689110194A6CA1B5C47ED40F8C
+                      25516AC91045A16A318D9648DAF0D2E23CE8BDE76C3F86192F03136BDA1FF7D7
+                      DE67EF7BD6D96B3F2EF07F17721A0D61BB5211AD26E69F83A67EE6D60344E410
+                      08016666227CD4E1D59FB95900E134DC5EB1C1F6881C001F3068575D940B6E29
+                      402B91D545744DD8B219CC02CA7AE46601289DA33E2A4708288ED34504004E3D
+                      D54ED5014C2AC1F57A5A64A57A2144F1D4A72760CF4CB3C395D4490840D797F8
+                      88082BABB6F9358F7B4F5A0005EE25E6C6D82F63983CD9CDE9E2969315EBD653
+                      5EDD0E28A2904817D469BA427963A3D9FEEC9CB28CACACD789E8F2C2EB92E2B4
+                      9D7ADEF63A0088DA521C5952036E6EBF5D0AFD614B88829810E1E9C8DCF017A3
+                      435FFD343BAB0F5CBAF44AD4B2F602D090A606EE3B0A517CEC2420A82DE8D59F
+                      4E52C487DBFD96A6374942159875434A18526285E1C1AEC083BF5D09CF3536F5
+                      F4BCB6A9BCFCE24C24D296E8C0858222A1E7D5D412889414F2301241B196F63B
+                      A5AE0D6A02DB89602C937A617E66D627B3875AF7F79F3FDF697A3C0796A3C8C8
+                      CD25DFA39520E0F32EB7FB0200107777BBD454F41B064A9DE98ECD4CD95EDDC0
+                      AAAC6CDD793E198ED41C98B8787A24FFB651F278170D62D6860790716F092B56
+                      9B8E66180300A05B53D17A8D280047AA00D032F8B5F5FDD509E3C86355D6EA5C
+                      BF2B71EE37BDEFD6AE5973AAB5F2F1B698CFF746622C163EBF420A6F1D35E397
+                      0300D92DC12F01DE985AECC948D87EEAB3E3FC672C46AD5BAAF92EDF4A23E19B
+                      F3BA2A729EAC399BAE039DA2031C202262663E7161D89A8E448CF8BC907E5FFE
+                      2AFBD48F3F68BB4FF7C8B62D4F5845393E8388C88C5A010067115F902F32F825
+                      0012ACDE0C9AAEB64500449401009652D6878303988945B03091044067669E8D
+                      46F4D0C4F87C518E0F00A0813300A0216A550038F857280472B9609694B43484
+                      AF7FDB61BA869200CC3C0EA0C810C2E8DB91DCCE04009DC3A158D3B97E77D53D
+                      81D8D6B5A59E645B128DC75F21CA21257E7DB5115A66268A7B7A8502D603F807
+                      008C3E12B43B75688E8F7C173B74AEDFBDF5EED2F9C6872A3C62814600B6A6EC
+                      38FF520D42D350B8FF6D90CB0D102930424E8A84647E0FC0F5D4E2FC7EED0FAE
+                      2D5937BF6FE366B7706C5030F5D0733BC701209869F431E3E5CCFBCBAE9A25A5
+                      13A4E4F39DA66B11000180D51CDC4BC4EFDC40535CD66C59462FEC9CBC81D878
+                      0600A03F5B779099F6119195768901C33664C57FB91CA93F9CF9F73F5EAB11ED
+                      0161334005100843F1B062EA32FC9E0EAAAE5E42E5BFC9DFB652BC3685A08822
+                      0000000049454E44AE426082}
+                    Name = 'Item2'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C086488000003DF494441544889ED555F4C5B
+                      7514FECEBDB7BDE55F4B215251E844A76902A318169CD081D1929805634CCC4C
+                      98DD16E3669864C97C728B4F33189C318A0A6404B7C18C26B08C441767E21EC0
+                      3996105E98BA0999135A372054BA758EDEF6FE393E94DB94C282C4075FFC1E6E
+                      CEBDE777EEF73BDFF73BF702FFE3BF069941CB68A041206C37080280E4058071
+                      9F78AD1C00080CC3605CECAE3D3D922268190D349080EF33EAFF0D0C12047F67
+                      4DDF0F12000884ED0C08970E5C41E90E17DC4D2EFCB87F0200C0CC4C44040024
+                      128340ACF1AA9CAFC78BE0B97984CECFA3AEB352806ED40348121804810094EE
+                      70A1689B13B1D9F8AA2DC905166C7EB584449B88C9DE19C417D515F9D86C1C45
+                      DB9C692DAC941A00E06E728135C6D4A920781900E0F0E4A2FAA807CE0A3BEC9B
+                      73507DD48302AF3DD50533F3D4A9205863B89B5C2B8825938581356561662E7D
+                      BE08B1B938D47B1AA46C094A38117CE8A9C2DEACB0705ED76D530E8743D1F585
+                      E2D9BEB99A4834D6BCB5CDF302A513ACEB98C610B34430B361B588C70AE3729B
+                      27C7A935F8EB7DF946D63E41A09C84A6076F456F0FD7B4BD73D6DF5A59137569
+                      8FA5088CE5E3644A828C787A6816E5AD6586B320F7F58EC6BEFE3FBA3FDB59A4
+                      E7B60B59B4297D230FE6D9B5A5EE93833723770F3DFED2C1B19407A611B48CCC
+                      78E9A6826B1F4EBFDFD1D8D71FE9E97DB718F6AF44121E595D038B0CB1B94C71
+                      8C295D271E5D65F25A202258F32D330F17BADFBBD1DEB1D3AE5B8FA40F68E8CE
+                      6D75EACF0535A3CC6D8178860706ACEB12E497E751C5BEB2CFFD7EA7566277B4
+                      A7BFFCFA6258DD33F425BAC62E65120044556A38B67B8507BE1E2F6273714C9D
+                      0C52F4C63D06803BBFDE45342FF7BB67B7D4D509226D32BDF96D31ACBEF1F500
+                      396C363E52EFB764FAC6CC2C8076ADE820786E1E24119ED8EB4E696B688CBFA6
+                      79322F2157999AFF1E5954F77F33481125263E595C4267AF5E918E8F8FE2F8F8
+                      659CB93AA19AEB00AE4ACE01C3600242DFCE27054C1B1622422291884BA2986D
+                      3E1BBF153222B125999979E8DA4FE65167005460CBC68B9E2DAA5514AD20CA4E
+                      4AC4B84804A3AEAB32D591AFC79BE29027C985250A8193ADBF5CEE95AF471694
+                      C19F27E4434F372801EF565B9A37E972852400E8AE3D3DD2321A68BCDFE73ABB
+                      C422D18C3A0C45D688C84200DEF6F96D6C40F9F8F2886C1525E5958A2A5BFAF4
+                      1311B1C1175227E29F40EBECFF8204349BF706B3F1D1E8701C00BF55FB4C5606
+                      81AAE946F58608F893130FE8923806C0BDEE5AA6C39637771FDBD00F860EBEB6
+                      A0417F8E8089B5267E395499E9B07420F001D28766439D0C0C58D505658F40BC
+                      0B202F801C8083605CD0993F955BF7FE62AEFD1B890EB3F49B7EFCD700000000
+                      49454E44AE426082}
+                    Name = 'Item3'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C0864880000040A494441544889CD556D4C95
+                      6518BEEEF7E370CE0139801DF003A43119B1F8CA68CEA46CC12AFB93D9D00D16
+                      36D7720BE7FAD872DAFA6536C2994B663166BAB4CD76708CE28F1853A9118CAD
+                      01853982F31262ABC1490482F37E3CE7BDFB21070E2FA6B8FAD1FDEB7E9EE7BA
+                      AFEBB9AFE77D9E17F8BF4578184F19416C6786FC9F931B41541A1A2C43833034
+                      B47010BE7BD548CB253787F02808F5DD7D095453BFD6B62CDA6A02DFEB1A72FE
+                      B5C0F420FC2C21F0FB98EA79F76826FA07BC52C4263090434087FE2BB62E77A3
+                      4BE2F26528E121B44D5E2351BE2D5B6C79E26131DCA58A916E55EC7C71BDE8B9
+                      E811C6300C5DC3DBF7243382C83786D16168080D76B8FE7CB62CE787E6CF9206
+                      740D9177F666880D1BF244674BBCB8754D12E5DBB2457E7EBEF558719E683E9D
+                      240C0D627A10E54E4E65D188F0F958482DB8D4E943F3C514442252E1C4B4820F
+                      EBD7F2856F9351F0D00C06340FCE34F931A0794004324CC2A75FAC82AE4B589B
+                      6678801907656C071AACAFBE49A1F74FA4DFB7958A0C6D73C96C715DDDD0D43F
+                      0A98C3883003B361896D9E5B23301CB965D1C82F5AE2C9AEAE5517C6FE500746
+                      F41C7D53FA0DD75BC73AC34EE12502DD7D097C75D033BFC0312006ECE25CB336
+                      3565C5E1F49F9E17B790592259BE4289E578225C97C8BEE2ADAE1EBD9B45A2E1
+                      CB34349C4BE53BB860AF49515E6D6DEF393BDD70648747F86B00CA74EC57D88C
+                      463522DEA47DBBC7E1BC0744209ACF6F473477294A6D6B7BCFD9D047F587BC91
+                      B47344D2834B71506509151145EED63F3995B544E02E3192E55EFF8156F3F18E
+                      648FF7606CE7C19B2133D0DFAB3B5A5EA7423ECF81804BB903D9925025E96459
+                      7EB2484FF4D5C4920FDD0C597B5A1A69223C1B179C08E9FB4B4ADDD25C37202A
+                      B242E1AA4502CC609ECFE753F8DCEED6C733B2374BA0CCE87CF066C8DAF37580
+                      26F4B00C8003FDBD7100F4FD25A56E9AAB974095CB3A03253171C0EF8E2F8ACE
+                      DF989A14AFB53492CFEDE6EDB9050200BFB1698BD1D8DF1B77BCB35D8FE2002E
+                      5ADC0160B85CB6CB6991699A8624CBDEE8386C9928485B631D7CB24C6DFAF947
+                      1900571516BBE36459FF6D6A72E13888BC4E8BBA9FDE345972FA7C2AFE9A91E6
+                      81FE04234DD8FA28E0063373F64ABF72ECB917A2B57614B733EF11F702173380
+                      516707EF65AC365BCF1E1D745DEAF4C1346F1BF640C2C4C6B884B12BD0930411
+                      A90E129ABB8F885ACACC4C44C436B72D12F064E1BB7010CFAC5B6D1EDAF5D2F8
+                      46025CCC806928152B720F378913671A41A888AD59E9F55A291E2F0038AD3523
+                      CC7584FB083E7ECA1F51E46E00EB62E7856D5B8A24A98BB04C07D4EAAADA65FF
+                      320180F6ED1E17889412D0177BCB55597661E1CBB398E980F2FACB47E07C8B96
+                      DD4920E0B2C6F55D127125408500E201BE0E465B84B92E6EEF2B57A3D8BF01D8
+                      0AC6B3F83E020E0000000049454E44AE426082}
+                    Name = 'Item4'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C0864880000049F494441544889D5555B6C14
+                      6514FECEDCF63ABB6DA9B44B69B9F422186911508452E3F5C10791A8AD50605B
+                      2B501635E10122091A3586B4065FA8DC6A011590048A518826D6046808050AD2
+                      12D0040A527A030A5A58A0DDDDD999393ED059DBAD2DBE7A9EFEFCE7FBBFEF5C
+                      6780FFBBD148CEF74E2E1C6B9050A98BE177BE9C511B1CE82B3B56A6DA256D33
+                      19E6079BF2F7B40DC7218C246080DE02A34888D86D432213EEC9202A344571C9
+                      481C230A005408A6A35BF377DD8CF76C9F5DDB03E6C304148287AFC4B0028193
+                      FE5C009399CC7DC3619884BD00B2028D25D386C348D661C5F145590C4AD30DBA
+                      5E53B0B3C5348C425114A2E19EC8F74B1B8AA74A247A632F74406723885BFA41
+                      248B6136F4220067024717E442921209DCB579F6EECB002002C0BB27163DCB02
+                      3508029599217DB187126C4953BDA57D1DA148675DB7E3912712BF26914A41EC
+                      275009092811404B5AF6B6C3E651B2158F9C9BE4481A959497F0952009652094
+                      CF7C3BB7E1D4F67357250030492800583EF7F9658EF4681E12E9434911E8DA91
+                      3FB9BBE1F6EAFB57C324BB44B62A0300D15E837A3B43ABD9209AB4741CDD6DED
+                      5BD3FC690B64B7C8535665C90F38512F3D78C144008217EFC73A73A1A60D7F35
+                      DD0111515F5738BEB46D8A206D4B55D53A9F666FB9D51E0E8FCF4C4DE93A73E3
+                      A9BE60640101F34C30FDD303E6088830FE359F454000E04E77C44F87D17BA9AF
+                      32BD4BAC98959363E4A765CE49513DCBC46EC11999A077748DBA573FE393353F
+                      BC747DDAF45E9F36214614385D3C910CF12700D9C34D030053B86D966D7CF9DB
+                      DDADEB37CC4F77792B00CA880F204ABCBFCB155A99E50FDCC4C04D2E3F599C2D
+                      9174E1E2F636EE3ED1C344440F92632622527D8E750D758D1FDDA9AE59A79AB6
+                      3500C8F20DC4F59FDB75915FB09797FE11DB035FE85A2B336B8ED4214B0B0057
+                      B3238E8AD6CA0DF32DF21132058074D9A0FD5C55658B097CFC5CBD4EC015478A
+                      7D085A16C56DB372728C7435A1C2225F557720B4F5D7E321666600E8B87B275A
+                      5CBB2BD274AD53030010E545C504BF349088811647AAED512B65EB5E75387ECE
+                      4FCB9C034286759F9998CCD5A78FDB75D30CBD3AE97171D9817D04807CAA2756
+                      3281B0709000115DB4272BAF0812111BFDA2CCACB8DD97929DEAD27E0C01C0F2
+                      27673B34430FED686AB4EF3DDF6CB81585ABE716C1A77A64AB1F4CC81BFC2D62
+                      B4883681940479D0B5D7EB0D0BA2E88C0B86E64DCE159DB26CF44635A9605C66
+                      34C39B28C7F139E304CCB30038698A07DC6F0060DCBD315A63BDD3CA8899B923
+                      785B2B3FB88F54C5CE6F3C96D757FBFB59C7C653C7623D61660673C7A0126D7A
+                      7A77F38AC6C5872716A53DEF1AEB202DA803009C2EE7CCA03B5A9F6AC0202209
+                      00DEFFE5471360A17A6E1132BC894EB7A284763435DA73537CDA33E332152222
+                      661C1A326E2B8F9426449CE67A627E9D883CCC0C8AD2779B0A76BEA96DF9668F
+                      089A0F00CDD73BB514B74A6354AF6C457CB4ED8A367DCC58D1252B2211E93A30
+                      FD61F33CB8825B768E36984F01487F2896B0560E94543EE48F36D828E0BFA9B3
+                      F02201E7AD69A27E1B70D699B0565AEEFF0CFF6123FF3DBAAA2A5B54F29408A0
+                      620079207281B91DA04306E10B5BC0FF9B85FD1BAAAEF61D60EA81CC00000000
+                      49454E44AE426082}
+                    Name = 'Item5'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C0864880000042E494441544889B5555D4C14
+                      67143D77FE76F6BFBB80FC284B046A6B5BE10130A1421F7CF0A14DC484C66CAD
+                      818746D4A64DFBD0A4264D6A6D62D03435294D556AB53686C6229B14DBC66263
+                      43FAA0111130D244B1058175355684AEE0EECEECCCD787DDD99D05161292DE97
+                      EFCECD9DF3DD7BEE993BC0FF6CB45830328A12025E27821D00B8645C37F9F39F
+                      F5E4C918E618D0652DC5F8A21724C1AF11E05D69D50C78CC801A6B29C685052D
+                      313412C1DBF8F673980859C0186344442DFE07D8E57F88EA860DCC80E9EF1EA6
+                      AFCFAEC289B305A93C5F510C81A3B7BD60680470844BB645B131340000717000
+                      C044C8B2A2EA274212CC381C00A8A3A8024320A3CDA419FE22F18C98E964661C
+                      0100740E9B2819E692032322325E22229A0E27D81CF869984F0383CD84051011
+                      1979063E67BE8000F772AD77FF9698B9C7A5A52A9C0EF3A978365B30E4B4DC32
+                      69892984CE5F72B2C0B0545EA26F9081239869C11214CDF3EF8A3CFF8D47967B
+                      38A773C4ED764763A150FEB4AA6EE4C4A76F00D89641D172B6B976067D371CEC
+                      C91CAF89448737783CADB5EBD6699B5697D5E5DA5D2D02C116D5F4C907730F7B
+                      AB0F1CF871EA9EAF2AA7F05E39A02587BC044579DE38F6BF1744E057AF1E38BF
+                      E6AD0BBD431D5D07BFF0177BDCAD00F9CC8514381C9A72EC64973836F93ED57F
+                      72DD6024E3F3377C222222D0BBCDF7C96ED5A961F3ECA10BBD431D8F8E1C3BE8
+                      F37A3A88B892745E8242221278887E6D766D5FB4FD74D97CEC054604FC3D2123
+                      AEE16EEE74416BECDBCFFC1EAB7D5FB61D66B26251A32ED6D66659F202C608DF
+                      05F2D8D898F30446B6687C24AFD500FFA0A73B72BCFF72C4A072323CA3EE3877
+                      2636100A2AC9EA2A55FE99A66567000057AEE4F7F85697D45935F219F1324F2E
+                      6BBF76598EEB7AA4E1F997F896EE4E0240854E574A711CE1CDAC2A324BF3D69D
+                      D291B8D7BD0B5C3ABEA7E665ABA2C523A706AECA3FDC1CD41C92C4DAB76E47A1
+                      D3251A7266844A2E59B60200AC1F22D3310B00BEA218000622603CEA8E92CED9
+                      E617B06D7D056F13456D4E5584FA9232D5E7F688991CC396E880F01700A839A8
+                      6289A5B72F70F4B6B103E8E6607895E59FFA20F43475C1F08CBAFB7C27392599
+                      BDFAEC0B4FCFFD396475C972E49D8D755613C5930200481A2EAA3CA6C0F0A9FC
+                      18AF45BDA881E98FF6E2FA7F25F991DEAB011A110900F0E1C59F758071ED5BB7
+                      C3E7F6D81C921439357055AEC82F545E292993120B109752728B8D6227114E83
+                      E177103E16A7709DAAA19A3B568E9FFC9E67A21F0006EF07957C87938A9C6ED1
+                      A8F88FF151A5AA680D6F17259E88E271A02A43CFB151EC24E07306CCDF6A1A3D
+                      29AC156FEC0E6AB36BFB00146713478A7EC247E2DEE6430B3E1876072E85C716
+                      3094838304630132FE96A554EB8C7E75A65C24BD0B44155916A1AA83ED17F634
+                      1D4E086905C6DADA2CAAE06AE6403B005482C80EC62600BAA411BEB4EC6D1A36
+                      72FF03BF2FE65A1D77DFB70000000049454E44AE426082}
+                    Name = 'Item6'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C0864880000041F494441544889ED554D4C5C
+                      5514FECE7D8F990E537E5B663A02138A115A13465AAB36537E1A0B8B3698A849
+                      131B3A145BAD823F890B43D44431A68BAA616329A918A533D5850B8D86804931
+                      6A7F28152175EC821003382DF2D73AA5E00CF3F3EE7131CCE365A0355DB9F15B
+                      BC77EE3DB9E7FBEE3DE7DC0BFC8FFF1AB4D66453BFA75A102A254100487C0048
+                      839D3A96CB7FC1909271BEC3EDFB694D82A67E4F35099C4D8975AF9024444DFB
+                      A3A7CFA9A91E41A864405C6CF6A3709F1DCE3A3B2E1CFD1500C0CC4C44BA28E3
+                      B8E2E38710E89EC1B5DE19EC6A770968B20AC0395DE5E10B873312D409E585FB
+                      ECB0EDCC41782AA2939320E4BA3251B0D7865C572648AC1C40782A02DBCE1C14
+                      EEB5C318470580972F7B364B8E0D00B0271738EBEC084F4730DA15482815842D
+                      2F14D1C6ED597AD01BC3F334726A82593246BB0254F2AC13CE3A3D047402C978
+                      1AC006A323F55872CB32B1717B1626BE9EC29F7D73B8AF260F454F3990539619
+                      0DFA6F5F5F180F4586DE1EB101D8E03EE1FA59ACB3F422994806AC7A0EEE90B5
+                      F4FC750080C9BE39C818F3D40F37071726702067CF8E7CBFDF5FEAF7FB5DA5A5
+                      A5F919DB1E28FFE34ACEE3E142CFC491F9F9DC554996CBA5C5CC6C4C66687289
+                      0020BF264F4E0FFCFDD6FDB682B625677D56C6966DCF786E1DDB01455864243A
+                      5EB4B4D09D168B919655E08F83426A5275325AD2AEEC2C17E1E9088F7E16C0C2
+                      78087FFD761B3787E761AB70BCD473DCD759327EFD45937DD3FB44B43E2942B5
+                      9A08D6F56F4AE6F320CA236612303489D10E74CF30A9849246E7F2368051DFE4
+                      975D4FF83A0FDDBAF1867993A31D8095992F32A3054CCD0CFE8499170154100C
+                      4D2AC4725C06094ED8D77A66303B1084C5614E72C74D9B1DEFEC1F1A7A984DD9
+                      EF2654CB57BD16A5CA9BAE7C2095D8F72479576AF31200345FF61C01E3142B5A
+                      09624AE15A9DCC51BED45175A6B23E18F22A66533D089F7A2DEAF349FFC150CC
+                      2D403F02500CAB7E570120AEE0ACAA214A71E5F5936E5F5353BFA736F52E6215
+                      7E0050CC692E1031A476D228E04C7A5A7FE3223B595DA9C8B81973FA769A2E35
+                      1C13022D2CB95391E2C38FDCA7C7407AEE75342E46CB35218A7DE9EA57A9BE24
+                      7633ABCE70FC384BBAA213B472AB9819187B8F885F03604A5D44A0A1D9C7EADC
+                      E9A127CBA5100FEAF38CC5628BF24D2B915E2B079762B542D277005F5D759B1E
+                      FDC5E35435D49284C3784452A1FE8E47BC7D0DA1789088B2B0D2E560C9755EAB
+                      DA9B10CA622CACF511D16EB06C5BF33DB81B0E85B595AA669E65C2B7F188D2F2
+                      4536051B839CAD99632708E2008079205A76CF040DA1B8661C13F308130D03C8
+                      6442353132002C3163BFCFAAF6ACBA2AFE0D44040624B16C63D07310622B015B
+                      999905080C1E142C5FE9B29A0671A727F3AE3B08C7BBA17146C0AAEE29062CF1
+                      905641A022161CD2346DF873ABE92A88F4EAFB073627C78553BF6CD200000000
+                      49454E44AE426082}
+                    Name = 'Item7'
+                    Tag = 0
+                  end>
+              end
+            end
           end
-          object TabItem2: TTabItem
+          object tbHist: TTabItem
             CustomIcon = <
               item
               end>
             IsSelected = False
+            Size.Width = 67.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = #1048#1089#1090#1086#1088#1080#1103
+            OnClick = tbHistClick
+            ExplicitSize.cx = 60.000000000000000000
+            ExplicitSize.cy = 26.000000000000000000
+            object tlLog: TTMSFNCTreeView
+              Align = Client
+              Size.Width = 921.000000000000000000
+              Size.Height = 343.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Stroke.Color = claDarkgray
+              BitmapContainer = TMSFNCBitmapContainer1
+              Groups = <>
+              GroupsAppearance.TopSize = 50.000000000000000000
+              GroupsAppearance.BottomSize = 50.000000000000000000
+              GroupsAppearance.TopFill.Kind = gfkNone
+              GroupsAppearance.BottomFill.Kind = gfkNone
+              GroupsAppearance.TopFont.Size = 18.000000000000000000
+              GroupsAppearance.TopFont.Color = xFF454545
+              GroupsAppearance.BottomFont.Size = 18.000000000000000000
+              GroupsAppearance.BottomFont.Color = xFF454545
+              Columns = <
+                item
+                  Name = 'Column0'
+                  Text = #1044#1072#1090#1072
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column1'
+                  Text = #1054#1087#1077#1088#1072#1094#1080#1103
+                  Width = 200.000000000000000000
+                end
+                item
+                  Name = 'Column2'
+                  Text = #1050'-'#1074#1086
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column3'
+                  Text = #1057#1091#1084#1084#1072
+                  Width = 100.000000000000000000
+                end
+                item
+                  EditorType = tcetMemo
+                  Name = 'Column4'
+                  Text = #1054#1087#1080#1089#1072#1085#1080#1077
+                  Width = 100.000000000000000000
+                  Visible = False
+                end>
+              Nodes = <>
+              ColumnsAppearance.StretchColumn = 0
+              ColumnsAppearance.StretchAll = False
+              ColumnsAppearance.TopSize = 36.000000000000000000
+              ColumnsAppearance.BottomSize = 25.000000000000000000
+              ColumnsAppearance.TopFont.Size = 18.000000000000000000
+              ColumnsAppearance.TopFont.Color = xFF454545
+              ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+              ColumnsAppearance.BottomFont.Size = 18.000000000000000000
+              ColumnsAppearance.BottomFont.Color = xFF454545
+              ColumnsAppearance.TopFill.Color = xFFEEF2F9
+              ColumnsAppearance.BottomFill.Kind = gfkNone
+              ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+              ColumnsAppearance.TopStroke.Kind = gskNone
+              NodesAppearance.ShowFocus = False
+              NodesAppearance.ExpandWidth = 18.000000000000000000
+              NodesAppearance.ExpandHeight = 18.000000000000000000
+              NodesAppearance.LevelIndent = 20.000000000000000000
+              NodesAppearance.FixedHeight = 40.000000000000000000
+              NodesAppearance.VariableMinimumHeight = 40.000000000000000000
+              NodesAppearance.Stroke.Kind = gskSolid
+              NodesAppearance.Font.Size = 18.000000000000000000
+              NodesAppearance.Font.Color = xFF7A7A7A
+              NodesAppearance.TitleFont.Size = 18.000000000000000000
+              NodesAppearance.SelectedFontColor = xFF454545
+              NodesAppearance.ExtendedFontColor = xFF454545
+              NodesAppearance.SelectedFill.Color = xFFF6F8FC
+              NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+              NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+              NodesAppearance.ExtendedFont.Size = 18.000000000000000000
+              NodesAppearance.ExpandNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+                66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+                01E68213FFE244E4900000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+                8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+                49454E44AE426082}
+              NodesAppearance.ExpandNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+                3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+                6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+                611914FBCBE520D20000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+                2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+                2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+              GlobalFont.Size = 18.000000000000000000
+              GlobalFont.Name = 'Segoe UI'
+              DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+              DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+            end
+          end
+          object tbOpl: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = True
             Size.Width = 60.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
             Text = #1054#1087#1083#1072#1090#1072
-            ExplicitSize.cx = 60.000000000000000000
-            ExplicitSize.cy = 26.000000000000000000
+            OnClick = tbOplClick
+            object tlOpl: TTMSFNCTreeView
+              Align = Client
+              Size.Width = 921.000000000000000000
+              Size.Height = 343.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Stroke.Color = claDarkgray
+              Groups = <>
+              GroupsAppearance.TopSize = 50.000000000000000000
+              GroupsAppearance.BottomSize = 50.000000000000000000
+              GroupsAppearance.TopFill.Kind = gfkNone
+              GroupsAppearance.BottomFill.Kind = gfkNone
+              GroupsAppearance.TopFont.Size = 18.000000000000000000
+              GroupsAppearance.TopFont.Color = xFF454545
+              GroupsAppearance.BottomFont.Size = 18.000000000000000000
+              GroupsAppearance.BottomFont.Color = xFF454545
+              Columns = <
+                item
+                  Name = 'Column0'
+                  Text = #1052#1086#1076#1077#1083#1100
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column1'
+                  Text = #1055#1088#1086#1076#1072#1085#1086
+                  Width = 150.000000000000000000
+                end
+                item
+                  Name = 'Column2'
+                  Text = #1054#1087#1083#1072#1095#1077#1085#1086
+                  Width = 150.000000000000000000
+                end
+                item
+                  Name = 'Column3'
+                  Text = #1062#1077#1085#1072
+                  Width = 100.000000000000000000
+                end
+                item
+                  Name = 'Column4'
+                  Text = #1054#1087#1083#1072#1090#1072
+                  Width = 100.000000000000000000
+                end>
+              Nodes = <
+                item
+                  Values = <
+                    item
+                      Text = 'Managers'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Marie Ali'
+                        end
+                        item
+                          Text = 'Finance'
+                        end
+                        item
+                          Text = 'Abroad'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Marie Ali'
+                        end
+                        item
+                          Text = 'Research'
+                        end
+                        item
+                          Text = 'On Leave'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Arthur Ali'
+                        end
+                        item
+                          Text = 'HR'
+                        end
+                        item
+                          Text = 'Flight'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'Specialists'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Isabella Peeters'
+                        end
+                        item
+                          Text = 'HR'
+                        end
+                        item
+                          Text = 'Office'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Yusuf Smith'
+                        end
+                        item
+                          Text = 'Finance'
+                        end
+                        item
+                          Text = 'Flight'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'Assistants'
+                    end>
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'Liam Smith'
+                        end
+                        item
+                          Text = 'Customers'
+                        end
+                        item
+                          Text = 'On Leave'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Arthur Ali'
+                        end
+                        item
+                          Text = 'Marketing'
+                        end
+                        item
+                          Text = 'Office'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'Liam Smith'
+                        end
+                        item
+                          Text = 'Finance'
+                        end
+                        item
+                          Text = 'Abroad'
+                        end>
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end>
+              ColumnsAppearance.StretchColumn = 0
+              ColumnsAppearance.StretchAll = False
+              ColumnsAppearance.TopSize = 36.000000000000000000
+              ColumnsAppearance.BottomSize = 25.000000000000000000
+              ColumnsAppearance.TopFont.Size = 18.000000000000000000
+              ColumnsAppearance.TopFont.Color = xFF454545
+              ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+              ColumnsAppearance.BottomFont.Size = 18.000000000000000000
+              ColumnsAppearance.BottomFont.Color = xFF454545
+              ColumnsAppearance.TopFill.Color = xFFEEF2F9
+              ColumnsAppearance.BottomFill.Kind = gfkNone
+              ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+              ColumnsAppearance.TopStroke.Kind = gskNone
+              NodesAppearance.ShowFocus = False
+              NodesAppearance.ExpandWidth = 18.000000000000000000
+              NodesAppearance.ExpandHeight = 18.000000000000000000
+              NodesAppearance.LevelIndent = 20.000000000000000000
+              NodesAppearance.FixedHeight = 40.000000000000000000
+              NodesAppearance.VariableMinimumHeight = 40.000000000000000000
+              NodesAppearance.Stroke.Kind = gskSolid
+              NodesAppearance.Font.Size = 18.000000000000000000
+              NodesAppearance.Font.Color = xFF7A7A7A
+              NodesAppearance.TitleFont.Size = 18.000000000000000000
+              NodesAppearance.SelectedFontColor = xFF454545
+              NodesAppearance.ExtendedFontColor = xFF454545
+              NodesAppearance.SelectedFill.Color = xFFF6F8FC
+              NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+              NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+              NodesAppearance.ExtendedFont.Size = 18.000000000000000000
+              NodesAppearance.ExpandNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+                66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+                01E68213FFE244E4900000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIcon.PNG = {
+                89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+                260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+                CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+                8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+                49454E44AE426082}
+              NodesAppearance.ExpandNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+                3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+                6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+                611914FBCBE520D20000000049454E44AE426082}
+              NodesAppearance.CollapseNodeIconLarge.PNG = {
+                89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+                3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+                CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+                2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+                2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+              GlobalFont.Size = 18.000000000000000000
+              GlobalFont.Name = 'Segoe UI'
+              DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+              DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+            end
           end
         end
       end
@@ -883,6 +1770,82 @@ object fmProd: TfmProd
     ParamData = <
       item
         Name = 'DS'
+        ParamType = ptInput
+      end>
+  end
+  object qMod: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select M.NAZVAN M_NAZVAN,'
+      '       sum(LP.CENA_PROD) SUM_PROD,'
+      '       sum(LP.OPLATA) OPLATA,'
+      '       LP.CENA_PROD,'
+      '       K.NAZVAN K_NAZVAN,'
+      '       count(LP.NO_LPT) COUNT_OF_NO_LPT,'
+      '       MS.NO_MOD'
+      'from MODEL_SIZE_TABLE MS'
+      'inner join LOG_PROD_TABLE LP on (MS.NO_MST = LP.NO_MOD_SIZE)'
+      'inner join MODEL_TABLE M on (MS.NO_MOD = M.NO_MOD)'
+      'inner join KATEGORY_TABLE K on (M.NO_KAT = K.NO_KAT)'
+      'where ((LP.NO_AGN = :NG) and'
+      '      (LP.DATA_PROD = :SD) and'
+      '      (LP.IS_TEMP = 0))'
+      'group by M.NAZVAN, LP.CENA_PROD, K.NAZVAN, MS.NO_MOD'
+      'order by K.NAZVAN, M.NAZVAN  '
+      '')
+    Left = 132
+    Top = 414
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end>
+  end
+  object qLogAg: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select first(20) DATA_PROD,'
+      '       COUNT_OF_NO_MOD_SIZE,'
+      '       SUM_OF_CENA_PROD,'
+      '       OPERATION, '
+      '       LOG_DOP,'
+      '       TYPE_OP'
+      'from LOG_IN_OUT_AGENT(:NG)'
+      'order by DATA_PROD desc'
+      '')
+    Left = 188
+    Top = 414
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end>
+  end
+  object qLOpl: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT NAZVAN,'
+      '        CENA_PROD,'
+      '        OPLATA,'
+      '        DATA_PROD,'
+      '        NO_LPT,'
+      '        DATA_OPL,'
+      '        IS_PRED,'
+      '        IS_VIRT'
+      ' FROM GET_HISTORY_PROD_BY_OPLATA(:NG)'
+      '')
+    Left = 254
+    Top = 408
+    ParamData = <
+      item
+        Name = 'NG'
         ParamType = ptInput
       end>
   end
