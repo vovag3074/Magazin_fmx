@@ -1,14 +1,628 @@
 object fmAddProdAgn: TfmAddProdAgn
   Left = 0
   Top = 0
+  ActiveControl = eTxt
   BorderStyle = ToolWindow
-  Caption = #1055#1088#1086#1076#1072#1078#1072
-  ClientHeight = 480
-  ClientWidth = 856
+  Caption = #1055#1088#1086#1076#1072#1078#1072' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1102
+  ClientHeight = 567
+  ClientWidth = 1024
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = MostBottom
+    Position.Y = 479.000000000000000000
+    Size.Width = 1024.000000000000000000
+    Size.Height = 88.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 0
+  end
+  object ListBox1: TListBox
+    Align = MostRight
+    Position.X = 704.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 479.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'listboxstyle'
+    TabOrder = 1
+    Columns = 6
+    DisableFocusEffect = True
+    ItemWidth = 50.000000000000000000
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 316.000000000000000000
+    Viewport.Height = 475.000000000000000000
+  end
+  object tlList: TTMSFNCTreeView
+    Align = Top
+    Size.Width = 704.000000000000000000
+    Size.Height = 280.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Stroke.Color = claDarkgray
+    Groups = <>
+    GroupsAppearance.TopSize = 50.000000000000000000
+    GroupsAppearance.BottomSize = 50.000000000000000000
+    GroupsAppearance.TopFill.Kind = gfkNone
+    GroupsAppearance.BottomFill.Kind = gfkNone
+    GroupsAppearance.TopFont.Size = 18.000000000000000000
+    GroupsAppearance.TopFont.Color = xFF454545
+    GroupsAppearance.BottomFont.Size = 18.000000000000000000
+    GroupsAppearance.BottomFont.Color = xFF454545
+    Columns = <
+      item
+        Name = 'Column0'
+        Text = 'Name'
+        Width = 100.000000000000000000
+      end
+      item
+        Name = 'Column1'
+        Text = 'Unit'
+        HorizontalTextAlign = gtaTrailing
+        Width = 90.000000000000000000
+      end
+      item
+        Name = 'Column2'
+        Text = 'Status'
+        HorizontalTextAlign = gtaCenter
+        Width = 80.000000000000000000
+      end>
+    Nodes = <
+      item
+        Values = <
+          item
+            Text = 'Managers'
+          end>
+        Expanded = True
+        Tag = 0
+        Nodes = <
+          item
+            Values = <
+              item
+                Text = 'Marie Gonzales'
+              end
+              item
+                Text = 'HR'
+              end
+              item
+                Text = 'Office'
+              end>
+            Tag = 0
+            Nodes = <>
+          end
+          item
+            Values = <
+              item
+                Text = 'Fatma Wang'
+              end
+              item
+                Text = 'HR'
+              end
+              item
+                Text = 'Office'
+              end>
+            Tag = 0
+            Nodes = <>
+          end
+          item
+            Values = <
+              item
+                Text = 'Liam Gonzales'
+              end
+              item
+                Text = 'Manufactering'
+              end
+              item
+                Text = 'Flight'
+              end>
+            Tag = 0
+            Nodes = <>
+          end>
+      end
+      item
+        Values = <
+          item
+            Text = 'Specialists'
+          end>
+        Expanded = True
+        Tag = 0
+        Nodes = <
+          item
+            Values = <
+              item
+                Text = 'Isabella Peeters'
+              end
+              item
+                Text = 'Finance'
+              end
+              item
+                Text = 'Office'
+              end>
+            Tag = 0
+            Nodes = <>
+          end
+          item
+            Values = <
+              item
+                Text = 'Isabella Peeters'
+              end
+              item
+                Text = 'Sales'
+              end
+              item
+                Text = 'On Leave'
+              end>
+            Tag = 0
+            Nodes = <>
+          end>
+      end
+      item
+        Values = <
+          item
+            Text = 'Assistants'
+          end>
+        Tag = 0
+        Nodes = <
+          item
+            Values = <
+              item
+                Text = 'Yusuf Wang'
+              end
+              item
+                Text = 'Research'
+              end
+              item
+                Text = 'Abroad'
+              end>
+            Tag = 0
+            Nodes = <>
+          end
+          item
+            Values = <
+              item
+                Text = 'Omar Andersson'
+              end
+              item
+                Text = 'HR'
+              end
+              item
+                Text = 'Abroad'
+              end>
+            Tag = 0
+            Nodes = <>
+          end
+          item
+            Values = <
+              item
+                Text = 'Yusuf Smith'
+              end
+              item
+                Text = 'HR'
+              end
+              item
+                Text = 'Flight'
+              end>
+            Tag = 0
+            Nodes = <>
+          end>
+      end>
+    ColumnsAppearance.StretchColumn = 0
+    ColumnsAppearance.StretchAll = False
+    ColumnsAppearance.TopSize = 36.000000000000000000
+    ColumnsAppearance.BottomSize = 25.000000000000000000
+    ColumnsAppearance.TopFont.Size = 18.000000000000000000
+    ColumnsAppearance.TopFont.Color = xFF454545
+    ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
+    ColumnsAppearance.BottomFont.Size = 18.000000000000000000
+    ColumnsAppearance.BottomFont.Color = xFF454545
+    ColumnsAppearance.TopFill.Color = xFFEEF2F9
+    ColumnsAppearance.BottomFill.Kind = gfkNone
+    ColumnsAppearance.BottomFill.Color = xFFEEF2F9
+    ColumnsAppearance.TopStroke.Kind = gskNone
+    NodesAppearance.ShowFocus = False
+    NodesAppearance.ExpandWidth = 18.000000000000000000
+    NodesAppearance.ExpandHeight = 18.000000000000000000
+    NodesAppearance.LevelIndent = 20.000000000000000000
+    NodesAppearance.FixedHeight = 40.000000000000000000
+    NodesAppearance.VariableMinimumHeight = 40.000000000000000000
+    NodesAppearance.Font.Size = 18.000000000000000000
+    NodesAppearance.Font.Color = xFF7A7A7A
+    NodesAppearance.TitleFont.Size = 18.000000000000000000
+    NodesAppearance.SelectedFontColor = xFF454545
+    NodesAppearance.ExtendedFontColor = xFF454545
+    NodesAppearance.SelectedFill.Color = xFFF6F8FC
+    NodesAppearance.SelectedStroke.Color = xFF2D9BEF
+    NodesAppearance.SelectedStroke.Width = 2.000000000000000000
+    NodesAppearance.ExtendedFont.Size = 18.000000000000000000
+    NodesAppearance.ExpandNodeIcon.PNG = {
+      89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+      260000000473424954080808087C0864880000004C49444154189563ACAEADFE
+      CF4024606160606068696A21A8B0A6AE8681099B84B79F37560D5815E3022429
+      66C16535327FEBA6ADA88A61023085C87CB29C41B9626C4E6060606060242506
+      01E68213FFE244E4900000000049454E44AE426082}
+    NodesAppearance.CollapseNodeIcon.PNG = {
+      89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+      260000000473424954080808087C0864880000003F49444154189563ACAEADFE
+      CF4024606160606068696A21A8B0A6AE868189585319181868A8980599E3EDE7
+      8DA160EBA6ADD815234B50EC0CDA296624250601CC3B0D1BF7C7987500000000
+      49454E44AE426082}
+    NodesAppearance.ExpandNodeIconLarge.PNG = {
+      89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+      3B0000000473424954080808087C0864880000006B49444154388D63ACAEADFE
+      CF4003C0440B431918181858608C96A616AA18585357C3C0404B17136DB0B79F
+      3783B79F37F50D26158C1A4C7B8359D00508C53C2EF9AD9BB6A2F0E9E762749B
+      6100E6525CF2E860E845DEA8C17080912A70016253030CD0CCC58C43AECE0300
+      611914FBCBE520D20000000049454E44AE426082}
+    NodesAppearance.CollapseNodeIconLarge.PNG = {
+      89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+      3B0000000473424954080808087C0864880000005049444154388D63ACAEADFE
+      CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
+      2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
+      2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
+    GlobalFont.Size = 18.000000000000000000
+    GlobalFont.Name = 'Segoe UI'
+    DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
+    DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+  end
+  object eAgn: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    ReadOnly = True
+    Position.X = 32.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    object EditButton1: TEditButton
+      Touch.InteractiveGestures = [LongTap]
+      CanFocus = False
+      Cursor = crArrow
+      Size.Width = 28.000000000000000000
+      Size.Height = 29.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'searchtoolbutton'
+      TabOrder = 0
+      Text = #1055#1086#1080#1089#1082
+    end
+    object EditButton2: TEditButton
+      Touch.InteractiveGestures = [LongTap]
+      CanFocus = False
+      Cursor = crArrow
+      Position.X = 28.000000000000000000
+      Size.Width = 28.000000000000000000
+      Size.Height = 29.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'ellipseseditbutton'
+      TabOrder = 1
+    end
+  end
+  object eTxt: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Position.X = 32.000000000000000000
+    Position.Y = 408.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    object TMSFNCButton2: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C086488000003AA494441544889B5564D4F1B
+        57143DF7CD78CC782AC0C1092E0D06131409819A58918AA28A2E9B74D54D6D09
+        29A459A1203659B0A9CA1F48954A2C8A222559040515C996B28DBAE8A6B4AAA8
+        14B944546A25DB054C5397041BA7F1D78C3DB70BCF98B1C1A544EAD9CCB9F3DE
+        BC73EF79F7CD0CF03F838E9B108E86255F401D052144CC6F030013FD0946FCE5
+        76E9975824567B2381B9F529AD58C62C03D3C4183C6A0E133609B8E7E9C0E29D
+        0B8F0AFF596066EDDA04312D011828A44BBCFB530EAF120554B20600C07DCA85
+        CE610D67DEF342EB5709C016137F7A777C79F55881D91FAF4558D04363BFAA24
+        5676B017CF33B83E8F999988C8F134F784BA6878F22C5CDDB24E26DF58BCBC1C
+        6D2B6065FE4DF17959D95848A192D3B99D854EB8BD0A8DDD1A82A7AF4367E22B
+        CE4A844DE6D6A734625A32F255656321057DDF809D2D59905509B22AD961634C
+        DF37B0B1908291AF2AC4B434B73EA51D122896310B6020B1B2D336F39199208D
+        CC048FACA292D339B1B2030003D65A0702E168586260BA902EF15E3CCFB6DFCC
+        DCC4654D82AC49478E01C05E3CCF85748919980E47C35243C01750478931B8BB
+        9683BDA1AD363837B7ED188376D77220C6A02FA08E02806C6D75080CBC4A1ED9
+        CA0D988699E41A3F767B5D7A39AB7F60DDFE8199DF070092E8BB4AD650B8868F
+        8564F61E0898A61F44A8640D384BEFFFA8970050FAC95F0C42B2F24C1A8FDD8E
+        E5ED42AC2B37F13870F36A743E1289D40E041C2022B2FBBDE3B402FF440F248F
+        A0E7DFBE781CBB1DCB178A858420E1370CE31200B85CAE55C330262CFE144046
+        55D5E1D7A5D7D72548F3750121326086DBEB829E331A62C9AFFF80EC91D07FB5
+        97DE0A68E5A7AB7148421AB216F35B09F91CDC0320080012A420807372BD0CF3
+        E71A089DC31AFE4E151B025C63FCF6609B49103A831A4E0221044CD3AC775166
+        ABB2C184CD33E35E80D0D47E66D5C4AFF7B678E7C92ED0D29676ECE476689A66
+        5D08006291580D26DFD7FA55EA09751D6A3FAE3165BECF72EB7D3B76723B1442
+        1C080080E6A1AF006C9F9B3C0BB75739F41234ABE6892C6A5865933B171E1598
+        F8BAD225EB63B786A074BB9A5AB6C586935964E3EEF8F22A31DFF0F475E8173F
+        3F0FDFA56E2241202212B270DA70728B6C2C5E5E8E32F115A54B4E8FDC1CA4D0
+        FC797AE7C3D338F56EE7B19FD77FB5A8B5128F8A31103EF304D4CDE0277D189A
+        EC7B238B0E9D641BD637F68B7034FCA52FA08E2ADD4ACD6989BD9075F2E1186B
+        7AD5B715B061FD353C73649902E027A28C15BF74F022808C35F57700C97F003C
+        D1E3CA403D25380000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Color = claWhite
+      Default = True
+      Size.Width = 33.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      CanFocus = False
+      Cursor = crArrow
+      Position.X = 240.000000000000000000
+      TabOrder = 0
+      Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
+    end
+  end
+  object eCena: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    Text = '1'
+    Position.X = 384.000000000000000000
+    Position.Y = 406.000000000000000000
+    Enabled = False
+    Size.Width = 273.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    object TMSFNCButton1: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C0864880000023B494441544889C595C14B54
+        7110C73FF3D45D434152D8500C14AF76A9A8EB0A9D5CA15B115EFB0F82E8E831
+        82CE2B62E7DA3AEC16EE2DA593D0AE82F044DC8318141B78582F45BE957ED3E1
+        BDB7FB7BCFF74456A4E11D667E336F66BEDFDFFC18B86291F8812A727240DE11
+        EEE3900570029FB1F4D00E14CF285F0767F82282A616D04306DBCA7BA0D063C3
+        D58CF048A639090FFA6DAF67585265E1F5EA847EFC3C8AD77650551511F1D175
+        75DBCE660C0F1FB478F6B4B9E0094BC08B30C6468C088BEB9B235AAA8EA9D78E
+        B8CE15AFED50AA8EE9FAE6888AB068FBFA63B1E3DF7E643BDDD99D26E9713BF8
+        773CB580080E88FAFA595AD228B20B8944EFF5E23CF4281104AA74F0F6425190
+        23221138ED437FB455D1106A9A7E8E4F33D3F4252200D87687746B7718C17F30
+        EA7771464FF2DD9DFDA5776EFD3E9FA2ADDD6156DEE662402F26F244E5F66CB4
+        40FC1D7446A4B2DC90ED4FAE53596E084061EE987AC5957AC5750A73C7893141
+        8E7404B6BCF990632277AACDA3010076F686587977034077F68612639224B5C0
+        DAC62821BD2222CDA32CABA55C40BB3FFD6B1BD7431B48663542913DA6E5E23E
+        F58A4BB9D810638C99CFB7B45676A5567699CFB754D59872B1217ECCBE9D231D
+        4170076AC1A7793480888845113E4522768C95E37F52147E97A12856208AC0F0
+        736AD21BEF95A2A9490F94668476DBF00E786994E7DD8523741F2C71BD636733
+        1A2E1C718457D999EEC289AECCEF5C6B9F52BAD4CA1CE0B1DCE44F6201ECA5DF
+        C73DB8E0D207CFFCA596B4F4AF5CFE0143607260AAAA491F0000000049454E44
+        AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Color = claWhite
+      Size.Width = 33.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      CanFocus = False
+      Cursor = crArrow
+      Position.X = 240.000000000000000000
+      TabOrder = 0
+      Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
+      OnClick = TMSFNCButton1Click
+    end
+  end
+  object eType: TComboBox
+    CanFocus = False
+    Images = SVGIconImageList1
+    ItemIndex = 0
+    ItemHeight = 40.000000000000000000
+    Position.X = 384.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    OnChange = eTypeChange
+    object ListBoxItem1: TListBoxItem
+      IsSelected = True
+      ImageIndex = 0
+      Size.Width = 19.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #1057#1090#1072#1085#1076#1072#1088#1090
+    end
+    object ListBoxItem2: TListBoxItem
+      ImageIndex = 1
+      TabOrder = 1
+      Text = #1057#1082#1080#1076#1082#1072
+    end
+    object ListBoxItem3: TListBoxItem
+      ImageIndex = 2
+      TabOrder = 2
+      Text = #1056#1072#1089#1087#1088#1086#1076#1072#1078#1072
+    end
+  end
+  object SVGIconImageList1: TSVGIconImageList
+    Source = <
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'people-employee'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 24 24">'#10'  <g id="icon">'#10'    <path' +
+          ' fill="#000000" d="M7.568,13.6923h8.8641c1.4971,0,2.7108,1.1221,' +
+          '2.7108,2.5061c0,2.238,-1.6475,4.1886,-3.9959,4.7314l-0.1686,0.03' +
+          '88c-1.9555,0.452,-4.0013,0.452,-5.9567,0l-0.1686,-0.0388c-2.3484' +
+          ',-0.5428,-3.9959,-2.4935,-3.9959,-4.7314C4.8571,14.8144,6.0708,1' +
+          '3.6923,7.568,13.6923zM16.4286,6.984c0,-2.3581,-1.9827,-4.2697,-4' +
+          '.4286,-4.2697c-2.4458,0,-4.4286,1.9116,-4.4286,4.2697S9.5542,11.' +
+          '2537,12,11.2537C14.4458,11.2537,16.4286,9.3421,16.4286,6.984z"/>' +
+          #10'    <path fill="#60F9FF" d="M10.61,21.46L11.29,15.43L10.74,13.6' +
+          '3C10.64,13.31,10.88,13,11.21,13L12.85,13C13.18,13,13.42,13.31,13' +
+          '.32,13.63L12.77,15.43L13.45,21.46C13.48,21.75,13.25,22,12.96,22L' +
+          '11.1,22C10.8,22,10.58,21.75,10.61,21.46z"/>'#10'    <g>'#10'      <path ' +
+          'fill="#60F9FF" d="M12,11.968c2.8358,0,5.1429,-2.2358,5.1429,-4.9' +
+          '84S14.8358,2,12,2S6.8571,4.2358,6.8571,6.984S9.1642,11.968,12,11' +
+          '.968zM12,3.4286c2.0481,0,3.7143,1.5949,3.7143,3.5555c0,1.9604,-1' +
+          '.6662,3.5554,-3.7143,3.5554S8.2857,8.9445,8.2857,6.984C8.2857,5.' +
+          '0235,9.9519,3.4286,12,3.4286z"/>'#10'      <path fill="#60F9FF" d="M' +
+          '16.43,13L15.29,13C14.89,13,14.57,13.31,14.57,13.69L14.57,13.69C1' +
+          '4.57,14.07,14.89,14.38,15.29,14.38L16.43,14.38C17.53,14.38,18.43' +
+          ',15.2,18.43,16.2C18.43,18.12,17.01,19.79,14.98,20.26L14.81,20.3C' +
+          '12.97,20.72,11.03,20.72,9.19,20.3L9.02,20.26C6.99,19.79,5.57,18.' +
+          '12,5.57,16.2C5.57,15.2,6.47,14.38,7.57,14.38L8.71,14.38C9.11,14.' +
+          '38,9.43,14.07,9.43,13.69L9.43,13.69C9.43,13.31,9.11,13,8.71,13L7' +
+          '.57,13C5.68,13,4.14,14.43,4.14,16.2C4.14,18.76,6.01,20.98,8.69,2' +
+          '1.6L8.86,21.64C9.88,21.88,10.94,22,12,22C13.06,22,14.12,21.88,15' +
+          '.14,21.64L15.31,21.6C17.99,20.98,19.86,18.76,19.86,16.2C19.86,14' +
+          '.43,18.32,13,16.43,13z"/>'#10'    </g>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 20
+          end>
+        IconName = 'people-man-2-bookmark-filled'
+        SVGText = 
+          '<?xml version="1.0" encoding="UTF-8"?>'#10'<!DOCTYPE svg PUBLIC "-//' +
+          'W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/sv' +
+          'g11.dtd">'#10'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.o' +
+          'rg/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" ' +
+          'y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-ba' +
+          'ckground="new 0 0 24 24" xml:space="preserve">'#10'  <g id="main">'#10' ' +
+          '   <g id="icon">'#10'      <path d="M11.14,2.057L10.33,2.308L9.601,2' +
+          '.705L8.964,3.23L8.439,3.867L8.042,4.597L7.791,5.403L7.704,6.268L' +
+          '7.791,7.134L8.042,7.94L8.439,8.67L8.964,9.307L9.601,9.832L10.33,' +
+          '10.23L11.14,10.48L12,10.57L12.87,10.48L13.38,10.32L13.44,10.21L1' +
+          '3.76,9.801L14.14,9.467L14.58,9.215L15.07,9.056L15.27,9.035L15.57' +
+          ',8.67L15.96,7.94L16.21,7.134L16.3,6.268L16.21,5.403L15.96,4.597L' +
+          '15.57,3.867L15.04,3.23L14.4,2.705L13.67,2.308L12.87,2.057L12,1.9' +
+          '7zM12.58,3.461L13.12,3.628L13.6,3.893L14.03,4.243L14.38,4.667L14' +
+          '.64,5.154L14.81,5.691L14.87,6.268L14.81,6.845L14.64,7.383L14.38,' +
+          '7.87L14.03,8.294L13.6,8.644L13.12,8.909L12.58,9.076L12,9.134L11.' +
+          '43,9.076L10.89,8.909L10.4,8.644L9.977,8.294L9.627,7.87L9.362,7.3' +
+          '83L9.195,6.845L9.137,6.268L9.195,5.691L9.362,5.154L9.627,4.667L9' +
+          '.977,4.243L10.4,3.893L10.89,3.628L11.43,3.461L12,3.403zM5.958,12' +
+          '.09L5.341,12.33L4.789,12.71L4.313,13.19L3.925,13.75L3.634,14.37L' +
+          '3.452,15.01L3.388,15.67L3.388,15.81L3.428,16.45L3.545,17.08L3.73' +
+          '7,17.68L4.004,18.26L4.342,18.81L4.751,19.33L5.228,19.81L5.771,20' +
+          '.26L6.386,20.67L7.053,21.02L7.769,21.33L8.531,21.58L9.338,21.78L' +
+          '10.19,21.92L11.07,22L11.99,22.03L12.92,22L13,21.99L13,20.54L11.9' +
+          '9,20.6L10.47,20.51L9.092,20.25L7.869,19.83L7.323,19.56L6.824,19.' +
+          '26L6.375,18.93L5.977,18.56L5.634,18.17L5.348,17.75L5.121,17.3L4.' +
+          '956,16.83L4.855,16.33L4.821,15.81L4.821,15.67L4.859,15.28L4.967,' +
+          '14.9L5.137,14.52L5.36,14.17L5.629,13.88L5.936,13.64L6.272,13.49L' +
+          '6.63,13.44L6.63,13.44L13,13.44L13,12L6.63,12zz" fill="#60CDFF"/>' +
+          #10'      <path d="M10.67,14.91L10.54,15.02L10.49,15.18L10.53,15.34' +
+          'L11.21,17.03L10.43,21.46L13,21.46L13,18.22L12.79,17.05L13,16.53L' +
+          '13,14.87L10.85,14.87zz" fill="#60CDFF"/>'#10'    </g>'#10'    <g id="ove' +
+          'rlay">'#10'      <path d="M18.5479,20.1884l-4.1442,2.7725c-0.18,0.11' +
+          '19,-0.4037,-0.0299,-0.4037,-0.256V11.7326c0,-0.9569,0.711,-1.732' +
+          '6,1.5881,-1.7326h5.8239c0.8771,0,1.5881,0.7757,1.5881,1.7326v10.' +
+          '967c0,0.2272,-0.2258,0.3689,-0.4058,0.2546L18.5479,20.1884z" fil' +
+          'l="#FF99A4"/>'#10'    </g>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'people-man-2-filled-coins-filled'
+        SVGText = 
+          '<?xml version="1.0" encoding="utf-8"?>'#10'<!-- Created with: Axiali' +
+          's IconVectors - www.axialis.com -->'#10'<svg xmlns="http://www.w3.or' +
+          'g/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xl' +
+          'ink" id="Layer_1" viewBox="0 0 24 24">'#10'  <g id="main">'#10'    <g id' +
+          '="icon">'#10'      <path fill="#60CDFF" d="M10.67,13.49L10.55,13.64L' +
+          '10.49,13.84L10.53,14.07L11.21,16.34L11.09,17.25L11.5,16.97L12,16' +
+          '.71L12.57,16.48L12.57,14.9L12.57,14.88L12.61,14.54L12.7,14.21L12' +
+          '.84,13.9L13.03,13.6L13.18,13.44L13.15,13.43L10.85,13.43z"/>'#10'    ' +
+          '  <path fill="#60CDFF" d="M11.07,2.087L10.28,2.336L9.558,2.731L8' +
+          '.93,3.253L8.412,3.885L8.02,4.611L7.772,5.413L7.686,6.273L7.772,7' +
+          '.133L8.02,7.934L8.412,8.66L8.93,9.292L9.558,9.815L10.28,10.21L11' +
+          '.07,10.46L11.93,10.55L12.78,10.46L13.58,10.21L14.3,9.815L14.93,9' +
+          '.292L15.45,8.66L15.84,7.934L16.08,7.133L16.17,6.273L16.08,5.413L' +
+          '15.84,4.611L15.45,3.885L14.93,3.253L14.3,2.731L13.58,2.336L12.78' +
+          ',2.087L11.93,2zM5.428,12.07L4.959,12.21L4.533,12.44L4.163,12.74L' +
+          '3.857,13.1L3.626,13.52L3.479,13.98L3.429,14.47L3.429,15.32L3.459' +
+          ',15.87L3.549,16.43L3.698,16.98L3.905,17.51L4.169,18.04L4.488,18.' +
+          '55L4.861,19.04L5.287,19.51L5.766,19.94L6.295,20.35L6.874,20.72L7' +
+          '.503,21.05L8.178,21.34L8.9,21.58L9.667,21.77L10.26,21.87L10.18,2' +
+          '1.71L10.07,21.41L10,20.92L10,19.19L10,19.17L10.06,18.74L10.2,18.' +
+          '34L10.41,17.95L10.71,17.6L11.07,17.27L11.09,17.25L11.21,16.34L10' +
+          '.53,14.07L10.49,13.84L10.55,13.64L10.67,13.49L10.85,13.43L13.15,' +
+          '13.43L13.18,13.44L13.54,13.06L14.22,12.6L15.05,12.22L15.75,12.02' +
+          'L5.932,12.02zz"/>'#10'    </g>'#10'    <g id="overlay">'#10'      <path fill' +
+          '="#000000" d="M21.84,16.93L14.73,16.93C14.23,16.93,13.83,16.53,1' +
+          '3.83,16.03L13.83,15.57C13.83,15.07,14.23,14.67,14.73,14.67L21.84' +
+          ',14.67C22.34,14.67,22.74,15.07,22.74,15.57L22.74,16.03C22.74,16.' +
+          '53,22.34,16.93,21.84,16.93z"/>'#10'      <path fill="#FCE100" d="M23' +
+          ',14.9688c0,-1.2853,-2.0199,-2.2546,-4.6984,-2.2546c-2.695,0,-4.7' +
+          '274,0.9685,-4.7289,2.2532c-0.0001,0.0038,-0.0012,0.0074,-0.0012,' +
+          '0.0112v1.6546c0,1.1086,2.2037,2.081,4.7158,2.081c2.5105,0,4.7127' +
+          ',-0.9768,4.7127,-2.0903v-1.6453c0,-0.0011,-0.0003,-0.0021,-0.000' +
+          '3,-0.0032C22.9997,14.9733,23,14.9711,23,14.9688zM22.3254,15.825c' +
+          '-0.2221,0.1621,-0.4949,0.3069,-0.8152,0.4307c-0.8333,0.3221,-1.9' +
+          '677,0.4995,-3.1944,0.4995c-1.8143,0,-3.2723,-0.3671,-4.0702,-0.9' +
+          '655c-0.2635,-0.1976,-0.1889,-0.5935,0.1312,-0.6902l0.0187,-0.005' +
+          '7c0.1308,-0.0395,0.2717,-0.011,0.3797,0.0692c0.5814,0.4319,1.861' +
+          '4,0.7831,3.5406,0.7831c1.6762,0,2.9024,-0.3348,3.4815,-0.7512c0.' +
+          '1106,-0.0795,0.254,-0.1037,0.3857,-0.0624l0.0144,0.0045C22.5138,' +
+          '15.2363,22.5894,15.6324,22.3254,15.825z"/>'#10'      <path fill="#00' +
+          '0000" d="M18.29,19.57C17.07,19.57,15.84,19.36,14.85,18.95L12.03,' +
+          '18.95C11.6,18.95,11.26,19.3,11.26,19.73L11.26,20.45C11.26,20.87,' +
+          '11.6,21.22,12.03,21.22L19.4,21.22C19.83,21.22,20.17,20.87,20.17,' +
+          '20.45L20.17,19.73C20.17,19.61,20.15,19.51,20.1,19.41C19.51,19.52' +
+          ',18.9,19.57,18.29,19.57z"/>'#10'      <path fill="#FCE100" d="M19.73' +
+          ',19.47C19.96,19.61,19.99,19.94,19.75,20.11C19.53,20.27,19.26,20.' +
+          '42,18.94,20.54C18.11,20.86,16.97,21.04,15.74,21.04C13.93,21.04,1' +
+          '2.47,20.67,11.67,20.08C11.41,19.88,11.49,19.48,11.81,19.39L11.82' +
+          ',19.38C11.95,19.34,12.1,19.37,12.2,19.45C12.79,19.88,14.07,20.23' +
+          ',15.74,20.23C17.35,20.23,18.54,19.93,19.14,19.54C18.86,19.56,18.' +
+          '57,19.57,18.29,19.57C15.97,19.57,13.58,18.78,12.9,17.42C11.73,17' +
+          '.83,11,18.48,11,19.25C11,19.26,11,19.26,11,19.26L11,20.92C11,22.' +
+          '03,13.2,23,15.72,23C18.23,23,20.43,22.02,20.43,20.91L20.43,19.35' +
+          'C20.2,19.39,19.97,19.44,19.73,19.47z"/>'#10'    </g>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'people-employee'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'people-man-2-bookmark-filled'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'people-man-2-filled-coins-filled'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'Item 0'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
+          end>
+      end>
+    Left = 328
+    Top = 440
+  end
 end

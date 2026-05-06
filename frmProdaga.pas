@@ -489,7 +489,7 @@ begin
     ShowError('Продавать на прошлую дату нельзя!');
     Exit;
   end;
-  fmAddProdAgn := TfmAddProdAgn.Create(Application);
+  fmAddProdAgn := TfmAddProdAgn.Create(fmProd);
   fmAddProdAgn.ShowModal;
   fmAddProdAgn.Free;
   ReadProd;
