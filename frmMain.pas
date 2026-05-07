@@ -132,6 +132,8 @@ var
    // словарь ключ = значение
   DistValut: TDictionary<integer, string>;
 
+threadvar isLowConnect: Boolean;
+
 implementation
 
 uses
@@ -206,6 +208,7 @@ begin
   DistValut := TDictionary<integer, string>.Create;
   DistValut.Clear;
   BuildValList;
+  isLowConnect := False;
 end;
 
 function TfmMain.GetTranID: string;

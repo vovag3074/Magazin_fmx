@@ -384,6 +384,10 @@
             <Form>fmAddProdAgn</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmOplata.pas">
+            <Form>fmOpl</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

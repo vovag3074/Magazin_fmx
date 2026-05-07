@@ -253,6 +253,7 @@ begin
           ANode.Text[1] := qUsr.FieldByName('AG_DOLG').AsFloat.ToString;
           ANode.Text[2] := qUsr.FieldByName('AG_PRED').AsFloat.ToString;
           ANode.Text[3] := qUsr.FieldByName('SUM_SKIDKA').AsFloat.ToString;
+          ANode.DataBoolean:=qUsr.FieldByName('IS_SKIDKA').AsInteger =1;
           if qUsr.FieldByName('IS_SKIDKA').AsInteger = 1 then
           begin
             ANode.Values[0].CollapsedIconName := 'Item5';
@@ -314,6 +315,7 @@ begin
         Node := tlSity.AddNode;
         Node.Text[0] := qRead.FieldByName('ST_NAME').AsString;
         Node.DataInteger := qRead.FieldByName('NO_ST').AsInteger;
+
         Node.Values[0].CollapsedIconName := 'Item2';
         Node.Values[0].ExpandedIconName := 'Item2';
         if qRead.FieldByName('IS_STAR').AsInteger = 1 then

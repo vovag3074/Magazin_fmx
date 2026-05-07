@@ -19,7 +19,8 @@ uses
   frmSelectBankAttribyte in 'frmSelectBankAttribyte.pas' {fmSelBank},
   frmInfoOplata in 'frmInfoOplata.pas' {fmInfoOpl},
   frmProdaga in 'frmProdaga.pas' {fmProd: TFrame},
-  frmAddProdaga in 'frmAddProdaga.pas' {fmAddProdAgn};
+  frmAddProdaga in 'frmAddProdaga.pas' {fmAddProdAgn},
+  frmOplata in 'frmOplata.pas' {fmOpl};
 
 {$R *.res}
 

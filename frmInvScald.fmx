@@ -1680,6 +1680,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'clipboard-barcode-filled'
         SVGText = 
@@ -1747,6 +1748,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'close'
         SVGText = 
@@ -1774,6 +1776,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'close-all'
         SVGText = 
@@ -1893,24 +1896,18 @@ object fmInv: TfmInv
         Layers = <
           item
             Name = 'clipboard-barcode-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'close-all'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item

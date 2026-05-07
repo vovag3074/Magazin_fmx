@@ -1,0 +1,14 @@
+object fmOpl: TfmOpl
+  Left = 0
+  Top = 0
+  BorderStyle = ToolWindow
+  Caption = #1054#1087#1083#1072#1090#1072
+  ClientHeight = 547
+  ClientWidth = 741
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+end

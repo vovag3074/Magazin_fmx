@@ -1392,6 +1392,8 @@ object fmProd: TfmProd
             TabOrder = 0
             Text = #1054#1087#1083#1072#1090#1072
             OnClick = tbOplClick
+            ExplicitSize.cx = 60.000000000000000000
+            ExplicitSize.cy = 26.000000000000000000
             object tlOpl: TTMSFNCTreeView
               Align = Client
               Size.Width = 921.000000000000000000

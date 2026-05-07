@@ -21,8 +21,47 @@ object fmAddProdAgn: TfmAddProdAgn
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
     TabOrder = 0
+    object TMSFNCButton3: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000234494441544889ED54316FDA
+        5010BEB3DF33B0413A54824094216BA758519529A347670F735952DA8D5F90B1
+        2643D9FD030A1BD9AA0C284086B46B3B9440AD565595B005FB3DFB3A14B7B663
+        839AAEB9E9BB77BEBBF77D77CF008FB6C630EAD0E9694EF2E20912D511710300
+        808808113189536237846833316FE1F1B11B7EC3A20D242F9E28004D02A0075C
+        B6A40034252F0200BC0E0F95181DA22322A2F076AB70560C898EA235630C10F1
+        C92A59D64814E28D68CD1883A45D7D73DC3717E7DE9D107E327627846F5D9CBB
+        1FBF3B6E7A760A83906A88DF7FF94CF6874BEDD3CF1F9E659890634C21225A48
+        1934FB5D39FA7AAD012ADEB3A7654AE6A732C0A585B8A1EFF3BDCD2D3172A6B9
+        66BF2B17520661F1B133D5F636B7C48BDDE73C9A1351F03E83A41538572DC3A4
+        97FD77DEC8996AAFCE7A2E00E1D8996A7AA5EA5986C90A9CABAB6AC418A46D47
+        9E31D5324C75B75C7587B389369C5D73BD5CF52CC354F34BC91239D90C323707
+        1095840C087FFD444EACC3CA2D020070139AEB959A3776A65AB3DF95AE2F8375
+        F92B1B2CA4F09B673DF15BF39A6719266B1B26D32BD565939E58C8FB2B9CD920
+        A9E7DBF1400C67134DAFD4BCF652F33C634ADB3854F54AD51BCE265A673C100F
+        9EC1C1F60E028068E8FB6A8173169E1738676DE3103A970371B0BD8388885933
+        882DADDFB103F8FF5F05A98DFA9FD54DBC64B801A012A4BCEA349C1EC3DBEC19
+        20D889579989B362846067CE8089794BAA4540843A0094A2BD3370D4BF0D02B0
+        993F6FC1A3FD8BFD0254ACAC5AD8BB63C50000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 150.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      Margins.Top = 20.000000000000000000
+      Margins.Right = 20.000000000000000000
+      Margins.Bottom = 20.000000000000000000
+      Position.X = 854.000000000000000000
+      Position.Y = 20.000000000000000000
+      TabOrder = 0
+      Text = #1047#1072#1082#1088#1099#1090#1100
+      OnClick = TMSFNCButton3Click
+    end
   end
-  object ListBox1: TListBox
+  object lbZak: TListBox
     Align = MostRight
     Position.X = 704.000000000000000000
     Size.Width = 320.000000000000000000
@@ -30,14 +69,103 @@ object fmAddProdAgn: TfmAddProdAgn
     Size.PlatformDefault = False
     StyleLookup = 'listboxstyle'
     TabOrder = 1
-    Columns = 6
+    OnDblClick = lbZakDblClick
     DisableFocusEffect = True
-    ItemWidth = 50.000000000000000000
+    ItemHeight = 70.000000000000000000
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     Viewport.Width = 316.000000000000000000
     Viewport.Height = 475.000000000000000000
+    object ListBoxItem4: TListBoxItem
+      Size.Width = 316.000000000000000000
+      Size.Height = 70.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'zakItem'
+      TabOrder = 0
+      Text = 'ListBoxItem4'
+    end
+    object ListBoxItem5: TListBoxItem
+      Position.Y = 70.000000000000000000
+      Size.Width = 316.000000000000000000
+      Size.Height = 70.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'zakItem'
+      TabOrder = 1
+      Text = 'ListBoxItem5'
+    end
+    object ltZak: TLayout
+      StyleName = 'zakItem'
+      Position.X = 16.000000000000000000
+      Position.Y = 264.000000000000000000
+      Size.Width = 273.000000000000000000
+      Size.Height = 70.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 0
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Kind = None
+        HitTest = False
+        Margins.Bottom = 2.000000000000000000
+        Size.Width = 273.000000000000000000
+        Size.Height = 68.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        object Rectangle2: TRectangle
+          Align = MostRight
+          Fill.Kind = None
+          Position.X = 205.000000000000000000
+          Size.Width = 68.000000000000000000
+          Size.Height = 68.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+          object Label2: TLabel
+            StyleName = 'cntZak'
+            Align = Client
+            StyledSettings = [Family, FontColor]
+            Size.Width = 68.000000000000000000
+            Size.Height = 68.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 24.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.HorzAlign = Center
+            Text = '0'
+            TabOrder = 0
+          end
+        end
+        object Label1: TLabel
+          StyleName = 'Text'
+          Align = Top
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Left = 2.000000000000000000
+          Margins.Right = 2.000000000000000000
+          Position.X = 2.000000000000000000
+          Size.Width = 201.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = 'Label1'
+          TabOrder = 1
+        end
+        object Label3: TLabel
+          StyleName = 'codeZak'
+          Align = Client
+          StyledSettings = [Family, Size, Style]
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Size.Width = 195.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.FontColor = claPeachpuff
+          Text = 'Label3'
+          TabOrder = 2
+        end
+      end
+    end
   end
   object tlList: TTMSFNCTreeView
     Align = Top
@@ -46,6 +174,7 @@ object fmAddProdAgn: TfmAddProdAgn
     Size.PlatformDefault = False
     TabOrder = 2
     Stroke.Color = claDarkgray
+    BitmapContainer = TMSFNCBitmapContainer1
     Groups = <>
     GroupsAppearance.TopSize = 50.000000000000000000
     GroupsAppearance.BottomSize = 50.000000000000000000
@@ -58,20 +187,33 @@ object fmAddProdAgn: TfmAddProdAgn
     Columns = <
       item
         Name = 'Column0'
-        Text = 'Name'
+        Text = #1052#1086#1076#1077#1083#1100
         Width = 100.000000000000000000
       end
       item
         Name = 'Column1'
-        Text = 'Unit'
-        HorizontalTextAlign = gtaTrailing
-        Width = 90.000000000000000000
+        Text = #1050'-'#1074#1086
+        Width = 100.000000000000000000
       end
       item
         Name = 'Column2'
-        Text = 'Status'
-        HorizontalTextAlign = gtaCenter
-        Width = 80.000000000000000000
+        Text = #1062#1077#1085#1072
+        Width = 100.000000000000000000
+      end
+      item
+        Name = 'Column3'
+        Text = #1057#1091#1084#1084#1072
+        Width = 100.000000000000000000
+      end
+      item
+        Name = 'Column4'
+        Text = #1054#1087#1083#1072#1090#1072
+        Width = 100.000000000000000000
+      end
+      item
+        Name = 'Column5'
+        Text = #1044#1086#1083#1075
+        Width = 100.000000000000000000
       end>
     Nodes = <
       item
@@ -269,6 +411,50 @@ object fmAddProdAgn: TfmAddProdAgn
     GlobalFont.Name = 'Segoe UI'
     DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
     DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
+    object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
+      Size.Width = 26.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      Position.X = 520.000000000000000000
+      Position.Y = 200.000000000000000000
+      Items = <
+        item
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C08648800000396494441544889B5944D681C
+            7518C69FF73F33BB3B9BDD0D6EB24B23011331AB4DB16A8D5644842AD58BA2B6
+            4D28C6A48168A5A0970A3DF4E0C14B21E0C9486BDBD09AC40F1A44BD78B0EA41
+            64A1B446FB91525A6C37A534624DA2BBDDCC7ECCFC1F0F59369B26937E489FD3
+            CCFF79E7F9C13BFFF705EEB2E4568AB6935631EF3E4BA51E0100D1FA64B0CEFC
+            79BF48F97F037A9CF233421C04A46DB1C30B14BC39625BBFDC31603E5CBE2F66
+            2E05AFEE1D44EEF8310040F489F5B877C73B08B6B416297C6125882FA09334EC
+            82FEBD3899693FDFDF0B2F9703498A880080118D2235348CE07D2D679D907A74
+            4CC45B2E47F901424EB90364FBD4817D70B359922400B022379BE5D4817D00D9
+            1E72CA1D7E39BE0011D526223237710652D1FCF982163CD5E697E30B80460E00
+            CCFA7ADF92AA57A9BD2D80A18D34C942FCE557AB6D414D8B48B2E2150C6DA46F
+            1B70282AD7000E366EDA82E4D66E11C35868916148726BB7346EDA028083F3B5
+            CB6BC56BDA49066CA73C02A8CE42E612AFFF7A02001079BC03A1965601F49863
+            5B3D6322A53B02000048E975BC2E21FA21583B7F8653140C0DDBC6118870A5CF
+            7D01AF170AF75B349ADD124B9FC5AC637D994C908DCD4FC204E672B3E3638944
+            BE3BEBAC370356A02CDE95CF43A18BB704E8C93109D3FB54413602502479E5C3
+            81211530234DEFEEEC1211993A74F01B6F667ABA79E7AEFECAF5D51A3C0AD7D8
+            361295BF5604F4E6DDA3BAE83C37F5C95E38E7CF41174B989B380D65DB5CF3DD
+            0F509625132FBD48F79F5909AF79182A18809D7A084D6FEF800ADA3F0DD7991B
+            6BF3CCDA97BE02DBB4F6365CFDF8235C3BF2C5A2DE7AF93C0A17FF80118DD29D
+            9D0149E64F9F0400E44E1C075D579ADFDBB5A1AFC0B6C321B9B02CC0D3E5B812
+            43152F4F56774EEDFE31EBEBA9EAEA00A5205A4BAD57BC3C0911519E2EC76B33
+            17CD81A1AD4992AE9D4A2DFD59A609F39E38CC584C5430B4C4B7530F82A46B68
+            6BD2177038227F024827367741D961D44EAF8A44A8C2614019341B1A167B7618
+            89CD9D0090AE642C0F00000DEEB65635B9AD7B0660C662D5E9B51249549F9349
+            54DB168B49EB9E0158AB9A5C0DEEBE31CFBCF160346CA5B739EE5BB1A79EDEBF
+            FACBAFACE96FBF96EBBF8DC34C26050041C27E2025CA3011796C9D34BCF21AAC
+            86C63234B68F46AC253BC977D0DEC897D629A53E00F13C80804F5909821FB5D6
+            EF8FD605C6972BB8E9AAE8FF97712FE0AEA556ABB542020044E36FA5F459A364
+            9E1AAA97999B65DC55FD075EAB9ACDDE999F900000000049454E44AE426082}
+          Name = 'Item1'
+          Tag = 0
+        end>
+    end
   end
   object eAgn: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -289,27 +475,20 @@ object fmAddProdAgn: TfmAddProdAgn
       StyleLookup = 'searchtoolbutton'
       TabOrder = 0
       Text = #1055#1086#1080#1089#1082
-    end
-    object EditButton2: TEditButton
-      Touch.InteractiveGestures = [LongTap]
-      CanFocus = False
-      Cursor = crArrow
-      Position.X = 28.000000000000000000
-      Size.Width = 28.000000000000000000
-      Size.Height = 29.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'ellipseseditbutton'
-      TabOrder = 1
+      OnClick = EditButton1Click
     end
   end
   object eTxt: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 4
     Position.X = 32.000000000000000000
-    Position.Y = 408.000000000000000000
+    Position.Y = 428.000000000000000000
+    Hint = '<'#1055#1088#1086#1073#1077#1083'> - '#1087#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#13#10'<Enter> - '#1074#1074#1086#1076' '#1096#1090#1088#1080#1093'-'#1082#1086#1076#1103
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
+    ParentShowHint = False
+    ShowHint = True
     object TMSFNCButton2: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
@@ -359,6 +538,7 @@ object fmAddProdAgn: TfmAddProdAgn
       Position.X = 240.000000000000000000
       TabOrder = 0
       Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
+      OnClick = TMSFNCButton2Click
     end
   end
   object eCena: TEdit
@@ -366,7 +546,7 @@ object fmAddProdAgn: TfmAddProdAgn
     TabOrder = 3
     Text = '1'
     Position.X = 384.000000000000000000
-    Position.Y = 406.000000000000000000
+    Position.Y = 426.000000000000000000
     Enabled = False
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
@@ -443,6 +623,34 @@ object fmAddProdAgn: TfmAddProdAgn
       Text = #1056#1072#1089#1087#1088#1086#1076#1072#1078#1072
     end
   end
+  object Label4: TLabel
+    FocusControl = eAgn
+    Position.X = 8.000000000000000000
+    Position.Y = 303.000000000000000000
+    Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
+    TabOrder = 16
+  end
+  object Label5: TLabel
+    FocusControl = eType
+    Position.X = 376.000000000000000000
+    Position.Y = 303.000000000000000000
+    Text = #1058#1080#1087
+    TabOrder = 15
+  end
+  object Label6: TLabel
+    FocusControl = eTxt
+    Position.X = 8.000000000000000000
+    Position.Y = 403.000000000000000000
+    Text = #1058#1086#1074#1072#1088
+    TabOrder = 14
+  end
+  object Label7: TLabel
+    FocusControl = eCena
+    Position.X = 376.000000000000000000
+    Position.Y = 401.000000000000000000
+    Text = #1062#1077#1085#1072
+    TabOrder = 13
+  end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
       item
@@ -487,7 +695,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-bookmark-filled'
         SVGText = 
@@ -533,7 +740,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-man-2-filled-coins-filled'
         SVGText = 
@@ -604,25 +810,124 @@ object fmAddProdAgn: TfmAddProdAgn
         Layers = <
           item
             Name = 'people-man-2-bookmark-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-filled-coins-filled'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 328
     Top = 440
+  end
+  object qZak: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AGN.AG_NAME,'
+      '       ST.ST_NAME,'
+      '       ZL.CODE_ZAK,'
+      '       ZL.CNT_MOD,'
+      '       ZL.NO_ZAK,'
+      '       AGN.NO_AGN'
+      'FROM ZAKAZ_LIST ZL'
+      'INNER JOIN AGENTS AGN ON (ZL.NO_AGN = AGN.NO_AGN)'
+      'INNER JOIN SITY_TABLE ST ON (AGN.NO_SITY = ST.NO_ST)'
+      'WHERE ((ZL.IS_PROD = 0) AND'
+      '      (ZL.DATA_END >= '#39'now'#39'))'
+      'ORDER BY AGN.AG_NAME, ST.ST_NAME  ')
+    Left = 760
+    Top = 384
+  end
+  object qGetAgn: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AGN.IS_SKIDKA,'
+      '       AGN.SUM_SKIDKA,'
+      '       AGN.FULL_NAME_STD'
+      'FROM AGENTS AGN'
+      'WHERE AGN.NO_AGN = :NG   ')
+    Left = 760
+    Top = 440
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end>
+  end
+  object qMod: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select M.NAZVAN M_NAZVAN,'
+      '       sum(LP.CENA_PROD) SUM_PROD,'
+      '       sum(LP.OPLATA) OPLATA,'
+      '       LP.CENA_PROD,'
+      '       K.NAZVAN K_NAZVAN,'
+      '       count(LP.NO_LPT) COUNT_OF_NO_LPT,'
+      '       MS.NO_MOD'
+      'from MODEL_SIZE_TABLE MS'
+      'inner join LOG_PROD_TABLE LP on (MS.NO_MST = LP.NO_MOD_SIZE)'
+      'inner join MODEL_TABLE M on (MS.NO_MOD = M.NO_MOD)'
+      'inner join KATEGORY_TABLE K on (M.NO_KAT = K.NO_KAT)'
+      'where ((LP.NO_AGN = :NG) and'
+      '      (LP.DATA_PROD = :SD) and'
+      '      (LP.IS_TEMP = 1))'
+      'group by M.NAZVAN, LP.CENA_PROD, K.NAZVAN, MS.NO_MOD'
+      'order by K.NAZVAN, M.NAZVAN  '
+      '')
+    Left = 32
+    Top = 511
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end>
+  end
+  object qIns: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'execute procedure INS_PROD_TOVAR_2(:NO_AGN, :DATA_PROD, :CODE_MO' +
+        'D, :TYPE_PROD, :SUM_TYPE, :OPLATA)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_AGN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DATA_PROD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CODE_MOD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TYPE_PROD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SUM_TYPE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'OPLATA'
+        ParamType = ptInput
+      end>
+    Left = 104
+    Top = 511
   end
 end
