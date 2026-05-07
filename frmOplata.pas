@@ -51,40 +51,40 @@ begin
   FTemp := isTemp;
   FData := MyData;
   isPred := 0; // по умолчанию - реальная оплата
-  btBank.SpeedButtonOptions.Down := false;
-  qRead.Close;
-  qRead.Prepare;
-  qRead.ParamByName('NG').AsInteger := FAgent;
-  qRead.Active := True;
-  FDolg := qRead.FieldByName('AG_DOLG').AsFloat;
-  eSum.Caption := FloatToStr(FDolg);
-  FPred := qRead.FieldByName('AG_PRED').AsFloat;
-  FBankPred := qRead.FieldByName('AG_BANK_PRED').AsFloat;
-  if btBank.SpeedButtonOptions.Down then
-  begin
-    ePred.Text := FloatToStr(FBankPred);
-    ePred.Enabled := FBankPred > 0;
-  end
-  else
-  begin
-    ePred.Text := FloatToStr(FPred);
-    ePred.Enabled := FPred > 0;
-  end;
-  FValut := qRead.FieldByName('PRED_VAL').AsInteger;
-  qRead.Close;
-  eDop.Properties.LookupItems.Clear;
-  qLook.Close;
-  qLook.Prepare;
-  qLook.Active := True;
-  if qLook.RecordCount > 0 then
-  begin
-    qLook.First;
-    repeat
-      eDop.Properties.LookupItems.Add(qLook.FieldByName('DOP_OPIS').AsString);
-      qLook.Next;
-    until (qLook.Eof);
-  end;
-  ReadUserVal;
+//  btBank.SpeedButtonOptions.Down := false;
+//  qRead.Close;
+//  qRead.Prepare;
+//  qRead.ParamByName('NG').AsInteger := FAgent;
+//  qRead.Active := True;
+//  FDolg := qRead.FieldByName('AG_DOLG').AsFloat;
+//  eSum.Caption := FloatToStr(FDolg);
+//  FPred := qRead.FieldByName('AG_PRED').AsFloat;
+//  FBankPred := qRead.FieldByName('AG_BANK_PRED').AsFloat;
+//  if btBank.SpeedButtonOptions.Down then
+//  begin
+//    ePred.Text := FloatToStr(FBankPred);
+//    ePred.Enabled := FBankPred > 0;
+//  end
+//  else
+//  begin
+//    ePred.Text := FloatToStr(FPred);
+//    ePred.Enabled := FPred > 0;
+//  end;
+//  FValut := qRead.FieldByName('PRED_VAL').AsInteger;
+//  qRead.Close;
+//  eDop.Properties.LookupItems.Clear;
+//  qLook.Close;
+//  qLook.Prepare;
+//  qLook.Active := True;
+//  if qLook.RecordCount > 0 then
+//  begin
+//    qLook.First;
+//    repeat
+//      eDop.Properties.LookupItems.Add(qLook.FieldByName('DOP_OPIS').AsString);
+//      qLook.Next;
+//    until (qLook.Eof);
+//  end;
+//  ReadUserVal;
 end;
 
 end.

@@ -44,11 +44,11 @@ type
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     qIns: TFDCommand;
     Label4: TLabel;
-    ltZak: TLayout;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     TMSFNCButton3: TTMSFNCButton;
+    ltZak: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
@@ -337,7 +337,7 @@ begin
     try
       fmOpl := TfmOpl.Create(fmAddProdAgn);
       //fmOpl.dxRet.Visible := true;
-      //fmOpl.ReadAgent(FAgent, 0, StrToDate(fmProd.eData.Text));
+      fmOpl.ReadAgent(FAgent, 0, StrToDate(fmProd.eData.Text));
       if fmOpl.ShowModal = mrOk then
       begin
         ModalResult := mrOk;
