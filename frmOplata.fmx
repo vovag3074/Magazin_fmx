@@ -267,7 +267,7 @@
     object eCurs: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 8
-      Text = '0'
+      Text = '1'
       Position.X = 272.000000000000000000
       Size.Width = 221.000000000000000000
       Size.Height = 33.000000000000000000
@@ -339,8 +339,8 @@
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 15
-    Viewport.Width = 709.000000000000000000
-    Viewport.Height = 121.000000000000000000
+    Viewport.Width = 695.000000000000000000
+    Viewport.Height = 113.000000000000000000
   end
   object btBank: TTMSFNCButton
     Bitmap.PNG = {
@@ -637,6 +637,90 @@
         ParamType = ptInput
       end>
     Left = 356
+    Top = 328
+  end
+  object qOpl: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'execute procedure OPLATA_TOV_AGN(:NG, :IT, :SUM_OP, :DOP_OP, :IS' +
+        '_VIRT, :MY_DATA, :IS_PRED, :TRAN_ID, :NO_VAL, :KURS_VAL, :IS_MUL' +
+        'T)'
+      '')
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SUM_OP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DOP_OP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_VIRT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MY_DATA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_PRED'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TRAN_ID'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_VAL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'KURS_VAL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_MULT'
+        ParamType = ptInput
+      end>
+    Left = 412
+    Top = 328
+  end
+  object qDop: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'insert into LOG_OTP_AGN (DATA_OTP,'
+      '                         NO_AGN,'
+      '                         DOP_OPIS)'
+      'values (:DATA_OTP,'
+      '        :NO_AGN,'
+      '        :DOP_OPIS)'
+      '')
+    ParamData = <
+      item
+        Name = 'DATA_OTP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_AGN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DOP_OPIS'
+        ParamType = ptInput
+      end>
+    Left = 468
     Top = 328
   end
 end

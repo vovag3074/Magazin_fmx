@@ -37,6 +37,8 @@ type
     qClose: TFDCommand;
     qPred: TFDCommand;
     qStrPred: TFDCommand;
+    qOpl: TFDCommand;
+    qDop: TFDCommand;
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btBankClick(Sender: TObject);
@@ -45,6 +47,7 @@ type
   private
     { Private declarations }
     procedure readValutList;
+    procedure setOplata;
   public
     { Public declarations }
     FAgent: Integer;
@@ -169,12 +172,12 @@ begin
         qPred.Active := false;
         qPred.Prepare;
         qPred.ParamByName('NG').AsInteger := FAgent;
-        qPred.ParamByName('SUM_PRED').AsFloat := FTmp;
+        qPred.ParamByName('SUM_PRED').Value := FTmp;
         qPred.ParamByName('DATA_PRED').AsDate := FData;
         qPred.ParamByName('STR_PRED').AsString := '';
-        qPred.ParamByName('IS_VIRT').AsInteger := 0;
+        qPred.ParamByName('IS_VIRT').AsSmallInt := 0;
         qPred.ParamByName('NO_VAL').AsInteger := eVal.Text.ToInteger;
-        qPred.ParamByName('KURS_VAL').asFloat := eCurs.Text.ToDouble;
+        qPred.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
         qPred.ParamByName('TRAN_ID').AsString := FTranID;
         qPred.ParamByName('IS_Mult').AsBoolean := eType.ItemIndex = 0;
         qPred.Execute;
@@ -192,33 +195,37 @@ begin
         fmMain.IBT.Commit;
       end;
     end;
-//    SetOplata;
-//    fmMain.IBT.Commit;
-//  end // if eOpl.EditValue > 0 then
-//  else
-//  begin
+    SetOplata;
+  end // if eOpl.EditValue > 0 then
+  else
+  begin
 //    // 15.12.2014 если оплаты нет, но доп строка есть, то
 //    // записываем ее в журнал
-//    eDop.PostEditValue;
-//    if trim(eDop.Text) <> '' then
-//    begin
-//      qDop.Active := false;
-//      qDop.Prepare;
-//      qDop.ParamByName('NO_AGN').AsInteger := FAgent;
-//      qDop.ParamByName('DATA_OTP').AsDate := FData;
-//      qDop.ParamByName('DOP_OPIS').AsString := trim(eDop.Text);
-//      qDop.Execute;
-//      fmMain.IBT.Commit;
-//    end;
-//  end;
-//  if isPrintCheck then
-//  begin
-    if ShowQuestion('Чек нужен?') then
-    begin
-      S := '[{"NG"="' + IntToStr(FAgent) + '"';
-      S := S + ',"DT"="' + DateToStr(FData) + '"}]';
-      PrintReportJson('SRepProdAgn.fr3', S);
+    try
+      if trim(eDop.Text) <> '' then
+      begin
+        fmMain.StartMainTransaction;
+        qDop.Active := false;
+        qDop.Prepare;
+        qDop.ParamByName('NO_AGN').AsInteger := FAgent;
+        qDop.ParamByName('DATA_OTP').AsDate := FData;
+        qDop.ParamByName('DOP_OPIS').AsString := trim(eDop.Text);
+        qDop.Execute;
+        fmMain.EndMainTransaction;
+      end;
+    except
+      on e: Exception do
+      begin
+        fmMain.ShowIBError(e.message);
+      end;
+
     end;
+  end;
+  if ShowQuestion('Чек нужен?') then
+  begin
+    S := '[{"NG":"' + IntToStr(FAgent) + '"';
+    S := S + ',"DT":"' + DateToStr(FData) + '"}]';
+    PrintReportJson('SRepProdAgn.fr3', S);
   end;
   ModalResult := mrOk;
 end;
@@ -268,6 +275,35 @@ begin
     eVal.AddObject(Item);
   end;
   eVal.ItemIndex := 0;
+end;
+
+procedure TfmOpl.setOplata;
+begin
+try
+  fmMain.StartMainTransaction;
+  qOpl.Active := false;
+  qOpl.Prepare;
+  qOpl.ParamByName('NG').AsInteger := FAgent;
+  qOpl.ParamByName('IT').AsSmallInt := FTemp;
+  qOpl.ParamByName('SUM_OP').Value := eOpl.Text.ToDouble;
+  qOpl.ParamByName('DOP_OP').AsString := eDop.Text;
+  qOpl.ParamByName('MY_DATA').AsDate := FData;
+  qOpl.ParamByName('is_virt').AsSmallInt := 0;
+  if btBank.IsPressed then
+    qOpl.ParamByName('is_virt').AsSmallInt := 1;
+  qOpl.ParamByName('is_pred').AsSmallInt := isPred;
+  qOpl.ParamByName('TRAN_ID').AsString := FTranID;
+  qOpl.ParamByName('NO_VAL').asInteger := eVal.ListItems[eVal.ItemIndex].Tag;
+  qOpl.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
+  qOpl.ParamByName('IS_MULT').AsBoolean := eType.ItemIndex = 0;
+  qOpl.Execute;
+  fmMain.EndMainTransaction;
+except on E:Exception do
+ begin
+   fmMain.ShowIBError('Oplata error: '+E.Message);
+ end;
+
+end;
 end;
 
 procedure TfmOpl.TMSFNCButton1Click(Sender: TObject);

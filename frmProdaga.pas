@@ -88,6 +88,7 @@ type
     TMSFNCButton1: TTMSFNCButton;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
+    TMSFNCButton3: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -104,6 +105,7 @@ type
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure TMSFNCButton1MouseEnter(Sender: TObject);
     procedure TMSFNCButton1MouseLeave(Sender: TObject);
+    procedure TMSFNCButton3Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -132,7 +134,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport;
+  frmMain, frmAddProdaga, frmReport, frmOplata;
 
 {$R *.fmx}
 
@@ -159,7 +161,7 @@ begin
     pmProd.PlacementTarget := TListBoxItem(Sender);
    // формируем список продаж
     FActiveProd := TListBoxItem(Sender).Tag;
-    HintPanel.Visible:=False;
+    HintPanel.Visible := False;
     pmProd.Popup();
     ShowProdMod;
   end;
@@ -251,11 +253,11 @@ var
   Header: TListBoxHeader;
 begin
   tlPMod.AdaptToStyle := True;
-  tlLog.AdaptToStyle:=True;
-  tlLog.NodesAppearance.ExtendedFontColor:=TAlphaColors.Khaki;
-  tlLog.NodesAppearance.ExtendedFont.Size:=14;
-  tlLog.NodesAppearance.ShowLines:=True;
-  tlOpl.AdaptToStyle:=True;
+  tlLog.AdaptToStyle := True;
+  tlLog.NodesAppearance.ExtendedFontColor := TAlphaColors.Khaki;
+  tlLog.NodesAppearance.ExtendedFont.Size := 14;
+  tlLog.NodesAppearance.ShowLines := True;
+  tlOpl.AdaptToStyle := True;
   eData.Text := DateToStr(now);
   myCalendar.Data := now;
     //-----------------------
@@ -357,41 +359,46 @@ begin
       qLogAg.First;
       repeat
         Node := tlLog.AddNode;
-        Node.Text[0]:= DateToStr(qLogAg.FieldByName('DATA_PROD').AsDateTime);
+        Node.Text[0] := DateToStr(qLogAg.FieldByName('DATA_PROD').AsDateTime);
         Node.Text[1] := qLogAg.FieldByName('OPERATION').AsString;
         Node.Text[2] := qLogAg.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger.ToString;
         Node.Text[3] := qLogAg.FieldByName('SUM_OF_CENA_PROD').AsFloat.ToString;
-        if qLogAg.FieldByName('LOG_DOP').AsString.Trim <>'' then
-         begin
-           ANode := tlLog.AddNode(Node);
-           ANode.Text[0] := qLogAg.FieldByName('LOG_DOP').AsString;
-           ANode.Extended:=True;
-         end;
+        if qLogAg.FieldByName('LOG_DOP').AsString.Trim <> '' then
+        begin
+          ANode := tlLog.AddNode(Node);
+          ANode.Text[0] := qLogAg.FieldByName('LOG_DOP').AsString;
+          ANode.Extended := True;
+        end;
         Node.Values[0].CollapsedIconName := 'Item2';
         Node.Values[0].ExpandedIconName := 'Item2';
-        var I:Integer;
+        var I: Integer;
         I := qLogAg.FieldByName('TYPE_OP').AsInteger;
         case I of
-         1: begin
-            Node.Values[0].CollapsedIconName := 'Item3';
-            Node.Values[0].ExpandedIconName := 'Item3';
-         end;
-         2: begin
-            Node.Values[0].CollapsedIconName := 'Item4';
-            Node.Values[0].ExpandedIconName := 'Item4';
-         end;
-         5: begin
-            Node.Values[0].CollapsedIconName := 'Item5';
-            Node.Values[0].ExpandedIconName := 'Item5';
-         end;
-         6: begin
-            Node.Values[0].CollapsedIconName := 'Item6';
-            Node.Values[0].ExpandedIconName := 'Item6';
-         end;
-         7: begin
-            Node.Values[0].CollapsedIconName := 'Item7';
-            Node.Values[0].ExpandedIconName := 'Item7';
-         end;
+          1:
+            begin
+              Node.Values[0].CollapsedIconName := 'Item3';
+              Node.Values[0].ExpandedIconName := 'Item3';
+            end;
+          2:
+            begin
+              Node.Values[0].CollapsedIconName := 'Item4';
+              Node.Values[0].ExpandedIconName := 'Item4';
+            end;
+          5:
+            begin
+              Node.Values[0].CollapsedIconName := 'Item5';
+              Node.Values[0].ExpandedIconName := 'Item5';
+            end;
+          6:
+            begin
+              Node.Values[0].CollapsedIconName := 'Item6';
+              Node.Values[0].ExpandedIconName := 'Item6';
+            end;
+          7:
+            begin
+              Node.Values[0].CollapsedIconName := 'Item7';
+              Node.Values[0].ExpandedIconName := 'Item7';
+            end;
         end;
         qLogAg.Next;
       until (qLogAg.Eof);
@@ -406,27 +413,27 @@ var
   Node: TTMSFNCTreeViewNode;
 begin
      // 05.08.2020 ----- состояние оплат
-    try
-      tlOpl.Nodes.Clear;
-      qLOpl.Close;
-      qLOpl.Prepare;
-      qLOpl.ParamByName('NG').AsInteger := FActiveProd;
-      qLOpl.Active := True;
-      if qLOpl.RecordCount > 0 then
-      begin
-        qLOpl.First;
-        repeat
-          Node := tlOpl.AddNode();
-          Node.Text[0] := qLOpl.FieldByName('NAZVAN').AsString;
-          Node.Text[1] := DateToStr(qLOpl.FieldByName('DATA_PROD').AsDateTime);
-          Node.Text[2] := DateToStr(qLOpl.FieldByName('DATA_OPL').AsDateTime);
-          Node.Text[3] := qLOpl.FieldByName('CENA_PROD').AsFloat.ToString;
-          Node.Text[4] := qLOpl.FieldByName('OPLATA').AsFloat.ToString;
-          qLOpl.Next;
-        until qLOpl.Eof;
-      end;
-    finally
+  try
+    tlOpl.Nodes.Clear;
+    qLOpl.Close;
+    qLOpl.Prepare;
+    qLOpl.ParamByName('NG').AsInteger := FActiveProd;
+    qLOpl.Active := True;
+    if qLOpl.RecordCount > 0 then
+    begin
+      qLOpl.First;
+      repeat
+        Node := tlOpl.AddNode();
+        Node.Text[0] := qLOpl.FieldByName('NAZVAN').AsString;
+        Node.Text[1] := DateToStr(qLOpl.FieldByName('DATA_PROD').AsDateTime);
+        Node.Text[2] := DateToStr(qLOpl.FieldByName('DATA_OPL').AsDateTime);
+        Node.Text[3] := qLOpl.FieldByName('CENA_PROD').AsFloat.ToString;
+        Node.Text[4] := qLOpl.FieldByName('OPLATA').AsFloat.ToString;
+        qLOpl.Next;
+      until qLOpl.Eof;
     end;
+  finally
+  end;
 end;
 
 procedure TfmProd.ShowProdMod;
@@ -471,7 +478,7 @@ end;
 
 procedure TfmProd.tbOplClick(Sender: TObject);
 begin
- ShowLogOpl;
+  ShowLogOpl;
 end;
 
 procedure TfmProd.tlPModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
@@ -564,6 +571,22 @@ begin
   fmAddProdAgn.ShowModal;
   fmAddProdAgn.Free;
   ReadProd;
+end;
+
+procedure TfmProd.TMSFNCButton3Click(Sender: TObject);
+begin
+  try
+    fmOpl := TfmOpl.Create(fmAddProdAgn);
+    fmOpl.dxRet.Visible := False;
+    fmOpl.ReadAgent(FActiveProd, 0, StrToDate(fmProd.eData.Text));
+    if fmOpl.ShowModal = mrOk then
+    begin
+      ReadProd;
+    end;
+  finally
+    fmOpl.Free;
+    fmOpl := nil;
+  end;
 end;
 
 procedure TfmProd.TMSFNCButton5Click(Sender: TObject);
