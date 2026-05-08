@@ -31,7 +31,7 @@ type
     TMSFNCButton16: TTMSFNCButton;
     TMSFNCButton17: TTMSFNCButton;
     TMSFNCButton18: TTMSFNCButton;
-    Panel1: TPanel;
+    pnCalc: TPanel;
     TMSFNCButton19: TTMSFNCButton;
     StatusBar1: TStatusBar;
     lbAkum: TLabel;

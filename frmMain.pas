@@ -26,7 +26,7 @@ uses
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents;
+  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox;
 
 type
   TfmMain = class(TForm)
@@ -104,6 +104,10 @@ type
     function TestZakaz(NoZakaz: string; var isMove, isProd: Boolean; var NoAgn: Integer; var NameAgn: string): Integer;
     procedure ShowIBError(SError: string);
     function GetTranID: string;
+    /// <summary>
+    /// Выставляет указанную валюту как выбранную в выпадающем списке
+    /// </summary>
+    procedure GetValutFromComboBox(NoValut:Integer;var myBox:TComboBox);
   end;
 
 procedure ShowInfo(T: string);
@@ -218,6 +222,21 @@ begin
   Result := qTran.FieldByName('UUIN_CODE_128').AsString;
   qTran.Close;
   IBT_Read.Rollback;
+end;
+
+procedure TfmMain.GetValutFromComboBox(NoValut:Integer;var myBox: TComboBox);
+var I:Integer;
+    Item:TListBoxItem;
+begin
+  for I := 0 to myBox.Items.Count - 1 do
+  begin
+    Item := myBox.ListItems[I];
+    if Item.Tag = NoValut then
+    begin
+      myBox.ItemIndex := I;
+      Break;
+    end;
+  end;
 end;
 
 procedure TfmMain.LoadFormInv;

@@ -321,7 +321,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowNotify(E.Message);
+        fmMain.ShowIBError(E.Message);
         eTxt.Text := '';
         eTxt.SetFocus;
         ListTemp;
@@ -336,7 +336,7 @@ begin
   begin // не магазин, то спрашиваем оплату
     try
       fmOpl := TfmOpl.Create(fmAddProdAgn);
-      //fmOpl.dxRet.Visible := true;
+      fmOpl.dxRet.Visible := true;
       fmOpl.ReadAgent(FAgent, 0, StrToDate(fmProd.eData.Text));
       if fmOpl.ShowModal = mrOk then
       begin

@@ -51,6 +51,9 @@ type
     qIns: TFDCommand;
     qAdd: TFDCommand;
     TMSFNCButton8: TTMSFNCButton;
+    Валюта: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

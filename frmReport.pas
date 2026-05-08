@@ -51,6 +51,7 @@ var
   fmReport: TfmReport;
 
 procedure ShowReportJson(NameRep: string; ParamList: string);
+procedure PrintReportJson(NameRep: string; ParamList: string);
 
 function getReportPatch: string;
 
@@ -149,6 +150,20 @@ begin
     fmReport.ParseJson(ParamList);
     fmReport.myRep.PrepareReport();
     fmReport.myRep.ShowPreparedReport;
+    FreeAndNil(fmReport);
+  end;
+end;
+
+procedure PrintReportJson(NameRep: string; ParamList: string);
+begin
+  GetRepName(NameRep);
+  if NameRep.Trim <> '' then
+  begin
+    fmReport := TfmReport.Create(Application);
+    fmReport.myRep.LoadFromFile(NameRep);
+    fmReport.ParseJson(ParamList);
+    fmReport.myRep.PrepareReport();
+    fmReport.myRep.Print;
     FreeAndNil(fmReport);
   end;
 end;

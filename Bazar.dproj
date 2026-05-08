@@ -499,6 +499,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Bazar.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Bazar.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Bazar.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>Bazar.exe</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -531,6 +537,27 @@
                 <DeployFile LocalName="Bazar" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="OSXARM64">
                         <RemoteName>Bazar</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepProdAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepProdAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepProdAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepProdAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepProdAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>SRepProdAgn.fr3</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

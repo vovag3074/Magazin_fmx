@@ -715,7 +715,7 @@ object fmProd: TfmProd
           Size.Width = 921.000000000000000000
           Size.Height = 369.000000000000000000
           Size.PlatformDefault = False
-          TabIndex = 2
+          TabIndex = 0
           TabOrder = 90
           TabPosition = PlatformDefault
           Sizes = (
@@ -729,7 +729,7 @@ object fmProd: TfmProd
             CustomIcon = <
               item
               end>
-            IsSelected = False
+            IsSelected = True
             Size.Width = 119.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
@@ -740,7 +740,7 @@ object fmProd: TfmProd
             ExplicitSize.cy = 26.000000000000000000
             object tlPMod: TTMSFNCTreeView
               Align = Client
-              Size.Width = 921.000000000000000000
+              Size.Width = 881.000000000000000000
               Size.Height = 343.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -1259,6 +1259,54 @@ object fmProd: TfmProd
                   end>
               end
             end
+            object Panel1: TPanel
+              Align = Left
+              Size.Width = 40.000000000000000000
+              Size.Height = 343.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'TopPanel'
+              TabOrder = 1
+              object TMSFNCButton1: TTMSFNCButton
+                ImageAlign = Client
+                Bitmap.PNG = {
+                  89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                  F40000000473424954080808087C08648800000289494441545885ED574D6B13
+                  51143D7726D44ED36A83D8887651B0601A6A5CB4D08D3B6D29AE6DA95493FE01
+                  41107F81E0C2751197696950A81BD7A264ABB60B2BC4080934087E4484D8A499
+                  8ECC9BEBC2244D2699CC9B74C4859EE5DCFBCE3DF3EE99FBE601FF3AC829B05C
+                  36A2AAAA9E07A01EB18610427C480D1DCB48095861EEB7749124A2856E023D82
+                  997953D1D49524D141732060CFB474F31E91B26896F7B8B2BDC52CC4912A93AA
+                  62706A1A81A1E38B966E7E0470B7256E5F10AF9A9F88E87436B1CC7AB6E3AE79
+                  86168922B2962266FEB23E1038D31C53DA25531800FC2ADEC255E36E46A305F1
+                  AAF90CC0A50E8230B21CC7C0441420494B30A3FA3E83626A1D603EA4EAB0E381
+                  C3208D3261D89E3038358DB3B76E7B3663E8CA1CAAD90C57B6DE74CD6B082868
+                  CACC58098356BFF5BD25E1C46F4DFBEF76B8F87843AAF8C8F51B085E88517DAD
+                  9480349109A094D045C7B7FD59FC8AD28BE75202862FCF222895D9C1030C704B
+                  AF6A3D0C4EC63076FF8114697032D6B2564A809307F47C0E9661705F384C7DE1
+                  59290100601906EBF99CBC00270F18855D646F2E413B37CE5EBE023D9F8351D8
+                  9517D0CD034661578AAC17B87BE00FA3310909340A22F7EFC667B87AC08E60EC
+                  224E2D2C01AAED941602DF369F607FE76D6F02DCE6401DA1F9AB08CDCD77CC31
+                  CB7BDCB300590F7C7EB88AF2EB574CB61D6021E03676BB0A709A0376884A193F
+                  D22F3D177215E0E601C7DEB729F4E605690F74EBBD1D5EBC20ED01A7DEDBE1D5
+                  0BD21EF0BBF7753406514153669403E5A4EF159AC040DBF1D81090263293212A
+                  81B908005A64C2B7C20DAE1A7733DA7ECB01DE00E8CEF8EA2354B6B7E0D76FF9
+                  21B72D6E7F50BB98AC81E89A8F871233F353455313F68BC95FBF9AFDC72F3D58
+                  3941E773FD130000000049454E44AE426082}
+                BitmapSize = 32
+                ShowImage = True
+                ShowText = False
+                Size.Width = 40.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Align = Top
+                CanFocus = False
+                TabOrder = 0
+                Text = #1063#1077#1082' '#1087#1088#1086#1076#1072#1078#1080
+                OnClick = TMSFNCButton1Click
+                OnMouseEnter = TMSFNCButton1MouseEnter
+                OnMouseLeave = TMSFNCButton1MouseLeave
+              end
+            end
           end
           object tbHist: TTabItem
             CustomIcon = <
@@ -1384,7 +1432,7 @@ object fmProd: TfmProd
             CustomIcon = <
               item
               end>
-            IsSelected = True
+            IsSelected = False
             Size.Width = 60.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
@@ -1637,6 +1685,30 @@ object fmProd: TfmProd
           end
         end
       end
+      object HintPanel: TCalloutPanel
+        Padding.Top = 11.000000000000000000
+        Position.X = 424.000000000000000000
+        Position.Y = 126.000000000000000000
+        Size.Width = 241.000000000000000000
+        Size.Height = 120.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 92
+        CalloutWidth = 23.000000000000000000
+        CalloutLength = 11.000000000000000000
+        object HintLabel: TLabel
+          Align = Client
+          StyledSettings = [Family, Style]
+          Size.Width = 241.000000000000000000
+          Size.Height = 109.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = 'HintLabel'
+          TabOrder = 0
+        end
+      end
     end
     object ltFooter: TLayout
       StyleName = 'ftrProd'
@@ -1850,5 +1922,13 @@ object fmProd: TfmProd
         Name = 'NG'
         ParamType = ptInput
       end>
+  end
+  object pmProdAgn: TPopupMenu
+    Left = 344
+    Top = 416
+    object MenuItem1: TMenuItem
+      Text = #1063#1077#1082' '#1087#1088#1086#1076#1072#1078#1080
+      OnClick = MenuItem1Click
+    end
   end
 end
