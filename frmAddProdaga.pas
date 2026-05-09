@@ -21,11 +21,11 @@ type
     lbZak: TListBox;
     tlList: TTMSFNCTreeView;
     eAgn: TEdit;
-    EditButton1: TEditButton;
+    btSelAgn: TEditButton;
     eTxt: TEdit;
     eCena: TEdit;
     TMSFNCButton1: TTMSFNCButton;
-    TMSFNCButton2: TTMSFNCButton;
+    eEnter: TTMSFNCButton;
     eType: TComboBox;
     SVGIconImageList1: TSVGIconImageList;
     ListBoxItem1: TListBoxItem;
@@ -52,10 +52,12 @@ type
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
-    procedure EditButton1Click(Sender: TObject);
+    procedure btSelAgnClick(Sender: TObject);
     procedure lbZakDblClick(Sender: TObject);
-    procedure TMSFNCButton2Click(Sender: TObject);
+    procedure eEnterClick(Sender: TObject);
     procedure TMSFNCButton3Click(Sender: TObject);
+    procedure eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
+      Shift: TShiftState);
   private
     { Private declarations }
     FAgent: Integer;
@@ -80,7 +82,7 @@ uses
 
 {$R *.fmx}
 
-procedure TfmAddProdAgn.EditButton1Click(Sender: TObject);
+procedure TfmAddProdAgn.btSelAgnClick(Sender: TObject);
 begin
   eAgn.Text := '';
   fmSelAgn := TfmSelAgn.Create(fmAddProdAgn);
@@ -104,6 +106,15 @@ begin
     ItemS.Text := eAgn.Text;
     ListTemp;
   end;
+end;
+
+procedure TfmAddProdAgn.eTxtKeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: WideChar; Shift: TShiftState);
+begin
+ if ((Key = vkSpace)or(Key = vkInsert)) then
+ begin
+   btSelAgnClick(Sender);
+ end;
 end;
 
 procedure TfmAddProdAgn.eTypeChange(Sender: TObject);
@@ -255,7 +266,7 @@ begin
   showCalc(eCena);
 end;
 
-procedure TfmAddProdAgn.TMSFNCButton2Click(Sender: TObject);
+procedure TfmAddProdAgn.eEnterClick(Sender: TObject);
  var
   isMove, isProd: Boolean;
   FAgn: Integer;
@@ -332,6 +343,11 @@ end;
 
 procedure TfmAddProdAgn.TMSFNCButton3Click(Sender: TObject);
 begin
+if eTxt.Text.Trim<>'' then
+begin
+  eEnter.OnClick(Sender);
+  Exit;
+end;
  if ((tlList.Nodes.Count > 0) and (FAgent > 0)) then // если что-то продали и агент
   begin // не магазин, то спрашиваем оплату
     try

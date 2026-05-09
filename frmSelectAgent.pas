@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.TMSFNCCustomComponent,
-  FMX.TMSFNCBitmapContainer, FMX.TMSFNCPopup;
+  FMX.TMSFNCBitmapContainer, FMX.TMSFNCPopup, FMX.Objects;
 
 type
   TfmSelAgn = class(TForm)
@@ -42,6 +42,8 @@ type
     btOK: TTMSFNCButton;
     TMSFNCButton4: TTMSFNCButton;
     qAddSity: TFDCommand;
+    HintPanel: TCalloutPanel;
+    HintLabel: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure EFindSityTyping(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
@@ -60,6 +62,8 @@ type
     procedure tlAgnDblClick(Sender: TObject);
     procedure tlFindDblClick(Sender: TObject);
     procedure TMSFNCButton3Click(Sender: TObject);
+    procedure btFTSMouseEnter(Sender: TObject);
+    procedure btFTSMouseLeave(Sender: TObject);
   private
     { Private declarations }
     FAgNo: Integer;
@@ -123,6 +127,56 @@ begin
     StartFTS;
     myFTS.Popup();
   end;
+end;
+
+procedure TfmSelAgn.btFTSMouseEnter(Sender: TObject);
+var
+  p, r: TRectF;
+  s: string;
+begin
+  if (Sender is TControl) then
+  begin
+
+    if Sender is TTMSFNCButton then
+      s := TTMSFNCButton(Sender).Text
+    else
+      s := TControl(Sender).TagString;
+    p := TControl(Sender).AbsoluteRect;
+
+    r := RectF(0, 0, 400, 1000);
+    if HintLabel.Canvas <> nil then
+    begin
+      HintLabel.Canvas.Font.Size := 16;
+      HintLabel.Canvas.MeasureText(r, s, true, [], TTextAlign.Center, TTextAlign.Center);
+      HintPanel.Width := r.Width + 22;
+      HintPanel.Height := r.Height + HintPanel.CalloutLength + 30;
+    end;
+    if (p.Left + TControl(Sender).Width / 2 > HintPanel.Width / 2) then
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Bottom;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width / 2 - HintPanel.Width / 2;
+      HintPanel.Position.Y := p.Top - TControl(Sender).Height - 15;
+      HintLabel.Padding.Left := 0;
+      HintLabel.Padding.Top := 0;
+    end
+    else
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Left;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width;
+      HintPanel.Position.Y := p.Top - HintPanel.Height / 2 + TControl(Sender).Height / 2;
+      HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
+      HintLabel.Padding.Left := HintPanel.CalloutLength;
+      HintLabel.Padding.Top := -HintPanel.CalloutLength;
+    end;
+    HintPanel.BringToFront;
+    HintPanel.Visible := True;
+    HintLabel.Text := s;
+  end;
+end;
+
+procedure TfmSelAgn.btFTSMouseLeave(Sender: TObject);
+begin
+ HintPanel.Visible := false;
 end;
 
 procedure TfmSelAgn.btOk2Click(Sender: TObject);

@@ -465,7 +465,7 @@ object fmAddProdAgn: TfmAddProdAgn
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
-    object EditButton1: TEditButton
+    object btSelAgn: TEditButton
       Touch.InteractiveGestures = [LongTap]
       CanFocus = False
       Cursor = crArrow
@@ -475,7 +475,7 @@ object fmAddProdAgn: TfmAddProdAgn
       StyleLookup = 'searchtoolbutton'
       TabOrder = 0
       Text = #1055#1086#1080#1089#1082
-      OnClick = EditButton1Click
+      OnClick = btSelAgnClick
     end
   end
   object eTxt: TEdit
@@ -483,13 +483,14 @@ object fmAddProdAgn: TfmAddProdAgn
     TabOrder = 4
     Position.X = 32.000000000000000000
     Position.Y = 428.000000000000000000
-    Hint = '<'#1055#1088#1086#1073#1077#1083'> - '#1087#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#13#10'<Enter> - '#1074#1074#1086#1076' '#1096#1090#1088#1080#1093'-'#1082#1086#1076#1103
+    Hint = '<Ins> - '#1087#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#13#10'<Enter> - '#1074#1074#1086#1076' '#1096#1090#1088#1080#1093'-'#1082#1086#1076#1103
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     ParentShowHint = False
     ShowHint = True
-    object TMSFNCButton2: TTMSFNCButton
+    OnKeyDown = eTxtKeyDown
+    object eEnter: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
@@ -538,7 +539,7 @@ object fmAddProdAgn: TfmAddProdAgn
       Position.X = 240.000000000000000000
       TabOrder = 0
       Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
-      OnClick = TMSFNCButton2Click
+      OnClick = eEnterClick
     end
   end
   object eCena: TEdit

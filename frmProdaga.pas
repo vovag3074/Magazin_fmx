@@ -14,7 +14,8 @@ uses
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FMX.TabControl, FMX.ExtCtrls, FMX.Effects, FMX.TMSFNCTreeViewBase,
   FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView,
-  FMX.TMSFNCBitmapContainer, FMX.Menus;
+  FMX.TMSFNCBitmapContainer, FMX.Menus, System.ImageList, FMX.ImgList,
+  FMX.SVGIconImageList;
 
 type
   TfmProd = class(TFrame)
@@ -85,10 +86,13 @@ type
     pmProdAgn: TPopupMenu;
     MenuItem1: TMenuItem;
     Panel1: TPanel;
-    TMSFNCButton1: TTMSFNCButton;
+    btRepProd: TTMSFNCButton;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
-    TMSFNCButton3: TTMSFNCButton;
+    btOplTov: TTMSFNCButton;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    SVGIconImageList1: TSVGIconImageList;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -102,10 +106,11 @@ type
     procedure tbOplClick(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
-    procedure TMSFNCButton1Click(Sender: TObject);
-    procedure TMSFNCButton1MouseEnter(Sender: TObject);
-    procedure TMSFNCButton1MouseLeave(Sender: TObject);
-    procedure TMSFNCButton3Click(Sender: TObject);
+    procedure btRepProdClick(Sender: TObject);
+    procedure btRepProdMouseEnter(Sender: TObject);
+    procedure btRepProdMouseLeave(Sender: TObject);
+    procedure btOplTovClick(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -270,7 +275,12 @@ end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);
 begin
-//-------------------
+ btRepProdClick(Sender);
+end;
+
+procedure TfmProd.MenuItem2Click(Sender: TObject);
+begin
+ btOplTovClick(Sender);
 end;
 
 procedure TfmProd.myCalendarDateSelected(Sender: TObject);
@@ -316,6 +326,7 @@ begin
         FOpl := FOpl + qUsr.FieldByName('SUM_OPL').AsFloat;
         FCnt := FCnt + qUsr.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger;
         Node.OnClick := ListBoxItem1Click;
+        Node.PopupMenu := pmProdAgn;
         tlProd.AddObject(Node);
         qUsr.Next;
       until (qUsr.Eof);
@@ -327,6 +338,7 @@ begin
     Node := TListBoxItem.Create(tlProd);
     Node.StyleLookup := 'ftrProd';
     Node.Text := 'Продано: ' + FCnt.ToString + ' |  На сумму: ' + FSum.ToString + ' |  Оплачено: ' + FOpl.ToString;
+    Node.PopupMenu:=nil;
     tlProd.AddObject(Node);
   finally
     tlProd.EndUpdate;
@@ -505,12 +517,12 @@ begin
     ATextColor := TAlphaColors.Deeppink;
 end;
 
-procedure TfmProd.TMSFNCButton1Click(Sender: TObject);
+procedure TfmProd.btRepProdClick(Sender: TObject);
 begin
   ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + eData.Text + '"}]');
 end;
 
-procedure TfmProd.TMSFNCButton1MouseEnter(Sender: TObject);
+procedure TfmProd.btRepProdMouseEnter(Sender: TObject);
 var
   p, r: TRectF;
   s: string;
@@ -555,7 +567,7 @@ begin
   end;
 end;
 
-procedure TfmProd.TMSFNCButton1MouseLeave(Sender: TObject);
+procedure TfmProd.btRepProdMouseLeave(Sender: TObject);
 begin
   HintPanel.Visible := false;
 end;
@@ -573,7 +585,7 @@ begin
   ReadProd;
 end;
 
-procedure TfmProd.TMSFNCButton3Click(Sender: TObject);
+procedure TfmProd.btOplTovClick(Sender: TObject);
 begin
   try
     fmOpl := TfmOpl.Create(fmAddProdAgn);

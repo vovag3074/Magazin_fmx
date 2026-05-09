@@ -12,7 +12,7 @@ uses
   FMX.TMSFNCCustomControl, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.TMSFNCHTMLText;
 
 type
   TfmOpl = class(TForm)
@@ -39,6 +39,7 @@ type
     qStrPred: TFDCommand;
     qOpl: TFDCommand;
     qDop: TFDCommand;
+    lbInfo: TTMSFNCHTMLText;
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btBankClick(Sender: TObject);
@@ -260,6 +261,8 @@ begin
   FValut := qRead.FieldByName('PRED_VAL').AsInteger;
   fmMain.GetValutFromComboBox(FValut, eVal);
   qRead.Close;
+  lbInfo.Text:='Предоплаты <br> Наличными: <b>'+FPred.ToString+'</b><br> По банку: <b>'+FBankPred.ToString+'</b>';
+  fmMain.EndReadTransaction;
 end;
 
 procedure TfmOpl.readValutList;
