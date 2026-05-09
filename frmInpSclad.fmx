@@ -433,24 +433,30 @@ object fmInpMag: TfmInpMag
     TabOrder = 3
     object tlMove: TTMSFNCTreeView
       AdaptToStyle = True
+      Color = xFF121F35
       Align = Client
       Size.Width = 300.000000000000000000
       Size.Height = 401.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Stroke.Color = xFFF0F0F0
+      Fill.Color = xFF121F35
+      Stroke.Color = xFF16253D
       BitmapContainer = TMSFNCBitmapContainer1
       Groups = <>
       GroupsAppearance.TopSize = 50.000000000000000000
       GroupsAppearance.BottomSize = 50.000000000000000000
       GroupsAppearance.TopFill.Kind = gfkGradient
-      GroupsAppearance.TopFill.ColorTo = claWhite
+      GroupsAppearance.TopFill.Color = xFF17273F
+      GroupsAppearance.TopFill.ColorTo = xFF17273F
       GroupsAppearance.BottomFill.Kind = gfkGradient
-      GroupsAppearance.BottomFill.ColorTo = claWhite
+      GroupsAppearance.BottomFill.Color = xFF17273F
+      GroupsAppearance.BottomFill.ColorTo = xFF17273F
       GroupsAppearance.TopFont.Size = 16.000000000000000000
+      GroupsAppearance.TopFont.Color = claWhite
       GroupsAppearance.BottomFont.Size = 16.000000000000000000
-      GroupsAppearance.TopStroke.Color = xFFF0F0F0
-      GroupsAppearance.BottomStroke.Color = xFFF0F0F0
+      GroupsAppearance.BottomFont.Color = claWhite
+      GroupsAppearance.TopStroke.Color = xFF16253D
+      GroupsAppearance.BottomStroke.Color = xFF16253D
       Columns = <
         item
           Name = 'Column0'
@@ -469,15 +475,19 @@ object fmInpMag: TfmInpMag
       ColumnsAppearance.TopSize = 36.000000000000000000
       ColumnsAppearance.BottomSize = 25.000000000000000000
       ColumnsAppearance.TopFont.Size = 16.000000000000000000
+      ColumnsAppearance.TopFont.Color = claWhite
       ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
       ColumnsAppearance.BottomFont.Size = 16.000000000000000000
+      ColumnsAppearance.BottomFont.Color = claWhite
       ColumnsAppearance.TopFill.Kind = gfkGradient
-      ColumnsAppearance.TopFill.ColorTo = claWhite
+      ColumnsAppearance.TopFill.Color = xFF17273F
+      ColumnsAppearance.TopFill.ColorTo = xFF17273F
       ColumnsAppearance.BottomFill.Kind = gfkGradient
-      ColumnsAppearance.BottomFill.ColorTo = claWhite
+      ColumnsAppearance.BottomFill.Color = xFF17273F
+      ColumnsAppearance.BottomFill.ColorTo = xFF17273F
       ColumnsAppearance.TopStroke.Kind = gskNone
-      ColumnsAppearance.TopStroke.Color = xFFF0F0F0
-      ColumnsAppearance.BottomStroke.Color = xFFF0F0F0
+      ColumnsAppearance.TopStroke.Color = xFF16253D
+      ColumnsAppearance.BottomStroke.Color = xFF16253D
       NodesAppearance.ShowFocus = False
       NodesAppearance.ExpandWidth = 18.000000000000000000
       NodesAppearance.ExpandHeight = 18.000000000000000000
@@ -486,15 +496,15 @@ object fmInpMag: TfmInpMag
       NodesAppearance.VariableMinimumHeight = 25.000000000000000000
       NodesAppearance.LineStroke.Color = claWhite
       NodesAppearance.Font.Size = 16.000000000000000000
+      NodesAppearance.Font.Color = claWhite
       NodesAppearance.TitleFont.Size = 16.000000000000000000
-      NodesAppearance.SelectedFontColor = claBlack
-      NodesAppearance.SelectedTitleFontColor = claBlack
+      NodesAppearance.ExtendedFontColor = claWhite
       NodesAppearance.ExtendedSelectedFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F0078D7
-      NodesAppearance.SelectedStroke.Color = x7F0078D7
+      NodesAppearance.SelectedFill.Color = x7F3C4B9A
+      NodesAppearance.SelectedStroke.Color = x7F3C4B9A
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
-      NodesAppearance.ExtendedFill.Color = xFFF0F0F0
-      NodesAppearance.ExtendedStroke.Color = xFFF0F0F0
+      NodesAppearance.ExtendedFill.Color = xFF16253D
+      NodesAppearance.ExtendedStroke.Color = xFF16253D
       NodesAppearance.ExtendedFont.Size = 16.000000000000000000
       NodesAppearance.ExtendedFont.StyleExt = {00070000000000000004000000}
       NodesAppearance.ExpandNodeIcon.PNG = {
@@ -1155,8 +1165,8 @@ object fmInpMag: TfmInpMag
         'INSERT INTO AGENTS (NO_SITY, PRED_VAL, AG_NAME, AG_DOP, IS_DEL, ' +
         'IS_SKIDKA, IS_DEF_PROD, AG_DOLG, BAR_CODE, AG_PRED)'
       
-        'VALUES (:NO_SITY, :PRED_VAL, :AG_NAME, :AG_DOP, 1, :IS_SKIDKA, 0' +
-        ', 0, :BAR_CODE, 0)'
+        'VALUES (:NO_SITY, :PRED_VAL, :AG_NAME, :AG_DOP, :ID, :IS_SKIDKA,' +
+        ' 0, 0, :BAR_CODE, 0)'
       '')
     ParamData = <
       item
@@ -1173,6 +1183,10 @@ object fmInpMag: TfmInpMag
       end
       item
         Name = 'AG_DOP'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ID'
         ParamType = ptInput
       end
       item

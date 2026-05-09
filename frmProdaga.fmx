@@ -1794,8 +1794,10 @@ object fmProd: TfmProd
         Corners = [BottomLeft, BottomRight]
         Fill.Color = xCE680168
         HitTest = False
+        Margins.Left = 1.000000000000000000
+        Margins.Right = 1.000000000000000000
         Margins.Bottom = 2.000000000000000000
-        Size.Width = 987.000000000000000000
+        Size.Width = 985.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         Stroke.Color = claKhaki
@@ -1806,7 +1808,7 @@ object fmProd: TfmProd
           Align = Client
           StyledSettings = [Family, Style]
           Margins.Right = 10.000000000000000000
-          Size.Width = 977.000000000000000000
+          Size.Width = 975.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 18.000000000000000000
@@ -2016,7 +2018,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report'
         SVGText = 
@@ -2054,7 +2055,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'salary'
         SVGText = 
@@ -2122,23 +2122,30 @@ object fmProd: TfmProd
         Layers = <
           item
             Name = 'report'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'salary'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 312
     Top = 480
+  end
+  object qDataPol: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select first (20) distinct LP.DATA_PROD'
+      'from LOG_PROD_TABLE LP'
+      'where ((LP.DATA_PROD <= current_date))'
+      'order by LP.DATA_PROD desc  ')
+    Left = 408
+    Top = 408
   end
 end

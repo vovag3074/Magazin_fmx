@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Edit, FMX.TMSFNCButton, FMX.Controls.Presentation,
+  FMX.Edit, FMX.TMSFNCButton, FMX.Controls.Presentation, System.Rtti,
   FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FMX.Calendar, FMX.Layouts,
   FMX.ListBox, FMX.Objects, FMX.TMSFNCTypes, FMX.TMSFNCUtils, FMX.TMSFNCGraphics,
   FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCImage,
@@ -15,7 +15,7 @@ uses
   FMX.TabControl, FMX.ExtCtrls, FMX.Effects, FMX.TMSFNCTreeViewBase,
   FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView,
   FMX.TMSFNCBitmapContainer, FMX.Menus, System.ImageList, FMX.ImgList,
-  FMX.SVGIconImageList;
+  FMX.SVGIconImageList, FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style;
 
 type
   TfmProd = class(TFrame)
@@ -93,6 +93,7 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     SVGIconImageList1: TSVGIconImageList;
+    qDataPol: TFDQuery;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -122,6 +123,7 @@ type
     procedure ShowProdMod;
     procedure ShowLog;
     procedure ShowLogOpl;
+    procedure showLastProdList;
   public
     { Public declarations }
     procedure LoadINI;
@@ -271,6 +273,8 @@ begin
   Header := TListBoxHeader.Create(tlProd);
   Header.StyleLookup := 'prodHead';
   tlProd.AddObject(Header);
+  // вставляем пометки в календарь
+  showLastProdList;
 end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);
@@ -354,6 +358,28 @@ end;
 procedure TfmProd.SaveINI;
 begin
 
+end;
+
+procedure TfmProd.showLastProdList;
+var   Events: TArray<TDateTime>;
+      I:Integer;
+begin
+  qDataPol.Active := True;
+  I := qDataPol.RecordCount;
+  if I > 0 then
+  begin
+    SetLength(Events, I);
+    qDataPol.First;
+    I := 0;
+   repeat
+      Events[I] := qDataPol.FieldByName('DATA_PROD').AsDateTime;
+      inc(I);
+      qDataPol.Next;
+   until qDataPol.Eof;
+    myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+    myCalendar.Model.ShowEvents := True;
+    myCalendar.Model.ShowWeekends := False;
+  end;
 end;
 
 procedure TfmProd.ShowLog;

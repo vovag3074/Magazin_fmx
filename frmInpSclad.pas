@@ -87,7 +87,8 @@ type
     procedure EditButton1Click(Sender: TObject);
     procedure TMSFNCButton4Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
-    procedure tlMoveBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure tlMoveBeforeExpandNode(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure btAsseptClick(Sender: TObject);
     procedure btDelClick(Sender: TObject);
@@ -117,7 +118,8 @@ type
     procedure ReadImpMod(var XMLDoc: TNativeXml; var NodeList: TsdNodeList);
     procedure ReadAgentList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList);
     procedure ReadMoveModelList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList);
-    procedure ReadMyZakazList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList; is_Move: Integer);
+    procedure ReadMyZakazList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList;
+      is_Move: Integer);
     /// <summary>
     /// Сохраняем подробности для выбранного заказа
     /// </summary>
@@ -171,10 +173,10 @@ uses
 
 procedure TfmInpMag.btAsseptClick(Sender: TObject);
 begin
- if tlMove.Nodes.Count = 0 then
+  if tlMove.Nodes.Count = 0 then
     Exit;
-  if ShowQuestion('Принять этот список на склад? Проверте его на правильность. ' +
-    'Вы уверены? ') then
+  if ShowQuestion('Принять этот список на склад? Проверте его на правильность. '
+    + 'Вы уверены? ') then
   begin
     SaveLogMove;
     // А тут включаем перенос во внутренний журнал
@@ -193,14 +195,14 @@ end;
 
 procedure TfmInpMag.btDelClick(Sender: TObject);
 begin
- pmDel.Popup();
+  pmDel.Popup();
 end;
 
 procedure TfmInpMag.DeleteAll;
 begin
   if ShowQuestion('Удалить ВСЕ записи из журнала передачи?') then
   begin
-   fmMain.StartMainTransaction;
+    fmMain.StartMainTransaction;
     qDelAll.Active := False;
     qDelAll.Prepare;
     qDelAll.Execute;
@@ -356,7 +358,8 @@ begin
       S := NodeList.Items[0].Value;
       if isUzeRead(S) then
       begin
-        if not ShowQuestion('Этот протокол прочитан ранее.' + ' Вы уверены, что надо его прочитать еще раз?') then
+        if not ShowQuestion('Этот протокол прочитан ранее.' +
+          ' Вы уверены, что надо его прочитать еще раз?') then
         begin
           Exit;
         end;
@@ -426,7 +429,8 @@ begin
     fmMain.TestZakaz(IntToStr(eTxt.Text.ToInt64), isMove, isProd, FAgn, NAgn);
     if isMove then
     begin
-      if not ShowQuestion('Заказ №  ' + eTxt.Text + ' уже принимался. Принять еще раз?') then
+      if not ShowQuestion('Заказ №  ' + eTxt.Text +
+        ' уже принимался. Принять еще раз?') then
       begin
         eTxt.Text := '';
         eTxt.SetFocus;
@@ -498,7 +502,9 @@ begin
       qList.First;
       repeat
         Node := tlMove.AddNode();
-        Node.Text[0] := '<html>' + qList.FieldByName('m_nazvan').AsString + '<font color = "Yellow"> ( ' + qList.FieldByName('count_of_no_size_mod').AsFloat.ToString + ' ) </font>';
+        Node.Text[0] := '<html>' + qList.FieldByName('m_nazvan').AsString +
+          '<font color = "Yellow"> ( ' + qList.FieldByName('count_of_no_size_mod').AsFloat.ToString
+          + ' ) </font>';
         FSum := FSum + qList.FieldByName('count_of_no_size_mod').AsFloat;
         Node.Extended := True;
         TNode := tlMove.AddNode(Node);
@@ -604,12 +610,24 @@ begin
     end;
     // вставляем агента. Для скрытия из списка - агенты вставляются с признаком
     // удален.
+    // 09.05.2026 - спрашиваем, ибо часто вставлять приходится
+    var T: Boolean;
+    T := ShowQuestion('Покупатель ' + AgentName +' '+SityName+ ' новый. Добавить его?');
     fmMain.StartMainTransaction;
     qInsAgn.Active := False;
     qInsAgn.Prepare;
     qInsAgn.ParamByName('PRED_VAL').AsInteger := GetNoValutByName(ValName);
     qInsAgn.ParamByName('AG_NAME').AsString := AgentName;
     qInsAgn.ParamByName('AG_DOP').Value := AgentOpis;
+    if T then
+    begin
+      qInsAgn.ParamByName('ID').AsSmallInt := 0;
+    end
+    else
+    begin
+      qInsAgn.ParamByName('ID').AsSmallInt := 1;
+    end;
+
     qInsAgn.ParamByName('IS_SKIDKA').AsSmallInt := isSkidka.ToInteger;
     qInsAgn.ParamByName('BAR_CODE').AsString := AgentCode;
     qInsAgn.ParamByName('NO_SITY').AsInteger := NoSity;
@@ -733,14 +751,17 @@ begin
       if isCena then
       begin
         qUpdMod2.ParamByName('NO_MOD').AsInteger := T;
-        qUpdMod2.ParamByName('NAZVAN').AsString := NodeList.Items[I].AttributeValueByName['ModName'];
-        qUpdMod2.ParamByName('M_CENA').Value := StrToFloat(NodeList.Items[I].AttributeValueByName['ModCena']);
+        qUpdMod2.ParamByName('NAZVAN').AsString := NodeList.Items[I].AttributeValueByName
+          ['ModName'];
+        qUpdMod2.ParamByName('M_CENA').Value := StrToFloat(NodeList.Items[I].AttributeValueByName
+          ['ModCena']);
         qUpdMod2.Execute;
       end
       else
       begin
         qUpdMod.ParamByName('NO_MOD').AsInteger := T;
-        qUpdMod.ParamByName('NAZVAN').AsString := NodeList.Items[I].AttributeValueByName['ModName'];
+        qUpdMod.ParamByName('NAZVAN').AsString := NodeList.Items[I].AttributeValueByName
+          ['ModName'];
         qUpdMod.Execute;
       end;
       // если такая модель есть, то можно обновить цену и название
@@ -761,7 +782,8 @@ begin
         qInsSize.Active := False;
         qInsSize.Prepare;
         qInsSize.ParamByName('NO_MOD').AsInteger := No_Mod;
-        qInsSize.ParamByName('NO_SIZE').AsInteger := StrToInt(NodeList.Items[I].AttributeValueByName['ModSize']);
+        qInsSize.ParamByName('NO_SIZE').AsInteger := StrToInt(NodeList.Items[I].AttributeValueByName
+          ['ModSize']);
         qInsSize.ParamByName('BAR_CODE').AsString := Bar_Code;
         qInsSize.Execute;
         fmMain.IBT.Commit;
@@ -785,8 +807,10 @@ begin
           qInsMod.Prepare;
           qInsMod.ParamByName('NO_KAT').AsInteger := No_Kat;
           qInsMod.ParamByName('NAZVAN').AsString := Name_Mod;
-          qInsMod.ParamByName('BARCODE').AsString := NodeList.Items[I].AttributeValueByName['Mod_Barcode'];
-          qInsMod.ParamByName('M_CENA').AsFloat := StrToFloat(NodeList.Items[I].AttributeValueByName['ModCena']);
+          qInsMod.ParamByName('BARCODE').AsString := NodeList.Items[I].AttributeValueByName
+            ['Mod_Barcode'];
+          qInsMod.ParamByName('M_CENA').AsFloat := StrToFloat(NodeList.Items[I].AttributeValueByName
+            ['ModCena']);
           qInsMod.Execute;
           No_Mod := qInsMod.ParamByName('NO_MOD').AsInteger;
           fmMain.IBT.Commit;
@@ -795,7 +819,8 @@ begin
           qInsSize.Active := False;
           qInsSize.Prepare;
           qInsSize.ParamByName('NO_MOD').AsInteger := No_Mod;
-          qInsSize.ParamByName('NO_SIZE').AsInteger := StrToInt(NodeList.Items[I].AttributeValueByName['ModSize']);
+          qInsSize.ParamByName('NO_SIZE').AsInteger := StrToInt(NodeList.Items[I].AttributeValueByName
+            ['ModSize']);
           qInsSize.ParamByName('BAR_CODE').AsString := Bar_Code;
           qInsSize.Execute;
           fmMain.IBT.Commit;
@@ -822,8 +847,10 @@ begin
     begin
       qImp.Active := False;
       qImp.Prepare;
-      qImp.ParamByName('NO_CODE').AsString := NodeList.Items[I].AttributeValueByName['ModNo'];
-      qImp.ParamByName('DATA_MOV').AsDate := StrToDate(NodeList.Items[I].AttributeValueByName['Data_Move']);
+      qImp.ParamByName('NO_CODE').AsString := NodeList.Items[I].AttributeValueByName
+        ['ModNo'];
+      qImp.ParamByName('DATA_MOV').AsDate := StrToDate(NodeList.Items[I].AttributeValueByName
+        ['Data_Move']);
       qImp.Execute;
     end;
     fmMain.IBT.Commit;
@@ -833,7 +860,8 @@ begin
   end;
 end;
 
-procedure TfmInpMag.ReadMyZakazList(var XMLDoc: TNativeXml; var NodeList: TsdNodeList; is_Move: Integer);
+procedure TfmInpMag.ReadMyZakazList(var XMLDoc: TNativeXml; var NodeList:
+  TsdNodeList; is_Move: Integer);
 var
   Zak_Code: string;
   Mod_Code: string;
@@ -925,7 +953,8 @@ begin
   end;
 end;
 
-procedure TfmInpMag.tlMoveBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+procedure TfmInpMag.tlMoveBeforeExpandNode(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 var
   Node: TTMSFNCTreeViewNode;
   Data: pNodeData;
@@ -963,12 +992,12 @@ end;
 
 procedure TfmInpMag.TMSFNCButton2Click(Sender: TObject);
 begin
- ShowReportJson('SRepTmpMove*.fr3','');
+  ShowReportJson('SRepTmpMove*.fr3', '');
 end;
 
 procedure TfmInpMag.TMSFNCButton3Click(Sender: TObject);
 begin
- ShowReportJson('SRepResMove.fr3', '');
+  ShowReportJson('SRepResMove.fr3', '');
 end;
 
 procedure TfmInpMag.TMSFNCButton4Click(Sender: TObject);
@@ -990,12 +1019,12 @@ end;
 
 procedure TfmInpMag.TMSFNCButton7Click(Sender: TObject);
 begin
- DeleteLast;
+  DeleteLast;
 end;
 
 procedure TfmInpMag.TMSFNCButton8Click(Sender: TObject);
 begin
- DeleteAll;
+  DeleteAll;
 end;
 
 end.
