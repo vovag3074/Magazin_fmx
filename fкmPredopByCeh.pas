@@ -101,7 +101,7 @@ begin
     for I := 0 to tlPred.Count - 1 do
     begin
       Node := tlPred.ItemByIndex(I);
-      S := S + Node.Tag.ToString + '=' + Node.Text + ';';
+      S := S + Node.Tag.ToString + '=' + Node.Text + '; ';
     end;
     Result := S;
   end

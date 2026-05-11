@@ -94,6 +94,9 @@ type
     MenuItem3: TMenuItem;
     SVGIconImageList1: TSVGIconImageList;
     qDataPol: TFDQuery;
+    pmSendMoney: TPopupMenu;
+    MenuItem4: TMenuItem;
+    qInsPol: TFDCommand;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -112,6 +115,7 @@ type
     procedure btRepProdMouseLeave(Sender: TObject);
     procedure btOplTovClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -124,6 +128,8 @@ type
     procedure ShowLog;
     procedure ShowLogOpl;
     procedure showLastProdList;
+    procedure predMoneyClick(Sender: TObject);
+    procedure setPredPol;
   public
     { Public declarations }
     procedure LoadINI;
@@ -141,7 +147,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport, frmOplata;
+  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh;
 
 {$R *.fmx}
 
@@ -160,6 +166,7 @@ begin
 //Для покупателей в продаже
   if Sender is TListBoxItem then
   begin
+    tlProd.PopupMenu := pmProdAgn;
     tlLog.Nodes.Clear;
     tlPMod.Nodes.Clear;
     tlOpl.Nodes.Clear;
@@ -220,13 +227,14 @@ begin
       Node.Tag := qPred.FieldByName('NO_PRGN').AsInteger;
       Node.TagString := qPred.FieldByName('NO_AGN').AsInteger.ToString;
 //      Node.Values[8] := -1;
-      S := qPred.FieldByName('AG_NAME').AsString;
+      S := 'Наличная предоплата от: '+qPred.FieldByName('AG_NAME').AsString;
       S := S + ' Сумма = ' + qPred.FieldByName('SUM_PRED').AsFloat.ToString;
       if qPred.FieldByName('POL_PRED').IsNull then
         S := S + '  <Получатель не назначен>'
       else
         S := S + ' Получатель: ' + qPred.FieldByName('POL_PRED').AsString;
       Node.Text := S;
+      Node.OnClick := predMoneyClick;
       tlProd.AddObject(Node);
       qPred.Next;
     until qPred.Eof;
@@ -287,10 +295,21 @@ begin
  btOplTovClick(Sender);
 end;
 
+procedure TfmProd.MenuItem4Click(Sender: TObject);
+begin
+ setPredPol;
+ ReadProd;
+end;
+
 procedure TfmProd.myCalendarDateSelected(Sender: TObject);
 begin
   eData.Text := DateToStr(myCalendar.Date);
   ppCalendar.IsOpen := False;
+end;
+
+procedure TfmProd.predMoneyClick(Sender: TObject);
+begin
+  tlProd.PopupMenu:=pmSendMoney;
 end;
 
 procedure TfmProd.ReadProd;
@@ -358,6 +377,27 @@ end;
 procedure TfmProd.SaveINI;
 begin
 
+end;
+
+procedure TfmProd.setPredPol;
+var  S: String;
+     Node:TListBoxItem;
+     FAgent: Integer;
+     FTmp: Double;
+     FData: tDate;
+begin
+  Node := tlProd.ItemByIndex(tlProd.ItemIndex);
+  FAgent := Node.TagString.ToInteger;
+  FTmp := Node.Tag;
+  FData := StrToDate(eData.Text);
+  S:=SetPredByCeh(FTmp, FAgent, FData);
+  fmMain.StartMainTransaction;
+  qInsPol.Active := false;
+  qInsPol.Prepare;
+  qInsPol.ParamByName('NO_PRGN').AsInteger := Node.Tag;
+  qInsPol.ParamByName('POL_PRED').AsString := S;
+  qInsPol.Execute;
+  fmMain.EndMainTransaction;
 end;
 
 procedure TfmProd.showLastProdList;

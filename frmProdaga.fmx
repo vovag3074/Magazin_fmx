@@ -1838,6 +1838,16 @@ object fmProd: TfmProd
       OnClick = MenuItem1Click
     end
   end
+  object pmSendMoney: TPopupMenu
+    Images = SVGIconImageList1
+    Left = 344
+    Top = 368
+    object MenuItem4: TMenuItem
+      Text = #1053#1072#1079#1085#1072#1095#1080#1090#1100' '#1087#1086#1083#1091#1095#1072#1090#1077#1083#1103
+      ImageIndex = 2
+      OnClick = MenuItem4Click
+    end
+  end
   object qUsr: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -2018,6 +2028,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'report'
         SVGText = 
@@ -2055,6 +2066,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'salary'
         SVGText = 
@@ -2116,20 +2128,66 @@ object fmProd: TfmProd
           '27,6.98C20.78,7.43,21.84,8.34,21.96,9.29C21.99,9.38,22,9.45,22,9' +
           '.52L22,11.89C22,13.58,19.01,14.72,16.21,14.72z"/>'#10'  </g>'#10'</svg>'#10
         Opacity = 1.000000000000000000
+      end
+      item
+        MultiResBitmap = <
+          item
+            Size = 16
+          end>
+        IconName = 'hyperlink'
+        SVGText = 
+          '<?xml version="1.0" encoding="UTF-8"?>'#10'<!DOCTYPE svg PUBLIC "-//' +
+          'W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/sv' +
+          'g11.dtd">'#10'<svg version="1.1" id="Layer_1" xmlns="http://www.w3.o' +
+          'rg/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" ' +
+          'y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-ba' +
+          'ckground="new 0 0 24 24" xml:space="preserve">'#10'  <g id="icon">'#10' ' +
+          '   <path d="M14.1428,7H17c2.7614,0,5,2.2371,5,4.9967c0,2.6676,-2' +
+          '.0919,4.847,-4.7227,4.9893l-0.274,0.0074L14.1461,17c-0.3945,0.00' +
+          '19,-0.7158,-0.3164,-0.7176,-0.7105c-0.0016,-0.3505,0.2497,-0.643' +
+          ',0.5827,-0.705l0.1283,-0.0121L17,15.5658c1.9724,0,3.5714,-1.5979' +
+          ',3.5714,-3.5691c0,-1.8923,-1.4736,-3.4407,-3.3366,-3.5615L17,8.4' +
+          '276h-2.8572c-0.3945,0,-0.7143,-0.3196,-0.7143,-0.7138c0,-0.3504,' +
+          '0.2527,-0.6419,0.5859,-0.7023L14.1428,7H17H14.1428zM7,7h2.8571c0' +
+          '.3945,0,0.7143,0.3196,0.7143,0.7138c0,0.3504,-0.2527,0.6419,-0.5' +
+          '859,0.7023l-0.1284,0.0115H7c-1.9724,0,-3.5714,1.5979,-3.5714,3.5' +
+          '691c0,1.8923,1.4736,3.4407,3.3366,3.5615L7,15.5658h2.8571c0.3945' +
+          ',0,0.7143,0.3196,0.7143,0.7138c0,0.3505,-0.2527,0.6419,-0.5859,0' +
+          '.7023l-0.1284,0.0116H7c-2.7614,0,-5,-2.2371,-5,-4.9967c0,-2.6676' +
+          ',2.0918,-4.847,4.7257,-4.9893L7,7h2.8571H7zM7.0003,11.2829l10,0.' +
+          '0033c0.3946,0.0002,0.7141,0.3199,0.714,0.7141c-0.0001,0.3504,-0.' +
+          '253,0.6418,-0.5861,0.7021l-0.1284,0.0115l-10,-0.0033c-0.3945,-0.' +
+          '0002,-0.7141,-0.3199,-0.714,-0.7141c0.0002,-0.3504,0.253,-0.6418' +
+          ',0.5862,-0.7021L7.0003,11.2829z" fill="#F299FF"/>'#10'  </g>'#10'</svg>'#10
+        Opacity = 1.000000000000000000
       end>
     Destination = <
       item
         Layers = <
           item
             Name = 'report'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'salary'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'hyperlink'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
@@ -2146,6 +2204,26 @@ object fmProd: TfmProd
       'where ((LP.DATA_PROD <= current_date))'
       'order by LP.DATA_PROD desc  ')
     Left = 408
+    Top = 408
+  end
+  object qInsPol: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update LOG_PRED_AGN'
+      'set POL_PRED = :POL_PRED'
+      'where (NO_PRGN = :NO_PRGN)'
+      '')
+    ParamData = <
+      item
+        Name = 'POL_PRED'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_PRGN'
+        ParamType = ptInput
+      end>
+    Left = 488
     Top = 408
   end
 end
