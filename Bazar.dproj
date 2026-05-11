@@ -388,6 +388,18 @@
             <Form>fmOpl</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="fкmPredopByCeh.pas">
+            <Form>fmPredByCeh</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmLockPredop.pas">
+            <Form>fmLockPred</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmSelForPred.pas">
+            <Form>fmSelPred</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

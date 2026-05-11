@@ -20,7 +20,10 @@ uses
   frmInfoOplata in 'frmInfoOplata.pas' {fmInfoOpl},
   frmProdaga in 'frmProdaga.pas' {fmProd: TFrame},
   frmAddProdaga in 'frmAddProdaga.pas' {fmAddProdAgn},
-  frmOplata in 'frmOplata.pas' {fmOpl};
+  frmOplata in 'frmOplata.pas' {fmOpl},
+  fêmPredopByCeh in 'fêmPredopByCeh.pas' {fmPredByCeh},
+  frmLockPredop in 'frmLockPredop.pas' {fmLockPred},
+  frmSelForPred in 'frmSelForPred.pas' {fmSelPred};
 
 {$R *.res}
 

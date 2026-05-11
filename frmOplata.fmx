@@ -218,6 +218,7 @@
       TabOrder = 0
       ParentShowHint = False
       ShowHint = True
+      OnClick = EditButton1Click
     end
   end
   object eVal: TComboBox
@@ -356,8 +357,8 @@
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 15
-    Viewport.Width = 695.000000000000000000
-    Viewport.Height = 113.000000000000000000
+    Viewport.Width = 709.000000000000000000
+    Viewport.Height = 121.000000000000000000
   end
   object btBank: TTMSFNCButton
     Bitmap.PNG = {
@@ -739,5 +740,29 @@
       end>
     Left = 468
     Top = 328
+  end
+  object qGetPred: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    SQL.Strings = (
+      'select SUM_FROM_PRED'
+      'from GET_AGN_PREDOP(:NO_AGENT,:IN_SUM_PRED)')
+    Left = 524
+    Top = 328
+    ParamData = <
+      item
+        Name = 'NO_AGENT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IN_SUM_PRED'
+        ParamType = ptInput
+      end>
+  end
+  object qGetPred2: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    Left = 588
+    Top = 336
   end
 end

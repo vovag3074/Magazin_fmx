@@ -40,11 +40,14 @@ type
     qOpl: TFDCommand;
     qDop: TFDCommand;
     lbInfo: TTMSFNCHTMLText;
+    qGetPred: TFDQuery;
+    qGetPred2: TFDQuery;
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btBankClick(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure btOKClick(Sender: TObject);
+    procedure EditButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure readValutList;
@@ -69,7 +72,7 @@ var
 implementation
 
 uses
-  frmMain, frmCalc, frmInfoOplata, frmReport;
+  frmMain, frmCalc, frmInfoOplata, frmReport, fкmPredopByCeh;
 
 {$R *.fmx}
 
@@ -169,22 +172,29 @@ begin
           FTmp := round(FTmp * eCurs.Text.ToDouble);
           eOpl.Text := FloatToStr(round(eOpl.Text.ToDouble * eCurs.Text.ToDouble));
         end;
-        fmMain.StartMainTransaction;
-        qPred.Active := false;
-        qPred.Prepare;
-        qPred.ParamByName('NG').AsInteger := FAgent;
-        qPred.ParamByName('SUM_PRED').Value := FTmp;
-        qPred.ParamByName('DATA_PRED').AsDate := FData;
-        qPred.ParamByName('STR_PRED').AsString := '';
-        qPred.ParamByName('IS_VIRT').AsSmallInt := 0;
-        qPred.ParamByName('NO_VAL').AsInteger := eVal.Text.ToInteger;
-        qPred.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
-        qPred.ParamByName('TRAN_ID').AsString := FTranID;
-        qPred.ParamByName('IS_Mult').AsBoolean := eType.ItemIndex = 0;
-        qPred.Execute;
-        fmMain.IBT.Commit;
-        Application.ProcessMessages;
-//        S := SetPredByCeh(FTmp {* eCurs.EditValue}, FAgent, FData);
+        try
+          fmMain.StartMainTransaction;
+          qPred.Active := false;
+          qPred.Prepare;
+          qPred.ParamByName('NG').AsInteger := FAgent;
+          qPred.ParamByName('SUM_PRED').Value := FTmp;
+          qPred.ParamByName('DATA_PRED').AsDate := FData;
+          qPred.ParamByName('STR_PRED').AsString := '';
+          qPred.ParamByName('IS_VIRT').AsSmallInt := 0;
+          qPred.ParamByName('NO_VAL').AsInteger := eVal.ListItems[eVal.ItemIndex].Tag;
+          qPred.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
+          qPred.ParamByName('TRAN_ID').AsString := FTranID;
+          qPred.ParamByName('IS_Mult').AsBoolean := eType.ItemIndex = 0;
+          qPred.Execute;
+          fmMain.IBT.Commit;
+          Application.ProcessMessages;
+        except
+          on E: Exception do
+          begin
+           ShowError(E.Message);
+          end;
+        end;
+        S := SetPredByCeh(FTmp {* eCurs.EditValue}, FAgent, FData);
 //        // надо записать строку в получение
         Application.ProcessMessages;
         qStrPred.Close;
@@ -231,6 +241,61 @@ begin
   ModalResult := mrOk;
 end;
 
+procedure TfmOpl.EditButton1Click(Sender: TObject);
+var
+  T: Double;
+begin
+  FTranID := fmMain.GetTranID;
+  // -------------------------------------------
+  // 10-feb-2015 перенес закрытие продажи сюда
+  // --------------------------------------------
+  fmMain.StartMainTransaction;
+  qClose.Close;
+  qClose.Prepare;
+  qClose.Execute;
+  fmMain.IBT.Commit;
+  // -------------------------------------------
+  isPred := 1;
+  fmMain.StartMainTransaction;
+  if btBank.IsPressed then
+  begin
+    try
+      T := FBankPred;
+      qGetPred2.Active := false;
+      qGetPred2.Prepare;
+      qGetPred2.ParamByName('NO_AGENT').AsInteger := FAgent;
+      qGetPred2.ParamByName('IN_SUM_PRED').Value := T;
+      qGetPred2.Active := True;
+      eOpl.Text := qGetPred2.FieldByName('SUM_FROM_PRED').AsFloat.toString;
+    except
+      on E: Exception do
+      begin
+        fmMain.ShowIBError(E.Message);
+      end;
+    end;
+  end
+  else
+  begin
+    try
+      T := FPred;
+      qGetPred.Active := false;
+      qGetPred.Prepare;
+      qGetPred.ParamByName('NO_AGENT').AsInteger := FAgent;
+      qGetPred.ParamByName('IN_SUM_PRED').Value := T;
+      qGetPred.Active := True;
+      eOpl.Text := qGetPred.FieldByName('SUM_FROM_PRED').AsFloat.ToString;
+    except
+      on E: Exception do
+      begin
+        fmMain.ShowIBError(E.Message);
+      end;
+    end;
+  end;
+  fmMain.EndMainTransaction;
+  SetOplata;
+  ModalResult := mrOk;
+end;
+
 procedure TfmOpl.ReadAgent(NoAgent, isTemp: Integer; MyData: tDate);
 begin
   FAgent := NoAgent;
@@ -261,7 +326,7 @@ begin
   FValut := qRead.FieldByName('PRED_VAL').AsInteger;
   fmMain.GetValutFromComboBox(FValut, eVal);
   qRead.Close;
-  lbInfo.Text:='Предоплаты <br> Наличными: <b>'+FPred.ToString+'</b><br> По банку: <b>'+FBankPred.ToString+'</b>';
+  lbInfo.Text := 'Предоплаты <br> Наличными: <b>' + FPred.ToString + '</b><br> По банку: <b>' + FBankPred.ToString + '</b>';
   fmMain.EndReadTransaction;
 end;
 
@@ -282,31 +347,32 @@ end;
 
 procedure TfmOpl.setOplata;
 begin
-try
-  fmMain.StartMainTransaction;
-  qOpl.Active := false;
-  qOpl.Prepare;
-  qOpl.ParamByName('NG').AsInteger := FAgent;
-  qOpl.ParamByName('IT').AsSmallInt := FTemp;
-  qOpl.ParamByName('SUM_OP').Value := eOpl.Text.ToDouble;
-  qOpl.ParamByName('DOP_OP').AsString := eDop.Text;
-  qOpl.ParamByName('MY_DATA').AsDate := FData;
-  qOpl.ParamByName('is_virt').AsSmallInt := 0;
-  if btBank.IsPressed then
-    qOpl.ParamByName('is_virt').AsSmallInt := 1;
-  qOpl.ParamByName('is_pred').AsSmallInt := isPred;
-  qOpl.ParamByName('TRAN_ID').AsString := FTranID;
-  qOpl.ParamByName('NO_VAL').asInteger := eVal.ListItems[eVal.ItemIndex].Tag;
-  qOpl.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
-  qOpl.ParamByName('IS_MULT').AsBoolean := eType.ItemIndex = 0;
-  qOpl.Execute;
-  fmMain.EndMainTransaction;
-except on E:Exception do
- begin
-   fmMain.ShowIBError('Oplata error: '+E.Message);
- end;
+  try
+    fmMain.StartMainTransaction;
+    qOpl.Active := false;
+    qOpl.Prepare;
+    qOpl.ParamByName('NG').AsInteger := FAgent;
+    qOpl.ParamByName('IT').AsSmallInt := FTemp;
+    qOpl.ParamByName('SUM_OP').Value := eOpl.Text.ToDouble;
+    qOpl.ParamByName('DOP_OP').AsString := eDop.Text;
+    qOpl.ParamByName('MY_DATA').AsDate := FData;
+    qOpl.ParamByName('is_virt').AsSmallInt := 0;
+    if btBank.IsPressed then
+      qOpl.ParamByName('is_virt').AsSmallInt := 1;
+    qOpl.ParamByName('is_pred').AsSmallInt := isPred;
+    qOpl.ParamByName('TRAN_ID').AsString := FTranID;
+    qOpl.ParamByName('NO_VAL').asInteger := eVal.ListItems[eVal.ItemIndex].Tag;
+    qOpl.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
+    qOpl.ParamByName('IS_MULT').AsBoolean := eType.ItemIndex = 0;
+    qOpl.Execute;
+    fmMain.EndMainTransaction;
+  except
+    on E: Exception do
+    begin
+      fmMain.ShowIBError('Oplata error: ' + E.Message);
+    end;
 
-end;
+  end;
 end;
 
 procedure TfmOpl.TMSFNCButton1Click(Sender: TObject);
