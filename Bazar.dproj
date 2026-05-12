@@ -400,6 +400,10 @@
             <Form>fmSelPred</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelectDate.pas">
+            <Form>fmSelData</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

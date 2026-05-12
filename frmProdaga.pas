@@ -97,6 +97,11 @@ type
     pmSendMoney: TPopupMenu;
     MenuItem4: TMenuItem;
     qInsPol: TFDCommand;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    qMoveProd: TFDCommand;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -116,6 +121,8 @@ type
     procedure btOplTovClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -130,6 +137,7 @@ type
     procedure showLastProdList;
     procedure predMoneyClick(Sender: TObject);
     procedure setPredPol;
+    procedure MoveProd;
   public
     { Public declarations }
     procedure LoadINI;
@@ -147,7 +155,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh;
+  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh, frmSelectDate;
 
 {$R *.fmx}
 
@@ -299,6 +307,42 @@ procedure TfmProd.MenuItem4Click(Sender: TObject);
 begin
  setPredPol;
  ReadProd;
+end;
+
+procedure TfmProd.MenuItem5Click(Sender: TObject);
+begin
+ ShowReportJSON('ShRepHistAgn.fr3','[{"NG":"' + IntToStr(FActiveProd)+'"}]');
+end;
+
+procedure TfmProd.MenuItem8Click(Sender: TObject);
+begin
+ MoveProd;
+end;
+
+procedure TfmProd.MoveProd;
+var
+  I, NAGN: Integer;
+  ND, OD: tDate;
+begin
+  if tlProd.Items.Count > 0 then // если ничего нет то и не надо
+  begin
+    ND:=Now;
+    I := selectDate('Перенос продажи','Выберите новую дату для продажи',ND);
+    if I = mrOK then
+    begin
+      OD := StrToDate(eData.Text);
+      NAGN := FActiveProd;
+      fmMain.StartMainTransaction;
+      qMoveProd.Active := false;
+      qMoveProd.Prepare;
+      qMoveProd.ParamByName('NEW_DATA').AsDate := ND;
+      qMoveProd.ParamByName('OLD_DATA').AsDate := OD;
+      qMoveProd.ParamByName('NO_AGN').AsInteger := NAGN;
+      qMoveProd.Execute;
+      fmMain.EndMainTransaction;
+      ReadProd;
+    end; // if I= mrYes then
+  end; // if tlProd.Count>0 then
 end;
 
 procedure TfmProd.myCalendarDateSelected(Sender: TObject);
@@ -648,6 +692,7 @@ begin
   fmAddProdAgn := TfmAddProdAgn.Create(fmProd);
   fmAddProdAgn.ShowModal;
   fmAddProdAgn.Free;
+  fmAddProdAgn:=nil;
   ReadProd;
 end;
 

@@ -23,7 +23,8 @@ uses
   frmOplata in 'frmOplata.pas' {fmOpl},
   fêmPredopByCeh in 'fêmPredopByCeh.pas' {fmPredByCeh},
   frmLockPredop in 'frmLockPredop.pas' {fmLockPred},
-  frmSelForPred in 'frmSelForPred.pas' {fmSelPred};
+  frmSelForPred in 'frmSelForPred.pas' {fmSelPred},
+  frmSelectDate in 'frmSelectDate.pas' {fmSelData};
 
 {$R *.res}
 

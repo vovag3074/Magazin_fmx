@@ -1,0 +1,79 @@
+object fmSelData: TfmSelData
+  Left = 0
+  Top = 0
+  ActiveControl = eData
+  BorderStyle = ToolWindow
+  Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1076#1072#1090#1091
+  ClientHeight = 216
+  ClientWidth = 480
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Bottom
+    Position.Y = 146.000000000000000000
+    Size.Width = 480.000000000000000000
+    Size.Height = 70.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 0
+    object TMSFNCButton1: TTMSFNCButton
+      BitmapSize = 32
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Default = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      ModalResult = 1
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 2
+      Text = #1054#1050
+    end
+    object TMSFNCButton2: TTMSFNCButton
+      BitmapSize = 32
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Cancel = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      ModalResult = 2
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 320.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 1
+      Text = #1054#1090#1082#1072#1079
+    end
+  end
+  object eData: TDateEdit
+    Date = 46160.000000000000000000
+    Position.X = 80.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 369.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+  end
+  object lbInfo: TLabel
+    FocusControl = eData
+    Position.X = 48.000000000000000000
+    Position.Y = 49.000000000000000000
+    Size.Width = 401.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1042#1099#1073#1077#1088#1080#1090#1077' '#1076#1072#1090#1091
+    TabOrder = 2
+  end
+end
