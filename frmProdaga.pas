@@ -102,6 +102,9 @@ type
     MenuItem7: TMenuItem;
     MenuItem8: TMenuItem;
     qMoveProd: TFDCommand;
+    TMSFNCButton1: TTMSFNCButton;
+    TMSFNCButton3: TTMSFNCButton;
+    TMSFNCButton4: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -123,6 +126,7 @@ type
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -312,6 +316,11 @@ end;
 procedure TfmProd.MenuItem5Click(Sender: TObject);
 begin
  ShowReportJSON('ShRepHistAgn.fr3','[{"NG":"' + IntToStr(FActiveProd)+'"}]');
+end;
+
+procedure TfmProd.MenuItem6Click(Sender: TObject);
+begin
+ ShowReportJSON('ShRepFullHistAgn.fr3','[{"NG":"' + IntToStr(FActiveProd)+'"}]');
 end;
 
 procedure TfmProd.MenuItem8Click(Sender: TObject);
