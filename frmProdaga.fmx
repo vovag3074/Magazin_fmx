@@ -866,18 +866,18 @@ object fmProd: TfmProd
           TabPosition = PlatformDefault
           Sizes = (
             921s
-            343s
+            364s
             921s
-            343s
+            364s
             921s
-            343s)
+            364s)
           object tbNow: TTabItem
             CustomIcon = <
               item
               end>
             IsSelected = True
-            Size.Width = 119.000000000000000000
-            Size.Height = 26.000000000000000000
+            Size.Width = 1.000000000000000000
+            Size.Height = 5.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -887,7 +887,7 @@ object fmProd: TfmProd
             object tlPMod: TTMSFNCTreeView
               Align = Client
               Size.Width = 881.000000000000000000
-              Size.Height = 343.000000000000000000
+              Size.Height = 364.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray
@@ -1408,7 +1408,7 @@ object fmProd: TfmProd
             object Panel1: TPanel
               Align = Left
               Size.Width = 40.000000000000000000
-              Size.Height = 343.000000000000000000
+              Size.Height = 364.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'TopPanel'
               TabOrder = 1
@@ -1714,8 +1714,8 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = False
-            Size.Width = 67.000000000000000000
-            Size.Height = 26.000000000000000000
+            Size.Width = 1.000000000000000000
+            Size.Height = 5.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -1726,7 +1726,7 @@ object fmProd: TfmProd
             object tlLog: TTMSFNCTreeView
               Align = Client
               Size.Width = 921.000000000000000000
-              Size.Height = 343.000000000000000000
+              Size.Height = 364.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray
@@ -1834,8 +1834,8 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = False
-            Size.Width = 60.000000000000000000
-            Size.Height = 26.000000000000000000
+            Size.Width = 1.000000000000000000
+            Size.Height = 5.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -1846,7 +1846,7 @@ object fmProd: TfmProd
             object tlOpl: TTMSFNCTreeView
               Align = Client
               Size.Width = 921.000000000000000000
-              Size.Height = 343.000000000000000000
+              Size.Height = 364.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray

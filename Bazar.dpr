@@ -21,7 +21,7 @@ uses
   frmProdaga in 'frmProdaga.pas' {fmProd: TFrame},
   frmAddProdaga in 'frmAddProdaga.pas' {fmAddProdAgn},
   frmOplata in 'frmOplata.pas' {fmOpl},
-  fêmPredopByCeh in 'fêmPredopByCeh.pas' {fmPredByCeh},
+  frmPredopByCeh in 'frmPredopByCeh.pas' {fmPredByCeh},
   frmLockPredop in 'frmLockPredop.pas' {fmLockPred},
   frmSelForPred in 'frmSelForPred.pas' {fmSelPred},
   frmSelectDate in 'frmSelectDate.pas' {fmSelData},

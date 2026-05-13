@@ -187,7 +187,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh,
+  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, frmPredopByCeh,
   frmSelectDate, frmSendMoney;
 
 {$R *.fmx}

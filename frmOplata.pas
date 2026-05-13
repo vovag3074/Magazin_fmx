@@ -80,7 +80,7 @@ var
 implementation
 
 uses
-  frmMain, frmCalc, frmInfoOplata, frmReport, fкmPredopByCeh;
+  frmMain, frmCalc, frmInfoOplata, frmReport, frmPredopByCeh;
 
 {$R *.fmx}
 
