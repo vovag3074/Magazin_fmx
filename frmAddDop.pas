@@ -62,6 +62,7 @@ type
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure btOKClick(Sender: TObject);
     procedure TMSFNCButton8Click(Sender: TObject);
+    procedure eSumChangeTracking(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -91,6 +92,11 @@ procedure TfmAddDop.btOKClick(Sender: TObject);
 begin
   if SaveDop then
     ModalResult := mrOk;
+end;
+
+procedure TfmAddDop.eSumChangeTracking(Sender: TObject);
+begin
+ fmMain.onEditChangeTracking(Sender);
 end;
 
 procedure TfmAddDop.FormCreate(Sender: TObject);
@@ -131,6 +137,10 @@ var
   FOst: Double;
 begin
   Result := false;
+  if eSum.Text='' then
+  begin
+    eSum.Text:='0';
+  end;
   // -----03.08.2022 --- добавляем валюту -------------
   // ----- 17.01.2014 --- добавил id транзакции--------
   FTR_ID := fmMain.GetTranID;
@@ -144,6 +154,7 @@ begin
   if eSum.Text.ToDouble <= 0 then
   begin
     ShowError('Укажите сумму отправки');
+    eSum.Text:='';
     eSum.SetFocus;
     Exit;
   end;
@@ -345,8 +356,9 @@ begin
     eBank.Text := '';
     ePol.Text := '';
     eDop.Text := '';
-    eSum.Text := '0';
+    eSum.Text := '';
     ShowDolg;
+    eSum.SetFocus;
   end;
 end;
 

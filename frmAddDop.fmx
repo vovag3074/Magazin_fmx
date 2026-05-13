@@ -1,6 +1,7 @@
 ﻿object fmAddDop: TfmAddDop
   Left = 0
   Top = 0
+  ActiveControl = eSum
   BorderStyle = ToolWindow
   Caption = #1053#1086#1074#1086#1077' '#1087#1086#1083#1091#1095#1077#1085#1080#1077
   ClientHeight = 461
@@ -156,12 +157,12 @@
   object eSum: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 9
-    Text = '0'
     Position.X = 40.000000000000000000
     Position.Y = 161.000000000000000000
     Size.Width = 321.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
+    OnChangeTracking = eSumChangeTracking
     object TMSFNCButton3: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {

@@ -404,6 +404,14 @@
             <Form>fmSelData</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSendMoney.pas">
+            <Form>fmSndMoney</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmSelectPol.pas">
+            <Form>fmSelPol</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

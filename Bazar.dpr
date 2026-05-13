@@ -24,7 +24,9 @@ uses
   fêmPredopByCeh in 'fêmPredopByCeh.pas' {fmPredByCeh},
   frmLockPredop in 'frmLockPredop.pas' {fmLockPred},
   frmSelForPred in 'frmSelForPred.pas' {fmSelPred},
-  frmSelectDate in 'frmSelectDate.pas' {fmSelData};
+  frmSelectDate in 'frmSelectDate.pas' {fmSelData},
+  frmSendMoney in 'frmSendMoney.pas' {fmSndMoney},
+  frmSelectPol in 'frmSelectPol.pas' {fmSelPol};
 
 {$R *.res}
 

@@ -12,10 +12,11 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  FMX.TabControl, FMX.ExtCtrls, FMX.Effects, FMX.TMSFNCTreeViewBase,
-  FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView,
-  FMX.TMSFNCBitmapContainer, FMX.Menus, System.ImageList, FMX.ImgList,
-  FMX.SVGIconImageList, FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style;
+  System.Threading, FMX.TabControl, FMX.ExtCtrls, FMX.Effects,
+  FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
+  FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer, FMX.Menus, System.ImageList,
+  FMX.ImgList, FMX.SVGIconImageList, FMX.Calendar.Helpers,
+  FMX.CalendarHolidayDays.Style;
 
 type
   TfmProd = class(TFrame)
@@ -105,6 +106,27 @@ type
     TMSFNCButton1: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
     TMSFNCButton4: TTMSFNCButton;
+    TMSFNCButton6: TTMSFNCButton;
+    TMSFNCButton7: TTMSFNCButton;
+    btPolMoney: TTMSFNCButton;
+    ppSendMoney: TPopup;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    lbSndMoney: TListBox;
+    ListBoxItem2: TListBoxItem;
+    qSnd: TFDQuery;
+    TMSFNCButton9: TTMSFNCButton;
+    ppMoney: TPopup;
+    Panel5: TPanel;
+    tlSumInfo: TListBox;
+    Rectangle6: TRectangle;
+    Label17: TLabel;
+    Label18: TLabel;
+    qSumCash: TFDQuery;
+    ListBoxItem3: TListBoxItem;
+    Panel6: TPanel;
+    TMSFNCButton8: TTMSFNCButton;
+    ltMoney: TLayout;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -127,6 +149,10 @@ type
     procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
+    procedure TMSFNCButton7Click(Sender: TObject);
+    procedure TMSFNCButton9Click(Sender: TObject);
+    procedure btPolMoneyClick(Sender: TObject);
+    procedure TMSFNCButton8Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -140,8 +166,10 @@ type
     procedure ShowLogOpl;
     procedure showLastProdList;
     procedure predMoneyClick(Sender: TObject);
+    procedure sendMoneyClick(Sender: TObject);
     procedure setPredPol;
     procedure MoveProd;
+    procedure ListFullMoneySend(NoVal: Integer);
   public
     { Public declarations }
     procedure LoadINI;
@@ -159,7 +187,8 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh, frmSelectDate;
+  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh,
+  frmSelectDate, frmSendMoney;
 
 {$R *.fmx}
 
@@ -190,6 +219,39 @@ begin
     HintPanel.Visible := False;
     pmProd.Popup();
     ShowProdMod;
+  end;
+end;
+
+procedure TfmProd.ListFullMoneySend(NoVal: Integer);
+var
+  Node: TListBoxItem;
+begin
+  try
+    lbSndMoney.Items.Clear;
+    qSnd.Close;
+    qSnd.Prepare;
+    qSnd.ParamByName('DS').AsDate := StrToDate(eData.Text);
+    qSnd.ParamByName('NV').AsInteger := NoVal;
+    //ShowMessage('DS='+eData.Text+' NV='+NoVal.ToString);
+    qSnd.Active := True;
+    if qSnd.RecordCount > 0 then
+    begin
+      qSnd.First;
+      repeat
+        Node := TListBoxItem.Create(lbSndMoney);
+        Node.Tag := qSnd.FieldByName('NO_LSCB').AsInteger;
+        Node.Text := qSnd.FieldByName('POL_SND').AsString + ' получил: ' + qSnd.FieldByName('SUM_SND').AsFloat.ToString;
+        lbSndMoney.AddObject(Node);
+        qSnd.Next;
+      until (qSnd.Eof);
+      lbSndMoney.ItemIndex := 0;
+    end;
+  except
+    on E: Exception do
+    begin
+      ShowError(E.Message);
+    end;
+
   end;
 end;
 
@@ -239,7 +301,7 @@ begin
       Node.Tag := qPred.FieldByName('NO_PRGN').AsInteger;
       Node.TagString := qPred.FieldByName('NO_AGN').AsInteger.ToString;
 //      Node.Values[8] := -1;
-      S := 'Наличная предоплата от: '+qPred.FieldByName('AG_NAME').AsString;
+      S := 'Наличная предоплата от: ' + qPred.FieldByName('AG_NAME').AsString;
       S := S + ' Сумма = ' + qPred.FieldByName('SUM_PRED').AsFloat.ToString;
       if qPred.FieldByName('POL_PRED').IsNull then
         S := S + '  <Получатель не назначен>'
@@ -269,6 +331,8 @@ begin
       Node.StyleLookup := 'sndItem';
       Node.Text := 'Отдано на руки валюта: ' + qSumSend.FieldByName('NAZVAN').AsString;
       Node.StylesData['tVal'] := qSumSend.FieldByName('SUM_OF_SUM_SND').AsFloat.ToString;
+      Node.Tag := qSumSend.FieldByName('NO_VAL').AsInteger;
+      Node.OnClick := sendMoneyClick;
       qSumSend.Next;
       tlProd.AddObject(Node);
     until (qSumSend.Eof);
@@ -299,33 +363,33 @@ end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);
 begin
- btRepProdClick(Sender);
+  btRepProdClick(Sender);
 end;
 
 procedure TfmProd.MenuItem2Click(Sender: TObject);
 begin
- btOplTovClick(Sender);
+  btOplTovClick(Sender);
 end;
 
 procedure TfmProd.MenuItem4Click(Sender: TObject);
 begin
- setPredPol;
- ReadProd;
+  setPredPol;
+  ReadProd;
 end;
 
 procedure TfmProd.MenuItem5Click(Sender: TObject);
 begin
- ShowReportJSON('ShRepHistAgn.fr3','[{"NG":"' + IntToStr(FActiveProd)+'"}]');
+  ShowReportJSON('ShRepHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
 end;
 
 procedure TfmProd.MenuItem6Click(Sender: TObject);
 begin
- ShowReportJSON('ShRepFullHistAgn.fr3','[{"NG":"' + IntToStr(FActiveProd)+'"}]');
+  ShowReportJSON('ShRepFullHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
 end;
 
 procedure TfmProd.MenuItem8Click(Sender: TObject);
 begin
- MoveProd;
+  MoveProd;
 end;
 
 procedure TfmProd.MoveProd;
@@ -335,8 +399,8 @@ var
 begin
   if tlProd.Items.Count > 0 then // если ничего нет то и не надо
   begin
-    ND:=Now;
-    I := selectDate('Перенос продажи','Выберите новую дату для продажи',ND);
+    ND := Now;
+    I := selectDate('Перенос продажи', 'Выберите новую дату для продажи', ND);
     if I = mrOK then
     begin
       OD := StrToDate(eData.Text);
@@ -362,7 +426,7 @@ end;
 
 procedure TfmProd.predMoneyClick(Sender: TObject);
 begin
-  tlProd.PopupMenu:=pmSendMoney;
+  tlProd.PopupMenu := pmSendMoney;
 end;
 
 procedure TfmProd.ReadProd;
@@ -414,7 +478,7 @@ begin
     Node := TListBoxItem.Create(tlProd);
     Node.StyleLookup := 'ftrProd';
     Node.Text := 'Продано: ' + FCnt.ToString + ' |  На сумму: ' + FSum.ToString + ' |  Оплачено: ' + FOpl.ToString;
-    Node.PopupMenu:=nil;
+    Node.PopupMenu := nil;
     tlProd.AddObject(Node);
   finally
     tlProd.EndUpdate;
@@ -432,18 +496,33 @@ begin
 
 end;
 
+procedure TfmProd.sendMoneyClick(Sender: TObject);
+var
+  Item: TListBoxItem;
+begin
+  if Sender is TListBoxItem then
+  begin
+    Item := Sender as TListBoxItem;
+    ppSendMoney.Width := 600;
+    ppSendMoney.PlacementTarget := TListBoxItem(Sender);
+    ppSendMoney.Popup();
+    ListFullMoneySend(Item.Tag);
+  end;
+end;
+
 procedure TfmProd.setPredPol;
-var  S: String;
-     Node:TListBoxItem;
-     FAgent: Integer;
-     FTmp: Double;
-     FData: tDate;
+var
+  S: string;
+  Node: TListBoxItem;
+  FAgent: Integer;
+  FTmp: Double;
+  FData: tDate;
 begin
   Node := tlProd.ItemByIndex(tlProd.ItemIndex);
   FAgent := Node.TagString.ToInteger;
   FTmp := Node.Tag;
   FData := StrToDate(eData.Text);
-  S:=SetPredByCeh(FTmp, FAgent, FData);
+  S := SetPredByCeh(FTmp, FAgent, FData);
   fmMain.StartMainTransaction;
   qInsPol.Active := false;
   qInsPol.Prepare;
@@ -454,25 +533,36 @@ begin
 end;
 
 procedure TfmProd.showLastProdList;
-var   Events: TArray<TDateTime>;
-      I:Integer;
+var
+  Events: TArray<TDateTime>;
+  I: Integer;
 begin
-  qDataPol.Active := True;
-  I := qDataPol.RecordCount;
-  if I > 0 then
-  begin
-    SetLength(Events, I);
-    qDataPol.First;
-    I := 0;
-   repeat
-      Events[I] := qDataPol.FieldByName('DATA_PROD').AsDateTime;
-      inc(I);
-      qDataPol.Next;
-   until qDataPol.Eof;
-    myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
-    myCalendar.Model.ShowEvents := True;
-    myCalendar.Model.ShowWeekends := False;
-  end;
+  TTask.Run(
+    procedure
+    begin
+      // 1. Выполнение запроса в фоновом потоке
+      qDataPol.Active := True;
+      I := qDataPol.RecordCount;
+      SetLength(Events, I);
+      // 2. Обновление интерфейса - только через TThread.Synchronize
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          if I > 0 then
+          begin
+            qDataPol.First;
+            I := 0;
+            repeat
+              Events[I] := qDataPol.FieldByName('DATA_PROD').AsDateTime;
+              inc(I);
+              qDataPol.Next;
+            until qDataPol.Eof;
+            myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+            myCalendar.Model.ShowEvents := True;
+            myCalendar.Model.ShowWeekends := False;
+          end;
+        end);
+    end);
 end;
 
 procedure TfmProd.ShowLog;
@@ -636,6 +726,32 @@ begin
     ATextColor := TAlphaColors.Deeppink;
 end;
 
+procedure TfmProd.btPolMoneyClick(Sender: TObject);
+var
+  Node: TListBoxItem;
+begin
+  ppMoney.Popup();
+  tlSumInfo.Items.Clear;
+  qSumCash.Close;
+  qSumCash.ParamByName('DP').AsDate := StrToDate(eData.Text);
+  qSumCash.Active := true;
+  if qSumCash.RecordCount > 0 then
+  begin
+    qSumCash.First;
+    repeat
+      Node := TListBoxItem.Create(tlSumInfo);
+      Node.StyleLookup := 'moneyItem';
+      Node.Text := qSumCash.FieldByName('NAZVAN').AsString;
+      Node.StylesData['sumItem'] := qSumCash.FieldByName('mySum').AsFloat.ToString;
+      //Node.StylesData[''];
+      Node.Tag := qSumCash.FieldByName('NO_VAL').AsInteger;
+      tlSumInfo.AddObject(Node);
+      qSumCash.Next;
+    until (qSumCash.Eof);
+    tlSumInfo.ItemIndex := 0;
+  end;
+end;
+
 procedure TfmProd.btRepProdClick(Sender: TObject);
 begin
   ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + eData.Text + '"}]');
@@ -701,7 +817,7 @@ begin
   fmAddProdAgn := TfmAddProdAgn.Create(fmProd);
   fmAddProdAgn.ShowModal;
   fmAddProdAgn.Free;
-  fmAddProdAgn:=nil;
+  fmAddProdAgn := nil;
   ReadProd;
 end;
 
@@ -724,6 +840,45 @@ end;
 procedure TfmProd.TMSFNCButton5Click(Sender: TObject);
 begin
   fmMain.ClearOldFrame;
+end;
+
+procedure TfmProd.TMSFNCButton7Click(Sender: TObject);
+begin
+  fmSndMoney := TfmSndMoney.Create(fmProd);
+  fmSndMoney.ReadVal;
+  fmSndMoney.ShowModal;
+  fmSndMoney.Free;
+  ReadProd;
+end;
+
+procedure TfmProd.TMSFNCButton8Click(Sender: TObject);
+var
+  Item: TListBoxItem;
+begin
+  if tlSumInfo.Items.Count > 0 then
+  begin
+    Item := tlSumInfo.ItemByIndex(tlSumInfo.ItemIndex);
+    fmSndMoney := TfmSndMoney.Create(fmProd);
+    fmSndMoney.ReadVal;
+    fmSndMoney.eSum.Text := Item.StylesData['sumItem'].AsString;
+    fmMain.GetValutFromComboBox(Item.Tag, fmSndMoney.eVal);
+    fmSndMoney.ShowModal;
+    fmSndMoney.Free;
+    ReadProd;
+  end;
+end;
+
+procedure TfmProd.TMSFNCButton9Click(Sender: TObject);
+begin
+  if lbSndMoney.Items.Count > 0 then
+  begin
+    fmSndMoney := TfmSndMoney.Create(fmProd);
+    fmSndMoney.ReadVal;
+    fmSndMoney.EditSnd(lbSndMoney.ItemByIndex(lbSndMoney.ItemIndex).Tag);
+    fmSndMoney.ShowModal;
+    fmSndMoney.Free;
+    ReadProd;
+  end;
 end;
 
 end.

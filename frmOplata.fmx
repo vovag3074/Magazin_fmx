@@ -1,6 +1,7 @@
-﻿object fmOpl: TfmOpl
+object fmOpl: TfmOpl
   Left = 0
   Top = 0
+  ActiveControl = eOpl
   BorderStyle = ToolWindow
   Caption = #1054#1087#1083#1072#1090#1072
   ClientHeight = 547
@@ -135,17 +136,17 @@
       Text = '0'
     end
   end
-  object зSum: TPanel
-    Position.X = 112.000000000000000000
+  object mSum: TPanel
+    Position.X = 81.000000000000000000
     Position.Y = 48.000000000000000000
-    Size.Width = 633.000000000000000000
+    Size.Width = 664.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
     TabOrder = 1
     object eSum: TLabel
       Align = Client
-      Size.Width = 633.000000000000000000
+      Size.Width = 664.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TextSettings.HorzAlign = Center
@@ -192,7 +193,7 @@
     Size.Width = 33.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
-    Position.X = 71.000000000000000000
+    Position.X = 40.000000000000000000
     Position.Y = 48.000000000000000000
     TabOrder = 2
     Text = #1042#1089#1102#1102' '#1089#1091#1084#1084#1091' '#1082' '#1086#1087#1083#1072#1090#1077
@@ -234,12 +235,12 @@
   object eOpl: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 8
-    Text = '0'
     Position.X = 36.000000000000000000
     Position.Y = 216.000000000000000000
     Size.Width = 221.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
+    OnChangeTracking = eOplChangeTracking
     object TMSFNCButton6: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
@@ -357,8 +358,8 @@
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 15
-    Viewport.Width = 709.000000000000000000
-    Viewport.Height = 121.000000000000000000
+    Viewport.Width = 695.000000000000000000
+    Viewport.Height = 113.000000000000000000
   end
   object btBank: TTMSFNCButton
     Bitmap.PNG = {
@@ -408,6 +409,48 @@
     TabOrder = 16
     Text = #1041#1072#1085#1082
     OnClick = btBankClick
+  end
+  object Label1: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 23.000000000000000000
+    Text = #1057#1091#1084#1084#1072' '#1082' '#1086#1087#1083#1072#1090#1077
+    TabOrder = 26
+  end
+  object Label2: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 111.000000000000000000
+    Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
+    TabOrder = 27
+  end
+  object Label3: TLabel
+    Position.X = 495.000000000000000000
+    Position.Y = 111.000000000000000000
+    Text = #1042#1072#1083#1102#1090#1072
+    TabOrder = 28
+  end
+  object Label4: TLabel
+    Position.X = 36.000000000000000000
+    Position.Y = 191.000000000000000000
+    Text = #1057#1091#1084#1084#1072' '#1086#1087#1083#1072#1090#1099
+    TabOrder = 29
+  end
+  object Label5: TLabel
+    Position.X = 296.000000000000000000
+    Position.Y = 191.000000000000000000
+    Text = #1050#1091#1088#1089
+    TabOrder = 30
+  end
+  object Label6: TLabel
+    Position.X = 560.000000000000000000
+    Position.Y = 191.000000000000000000
+    Text = #1058#1080#1087
+    TabOrder = 31
+  end
+  object Label7: TLabel
+    Position.X = 36.000000000000000000
+    Position.Y = 279.000000000000000000
+    Text = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+    TabOrder = 32
   end
   object SVGIconImageList2: TSVGIconImageList
     Source = <

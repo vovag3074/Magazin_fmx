@@ -17,7 +17,7 @@ uses
 type
   TfmOpl = class(TForm)
     Panel1: TPanel;
-    зSum: TPanel;
+    mSum: TPanel;
     TMSFNCButton1: TTMSFNCButton;
     eSum: TLabel;
     ePred: TEdit;
@@ -42,12 +42,20 @@ type
     lbInfo: TTMSFNCHTMLText;
     qGetPred: TFDQuery;
     qGetPred2: TFDQuery;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btBankClick(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure btOKClick(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
+    procedure eOplChangeTracking(Sender: TObject);
   private
     { Private declarations }
     procedure readValutList;
@@ -99,6 +107,10 @@ var
   FVSum: Double;
   FOst: Double;
 begin
+ if eOpl.Text='' then
+ begin
+  eOpl.Text:='0';
+ end;
    //--------------------------------------
    // 31-avg-2022 предварительный осмотр оплаты
    //--------------------------------------
@@ -294,6 +306,11 @@ begin
   fmMain.EndMainTransaction;
   SetOplata;
   ModalResult := mrOk;
+end;
+
+procedure TfmOpl.eOplChangeTracking(Sender: TObject);
+begin
+ fmMain.onEditChangeTracking(Sender);
 end;
 
 procedure TfmOpl.ReadAgent(NoAgent, isTemp: Integer; MyData: tDate);

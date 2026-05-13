@@ -26,7 +26,7 @@ uses
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox;
+  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox, FMX.Edit;
 
 type
   TfmMain = class(TForm)
@@ -65,6 +65,7 @@ type
     procedure btBankClick(Sender: TObject);
     procedure btProdClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure IBCLost(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -108,6 +109,7 @@ type
     /// Выставляет указанную валюту как выбранную в выпадающем списке
     /// </summary>
     procedure GetValutFromComboBox(NoValut:Integer;var myBox:TComboBox);
+    procedure onEditChangeTracking(Sender:TObject);
   end;
 
 procedure ShowInfo(T: string);
@@ -239,6 +241,20 @@ begin
   end;
 end;
 
+procedure TfmMain.IBCLost(Sender: TObject);
+begin
+ // Действия при потере соединения
+  ShowNotify('Соединение потеряно! Попытка переподключения...');
+  try
+    IBC.Connected := False;
+    IBC.Connected := True;
+    ShowNotify('Переподключение успешно.');
+  except
+    on E: Exception do
+      ShowError('Ошибка переподключения: ' + E.Message);
+  end;
+end;
+
 procedure TfmMain.LoadFormInv;
 begin
   tbMain.Visible := False;
@@ -288,6 +304,28 @@ begin
   begin
     btProd.OnClick(Sender);
   end;
+end;
+
+procedure TfmMain.onEditChangeTracking(Sender: TObject);
+Var FEdit : TEdit;
+    FFloat : Single;
+begin
+  If Not (Sender is TEdit) Then // Защитимся от не выспавшегося самого себя
+    Exit;
+  FEdit:=(Sender as TEdit); // Для удобства...
+  FEdit.Text:=FEdit.Text.Replace(' ',''); // Убираем случайные пробелы
+  if (FEdit.Text.IsEmpty) or (FEdit.Text.Equals('-')) then // Если пусто (ничего не введено или все удалено) или только минус, ничего не делаем
+    Exit;
+  FEdit.Text:=FEdit.Text.Replace('.',','); // Заменяйм точку запятой
+  if FEdit.Text.Equals(',') then // Если введен разделитель, добавляем перед ним ноль для красоты (не обязательно)
+  begin
+    FEdit.Text:='0,';
+    FEdit.CaretPosition:=FEdit.CaretPosition+1; // без этого курсор останется между нулём и запятой
+  end;
+  if TryStrToFloat(FEdit.Text,FFloat) Then // Пробуем преобразовать в число
+    FEdit.TagString:=FEdit.Text // Если удалось, сохраняем в временном хранилище
+  Else
+    FEdit.Text:=FEdit.TagString; // Если не удалось, восстанавливаем из временного хранилища
 end;
 
 procedure TfmMain.ShowBank;
