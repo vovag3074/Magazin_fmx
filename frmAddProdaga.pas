@@ -48,6 +48,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     TMSFNCButton3: TTMSFNCButton;
+    TMSFNCButton2: TTMSFNCButton;
     ltZak: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
@@ -65,7 +66,8 @@ type
     FCount: Integer;
     FNewCashe: Double;
     procedure ShowZakList;
-    procedure getAgent(NoAgn: Integer; var NameAgn: string; var isSkidka: Boolean; var SumSkidka: Double);
+    procedure getAgent(NoAgn: Integer; var NameAgn: string; var isSkidka:
+      Boolean; var SumSkidka: Double);
     procedure ListTemp;
   public
     { Public declarations }
@@ -108,13 +110,13 @@ begin
   end;
 end;
 
-procedure TfmAddProdAgn.eTxtKeyDown(Sender: TObject; var Key: Word;
-  var KeyChar: WideChar; Shift: TShiftState);
+procedure TfmAddProdAgn.eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar:
+  WideChar; Shift: TShiftState);
 begin
- if ((Key = vkSpace)or(Key = vkInsert)) then
- begin
-   btSelAgnClick(Sender);
- end;
+  if ((Key = vkSpace) or (Key = vkInsert)) then
+  begin
+    btSelAgnClick(Sender);
+  end;
 end;
 
 procedure TfmAddProdAgn.eTypeChange(Sender: TObject);
@@ -137,16 +139,29 @@ begin
   ListTemp;
 end;
 
-procedure TfmAddProdAgn.getAgent(NoAgn: Integer; var NameAgn: string; var isSkidka: Boolean; var SumSkidka: Double);
+procedure TfmAddProdAgn.getAgent(NoAgn: Integer; var NameAgn: string; var
+  isSkidka: Boolean; var SumSkidka: Double);
 begin
   qGetAgn.Close;
   qGetAgn.Prepare;
   qGetAgn.ParamByName('NG').AsInteger := NoAgn;
   qGetAgn.Active := True;
-  NameAgn := qGetAgn.FieldByName('FULL_NAME_STD').AsString;
-  FAgent := NoAgn;
-  isSkidka := qGetAgn.FieldByName('IS_SKIDKA').AsInteger = 1;
-  SumSkidka := qGetAgn.FieldByName('SUM_SKIDKA').AsFloat;
+  if qGetAgn.FieldByName('IS_DEL').AsInteger = 0 then
+  begin
+    NameAgn := qGetAgn.FieldByName('FULL_NAME_STD').AsString;
+    FAgent := NoAgn;
+    isSkidka := qGetAgn.FieldByName('IS_SKIDKA').AsInteger = 1;
+    SumSkidka := qGetAgn.FieldByName('SUM_SKIDKA').AsFloat;
+  end
+  else
+  begin
+    ShowError('Покупатель ' + qGetAgn.FieldByName('FULL_NAME_STD').AsString +
+      ' не доступен. Выберите вручную');
+    NameAgn := '';
+    isSkidka := false;
+    SumSkidka := 0;
+    FAgent := -1;
+  end;
   qGetAgn.Close;
 end;
 
@@ -212,18 +227,20 @@ begin
         Node.Text[2] := qMod.FieldByName('CENA_PROD').AsFloat.ToString;
         Node.Text[3] := qMod.FieldByName('SUM_PROD').AsFloat.ToString;
         Node.Text[4] := qMod.FieldByName('OPLATA').AsFloat.ToString;
-        Node.Text[5] := FloatToStr(qMod.FieldByName('SUM_PROD').AsFloat - qMod.FieldByName('OPLATA').AsFloat);
+        Node.Text[5] := FloatToStr(qMod.FieldByName('SUM_PROD').AsFloat - qMod.FieldByName
+          ('OPLATA').AsFloat);
         Node.Values[0].CollapsedIconName := 'Item1';
         Node.Values[0].ExpandedIconName := 'Item1';
-        Node.DataBoolean:=True;
+        Node.DataBoolean := True;
         FSumTov := FSumTov + qMod.FieldByName('SUM_PROD').AsFloat;
         FOplTov := FOplTov + qMod.FieldByName('OPLATA').AsFloat;
-        FDolg := FDolg + (qMod.FieldByName('SUM_PROD').AsFloat - qMod.FieldByName('OPLATA').AsFloat);
+        FDolg := FDolg + (qMod.FieldByName('SUM_PROD').AsFloat - qMod.FieldByName
+          ('OPLATA').AsFloat);
         qMod.Next;
       until (qMod.Eof);
     finally
       tlList.EndUpdate;
-      if tlList.Nodes.Count>0 then
+      if tlList.Nodes.Count > 0 then
       begin
         tlList.SelectNode(tlList.Nodes[0]);
       end;
@@ -236,7 +253,7 @@ var
   Item: TListBoxItem;
 begin
   lbZak.Items.Clear;
-  ItemS.Text:='';
+  ItemS.Text := '';
   fmMain.StartReadTransaction;
   qZak.Close;
   qZak.Prepare;
@@ -247,7 +264,8 @@ begin
     repeat
       Item := TListBoxItem.Create(lbZak);
       Item.StyleLookup := 'zakItem';
-      Item.Text := qZak.FieldByName('AG_NAME').AsString + ' ' + qZak.FieldByName('ST_NAME').AsString;
+      Item.Text := qZak.FieldByName('AG_NAME').AsString + ' ' + qZak.FieldByName
+        ('ST_NAME').AsString;
       Item.StylesData['codeZak'] := qZak.FieldByName('CODE_ZAK').AsString;
       Item.StylesData['cntZak'] := qZak.FieldByName('CNT_MOD').AsFloat;
       Item.Tag := qZak.FieldByName('NO_AGN').AsInteger;
@@ -267,10 +285,10 @@ begin
 end;
 
 procedure TfmAddProdAgn.eEnterClick(Sender: TObject);
- var
+var
   isMove, isProd: Boolean;
   FAgn: Integer;
-  NAgn: String;
+  NAgn: string;
 begin
   // 16.03.2019 агент должен быть определен
   if trim(eAgn.Text) = '' then
@@ -300,9 +318,9 @@ begin
       if trim(eTxt.Text) = '' then
         Exit;
       qIns.Active := false;
-      var T:Int64;
-      T:=eTxt.Text.ToInt64;
-      eTxt.Text:=T.ToString;
+      var T: Int64;
+      T := eTxt.Text.ToInt64;
+      eTxt.Text := T.ToString;
       fmMain.TestZakaz(eTxt.Text, isMove, isProd, FAgn, NAgn);
       if ((isProd) and (FAgn > 0)) then
       begin
@@ -343,12 +361,12 @@ end;
 
 procedure TfmAddProdAgn.TMSFNCButton3Click(Sender: TObject);
 begin
-if eTxt.Text.Trim<>'' then
-begin
-  eEnter.OnClick(Sender);
-  Exit;
-end;
- if ((tlList.Nodes.Count > 0) and (FAgent > 0)) then // если что-то продали и агент
+  if eTxt.Text.Trim <> '' then
+  begin
+    eEnter.OnClick(Sender);
+    Exit;
+  end;
+  if ((tlList.Nodes.Count > 0) and (FAgent > 0)) then // если что-то продали и агент
   begin // не магазин, то спрашиваем оплату
     try
       fmOpl := TfmOpl.Create(fmAddProdAgn);
@@ -360,9 +378,10 @@ end;
       end;
     finally
       fmOpl.Free;
-      fmOpl:= nil;
+      fmOpl := nil;
     end;
-  end else
+  end
+  else
   begin
     ModalResult := mrOk;
   end;

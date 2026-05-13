@@ -60,6 +60,20 @@ object fmAddProdAgn: TfmAddProdAgn
       Text = #1047#1072#1082#1088#1099#1090#1100
       OnClick = TMSFNCButton3Click
     end
+    object TMSFNCButton2: TTMSFNCButton
+      Font.Color = claWhite
+      Size.Width = 150.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      Margins.Left = 20.000000000000000000
+      Margins.Top = 20.000000000000000000
+      Margins.Bottom = 20.000000000000000000
+      Position.X = 20.000000000000000000
+      Position.Y = 20.000000000000000000
+      TabOrder = 1
+      Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1089#1082#1080#1076#1082#1091
+    end
   end
   object lbZak: TListBox
     Align = MostRight
@@ -849,11 +863,11 @@ object fmAddProdAgn: TfmAddProdAgn
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
     SQL.Strings = (
-      'SELECT AGN.IS_SKIDKA,'
-      '       AGN.SUM_SKIDKA,'
-      '       AGN.FULL_NAME_STD'
-      'FROM AGENTS AGN'
-      'WHERE AGN.NO_AGN = :NG   ')
+      
+        'select AGN.IS_SKIDKA, AGN.SUM_SKIDKA, AGN.FULL_NAME_STD, AGN.IS_' +
+        'DEL'
+      'from AGENTS AGN'
+      'where AGN.NO_AGN = :NG     ')
     Left = 760
     Top = 440
     ParamData = <
@@ -883,8 +897,8 @@ object fmAddProdAgn: TfmAddProdAgn
       'group by M.NAZVAN, LP.CENA_PROD, K.NAZVAN, MS.NO_MOD'
       'order by K.NAZVAN, M.NAZVAN  '
       '')
-    Left = 32
-    Top = 511
+    Left = 80
+    Top = 423
     ParamData = <
       item
         Name = 'NG'
@@ -928,7 +942,7 @@ object fmAddProdAgn: TfmAddProdAgn
         Name = 'OPLATA'
         ParamType = ptInput
       end>
-    Left = 104
-    Top = 511
+    Left = 128
+    Top = 423
   end
 end
