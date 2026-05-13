@@ -1,4 +1,4 @@
-unit frmSendMoney;
+п»їunit frmSendMoney;
 
 interface
 
@@ -56,7 +56,7 @@ procedure TfmSndMoney.dxOKClick(Sender: TObject);
 begin
   if ePol.Text = '' then
   begin
-    ShowError('Укажите получателя!');
+    ShowError('РЈРєР°Р¶РёС‚Рµ РїРѕР»СѓС‡Р°С‚РµР»СЏ!');
     ePol.SetFocus;
     Exit;
   end;

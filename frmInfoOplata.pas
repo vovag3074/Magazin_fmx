@@ -1,4 +1,4 @@
-unit frmInfoOplata;
+п»їunit frmInfoOplata;
 
 interface
 
@@ -16,7 +16,7 @@ type
     eSum: TEdit;
     eCursCum: TEdit;
     eStartDolg: TEdit;
-    Оплата: TGroupBox;
+    РћРїР»Р°С‚Р°: TGroupBox;
     GroupBox1: TGroupBox;
     eDolg: TEdit;
     ePred: TEdit;
@@ -40,28 +40,28 @@ var
 
  {$REGION 'Documentation'}
   /// <summary>
-  ///   Показать подробную информацию об оплате
+  ///   РџРѕРєР°Р·Р°С‚СЊ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕРїР»Р°С‚Рµ
   /// </summary>
   /// <param name="FIO">
-  ///   Имя покупателя
+  ///   РРјСЏ РїРѕРєСѓРїР°С‚РµР»СЏ
   /// </param>
   /// <param name="OldSum">
-  ///   Сумма долга
+  ///   РЎСѓРјРјР° РґРѕР»РіР°
   /// </param>
   /// <param name="NewSum">
-  ///   Сумма долга после оплаты
+  ///   РЎСѓРјРјР° РґРѕР»РіР° РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹
   /// </param>
   /// <param name="SumOpl">
-  ///   Сумма оплаты
+  ///   РЎСѓРјРјР° РѕРїР»Р°С‚С‹
   /// </param>
   /// <param name="SumOplCurs">
-  ///   Сумма оплаты по курсу
+  ///   РЎСѓРјРјР° РѕРїР»Р°С‚С‹ РїРѕ РєСѓСЂСЃСѓ
   /// </param>
   /// <param name="SumPred">
-  ///   Сумма предоплаты
+  ///   РЎСѓРјРјР° РїСЂРµРґРѕРїР»Р°С‚С‹
   /// </param>
   /// <returns>
-  ///   Истина если нажата клавиша OK
+  ///   РСЃС‚РёРЅР° РµСЃР»Рё РЅР°Р¶Р°С‚Р° РєР»Р°РІРёС€Р° OK
   /// </returns>
   {$ENDREGION}
 function ShowInfoOplEx(FIO: string; OldSum, NewSum, SumOpl, SumOplCurs, SumPred: Double): Boolean;
@@ -90,7 +90,7 @@ begin
   end
   else
   begin
-    Result := true;     // если ничего не оплачиваем, то принимаем как есть
+    Result := true;     // РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РѕРїР»Р°С‡РёРІР°РµРј, С‚Рѕ РїСЂРёРЅРёРјР°РµРј РєР°Рє РµСЃС‚СЊ
   end;
 end;
 

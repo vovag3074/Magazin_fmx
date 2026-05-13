@@ -1,4 +1,4 @@
-unit frmAddString;
+п»їunit frmAddString;
 
 interface
 
@@ -21,7 +21,7 @@ type
     { Public declarations }
   end;
 
-function GetString(var myStr:String; eTitle:String='Введите строку'; eNamе:String='Строка'):Integer;
+function GetString(var myStr:String; eTitle:String='Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ'; eNamРµ:String='РЎС‚СЂРѕРєР°'):Integer;
 
 var
   fmGetStr: TfmGetStr;
@@ -33,11 +33,11 @@ uses
 
 {$R *.fmx}
 
-function GetString(var myStr:String; eTitle:String='Введите строку'; eNamе:String='Строка'):Integer;
+function GetString(var myStr:String; eTitle:String='Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ'; eNamРµ:String='РЎС‚СЂРѕРєР°'):Integer;
 begin
   fmGetStr := TfmGetStr.Create(fmMain);
   fmGetStr.Caption:=eTitle;
-  fmGetStr.eLabel.Text:=eNamе;
+  fmGetStr.eLabel.Text:=eNamРµ;
   fmGetStr.eString.Text := myStr.Trim;
   Result := fmGetStr.ShowModal;
   myStr :=  fmGetStr.eString.Text.Trim;

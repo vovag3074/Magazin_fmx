@@ -1,4 +1,4 @@
-unit frmInvScald;
+п»їunit frmInvScald;
 
 interface
 
@@ -104,7 +104,7 @@ type
     { Private declarations }
     function ListDet(ANode: TTMSFNCTreeViewNode): Float64;
      /// <summary>
-    /// Читаем список активных заказов на складе.
+    /// Р§РёС‚Р°РµРј СЃРїРёСЃРѕРє Р°РєС‚РёРІРЅС‹С… Р·Р°РєР°Р·РѕРІ РЅР° СЃРєР»Р°РґРµ.
     /// </summary>
     procedure ListActiveZakaz;
     procedure ListModZakInfo;
@@ -112,19 +112,19 @@ type
     procedure goDown;
     procedure ViewDetNode(Node: TTMSFNCTreeViewNode);
     /// <summary>
-    /// Отметить выбранный заказ как проданный и убрать из списка
+    /// РћС‚РјРµС‚РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Р№ Р·Р°РєР°Р· РєР°Рє РїСЂРѕРґР°РЅРЅС‹Р№ Рё СѓР±СЂР°С‚СЊ РёР· СЃРїРёСЃРєР°
     /// </summary>
     procedure DelSelectZakaz;
      /// <summary>
-    /// Отметить все заказы как проданные
+    /// РћС‚РјРµС‚РёС‚СЊ РІСЃРµ Р·Р°РєР°Р·С‹ РєР°Рє РїСЂРѕРґР°РЅРЅС‹Рµ
     /// </summary>
     procedure DelAllZakaz;
     /// <summary>
-    /// Настройка размеров
+    /// РќР°СЃС‚СЂРѕР№РєР° СЂР°Р·РјРµСЂРѕРІ
     /// </summary>
     procedure SetModSize;
      /// <summary>
-    /// Отчет о наличии на складе
+    /// РћС‚С‡РµС‚ Рѕ РЅР°Р»РёС‡РёРё РЅР° СЃРєР»Р°РґРµ
     /// </summary>
     procedure RepOstSclad;
   public
@@ -132,11 +132,11 @@ type
     procedure LoadINI;
     procedure SaveINI;
      /// <summary>
-    /// Читаем содержимое склада. Сначала по категориям.
+    /// Р§РёС‚Р°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ СЃРєР»Р°РґР°. РЎРЅР°С‡Р°Р»Р° РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј.
     /// </summary>
     /// <remarks>
-    /// Есть особенность - если в категории ничего нет, то не отображается
-    /// даже в режиме "показать все"
+    /// Р•СЃС‚СЊ РѕСЃРѕР±РµРЅРЅРѕСЃС‚СЊ - РµСЃР»Рё РІ РєР°С‚РµРіРѕСЂРёРё РЅРёС‡РµРіРѕ РЅРµС‚, С‚Рѕ РЅРµ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ
+    /// РґР°Р¶Рµ РІ СЂРµР¶РёРјРµ "РїРѕРєР°Р·Р°С‚СЊ РІСЃРµ"
     /// </remarks>
     procedure ListMod;
   end;
@@ -160,7 +160,7 @@ procedure TfmInv.DelAllZakaz;
 begin
   if cxZakList.Count > 0 then
   begin
-    if ShowQuestion('Убрать все заказы?') then
+    if ShowQuestion('РЈР±СЂР°С‚СЊ РІСЃРµ Р·Р°РєР°Р·С‹?') then
     begin
       fmMain.StartMainTransaction;
       qDelAllZakaz.Close;
@@ -181,8 +181,8 @@ begin
     item := cxZakList.ListItems[cxZakList.ItemIndex];
     var S: string;
     S := item.StylesData['myCode'].AsString;
-    S := S + ' для ' + item.Text;
-    if ShowQuestion('Убрать заказ № ' + S + '?') then
+    S := S + ' РґР»СЏ ' + item.Text;
+    if ShowQuestion('РЈР±СЂР°С‚СЊ Р·Р°РєР°Р· в„– ' + S + '?') then
     begin
       fmMain.StartMainTransaction;
       qDelSelZak.Close;
@@ -301,7 +301,7 @@ begin
   Cnt := 0;
   ANode.RemoveChildren;
   qMod.Close;
-  // 24.09.2014 добавили возможность показывать все модели
+  // 24.09.2014 РґРѕР±Р°РІРёР»Рё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµ РјРѕРґРµР»Рё
   if cbAll.IsChecked then
   begin
     qMod.SQL.Text := mySel + WhereAll + myOrder;
@@ -450,7 +450,7 @@ begin
       var S: string;
       S := item.StylesData['myCode'].AsString;
       ClipboardService.SetClipboard(S);
-      S := 'Заказ №: ' + S + ' скопирован в буфер обмена';
+      S := 'Р—Р°РєР°Р· в„–: ' + S + ' СЃРєРѕРїРёСЂРѕРІР°РЅ РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°';
       ShowNotify(S);
     end;
   end;
@@ -489,7 +489,7 @@ begin
       tlMod.FocusedNode.Text[1]:=fmSetSize.SizeListSum.ToString;
       fmMain.StartReadTransaction;
       ViewDetNode(tlMod.FocusedNode);
-      ShowNotify('После изменения размеров не забудьте обновить склад...');
+      ShowNotify('РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЂР°Р·РјРµСЂРѕРІ РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ РѕР±РЅРѕРІРёС‚СЊ СЃРєР»Р°Рґ...');
     end;
     fmSetSize.Free;
     fmSetSize:=nil;

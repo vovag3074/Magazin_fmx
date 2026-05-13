@@ -1,4 +1,4 @@
-unit frmAddDop;
+п»їunit frmAddDop;
 
 interface
 
@@ -51,7 +51,7 @@ type
     qIns: TFDCommand;
     qAdd: TFDCommand;
     TMSFNCButton8: TTMSFNCButton;
-    Валюта: TLabel;
+    Р’Р°Р»СЋС‚Р°: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     procedure TMSFNCButton3Click(Sender: TObject);
@@ -132,8 +132,8 @@ end;
 function TfmAddDop.SaveDop: Boolean;
 var
   FTmp: Double;
-  VTmp: Double; // с учетом курса
-  FVSum: Double; // сумма с курсом
+  VTmp: Double; // СЃ СѓС‡РµС‚РѕРј РєСѓСЂСЃР°
+  FVSum: Double; // СЃСѓРјРјР° СЃ РєСѓСЂСЃРѕРј
   FOst: Double;
 begin
   Result := false;
@@ -141,32 +141,32 @@ begin
   begin
     eSum.Text:='0';
   end;
-  // -----03.08.2022 --- добавляем валюту -------------
-  // ----- 17.01.2014 --- добавил id транзакции--------
+  // -----03.08.2022 --- РґРѕР±Р°РІР»СЏРµРј РІР°Р»СЋС‚Сѓ -------------
+  // ----- 17.01.2014 --- РґРѕР±Р°РІРёР» id С‚СЂР°РЅР·Р°РєС†РёРё--------
   FTR_ID := fmMain.GetTranID;
   // ---------------------------------------------------
   if FAgent = -1 then
   begin
-    ShowError('Выберите агента');
+    ShowError('Р’С‹Р±РµСЂРёС‚Рµ Р°РіРµРЅС‚Р°');
     eAgn.SetFocus;
     Exit;
   end;
   if eSum.Text.ToDouble <= 0 then
   begin
-    ShowError('Укажите сумму отправки');
+    ShowError('РЈРєР°Р¶РёС‚Рµ СЃСѓРјРјСѓ РѕС‚РїСЂР°РІРєРё');
     eSum.Text:='';
     eSum.SetFocus;
     Exit;
   end;
   if trim(eBank.Text) = '' then
   begin
-    ShowError('Укажите банк');
+    ShowError('РЈРєР°Р¶РёС‚Рµ Р±Р°РЅРє');
     eBank.SetFocus;
     Exit;
   end;
   if trim(ePol.Text) = '' then
   begin
-    ShowError('Укажите получателя');
+    ShowError('РЈРєР°Р¶РёС‚Рµ РїРѕР»СѓС‡Р°С‚РµР»СЏ');
     ePol.SetFocus;
     Exit;
   end;
@@ -177,9 +177,9 @@ begin
   else
   begin
    //--------------------------------------
-   // 31-avg-2022 предварительный осмотр оплаты
+   // 31-avg-2022 РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕСЃРјРѕС‚СЂ РѕРїР»Р°С‚С‹
    //--------------------------------------
-    if eType.ItemIndex = 0 then  // учитываем прямой или обратный курс
+    if eType.ItemIndex = 0 then  // СѓС‡РёС‚С‹РІР°РµРј РїСЂСЏРјРѕР№ РёР»Рё РѕР±СЂР°С‚РЅС‹Р№ РєСѓСЂСЃ
     begin
       FVSum := eSum.Text.ToDouble * eCurs.Text.ToDouble;
     end
@@ -209,7 +209,7 @@ begin
     end;
     if FDolg < FVSum then
     begin
-       // Сумма внесена большаая чем нужно
+       // РЎСѓРјРјР° РІРЅРµСЃРµРЅР° Р±РѕР»СЊС€Р°Р°СЏ С‡РµРј РЅСѓР¶РЅРѕ
       FTmp := (eSum.Text.ToDouble) - FDolg;
       VTmp := FVSum - FDolg;
       if eType.ItemIndex = 0 then
@@ -220,7 +220,7 @@ begin
       begin
         eSum.Text := Round((FDolg * eCurs.Text.ToDouble)).ToString;
       end;
-      if ShowQuestion('Сумма больше долга на ' + FloatToStr(VTmp) + ' Добавить эту сумму в предоплату?') then
+      if ShowQuestion('РЎСѓРјРјР° Р±РѕР»СЊС€Рµ РґРѕР»РіР° РЅР° ' + FloatToStr(VTmp) + ' Р”РѕР±Р°РІРёС‚СЊ СЌС‚Сѓ СЃСѓРјРјСѓ РІ РїСЂРµРґРѕРїР»Р°С‚Сѓ?') then
       begin
         qPred.Active := false;
         qPred.Prepare;
@@ -228,7 +228,7 @@ begin
         qPred.ParamByName('SUM_PRED').Value := VTmp;
         qPred.ParamByName('DATA_PRED').AsDate := eDate.Date;
         qPred.ParamByName('STR_PRED').AsString := ePol.Text;
-        qPred.ParamByName('IS_VIRT').AsSmallInt := 1; // Деньги виртуальные
+        qPred.ParamByName('IS_VIRT').AsSmallInt := 1; // Р”РµРЅСЊРіРё РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ
         qPred.ParamByName('TRAN_ID').AsString := FTR_ID;
         qPred.Execute;
         fmMain.IBT.Commit;
@@ -251,14 +251,14 @@ begin
     qAdd.ParamByName('IS_MULT').asBoolean := eType.ItemIndex = 0;
     qAdd.Execute;
   end;
-  // 27.08.2016 --- заносим протокол
+  // 27.08.2016 --- Р·Р°РЅРѕСЃРёРј РїСЂРѕС‚РѕРєРѕР»
   try
     qIns.Close;
     qIns.Prepare;
     qIns.ParamByName('NO_AGN').AsInteger := FAgent;
     qIns.ParamByName('DATA_OTP').AsDate := eDPol.Date;
     qIns.ParamByName('FULL_AGN_NAME').AsString := eAgn.Text;
-    qIns.ParamByName('FULL_SITY_NAME').AsString := 'Банк';
+    qIns.ParamByName('FULL_SITY_NAME').AsString := 'Р‘Р°РЅРє';
     qIns.ParamByName('SL_OTP').AsString := eBank.Text;
     qIns.ParamByName('NO_SKL').AsInteger := 0;
     qIns.ParamByName('K_VO_MEST').AsInteger := 0;
@@ -271,7 +271,7 @@ begin
     fmMain.IBT.Commit;
   except
   end;
-  // если ошибка протокола - игнорируем
+  // РµСЃР»Рё РѕС€РёР±РєР° РїСЂРѕС‚РѕРєРѕР»Р° - РёРіРЅРѕСЂРёСЂСѓРµРј
   Result := true;
 end;
 

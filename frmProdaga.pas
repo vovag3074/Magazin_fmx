@@ -1,4 +1,4 @@
-unit frmProdaga;
+п»їunit frmProdaga;
 
 interface
 
@@ -131,7 +131,7 @@ type
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure eDataChange(Sender: TObject);
-    // процедура выводит всплывающее окно со списком продаж
+    // РїСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґРёС‚ РІСЃРїР»С‹РІР°СЋС‰РµРµ РѕРєРЅРѕ СЃРѕ СЃРїРёСЃРєРѕРј РїСЂРѕРґР°Р¶
     procedure ListBoxItem1Click(Sender: TObject);
     procedure tlPModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure tlPModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
@@ -157,7 +157,7 @@ type
     { Private declarations }
     FSum, FOpl, FCnt: Double;
     FNewCashe: Double;
-    FActiveProd: Integer; // выбранный покупатель в продаже
+    FActiveProd: Integer; // РІС‹Р±СЂР°РЅРЅС‹Р№ РїРѕРєСѓРїР°С‚РµР»СЊ РІ РїСЂРѕРґР°Р¶Рµ
     procedure ListInfoMoney;
     procedure ListInfoBankPred;
     procedure ListSendMoney;
@@ -175,8 +175,8 @@ type
     procedure LoadINI;
     procedure SaveINI;
     /// <summary>
-    /// Отображение продажи за выбранную дату. В конце списка покупателей
-    /// выводится список предоплат и передачи налички (инкассации)
+    /// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїСЂРѕРґР°Р¶Рё Р·Р° РІС‹Р±СЂР°РЅРЅСѓСЋ РґР°С‚Сѓ. Р’ РєРѕРЅС†Рµ СЃРїРёСЃРєР° РїРѕРєСѓРїР°С‚РµР»РµР№
+    /// РІС‹РІРѕРґРёС‚СЃСЏ СЃРїРёСЃРѕРє РїСЂРµРґРѕРїР»Р°С‚ Рё РїРµСЂРµРґР°С‡Рё РЅР°Р»РёС‡РєРё (РёРЅРєР°СЃСЃР°С†РёРё)
     /// </summary>
     procedure ReadProd;
   end;
@@ -187,7 +187,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fкmPredopByCeh,
+  frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, fРєmPredopByCeh,
   frmSelectDate, frmSendMoney;
 
 {$R *.fmx}
@@ -204,7 +204,7 @@ end;
 
 procedure TfmProd.ListBoxItem1Click(Sender: TObject);
 begin
-//Для покупателей в продаже
+//Р”Р»СЏ РїРѕРєСѓРїР°С‚РµР»РµР№ РІ РїСЂРѕРґР°Р¶Рµ
   if Sender is TListBoxItem then
   begin
     tlProd.PopupMenu := pmProdAgn;
@@ -214,7 +214,7 @@ begin
     pmProd.Width := 800;
     tbInfo.TabIndex := 0;
     pmProd.PlacementTarget := TListBoxItem(Sender);
-   // формируем список продаж
+   // С„РѕСЂРјРёСЂСѓРµРј СЃРїРёСЃРѕРє РїСЂРѕРґР°Р¶
     FActiveProd := TListBoxItem(Sender).Tag;
     HintPanel.Visible := False;
     pmProd.Popup();
@@ -240,7 +240,7 @@ begin
       repeat
         Node := TListBoxItem.Create(lbSndMoney);
         Node.Tag := qSnd.FieldByName('NO_LSCB').AsInteger;
-        Node.Text := qSnd.FieldByName('POL_SND').AsString + ' получил: ' + qSnd.FieldByName('SUM_SND').AsFloat.ToString;
+        Node.Text := qSnd.FieldByName('POL_SND').AsString + ' РїРѕР»СѓС‡РёР»: ' + qSnd.FieldByName('SUM_SND').AsFloat.ToString;
         lbSndMoney.AddObject(Node);
         qSnd.Next;
       until (qSnd.Eof);
@@ -272,14 +272,14 @@ begin
       Node.Tag := qPredBank.FieldByName('NO_PRGN').AsInteger;
       Node.Text := qPredBank.FieldByName('AG_NAME').AsString + ' ' + qPredBank.FieldByName('SUM_PRED').AsFloat.ToString;
       if qPredBank.FieldByName('POL_PRED').IsNull then
-        Node.Text := Node.Text + ' <Получатель не назначен>'
+        Node.Text := Node.Text + ' <РџРѕР»СѓС‡Р°С‚РµР»СЊ РЅРµ РЅР°Р·РЅР°С‡РµРЅ>'
       else
         Node.Text := Node.Text + ' ' + qPredBank.FieldByName('POL_PRED').AsString;
       qPredBank.Next;
     until qPredBank.Eof;
   end;
-    // А тут показываем отдачу денег
-    // Тут суммарная информация по передаче денег
+    // Рђ С‚СѓС‚ РїРѕРєР°Р·С‹РІР°РµРј РѕС‚РґР°С‡Сѓ РґРµРЅРµРі
+    // РўСѓС‚ СЃСѓРјРјР°СЂРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РїРµСЂРµРґР°С‡Рµ РґРµРЅРµРі
 end;
 
 procedure TfmProd.ListInfoMoney;
@@ -287,7 +287,7 @@ var
   Node: TListBoxItem;
   S: string;
 begin
-// А тут предоплаты по наличке полная информация
+// Рђ С‚СѓС‚ РїСЂРµРґРѕРїР»Р°С‚С‹ РїРѕ РЅР°Р»РёС‡РєРµ РїРѕР»РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
   qPred.Close;
   qPred.Prepare;
   qPred.ParamByName('DS').AsDate := StrToDate(eData.Text);
@@ -301,12 +301,12 @@ begin
       Node.Tag := qPred.FieldByName('NO_PRGN').AsInteger;
       Node.TagString := qPred.FieldByName('NO_AGN').AsInteger.ToString;
 //      Node.Values[8] := -1;
-      S := 'Наличная предоплата от: ' + qPred.FieldByName('AG_NAME').AsString;
-      S := S + ' Сумма = ' + qPred.FieldByName('SUM_PRED').AsFloat.ToString;
+      S := 'РќР°Р»РёС‡РЅР°СЏ РїСЂРµРґРѕРїР»Р°С‚Р° РѕС‚: ' + qPred.FieldByName('AG_NAME').AsString;
+      S := S + ' РЎСѓРјРјР° = ' + qPred.FieldByName('SUM_PRED').AsFloat.ToString;
       if qPred.FieldByName('POL_PRED').IsNull then
-        S := S + '  <Получатель не назначен>'
+        S := S + '  <РџРѕР»СѓС‡Р°С‚РµР»СЊ РЅРµ РЅР°Р·РЅР°С‡РµРЅ>'
       else
-        S := S + ' Получатель: ' + qPred.FieldByName('POL_PRED').AsString;
+        S := S + ' РџРѕР»СѓС‡Р°С‚РµР»СЊ: ' + qPred.FieldByName('POL_PRED').AsString;
       Node.Text := S;
       Node.OnClick := predMoneyClick;
       tlProd.AddObject(Node);
@@ -329,7 +329,7 @@ begin
     repeat
       Node := TListBoxItem.Create(tlProd);
       Node.StyleLookup := 'sndItem';
-      Node.Text := 'Отдано на руки валюта: ' + qSumSend.FieldByName('NAZVAN').AsString;
+      Node.Text := 'РћС‚РґР°РЅРѕ РЅР° СЂСѓРєРё РІР°Р»СЋС‚Р°: ' + qSumSend.FieldByName('NAZVAN').AsString;
       Node.StylesData['tVal'] := qSumSend.FieldByName('SUM_OF_SUM_SND').AsFloat.ToString;
       Node.Tag := qSumSend.FieldByName('NO_VAL').AsInteger;
       Node.OnClick := sendMoneyClick;
@@ -352,12 +352,12 @@ begin
   eData.Text := DateToStr(now);
   myCalendar.Data := now;
     //-----------------------
-    // вставляем заголовок
+    // РІСЃС‚Р°РІР»СЏРµРј Р·Р°РіРѕР»РѕРІРѕРє
     //-----------------------
   Header := TListBoxHeader.Create(tlProd);
   Header.StyleLookup := 'prodHead';
   tlProd.AddObject(Header);
-  // вставляем пометки в календарь
+  // РІСЃС‚Р°РІР»СЏРµРј РїРѕРјРµС‚РєРё РІ РєР°Р»РµРЅРґР°СЂСЊ
   showLastProdList;
 end;
 
@@ -397,10 +397,10 @@ var
   I, NAGN: Integer;
   ND, OD: tDate;
 begin
-  if tlProd.Items.Count > 0 then // если ничего нет то и не надо
+  if tlProd.Items.Count > 0 then // РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµС‚ С‚Рѕ Рё РЅРµ РЅР°РґРѕ
   begin
     ND := Now;
-    I := selectDate('Перенос продажи', 'Выберите новую дату для продажи', ND);
+    I := selectDate('РџРµСЂРµРЅРѕСЃ РїСЂРѕРґР°Р¶Рё', 'Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРІСѓСЋ РґР°С‚Сѓ РґР»СЏ РїСЂРѕРґР°Р¶Рё', ND);
     if I = mrOK then
     begin
       OD := StrToDate(eData.Text);
@@ -452,7 +452,7 @@ begin
         Node.StyleLookup := 'prodItem';
         Node.Tag := qUsr.FieldByName('NO_AGN').AsInteger;
         Node.TagString := qUsr.FieldByName('NO_AGN').AsInteger.ToString;
-        Node.Text := qUsr.FieldByName('AG_NAME').AsString + ' ' + qUsr.FieldByName('ST_NAME').AsString + ' Валюта: (' + qUsr.FieldByName('NAZVAN').AsString + ')';
+        Node.Text := qUsr.FieldByName('AG_NAME').AsString + ' ' + qUsr.FieldByName('ST_NAME').AsString + ' Р’Р°Р»СЋС‚Р°: (' + qUsr.FieldByName('NAZVAN').AsString + ')';
         Node.StylesData['prodCnt'] := qUsr.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger;
         Node.StylesData['prodSum'] := qUsr.FieldByName('SUM_TOV').AsFloat;
         Node.StylesData['prodOpl'] := qUsr.FieldByName('SUM_OPL').AsFloat;
@@ -477,7 +477,7 @@ begin
     //-------------------------------------
     Node := TListBoxItem.Create(tlProd);
     Node.StyleLookup := 'ftrProd';
-    Node.Text := 'Продано: ' + FCnt.ToString + ' |  На сумму: ' + FSum.ToString + ' |  Оплачено: ' + FOpl.ToString;
+    Node.Text := 'РџСЂРѕРґР°РЅРѕ: ' + FCnt.ToString + ' |  РќР° СЃСѓРјРјСѓ: ' + FSum.ToString + ' |  РћРїР»Р°С‡РµРЅРѕ: ' + FOpl.ToString;
     Node.PopupMenu := nil;
     tlProd.AddObject(Node);
   finally
@@ -540,11 +540,11 @@ begin
   TTask.Run(
     procedure
     begin
-      // 1. Выполнение запроса в фоновом потоке
+      // 1. Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР° РІ С„РѕРЅРѕРІРѕРј РїРѕС‚РѕРєРµ
       qDataPol.Active := True;
       I := qDataPol.RecordCount;
       SetLength(Events, I);
-      // 2. Обновление интерфейса - только через TThread.Synchronize
+      // 2. РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС‚РµСЂС„РµР№СЃР° - С‚РѕР»СЊРєРѕ С‡РµСЂРµР· TThread.Synchronize
       TThread.Synchronize(nil,
         procedure
         begin
@@ -633,7 +633,7 @@ procedure TfmProd.ShowLogOpl;
 var
   Node: TTMSFNCTreeViewNode;
 begin
-     // 05.08.2020 ----- состояние оплат
+     // 05.08.2020 ----- СЃРѕСЃС‚РѕСЏРЅРёРµ РѕРїР»Р°С‚
   try
     tlOpl.Nodes.Clear;
     qLOpl.Close;
@@ -811,7 +811,7 @@ procedure TfmProd.TMSFNCButton2Click(Sender: TObject);
 begin
   if StrToDate(eData.Text) < Date then
   begin
-    ShowError('Продавать на прошлую дату нельзя!');
+    ShowError('РџСЂРѕРґР°РІР°С‚СЊ РЅР° РїСЂРѕС€Р»СѓСЋ РґР°С‚Сѓ РЅРµР»СЊР·СЏ!');
     Exit;
   end;
   fmAddProdAgn := TfmAddProdAgn.Create(fmProd);

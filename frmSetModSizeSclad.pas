@@ -1,4 +1,4 @@
-unit frmSetModSizeSclad;
+п»їunit frmSetModSizeSclad;
 
 interface
 
@@ -27,9 +27,9 @@ type
     TMSFNCButton1: TTMSFNCButton;
     TMSFNCButton2: TTMSFNCButton;
     procedure FormActivate(Sender: TObject);
-    procedure tlSizeSelectCell(Sender: TObject; AStartCell,
-      AEndCell: TTMSFNCDataGridCellCoord);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure tlSizeSelectCell(Sender: TObject; AStartCell, AEndCell,
+      AFocusedCell: TTMSFNCDataGridCellCoord);
   private
     { Private declarations }
     FMod: Integer;
@@ -69,7 +69,7 @@ begin
   FIsV := is_Vit;
   lbName.Text:='';
   //-------13.03.2014----------------------------------------------
-  // в заголовок добавил название модели
+  // РІ Р·Р°РіРѕР»РѕРІРѕРє РґРѕР±Р°РІРёР» РЅР°Р·РІР°РЅРёРµ РјРѕРґРµР»Рё
   //---------------------------------------------------------------
   fmMain.StartReadTransaction;
   qInfo.Close;
@@ -102,10 +102,10 @@ begin
   end;
 end;
 
-procedure TfmSetSize.tlSizeSelectCell(Sender: TObject; AStartCell,
-  AEndCell: TTMSFNCDataGridCellCoord);
+procedure TfmSetSize.tlSizeSelectCell(Sender: TObject; AStartCell, AEndCell,
+  AFocusedCell: TTMSFNCDataGridCellCoord);
 begin
- lbCnt.Text := tlSize.ColumnSum(2, 1, tlSize.RowCount).ToString;
+  lbCnt.Text := tlSize.ColumnSum(2, 1, tlSize.RowCount).ToString;
 end;
 
 procedure TfmSetSize.TMSFNCButton1Click(Sender: TObject);

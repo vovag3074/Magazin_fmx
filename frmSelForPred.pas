@@ -1,4 +1,4 @@
-unit frmSelForPred;
+﻿unit frmSelForPred;
 
 interface
 
@@ -17,7 +17,6 @@ type
   TfmSelPred = class(TForm)
     qList: TFDQuery;
     Panel1: TPanel;
-    ltItem: TLayout;
     Rectangle1: TRectangle;
     TMSFNCImage1: TTMSFNCImage;
     Label1: TLabel;
@@ -26,6 +25,7 @@ type
     TMSFNCButton1: TTMSFNCButton;
     ListBoxItem1: TListBoxItem;
     tlPol: TListBox;
+    ltItem: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure btOKClick(Sender: TObject);
     procedure tlPolDblClick(Sender: TObject);

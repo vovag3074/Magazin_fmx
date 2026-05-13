@@ -1,4 +1,4 @@
-unit frmAddProdaga;
+п»їunit frmAddProdaga;
 
 interface
 
@@ -155,8 +155,8 @@ begin
   end
   else
   begin
-    ShowError('Покупатель ' + qGetAgn.FieldByName('FULL_NAME_STD').AsString +
-      ' не доступен. Выберите вручную');
+    ShowError('РџРѕРєСѓРїР°С‚РµР»СЊ ' + qGetAgn.FieldByName('FULL_NAME_STD').AsString +
+      ' РЅРµ РґРѕСЃС‚СѓРїРµРЅ. Р’С‹Р±РµСЂРёС‚Рµ РІСЂСѓС‡РЅСѓСЋ');
     NameAgn := '';
     isSkidka := false;
     SumSkidka := 0;
@@ -290,10 +290,10 @@ var
   FAgn: Integer;
   NAgn: string;
 begin
-  // 16.03.2019 агент должен быть определен
+  // 16.03.2019 Р°РіРµРЅС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРїСЂРµРґРµР»РµРЅ
   if trim(eAgn.Text) = '' then
   begin
-    ShowError('Укажите покупателя...');
+    ShowError('РЈРєР°Р¶РёС‚Рµ РїРѕРєСѓРїР°С‚РµР»СЏ...');
     Exit;
   end;
   if isLowConnect then
@@ -324,8 +324,8 @@ begin
       fmMain.TestZakaz(eTxt.Text, isMove, isProd, FAgn, NAgn);
       if ((isProd) and (FAgn > 0)) then
       begin
-        if not ShowQuestion('Заказ №' + eTxt.Text +
-          ' уже продавался. Продать еще раз?') then
+        if not ShowQuestion('Р—Р°РєР°Р· в„–' + eTxt.Text +
+          ' СѓР¶Рµ РїСЂРѕРґР°РІР°Р»СЃСЏ. РџСЂРѕРґР°С‚СЊ РµС‰Рµ СЂР°Р·?') then
         begin
           eTxt.Text := '';
           eTxt.SetFocus;
@@ -366,8 +366,8 @@ begin
     eEnter.OnClick(Sender);
     Exit;
   end;
-  if ((tlList.Nodes.Count > 0) and (FAgent > 0)) then // если что-то продали и агент
-  begin // не магазин, то спрашиваем оплату
+  if ((tlList.Nodes.Count > 0) and (FAgent > 0)) then // РµСЃР»Рё С‡С‚Рѕ-С‚Рѕ РїСЂРѕРґР°Р»Рё Рё Р°РіРµРЅС‚
+  begin // РЅРµ РјР°РіР°Р·РёРЅ, С‚Рѕ СЃРїСЂР°С€РёРІР°РµРј РѕРїР»Р°С‚Сѓ
     try
       fmOpl := TfmOpl.Create(fmAddProdAgn);
       fmOpl.dxRet.Visible := true;

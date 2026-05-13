@@ -6,7 +6,7 @@ object fmRepList: TfmRepList
   ClientHeight = 608
   ClientWidth = 848
   Position = OwnerFormCenter
-  StyleBook = dmTheme.SB
+  StyleBook = fmMain.stbMain
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

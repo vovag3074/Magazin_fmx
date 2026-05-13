@@ -456,8 +456,8 @@ object fmInv: TfmInv
       NodesAppearance.TitleFont.Color = claWhite
       NodesAppearance.SelectedFontColor = claBlack
       NodesAppearance.SelectedTitleFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F0078D7
-      NodesAppearance.SelectedStroke.Color = x7F0078D7
+      NodesAppearance.SelectedFill.Color = x7F2A96FF
+      NodesAppearance.SelectedStroke.Color = x7F2A96FF
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
       NodesAppearance.ExtendedFill.Color = xFFF0F0F0
       NodesAppearance.ExtendedStroke.Color = xFFF0F0F0

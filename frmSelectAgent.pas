@@ -1,4 +1,4 @@
-unit frmSelectAgent;
+п»їunit frmSelectAgent;
 
 interface
 
@@ -108,7 +108,7 @@ procedure TfmSelAgn.btFTS2Click(Sender: TObject);
 begin
   if eFind.Text.Trim = '' then
   begin
-    ShowError('Укажите строку для поиска');
+    ShowError('РЈРєР°Р¶РёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ РїРѕРёСЃРєР°');
     eFind.SetFocus;
   end
   else
@@ -123,7 +123,7 @@ procedure TfmSelAgn.btFTSClick(Sender: TObject);
 begin
   if eFind.Text.Trim = '' then
   begin
-    ShowError('Укажите начало строки для поиска');
+    ShowError('РЈРєР°Р¶РёС‚Рµ РЅР°С‡Р°Р»Рѕ СЃС‚СЂРѕРєРё РґР»СЏ РїРѕРёСЃРєР°');
     eFind.SetFocus;
   end
   else
@@ -339,14 +339,14 @@ begin
   tlAgn.AdaptToStyle := True;
   tlFind.AdaptToStyle := True;
   fmMain.StartReadTransaction;
-  // Это для поиска
+  // Р­С‚Рѕ РґР»СЏ РїРѕРёСЃРєР°
   try
     tlSity.BeginUpdate;
     tlSity.Nodes.Clear;
     if trim(eFindSity.Text) = '' then
     begin
       Node := tlSity.AddNode();
-      Node.Text[0] := 'Все';
+      Node.Text[0] := 'Р’СЃРµ';
       Node.DataInteger := -1;
       Node.Values[0].CollapsedIconName := 'Item1';
       Node.Values[0].ExpandedIconName := 'Item1';
@@ -583,9 +583,9 @@ var
   SityStr: string;
   isFav: Boolean;
 begin
-  if GetString(SityStr, 'Новый город', 'Название города') = mrOk then
+  if GetString(SityStr, 'РќРѕРІС‹Р№ РіРѕСЂРѕРґ', 'РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°') = mrOk then
   begin
-    isFav := ShowQuestion('Добавить город ' + SityStr + ' как избранный?');
+    isFav := ShowQuestion('Р”РѕР±Р°РІРёС‚СЊ РіРѕСЂРѕРґ ' + SityStr + ' РєР°Рє РёР·Р±СЂР°РЅРЅС‹Р№?');
     fmMain.StartMainTransaction;
     qAddSity.Active := false;
     qAddSity.Prepare;
