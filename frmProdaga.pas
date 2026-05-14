@@ -923,7 +923,7 @@ begin
           S := S + '(AG.NO_AGN = ' + MyList[i] + ')';
         end;
         S := MySelect +' '+ MyWhere + S + ') ';
-        ShowMessage(S);
+        //ShowMessage(S);
         ShowReportJson('SRepProdDayAllAgn.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
         MyList.Clear;
         MyList.Free;
