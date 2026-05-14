@@ -106,7 +106,7 @@ type
     TMSFNCButton1: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
     TMSFNCButton4: TTMSFNCButton;
-    TMSFNCButton6: TTMSFNCButton;
+    btRep: TTMSFNCButton;
     TMSFNCButton7: TTMSFNCButton;
     btPolMoney: TTMSFNCButton;
     ppSendMoney: TPopup;
@@ -127,6 +127,9 @@ type
     Panel6: TPanel;
     TMSFNCButton8: TTMSFNCButton;
     ltMoney: TLayout;
+    ppRep: TPopup;
+    TMSFNCButton10: TTMSFNCButton;
+    TMSFNCButton6: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -153,6 +156,9 @@ type
     procedure TMSFNCButton9Click(Sender: TObject);
     procedure btPolMoneyClick(Sender: TObject);
     procedure TMSFNCButton8Click(Sender: TObject);
+    procedure btRepClick(Sender: TObject);
+    procedure TMSFNCButton10Click(Sender: TObject);
+    procedure TMSFNCButton6Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -188,7 +194,7 @@ implementation
 
 uses
   frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, frmPredopByCeh,
-  frmSelectDate, frmSendMoney;
+  frmSelectDate, frmSendMoney, frmSelUserProd;
 
 {$R *.fmx}
 
@@ -807,6 +813,53 @@ begin
   HintPanel.Visible := false;
 end;
 
+procedure TfmProd.TMSFNCButton10Click(Sender: TObject);
+var
+  S: string;
+  MyList: TStringList;
+const
+  MyWhere = ' where ((LPT.DATA_PROD = '':DP'')and(';
+const
+  MySelect = 'select AGN.AG_NAME, ' + ' ST.ST_NAME, ' + ' count(LPT.NO_MOD_SIZE) COUNT_OF_NO_MOD_SIZE ' + ' from SITY_TABLE ST ' + ' inner join AGENTS AGN on (ST.NO_ST = AGN.NO_SITY) ' + ' inner join LOG_PROD_TABLE LPT on (AGN.NO_AGN = LPT.NO_AGN) ';
+const
+  myGroup = ' group by AGN.AG_NAME, ST.ST_NAME ';
+begin
+  try
+    fmSelProd := TfmSelProd.Create(fmProd);
+    fmSelProd.showList(StrToDate(eData.Text));
+    if fmSelProd.ShowModal = mrOk then
+    begin
+      MyList := fmSelProd.SelectNoList;
+      var i: Integer;
+      if MyList.Count > 0 then
+      begin
+        S := '';
+        for i := 0 to MyList.Count - 1 do
+        begin
+          if S.Trim <> '' then
+          begin
+            S := S + ' or ';
+          end;
+          S := S + '(AGN.NO_AGN = ' + MyList[i] + ')';
+        end;
+        S := MySelect + MyWhere + S + ')) ' + myGroup;
+        S := StringReplace(S, ':DP', eData.Text, [rfReplaceAll]);
+       // ShowMessage(S);
+        ShowReportJson('sRepOtpList.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
+        MyList.Clear;
+        MyList.Free;
+      end;
+    end;
+    fmSelProd.Free;
+    fmSelProd := nil;
+  except
+    on E: Exception do
+    begin
+      ShowError(E.Message);
+    end;
+  end;
+end;
+
 procedure TfmProd.TMSFNCButton2Click(Sender: TObject);
 begin
   if StrToDate(eData.Text) < Date then
@@ -840,6 +893,55 @@ end;
 procedure TfmProd.TMSFNCButton5Click(Sender: TObject);
 begin
   fmMain.ClearOldFrame;
+end;
+
+procedure TfmProd.TMSFNCButton6Click(Sender: TObject);
+var
+  S: string;
+  MyList: TStringList;
+const
+  mySelect = 'SELECT AG.NO_AGN, ST.ST_NAME, AG.AG_NAME,  AG.AG_DOLG FROM SITY_TABLE ST ' + '   INNER JOIN AGENTS AG ON (ST.NO_ST = AG.NO_SITY) ';
+const
+  myWhere = ' WHERE ( ';
+begin
+  try
+    fmSelProd := TfmSelProd.Create(fmProd);
+    fmSelProd.showList(StrToDate(eData.Text));
+    if fmSelProd.ShowModal = mrOk then
+    begin
+      MyList := fmSelProd.SelectNoList;
+      var i: Integer;
+      if MyList.Count > 0 then
+      begin
+        S := '';
+        for i := 0 to MyList.Count - 1 do
+        begin
+          if S.Trim <> '' then
+          begin
+            S := S + ' or ';
+          end;
+          S := S + '(AG.NO_AGN = ' + MyList[i] + ')';
+        end;
+        S := MySelect +' '+ MyWhere + S + ') ';
+        ShowMessage(S);
+        ShowReportJson('SRepProdDayAllAgn.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
+        MyList.Clear;
+        MyList.Free;
+      end;
+    end;
+    fmSelProd.Free;
+    fmSelProd := nil;
+  except
+    on E: Exception do
+    begin
+      ShowError(E.Message);
+    end;
+  end;
+end;
+
+procedure TfmProd.btRepClick(Sender: TObject);
+begin
+  ppRep.Popup();
 end;
 
 procedure TfmProd.TMSFNCButton7Click(Sender: TObject);

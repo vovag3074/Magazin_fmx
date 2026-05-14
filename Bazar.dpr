@@ -26,7 +26,8 @@ uses
   frmSelForPred in 'frmSelForPred.pas' {fmSelPred},
   frmSelectDate in 'frmSelectDate.pas' {fmSelData},
   frmSendMoney in 'frmSendMoney.pas' {fmSndMoney},
-  frmSelectPol in 'frmSelectPol.pas' {fmSelPol};
+  frmSelectPol in 'frmSelectPol.pas' {fmSelPol},
+  frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd};
 
 {$R *.res}
 

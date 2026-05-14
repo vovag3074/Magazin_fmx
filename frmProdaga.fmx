@@ -138,7 +138,7 @@ object fmProd: TfmProd
       Text = #1055#1088#1086#1076#1072#1078#1072
       OnClick = TMSFNCButton2Click
     end
-    object TMSFNCButton6: TTMSFNCButton
+    object btRep: TTMSFNCButton
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
         F80000000473424954080808087C08648800000212494441544889B5953F6814
@@ -176,6 +176,7 @@ object fmProd: TfmProd
       Position.Y = 2.000000000000000000
       TabOrder = 7
       Text = #1054#1090#1095#1077#1090#1099
+      OnClick = btRepClick
     end
     object TMSFNCButton7: TTMSFNCButton
       Bitmap.PNG = {
@@ -866,18 +867,18 @@ object fmProd: TfmProd
           TabPosition = PlatformDefault
           Sizes = (
             921s
-            364s
+            343s
             921s
-            364s
+            343s
             921s
-            364s)
+            343s)
           object tbNow: TTabItem
             CustomIcon = <
               item
               end>
             IsSelected = True
-            Size.Width = 1.000000000000000000
-            Size.Height = 5.000000000000000000
+            Size.Width = 119.000000000000000000
+            Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -887,7 +888,7 @@ object fmProd: TfmProd
             object tlPMod: TTMSFNCTreeView
               Align = Client
               Size.Width = 881.000000000000000000
-              Size.Height = 364.000000000000000000
+              Size.Height = 343.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray
@@ -1408,7 +1409,7 @@ object fmProd: TfmProd
             object Panel1: TPanel
               Align = Left
               Size.Width = 40.000000000000000000
-              Size.Height = 364.000000000000000000
+              Size.Height = 343.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'TopPanel'
               TabOrder = 1
@@ -1714,8 +1715,8 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = False
-            Size.Width = 1.000000000000000000
-            Size.Height = 5.000000000000000000
+            Size.Width = 67.000000000000000000
+            Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -1726,7 +1727,7 @@ object fmProd: TfmProd
             object tlLog: TTMSFNCTreeView
               Align = Client
               Size.Width = 921.000000000000000000
-              Size.Height = 364.000000000000000000
+              Size.Height = 343.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray
@@ -1834,8 +1835,8 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = False
-            Size.Width = 1.000000000000000000
-            Size.Height = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
             TabOrder = 0
@@ -1846,7 +1847,7 @@ object fmProd: TfmProd
             object tlOpl: TTMSFNCTreeView
               Align = Client
               Size.Width = 921.000000000000000000
-              Size.Height = 364.000000000000000000
+              Size.Height = 343.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Stroke.Color = claDarkgray
@@ -2426,6 +2427,38 @@ object fmProd: TfmProd
             OnClick = TMSFNCButton8Click
           end
         end
+      end
+    end
+    object ppRep: TPopup
+      PlacementTarget = btRep
+      Position.X = 376.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      object TMSFNCButton10: TTMSFNCButton
+        Font.Size = 14.000000000000000000
+        Font.Color = claWhite
+        Size.Width = 152.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Align = Top
+        TabOrder = 1
+        Text = #1055#1091#1090#1077#1074#1086#1081' '#1083#1080#1089#1090
+        OnClick = TMSFNCButton10Click
+      end
+      object TMSFNCButton6: TTMSFNCButton
+        Font.Size = 14.000000000000000000
+        Font.Color = claWhite
+        Size.Width = 152.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Align = Top
+        Position.Y = 50.000000000000000000
+        TabOrder = 0
+        Text = #1063#1077#1082#1080
+        OnClick = TMSFNCButton6Click
       end
     end
   end

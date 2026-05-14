@@ -195,4 +195,8 @@ object fmReport: TfmReport
     Left = 480
     Top = 184
   end
+  object frxCDSComponents1: TfrxCDSComponents
+    Left = 560
+    Top = 48
+  end
 end

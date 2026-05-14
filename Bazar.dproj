@@ -388,9 +388,8 @@
             <Form>fmOpl</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="fкmPredopByCeh.pas">
+        <DCCReference Include="frmPredopByCeh.pas">
             <Form>fmPredByCeh</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmLockPredop.pas">
             <Form>fmLockPred</Form>
@@ -410,6 +409,10 @@
         </DCCReference>
         <DCCReference Include="frmSelectPol.pas">
             <Form>fmSelPol</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="frmSelUserProd.pas">
+            <Form>fmSelProd</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
