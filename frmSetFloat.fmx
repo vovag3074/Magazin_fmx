@@ -125,6 +125,8 @@ object fmSelFloat: TfmSelFloat
     TabOrder = 1
     Cursor = crIBeam
     DecimalDigits = 0
+    Min = -1000.000000000000000000
+    Max = 1000.000000000000000000
     ValueType = Float
     KeyboardType = NumbersAndPunctuation
     Position.X = 72.000000000000000000

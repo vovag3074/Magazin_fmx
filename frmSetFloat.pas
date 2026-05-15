@@ -43,6 +43,7 @@ begin
   fmSelFloat.eSum.DecimalDigits:=DecimalCnt;
   fmSelFloat.eSum.Value := Value;
   Result := fmSelFloat.ShowModal;
+  Value := fmSelFloat.eSum.Value;
   fmSelFloat.Free;
   fmSelFloat:=nil;
 end;

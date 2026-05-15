@@ -562,7 +562,7 @@ begin
     qUpdSk.ParamByName('DT').AsDate := StrToDate(eData.Text);
     qUpdSk.ParamByName('NG').AsInteger := FActiveProd;
     qUpdSk.ParamByName('NM').AsInteger := Node.DataInteger;
-    qUpdSk.ParamByName('NEW_SKIDKA').AsFloat := D;
+    qUpdSk.ParamByName('NEW_SKIDKA').Value := D;
     qUpdSk.Execute;
     fmMain.EndMainTransaction;
     // ReadProd;

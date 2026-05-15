@@ -3602,7 +3602,39 @@ object fmProd: TfmProd
   object qMod2: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select M.NAZVAN M_NAZVAN,'
+      '       sum(LP.CENA_PROD) SUM_PROD,'
+      '       sum(LP.OPLATA) OPLATA,'
+      '       LP.CENA_PROD,'
+      '       K.NAZVAN K_NAZVAN,'
+      '       count(LP.NO_LPT) COUNT_OF_NO_LPT,'
+      '       MS.NO_MOD'
+      'from MODEL_SIZE_TABLE MS'
+      'inner join LOG_PROD_TABLE LP on (MS.NO_MST = LP.NO_MOD_SIZE)'
+      'inner join MODEL_TABLE M on (MS.NO_MOD = M.NO_MOD)'
+      'inner join KATEGORY_TABLE K on (M.NO_KAT = K.NO_KAT)'
+      'where ((LP.NO_AGN = :NG) and'
+      '      (LP.DATA_PROD = :SD) and'
+      '      (LP.IS_TEMP = 0) and'
+      '      (MS.NO_MOD = :NM))'
+      'group by M.NAZVAN, LP.CENA_PROD, K.NAZVAN, MS.NO_MOD'
+      'order by K.NAZVAN, M.NAZVAN  '
+      '')
     Left = 750
     Top = 416
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NM'
+        ParamType = ptInput
+      end>
   end
 end
