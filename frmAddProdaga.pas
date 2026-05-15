@@ -49,6 +49,7 @@ type
     Label7: TLabel;
     TMSFNCButton3: TTMSFNCButton;
     TMSFNCButton2: TTMSFNCButton;
+    qLock: TFDCommand;
     ltZak: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
@@ -59,6 +60,7 @@ type
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
       Shift: TShiftState);
+    procedure TMSFNCButton2Click(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -282,6 +284,18 @@ end;
 procedure TfmAddProdAgn.TMSFNCButton1Click(Sender: TObject);
 begin
   showCalc(eCena);
+end;
+
+procedure TfmAddProdAgn.TMSFNCButton2Click(Sender: TObject);
+begin
+  qLock.Close;
+  fmMain.StartMainTransaction;
+  qLock.Prepare;
+  qLock.ParamByName('NO_AGN').AsInteger := FAgent;
+  qLock.ParamByName('SUM_SKIDKA').Value := eCena.Text.ToDouble;
+  qLock.Execute;
+  fmMain.EndMainTransaction;
+  eTxt.SetFocus;
 end;
 
 procedure TfmAddProdAgn.eEnterClick(Sender: TObject);

@@ -130,6 +130,11 @@ type
     ppRep: TPopup;
     TMSFNCButton10: TTMSFNCButton;
     TMSFNCButton6: TTMSFNCButton;
+    TMSFNCButton11: TTMSFNCButton;
+    TMSFNCButton12: TTMSFNCButton;
+    qUpdSk: TFDCommand;
+    qMod2: TFDQuery;
+    TMSFNCButton13: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -159,6 +164,8 @@ type
     procedure btRepClick(Sender: TObject);
     procedure TMSFNCButton10Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
+    procedure TMSFNCButton4Click(Sender: TObject);
+    procedure TMSFNCButton13Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -176,6 +183,7 @@ type
     procedure setPredPol;
     procedure MoveProd;
     procedure ListFullMoneySend(NoVal: Integer);
+    procedure SetSkidka;
   public
     { Public declarations }
     procedure LoadINI;
@@ -194,7 +202,7 @@ implementation
 
 uses
   frmMain, frmAddProdaga, frmReport, frmOplata, frmSelForPred, frmPredopByCeh,
-  frmSelectDate, frmSendMoney, frmSelUserProd;
+  frmSelectDate, frmSendMoney, frmSelUserProd, frmSetFloat;
 
 {$R *.fmx}
 
@@ -538,11 +546,53 @@ begin
   fmMain.EndMainTransaction;
 end;
 
+procedure TfmProd.SetSkidka;
+var
+  I: Integer;
+  Node: TTMSFNCTreeViewNode;
+  D:Double;
+begin
+  I := getNumberValue('Скидка','Укажите размер скидки',0, D);
+  if I =mrOk then
+  begin
+    Node := tlPMod.FocusedNode;
+    qUpdSk.Active := false;
+    fmMain.StartMainTransaction;
+    qUpdSk.Prepare;
+    qUpdSk.ParamByName('DT').AsDate := StrToDate(eData.Text);
+    qUpdSk.ParamByName('NG').AsInteger := FActiveProd;
+    qUpdSk.ParamByName('NM').AsInteger := Node.DataInteger;
+    qUpdSk.ParamByName('NEW_SKIDKA').AsFloat := D;
+    qUpdSk.Execute;
+    fmMain.EndMainTransaction;
+    // ReadProd;
+    // Для улучшения обновляем только выбранный узел дерева
+    // В 6 - № агента в 0 - № модели этого достаточно
+    // ListBoxItem1Click(tlProd.ItemByIndex(tlProd.ItemIndex));
+    pmProd.Popup();
+    fmMain.StartReadTransaction;
+    qMod2.Close;
+    qMod2.Prepare;
+    qMod2.ParamByName('SD').AsDate := StrToDate(eData.Text);
+    qMod2.ParamByName('NG').AsInteger := FActiveProd;
+    qMod2.ParamByName('NM').AsInteger := Node.DataInteger;
+    qMod2.Active := True;
+    Node.Text[0] := qMod2.FieldByName('M_NAZVAN').AsString;
+    Node.Text[1] := qMod2.FieldByName('COUNT_OF_NO_LPT').AsInteger.ToString;
+    Node.Text[2] := qMod2.FieldByName('CENA_PROD').AsFloat.ToString;
+    Node.Text[3] := qMod2.FieldByName('SUM_PROD').AsFloat.ToString;
+    Node.Text[4] := qMod2.FieldByName('OPLATA').AsFloat.ToString;
+    qMod2.Close;
+    fmMain.EndReadTransaction;
+  end;
+end;
+
 procedure TfmProd.showLastProdList;
 var
   Events: TArray<TDateTime>;
   I: Integer;
 begin
+try
   TTask.Run(
     procedure
     begin
@@ -569,6 +619,8 @@ begin
           end;
         end);
     end);
+except
+end;
 end;
 
 procedure TfmProd.ShowLog;
@@ -844,7 +896,6 @@ begin
         end;
         S := MySelect + MyWhere + S + ')) ' + myGroup;
         S := StringReplace(S, ':DP', eData.Text, [rfReplaceAll]);
-       // ShowMessage(S);
         ShowReportJson('sRepOtpList.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
         MyList.Clear;
         MyList.Free;
@@ -860,6 +911,11 @@ begin
   end;
 end;
 
+procedure TfmProd.TMSFNCButton13Click(Sender: TObject);
+begin
+ ShowReportJson('RepStatProd.fr3','');
+end;
+
 procedure TfmProd.TMSFNCButton2Click(Sender: TObject);
 begin
   if StrToDate(eData.Text) < Date then
@@ -872,6 +928,11 @@ begin
   fmAddProdAgn.Free;
   fmAddProdAgn := nil;
   ReadProd;
+end;
+
+procedure TfmProd.TMSFNCButton4Click(Sender: TObject);
+begin
+ SetSkidka;
 end;
 
 procedure TfmProd.btOplTovClick(Sender: TObject);
@@ -923,7 +984,6 @@ begin
           S := S + '(AG.NO_AGN = ' + MyList[i] + ')';
         end;
         S := MySelect +' '+ MyWhere + S + ') ';
-        //ShowMessage(S);
         ShowReportJson('SRepProdDayAllAgn.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
         MyList.Clear;
         MyList.Free;

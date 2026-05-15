@@ -415,6 +415,10 @@
             <Form>fmSelProd</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSetFloat.pas">
+            <Form>fmSelFloat</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

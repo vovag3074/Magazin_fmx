@@ -52,6 +52,7 @@ var
   fmReport: TfmReport;
 
 procedure ShowReportJson(NameRep: string; ParamList: string);
+
 procedure PrintReportJson(NameRep: string; ParamList: string);
 
 function getReportPatch: string;
@@ -143,30 +144,42 @@ end;
 
 procedure ShowReportJson(NameRep: string; ParamList: string);
 begin
+  fmMain.StartAllTransaction;
   GetRepName(NameRep);
   if NameRep.Trim <> '' then
   begin
     fmReport := TfmReport.Create(Application);
     fmReport.myRep.LoadFromFile(NameRep);
+    if ParamList.Trim = '' then
+    begin
+      ParamList := '[{}]';
+    end;
     fmReport.ParseJson(ParamList);
     fmReport.myRep.PrepareReport();
     fmReport.myRep.ShowPreparedReport;
     FreeAndNil(fmReport);
   end;
+  fmMain.EndAllTransaction;
 end;
 
 procedure PrintReportJson(NameRep: string; ParamList: string);
 begin
+  fmMain.StartAllTransaction;
   GetRepName(NameRep);
   if NameRep.Trim <> '' then
   begin
     fmReport := TfmReport.Create(Application);
     fmReport.myRep.LoadFromFile(NameRep);
+    if ParamList.Trim = '' then
+    begin
+      ParamList := '[{}]';
+    end;
     fmReport.ParseJson(ParamList);
     fmReport.myRep.PrepareReport();
     fmReport.myRep.Print;
     FreeAndNil(fmReport);
   end;
+  fmMain.EndAllTransaction;
 end;
 
 end.

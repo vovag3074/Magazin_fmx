@@ -27,12 +27,14 @@ uses
   frmSelectDate in 'frmSelectDate.pas' {fmSelData},
   frmSendMoney in 'frmSendMoney.pas' {fmSndMoney},
   frmSelectPol in 'frmSelectPol.pas' {fmSelPol},
-  frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd};
+  frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd},
+  frmSetFloat in 'frmSetFloat.pas' {fmSelFloat};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
+  Application.CreateForm(TfmSelFloat, fmSelFloat);
   Application.Run;
 end.
