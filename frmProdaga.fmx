@@ -329,7 +329,7 @@ object fmProd: TfmProd
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      TabOrder = 1
+      TabOrder = 3
       object Rectangle1: TRectangle
         Align = Client
         Fill.Kind = None
@@ -704,7 +704,7 @@ object fmProd: TfmProd
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      TabOrder = 3
+      TabOrder = 5
       object Rectangle3: TRectangle
         Align = Client
         Fill.Color = xAB006400
@@ -738,7 +738,7 @@ object fmProd: TfmProd
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      TabOrder = 2
+      TabOrder = 4
       object Rectangle4: TRectangle
         Align = Client
         Fill.Color = xCC023E4A
@@ -833,7 +833,7 @@ object fmProd: TfmProd
       Size.Width = 929.000000000000000000
       Size.Height = 377.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 4
+      TabOrder = 6
       object ListBoxItem1: TListBoxItem
         Size.Width = 1035.000000000000000000
         Size.Height = 40.000000000000000000
@@ -2285,7 +2285,7 @@ object fmProd: TfmProd
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      TabOrder = 5
+      TabOrder = 7
       object Rectangle5: TRectangle
         Align = Client
         Corners = [BottomLeft, BottomRight]
@@ -2323,7 +2323,7 @@ object fmProd: TfmProd
       Size.Height = 177.000000000000000000
       Size.PlatformDefault = False
       StyleBook = fmMain.stbMain
-      TabOrder = 6
+      TabOrder = 8
       object Panel3: TPanel
         Align = Client
         Padding.Left = 2.000000000000000000
@@ -2450,7 +2450,7 @@ object fmProd: TfmProd
       Size.Width = 433.000000000000000000
       Size.Height = 145.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 7
+      TabOrder = 9
       object Panel5: TPanel
         Align = Client
         Size.Width = 433.000000000000000000
@@ -2601,7 +2601,7 @@ object fmProd: TfmProd
       Size.Width = 202.000000000000000000
       Size.Height = 150.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 8
+      TabOrder = 10
       object TMSFNCButton10: TTMSFNCButton
         Font.Size = 14.000000000000000000
         Font.Color = claWhite
@@ -2636,6 +2636,420 @@ object fmProd: TfmProd
         TabOrder = 2
         Text = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1087#1088#1086#1076#1072#1078#1080
         OnClick = TMSFNCButton13Click
+      end
+    end
+    object ltItemDolg: TLayout
+      StyleName = 'prodItemD'
+      Position.X = 26.000000000000000000
+      Position.Y = 216.000000000000000000
+      Size.Width = 1009.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 2
+      object Rectangle7: TRectangle
+        Align = Client
+        Fill.Kind = None
+        HitTest = False
+        Margins.Left = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Size.Width = 1005.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        object TMSFNCImage3: TTMSFNCImage
+          Align = Left
+          Size.Width = 40.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F40000000473424954080808087C0864880000045E494441545885E5974B6C55
+            551486BFB5CFB98F3E69CBA3501A8B0584A641A0A1A045A8F822150D91A432B0
+            5C99A831042138123171448C03632444648008445E2660EB8B01964488942244
+            2BA001ADC402168ABD94DE5BEEBDE79CE5A0542ABD6D2F4D61E23F3B67AFFDAF
+            6FAF93BDF63EF07F970C7562CD0F3726896B975868C2D8F64F5BCAE4E23D0108
+            35C667E2990F30F2B0DC9CAFA883472DAEB57A5B855CB86B00A1A3890518A913
+            91B464E3AA7A5135317FFB9CB4E6543D4DAA81D5C7750446B6F7971C40440A44
+            7C5B514D7961290304D5AB11917183068ACC7DF1B85331EC0006AD4C254E4050
+            337FD80150CD493DD4CB1D7600455A528D05FD73D80150EA520A53753CD7FB7A
+            D801BACE5BB5AADA3028006CDD51113C37EC007B9F1717C7AA56E54CBFC9550F
+            58116B55AA9E0CA51356D76B6630C359232ACB30727F7723A44960D3F988D972
+            68813877EA39642DAFD7E0CBC7D577CF12DE0D25FD04CB8EE818F1B9EF025522
+            92959A9576FAE8DA5C649FF8E4AD999567E9DE8C6944B0B188CB64622901549F
+            527F7AC4FB1E61C640E9DCE8F5841BEF520063D9BF15649F5FFC74DA96D6A9FE
+            BA508E7D6991F19CE9087908364A1C68051A51F6FA8BD92F829B1420D4E03C23
+            463E1F70ADA04D2BE7C7DDE8753FE04CAC2899B5EEA5B381D2DC93FB8DE8F841
+            6BA534C4123C9B3D85B6BEDB50E4BEC10C04247D4269CFE3A97D9B76FF5C927D
+            62532AC9BB5330C76FF326C9FA8080A662923DBDFBBC51D50E802BED7641CD9A
+            495A7B3057DBAF59AAB7B9A8426B9B4FB7EF1BA52BDF9EA08E630A00ECBE787A
+            3995F63062DA5CB9B0F3166C7E9EC30B8BDBD855378AF51BC7332ACFD191390E
+            01BFC78D98E1F2551F1D9D1665A511424B2E83F1480AA009EB283ED711A42F5C
+            6F59563C63F4C80D8581E6F79A9A400CAD5595E1715595612251A3CD2D01C21D
+            3637628680DF63745E8209853182819B9715E52FFADB86A146E70B41AA06489F
+            488FFCF2DC6C5D51FF44D6E155234738CD96E10CB04B0C2583144F55F9CA6F11
+            9222DA93AED215F70DCBB31E139140B27121F1F1ECA2BDF54BF5C8215B9CD90A
+            71F158E3F3288B7A2C34C2226328030A013F105168061A0C7C1628E6D82DAF7E
+            146A745F11D8982C26209DCB56673D15CE4F34D6F96CFDB7AC8EC3B948CCEC54
+            CF3BE887A69C0769EF9953FF65C6D892C2C8F5B1D389F4F6EAF734DC566E7DA4
+            B04255E37D2AA04E3C43AFA67F5A3B9A25AF4EE1C31DF97AECC74C6D0BFB265A
+            B0CE36A6BE23E66B3BB827AB6BFDDA82F02315A5D196E6E085F42033FB567310
+            2D3F162FF7D46C1023E53DEF828497AECDA920DFFA75F7D113991CF82E97D3E7
+            D268B9E4C771BB2D6D5B193F26CEB4A95116CE0B336746A7B81EF3D22771E48E
+            007A54D39878D2A88480C7FD26F2CEEB198BBE290E1E3E29F09F6B7A2C2EA842
+            C0AF482F7755FE8EBB94644DE6CA90007A54BD47ADDC623237CF926BD1661EB2
+            94F745281FC04B51EAD5E2B54011A76F1F1CF2BF616FC5FEA0445C1E4598AA90
+            07A8086D28A73D876F830FF0FB70E4B92BFA07CC09B2AA4EE0FF2F0000000049
+            454E44AE426082}
+          Bitmaps = <>
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+        end
+        object Label19: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family, Style]
+          Size.Width = 335.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claYellow
+          Text = 'Label1'
+          TabOrder = 1
+        end
+        object Line11: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 588.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label20: TLabel
+          StyleName = 'sumDolg'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 741.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claYellow
+          TextSettings.HorzAlign = Center
+          Text = '40'
+          TabOrder = 6
+        end
+        object Line12: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 846.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label21: TLabel
+          StyleName = 'prodOpl'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 597.000000000000000000
+          Size.Width = 130.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claYellow
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 5
+        end
+        object Line13: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 380.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label22: TLabel
+          StyleName = 'prodCnt'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 389.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claYellow
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 3
+        end
+        object Line14: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 732.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label23: TLabel
+          StyleName = 'prodSum'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 483.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claYellow
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 2
+        end
+        object Line15: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 474.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label24: TLabel
+          StyleName = 'sumPred'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 855.000000000000000000
+          Size.Width = 150.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claYellow
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 4
+        end
+      end
+    end
+    object ltItemPred: TLayout
+      StyleName = 'prodItemP'
+      Position.X = 26.000000000000000000
+      Position.Y = 224.000000000000000000
+      Size.Width = 1009.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 1
+      object Rectangle8: TRectangle
+        Align = Client
+        Fill.Kind = None
+        HitTest = False
+        Margins.Left = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Size.Width = 1005.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claWhite
+        object TMSFNCImage4: TTMSFNCImage
+          Align = Left
+          Size.Width = 40.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F40000000473424954080808087C0864880000045E494441545885E5974B6C55
+            551486BFB5CFB98F3E69CBA3501A8B0584A641A0A1A045A8F822150D91A432B0
+            5C99A831042138123171448C03632444648008445E2660EB8B01964488942244
+            2BA001ADC402168ABD94DE5BEEBDE79CE5A0542ABD6D2F4D61E23F3B67AFFDAF
+            6FAF93BDF63EF07F970C7562CD0F3726896B975868C2D8F64F5BCAE4E23D0108
+            35C667E2990F30F2B0DC9CAFA883472DAEB57A5B855CB86B00A1A3890518A913
+            91B464E3AA7A5135317FFB9CB4E6543D4DAA81D5C7750446B6F7971C40440A44
+            7C5B514D7961290304D5AB11917183068ACC7DF1B85331EC0006AD4C254E4050
+            337FD80150CD493DD4CB1D7600455A528D05FD73D80150EA520A53753CD7FB7A
+            D801BACE5BB5AADA3028006CDD51113C37EC007B9F1717C7AA56E54CBFC9550F
+            58116B55AA9E0CA51356D76B6630C359232ACB30727F7723A44960D3F988D972
+            68813877EA39642DAFD7E0CBC7D577CF12DE0D25FD04CB8EE818F1B9EF025522
+            92959A9576FAE8DA5C649FF8E4AD999567E9DE8C6944B0B188CB64622901549F
+            527F7AC4FB1E61C640E9DCE8F5841BEF520063D9BF15649F5FFC74DA96D6A9FE
+            BA508E7D6991F19CE9087908364A1C68051A51F6FA8BD92F829B1420D4E03C23
+            463E1F70ADA04D2BE7C7DDE8753FE04CAC2899B5EEA5B381D2DC93FB8DE8F841
+            6BA534C4123C9B3D85B6BEDB50E4BEC10C04247D4269CFE3A97D9B76FF5C927D
+            62532AC9BB5330C76FF326C9FA8080A662923DBDFBBC51D50E802BED7641CD9A
+            495A7B3057DBAF59AAB7B9A8426B9B4FB7EF1BA52BDF9EA08E630A00ECBE787A
+            3995F63062DA5CB9B0F3166C7E9EC30B8BDBD855378AF51BC7332ACFD191390E
+            01BFC78D98E1F2551F1D9D1665A511424B2E83F1480AA009EB283ED711A42F5C
+            6F59563C63F4C80D8581E6F79A9A400CAD5595E1715595612251A3CD2D01C21D
+            3637628680DF63745E8209853182819B9715E52FFADB86A146E70B41AA06489F
+            488FFCF2DC6C5D51FF44D6E155234738CD96E10CB04B0C2583144F55F9CA6F11
+            9222DA93AED215F70DCBB31E139140B27121F1F1ECA2BDF54BF5C8215B9CD90A
+            71F158E3F3288B7A2C34C2226328030A013F105168061A0C7C1628E6D82DAF7E
+            146A745F11D8982C26209DCB56673D15CE4F34D6F96CFDB7AC8EC3B948CCEC54
+            CF3BE887A69C0769EF9953FF65C6D892C2C8F5B1D389F4F6EAF734DC566E7DA4
+            B04255E37D2AA04E3C43AFA67F5A3B9A25AF4EE1C31DF97AECC74C6D0BFB265A
+            B0CE36A6BE23E66B3BB827AB6BFDDA82F02315A5D196E6E085F42033FB567310
+            2D3F162FF7D46C1023E53DEF828497AECDA920DFFA75F7D113991CF82E97D3E7
+            D268B9E4C771BB2D6D5B193F26CEB4A95116CE0B336746A7B81EF3D22771E48E
+            007A54D39878D2A88480C7FD26F2CEEB198BBE290E1E3E29F09F6B7A2C2EA842
+            C0AF482F7755FE8EBB94644DE6CA90007A54BD47ADDC623237CF926BD1661EB2
+            94F745281FC04B51EAD5E2B54011A76F1F1CF2BF616FC5FEA0445C1E4598AA90
+            07A8086D28A73D876F830FF0FB70E4B92BFA07CC09B2AA4EE0FF2F0000000049
+            454E44AE426082}
+          Bitmaps = <>
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+        end
+        object Label25: TLabel
+          StyleName = 'Text'
+          Align = Client
+          StyledSettings = [Family, Style]
+          Size.Width = 335.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claLime
+          Text = 'Label1'
+          TabOrder = 1
+        end
+        object Line16: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 588.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label26: TLabel
+          StyleName = 'sumDolg'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 741.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claLime
+          TextSettings.HorzAlign = Center
+          Text = '40'
+          TabOrder = 6
+        end
+        object Line17: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 846.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label27: TLabel
+          StyleName = 'prodOpl'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 597.000000000000000000
+          Size.Width = 130.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claLime
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 5
+        end
+        object Line18: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 380.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label28: TLabel
+          StyleName = 'prodCnt'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 389.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claLime
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 3
+        end
+        object Line19: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 732.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label29: TLabel
+          StyleName = 'prodSum'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 483.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claLime
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 2
+        end
+        object Line20: TLine
+          Align = Right
+          LineType = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 474.000000000000000000
+          Size.Width = 4.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claWhite
+        end
+        object Label30: TLabel
+          StyleName = 'sumPred'
+          Align = Right
+          StyledSettings = [Family, Style]
+          Position.X = 855.000000000000000000
+          Size.Width = 150.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 22.000000000000000000
+          TextSettings.FontColor = claLime
+          TextSettings.HorzAlign = Center
+          Text = '20800'
+          TabOrder = 4
+        end
       end
     end
   end

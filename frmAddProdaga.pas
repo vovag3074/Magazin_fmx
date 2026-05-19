@@ -48,9 +48,12 @@ type
     Label6: TLabel;
     Label7: TLabel;
     TMSFNCButton3: TTMSFNCButton;
-    TMSFNCButton2: TTMSFNCButton;
+    btSave: TTMSFNCButton;
     qLock: TFDCommand;
+    Panel2: TPanel;
+    lbSumProd: TLabel;
     ltZak: TLayout;
+    TMSFNCButton2: TTMSFNCButton;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
@@ -60,7 +63,7 @@ type
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
       Shift: TShiftState);
-    procedure TMSFNCButton2Click(Sender: TObject);
+    procedure btSaveClick(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -124,6 +127,7 @@ end;
 procedure TfmAddProdAgn.eTypeChange(Sender: TObject);
 begin
   eCena.Enabled := eType.ItemIndex > 0;
+  btSave.Enabled := eType.ItemIndex = 1;
 end;
 
 procedure TfmAddProdAgn.FormCreate(Sender: TObject);
@@ -248,6 +252,8 @@ begin
       end;
     end;
   end;
+   lbSumProd.Text := 'Продано: '+FCount.ToString+' | на сумму: '+FSumTov.toString+
+      ' | оплачено: '+FOplTov.ToString+' | долг: '+FDolg.ToString;
 end;
 
 procedure TfmAddProdAgn.ShowZakList;
@@ -286,7 +292,7 @@ begin
   showCalc(eCena);
 end;
 
-procedure TfmAddProdAgn.TMSFNCButton2Click(Sender: TObject);
+procedure TfmAddProdAgn.btSaveClick(Sender: TObject);
 begin
   qLock.Close;
   fmMain.StartMainTransaction;

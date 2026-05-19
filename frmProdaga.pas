@@ -16,7 +16,7 @@ uses
   FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
   FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer, FMX.Menus, System.ImageList,
   FMX.ImgList, FMX.SVGIconImageList, FMX.Calendar.Helpers,
-  FMX.CalendarHolidayDays.Style;
+  FMX.CalendarHolidayDays.Style, FMX.TMSFNCHTMLText;
 
 type
   TfmProd = class(TFrame)
@@ -135,6 +135,34 @@ type
     qUpdSk: TFDCommand;
     qMod2: TFDQuery;
     TMSFNCButton13: TTMSFNCButton;
+    ltItemDolg: TLayout;
+    Rectangle7: TRectangle;
+    TMSFNCImage3: TTMSFNCImage;
+    Label19: TLabel;
+    Line11: TLine;
+    Label20: TLabel;
+    Line12: TLine;
+    Label21: TLabel;
+    Line13: TLine;
+    Label22: TLabel;
+    Line14: TLine;
+    Label23: TLabel;
+    Line15: TLine;
+    Label24: TLabel;
+    ltItemPred: TLayout;
+    Rectangle8: TRectangle;
+    TMSFNCImage4: TTMSFNCImage;
+    Label25: TLabel;
+    Line16: TLine;
+    Label26: TLabel;
+    Line17: TLine;
+    Label27: TLabel;
+    Line18: TLine;
+    Label28: TLabel;
+    Line19: TLine;
+    Label29: TLabel;
+    Line20: TLine;
+    Label30: TLabel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -463,15 +491,26 @@ begin
       qUsr.First;
       repeat
         Node := TListBoxItem.Create(tlProd);
-        Node.StyleLookup := 'prodItem';
+        if qUsr.FieldByName('AG_PRED').AsFloat > 0 then
+        begin
+         Node.StyleLookup := 'prodItemP';
+        end else
+        if qUsr.FieldByName('AG_DOLG').AsFloat > 0 then
+        begin
+         Node.StyleLookup := 'prodItemD';
+        end else
+        begin
+         Node.StyleLookup := 'prodItem';
+        end;
         Node.Tag := qUsr.FieldByName('NO_AGN').AsInteger;
+
         Node.TagString := qUsr.FieldByName('NO_AGN').AsInteger.ToString;
         Node.Text := qUsr.FieldByName('AG_NAME').AsString + ' ' + qUsr.FieldByName('ST_NAME').AsString + ' Валюта: (' + qUsr.FieldByName('NAZVAN').AsString + ')';
         Node.StylesData['prodCnt'] := qUsr.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger;
         Node.StylesData['prodSum'] := qUsr.FieldByName('SUM_TOV').AsFloat;
         Node.StylesData['prodOpl'] := qUsr.FieldByName('SUM_OPL').AsFloat;
 //        Node.StylesData['prodOpl'] := (qUsr.FieldByName('SUM_TOV').AsFloat -qUsr.FieldByName('SUM_OPL').AsFloat);
-        Node.StylesData['sumDolg'] := qUsr.FieldByName('AG_DOLG').AsFloat;
+          Node.StylesData['sumDolg'] := qUsr.FieldByName('AG_DOLG').AsFloat;
 //        Node.Values[10] := qUsr.FieldByName('DOP_OPIS').AsString;
         Node.StylesData['sumPred'] := qUsr.FieldByName('AG_PRED').AsFloat;
 //        if qUsr.FieldByName('IS_SKIDKA').AsInteger = 1 then

@@ -202,6 +202,7 @@ object fmOpl: TfmOpl
   object ePred: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 3
+    ReadOnly = True
     Position.X = 144.000000000000000000
     Position.Y = 136.000000000000000000
     Size.Width = 232.000000000000000000
@@ -784,7 +785,7 @@ object fmOpl: TfmOpl
     Left = 468
     Top = 328
   end
-  object qGetPred: TFDQuery
+  object qGetPred_t: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT
     SQL.Strings = (
@@ -802,10 +803,69 @@ object fmOpl: TfmOpl
         ParamType = ptInput
       end>
   end
-  object qGetPred2: TFDQuery
+  object qGetPred2_t: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT
+    SQL.Strings = (
+      'select SUM_FROM_PRED'
+      'from GET_AGN_BANK_PREDOP(:NO_AGENT,:IN_SUM_PRED)'
+      '')
     Left = 588
-    Top = 336
+    Top = 328
+    ParamData = <
+      item
+        Name = 'NO_AGENT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IN_SUM_PRED'
+        ParamType = ptInput
+      end>
+  end
+  object qGetPred: TFDStoredProc
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateTransaction = fmMain.IBT
+    StoredProcName = 'GET_AGN_PREDOP'
+    Left = 524
+    Top = 400
+    ParamData = <
+      item
+        Name = 'NO_AGENT'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'IN_SUM_PRED'
+        DataType = ftFloat
+        ParamType = ptInput
+      end>
+    object qGetPredSUM_FROM_PRED: TFloatField
+      FieldName = 'SUM_FROM_PRED'
+      Origin = 'SUM_FROM_PRED'
+    end
+  end
+  object qGetPred2: TFDStoredProc
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    UpdateTransaction = fmMain.IBT
+    StoredProcName = 'GET_AGN_BANK_PREDOP'
+    Left = 596
+    Top = 400
+    ParamData = <
+      item
+        Name = 'NO_AGENT'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'IN_SUM_PRED'
+        DataType = ftFloat
+        ParamType = ptInput
+      end>
+    object qGetPred2SUM_FROM_PRED: TFloatField
+      FieldName = 'SUM_FROM_PRED'
+      Origin = 'SUM_FROM_PRED'
+    end
   end
 end

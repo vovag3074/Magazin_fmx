@@ -40,8 +40,8 @@ type
     qOpl: TFDCommand;
     qDop: TFDCommand;
     lbInfo: TTMSFNCHTMLText;
-    qGetPred: TFDQuery;
-    qGetPred2: TFDQuery;
+    qGetPred_t: TFDQuery;
+    qGetPred2_t: TFDQuery;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -49,6 +49,10 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    qGetPred: TFDStoredProc;
+    qGetPredSUM_FROM_PRED: TFloatField;
+    qGetPred2: TFDStoredProc;
+    qGetPred2SUM_FROM_PRED: TFloatField;
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btBankClick(Sender: TObject);
@@ -59,7 +63,7 @@ type
   private
     { Private declarations }
     procedure readValutList;
-    procedure setOplata;
+    procedure setOplata(isNewTransaction: Boolean = false);
   public
     { Public declarations }
     FAgent: Integer;
@@ -107,10 +111,10 @@ var
   FVSum: Double;
   FOst: Double;
 begin
- if eOpl.Text='' then
- begin
-  eOpl.Text:='0';
- end;
+  if eOpl.Text = '' then
+  begin
+    eOpl.Text := '0';
+  end;
    //--------------------------------------
    // 31-avg-2022 предварительный осмотр оплаты
    //--------------------------------------
@@ -203,7 +207,7 @@ begin
         except
           on E: Exception do
           begin
-           ShowError(E.Message);
+            ShowError(E.Message);
           end;
         end;
         S := SetPredByCeh(FTmp {* eCurs.EditValue}, FAgent, FData);
@@ -254,9 +258,8 @@ begin
 end;
 
 procedure TfmOpl.EditButton1Click(Sender: TObject);
-var
-  T: Double;
 begin
+  EditButton1.Enabled := False;
   FTranID := fmMain.GetTranID;
   // -------------------------------------------
   // 10-feb-2015 перенес закрытие продажи сюда
@@ -272,45 +275,53 @@ begin
   if btBank.IsPressed then
   begin
     try
-      T := FBankPred;
-      qGetPred2.Active := false;
+      if FBankPred > FDolg then
+        FBankPred := FDolg;
+      // костыль, чтобы не списывалась предоплата дважды
+      qGetPred2.Close;
       qGetPred2.Prepare;
       qGetPred2.ParamByName('NO_AGENT').AsInteger := FAgent;
-      qGetPred2.ParamByName('IN_SUM_PRED').Value := T;
+      qGetPred2.ParamByName('IN_SUM_PRED').Value := FBankPred;
       qGetPred2.Active := True;
       eOpl.Text := qGetPred2.FieldByName('SUM_FROM_PRED').AsFloat.toString;
+      qGetPred2.Close;
     except
       on E: Exception do
       begin
         fmMain.ShowIBError(E.Message);
+        fmMain.IBT.Rollback;
       end;
     end;
   end
   else
   begin
     try
-      T := FPred;
-      qGetPred.Active := false;
+      if FPred > FDolg then
+        FPred := FDolg;
+      // костыль, чтобы не списывалась предоплата дважды
+      qGetPred.Close;
       qGetPred.Prepare;
       qGetPred.ParamByName('NO_AGENT').AsInteger := FAgent;
-      qGetPred.ParamByName('IN_SUM_PRED').Value := T;
+      qGetPred.ParamByName('IN_SUM_PRED').Value := FPred;
       qGetPred.Active := True;
       eOpl.Text := qGetPred.FieldByName('SUM_FROM_PRED').AsFloat.ToString;
+      qGetPred.Close;
     except
       on E: Exception do
       begin
         fmMain.ShowIBError(E.Message);
+        fmMain.IBT.Rollback;
       end;
     end;
   end;
-  fmMain.EndMainTransaction;
-  SetOplata;
+//  fmMain.EndMainTransaction;
+  SetOplata(false);
   ModalResult := mrOk;
 end;
 
 procedure TfmOpl.eOplChangeTracking(Sender: TObject);
 begin
- fmMain.onEditChangeTracking(Sender);
+  fmMain.onEditChangeTracking(Sender);
 end;
 
 procedure TfmOpl.ReadAgent(NoAgent, isTemp: Integer; MyData: tDate);
@@ -362,10 +373,13 @@ begin
   eVal.ItemIndex := 0;
 end;
 
-procedure TfmOpl.setOplata;
+procedure TfmOpl.setOplata(isNewTransaction: Boolean = false);
 begin
   try
-    fmMain.StartMainTransaction;
+    if isNewTransaction then
+    begin
+      fmMain.StartMainTransaction;
+    end;
     qOpl.Active := false;
     qOpl.Prepare;
     qOpl.ParamByName('NG').AsInteger := FAgent;
@@ -404,6 +418,8 @@ end;
 
 procedure TfmOpl.TMSFNCButton6Click(Sender: TObject);
 begin
+  if eOpl.Text.Trim = '' then
+    eOpl.Text := '0';
   showCalc(eOpl);
 end;
 

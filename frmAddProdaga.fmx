@@ -60,7 +60,7 @@ object fmAddProdAgn: TfmAddProdAgn
       Text = #1047#1072#1082#1088#1099#1090#1100
       OnClick = TMSFNCButton3Click
     end
-    object TMSFNCButton2: TTMSFNCButton
+    object btSave: TTMSFNCButton
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
         F80000000473424954080808087C086488000002D7494441544889B5944D4854
@@ -89,19 +89,22 @@ object fmAddProdAgn: TfmAddProdAgn
         3BC2FE897E36FD53F0BF8E9FBC632CA4BE3DBD120000000049454E44AE426082}
       BitmapSize = 24
       ShowImage = True
-      Font.Color = claWhite
+      Font.Color = xFFA0A0A0
       Size.Width = 150.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
-      Align = Left
+      Align = Right
+      Enabled = False
       Margins.Left = 20.000000000000000000
       Margins.Top = 20.000000000000000000
+      Margins.Right = 50.000000000000000000
       Margins.Bottom = 20.000000000000000000
-      Position.X = 20.000000000000000000
+      Position.X = 654.000000000000000000
       Position.Y = 20.000000000000000000
       TabOrder = 1
       Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1089#1082#1080#1076#1082#1091
-      OnClick = TMSFNCButton2Click
+      OnClick = btSaveClick
+      OldFontColor = claWhite
     end
   end
   object lbZak: TListBox
@@ -504,7 +507,7 @@ object fmAddProdAgn: TfmAddProdAgn
     TabOrder = 5
     ReadOnly = True
     Position.X = 32.000000000000000000
-    Position.Y = 328.000000000000000000
+    Position.Y = 362.000000000000000000
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
@@ -579,10 +582,33 @@ object fmAddProdAgn: TfmAddProdAgn
       Align = Right
       CanFocus = False
       Cursor = crArrow
+      Position.X = 207.000000000000000000
+      TabOrder = 1
+      Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
+      OnClick = eEnterClick
+    end
+    object TMSFNCButton2: TTMSFNCButton
+      ImageAlign = Client
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000063494441544889ED92C109C0
+        200C455F3C748FAE559CAF63E91C0A355EDABB42A529E4416E09491E1F9CAF91
+        D1465542CD1C00DBCE29427BF59292882571DD1547E7C2EC2291F1AF31A5C82C
+        7614798AFE8B1D454F8A6AA62D4D912A3AD36F4791B38C0E5843453D30BB33FC
+        0000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      ShowText = False
+      Font.Color = claWhite
+      Size.Width = 33.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Align = Right
+      CanFocus = False
+      Cursor = crArrow
       Position.X = 240.000000000000000000
       TabOrder = 0
       Text = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
-      OnClick = eEnterClick
     end
   end
   object eCena: TEdit
@@ -641,7 +667,7 @@ object fmAddProdAgn: TfmAddProdAgn
     ItemIndex = 0
     ItemHeight = 40.000000000000000000
     Position.X = 384.000000000000000000
-    Position.Y = 328.000000000000000000
+    Position.Y = 360.000000000000000000
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
@@ -670,14 +696,14 @@ object fmAddProdAgn: TfmAddProdAgn
   object Label4: TLabel
     FocusControl = eAgn
     Position.X = 8.000000000000000000
-    Position.Y = 303.000000000000000000
+    Position.Y = 337.000000000000000000
     Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
     TabOrder = 16
   end
   object Label5: TLabel
     FocusControl = eType
     Position.X = 376.000000000000000000
-    Position.Y = 303.000000000000000000
+    Position.Y = 335.000000000000000000
     Text = #1058#1080#1087
     TabOrder = 15
   end
@@ -694,6 +720,23 @@ object fmAddProdAgn: TfmAddProdAgn
     Position.Y = 401.000000000000000000
     Text = #1062#1077#1085#1072
     TabOrder = 13
+  end
+  object Panel2: TPanel
+    Align = Top
+    Position.Y = 280.000000000000000000
+    Size.Width = 704.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 23
+    object lbSumProd: TLabel
+      Align = Client
+      Size.Width = 704.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      TabOrder = 0
+    end
   end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
