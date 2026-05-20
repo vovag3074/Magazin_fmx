@@ -45,6 +45,8 @@ object fmInpMag: TfmInpMag
         F5418757C637AAF6BFD2DF38F76A9C6CDCB3AD0000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -87,6 +89,8 @@ object fmInpMag: TfmInpMag
         3941E773FD130000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -137,6 +141,8 @@ object fmInpMag: TfmInpMag
         377FCDFEB7EB69847340E69D856E0000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -239,6 +245,8 @@ object fmInpMag: TfmInpMag
         00A58196BBDBBEAE560000000049454E44AE426082}
       BitmapSize = 32
       ShowImage = True
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -363,6 +371,8 @@ object fmInpMag: TfmInpMag
         0D412B98118360B750A55EF37E0A3D4FE2FFCDFE05A9A0D67F160E2CDE000000
         0049454E44AE426082}
       ShowImage = True
+      Font.Size = 16.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -490,8 +500,8 @@ object fmInpMag: TfmInpMag
       NodesAppearance.SelectedFontColor = claBlack
       NodesAppearance.SelectedTitleFontColor = claBlack
       NodesAppearance.ExtendedSelectedFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F2A96FF
-      NodesAppearance.SelectedStroke.Color = x7F2A96FF
+      NodesAppearance.SelectedFill.Color = x7F0078D7
+      NodesAppearance.SelectedStroke.Color = x7F0078D7
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
       NodesAppearance.ExtendedFill.Color = xFFF0F0F0
       NodesAppearance.ExtendedStroke.Color = xFFF0F0F0

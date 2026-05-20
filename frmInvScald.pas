@@ -45,8 +45,6 @@ type
     qZakList: TFDQuery;
     Rectangle1: TRectangle;
     Label1: TLabel;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
     Label2: TLabel;
     Label3: TLabel;
     Splitter3: TSplitter;
@@ -339,6 +337,8 @@ var
 begin
   FSumMod := 0;
   tlMod.Nodes.Clear;
+  cxZakList.Items.Clear;
+  try
   tlMod.BeginUpdate;
   fmMain.StartReadTransaction;
   qKat.Close;
@@ -377,6 +377,11 @@ begin
     lbSum.Text := FSumMod.ToString;
   end;
   ListActiveZakaz;
+  except on E:Exception do
+  begin
+    fmMain.ShowIBError(E.Message);
+  end;
+  end;
 end;
 
 procedure TfmInv.ListModZakInfo;

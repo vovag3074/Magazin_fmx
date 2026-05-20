@@ -66,6 +66,7 @@ type
     procedure btProdClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
     procedure IBCLost(Sender: TObject);
+    procedure TMSFNCToolBarButton4Click(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -108,8 +109,8 @@ type
     /// <summary>
     /// Выставляет указанную валюту как выбранную в выпадающем списке
     /// </summary>
-    procedure GetValutFromComboBox(NoValut:Integer;var myBox:TComboBox);
-    procedure onEditChangeTracking(Sender:TObject);
+    procedure GetValutFromComboBox(NoValut: Integer; var myBox: TComboBox);
+    procedure onEditChangeTracking(Sender: TObject);
   end;
 
 procedure ShowInfo(T: string);
@@ -138,12 +139,13 @@ var
    // словарь ключ = значение
   DistValut: TDictionary<integer, string>;
 
-threadvar isLowConnect: Boolean;
+threadvar
+  isLowConnect: Boolean;
 
 implementation
 
 uses
-  frmInpSclad, frmInvScald, frmBank, frmProdaga;
+  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents;
 
 {$R *.fmx}
 
@@ -178,6 +180,13 @@ begin
     pMain.SetFocus;
     fmProd.Release;
     fmProd := nil;
+  end
+  else if Assigned(fmAgn) then
+  begin
+    fmAgn.SaveINI;
+    pMain.SetFocus;
+    fmAgn.Release;
+    fmAgn := nil;
   end;
 end;
 
@@ -190,13 +199,13 @@ end;
 procedure TfmMain.EndMainTransaction;
 begin
   if fmMain.IBT.Active then
-  fmMain.IBT.Commit;
+    fmMain.IBT.Commit;
 end;
 
 procedure TfmMain.EndReadTransaction;
 begin
   if fmMain.IBT_Read.Active then
-  fmMain.IBT_Read.Rollback;
+    fmMain.IBT_Read.Rollback;
 end;
 
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -226,9 +235,10 @@ begin
   IBT_Read.Rollback;
 end;
 
-procedure TfmMain.GetValutFromComboBox(NoValut:Integer;var myBox: TComboBox);
-var I:Integer;
-    Item:TListBoxItem;
+procedure TfmMain.GetValutFromComboBox(NoValut: Integer; var myBox: TComboBox);
+var
+  I: Integer;
+  Item: TListBoxItem;
 begin
   for I := 0 to myBox.Items.Count - 1 do
   begin
@@ -307,25 +317,26 @@ begin
 end;
 
 procedure TfmMain.onEditChangeTracking(Sender: TObject);
-Var FEdit : TEdit;
-    FFloat : Single;
+var
+  FEdit: TEdit;
+  FFloat: Single;
 begin
-  If Not (Sender is TEdit) Then // Защитимся от не выспавшегося самого себя
+  if not (Sender is TEdit) then // Защитимся от не выспавшегося самого себя
     Exit;
-  FEdit:=(Sender as TEdit); // Для удобства...
-  FEdit.Text:=FEdit.Text.Replace(' ',''); // Убираем случайные пробелы
+  FEdit := (Sender as TEdit); // Для удобства...
+  FEdit.Text := FEdit.Text.Replace(' ', ''); // Убираем случайные пробелы
   if (FEdit.Text.IsEmpty) or (FEdit.Text.Equals('-')) then // Если пусто (ничего не введено или все удалено) или только минус, ничего не делаем
     Exit;
-  FEdit.Text:=FEdit.Text.Replace('.',','); // Заменяйм точку запятой
+  FEdit.Text := FEdit.Text.Replace('.', ','); // Заменяйм точку запятой
   if FEdit.Text.Equals(',') then // Если введен разделитель, добавляем перед ним ноль для красоты (не обязательно)
   begin
-    FEdit.Text:='0,';
-    FEdit.CaretPosition:=FEdit.CaretPosition+1; // без этого курсор останется между нулём и запятой
+    FEdit.Text := '0,';
+    FEdit.CaretPosition := FEdit.CaretPosition + 1; // без этого курсор останется между нулём и запятой
   end;
-  if TryStrToFloat(FEdit.Text,FFloat) Then // Пробуем преобразовать в число
-    FEdit.TagString:=FEdit.Text // Если удалось, сохраняем в временном хранилище
-  Else
-    FEdit.Text:=FEdit.TagString; // Если не удалось, восстанавливаем из временного хранилища
+  if TryStrToFloat(FEdit.Text, FFloat) then // Пробуем преобразовать в число
+    FEdit.TagString := FEdit.Text // Если удалось, сохраняем в временном хранилище
+  else
+    FEdit.Text := FEdit.TagString; // Если не удалось, восстанавливаем из временного хранилища
 end;
 
 procedure TfmMain.ShowBank;
@@ -432,6 +443,16 @@ begin
     NoAgn := qTestZal.FieldByName('NO_AGN').AsInteger;
   end;
   qTestZal.Close;
+end;
+
+procedure TfmMain.TMSFNCToolBarButton4Click(Sender: TObject);
+begin
+  tbMain.Visible := False;
+  myList.Visible := False;
+  fmAgn := TfmAgn.Create(pMain);
+  fmAgn.Parent := pMain;
+  fmAgn.Align := TAlignLayout.Client;
+  fmAgn.LoadINI;
 end;
 
 procedure TfmMain.btProdClick(Sender: TObject);

@@ -28,7 +28,8 @@ uses
   frmSendMoney in 'frmSendMoney.pas' {fmSndMoney},
   frmSelectPol in 'frmSelectPol.pas' {fmSelPol},
   frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd},
-  frmSetFloat in 'frmSetFloat.pas' {fmSelFloat};
+  frmSetFloat in 'frmSetFloat.pas' {fmSelFloat},
+  frmAgents in 'frmAgents.pas' {fmAgn: TFrame};
 
 {$R *.res}
 

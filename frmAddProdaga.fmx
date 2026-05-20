@@ -45,7 +45,7 @@ object fmAddProdAgn: TfmAddProdAgn
         993F6FC1A3FD8BFD0254ACAC5AD8BB63C50000000049454E44AE426082}
       BitmapSize = 24
       ShowImage = True
-      Font.Size = 14.000000000000000000
+      Font.Size = 16.000000000000000000
       Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 48.000000000000000000
@@ -93,13 +93,13 @@ object fmAddProdAgn: TfmAddProdAgn
       Size.Width = 150.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
-      Align = Right
+      Align = Left
       Enabled = False
       Margins.Left = 20.000000000000000000
       Margins.Top = 20.000000000000000000
       Margins.Right = 50.000000000000000000
       Margins.Bottom = 20.000000000000000000
-      Position.X = 654.000000000000000000
+      Position.X = 20.000000000000000000
       Position.Y = 20.000000000000000000
       TabOrder = 1
       Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1089#1082#1080#1076#1082#1091
