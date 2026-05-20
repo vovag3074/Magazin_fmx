@@ -419,6 +419,11 @@
             <Form>fmSelFloat</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmAgents.pas">
+            <Form>fmAgn</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

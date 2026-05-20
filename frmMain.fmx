@@ -265,6 +265,7 @@ object fmMain: TfmMain
       Size.Height = 62.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 4
+      OnClick = TMSFNCToolBarButton4Click
       Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
       Bitmaps = <>
       LargeLayoutBitmaps = <

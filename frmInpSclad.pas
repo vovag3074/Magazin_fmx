@@ -484,6 +484,8 @@ var
   I: Integer;
   Data: pNodeData;
 begin
+   tlMove.Nodes.Clear;
+   lbZak.Items.Clear;
   if fmMain.IBT_Read.Active then
   begin
     fmMain.IBT_Read.Rollback;
@@ -492,7 +494,6 @@ begin
   end;
   try
     FSum := 0;
-    tlMove.Nodes.Clear;
     tlMove.BeginUpdate;
     qList.Close;
     qList.Prepare;
@@ -528,7 +529,6 @@ begin
     edSum.Text := FSum.ToString;
   end;
   try
-    lbZak.Clear;
     lbZak.BeginUpdate;
     qReadZakaz.Close;
     qReadZakaz.Prepare;

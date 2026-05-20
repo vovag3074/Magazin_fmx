@@ -52,8 +52,8 @@ type
     qLock: TFDCommand;
     Panel2: TPanel;
     lbSumProd: TLabel;
-    ltZak: TLayout;
     TMSFNCButton2: TTMSFNCButton;
+    ltZak: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
