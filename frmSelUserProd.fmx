@@ -4,7 +4,7 @@ object fmSelProd: TfmSelProd
   BorderStyle = ToolWindow
   Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1080#1079' '#1089#1087#1080#1089#1082#1072
   ClientHeight = 669
-  ClientWidth = 538
+  ClientWidth = 577
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
@@ -14,7 +14,7 @@ object fmSelProd: TfmSelProd
   object Panel1: TPanel
     Align = Bottom
     Position.Y = 599.000000000000000000
-    Size.Width = 538.000000000000000000
+    Size.Width = 577.000000000000000000
     Size.Height = 70.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
@@ -48,15 +48,15 @@ object fmSelProd: TfmSelProd
       Font.Size = 14.000000000000000000
       Font.Color = claWhite
       Size.Width = 150.000000000000000000
-      Size.Height = 40.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Align = Right
       Margins.Left = 10.000000000000000000
-      Margins.Top = 15.000000000000000000
+      Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
-      Margins.Bottom = 15.000000000000000000
-      Position.X = 208.000000000000000000
-      Position.Y = 15.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 247.000000000000000000
+      Position.Y = 10.000000000000000000
       TabOrder = 1
       Text = 'OK'
       OnClick = btOKClick
@@ -95,23 +95,55 @@ object fmSelProd: TfmSelProd
       Font.Size = 14.000000000000000000
       Font.Color = claWhite
       Size.Width = 150.000000000000000000
-      Size.Height = 40.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Align = Right
       ModalResult = 2
       Margins.Left = 10.000000000000000000
-      Margins.Top = 15.000000000000000000
+      Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
-      Margins.Bottom = 15.000000000000000000
-      Position.X = 378.000000000000000000
-      Position.Y = 15.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 417.000000000000000000
+      Position.Y = 10.000000000000000000
       TabOrder = 0
       Text = #1054#1090#1082#1072#1079
+    end
+    object TMSFNCButton1: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000000473424954080808087C08648800000132494441545885ED95B14AC3
+        501486BF730D6D298E224817CD22E22C585AF40DFA248A5D7C051717C5DD07F0
+        3104E92E1471E855284510476913293D0EA9109A28A1C1A4C3FDA6C3CFBDF90F
+        F7DEFF041C8E145431AA9852CC034B27B40C43CB30B074FEDB4F1685D0321261
+        8BE824DEAA3E8D7963F74668A5EDC988CE94879ACF515C4C3B66F9A52E86A2AF
+        2095521FA16325980C684F06B48BF04AC4ECCB728D700A807253F13903085FD9
+        63C67E2E3743BFBACDD39F0D84964F11EA446918577DD689E2F96E848D3CFE33
+        E5A3E6B319D7BC94758FC061ACFE69F54295A62C399A5401A1B7A8273E377EA6
+        E1799C034CA75CD677192D67E97064A3F4479888E15A853BA039AF0F801640F0
+        425772C650855E6D87ABB8BE7A8348E0163889D5916E38D69CA3580CFD4C0B8B
+        FC19391CA5F30D94447482D26354B50000000049454E44AE426082}
+      BitmapSize = 32
+      ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
+      Size.Width = 150.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Align = Left
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 10.000000000000000000
+      TabOrder = 3
+      Text = #1042#1089#1077
+      OnClick = TMSFNCButton1Click
     end
   end
   object PokList: TTMSFNCTreeView
     Align = Client
-    Size.Width = 538.000000000000000000
+    Size.Width = 577.000000000000000000
     Size.Height = 599.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2

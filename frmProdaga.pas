@@ -636,6 +636,7 @@ try
     procedure
     begin
       // 1. Выполнение запроса в фоновом потоке
+      Cursor:= crAppStart;
       qDataPol.Active := True;
       I := qDataPol.RecordCount;
       SetLength(Events, I);
@@ -655,6 +656,7 @@ try
             myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
             myCalendar.Model.ShowEvents := True;
             myCalendar.Model.ShowWeekends := False;
+            Cursor:= crDefault;
           end;
         end);
     end);

@@ -4,7 +4,7 @@ object fmSelPol: TfmSelPol
   BorderStyle = ToolWindow
   Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1087#1086#1083#1091#1095#1072#1090#1077#1083#1103
   ClientHeight = 565
-  ClientWidth = 430
+  ClientWidth = 472
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
@@ -14,7 +14,7 @@ object fmSelPol: TfmSelPol
   object Panel1: TPanel
     Align = Bottom
     Position.Y = 495.000000000000000000
-    Size.Width = 430.000000000000000000
+    Size.Width = 472.000000000000000000
     Size.Height = 70.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
@@ -65,7 +65,7 @@ object fmSelPol: TfmSelPol
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 290.000000000000000000
+      Position.X = 332.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 1
       Text = #1054#1090#1082#1072#1079
@@ -113,7 +113,7 @@ object fmSelPol: TfmSelPol
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 140.000000000000000000
+      Position.X = 182.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 0
       Text = #1054#1050
@@ -121,7 +121,7 @@ object fmSelPol: TfmSelPol
   end
   object tlPol: TListBox
     Align = Client
-    Size.Width = 430.000000000000000000
+    Size.Width = 472.000000000000000000
     Size.Height = 495.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -131,7 +131,7 @@ object fmSelPol: TfmSelPol
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 426.000000000000000000
+    Viewport.Width = 468.000000000000000000
     Viewport.Height = 491.000000000000000000
     object Layout1: TLayout
       StyleName = 'itemPol'

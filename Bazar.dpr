@@ -36,6 +36,5 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
-  Application.CreateForm(TfmSelFloat, fmSelFloat);
   Application.Run;
 end.
