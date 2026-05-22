@@ -29,13 +29,13 @@ uses
   frmSelectPol in 'frmSelectPol.pas' {fmSelPol},
   frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd},
   frmSetFloat in 'frmSetFloat.pas' {fmSelFloat},
-  frmAgents in 'frmAgents.pas' {fmAgn: TFrame};
+  frmAgents in 'frmAgents.pas' {fmAgn: TFrame},
+  frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
-  Application.CreateForm(TfmSelFloat, fmSelFloat);
   Application.Run;
 end.

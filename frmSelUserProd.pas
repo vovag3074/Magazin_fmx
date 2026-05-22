@@ -1,4 +1,4 @@
-unit frmSelUserProd;
+﻿unit frmSelUserProd;
 
 interface
 
@@ -22,15 +22,17 @@ type
     TMSFNCURLBitmapContainer1: TTMSFNCURLBitmapContainer;
     btOK: TTMSFNCButton;
     TMSFNCButton2: TTMSFNCButton;
+    TMSFNCButton1: TTMSFNCButton;
     procedure btOKClick(Sender: TObject);
+    procedure TMSFNCButton1Click(Sender: TObject);
   private
     { Private declarations }
-    FSelList:TStringList;
-    FSelNoList:TStringList;
+    FSelList: TStringList;
+    FSelNoList: TStringList;
   public
     { Public declarations }
-    procedure showList(DataProd:TDate);
-    property  SelectList: TStringList read FSelList;
+    procedure showList(DataProd: TDate);
+    property SelectList: TStringList read FSelList;
     property SelectNoList: TStringList read FSelNoList;
   end;
 
@@ -47,18 +49,19 @@ uses
 { TfmSelProd }
 
 procedure TfmSelProd.btOKClick(Sender: TObject);
-  var I:Integer;
-      S:string;
+var
+  I: Integer;
+  S: string;
 begin
-  for I := 0 to PokList.Nodes.Count-1 do
+  for I := 0 to PokList.Nodes.Count - 1 do
+  begin
+    if PokList.Nodes[I].Checked[0] then
     begin
-      if PokList.Nodes[I].Checked[0] then
-       begin
-          FSelList.Add(PokList.Nodes[I].Text[0]);
-          FSelNoList.Add(PokList.Nodes[I].DataInteger.ToString);
-       end;
+      FSelList.Add(PokList.Nodes[I].Text[0]);
+      FSelNoList.Add(PokList.Nodes[I].DataInteger.ToString);
     end;
- ModalResult := mrOk;
+  end;
+  ModalResult := mrOk;
 end;
 
 procedure TfmSelProd.showList(DataProd: TDate);
@@ -69,12 +72,12 @@ begin
   FSelList.Clear;
   FSelNoList := TStringList.Create;
   FSelNoList.Clear;
-  PokList.AdaptToStyle:=True;
+  PokList.AdaptToStyle := True;
   fmMain.StartReadTransaction;
   //-----------------------------------
   PokList.Nodes.Clear;
   qList.Close;
-  qList.ParamByName('DP').AsDate:=DataProd;
+  qList.ParamByName('DP').AsDate := DataProd;
   qList.Active := True;
   if qList.RecordCount > 0 then
   begin
@@ -83,8 +86,8 @@ begin
       Node := PokList.AddNode;
       Node.Text[0] := qList.FieldByName('FULL_NAME_STD').asString;
       Node.DataInteger := qList.FieldByName('NO_AGN').AsInteger;
-      Node.CheckTypes[0]:=tvntCheckBox;
-      Node.Checked[0]:=False;
+      Node.CheckTypes[0] := tvntCheckBox;
+      Node.Checked[0] := False;
       Node.Values[0].CollapsedIconName := 'Item1';
       Node.Values[0].ExpandedIconName := 'Item1';
       qList.Next;
@@ -95,4 +98,14 @@ begin
   fmMain.EndReadTransaction;
 end;
 
+procedure TfmSelProd.TMSFNCButton1Click(Sender: TObject);
+var I:Integer;
+begin
+  for I := 0 to PokList.Nodes.Count - 1 do
+  begin
+    PokList.Nodes[I].Checked[0] := True;
+  end;
+end;
+
 end.
+

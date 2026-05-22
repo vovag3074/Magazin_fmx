@@ -3413,6 +3413,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'report-briefcase-filled'
         SVGText = 
@@ -3508,6 +3509,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'report-hourglass'
         SVGText = 
@@ -3576,6 +3578,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'report-hourglass_2'
         SVGText = 
@@ -3644,6 +3647,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -3780,6 +3784,7 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'date-move-back-one-day'
         SVGText = 
@@ -3845,8 +3850,6 @@ object fmProd: TfmProd
         Layers = <
           item
             Name = 'report-briefcase-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -3861,32 +3864,24 @@ object fmProd: TfmProd
         Layers = <
           item
             Name = 'report-hourglass'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'report-hourglass_2'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'date-move-back-one-day'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 312
