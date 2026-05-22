@@ -1,0 +1,114 @@
+object fmUserInfo: TfmUserInfo
+  Left = 0
+  Top = 0
+  Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1077
+  ClientHeight = 429
+  ClientWidth = 800
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object pnUserInfo: TPanel
+    Align = Client
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Size.Width = 800.000000000000000000
+    Size.Height = 429.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 0
+    object tbAgn: TTabControl
+      Align = Client
+      Size.Width = 796.000000000000000000
+      Size.Height = 425.000000000000000000
+      Size.PlatformDefault = False
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        796s
+        393s
+        796s
+        393s
+        796s
+        393s
+        796s
+        393s
+        796s
+        393s)
+      object tiDolg: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 66.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #1044#1086#1083#1075#1080
+        ExplicitSize.cx = 54.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+      end
+      object TabItem2: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 84.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #1048#1089#1090#1086#1088#1080#1103
+        ExplicitSize.cx = 68.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+      end
+      object TabItem3: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 78.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #1054#1087#1083#1072#1090#1099
+        ExplicitSize.cx = 62.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+      end
+      object TabItem4: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 94.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #1048#1079#1084#1077#1085#1080#1090#1100
+        ExplicitSize.cx = 74.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+      end
+      object TabItem5: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 138.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+        ExplicitSize.cx = 108.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+      end
+    end
+  end
+end

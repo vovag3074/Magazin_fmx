@@ -29,7 +29,8 @@ uses
   frmSelectPol in 'frmSelectPol.pas' {fmSelPol},
   frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd},
   frmSetFloat in 'frmSetFloat.pas' {fmSelFloat},
-  frmAgents in 'frmAgents.pas' {fmAgn: TFrame};
+  frmAgents in 'frmAgents.pas' {fmAgn: TFrame},
+  frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo};
 
 {$R *.res}
 
