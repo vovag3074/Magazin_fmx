@@ -44,7 +44,6 @@ type
     SearchEditButton1: TSearchEditButton;
     lbFind: TLabel;
     t1: TTimer;
-    ppAgn: TTMSFNCPopup;
     ppSity: TPopup;
     Panel4: TPanel;
     dxInsSity: TTMSFNCButton;
@@ -62,8 +61,10 @@ type
     TMSFNCButton1: TTMSFNCButton;
     TMSFNCButton2: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
+    ppTest: TPopup;
     procedure TMSFNCButton5Click(Sender: TObject);
-    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
+    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
+      Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
     procedure t1Timer(Sender: TObject);
     procedure btSityClick(Sender: TObject);
@@ -129,12 +130,14 @@ begin
     begin
       fmUserInfo.Free;
       Application.ProcessMessages;
-      fmUserInfo := TfmUserInfo.Create(fmMain);
+      fmUserInfo := TfmUserInfo.Create(ppTest);
+      fmUserInfo.pnUserInfo.Parent := ppTest;
     end;
     tlAgn.PopupMenu := pmAgent;
-    ppAgn.ContentControl := fmUserInfo.pnUserInfo;
-    ppAgn.PlacementControl := Item;
-    ppAgn.Popup();
+//    ppAgn.ContentControl := fmUserInfo.pnUserInfo;
+//    ppAgn.PlacementControl := Item;
+//    ppAgn.Popup();
+    ppTest.Popup();
     fmUserInfo.ShowInfoUser(Item.Tag);
   end;
 end;
@@ -159,7 +162,8 @@ begin
   end;
 end;
 
-procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
+procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar:
+  WideChar; Shift: TShiftState);
 begin
   if Key = vkdown then
   begin
@@ -258,8 +262,10 @@ procedure TfmAgn.LoadINI;
 begin
   if not Assigned(fmUserInfo) then
   begin
-    fmUserInfo := TfmUserInfo.Create(fmMain);
-    ppAgn.ContentControl := fmUserInfo.pnUserInfo;
+    fmUserInfo := TfmUserInfo.Create(ppTest);
+    ppTest.Width := fmUserInfo.pnUserInfo.Width;
+    ppTest.Height := fmUserInfo.pnUserInfo.Height;
+    fmUserInfo.pnUserInfo.Parent := ppTest;
   end;
   eFind.SetFocus;
   tlSity.Width := myINI.ReadInteger('Pokupateli', 'SityList', 300);

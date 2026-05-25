@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FMX.TMSFNCCustomComponent, FMX.TMSFNCBitmapContainer,
-  FMX.Edit;
+  FMX.Edit, FMX.TMSFNCButton;
 
 type
   TfmUserInfo = class(TForm)
@@ -28,11 +28,16 @@ type
     tlOpl: TTMSFNCTreeView;
     qLOpl: TFDQuery;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
-    eName: TEdit;
     qReadUsr: TFDQuery;
+    TMSFNCButton1: TTMSFNCButton;
+    TMSFNCButton2: TTMSFNCButton;
+    TMSFNCButton3: TTMSFNCButton;
+    Panel1: TPanel;
+    TMSFNCButton4: TTMSFNCButton;
     procedure TabItem3Click(Sender: TObject);
     procedure tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure TabItem4Click(Sender: TObject);
+    procedure TMSFNCButton4Click(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -50,7 +55,7 @@ var
 implementation
 
 uses
-  frmMain;
+  frmMain, frmOplata;
 
 {$R *.fmx}
 
@@ -168,7 +173,7 @@ begin
   qReadUsr.Prepare;
   qReadUsr.ParamByName('NG').AsInteger := FActiveProd;
   qReadUsr.Active := True;
-  eName.Text := qReadUsr.FieldByName('AG_NAME').AsString;
+//  eName.Text := qReadUsr.FieldByName('AG_NAME').AsString;
 //  eVal.EditValue := qReadUsr.FieldByName('PRED_VAL').AsInteger;
 //  cbSkid.Checked := qReadUsr.FieldByName('IS_SKIDKA').AsInteger = 1;
 //  eDolg.EditValue := qReadUsr.FieldByName('AG_DOLG').AsFloat;
@@ -197,6 +202,22 @@ begin
   else if ANode.Node.DataInteger = 2 then
   begin
     ATextColor := TAlphaColors.Yellow;
+  end;
+end;
+
+procedure TfmUserInfo.TMSFNCButton4Click(Sender: TObject);
+begin
+  try
+    fmOpl := TfmOpl.Create(fmMain);
+    fmOpl.dxRet.Visible := False;
+    fmOpl.ReadAgent(FActiveProd, 0, now);
+    if fmOpl.ShowModal = mrOk then
+    begin
+     // ReadProd;
+    end;
+  finally
+    fmOpl.Free;
+    fmOpl := nil;
   end;
 end;
 
