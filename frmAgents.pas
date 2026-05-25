@@ -59,6 +59,9 @@ type
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
+    TMSFNCButton1: TTMSFNCButton;
+    TMSFNCButton2: TTMSFNCButton;
+    TMSFNCButton3: TTMSFNCButton;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
@@ -66,6 +69,9 @@ type
     procedure btSityClick(Sender: TObject);
     procedure btAgnClick(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
+    procedure TMSFNCButton1Click(Sender: TObject);
+    procedure TMSFNCButton2Click(Sender: TObject);
+    procedure TMSFNCButton3Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -381,6 +387,26 @@ end;
 procedure TfmAgn.t1Timer(Sender: TObject);
 begin
   t1.Enabled := false;
+  StartFind;
+end;
+
+procedure TfmAgn.TMSFNCButton1Click(Sender: TObject);
+begin
+  FPage := 0;
+  StartFind;
+end;
+
+procedure TfmAgn.TMSFNCButton2Click(Sender: TObject);
+begin
+  FPage := FPage + 10;
+  StartFind;
+end;
+
+procedure TfmAgn.TMSFNCButton3Click(Sender: TObject);
+begin
+  FPage := FPage - 10;
+  if FPage < 0 then
+    FPage := 0;
   StartFind;
 end;
 
