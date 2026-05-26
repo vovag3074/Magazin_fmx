@@ -37,7 +37,7 @@ type
     TMSFNCToolBarButton2: TTMSFNCToolBarButton;
     TMSFNCToolBarSeparator1: TTMSFNCToolBarSeparator;
     btInvSclad: TTMSFNCToolBarButton;
-    TMSFNCToolBarButton4: TTMSFNCToolBarButton;
+    btAgent: TTMSFNCToolBarButton;
     pMain: TPanel;
     TMSFNCStylesManager1: TTMSFNCStylesManager;
     IBM: TFDManager;
@@ -66,7 +66,7 @@ type
     procedure btProdClick(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
     procedure IBCLost(Sender: TObject);
-    procedure TMSFNCToolBarButton4Click(Sender: TObject);
+    procedure btAgentClick(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -302,6 +302,10 @@ begin
   begin
 
   end;
+  if AItemIndex = 2 then  //склад
+  begin
+    btAgent.OnClick(Sender);
+  end;
   if AItemIndex = 1 then  //склад
   begin
     btInvSclad.OnClick(Sender);
@@ -445,7 +449,7 @@ begin
   qTestZal.Close;
 end;
 
-procedure TfmMain.TMSFNCToolBarButton4Click(Sender: TObject);
+procedure TfmMain.btAgentClick(Sender: TObject);
 begin
   tbMain.Visible := False;
   myList.Visible := False;

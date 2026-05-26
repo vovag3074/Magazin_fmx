@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FMX.TMSFNCCustomComponent, FMX.TMSFNCBitmapContainer,
-  FMX.Edit, FMX.TMSFNCButton;
+  FMX.Edit, FMX.TMSFNCButton, fmx.Objects;
 
 type
   TfmUserInfo = class(TForm)
@@ -34,10 +34,15 @@ type
     TMSFNCButton3: TTMSFNCButton;
     Panel1: TPanel;
     TMSFNCButton4: TTMSFNCButton;
+    HintPanel: TCalloutPanel;
+    HintLabel: TLabel;
+    TMSFNCButton5: TTMSFNCButton;
     procedure TabItem3Click(Sender: TObject);
     procedure tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure TabItem4Click(Sender: TObject);
     procedure TMSFNCButton4Click(Sender: TObject);
+    procedure TMSFNCButton4MouseEnter(Sender: TObject);
+    procedure TMSFNCButton4MouseLeave(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -64,6 +69,7 @@ uses
 procedure TfmUserInfo.ShowInfoUser(NoUser: Integer);
 begin
   FActiveProd := NoUser;
+  HintPanel.Visible := false;
   tbAgn.ActiveTab := tiDolg;
   tlOpl.AdaptToStyle := True;
   tlLog.AdaptToStyle := True;
@@ -219,6 +225,56 @@ begin
     fmOpl.Free;
     fmOpl := nil;
   end;
+end;
+
+procedure TfmUserInfo.TMSFNCButton4MouseEnter(Sender: TObject);
+var
+  p, r: TRectF;
+  s: string;
+begin
+  if (Sender is TControl) then
+  begin
+
+    if Sender is TTMSFNCButton then
+      s := TTMSFNCButton(Sender).Text
+    else
+      s := TControl(Sender).TagString;
+    p := TControl(Sender).AbsoluteRect;
+
+    r := RectF(0, 0, 400, 1000);
+    if HintLabel.Canvas <> nil then
+    begin
+      HintLabel.Canvas.Font.Size := 16;
+      HintLabel.Canvas.MeasureText(r, s, true, [], TTextAlign.Center, TTextAlign.Center);
+      HintPanel.Width := r.Width + 22;
+      HintPanel.Height := r.Height + HintPanel.CalloutLength + 30;
+    end;
+    if (p.Left + TControl(Sender).Width / 2 > HintPanel.Width / 2) then
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Bottom;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width / 2 - HintPanel.Width / 2;
+      HintPanel.Position.Y := p.Top - TControl(Sender).Height - 15;
+      HintLabel.Padding.Left := 0;
+      HintLabel.Padding.Top := 0;
+    end
+    else
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Left;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width;
+      HintPanel.Position.Y := p.Top - HintPanel.Height / 2 - TControl(Sender).Height / 2;
+      HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
+      HintLabel.Padding.Left := HintPanel.CalloutLength;
+      HintLabel.Padding.Top := -HintPanel.CalloutLength;
+    end;
+    HintPanel.BringToFront;
+    HintPanel.Visible := True;
+    HintLabel.Text := s;
+  end;
+end;
+
+procedure TfmUserInfo.TMSFNCButton4MouseLeave(Sender: TObject);
+begin
+ HintPanel.Visible := false;
 end;
 
 end.

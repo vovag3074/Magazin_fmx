@@ -18,7 +18,7 @@ type
     TMSFNCButton5: TTMSFNCButton;
     btSity: TTMSFNCButton;
     tlSity: TListBox;
-    SearchBox1: TSearchBox;
+    sbSity: TSearchBox;
     btAgn: TTMSFNCButton;
     Splitter1: TSplitter;
     SVGIconImageList1: TSVGIconImageList;
@@ -62,9 +62,13 @@ type
     TMSFNCButton2: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
     ppTest: TPopup;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    qAddSity: TFDCommand;
     procedure TMSFNCButton5Click(Sender: TObject);
-    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
-      Shift: TShiftState);
+    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
     procedure t1Timer(Sender: TObject);
     procedure btSityClick(Sender: TObject);
@@ -73,6 +77,7 @@ type
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure TMSFNCButton3Click(Sender: TObject);
+    procedure dxInsSityClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -102,7 +107,7 @@ threadvar
 implementation
 
 uses
-  frmMain, frmFullInfoPokup, frmOplata;
+  frmMain, frmFullInfoPokup, frmOplata, frmAddString;
 
 {$R *.fmx}
 
@@ -147,6 +152,34 @@ begin
   LoadAgentList;
 end;
 
+/// <summary>
+/// Добавить город
+/// </summary>
+procedure TfmAgn.dxInsSityClick(Sender: TObject);
+var
+  S: string;
+  B: Integer;
+begin
+  B := 0;
+  if GetString(S, 'Новый город', 'Название города') = mrOk then
+  begin
+    if ShowQuestion('Отметить город "' + S + '" как избранный?') then
+    begin
+      B := 1;
+    end;
+    fmMain.StartMainTransaction;
+    qAddSity.Active := false;
+    qAddSity.Prepare;
+    qAddSity.ParamByName('ST_NAME').AsString := S;
+    qAddSity.ParamByName('IS_STAR').AsSmallInt := B;
+    qAddSity.Execute;
+    fmMain.EndMainTransaction;
+    LoadList;
+    Application.ProcessMessages;
+    sbSity.Text:=S;
+  end;
+end;
+
 procedure TfmAgn.eFindChange(Sender: TObject);
 begin
   t1.Enabled := false;
@@ -162,8 +195,7 @@ begin
   end;
 end;
 
-procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar:
-  WideChar; Shift: TShiftState);
+procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
   if Key = vkdown then
   begin

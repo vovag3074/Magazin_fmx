@@ -256,7 +256,7 @@ object fmMain: TfmMain
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 3
     end
-    object TMSFNCToolBarButton4: TTMSFNCToolBarButton
+    object btAgent: TTMSFNCToolBarButton
       AdaptToStyle = True
       Hint = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
       Position.X = 299.000000000000000000
@@ -265,7 +265,7 @@ object fmMain: TfmMain
       Size.Height = 62.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 4
-      OnClick = TMSFNCToolBarButton4Click
+      OnClick = btAgentClick
       Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
       Bitmaps = <>
       LargeLayoutBitmaps = <
