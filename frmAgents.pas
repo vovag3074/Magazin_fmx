@@ -62,11 +62,19 @@ type
     TMSFNCButton2: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
     ppTest: TPopup;
-    MenuItem4: TMenuItem;
+    btAgnManage: TMenuItem;
     MenuItem5: TMenuItem;
-    MenuItem6: TMenuItem;
-    MenuItem7: TMenuItem;
+    pmUpdAgn: TMenuItem;
+    pmDelAgn: TMenuItem;
     qAddSity: TFDCommand;
+    pmSity: TPopupMenu;
+    pmInsSity: TMenuItem;
+    pmUpdSity: TMenuItem;
+    pmDelSity: TMenuItem;
+    pmInsAgn: TMenuItem;
+    MenuItem8: TMenuItem;
+    pmMoveSity: TMenuItem;
+    MenuItem10: TMenuItem;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
@@ -78,6 +86,7 @@ type
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure dxInsSityClick(Sender: TObject);
+    procedure pmInsSityClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -139,9 +148,6 @@ begin
       fmUserInfo.pnUserInfo.Parent := ppTest;
     end;
     tlAgn.PopupMenu := pmAgent;
-//    ppAgn.ContentControl := fmUserInfo.pnUserInfo;
-//    ppAgn.PlacementControl := Item;
-//    ppAgn.Popup();
     ppTest.Popup();
     fmUserInfo.ShowInfoUser(Item.Tag);
   end;
@@ -238,6 +244,9 @@ begin
   dxUpdSity.Enabled := Node.tag <> -1;
   dxDelSity.Enabled := Node.tag <> -1;
   dxInsAgn.Enabled := Node.tag <> -1;
+  pmUpdSity.Enabled := Node.tag <> -1;
+  pmDelSity.Enabled := Node.tag <> -1;
+  pmInsAgn.Enabled := Node.tag <> -1;
     // -------------------------------------------
   tlAgn.Items.Clear;
   myHeader := TListBoxGroupHeader.Create(tlAgn);
@@ -359,6 +368,11 @@ begin
     fmOpl.Free;
     fmOpl := nil;
   end;
+end;
+
+procedure TfmAgn.pmInsSityClick(Sender: TObject);
+begin
+ dxInsSityClick(Sender);
 end;
 
 procedure TfmAgn.SaveINI;

@@ -103,9 +103,9 @@ type
     MenuItem7: TMenuItem;
     MenuItem8: TMenuItem;
     qMoveProd: TFDCommand;
-    TMSFNCButton1: TTMSFNCButton;
-    TMSFNCButton3: TTMSFNCButton;
-    TMSFNCButton4: TTMSFNCButton;
+    btMoveProd: TTMSFNCButton;
+    btRepPartialInfo: TTMSFNCButton;
+    brSetSkid: TTMSFNCButton;
     btRep: TTMSFNCButton;
     TMSFNCButton7: TTMSFNCButton;
     btPolMoney: TTMSFNCButton;
@@ -130,8 +130,8 @@ type
     ppRep: TPopup;
     TMSFNCButton10: TTMSFNCButton;
     TMSFNCButton6: TTMSFNCButton;
-    TMSFNCButton11: TTMSFNCButton;
-    TMSFNCButton12: TTMSFNCButton;
+    btRetMod: TTMSFNCButton;
+    btRepFullInfo: TTMSFNCButton;
     qUpdSk: TFDCommand;
     qMod2: TFDQuery;
     TMSFNCButton13: TTMSFNCButton;
@@ -192,7 +192,7 @@ type
     procedure btRepClick(Sender: TObject);
     procedure TMSFNCButton10Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
-    procedure TMSFNCButton4Click(Sender: TObject);
+    procedure brSetSkidClick(Sender: TObject);
     procedure TMSFNCButton13Click(Sender: TObject);
   private
     { Private declarations }
@@ -274,7 +274,6 @@ begin
     qSnd.Prepare;
     qSnd.ParamByName('DS').AsDate := StrToDate(eData.Text);
     qSnd.ParamByName('NV').AsInteger := NoVal;
-    //ShowMessage('DS='+eData.Text+' NV='+NoVal.ToString);
     qSnd.Active := True;
     if qSnd.RecordCount > 0 then
     begin
@@ -971,7 +970,7 @@ begin
   ReadProd;
 end;
 
-procedure TfmProd.TMSFNCButton4Click(Sender: TObject);
+procedure TfmProd.brSetSkidClick(Sender: TObject);
 begin
  SetSkidka;
 end;

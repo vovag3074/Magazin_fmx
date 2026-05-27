@@ -1531,7 +1531,7 @@ object fmProd: TfmProd
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
               end
-              object TMSFNCButton1: TTMSFNCButton
+              object btMoveProd: TTMSFNCButton
                 ImageAlign = Client
                 Bitmap.PNG = {
                   89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -1585,7 +1585,7 @@ object fmProd: TfmProd
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
               end
-              object TMSFNCButton3: TTMSFNCButton
+              object btRepPartialInfo: TTMSFNCButton
                 ImageAlign = Client
                 Bitmap.PNG = {
                   89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -1645,7 +1645,7 @@ object fmProd: TfmProd
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
               end
-              object TMSFNCButton4: TTMSFNCButton
+              object brSetSkid: TTMSFNCButton
                 ImageAlign = Client
                 Bitmap.PNG = {
                   89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -1725,11 +1725,11 @@ object fmProd: TfmProd
                 Position.Y = 44.000000000000000000
                 TabOrder = 3
                 Text = #1057#1082#1080#1076#1082#1072' '#1085#1072' '#1084#1086#1076#1077#1083#1100
-                OnClick = TMSFNCButton4Click
+                OnClick = brSetSkidClick
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
               end
-              object TMSFNCButton11: TTMSFNCButton
+              object btRetMod: TTMSFNCButton
                 ImageAlign = Client
                 Bitmap.PNG = {
                   89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -1812,7 +1812,7 @@ object fmProd: TfmProd
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
               end
-              object TMSFNCButton12: TTMSFNCButton
+              object btRepFullInfo: TTMSFNCButton
                 ImageAlign = Client
                 Bitmap.PNG = {
                   89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A

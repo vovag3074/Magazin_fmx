@@ -30,7 +30,8 @@ uses
   frmSelUserProd in 'frmSelUserProd.pas' {fmSelProd},
   frmSetFloat in 'frmSetFloat.pas' {fmSelFloat},
   frmAgents in 'frmAgents.pas' {fmAgn: TFrame},
-  frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo};
+  frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo},
+  frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov};
 
 {$R *.res}
 
