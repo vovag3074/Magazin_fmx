@@ -741,6 +741,22 @@ object fmAddProdAgn: TfmAddProdAgn
       TabOrder = 0
     end
   end
+  object pmProd: TPopupMenu
+    Images = SVGIconImageList1
+    OnPopup = pmProdPopup
+    Left = 440
+    Top = 128
+    object pmSkid: TMenuItem
+      Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1089#1082#1080#1076#1082#1091
+      ImageIndex = 3
+      OnClick = pmSkidClick
+    end
+    object pmRet: TMenuItem
+      Text = #1042#1077#1088#1085#1091#1090#1100' '#1084#1086#1076#1077#1083#1100
+      ImageIndex = 4
+      OnClick = pmRetClick
+    end
+  end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
       item
@@ -785,7 +801,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-bookmark-filled'
         SVGText = 
@@ -831,7 +846,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-filled-coins-filled'
         SVGText = 
@@ -894,7 +908,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'banknotes-pile-arrow-down-filled'
         SVGText = 
@@ -961,7 +974,6 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'banknotes-pile-arrow-left-filled'
         SVGText = 
@@ -1036,34 +1048,30 @@ object fmAddProdAgn: TfmAddProdAgn
         Layers = <
           item
             Name = 'people-man-2-bookmark-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-filled-coins-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'banknotes-pile-arrow-down-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'banknotes-pile-arrow-left-filled'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
@@ -1196,22 +1204,6 @@ object fmAddProdAgn: TfmAddProdAgn
       end>
     Left = 208
     Top = 511
-  end
-  object pmProd: TPopupMenu
-    Images = SVGIconImageList1
-    OnPopup = pmProdPopup
-    Left = 440
-    Top = 128
-    object pmSkid: TMenuItem
-      Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1089#1082#1080#1076#1082#1091
-      ImageIndex = 3
-      OnClick = pmSkidClick
-    end
-    object pmRet: TMenuItem
-      Text = #1042#1077#1088#1085#1091#1090#1100' '#1084#1086#1076#1077#1083#1100
-      ImageIndex = 4
-      OnClick = pmRetClick
-    end
   end
   object qUpdSk: TFDCommand
     Connection = fmMain.IBC

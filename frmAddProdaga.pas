@@ -438,6 +438,7 @@ begin
       end;
     end;
   end;
+  Beep;
 end;
 
 procedure TfmAddProdAgn.TMSFNCButton3Click(Sender: TObject);

@@ -1036,12 +1036,29 @@ object fmAgn: TfmAgn
       ImageIndex = 4
     end
   end
+  object pmSity: TPopupMenu
+    Images = SVGIconImageList1
+    Left = 96
+    Top = 264
+    object pmInsSity: TMenuItem
+      Text = #1044#1086#1073#1072#1074#1080#1090#1100
+      ImageIndex = 8
+      OnClick = pmInsSityClick
+    end
+    object pmUpdSity: TMenuItem
+      Text = #1048#1079#1084#1077#1085#1080#1090#1100
+      ImageIndex = 10
+    end
+    object pmDelSity: TMenuItem
+      Text = #1059#1076#1072#1083#1080#1090#1100
+      ImageIndex = 9
+    end
+  end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-heart-filled'
         SVGText = 
@@ -1084,7 +1101,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud'
         SVGText = 
@@ -1111,7 +1127,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-link'
         SVGText = 
@@ -1165,7 +1180,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1302,7 +1316,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1369,7 +1382,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-man-2-edit-filled'
         SVGText = 
@@ -1414,7 +1426,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-man-2-cancel-filled'
         SVGText = 
@@ -1472,7 +1483,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1509,7 +1519,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-add-filled'
         SVGText = 
@@ -1544,7 +1553,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-cancel-filled'
         SVGText = 
@@ -1593,7 +1601,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-edit-filled'
         SVGText = 
@@ -1632,7 +1639,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-man-2-add-filled'
         SVGText = 
@@ -1676,7 +1682,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 0'
         SVGText = 
@@ -1734,7 +1739,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 1'
         SVGText = 
@@ -1779,7 +1783,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 2'
         SVGText = 
@@ -1823,7 +1826,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-man-2-cloud-filled'
         SVGText = 
@@ -1876,120 +1878,126 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'cloud-heart-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-link'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-edit-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-cancel-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-employee'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-add-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-cancel-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-edit-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-add-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 0'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 1'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 2'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-cloud-filled'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 3'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
@@ -2063,23 +2071,5 @@ object fmAgn: TfmAgn
       end>
     Left = 40
     Top = 392
-  end
-  object pmSity: TPopupMenu
-    Images = SVGIconImageList1
-    Left = 96
-    Top = 264
-    object pmInsSity: TMenuItem
-      Text = #1044#1086#1073#1072#1074#1080#1090#1100
-      ImageIndex = 8
-      OnClick = pmInsSityClick
-    end
-    object pmUpdSity: TMenuItem
-      Text = #1048#1079#1084#1077#1085#1080#1090#1100
-      ImageIndex = 10
-    end
-    object pmDelSity: TMenuItem
-      Text = #1059#1076#1072#1083#1080#1090#1100
-      ImageIndex = 9
-    end
   end
 end

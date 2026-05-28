@@ -231,6 +231,7 @@ end;
 procedure TfmInpMag.EditButton1Click(Sender: TObject);
 begin
   InsertTovar;
+  Beep;
 end;
 
 function TfmInpMag.GetNoAgnByCode(AgnCode: string): Integer;

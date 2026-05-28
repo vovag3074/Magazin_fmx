@@ -37,18 +37,24 @@ type
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
     TMSFNCButton5: TTMSFNCButton;
+    TMSFNCButton6: TTMSFNCButton;
+    TMSFNCButton7: TTMSFNCButton;
     procedure TabItem3Click(Sender: TObject);
     procedure tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure TabItem4Click(Sender: TObject);
     procedure TMSFNCButton4Click(Sender: TObject);
     procedure TMSFNCButton4MouseEnter(Sender: TObject);
     procedure TMSFNCButton4MouseLeave(Sender: TObject);
+    procedure TMSFNCButton7Click(Sender: TObject);
+    procedure TMSFNCButton6DblClick(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
     procedure ShowLog;
     procedure ShowOpl;
     procedure ShowUser;
+    procedure repUserInfo;
+    procedure repUserInfoFull;
   public
     { Public declarations }
     procedure ShowInfoUser(NoUser: Integer);
@@ -60,11 +66,21 @@ var
 implementation
 
 uses
-  frmMain, frmOplata;
+  frmMain, frmOplata, frmReport;
 
 {$R *.fmx}
 
 { TfmUserInfo }
+
+procedure TfmUserInfo.repUserInfo;
+begin
+ ShowReportJSON('ShRepHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
+end;
+
+procedure TfmUserInfo.repUserInfoFull;
+begin
+  ShowReportJSON('ShRepFullHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
+end;
 
 procedure TfmUserInfo.ShowInfoUser(NoUser: Integer);
 begin
@@ -275,6 +291,16 @@ end;
 procedure TfmUserInfo.TMSFNCButton4MouseLeave(Sender: TObject);
 begin
  HintPanel.Visible := false;
+end;
+
+procedure TfmUserInfo.TMSFNCButton6DblClick(Sender: TObject);
+begin
+ repUserInfoFull;
+end;
+
+procedure TfmUserInfo.TMSFNCButton7Click(Sender: TObject);
+begin
+ repUserInfo;
 end;
 
 end.
