@@ -399,7 +399,8 @@ begin
   Header.StyleLookup := 'prodHead';
   tlProd.AddObject(Header);
   // вставляем пометки в календарь
-  showLastProdList;
+  // 29,05,2026 -- без отметок в календаре
+  // showLastProdList;
 end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);

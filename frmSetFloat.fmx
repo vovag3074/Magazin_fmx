@@ -2,6 +2,7 @@ object fmSelFloat: TfmSelFloat
   Left = 0
   Top = 0
   ActiveControl = eSum
+  BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1042#1074#1077#1076#1080#1090#1077' '#1095#1080#1089#1083#1086
   ClientHeight = 200

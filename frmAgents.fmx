@@ -359,6 +359,7 @@ object fmAgn: TfmAgn
           Position.Y = 82.000000000000000000
           TabOrder = 1
           Text = #1059#1076#1072#1083#1080#1090#1100
+          OnClick = dxDelSityClick
         end
         object dxUpdSity: TTMSFNCButton
           Bitmap.PNG = {
@@ -406,6 +407,7 @@ object fmAgn: TfmAgn
           Position.Y = 42.000000000000000000
           TabOrder = 0
           Text = #1048#1079#1084#1077#1085#1080#1090#1100
+          OnClick = dxUpdSityClick
         end
       end
     end
@@ -1048,10 +1050,12 @@ object fmAgn: TfmAgn
     object pmUpdSity: TMenuItem
       Text = #1048#1079#1084#1077#1085#1080#1090#1100
       ImageIndex = 10
+      OnClick = pmUpdSityClick
     end
     object pmDelSity: TMenuItem
       Text = #1059#1076#1072#1083#1080#1090#1100
       ImageIndex = 9
+      OnClick = pmDelSityClick
     end
   end
   object SVGIconImageList1: TSVGIconImageList
@@ -1519,6 +1523,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'cloud-add-filled'
         SVGText = 
@@ -1553,6 +1558,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'cloud-cancel-filled'
         SVGText = 
@@ -1601,6 +1607,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'cloud-edit-filled'
         SVGText = 
@@ -1942,24 +1949,18 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'cloud-add-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-cancel-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-edit-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -2070,6 +2071,63 @@ object fmAgn: TfmAgn
         ParamType = ptInput
       end>
     Left = 40
+    Top = 392
+  end
+  object qReadSity: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select ST.ST_NAME, ST.IS_STAR'
+      'from SITY_TABLE ST'
+      'where ST.NO_ST = :STN '
+      '')
+    Left = 96
+    Top = 392
+    ParamData = <
+      item
+        Name = 'STN'
+        ParamType = ptInput
+      end>
+  end
+  object qUpdSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update SITY_TABLE'
+      'set ST_NAME = :ST_NAME,'
+      '    IS_STAR = :IS_STAR'
+      'where (NO_ST = :STN)'
+      '')
+    ParamData = <
+      item
+        Name = 'ST_NAME'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_STAR'
+        ParamType = ptInput
+      end
+      item
+        Name = 'STN'
+        ParamType = ptInput
+      end>
+    Left = 160
+    Top = 400
+  end
+  object qDelSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update SITY_TABLE'
+      'set IS_DEL = 1'
+      'where (NO_ST = :STN)'
+      '')
+    ParamData = <
+      item
+        Name = 'STN'
+        ParamType = ptInput
+      end>
+    Left = 216
     Top = 392
   end
 end

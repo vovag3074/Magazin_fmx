@@ -2,6 +2,7 @@ object fmSelData: TfmSelData
   Left = 0
   Top = 0
   ActiveControl = eData
+  BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1076#1072#1090#1091
   ClientHeight = 216

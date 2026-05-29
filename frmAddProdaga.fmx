@@ -732,13 +732,18 @@ object fmAddProdAgn: TfmAddProdAgn
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
     TabOrder = 23
-    object lbSumProd: TLabel
+    object lbSumProd: TTMSFNCHTMLText
       Align = Client
       Size.Width = 704.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.HorzAlign = Center
       TabOrder = 0
+      Font.Size = 18.000000000000000000
+      Font.Color = claWhite
+      Fill.Kind = gfkNone
+      Stroke.Kind = gskNone
+      Stroke.Color = claNull
+      Text = '00'
     end
   end
   object pmProd: TPopupMenu

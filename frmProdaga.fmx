@@ -130,7 +130,7 @@ object fmProd: TfmProd
       CanFocus = False
       Margins.Left = 10.000000000000000000
       Margins.Top = 2.000000000000000000
-      Margins.Right = 2.000000000000000000
+      Margins.Right = 20.000000000000000000
       Margins.Bottom = 2.000000000000000000
       Position.X = 58.000000000000000000
       Position.Y = 2.000000000000000000
@@ -172,7 +172,7 @@ object fmProd: TfmProd
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 212.000000000000000000
+      Position.X = 230.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 7
       Text = #1054#1090#1095#1077#1090#1099
@@ -213,7 +213,7 @@ object fmProd: TfmProd
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 366.000000000000000000
+      Position.X = 384.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 8
       Text = #1055#1077#1088#1077#1076#1072#1095#1072
@@ -279,7 +279,7 @@ object fmProd: TfmProd
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 520.000000000000000000
+      Position.X = 538.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 6
       Text = #1055#1086#1083#1091#1095#1077#1085#1080#1103
@@ -3413,7 +3413,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report-briefcase-filled'
         SVGText = 
@@ -3509,7 +3508,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report-hourglass'
         SVGText = 
@@ -3578,7 +3576,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report-hourglass_2'
         SVGText = 
@@ -3647,7 +3644,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -3784,7 +3780,6 @@ object fmProd: TfmProd
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'date-move-back-one-day'
         SVGText = 
@@ -3850,6 +3845,8 @@ object fmProd: TfmProd
         Layers = <
           item
             Name = 'report-briefcase-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -3864,24 +3861,32 @@ object fmProd: TfmProd
         Layers = <
           item
             Name = 'report-hourglass'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'report-hourglass_2'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'date-move-back-one-day'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 336

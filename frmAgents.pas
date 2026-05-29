@@ -75,6 +75,9 @@ type
     MenuItem8: TMenuItem;
     pmMoveSity: TMenuItem;
     MenuItem10: TMenuItem;
+    qReadSity: TFDQuery;
+    qUpdSity: TFDCommand;
+    qDelSity: TFDCommand;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
@@ -87,12 +90,18 @@ type
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure dxInsSityClick(Sender: TObject);
     procedure pmInsSityClick(Sender: TObject);
+    procedure pmUpdSityClick(Sender: TObject);
+    procedure dxUpdSityClick(Sender: TObject);
+    procedure pmDelSityClick(Sender: TObject);
+    procedure dxDelSityClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
     isHeadSel: Boolean;
     FSelUser: Integer;
     procedure UpdateAgent;
+    procedure UpdSity;
+    procedure DelSity;
     procedure LoadAgentList;
     procedure DoSelectSity(Sender: TObject);
     procedure DoSelectAgent(Sender: TObject);
@@ -132,6 +141,21 @@ begin
   ppSity.Popup();
 end;
 
+procedure TfmAgn.DelSity;
+var Item:TListBoxItem;
+begin
+ Item := tlSity.ItemByIndex(tlSity.ItemIndex);
+ if ShowQuestion('Удалить город "'+Item.Text+'"?') then
+ begin
+   fmMain.StartMainTransaction;
+   qDelSity.Prepare;
+   qDelSity.ParamByName('STN').AsInteger:=Item.Tag;
+   qDelSity.Execute;
+   fmMain.EndMainTransaction;
+   LoadList;
+ end;
+end;
+
 procedure TfmAgn.DoSelectAgent(Sender: TObject);
 var
   Item: TListBoxItem;
@@ -161,6 +185,11 @@ end;
 /// <summary>
 /// Добавить город
 /// </summary>
+procedure TfmAgn.dxDelSityClick(Sender: TObject);
+begin
+ DelSity;
+end;
+
 procedure TfmAgn.dxInsSityClick(Sender: TObject);
 var
   S: string;
@@ -182,8 +211,13 @@ begin
     fmMain.EndMainTransaction;
     LoadList;
     Application.ProcessMessages;
-    sbSity.Text:=S;
+    sbSity.Text := S;
   end;
+end;
+
+procedure TfmAgn.dxUpdSityClick(Sender: TObject);
+begin
+ UpdSity;
 end;
 
 procedure TfmAgn.eFindChange(Sender: TObject);
@@ -370,9 +404,19 @@ begin
   end;
 end;
 
+procedure TfmAgn.pmDelSityClick(Sender: TObject);
+begin
+ DelSity;
+end;
+
 procedure TfmAgn.pmInsSityClick(Sender: TObject);
 begin
- dxInsSityClick(Sender);
+  dxInsSityClick(Sender);
+end;
+
+procedure TfmAgn.pmUpdSityClick(Sender: TObject);
+begin
+ UpdSity;
 end;
 
 procedure TfmAgn.SaveINI;
@@ -474,9 +518,39 @@ begin
   Item := tlAgn.ItemByIndex(tlAgn.ItemIndex);
   try
     Item.BeginUpdate;
+    //------------------------
+    //------------------------
   finally
     Item.EndUpdate;
   end;
+end;
+
+procedure TfmAgn.UpdSity;
+var
+  S: string;
+  B: Boolean;
+begin
+  fmMain.StartMainTransaction;
+  qReadSity.Close;
+  qReadSity.Prepare;
+  qReadSity.ParamByName('STN').AsInteger := tlSity.ItemByIndex(tlSity.ItemIndex).Tag;
+  qReadSity.Active := True;
+  S := qReadSity.FieldByName('ST_NAME').AsString;
+  if GetString(S, 'Изменить город', 'Название города') = mrOk then
+  begin
+    B := ShowQuestion('Отметить город "' + S + '" как избранный?');
+  end;
+  qUpdSity.Active := false;
+  qUpdSity.Prepare;
+  qUpdSity.ParamByName('STN').AsInteger := tlSity.ItemByIndex(tlSity.ItemIndex).Tag;
+  qUpdSity.ParamByName('ST_NAME').AsString := S;
+  qUpdSity.ParamByName('IS_STAR').AsSmallInt := 0;
+  if B then
+    qUpdSity.ParamByName('IS_STAR').AsSmallInt := 1;
+  qUpdSity.Execute;
+  fmMain.EndMainTransaction;
+  LoadList;
+  sbSity.Text:=S;
 end;
 
 end.

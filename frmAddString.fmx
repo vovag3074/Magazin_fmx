@@ -2,6 +2,7 @@ object fmGetStr: TfmGetStr
   Left = 0
   Top = 0
   ActiveControl = eString
+  BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
   ClientHeight = 229
@@ -128,7 +129,7 @@ object fmGetStr: TfmGetStr
     FocusControl = eString
     Position.X = 8.000000000000000000
     Position.Y = 39.000000000000000000
-    Size.Width = 521.000000000000000000
+    Size.Width = 617.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'eLabel'

@@ -13,7 +13,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Objects, FMX.SearchBox,
-  FMX.TMSFNCCustomComponent, FMX.TMSFNCBitmapContainer, FMX.Menus;
+  FMX.TMSFNCCustomComponent, FMX.TMSFNCBitmapContainer, FMX.Menus,
+  FMX.TMSFNCHTMLText;
 
 type
   TfmAddProdAgn = class(TForm)
@@ -51,13 +52,13 @@ type
     btSave: TTMSFNCButton;
     qLock: TFDCommand;
     Panel2: TPanel;
-    lbSumProd: TLabel;
     TMSFNCButton2: TTMSFNCButton;
     pmProd: TPopupMenu;
     pmSkid: TMenuItem;
     pmRet: TMenuItem;
     qUpdSk: TFDCommand;
     qDelMod: TFDCommand;
+    lbSumProd: TTMSFNCHTMLText;
     ltZak: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure eTypeChange(Sender: TObject);
@@ -255,7 +256,7 @@ begin
       end;
     end;
   end;
-  lbSumProd.Text := 'Продано: ' + FCount.ToString + ' | на сумму: ' + FSumTov.toString + ' | оплачено: ' + FOplTov.ToString + ' | долг: ' + FDolg.ToString;
+  lbSumProd.Text := 'Продано: <b>' + FCount.ToString + '</b> | на сумму: <b>' + FSumTov.toString + '</b> | оплачено: <b>' + FOplTov.ToString + '</b> | долг: <b>' + FDolg.ToString+'</b>';
 end;
 
 procedure TfmAddProdAgn.pmProdPopup(Sender: TObject);
