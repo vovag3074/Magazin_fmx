@@ -1,6 +1,7 @@
 object fmMain: TfmMain
   Left = 0
   Top = 0
+  Border.Styling = False
   Caption = #1056#1072#1073#1086#1095#1077#1077' '#1084#1077#1089#1090#1086' '#1087#1088#1086#1076#1072#1074#1094#1072
   ClientHeight = 525
   ClientWidth = 893
