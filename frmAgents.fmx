@@ -1184,6 +1184,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1320,6 +1321,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1487,6 +1489,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1523,7 +1526,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'cloud-add-filled'
         SVGText = 
@@ -1558,7 +1560,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'cloud-cancel-filled'
         SVGText = 
@@ -1607,7 +1608,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'cloud-edit-filled'
         SVGText = 
@@ -1909,16 +1909,12 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'give-money'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -1941,6 +1937,12 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-employee'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'cloud-add-filled'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
@@ -1948,19 +1950,17 @@ object fmAgn: TfmAgn
       item
         Layers = <
           item
-            Name = 'cloud-add-filled'
-          end>
-      end
-      item
-        Layers = <
-          item
             Name = 'cloud-cancel-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-edit-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -2129,5 +2129,27 @@ object fmAgn: TfmAgn
       end>
     Left = 216
     Top = 392
+  end
+  object qRefAgent: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AG.AG_DOLG,'
+      '       (AG.AG_PRED + AG.AG_BANK_PRED) AS AG_PRED,'
+      '       AG.AG_NAME,'
+      '       ST.ST_NAME,'
+      '       AG.STATUS,'
+      '       AG.FULL_NAME_STD AS FULL_NAME'
+      'FROM SITY_TABLE ST'
+      'INNER JOIN AGENTS AG ON (ST.NO_ST = AG.NO_SITY)'
+      'WHERE ((AG.NO_AGN = :NG))   '
+      '')
+    Left = 377
+    Top = 560
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end>
   end
 end

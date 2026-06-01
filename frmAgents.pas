@@ -78,6 +78,7 @@ type
     qReadSity: TFDQuery;
     qUpdSity: TFDCommand;
     qDelSity: TFDCommand;
+    qRefAgent: TFDQuery;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
@@ -109,6 +110,10 @@ type
     /// Начало поиска
     /// </summary>
     procedure StartFind;
+     /// <summary>
+    /// обновление выбранного агента
+    /// </summary>
+    procedure refrSelAgn;
   public
     { Public declarations }
     procedure LoadINI;
@@ -388,6 +393,9 @@ begin
   end;
 end;
 
+ /// <summary>
+ /// Оплата текущего долга
+ /// </summary>
 procedure TfmAgn.MenuItem1Click(Sender: TObject);
 begin
   try
@@ -396,7 +404,7 @@ begin
     fmOpl.ReadAgent(FSelUser, 0, now);
     if fmOpl.ShowModal = mrOk then
     begin
-     // ReadProd;
+     refrSelAgn;
     end;
   finally
     fmOpl.Free;
@@ -417,6 +425,24 @@ end;
 procedure TfmAgn.pmUpdSityClick(Sender: TObject);
 begin
  UpdSity;
+end;
+
+procedure TfmAgn.refrSelAgn;
+var ANode:TListBoxItem;
+begin
+  ANode := tlAgn.ItemByIndex(tlAgn.ItemIndex);
+  // читаем имя агента его долг и предоплату
+  qRefAgent.Close;
+  qRefAgent.ParamByName('NG').AsInteger := ANode.Tag;
+  qRefAgent.Active := True;
+  if qRefAgent.RecordCount > 0 then
+  begin
+    tlAgn.BeginUpdate;
+    ANode.Text := qRefAgent.FieldByName('FULL_NAME').AsString;
+    ANode.StylesData['ItemD'] := qRefAgent.FieldByName('AG_DOLG').AsFloat;
+    ANode.StylesData['ItemP'] := qRefAgent.FieldByName('AG_PRED').AsFloat;
+    tlAgn.EndUpdate;
+  end;
 end;
 
 procedure TfmAgn.SaveINI;

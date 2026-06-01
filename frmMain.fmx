@@ -1,7 +1,6 @@
 object fmMain: TfmMain
   Left = 0
   Top = 0
-  Border.Styling = False
   Caption = #1056#1072#1073#1086#1095#1077#1077' '#1084#1077#1089#1090#1086' '#1087#1088#1086#1076#1072#1074#1094#1072
   ClientHeight = 525
   ClientWidth = 893
@@ -62791,7 +62790,7 @@ object fmMain: TfmMain
     StyleLookup = 'panelstyle'
     TabOrder = 5
     object myList: TTMSFNCTileList
-      Color = xFF121F35
+      Color = xFF212428
       Align = Client
       Size.Width = 893.000000000000000000
       Size.Height = 427.000000000000000000
@@ -63504,9 +63503,9 @@ object fmMain: TfmMain
       Appearance.Stroke.Color = claDarkgray
       Appearance.Fill.Color = xFF212428
       Appearance.StrokeHover.Color = claLightslategray
-      Appearance.FillHover.Color = xFF252D6D
+      Appearance.FillHover.Color = xFF800415
       Appearance.StrokeDown.Color = claSlategray
-      Appearance.FillDown.Color = xFF345B9C
+      Appearance.FillDown.Color = xFFB70202
       Appearance.StrokeSelected.Color = claDarkslategray
       Appearance.FillSelected.Color = xFF74BDF4
       Appearance.StrokeDisabled.Color = claDarkgray
@@ -63552,7 +63551,7 @@ object fmMain: TfmMain
       Footer.ArrowRight.ArrowFill.Color = claDimgray
       Footer.ArrowRight.ArrowDownFill.Color = claDimgray
       Footer.ArrowRight.ArrowHoverFill.Color = claDimgray
-      Fill.Color = xFF121F35
+      Fill.Color = xFF212428
       OnItemClick = myListItemClick
     end
   end

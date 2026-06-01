@@ -618,6 +618,7 @@ object fmSelAgn: TfmSelAgn
     Size.Width = 1117.000000000000000000
     Size.Height = 64.000000000000000000
     Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
     TabOrder = 3
     object TMSFNCButton3: TTMSFNCButton
       Bitmap.PNG = {
