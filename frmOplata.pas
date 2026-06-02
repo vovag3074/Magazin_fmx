@@ -42,7 +42,7 @@ type
     lbInfo: TTMSFNCHTMLText;
     qGetPred_t: TFDQuery;
     qGetPred2_t: TFDQuery;
-    Label1: TLabel;
+    lbSum: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -337,6 +337,7 @@ begin
   qRead.Prepare;
   qRead.ParamByName('NG').AsInteger := FAgent;
   qRead.Active := True;
+  fmOpl.Caption:='Оплата для: '+qRead.FieldByName('FULL_NAME_STD').AsString;
   FDolg := qRead.FieldByName('AG_DOLG').AsFloat;
   eSum.Text := FloatToStr(FDolg);
   FPred := qRead.FieldByName('AG_PRED').AsFloat;

@@ -95,6 +95,8 @@ type
     procedure dxUpdSityClick(Sender: TObject);
     procedure pmDelSityClick(Sender: TObject);
     procedure dxDelSityClick(Sender: TObject);
+    procedure tlAgnMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -288,6 +290,7 @@ begin
   pmInsAgn.Enabled := Node.tag <> -1;
     // -------------------------------------------
   tlAgn.Items.Clear;
+  FSelUser:=-1;
   myHeader := TListBoxGroupHeader.Create(tlAgn);
   myHeader.StyleLookup := 'itemHeader';
   myHeader.CanFocus := False;
@@ -401,7 +404,7 @@ begin
   try
     fmOpl := TfmOpl.Create(fmAgn);
     fmOpl.dxRet.Visible := False;
-    fmOpl.ReadAgent(FSelUser, 0, now);
+    fmOpl.ReadAgent(tlAgn.ItemByIndex(tlAgn.ItemIndex).Tag, 0, now);
     if fmOpl.ShowModal = mrOk then
     begin
      refrSelAgn;
@@ -458,6 +461,7 @@ var
   myHeader: TListBoxGroupHeader;
 begin
   tlAgn.Items.Clear;
+  FSelUser:=-1;
   myHeader := TListBoxGroupHeader.Create(tlAgn);
   myHeader.StyleLookup := 'itemHeader';
   myHeader.CanFocus := False;
@@ -510,6 +514,27 @@ procedure TfmAgn.t1Timer(Sender: TObject);
 begin
   t1.Enabled := false;
   StartFind;
+end;
+
+procedure TfmAgn.tlAgnMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+var
+  ClickedItem: TListBoxItem;
+begin
+  // Check if it's a right-click
+  if Button = TMouseButton.mbRight then
+  begin
+    // Find the item under the local mouse coordinates
+    ClickedItem := tlAgn.ItemByPoint(X, Y);
+
+    // Verify an item was actually clicked
+    if Assigned(ClickedItem) then
+    begin
+      // Make the clicked item the active selection
+      tlAgn.ItemIndex := ClickedItem.Index;
+      tlAgn.OnClick(Sender);
+    end;
+  end;
 end;
 
 procedure TfmAgn.TMSFNCButton1Click(Sender: TObject);

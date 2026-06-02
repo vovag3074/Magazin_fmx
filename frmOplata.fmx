@@ -359,7 +359,7 @@ object fmOpl: TfmOpl
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 15
-    Viewport.Width = 695.000000000000000000
+    Viewport.Width = 701.000000000000000000
     Viewport.Height = 113.000000000000000000
   end
   object btBank: TTMSFNCButton
@@ -411,45 +411,66 @@ object fmOpl: TfmOpl
     Text = #1041#1072#1085#1082
     OnClick = btBankClick
   end
-  object Label1: TLabel
+  object lbSum: TLabel
     Position.X = 40.000000000000000000
     Position.Y = 23.000000000000000000
+    Size.Width = 705.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1057#1091#1084#1084#1072' '#1082' '#1086#1087#1083#1072#1090#1077
     TabOrder = 26
   end
   object Label2: TLabel
     Position.X = 40.000000000000000000
     Position.Y = 111.000000000000000000
+    Size.Width = 334.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
     TabOrder = 27
   end
   object Label3: TLabel
     Position.X = 495.000000000000000000
     Position.Y = 111.000000000000000000
+    Size.Width = 242.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1042#1072#1083#1102#1090#1072
     TabOrder = 28
   end
   object Label4: TLabel
     Position.X = 36.000000000000000000
     Position.Y = 191.000000000000000000
+    Size.Width = 221.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1057#1091#1084#1084#1072' '#1086#1087#1083#1072#1090#1099
     TabOrder = 29
   end
   object Label5: TLabel
     Position.X = 296.000000000000000000
     Position.Y = 191.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1050#1091#1088#1089
     TabOrder = 30
   end
   object Label6: TLabel
     Position.X = 560.000000000000000000
     Position.Y = 191.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1058#1080#1087
     TabOrder = 31
   end
   object Label7: TLabel
     Position.X = 36.000000000000000000
     Position.Y = 279.000000000000000000
+    Size.Width = 453.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
     Text = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
     TabOrder = 32
   end
@@ -602,13 +623,13 @@ object fmOpl: TfmOpl
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
     SQL.Strings = (
-      'select AG.AG_DOLG,'
+      'SELECT AG.FULL_NAME_STD,'
+      '       AG.AG_DOLG,'
       '       AG.AG_PRED,'
       '       AG.AG_BANK_PRED,'
       '       AG.PRED_VAL'
-      'from AGENTS AG'
-      'where AG.NO_AGN = :NG '
-      '')
+      'FROM AGENTS AG'
+      'WHERE AG.NO_AGN = :NG   ')
     Left = 188
     Top = 320
     ParamData = <

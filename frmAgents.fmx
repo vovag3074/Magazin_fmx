@@ -790,6 +790,7 @@ object fmAgn: TfmAgn
       Size.Height = 586.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      OnMouseDown = tlAgnMouseDown
       DisableFocusEffect = True
       ItemHeight = 40.000000000000000000
       Images = SVGIconImageList1
