@@ -79,6 +79,7 @@ type
     qUpdSity: TFDCommand;
     qDelSity: TFDCommand;
     qRefAgent: TFDQuery;
+    TMSFNCButton4: TTMSFNCButton;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure eFindChange(Sender: TObject);
@@ -97,6 +98,7 @@ type
     procedure dxDelSityClick(Sender: TObject);
     procedure tlAgnMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Single);
+    procedure TMSFNCButton4Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -116,6 +118,10 @@ type
     /// обновление выбранного агента
     /// </summary>
     procedure refrSelAgn;
+    /// <summary>
+    /// отчеты по покупателям
+    /// </summary>
+    procedure showRepAgn;
   public
     { Public declarations }
     procedure LoadINI;
@@ -132,7 +138,7 @@ threadvar
 implementation
 
 uses
-  frmMain, frmFullInfoPokup, frmOplata, frmAddString;
+  frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport;
 
 {$R *.fmx}
 
@@ -277,6 +283,7 @@ var
   myHeader: TListBoxGroupHeader;
 begin
   // ------------------------------------------
+  fmMain.StartReadTransaction;
   eFind.Text := '';
   FPage := 0;
   Node := tlSity.ItemByIndex(tlSity.ItemIndex);
@@ -339,6 +346,7 @@ begin
     end;
     tlAgn.ItemIndex := 1;
   end;
+  fmMain.EndReadTransaction;
 end;
 
 procedure TfmAgn.LoadINI;
@@ -455,6 +463,11 @@ begin
   fmUserInfo := nil;
 end;
 
+procedure TfmAgn.showRepAgn;
+begin
+ ShowReportJson('repAnent*.fr3','');
+end;
+
 procedure TfmAgn.StartFind;
 var
   ANode: TListboxItem;
@@ -555,6 +568,11 @@ begin
   if FPage < 0 then
     FPage := 0;
   StartFind;
+end;
+
+procedure TfmAgn.TMSFNCButton4Click(Sender: TObject);
+begin
+ showRepAgn;
 end;
 
 procedure TfmAgn.TMSFNCButton5Click(Sender: TObject);

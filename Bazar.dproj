@@ -508,7 +508,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\delphi_PROJECTICNS.icns" Configuration="Release" Class="ProjectOSXResource">
                     <Platform Name="OSXARM64">
-                        <Enabled>false</Enabled>
                         <RemoteName>Bazar.icns</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -599,6 +598,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Rep\RepStatProd.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>RepStatProd.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\RepStatProd.fr3" Configuration="Release" Class="File">
                     <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
                         <RemoteName>RepStatProd.fr3</RemoteName>
@@ -648,6 +654,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Rep\SRepProdDayAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepProdDayAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepProdDayAgn.fr3" Configuration="Release" Class="File">
                     <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
                         <RemoteName>SRepProdDayAgn.fr3</RemoteName>
@@ -669,6 +682,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Rep\SRepProdDayAllAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>SRepProdDayAllAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\SRepProdDayAllAgn.fr3" Configuration="Release" Class="File">
                     <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
                         <RemoteName>SRepProdDayAllAgn.fr3</RemoteName>
@@ -774,6 +794,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Rep\ShRepFullHistAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>ShRepFullHistAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShRepFullHistAgn.fr3" Configuration="Release" Class="File">
                     <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
                         <RemoteName>ShRepFullHistAgn.fr3</RemoteName>
@@ -790,6 +817,13 @@
                 <DeployFile LocalName="Rep\ShRepHistAgn.fr3" Configuration="Release" Class="File">
                     <Platform Name="Linux64">
                         <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>ShRepHistAgn.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShRepHistAgn.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
                         <RemoteName>ShRepHistAgn.fr3</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -836,9 +870,72 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Rep\repAnent0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repAnent0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>repAnent0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>repAnent0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repAnent0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repAnent1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>repAnent1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>repAnent1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repAnent1.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repAnent1.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Rep\sRepOtpList.fr3" Configuration="Release" Class="File">
                     <Platform Name="Linux64">
                         <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>sRepOtpList.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\sRepOtpList.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
                         <RemoteName>sRepOtpList.fr3</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
