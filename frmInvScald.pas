@@ -362,7 +362,7 @@ begin
         Node.Values[0].ExpandedIconName := 'Item1';
         Node.Extended := True;
         var F: Double := ListDet(Node);
-        Node.Text[0] := Node.DataString + '<font color = "Red"> [' + F.ToString
+        Node.Text[0] := Node.DataString + '<font color = "Cyan"> [' + F.ToString
           + ']</font>';
         FSumMod := FSumMod + F;
       end;
