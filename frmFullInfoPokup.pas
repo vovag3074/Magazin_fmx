@@ -47,6 +47,7 @@ type
     procedure TMSFNCButton4MouseLeave(Sender: TObject);
     procedure TMSFNCButton7Click(Sender: TObject);
     procedure TMSFNCButton6DblClick(Sender: TObject);
+    procedure TMSFNCButton1Click(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -66,7 +67,7 @@ var
 implementation
 
 uses
-  frmMain, frmOplata, frmReport;
+  frmMain, frmOplata, frmReport, frmAgents;
 
 {$R *.fmx}
 
@@ -74,7 +75,7 @@ uses
 
 procedure TfmUserInfo.repUserInfo;
 begin
- ShowReportJSON('ShRepHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
+  ShowReportJSON('ShRepHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
 end;
 
 procedure TfmUserInfo.repUserInfoFull;
@@ -212,7 +213,7 @@ end;
 
 procedure TfmUserInfo.TabItem4Click(Sender: TObject);
 begin
- ShowUser;
+  ShowUser;
 end;
 
 procedure TfmUserInfo.tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
@@ -227,6 +228,14 @@ begin
   end;
 end;
 
+procedure TfmUserInfo.TMSFNCButton1Click(Sender: TObject);
+begin
+  if Assigned(fmAgn) then
+  begin
+    fmAgn.UpdateAgent;
+  end;
+end;
+
 procedure TfmUserInfo.TMSFNCButton4Click(Sender: TObject);
 begin
   try
@@ -235,7 +244,10 @@ begin
     fmOpl.ReadAgent(FActiveProd, 0, now);
     if fmOpl.ShowModal = mrOk then
     begin
-     // ReadProd;
+      if Assigned(fmAgn) then
+      begin
+        fmAgn.refrSelAgn;
+      end;
     end;
   finally
     fmOpl.Free;
@@ -290,17 +302,17 @@ end;
 
 procedure TfmUserInfo.TMSFNCButton4MouseLeave(Sender: TObject);
 begin
- HintPanel.Visible := false;
+  HintPanel.Visible := false;
 end;
 
 procedure TfmUserInfo.TMSFNCButton6DblClick(Sender: TObject);
 begin
- repUserInfoFull;
+  repUserInfoFull;
 end;
 
 procedure TfmUserInfo.TMSFNCButton7Click(Sender: TObject);
 begin
- repUserInfo;
+  repUserInfo;
 end;
 
 end.

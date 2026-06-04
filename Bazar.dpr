@@ -31,7 +31,8 @@ uses
   frmSetFloat in 'frmSetFloat.pas' {fmSelFloat},
   frmAgents in 'frmAgents.pas' {fmAgn: TFrame},
   frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo},
-  frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov};
+  frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov},
+  frmOperationAgent in 'frmOperationAgent.pas' {fmOpAgent};
 
 {$R *.res}
 

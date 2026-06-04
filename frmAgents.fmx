@@ -1038,11 +1038,13 @@ object fmAgn: TfmAgn
         Locked = True
         Text = #1044#1086#1073#1072#1074#1080#1090#1100
         ImageIndex = 11
+        OnClick = pmInsAgnClick
       end
       object pmUpdAgn: TMenuItem
         Locked = True
         Text = #1048#1079#1084#1077#1085#1080#1090#1100
         ImageIndex = 5
+        OnClick = pmUpdAgnClick
       end
       object pmDelAgn: TMenuItem
         Locked = True
@@ -1225,6 +1227,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1361,6 +1364,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1528,6 +1532,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1947,16 +1952,12 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'give-money'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -1979,8 +1980,6 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-employee'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -2177,6 +2176,8 @@ object fmAgn: TfmAgn
   object qRefAgent: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
+    FetchOptions.AssignedValues = [evItems]
+    FetchOptions.Items = []
     SQL.Strings = (
       'SELECT AG.AG_DOLG,'
       '       (AG.AG_PRED + AG.AG_BANK_PRED) AS AG_PRED,'
@@ -2188,8 +2189,8 @@ object fmAgn: TfmAgn
       'INNER JOIN AGENTS AG ON (ST.NO_ST = AG.NO_SITY)'
       'WHERE ((AG.NO_AGN = :NG))   '
       '')
-    Left = 377
-    Top = 560
+    Left = 369
+    Top = 536
     ParamData = <
       item
         Name = 'NG'

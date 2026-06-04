@@ -96,15 +96,15 @@ type
     procedure dxUpdSityClick(Sender: TObject);
     procedure pmDelSityClick(Sender: TObject);
     procedure dxDelSityClick(Sender: TObject);
-    procedure tlAgnMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Single);
+    procedure tlAgnMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure TMSFNCButton4Click(Sender: TObject);
+    procedure pmInsAgnClick(Sender: TObject);
+    procedure pmUpdAgnClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
     isHeadSel: Boolean;
     FSelUser: Integer;
-    procedure UpdateAgent;
     procedure UpdSity;
     procedure DelSity;
     procedure LoadAgentList;
@@ -114,19 +114,24 @@ type
     /// Начало поиска
     /// </summary>
     procedure StartFind;
-     /// <summary>
-    /// обновление выбранного агента
-    /// </summary>
-    procedure refrSelAgn;
     /// <summary>
     /// отчеты по покупателям
     /// </summary>
     procedure showRepAgn;
+    procedure AddAgent;
   public
     { Public declarations }
     procedure LoadINI;
     procedure SaveINI;
     procedure LoadList;
+    /// <summary>
+    /// обновление выбранного агента
+    /// </summary>
+    procedure refrSelAgn;
+    /// <summary>
+    /// редактирование выбранного агента
+    /// </summary>
+    procedure UpdateAgent;
   end;
 
 var
@@ -138,11 +143,24 @@ threadvar
 implementation
 
 uses
-  frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport;
+  frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport,
+  frmOperationAgent;
 
 {$R *.fmx}
 
 { TfmAgn }
+
+procedure TfmAgn.AddAgent;
+begin
+  fmOpAgent := TfmOpAgent.Create(fmMain);
+  fmOpAgent.SetSity(tlSity.ItemByIndex(tlSity.ItemIndex).Tag);
+  if fmOpAgent.ShowModal = mrOk then
+  begin
+    LoadAgentList;
+  end;
+  fmOpAgent.Free;
+  fmOpAgent := nil;
+end;
 
 procedure TfmAgn.btAgnClick(Sender: TObject);
 begin
@@ -155,18 +173,19 @@ begin
 end;
 
 procedure TfmAgn.DelSity;
-var Item:TListBoxItem;
+var
+  Item: TListBoxItem;
 begin
- Item := tlSity.ItemByIndex(tlSity.ItemIndex);
- if ShowQuestion('Удалить город "'+Item.Text+'"?') then
- begin
-   fmMain.StartMainTransaction;
-   qDelSity.Prepare;
-   qDelSity.ParamByName('STN').AsInteger:=Item.Tag;
-   qDelSity.Execute;
-   fmMain.EndMainTransaction;
-   LoadList;
- end;
+  Item := tlSity.ItemByIndex(tlSity.ItemIndex);
+  if ShowQuestion('Удалить город "' + Item.Text + '"?') then
+  begin
+    fmMain.StartMainTransaction;
+    qDelSity.Prepare;
+    qDelSity.ParamByName('STN').AsInteger := Item.Tag;
+    qDelSity.Execute;
+    fmMain.EndMainTransaction;
+    LoadList;
+  end;
 end;
 
 procedure TfmAgn.DoSelectAgent(Sender: TObject);
@@ -200,7 +219,7 @@ end;
 /// </summary>
 procedure TfmAgn.dxDelSityClick(Sender: TObject);
 begin
- DelSity;
+  DelSity;
 end;
 
 procedure TfmAgn.dxInsSityClick(Sender: TObject);
@@ -230,7 +249,7 @@ end;
 
 procedure TfmAgn.dxUpdSityClick(Sender: TObject);
 begin
- UpdSity;
+  UpdSity;
 end;
 
 procedure TfmAgn.eFindChange(Sender: TObject);
@@ -297,7 +316,7 @@ begin
   pmInsAgn.Enabled := Node.tag <> -1;
     // -------------------------------------------
   tlAgn.Items.Clear;
-  FSelUser:=-1;
+  FSelUser := -1;
   myHeader := TListBoxGroupHeader.Create(tlAgn);
   myHeader.StyleLookup := 'itemHeader';
   myHeader.CanFocus := False;
@@ -415,7 +434,7 @@ begin
     fmOpl.ReadAgent(tlAgn.ItemByIndex(tlAgn.ItemIndex).Tag, 0, now);
     if fmOpl.ShowModal = mrOk then
     begin
-     refrSelAgn;
+      refrSelAgn;
     end;
   finally
     fmOpl.Free;
@@ -425,7 +444,12 @@ end;
 
 procedure TfmAgn.pmDelSityClick(Sender: TObject);
 begin
- DelSity;
+  DelSity;
+end;
+
+procedure TfmAgn.pmInsAgnClick(Sender: TObject);
+begin
+  AddAgent;
 end;
 
 procedure TfmAgn.pmInsSityClick(Sender: TObject);
@@ -433,27 +457,37 @@ begin
   dxInsSityClick(Sender);
 end;
 
+procedure TfmAgn.pmUpdAgnClick(Sender: TObject);
+begin
+  UpdateAgent;
+end;
+
 procedure TfmAgn.pmUpdSityClick(Sender: TObject);
 begin
- UpdSity;
+  UpdSity;
 end;
 
 procedure TfmAgn.refrSelAgn;
-var ANode:TListBoxItem;
+var
+  ANode: TListBoxItem;
 begin
   ANode := tlAgn.ItemByIndex(tlAgn.ItemIndex);
   // читаем имя агента его долг и предоплату
-  qRefAgent.Close;
+  fmMain.StartReadTransaction;
+  qRefAgent.Prepare;
   qRefAgent.ParamByName('NG').AsInteger := ANode.Tag;
   qRefAgent.Active := True;
   if qRefAgent.RecordCount > 0 then
   begin
-    tlAgn.BeginUpdate;
-    ANode.Text := qRefAgent.FieldByName('FULL_NAME').AsString;
+    ANode.BeginUpdate;
+    //ShowMessage(qRefAgent.FieldByName('AG_NAME').AsString+' '+qRefAgent.FieldByName('ST_NAME').AsString);
+    ANode.Text := qRefAgent.FieldByName('AG_NAME').AsString+' '+qRefAgent.FieldByName('ST_NAME').AsString;
     ANode.StylesData['ItemD'] := qRefAgent.FieldByName('AG_DOLG').AsFloat;
     ANode.StylesData['ItemP'] := qRefAgent.FieldByName('AG_PRED').AsFloat;
-    tlAgn.EndUpdate;
+    ANode.EndUpdate;
   end;
+  qRefAgent.Close;
+  fmMain.EndReadTransaction;
 end;
 
 procedure TfmAgn.SaveINI;
@@ -465,7 +499,7 @@ end;
 
 procedure TfmAgn.showRepAgn;
 begin
- ShowReportJson('repAnent*.fr3','');
+  ShowReportJson('repAnent*.fr3', '');
 end;
 
 procedure TfmAgn.StartFind;
@@ -474,7 +508,7 @@ var
   myHeader: TListBoxGroupHeader;
 begin
   tlAgn.Items.Clear;
-  FSelUser:=-1;
+  FSelUser := -1;
   myHeader := TListBoxGroupHeader.Create(tlAgn);
   myHeader.StyleLookup := 'itemHeader';
   myHeader.CanFocus := False;
@@ -529,8 +563,7 @@ begin
   StartFind;
 end;
 
-procedure TfmAgn.tlAgnMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Single);
+procedure TfmAgn.tlAgnMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
 var
   ClickedItem: TListBoxItem;
 begin
@@ -545,7 +578,7 @@ begin
     begin
       // Make the clicked item the active selection
       tlAgn.ItemIndex := ClickedItem.Index;
-      tlAgn.OnClick(Sender);
+//      tlAgn.OnClick(Sender);
     end;
   end;
 end;
@@ -572,7 +605,7 @@ end;
 
 procedure TfmAgn.TMSFNCButton4Click(Sender: TObject);
 begin
- showRepAgn;
+  showRepAgn;
 end;
 
 procedure TfmAgn.TMSFNCButton5Click(Sender: TObject);
@@ -585,13 +618,16 @@ var
   Item: TListBoxItem;
 begin
   Item := tlAgn.ItemByIndex(tlAgn.ItemIndex);
-  try
-    Item.BeginUpdate;
-    //------------------------
-    //------------------------
-  finally
-    Item.EndUpdate;
+  fmOpAgent := TfmOpAgent.Create(fmMain);
+  fmOpAgent.SetSity(tlSity.ItemByIndex(tlSity.ItemIndex).Tag);
+  fmOpAgent.EditAgent(Item.Tag);
+  if fmOpAgent.ShowModal = mrOk then
+  begin
+    refrSelAgn;
   end;
+  fmOpAgent.Free;
+  fmOpAgent := nil;
+    //------------------------
 end;
 
 procedure TfmAgn.UpdSity;
@@ -619,7 +655,7 @@ begin
   qUpdSity.Execute;
   fmMain.EndMainTransaction;
   LoadList;
-  sbSity.Text:=S;
+  sbSity.Text := S;
 end;
 
 end.

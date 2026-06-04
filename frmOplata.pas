@@ -156,7 +156,7 @@ begin
   qClose.Active := false;
   qClose.Prepare;
   qClose.Execute;
-  fmMain.IBT.Commit;
+  fmMain.EndMainTransaction;
   Application.ProcessMessages;
   // -----------------------------------------
   if eOpl.Text.ToDouble > 0 then
@@ -377,10 +377,7 @@ end;
 procedure TfmOpl.setOplata(isNewTransaction: Boolean = false);
 begin
   try
-    if isNewTransaction then
-    begin
-      fmMain.StartMainTransaction;
-    end;
+    fmMain.StartMainTransaction;
     qOpl.Active := false;
     qOpl.Prepare;
     qOpl.ParamByName('NG').AsInteger := FAgent;

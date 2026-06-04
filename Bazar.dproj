@@ -432,6 +432,10 @@
             <Form>fmSelTov</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmOperationAgent.pas">
+            <Form>fmOpAgent</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
