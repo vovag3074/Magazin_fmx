@@ -714,6 +714,7 @@ object fmSelAgn: TfmSelAgn
       Position.Y = 10.000000000000000000
       TabOrder = 2
       Text = #1044#1086#1073#1072#1074#1080#1090#1100
+      OnClick = dxAddClick
     end
     object btOK: TTMSFNCButton
       Bitmap.PNG = {

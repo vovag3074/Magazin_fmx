@@ -69,6 +69,7 @@ type
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure btFTSMouseEnter(Sender: TObject);
     procedure btFTSMouseLeave(Sender: TObject);
+    procedure dxAddClick(Sender: TObject);
   private
     { Private declarations }
     FAgNo: Integer;
@@ -95,7 +96,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddString;
+  frmMain, frmAddString, frmOperationAgent;
 
 threadvar
   FPage, FSPage: Integer;
@@ -611,6 +612,18 @@ begin
   FAgSkidka := tlAgn.FocusedNode.DataBoolean;
   FSumSkidka := tlAgn.FocusedNode.Text[3].ToDouble;
   ModalResult := mrOk;
+end;
+
+procedure TfmSelAgn.dxAddClick(Sender: TObject);
+begin
+ fmOpAgent := TfmOpAgent.Create(fmMain);
+  fmOpAgent.SetSity(tlSity.FocusedNode.DataInteger);
+  if fmOpAgent.ShowModal = mrOk then
+  begin
+    ListAgent;
+  end;
+  fmOpAgent.Free;
+  fmOpAgent := nil;
 end;
 
 end.

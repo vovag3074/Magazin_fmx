@@ -176,7 +176,6 @@ object fmAgn: TfmAgn
       Size.PlatformDefault = False
       TextPrompt = #1055#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
       CharCase = ecUpperCase
-      OnChange = eFindChange
       OnKeyDown = eFindKeyDown
       object ClearEditButton1: TClearEditButton
         Touch.InteractiveGestures = [LongTap]
@@ -580,6 +579,7 @@ object fmAgn: TfmAgn
           Position.Y = 82.000000000000000000
           TabOrder = 1
           Text = #1059#1076#1072#1083#1080#1090#1100
+          OnClick = dxUpdAgnClick
         end
         object dxDelAgn: TTMSFNCButton
           Bitmap.PNG = {
@@ -1227,7 +1227,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1364,7 +1363,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1532,7 +1530,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1952,12 +1949,16 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'give-money'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -1980,6 +1981,8 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-employee'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item

@@ -225,6 +225,10 @@ begin
   else if ANode.Node.DataInteger = 2 then
   begin
     ATextColor := TAlphaColors.Yellow;
+  end
+  else if ANode.Node.DataInteger = 5 then
+  begin
+    ATextColor := TAlphaColors.Magenta;
   end;
 end;
 

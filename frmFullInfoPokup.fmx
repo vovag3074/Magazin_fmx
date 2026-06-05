@@ -648,9 +648,9 @@ object fmUserInfo: TfmUserInfo
             Size.PlatformDefault = False
             Align = Top
             CanFocus = False
-            Margins.Top = 10.000000000000000000
+            Margins.Top = 1.000000000000000000
             Position.X = 2.000000000000000000
-            Position.Y = 12.000000000000000000
+            Position.Y = 3.000000000000000000
             TabOrder = 3
             Text = #1054#1087#1083#1072#1090#1072
             OnClick = TMSFNCButton4Click
@@ -726,9 +726,9 @@ object fmUserInfo: TfmUserInfo
             Size.PlatformDefault = False
             Align = Top
             CanFocus = False
-            Margins.Top = 5.000000000000000000
+            Margins.Top = 1.000000000000000000
             Position.X = 2.000000000000000000
-            Position.Y = 65.000000000000000000
+            Position.Y = 52.000000000000000000
             TabOrder = 2
             Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
             OnMouseEnter = TMSFNCButton4MouseEnter
@@ -789,9 +789,9 @@ object fmUserInfo: TfmUserInfo
             Size.PlatformDefault = False
             Align = Top
             CanFocus = False
-            Margins.Top = 5.000000000000000000
+            Margins.Top = 1.000000000000000000
             Position.X = 2.000000000000000000
-            Position.Y = 176.000000000000000000
+            Position.Y = 159.000000000000000000
             TabOrder = 1
             Text = #1055#1086#1083#1085#1072#1103' '#1080#1089#1090#1086#1088#1080#1103' '#1087#1088#1086#1076#1072#1078' '#1080' '#1086#1087#1083#1072#1090
             OnClick = TMSFNCButton6DblClick
@@ -854,7 +854,7 @@ object fmUserInfo: TfmUserInfo
             CanFocus = False
             Margins.Top = 10.000000000000000000
             Position.X = 2.000000000000000000
-            Position.Y = 123.000000000000000000
+            Position.Y = 110.000000000000000000
             TabOrder = 0
             Text = #1048#1089#1090#1086#1088#1080#1103' '#1087#1088#1086#1076#1072#1078' '#1080' '#1086#1087#1083#1072#1090
             OnClick = TMSFNCButton7Click

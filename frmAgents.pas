@@ -82,7 +82,6 @@ type
     TMSFNCButton4: TTMSFNCButton;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
-    procedure eFindChange(Sender: TObject);
     procedure t1Timer(Sender: TObject);
     procedure btSityClick(Sender: TObject);
     procedure btAgnClick(Sender: TObject);
@@ -100,6 +99,7 @@ type
     procedure TMSFNCButton4Click(Sender: TObject);
     procedure pmInsAgnClick(Sender: TObject);
     procedure pmUpdAgnClick(Sender: TObject);
+    procedure dxUpdAgnClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -110,6 +110,7 @@ type
     procedure LoadAgentList;
     procedure DoSelectSity(Sender: TObject);
     procedure DoSelectAgent(Sender: TObject);
+    procedure setSelectAgent;
      /// <summary>
     /// Начало поиска
     /// </summary>
@@ -139,6 +140,7 @@ var
 
 threadvar
   FPage: Integer;
+  OldFind: string;
 
 implementation
 
@@ -189,24 +191,8 @@ begin
 end;
 
 procedure TfmAgn.DoSelectAgent(Sender: TObject);
-var
-  Item: TListBoxItem;
 begin
-  if Sender is TListBoxItem then
-  begin
-    Item := Sender as TListBoxItem;
-    FSelUser := Item.Tag;
-    if not Assigned(fmUserInfo.pnUserInfo) then
-    begin
-      fmUserInfo.Free;
-      Application.ProcessMessages;
-      fmUserInfo := TfmUserInfo.Create(ppTest);
-      fmUserInfo.pnUserInfo.Parent := ppTest;
-    end;
-    tlAgn.PopupMenu := pmAgent;
-    ppTest.Popup();
-    fmUserInfo.ShowInfoUser(Item.Tag);
-  end;
+  setSelectAgent;
 end;
 
 procedure TfmAgn.DoSelectSity(Sender: TObject);
@@ -247,28 +233,21 @@ begin
   end;
 end;
 
+procedure TfmAgn.dxUpdAgnClick(Sender: TObject);
+begin
+  UpdateAgent;
+end;
+
 procedure TfmAgn.dxUpdSityClick(Sender: TObject);
 begin
   UpdSity;
 end;
 
-procedure TfmAgn.eFindChange(Sender: TObject);
+procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
   t1.Enabled := false;
   Application.ProcessMessages;
-  if trim(eFind.Text) <> '' then
-  begin
-    t1.Enabled := True;
-  end
-  else
-  begin
-    if Assigned(tlSity.ItemByIndex(tlSity.ItemIndex)) then
-      DoSelectSity(Sender);
-  end;
-end;
-
-procedure TfmAgn.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
-begin
+  ppTest.IsOpen := False;
   if Key = vkdown then
   begin
     if tlAgn.ItemIndex >= (tlAgn.Items.Count - 1) then
@@ -289,10 +268,32 @@ begin
     tlAgn.ItemIndex := tlAgn.ItemIndex - 1;
     Key := 0;
   end
+  else if Key = vkReturn then
+  begin
+   if eFind.Text = oldFind then
+    begin
+      DoSelectAgent(Sender);
+    end;
+  end
   else if Key = vkEscape then
   begin
+   if ppTest.IsOpen then
+   begin
+     ppTest.IsOpen := False;
+     Exit;
+   end;
     Key := 0;
     eFind.Text := '';
+    oldFind :='';
+    StartFind;
+    Exit;
+  end;
+  if trim(eFind.Text) <> '' then
+  begin
+    if eFind.Text <> oldFind then
+    begin
+      t1.Enabled := True;
+    end;
   end;
 end;
 
@@ -481,7 +482,7 @@ begin
   begin
     ANode.BeginUpdate;
     //ShowMessage(qRefAgent.FieldByName('AG_NAME').AsString+' '+qRefAgent.FieldByName('ST_NAME').AsString);
-    ANode.Text := qRefAgent.FieldByName('AG_NAME').AsString+' '+qRefAgent.FieldByName('ST_NAME').AsString;
+    ANode.Text := qRefAgent.FieldByName('AG_NAME').AsString + ' ' + qRefAgent.FieldByName('ST_NAME').AsString;
     ANode.StylesData['ItemD'] := qRefAgent.FieldByName('AG_DOLG').AsFloat;
     ANode.StylesData['ItemP'] := qRefAgent.FieldByName('AG_PRED').AsFloat;
     ANode.EndUpdate;
@@ -495,6 +496,25 @@ begin
   myINI.WriteInteger('Pokupateli', 'SityList', Trunc(tlSity.Width));
   fmUserInfo.Free;
   fmUserInfo := nil;
+end;
+
+procedure TfmAgn.setSelectAgent;
+var
+  Item: TListBoxItem;
+begin
+  Item := tlAgn.ItemByIndex(tlAgn.ItemIndex);
+  FSelUser := Item.Tag;
+  if not Assigned(fmUserInfo.pnUserInfo) then
+  begin
+    fmUserInfo.Free;
+    Application.ProcessMessages;
+    fmUserInfo := TfmUserInfo.Create(ppTest);
+    fmUserInfo.pnUserInfo.Parent := ppTest;
+  end;
+  tlAgn.PopupMenu := pmAgent;
+  ppTest.PlacementTarget:=Item;
+  ppTest.Popup();
+  fmUserInfo.ShowInfoUser(Item.Tag);
 end;
 
 procedure TfmAgn.showRepAgn;
@@ -560,6 +580,7 @@ end;
 procedure TfmAgn.t1Timer(Sender: TObject);
 begin
   t1.Enabled := false;
+  oldFind := eFind.Text;
   StartFind;
 end;
 
