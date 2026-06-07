@@ -12,7 +12,8 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FMX.TMSFNCCustomComponent, FMX.TMSFNCBitmapContainer,
-  FMX.Edit, FMX.TMSFNCButton, fmx.Objects;
+  FMX.Edit, FMX.TMSFNCButton, fmx.Objects, FMX.Menus, System.ImageList,
+  FMX.ImgList, FMX.SVGIconImageList;
 
 type
   TfmUserInfo = class(TForm)
@@ -39,6 +40,9 @@ type
     TMSFNCButton5: TTMSFNCButton;
     TMSFNCButton6: TTMSFNCButton;
     TMSFNCButton7: TTMSFNCButton;
+    pmCheck: TPopupMenu;
+    miCheckProd: TMenuItem;
+    SVGIconImageList1: TSVGIconImageList;
     procedure TabItem3Click(Sender: TObject);
     procedure tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure TabItem4Click(Sender: TObject);
@@ -48,6 +52,10 @@ type
     procedure TMSFNCButton7Click(Sender: TObject);
     procedure TMSFNCButton6DblClick(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure ShowCheck;
+    procedure tlLogDblClick(Sender: TObject);
+    procedure miCheckProdClick(Sender: TObject);
+    procedure pmCheckPopup(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -73,6 +81,18 @@ uses
 
 { TfmUserInfo }
 
+procedure TfmUserInfo.miCheckProdClick(Sender: TObject);
+begin
+ ShowCheck;
+end;
+
+procedure TfmUserInfo.pmCheckPopup(Sender: TObject);
+var Node:TTMSFNCTreeViewNode;
+begin
+  Node:=tlLog.FocusedNode;
+  miCheckProd.Enabled := Node.DataInteger=0;
+end;
+
 procedure TfmUserInfo.repUserInfo;
 begin
   ShowReportJSON('ShRepHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
@@ -81,6 +101,16 @@ end;
 procedure TfmUserInfo.repUserInfoFull;
 begin
   ShowReportJSON('ShRepFullHistAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '"}]');
+end;
+
+procedure TfmUserInfo.ShowCheck;
+var Node:TTMSFNCTreeViewNode;
+begin
+  Node:=tlLog.FocusedNode;
+  if Node.DataInteger = 0  then
+  begin
+    ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + Node.Text[0] + '"}]');
+  end;
 end;
 
 procedure TfmUserInfo.ShowInfoUser(NoUser: Integer);
@@ -214,6 +244,11 @@ end;
 procedure TfmUserInfo.TabItem4Click(Sender: TObject);
 begin
   ShowUser;
+end;
+
+procedure TfmUserInfo.tlLogDblClick(Sender: TObject);
+begin
+ ShowCheck;
 end;
 
 procedure TfmUserInfo.tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
