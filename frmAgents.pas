@@ -80,6 +80,16 @@ type
     qDelSity: TFDCommand;
     qRefAgent: TFDQuery;
     TMSFNCButton4: TTMSFNCButton;
+    eSumDolg: TEdit;
+    DropDownEditButton1: TDropDownEditButton;
+    ppSumDolg: TPopup;
+    Panel6: TPanel;
+    tlDolg: TListBox;
+    qDolg: TFDQuery;
+    ltDolg: TLayout;
+    Rectangle3: TRectangle;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure t1Timer(Sender: TObject);
@@ -100,6 +110,7 @@ type
     procedure pmInsAgnClick(Sender: TObject);
     procedure pmUpdAgnClick(Sender: TObject);
     procedure dxUpdAgnClick(Sender: TObject);
+    procedure DropDownEditButton1Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -120,6 +131,7 @@ type
     /// </summary>
     procedure showRepAgn;
     procedure AddAgent;
+    procedure ShowSumDolg;
   public
     { Public declarations }
     procedure LoadINI;
@@ -198,6 +210,12 @@ end;
 procedure TfmAgn.DoSelectSity(Sender: TObject);
 begin
   LoadAgentList;
+end;
+
+procedure TfmAgn.DropDownEditButton1Click(Sender: TObject);
+begin
+ ppSumDolg.Popup();
+ ShowSumDolg;
 end;
 
 /// <summary>
@@ -520,6 +538,30 @@ end;
 procedure TfmAgn.showRepAgn;
 begin
   ShowReportJson('repAnent*.fr3', '');
+end;
+
+procedure TfmAgn.ShowSumDolg;
+var
+  Node: TListBoxItem;
+begin
+  tlDolg.Items.Clear;
+  qDolg.Close;
+  qDolg.Prepare;
+  qDolg.Active := True;
+  if qDolg.RecordCount > 0 then
+  begin
+    qDolg.First;
+    repeat
+      Node := TListBoxItem.Create(tlDolg);
+      Node.StyleLookup:='sumDolgList';
+      Node.Text := qDolg.FieldByName('nazvan').AsString;
+      Node.StylesData['sumD']:= qDolg.FieldByName('sum_of_ag_dolg').AsFloat;
+      tlDolg.AddObject(Node);
+      qDolg.Next;
+    until (qDolg.Eof);
+    tlDolg.ItemIndex:=0;
+  end;
+  qDolg.Close;
 end;
 
 procedure TfmAgn.StartFind;

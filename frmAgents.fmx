@@ -823,6 +823,31 @@ object fmAgn: TfmAgn
         Text = #1055#1088#1077#1076#1099#1076#1091#1097#1080#1077' 10'
         OnClick = TMSFNCButton3Click
       end
+      object eSumDolg: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Right
+        TabOrder = 3
+        ReadOnly = True
+        Position.X = 430.000000000000000000
+        Position.Y = 8.000000000000000000
+        Margins.Top = 8.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 315.000000000000000000
+        Size.Height = 34.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1087#1086#1082#1072#1079#1072' '#1076#1086#1083#1075#1086#1074
+        object DropDownEditButton1: TDropDownEditButton
+          Touch.InteractiveGestures = [LongTap]
+          CanFocus = False
+          Cursor = crArrow
+          Size.Width = 28.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnClick = DropDownEditButton1Click
+        end
+      end
     end
     object tlAgn: TListBox
       Align = Client
@@ -1024,6 +1049,87 @@ object fmAgn: TfmAgn
         Size.PlatformDefault = False
         StyleBook = fmMain.stbMain
         TabOrder = 2
+      end
+      object ppSumDolg: TPopup
+        PlacementTarget = eSumDolg
+        Position.X = 344.000000000000000000
+        Position.Y = 416.000000000000000000
+        Size.Width = 393.000000000000000000
+        Size.Height = 160.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object Panel6: TPanel
+          Align = Client
+          Size.Width = 393.000000000000000000
+          Size.Height = 160.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'TopPanel'
+          TabOrder = 0
+          object tlDolg: TListBox
+            Align = Client
+            Margins.Left = 2.000000000000000000
+            Margins.Top = 2.000000000000000000
+            Margins.Right = 2.000000000000000000
+            Margins.Bottom = 2.000000000000000000
+            Size.Width = 389.000000000000000000
+            Size.Height = 156.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            DisableFocusEffect = True
+            ItemHeight = 40.000000000000000000
+            DefaultItemStyles.ItemStyle = ''
+            DefaultItemStyles.GroupHeaderStyle = ''
+            DefaultItemStyles.GroupFooterStyle = ''
+            Viewport.Width = 385.000000000000000000
+            Viewport.Height = 152.000000000000000000
+            object ltDolg: TLayout
+              StyleName = 'sumDolgList'
+              Position.X = 8.000000000000000000
+              Position.Y = 32.000000000000000000
+              Size.Width = 353.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              Visible = False
+              TabOrder = 0
+              object Rectangle3: TRectangle
+                Align = Client
+                Fill.Kind = None
+                HitTest = False
+                Size.Width = 353.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Color = claWhite
+                object Label7: TLabel
+                  StyleName = 'sumD'
+                  Align = Right
+                  StyledSettings = [Family, Style]
+                  Position.X = 200.000000000000000000
+                  Size.Width = 153.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.HorzAlign = Center
+                  Text = '0'
+                  TabOrder = 0
+                end
+                object Label8: TLabel
+                  StyleName = 'Text'
+                  Align = Client
+                  StyledSettings = [Family, Style]
+                  Margins.Left = 5.000000000000000000
+                  Size.Width = 195.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Text = 'Label8'
+                  TabOrder = 1
+                end
+              end
+            end
+          end
+        end
       end
     end
   end
@@ -2199,5 +2305,20 @@ object fmAgn: TfmAgn
         Name = 'NG'
         ParamType = ptInput
       end>
+  end
+  object qDolg: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select sum(AG.AG_DOLG) SUM_OF_AG_DOLG,'
+      '       VL.NAZVAN'
+      'from VALUT_TABLE VL'
+      'inner join AGENTS AG on (VL.NO_VAL = AG.PRED_VAL)'
+      'where AG.IS_DEL = 0'
+      'group by VL.NAZVAN'
+      'order by VL.NAZVAN  '
+      '')
+    Left = 561
+    Top = 544
   end
 end

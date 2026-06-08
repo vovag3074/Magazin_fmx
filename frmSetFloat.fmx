@@ -12,6 +12,7 @@ object fmSelFloat: TfmSelFloat
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Align = Bottom

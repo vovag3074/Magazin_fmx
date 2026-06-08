@@ -17,6 +17,7 @@ type
     TMSFNCButton2: TTMSFNCButton;
     TMSFNCButton3: TTMSFNCButton;
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +49,11 @@ begin
   fmSelFloat:=nil;
 end;
 
+
+procedure TfmSelFloat.FormCreate(Sender: TObject);
+begin
+ eSum.OnChangeTracking := fmMain.onEditChangeTracking;
+end;
 
 procedure TfmSelFloat.TMSFNCButton1Click(Sender: TObject);
 begin
