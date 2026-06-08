@@ -26,6 +26,7 @@ object fmMain: TfmMain
   end
   object tbMain: TTMSFNCToolBar
     AdaptToStyle = True
+    Color = xFF2B2B2B
     Align = MostTop
     Size.Width = 893.000000000000000000
     Size.Height = 65.000000000000000000
@@ -33,12 +34,15 @@ object fmMain: TfmMain
     TabOrder = 3
     AutoHeight = False
     AutoSize = False
-    Appearance.Fill.ColorTo = claWhite
+    Appearance.Fill.Color = xFF3C3C3C
+    Appearance.Fill.ColorTo = xFF3C3C3C
     CompactBitmaps = <>
+    Font.Color = claWhite
     OptionsMenu.ShowButton = False
     object btMoveToSclad: TTMSFNCToolBarButton
       AdaptToStyle = True
       Hint = #1055#1088#1080#1077#1084' '#1090#1086#1074#1072#1088#1072' '#1085#1072' '#1084#1072#1075#1072#1079#1080#1085
+      Color = xFF2B2B2B
       Position.X = 9.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 113.000000000000000000
@@ -46,6 +50,7 @@ object fmMain: TfmMain
       Size.PlatformDefault = False
       TabOrder = 0
       OnClick = btMoveToScladClick
+      Font.Color = claWhite
       Text = #1055#1088#1080#1077#1084' '#1085#1072' '#1084#1072#1075#1072#1079#1080#1085
       Bitmaps = <>
       LargeLayoutBitmaps = <
@@ -91,29 +96,30 @@ object fmMain: TfmMain
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 0
     end
     object TMSFNCToolBarButton2: TTMSFNCToolBarButton
       AdaptToStyle = True
       Hint = #1042#1086#1079#1074#1088#1072#1090' '#1090#1086#1074#1072#1088#1072' '#1089' '#1084#1072#1075#1072#1079#1080#1085#1072
+      Color = xFF2B2B2B
       Position.X = 125.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 118.000000000000000000
       Size.Height = 62.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      Font.Color = claWhite
       Text = #1042#1086#1079#1074#1088#1072#1090' '#1089' '#1084#1072#1075#1072#1079#1080#1085#1072
       Bitmaps = <>
       LargeLayoutBitmaps = <
@@ -158,22 +164,22 @@ object fmMain: TfmMain
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 1
     end
     object TMSFNCToolBarSeparator1: TTMSFNCToolBarSeparator
       AdaptToStyle = True
+      Color = xFF2B2B2B
       Position.X = 246.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 3.000000000000000000
@@ -186,6 +192,7 @@ object fmMain: TfmMain
     object btInvSclad: TTMSFNCToolBarButton
       AdaptToStyle = True
       Hint = #1057#1086#1076#1077#1088#1078#1080#1084#1086#1077' '#1089#1082#1083#1072#1076#1072
+      Color = xFF2B2B2B
       Position.X = 252.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 44.000000000000000000
@@ -193,6 +200,7 @@ object fmMain: TfmMain
       Size.PlatformDefault = False
       TabOrder = 3
       OnClick = btInvScladClick
+      Font.Color = claWhite
       Text = #1057#1082#1083#1072#1076
       Bitmaps = <>
       LargeLayoutBitmaps = <
@@ -242,23 +250,23 @@ object fmMain: TfmMain
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 3
     end
     object btAgent: TTMSFNCToolBarButton
       AdaptToStyle = True
       Hint = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
+      Color = xFF2B2B2B
       Position.X = 299.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 77.000000000000000000
@@ -266,6 +274,7 @@ object fmMain: TfmMain
       Size.PlatformDefault = False
       TabOrder = 4
       OnClick = btAgentClick
+      Font.Color = claWhite
       Text = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
       Bitmaps = <>
       LargeLayoutBitmaps = <
@@ -344,22 +353,22 @@ object fmMain: TfmMain
         end>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 4
     end
     object TMSFNCToolBarSeparator2: TTMSFNCToolBarSeparator
       AdaptToStyle = True
+      Color = xFF2B2B2B
       Position.X = 379.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 3.000000000000000000
@@ -370,6 +379,7 @@ object fmMain: TfmMain
     end
     object btProd: TTMSFNCToolBarButton
       AdaptToStyle = True
+      Color = xFF2B2B2B
       Position.X = 385.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 62.000000000000000000
@@ -377,6 +387,7 @@ object fmMain: TfmMain
       Size.PlatformDefault = False
       TabOrder = 6
       OnClick = btProdClick
+      Font.Color = claWhite
       Text = #1055#1088#1086#1076#1072#1078#1072
       Bitmaps = <
         item
@@ -469,22 +480,22 @@ object fmMain: TfmMain
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 6
     end
     object TMSFNCToolBarSeparator3: TTMSFNCToolBarSeparator
       AdaptToStyle = True
+      Color = xFF2B2B2B
       Position.X = 450.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 3.000000000000000000
@@ -497,6 +508,7 @@ object fmMain: TfmMain
       AdaptToStyle = True
       Hint = #1041#1072#1085#1082#1086#1074#1089#1082#1080#1077' '#1086#1087#1077#1088#1072#1094#1080#1080
       ShowHint = True
+      Color = xFF2B2B2B
       Position.X = 456.000000000000000000
       Position.Y = 3.000000000000000000
       Size.Width = 38.000000000000000000
@@ -504,6 +516,7 @@ object fmMain: TfmMain
       Size.PlatformDefault = False
       TabOrder = 8
       OnClick = btBankClick
+      Font.Color = claWhite
       Text = #1041#1072#1085#1082
       Bitmaps = <
         item
@@ -550,17 +563,16 @@ object fmMain: TfmMain
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
       BitmapSize = 32.000000000000000000
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       ControlIndex = 8
     end

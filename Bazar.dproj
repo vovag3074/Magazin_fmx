@@ -81,6 +81,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSX64' and '$(Cfg_2)'=='true') or '$(Cfg_2_OSX64)'!=''">
+        <Cfg_2_OSX64>true</Cfg_2_OSX64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
         <Cfg_2_Win32>true</Cfg_2_Win32>
         <CfgParent>Cfg_2</CfgParent>
@@ -295,6 +301,14 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_OSX64)'!=''">
+        <Debugger_Launcher>/usr/X11/bin/xterm -e &quot;%debuggee%&quot;</Debugger_Launcher>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Icon_MainIcon>Bazar_Icon1.ico</Icon_MainIcon>
+        <Icns_MainIcns>Bazar_Icns1.icns</Icns_MainIcns>
+        <Manifest_File>(None)</Manifest_File>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
@@ -457,33 +471,6 @@
                     <Source Name="MainSource">Bazar.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\accessprovider370.bpl">UniDAC Access Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\adsprovider370.bpl">UniDAC Advantage Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\aseprovider370.bpl">UniDAC ASE Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\bigcommerceprovider370.bpl">UniDAC BigCommerce Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\bigqueryprovider370.bpl">UniDAC BigQuery Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\db2provider370.bpl">UniDAC DB2 Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\dbfprovider370.bpl">UniDAC DBF Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\dynamicsprovider370.bpl">UniDAC Dynamics CRM Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\exacttargetprovider370.bpl">UniDAC Salesforce MC Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\excelprovider370.bpl">UniDAC Excel Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\freshbooksprovider370.bpl">UniDAC FreshBooks Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\hubspotprovider370.bpl">UniDAC HubSpot Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\ibprovider370.bpl">UniDAC InterBase Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\liteprovider370.bpl">UniDAC SQLite Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\magentoprovider370.bpl">UniDAC Magento Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\mailchimpprovider370.bpl">UniDAC MailChimp Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\mongoprovider370.bpl">UniDAC MongoDB Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\myprovider370.bpl">UniDAC MySQL Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\netsuiteprovider370.bpl">UniDAC NetSuite Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\nexusprovider370.bpl">UniDAC NexusDB Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\oraprovider370.bpl">UniDAC Oracle Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\pgprovider370.bpl">UniDAC PostgreSQL Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\quickbooksprovider370.bpl">UniDAC QuickBooks Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\rsprovider370.bpl">UniDAC Redshift Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\salesforceprovider370.bpl">UniDAC Salesforce Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\sugarprovider370.bpl">UniDAC SugarCRM Provider</Excluded_Packages>
-                    <Excluded_Packages Name="E:\Program Files (x86)\Devart\UniDAC for RAD Studio 13\Bin\Win32\zohoprovider370.bpl">UniDAC Zoho CRM Provider</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k370.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp370.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
@@ -501,12 +488,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\delphi_PROJECTICNS.icns" Configuration="Release" Class="ProjectOSXResource">
-                    <Platform Name="OSX64">
-                        <RemoteName>Bazar.icns</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -590,6 +571,12 @@
                 </DeployFile>
                 <DeployFile LocalName="Bazar_Icns.icns" Configuration="Release" Class="File">
                     <Platform Name="OSXARM64">
+                        <RemoteName>Bazar.icns</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Bazar_Icns1.icns" Configuration="Release" Class="ProjectOSXResource">
+                    <Platform Name="OSX64">
                         <RemoteName>Bazar.icns</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -989,6 +976,41 @@
                 <DeployFile LocalName="Win32\Debug\Bazar.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Bazar.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="libMac\libfbclient.dylib" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\</RemoteDir>
+                        <RemoteName>libfbclient.dylib</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="libMac\libib_util.dylib" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\</RemoteDir>
+                        <RemoteName>libib_util.dylib</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="libMac\libicudata.dylib" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\</RemoteDir>
+                        <RemoteName>libicudata.dylib</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="libMac\libicui18n.dylib" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\</RemoteDir>
+                        <RemoteName>libicui18n.dylib</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="libMac\libicuuc.dylib" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\</RemoteDir>
+                        <RemoteName>libicuuc.dylib</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
