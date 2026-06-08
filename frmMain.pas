@@ -56,6 +56,7 @@ type
     qVal: TFDQuery;
     qTran: TFDQuery;
     ApplicationEvents1: TApplicationEvents;
+    tmIdle: TTimer;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -70,6 +71,8 @@ type
     procedure myListBeforeDrawItemBackground(Sender: TObject;
       AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer;
       var ADefaultDraw: Boolean);
+    procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
+    procedure tmIdleTimer(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -468,6 +471,18 @@ begin
     NoAgn := qTestZal.FieldByName('NO_AGN').AsInteger;
   end;
   qTestZal.Close;
+end;
+
+procedure TfmMain.tmIdleTimer(Sender: TObject);
+begin
+ tmIdle.Enabled:=False;
+ IBC.Connected := False;
+end;
+
+procedure TfmMain.ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
+begin
+ tmIdle.Enabled:=True;
+ Done := True;
 end;
 
 procedure TfmMain.btAgentClick(Sender: TObject);
