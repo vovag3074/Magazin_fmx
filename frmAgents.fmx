@@ -1185,6 +1185,7 @@ object fmAgn: TfmAgn
     object MenuItem3: TMenuItem
       Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
       ImageIndex = 4
+      OnClick = MenuItem3Click
     end
   end
   object pmSity: TPopupMenu
@@ -1333,6 +1334,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1469,6 +1471,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1636,6 +1639,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -2055,16 +2059,12 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'give-money'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
@@ -2087,8 +2087,6 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-employee'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item

@@ -121,6 +121,10 @@ begin
   fmCalc.Top:= round(mc.Y +20);
   fmCalc.Left:=Round(mc.X);
   fmCalc.eRes.Text:='0';
+  if Owner.Text.Trim='' then
+  begin
+    Owner.Text:='0';
+  end;
   fmCalc.setAkum(Owner.Text.ToDouble);  // devexpress  ведет себя так
   fmCalc.ShowModal(procedure (Result:TModalResult)
   begin

@@ -450,6 +450,10 @@
             <Form>fmOpAgent</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmPredoplata.pas">
+            <Form>fmPred</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

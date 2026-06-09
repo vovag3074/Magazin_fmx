@@ -111,6 +111,7 @@ type
     procedure pmUpdAgnClick(Sender: TObject);
     procedure dxUpdAgnClick(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -158,7 +159,7 @@ implementation
 
 uses
   frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport,
-  frmOperationAgent;
+  frmOperationAgent, frmPredoplata;
 
 {$R *.fmx}
 
@@ -214,8 +215,8 @@ end;
 
 procedure TfmAgn.DropDownEditButton1Click(Sender: TObject);
 begin
- ppSumDolg.Popup();
- ShowSumDolg;
+  ppSumDolg.Popup();
+  ShowSumDolg;
 end;
 
 /// <summary>
@@ -288,21 +289,21 @@ begin
   end
   else if Key = vkReturn then
   begin
-   if eFind.Text = oldFind then
+    if eFind.Text = oldFind then
     begin
       DoSelectAgent(Sender);
     end;
   end
   else if Key = vkEscape then
   begin
-   if ppTest.IsOpen then
-   begin
-     ppTest.IsOpen := False;
-     Exit;
-   end;
+    if ppTest.IsOpen then
+    begin
+      ppTest.IsOpen := False;
+      Exit;
+    end;
     Key := 0;
     eFind.Text := '';
-    oldFind :='';
+    oldFind := '';
     StartFind;
     Exit;
   end;
@@ -461,6 +462,18 @@ begin
   end;
 end;
 
+procedure TfmAgn.MenuItem3Click(Sender: TObject);
+begin
+  fmPred := TfmPred.Create(fmAgn);
+  fmPred.SetAgent(tlAgn.ItemByIndex(tlAgn.ItemIndex).Tag, now);
+  if fmPred.ShowModal = mrOk then
+  begin
+    refrSelAgn;
+  end;
+  fmPred.free;
+  fmPred:=nil;
+end;
+
 procedure TfmAgn.pmDelSityClick(Sender: TObject);
 begin
   DelSity;
@@ -530,7 +543,7 @@ begin
     fmUserInfo.pnUserInfo.Parent := ppTest;
   end;
   tlAgn.PopupMenu := pmAgent;
-  ppTest.PlacementTarget:=Item;
+  ppTest.PlacementTarget := Item;
   ppTest.Popup();
   fmUserInfo.ShowInfoUser(Item.Tag);
 end;
@@ -546,6 +559,7 @@ var
 begin
   tlDolg.Items.Clear;
   qDolg.Close;
+  fmMain.StartReadTransaction;
   qDolg.Prepare;
   qDolg.Active := True;
   if qDolg.RecordCount > 0 then
@@ -553,15 +567,16 @@ begin
     qDolg.First;
     repeat
       Node := TListBoxItem.Create(tlDolg);
-      Node.StyleLookup:='sumDolgList';
+      Node.StyleLookup := 'sumDolgList';
       Node.Text := qDolg.FieldByName('nazvan').AsString;
-      Node.StylesData['sumD']:= qDolg.FieldByName('sum_of_ag_dolg').AsFloat;
+      Node.StylesData['sumD'] := qDolg.FieldByName('sum_of_ag_dolg').AsFloat;
       tlDolg.AddObject(Node);
       qDolg.Next;
     until (qDolg.Eof);
-    tlDolg.ItemIndex:=0;
+    tlDolg.ItemIndex := 0;
   end;
   qDolg.Close;
+  fmMain.EndReadTransaction;
 end;
 
 procedure TfmAgn.StartFind;

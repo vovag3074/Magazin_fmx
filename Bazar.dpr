@@ -32,7 +32,8 @@ uses
   frmAgents in 'frmAgents.pas' {fmAgn: TFrame},
   frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo},
   frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov},
-  frmOperationAgent in 'frmOperationAgent.pas' {fmOpAgent};
+  frmOperationAgent in 'frmOperationAgent.pas' {fmOpAgent},
+  frmPredoplata in 'frmPredoplata.pas' {fmPred};
 
 {$R *.res}
 

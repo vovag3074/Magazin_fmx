@@ -56,6 +56,7 @@ type
     procedure tlLogDblClick(Sender: TObject);
     procedure miCheckProdClick(Sender: TObject);
     procedure pmCheckPopup(Sender: TObject);
+    procedure TMSFNCButton5Click(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -75,7 +76,7 @@ var
 implementation
 
 uses
-  frmMain, frmOplata, frmReport, frmAgents;
+  frmMain, frmOplata, frmReport, frmAgents, frmPredoplata, frmProdaga;
 
 {$R *.fmx}
 
@@ -83,14 +84,15 @@ uses
 
 procedure TfmUserInfo.miCheckProdClick(Sender: TObject);
 begin
- ShowCheck;
+  ShowCheck;
 end;
 
 procedure TfmUserInfo.pmCheckPopup(Sender: TObject);
-var Node:TTMSFNCTreeViewNode;
+var
+  Node: TTMSFNCTreeViewNode;
 begin
-  Node:=tlLog.FocusedNode;
-  miCheckProd.Enabled := Node.DataInteger=0;
+  Node := tlLog.FocusedNode;
+  miCheckProd.Enabled := Node.DataInteger = 0;
 end;
 
 procedure TfmUserInfo.repUserInfo;
@@ -104,10 +106,11 @@ begin
 end;
 
 procedure TfmUserInfo.ShowCheck;
-var Node:TTMSFNCTreeViewNode;
+var
+  Node: TTMSFNCTreeViewNode;
 begin
-  Node:=tlLog.FocusedNode;
-  if Node.DataInteger = 0  then
+  Node := tlLog.FocusedNode;
+  if Node.DataInteger = 0 then
   begin
     ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + Node.Text[0] + '"}]');
   end;
@@ -248,7 +251,7 @@ end;
 
 procedure TfmUserInfo.tlLogDblClick(Sender: TObject);
 begin
- ShowCheck;
+  ShowCheck;
 end;
 
 procedure TfmUserInfo.tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
@@ -342,6 +345,28 @@ end;
 procedure TfmUserInfo.TMSFNCButton4MouseLeave(Sender: TObject);
 begin
   HintPanel.Visible := false;
+end;
+
+procedure TfmUserInfo.TMSFNCButton5Click(Sender: TObject);
+begin
+  fmPred := TfmPred.Create(fmAgn);
+  if Assigned(fmProd) then
+  begin
+    fmPred.SetAgent(FActiveProd, StrToDate(fmProd.eData.Text));
+  end
+  else
+  begin
+    fmPred.SetAgent(FActiveProd, now);
+  end;
+  if fmPred.ShowModal = mrOk then
+  begin
+    if Assigned(fmProd) then
+    begin
+      fmProd.ReadProd;
+    end;
+  end;
+  fmPred.free;
+  fmPred := nil;
 end;
 
 procedure TfmUserInfo.TMSFNCButton6DblClick(Sender: TObject);

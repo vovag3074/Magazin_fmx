@@ -733,6 +733,7 @@ object fmUserInfo: TfmUserInfo
             Position.Y = 52.000000000000000000
             TabOrder = 2
             Text = #1055#1088#1077#1076#1086#1087#1083#1072#1090#1072
+            OnClick = TMSFNCButton5Click
             OnMouseEnter = TMSFNCButton4MouseEnter
             OnMouseLeave = TMSFNCButton4MouseLeave
           end
@@ -1557,6 +1558,17 @@ object fmUserInfo: TfmUserInfo
       end
     end
   end
+  object pmCheck: TPopupMenu
+    Images = SVGIconImageList1
+    OnPopup = pmCheckPopup
+    Left = 274
+    Top = 277
+    object miCheckProd: TMenuItem
+      Text = #1063#1077#1082' '#1087#1088#1086#1076#1072#1078#1080
+      ImageIndex = 0
+      OnClick = miCheckProdClick
+    end
+  end
   object qLogAg: TFDQuery
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
@@ -1624,23 +1636,11 @@ object fmUserInfo: TfmUserInfo
         ParamType = ptInput
       end>
   end
-  object pmCheck: TPopupMenu
-    Images = SVGIconImageList1
-    OnPopup = pmCheckPopup
-    Left = 274
-    Top = 277
-    object miCheckProd: TMenuItem
-      Text = #1063#1077#1082' '#1087#1088#1086#1076#1072#1078#1080
-      ImageIndex = 0
-      OnClick = miCheckProdClick
-    end
-  end
   object SVGIconImageList1: TSVGIconImageList
     Source = <
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1779,12 +1779,6 @@ object fmUserInfo: TfmUserInfo
         Layers = <
           item
             Name = 'give-money'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 0'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
