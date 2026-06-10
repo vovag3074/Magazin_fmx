@@ -454,6 +454,10 @@
             <Form>fmPred</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmReturnProd.pas">
+            <Form>fmRetProd</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

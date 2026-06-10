@@ -90,6 +90,7 @@ type
     Rectangle3: TRectangle;
     Label7: TLabel;
     Label8: TLabel;
+    MenuItem4: TMenuItem;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure t1Timer(Sender: TObject);
@@ -112,6 +113,7 @@ type
     procedure dxUpdAgnClick(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -146,6 +148,10 @@ type
     /// редактирование выбранного агента
     /// </summary>
     procedure UpdateAgent;
+    /// <summary>
+    /// возврат со старой продажи
+    /// </summary>
+    procedure retOldProd;
   end;
 
 var
@@ -159,7 +165,7 @@ implementation
 
 uses
   frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport,
-  frmOperationAgent, frmPredoplata;
+  frmOperationAgent, frmPredoplata, frmReturnProd;
 
 {$R *.fmx}
 
@@ -474,6 +480,11 @@ begin
   fmPred:=nil;
 end;
 
+procedure TfmAgn.MenuItem4Click(Sender: TObject);
+begin
+ retOldProd;
+end;
+
 procedure TfmAgn.pmDelSityClick(Sender: TObject);
 begin
   DelSity;
@@ -520,6 +531,18 @@ begin
   end;
   qRefAgent.Close;
   fmMain.EndReadTransaction;
+end;
+
+procedure TfmAgn.retOldProd;
+begin
+ fmRetProd := TfmRetProd.Create(fmAgn);
+ fmRetProd.SetAgent(tlAgn.ItemByIndex(tlAgn.ItemIndex).Tag);
+ if fmRetProd.ShowModal=mrOk then
+ begin
+   refrSelAgn;
+ end;
+ fmRetProd.Free;
+ fmRetProd:=nil;
 end;
 
 procedure TfmAgn.SaveINI;

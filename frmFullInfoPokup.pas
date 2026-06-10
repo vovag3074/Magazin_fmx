@@ -43,6 +43,7 @@ type
     pmCheck: TPopupMenu;
     miCheckProd: TMenuItem;
     SVGIconImageList1: TSVGIconImageList;
+    TMSFNCButton8: TTMSFNCButton;
     procedure TabItem3Click(Sender: TObject);
     procedure tlLogGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure TabItem4Click(Sender: TObject);
@@ -57,6 +58,7 @@ type
     procedure miCheckProdClick(Sender: TObject);
     procedure pmCheckPopup(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
+    procedure TMSFNCButton8Click(Sender: TObject);
   private
     { Private declarations }
     FActiveProd: Integer;
@@ -377,6 +379,14 @@ end;
 procedure TfmUserInfo.TMSFNCButton7Click(Sender: TObject);
 begin
   repUserInfo;
+end;
+
+procedure TfmUserInfo.TMSFNCButton8Click(Sender: TObject);
+begin
+ if Assigned(fmAgn) then
+ begin
+   fmAgn.retOldProd;
+ end;
 end;
 
 end.

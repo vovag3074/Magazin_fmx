@@ -33,7 +33,8 @@ uses
   frmFullInfoPokup in 'frmFullInfoPokup.pas' {fmUserInfo},
   frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov},
   frmOperationAgent in 'frmOperationAgent.pas' {fmOpAgent},
-  frmPredoplata in 'frmPredoplata.pas' {fmPred};
+  frmPredoplata in 'frmPredoplata.pas' {fmPred},
+  frmReturnProd in 'frmReturnProd.pas' {fmRetProd};
 
 {$R *.res}
 
