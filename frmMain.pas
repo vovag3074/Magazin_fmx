@@ -26,7 +26,8 @@ uses
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox, FMX.Edit;
+  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox,
+  FMX.Edit;
 
 type
   TfmMain = class(TForm)
@@ -68,9 +69,7 @@ type
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
     procedure IBCLost(Sender: TObject);
     procedure btAgentClick(Sender: TObject);
-    procedure myListBeforeDrawItemBackground(Sender: TObject;
-      AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer;
-      var ADefaultDraw: Boolean);
+    procedure myListBeforeDrawItemBackground(Sender: TObject; AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer; var ADefaultDraw: Boolean);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
     procedure tmIdleTimer(Sender: TObject);
   private
@@ -299,21 +298,27 @@ begin
   fmInpMag.readSclad;
 end;
 
-procedure TfmMain.myListBeforeDrawItemBackground(Sender: TObject;
-  AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer;
-  var ADefaultDraw: Boolean);
+procedure TfmMain.myListBeforeDrawItemBackground(Sender: TObject; AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer; var ADefaultDraw: Boolean);
 begin
- case AItemIndex of
-  0:AGraphics.Fill.Color:= $44483D8B;
-  1:AGraphics.Fill.Color:= $448FBC8F;
-  2:AGraphics.Fill.Color:= $4400CED1;
-  3:AGraphics.Fill.Color:= $44FF1493;
-  4:AGraphics.Fill.Color:= $44D2691E;
-  5:AGraphics.Fill.Color:= $44ADFF2F;
-  6:AGraphics.Fill.Color:= $44B22222;
-  7:AGraphics.Fill.Color:= $44006400;
- end;
- ADefaultDraw := True;
+  case AItemIndex of
+    0:
+      AGraphics.Fill.Color := $44483D8B;
+    1:
+      AGraphics.Fill.Color := $448FBC8F;
+    2:
+      AGraphics.Fill.Color := $4400CED1;
+    3:
+      AGraphics.Fill.Color := $44FF1493;
+    4:
+      AGraphics.Fill.Color := $44D2691E;
+    5:
+      AGraphics.Fill.Color := $44ADFF2F;
+    6:
+      AGraphics.Fill.Color := $44B22222;
+    7:
+      AGraphics.Fill.Color := $44006400;
+  end;
+  ADefaultDraw := True;
 end;
 
 procedure TfmMain.myListItemClick(Sender: TObject; AItemIndex: Integer);
@@ -475,14 +480,14 @@ end;
 
 procedure TfmMain.tmIdleTimer(Sender: TObject);
 begin
- tmIdle.Enabled:=False;
- IBC.Connected := False;
+  tmIdle.Enabled := False;
+  IBC.Connected := False;
 end;
 
 procedure TfmMain.ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
 begin
- tmIdle.Enabled:=True;
- Done := True;
+  tmIdle.Enabled := True;
+  Done := True;
 end;
 
 procedure TfmMain.btAgentClick(Sender: TObject);
@@ -623,6 +628,7 @@ begin
       Nt.Name := 'Рабочее место продавца';
       Nt.Title := 'Информация';
       Nt.AlertBody := S;
+      Nt.ChannelId := 'MyChannel';
       NtC.PresentNotification(Nt);
     finally
       LChannel.Free;

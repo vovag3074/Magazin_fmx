@@ -63605,6 +63605,13 @@ object fmMain: TfmMain
     Left = 360
     Top = 385
   end
+  object tmIdle: TTimer
+    Enabled = False
+    Interval = 60000
+    OnTimer = tmIdleTimer
+    Left = 440
+    Top = 329
+  end
   object IBM: TFDManager
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -63626,7 +63633,8 @@ object fmMain: TfmMain
       'User_Name=sysdba'
       'CharacterSet=UTF8'
       'DriverID=FB'
-      'Pooled=False')
+      'Pooled=False'
+      'PageSize=8192')
     FetchOptions.AssignedValues = [evItems, evRecordCountMode, evAutoFetchAll]
     FetchOptions.AutoFetchAll = afDisable
     FetchOptions.RecordCountMode = cmTotal
@@ -63711,12 +63719,5 @@ object fmMain: TfmMain
       '')
     Left = 296
     Top = 377
-  end
-  object tmIdle: TTimer
-    Enabled = False
-    Interval = 60000
-    OnTimer = tmIdleTimer
-    Left = 440
-    Top = 329
   end
 end

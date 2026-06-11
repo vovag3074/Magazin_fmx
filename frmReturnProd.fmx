@@ -136,6 +136,7 @@ object fmRetProd: TfmRetProd
       AdaptToStyle = True
       Hint = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1094#1077#1085#1091' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1086#1075#1086' '#1090#1086#1074#1072#1088#1072
       ShowHint = True
+      Color = xFF2B2B2B
       Align = Right
       Margins.Left = 10.000000000000000000
       Margins.Top = 10.000000000000000000
@@ -148,6 +149,7 @@ object fmRetProd: TfmRetProd
       Size.PlatformDefault = False
       TabOrder = 1
       OnClick = TMSFNCToolBarButton1Click
+      Font.Color = claWhite
       Text = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1094#1077#1085#1091
       Bitmaps = <
         item
@@ -191,17 +193,16 @@ object fmRetProd: TfmRetProd
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       Appearance.FlatStyle = True
       ControlIndex = 0
@@ -210,6 +211,7 @@ object fmRetProd: TfmRetProd
       AdaptToStyle = True
       Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1080#1089#1090#1086#1088#1080#1102' '#1079#1072#1082#1091#1087#1086#1082' '#1087#1086' '#1074#1099#1073#1088#1072#1085#1085#1086#1081' '#1084#1086#1076#1077#1083#1080
       ShowHint = True
+      Color = xFF2B2B2B
       Align = Right
       Margins.Left = 10.000000000000000000
       Margins.Top = 10.000000000000000000
@@ -222,6 +224,7 @@ object fmRetProd: TfmRetProd
       Size.PlatformDefault = False
       TabOrder = 0
       OnClick = btHistClick
+      Font.Color = claWhite
       Text = #1048#1089#1090#1086#1088#1080#1103' '#1087#1088#1086#1076#1072#1078#1080
       Bitmaps = <
         item
@@ -280,17 +283,16 @@ object fmRetProd: TfmRetProd
       LargeLayoutDisabledBitmaps = <>
       LargeLayoutHoverBitmaps = <>
       BitmapVisible = True
-      Appearance.InnerStroke.Color = xFFE9E9E9
       Appearance.NormalFill.Kind = gfkSolid
-      Appearance.NormalFill.Color = claWhite
+      Appearance.NormalFill.Color = xFF2B2B2B
       Appearance.NormalStroke.Color = claDarkgray
       Appearance.HoverFill.Kind = gfkSolid
-      Appearance.HoverFill.Color = x7F0078D7
+      Appearance.HoverFill.Color = x7FC4CCD0
       Appearance.HoverStroke.Color = claDarkgray
       Appearance.DownFill.Kind = gfkSolid
-      Appearance.DownFill.Color = claWhite
+      Appearance.DownFill.Color = xFF4B4B49
       Appearance.DownStroke.Color = claDarkgray
-      Appearance.DisabledFill.Color = claWhite
+      Appearance.DisabledFill.Color = xFF555555
       Appearance.DisabledStroke.Color = claDarkgray
       Appearance.FlatStyle = True
       ControlIndex = 0
@@ -572,7 +574,7 @@ object fmRetProd: TfmRetProd
                 Tag = 0
               end>
           end
-          object TMSFNCButton3: TTMSFNCButton
+          object btOKSel: TTMSFNCButton
             Bitmap.PNG = {
               89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
               F80000000473424954080808087C08648800000271494441544889C595CD6B13
@@ -598,11 +600,12 @@ object fmRetProd: TfmRetProd
               F5D13F71FD066531C997119BF0D70000000049454E44AE426082}
             BitmapSize = 24
             ShowImage = True
-            Font.Color = claWhite
+            Font.Color = xFFA0A0A0
             Size.Width = 130.000000000000000000
             Size.Height = 50.000000000000000000
             Size.PlatformDefault = False
             Align = Left
+            Enabled = False
             Margins.Left = 10.000000000000000000
             Margins.Top = 10.000000000000000000
             Margins.Bottom = 10.000000000000000000
@@ -610,7 +613,8 @@ object fmRetProd: TfmRetProd
             Position.Y = 10.000000000000000000
             TabOrder = 1
             Text = #1054#1050
-            OnClick = TMSFNCButton3Click
+            OnClick = btOKSelClick
+            OldFontColor = claWhite
           end
         end
         object tlHist: TTMSFNCTreeView

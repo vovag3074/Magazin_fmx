@@ -42,16 +42,16 @@ type
     Panel4: TPanel;
     tlHist: TTMSFNCTreeView;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
-    TMSFNCButton3: TTMSFNCButton;
+    btOKSel: TTMSFNCButton;
     eCena: TEdit;
     qUpd_Cena: TFDCommand;
     btCalc: TTMSFNCButton;
-    Layout2: TLayout;
     qRet: TFDCommand;
+    Layout2: TLayout;
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure btHistClick(Sender: TObject);
-    procedure TMSFNCButton3Click(Sender: TObject);
+    procedure btOKSelClick(Sender: TObject);
     procedure updateCena;
     procedure btCalcClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -120,6 +120,7 @@ begin
         qHist.Next;
       until qHist.Eof;
       tlHist.SelectNode(tlHist.Nodes[0]);
+      btOKSel.Enabled:=True;
     end;
   except
     on E: Exception do
@@ -257,7 +258,7 @@ begin
   end;
 end;
 
-procedure TfmRetProd.TMSFNCButton3Click(Sender: TObject);
+procedure TfmRetProd.btOKSelClick(Sender: TObject);
 begin
   if tlHist.Nodes.Count > 0 then
   begin
