@@ -114,6 +114,7 @@ type
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
+    procedure ClearEditButton1Click(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -191,6 +192,13 @@ end;
 procedure TfmAgn.btSityClick(Sender: TObject);
 begin
   ppSity.Popup();
+end;
+
+procedure TfmAgn.ClearEditButton1Click(Sender: TObject);
+begin
+ eFind.Text:='';
+ StartFind;
+ eFind.SetFocus;
 end;
 
 procedure TfmAgn.DelSity;

@@ -189,6 +189,7 @@ object fmAgn: TfmAgn
         TabOrder = 0
         ParentShowHint = False
         ShowHint = True
+        OnClick = ClearEditButton1Click
       end
       object SearchEditButton1: TSearchEditButton
         Touch.InteractiveGestures = [LongTap]
@@ -1218,7 +1219,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-heart-filled'
         SVGText = 
@@ -1261,7 +1261,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud'
         SVGText = 
@@ -1288,7 +1287,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-link'
         SVGText = 
@@ -1342,7 +1340,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1479,7 +1476,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1546,7 +1542,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-edit-filled'
         SVGText = 
@@ -1591,7 +1586,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-cancel-filled'
         SVGText = 
@@ -1649,7 +1643,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1686,7 +1679,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-add-filled'
         SVGText = 
@@ -1721,7 +1713,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-cancel-filled'
         SVGText = 
@@ -1770,7 +1761,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'cloud-edit-filled'
         SVGText = 
@@ -1809,7 +1799,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-add-filled'
         SVGText = 
@@ -1853,7 +1842,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 0'
         SVGText = 
@@ -1911,7 +1899,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 1'
         SVGText = 
@@ -1956,7 +1943,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'Item 2'
         SVGText = 
@@ -2000,7 +1986,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 20
           end>
         IconName = 'people-man-2-cloud-filled'
         SVGText = 
@@ -2051,7 +2036,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'banknotes-pile-arrow-left-filled'
         SVGText = 
@@ -2118,7 +2102,6 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'shopping-basket-cancel-filled'
         SVGText = 
@@ -2190,140 +2173,142 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'cloud-heart-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-link'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-edit-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-cancel-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-employee'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-add-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-cancel-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'cloud-edit-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-add-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 0'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 1'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'Item 2'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-cloud-filled'
-            SourceRect.Right = 20.000000000000000000
-            SourceRect.Bottom = 20.000000000000000000
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'banknotes-pile-arrow-left-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'shopping-basket-cancel-filled'
-          end>
-      end
-      item
-        Layers = <
-          item
-            Name = 'Item 3'
             SourceRect.Right = 32.000000000000000000
             SourceRect.Bottom = 32.000000000000000000
           end>
