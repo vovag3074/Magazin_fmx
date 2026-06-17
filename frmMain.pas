@@ -58,6 +58,9 @@ type
     qTran: TFDQuery;
     ApplicationEvents1: TApplicationEvents;
     tmIdle: TTimer;
+    TMSFNCToolBarSeparator4: TTMSFNCToolBarSeparator;
+    btZak: TTMSFNCToolBarButton;
+    TMSFNCHint1: TTMSFNCHint;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -72,6 +75,7 @@ type
     procedure myListBeforeDrawItemBackground(Sender: TObject; AGraphics: TTMSFNCGraphics; ARect: TRectF; AItemIndex: Integer; var ADefaultDraw: Boolean);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
     procedure tmIdleTimer(Sender: TObject);
+    procedure btZakClick(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -150,7 +154,7 @@ threadvar
 implementation
 
 uses
-  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents;
+  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents, frmZakazy;
 
 {$R *.fmx}
 
@@ -192,6 +196,12 @@ begin
     pMain.SetFocus;
     fmAgn.Release;
     fmAgn := nil;
+  end else if Assigned(fmZak) then
+  begin
+    fmZak.SaveINI;
+    pMain.SetFocus;
+    fmZak.Release;
+    fmZak:=nil;
   end;
 end;
 
@@ -346,6 +356,10 @@ begin
   if AItemIndex = 5 then  //продажа
   begin
     btProd.OnClick(Sender);
+  end;
+  if AItemIndex = 6 then  //заказы
+  begin
+    btZak.OnClick(Sender);
   end;
 end;
 
@@ -503,6 +517,16 @@ end;
 procedure TfmMain.btProdClick(Sender: TObject);
 begin
   ShowProdaga;
+end;
+
+procedure TfmMain.btZakClick(Sender: TObject);
+begin
+  tbMain.Visible := False;
+  myList.Visible := False;
+  fmZak := TfmZak.Create(pMain);
+  fmZak.Parent := pMain;
+  fmZak.Align := TAlignLayout.Client;
+  fmZak.LoadINI;
 end;
 
 procedure TfmMain.ApplicationEvents1Exception(Sender: TObject; E: Exception);

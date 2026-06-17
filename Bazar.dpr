@@ -34,7 +34,9 @@ uses
   frmSelectTovar in 'frmSelectTovar.pas' {fmSelTov},
   frmOperationAgent in 'frmOperationAgent.pas' {fmOpAgent},
   frmPredoplata in 'frmPredoplata.pas' {fmPred},
-  frmReturnProd in 'frmReturnProd.pas' {fmRetProd};
+  frmReturnProd in 'frmReturnProd.pas' {fmRetProd},
+  frmZakazy in 'frmZakazy.pas' {fmZak: TFrame},
+  frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak};
 
 {$R *.res}
 

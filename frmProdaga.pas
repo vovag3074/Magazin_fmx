@@ -236,6 +236,7 @@ uses
 
 procedure TfmProd.DropDownEditButton1Click(Sender: TObject);
 begin
+  myCalendar.Date:=StrToDate(eData.Text);
   ppCalendar.Popup;
 end;
 

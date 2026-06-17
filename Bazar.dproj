@@ -458,6 +458,15 @@
             <Form>fmRetProd</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmZakazy.pas">
+            <Form>fmZak</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frmInsertZakaz.pas">
+            <Form>fmInsZak</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
