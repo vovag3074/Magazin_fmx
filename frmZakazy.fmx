@@ -59,14 +59,14 @@ object fmZak: TfmZak
       Margins.Bottom = 2.000000000000000000
       Position.X = 2.000000000000000000
       Position.Y = 2.000000000000000000
-      TabOrder = 3
+      TabOrder = 2
       Text = #1053#1072' '#1075#1083#1072#1074#1085#1091#1102
       OnClick = TMSFNCButton5Click
     end
     object eData: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Right
-      TabOrder = 4
+      TabOrder = 3
       ReadOnly = True
       Position.X = 745.000000000000000000
       Position.Y = 10.000000000000000000
@@ -151,7 +151,7 @@ object fmZak: TfmZak
     Size.Width = 968.000000000000000000
     Size.Height = 553.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 3
     Columns = 3
     DisableFocusEffect = True
     ItemIndex = 0

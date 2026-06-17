@@ -127,6 +127,7 @@ procedure TfmZak.DoZakItemClick(Sender: TObject);
 begin
   if Sender is TListBoxItem then
   begin
+    HintPanel.Visible := false;
     zakazItemClick;
   end;
 end;
