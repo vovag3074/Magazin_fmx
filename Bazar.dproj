@@ -878,6 +878,34 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Rep\ShUserZakInfo.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>ShUserZakInfo.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShUserZakInfo.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
+                        <RemoteName>ShUserZakInfo.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShUserZakInfo.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
+                        <RemoteName>ShUserZakInfo.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShUserZakInfo.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>ShUserZakInfo.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Rep\repAnent0.fr3" Configuration="Release" Class="File">
                     <Platform Name="Linux64">
                         <RemoteDir>.\Rep</RemoteDir>

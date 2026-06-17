@@ -30,7 +30,7 @@ type
     ListBoxItem3: TListBoxItem;
     ListBoxItem4: TListBoxItem;
     ListBoxItem5: TListBoxItem;
-    SearchBox1: TSearchBox;
+    lbSearch: TSearchBox;
     ClearEditButton1: TClearEditButton;
     Layout1: TLayout;
     Rectangle1: TRectangle;
@@ -47,6 +47,10 @@ type
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     qSize: TFDQuery;
     TMSFNCButton1: TTMSFNCButton;
+    TMSFNCButton2: TTMSFNCButton;
+    TMSFNCButton3: TTMSFNCButton;
+    HintPanel: TCalloutPanel;
+    HintLabel: TLabel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -60,6 +64,10 @@ type
     procedure tlZakDetGetNodeSelectedColor(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure TMSFNCButton2Click(Sender: TObject);
+    procedure TMSFNCButton3Click(Sender: TObject);
+    procedure TMSFNCButton1MouseEnter(Sender: TObject);
+    procedure TMSFNCButton1MouseLeave(Sender: TObject);
   private
     { Private declarations }
     FCount: Double;
@@ -67,7 +75,9 @@ type
     procedure zakazItemClick;
     procedure DoZakItemClick(Sender: TObject);
     procedure ListZakItem(NoZak: Integer; NoAgn: Integer);
-    procedure AddZakaz;
+    procedure UpdZakaz;
+    procedure InsZakaz;
+    procedure CheckZak;
   public
     { Public declarations }
     procedure SaveINI;
@@ -90,19 +100,27 @@ type
 implementation
 
 uses
-  frmMain, frmInsertZakaz;
+  frmMain, frmInsertZakaz, frmReport;
 
 {$R *.fmx}
 
-procedure TfmZak.AddZakaz;
+procedure TfmZak.UpdZakaz;
 begin
-  fmInsZak:=TfmInsZak.Create(fmZak);
-  if fmInsZak.ShowModal=mrOk then
+  fmInsZak := TfmInsZak.Create(fmZak);
+  fmInsZak.EditZakaz(tlZak.ItemByIndex(tlZak.ItemIndex).Tag);
+  if fmInsZak.ShowModal = mrOk then
   begin
-
+    LoadListZak;
+    Application.ProcessMessages;
+    lbSearch.Text := fmInsZak.eAgn.Text;
   end;
   fmInsZak.Free;
-  fmInsZak:=nil;
+  fmInsZak := nil;
+end;
+
+procedure TfmZak.CheckZak;
+begin
+ ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag)+'"}]');
 end;
 
 procedure TfmZak.DoZakItemClick(Sender: TObject);
@@ -122,6 +140,19 @@ end;
 procedure TfmZak.eDataChange(Sender: TObject);
 begin
   LoadListZak;
+end;
+
+procedure TfmZak.InsZakaz;
+begin
+  fmInsZak := TfmInsZak.Create(fmZak);
+  if fmInsZak.ShowModal = mrOk then
+  begin
+    LoadListZak;
+    Application.ProcessMessages;
+    lbSearch.Text := fmInsZak.eAgn.Text;
+  end;
+  fmInsZak.Free;
+  fmInsZak := nil;
 end;
 
 procedure TfmZak.ListZakItem(NoZak: Integer; NoAgn: Integer);
@@ -283,7 +314,67 @@ end;
 
 procedure TfmZak.TMSFNCButton1Click(Sender: TObject);
 begin
- AddZakaz;
+  UpdZakaz;
+end;
+
+procedure TfmZak.TMSFNCButton1MouseEnter(Sender: TObject);
+var
+  p, r: TRectF;
+  s: string;
+begin
+  if (Sender is TControl) then
+  begin
+
+    if Sender is TTMSFNCButton then
+      s := TTMSFNCButton(Sender).Text
+    else
+      s := TControl(Sender).TagString;
+    p := TControl(Sender).AbsoluteRect;
+
+    r := RectF(0, 0, 400, 1000);
+    if HintLabel.Canvas <> nil then
+    begin
+      HintLabel.Canvas.Font.Size := 16;
+      HintLabel.Canvas.MeasureText(r, s, true, [], TTextAlign.Center, TTextAlign.Center);
+      HintPanel.Width := r.Width + 22;
+      HintPanel.Height := r.Height + HintPanel.CalloutLength + 30;
+    end;
+    if (p.Left + TControl(Sender).Width / 2 > HintPanel.Width / 2) then
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Bottom;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width / 2 - HintPanel.Width / 2;
+      HintPanel.Position.Y := p.Top - TControl(Sender).Height - 15;
+      HintLabel.Padding.Left := 0;
+      HintLabel.Padding.Top := 0;
+    end
+    else
+    begin
+      HintPanel.CalloutPosition := TCalloutPosition.Left;
+      HintPanel.Position.X := p.Left + TControl(Sender).Width;
+      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height / 2)+50;
+      HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
+      HintLabel.Padding.Left := HintPanel.CalloutLength;
+      HintLabel.Padding.Top := -HintPanel.CalloutLength;
+    end;
+    HintPanel.BringToFront;
+    HintPanel.Visible := True;
+    HintLabel.Text := s;
+  end;
+end;
+
+procedure TfmZak.TMSFNCButton1MouseLeave(Sender: TObject);
+begin
+ HintPanel.Visible := false;
+end;
+
+procedure TfmZak.TMSFNCButton2Click(Sender: TObject);
+begin
+  InsZakaz;
+end;
+
+procedure TfmZak.TMSFNCButton3Click(Sender: TObject);
+begin
+ CheckZak;
 end;
 
 procedure TfmZak.TMSFNCButton5Click(Sender: TObject);

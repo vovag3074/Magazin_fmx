@@ -66,6 +66,7 @@ type
     procedure setOplata(isNewTransaction: Boolean = false);
   public
     { Public declarations }
+    isPrintCheck: Boolean;
     FAgent: Integer;
     FDolg: Double;
     FTemp: Integer;
@@ -76,6 +77,7 @@ type
     isPred: Integer; // если предоплата = 1
     FTranID: string;
     procedure ReadAgent(NoAgent: Integer; isTemp: Integer; MyData: tDate);
+    property PrintCheck: Boolean read isPrintCheck write isPrintCheck default True;
   end;
 
 var
@@ -175,7 +177,8 @@ begin
       // Сумма внесена большаая чем нужно
       FTmp := FVSum - FDolg;
       eOpl.Text := FDolg.ToString;
-      if ShowQuestion('Сумма больше долга на  ' + FloatToStr(FTmp) + ' ' + 'Добавить эту сумму в предоплату?') then
+      if ShowQuestion('Сумма больше долга на  ' + FloatToStr(FTmp) + ' ' +
+        'Добавить эту сумму в предоплату?') then
       begin
         // Восстанавливаем сумму в исходной валюте
         if eType.ItemIndex = 0 then
@@ -248,11 +251,14 @@ begin
 
     end;
   end;
-  if ShowQuestion('Чек нужен?') then
+  if isPrintCheck then
   begin
-    S := '[{"NG":"' + IntToStr(FAgent) + '"';
-    S := S + ',"DT":"' + DateToStr(FData) + '"}]';
-    PrintReportJson('SRepProdAgn.fr3', S);
+    if ShowQuestion('Чек нужен?') then
+    begin
+      S := '[{"NG":"' + IntToStr(FAgent) + '"';
+      S := S + ',"DT":"' + DateToStr(FData) + '"}]';
+      PrintReportJson('SRepProdAgn.fr3', S);
+    end;
   end;
   ModalResult := mrOk;
 end;
@@ -337,7 +343,7 @@ begin
   qRead.Prepare;
   qRead.ParamByName('NG').AsInteger := FAgent;
   qRead.Active := True;
-  fmOpl.Caption:='Оплата для: '+qRead.FieldByName('FULL_NAME_STD').AsString;
+  fmOpl.Caption := 'Оплата для: ' + qRead.FieldByName('FULL_NAME_STD').AsString;
   FDolg := qRead.FieldByName('AG_DOLG').AsFloat;
   eSum.Text := FloatToStr(FDolg);
   FPred := qRead.FieldByName('AG_PRED').AsFloat;
@@ -355,7 +361,8 @@ begin
   FValut := qRead.FieldByName('PRED_VAL').AsInteger;
   fmMain.GetValutFromComboBox(FValut, eVal);
   qRead.Close;
-  lbInfo.Text := 'Предоплаты <br> Наличными: <b>' + FPred.ToString + '</b><br> По банку: <b>' + FBankPred.ToString + '</b>';
+  lbInfo.Text := 'Предоплаты <br> Наличными: <b>' + FPred.ToString +
+    '</b><br> По банку: <b>' + FBankPred.ToString + '</b>';
   fmMain.EndReadTransaction;
 end;
 
