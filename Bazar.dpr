@@ -36,7 +36,8 @@ uses
   frmPredoplata in 'frmPredoplata.pas' {fmPred},
   frmReturnProd in 'frmReturnProd.pas' {fmRetProd},
   frmZakazy in 'frmZakazy.pas' {fmZak: TFrame},
-  frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak};
+  frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak},
+  frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov};
 
 {$R *.res}
 

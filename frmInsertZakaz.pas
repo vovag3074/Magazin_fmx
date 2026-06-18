@@ -39,6 +39,8 @@ type
     TMSFNCButton2: TTMSFNCButton;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
+    eCode: TEdit;
+    EditButton1: TTMSFNCButton;
     procedure FormCreate(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
@@ -61,6 +63,7 @@ type
     FSumMod: Double;
     procedure ReadModelList;
     function isSave: Boolean;
+    procedure readMyModel(BarCode:String);
   public
     { Public declarations }
     procedure EditZakaz(NoZakaz: Integer);
@@ -81,7 +84,7 @@ type
 implementation
 
 uses
-  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport;
+  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar;
 
 {$R *.fmx}
 
@@ -186,6 +189,15 @@ begin
   dxDel.Enabled := tlMod.Nodes.Count > 0;
 end;
 
+procedure TfmInsZak.readMyModel(BarCode: String);
+begin
+  ShowInfo(BarCode);
+// if GetMyZize(BarCode, FZakaz) = ID_OK then
+//  begin
+//    ReadModelList;
+//  end;
+end;
+
 procedure TfmInsZak.SearchEditButton1Click(Sender: TObject);
 begin
   eAgn.Text := '';
@@ -198,6 +210,7 @@ begin
   end;
   fmSelAgn.DisposeOf;
   fmSelAgn := nil;
+  eCode.SetFocus;
 end;
 
 procedure TfmInsZak.tlModBeforeExpandNode(Sender: TObject; ANode:
@@ -261,11 +274,17 @@ begin
 end;
 
 procedure TfmInsZak.TMSFNCButton1Click(Sender: TObject);
+var
+  S: string;
 begin
- if isSave then
- begin
-
- end;
+  if isSave then
+  begin
+    S:=GetAllManualCode;
+    eCode.Text := S;
+    ReadMyModel(S);
+    eCode.Text := '';
+    eCode.SetFocus;
+  end;
 end;
 
 procedure TfmInsZak.TMSFNCButton1MouseEnter(Sender: TObject);
@@ -302,7 +321,8 @@ begin
     begin
       HintPanel.CalloutPosition := TCalloutPosition.Left;
       HintPanel.Position.X := p.Left + TControl(Sender).Width;
-      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height / 2)+50;
+      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height
+        / 2) + 50;
       HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
       HintLabel.Padding.Left := HintPanel.CalloutLength;
       HintLabel.Padding.Top := -HintPanel.CalloutLength;
@@ -315,14 +335,14 @@ end;
 
 procedure TfmInsZak.TMSFNCButton1MouseLeave(Sender: TObject);
 begin
- HintPanel.Visible := false;
+  HintPanel.Visible := false;
 end;
 
 procedure TfmInsZak.TMSFNCButton3Click(Sender: TObject);
 begin
-   if isSave then
+  if isSave then
   begin
-     try
+    try
       fmOpl := TfmOpl.Create(fmZak);
       fmOpl.ReadAgent(FAgent, 0, Date);
       fmOpl.PrintCheck := false; // чек не нужен
@@ -332,7 +352,7 @@ begin
     end;
     if ShowQuestion('Напечатать чек заказа?') then
     begin
-      PrintReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(FZakaz)+'"}]');
+      PrintReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(FZakaz) + '"}]');
     end;
     ModalResult := mrOk;
   end;

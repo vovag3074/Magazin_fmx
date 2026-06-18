@@ -467,6 +467,10 @@
             <Form>fmInsZak</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelectAllTovar.pas">
+            <Form>fmSelAllTov</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
