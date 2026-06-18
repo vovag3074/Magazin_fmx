@@ -37,7 +37,8 @@ uses
   frmReturnProd in 'frmReturnProd.pas' {fmRetProd},
   frmZakazy in 'frmZakazy.pas' {fmZak: TFrame},
   frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak},
-  frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov};
+  frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov},
+  frmSelectSize in 'frmSelectSize.pas' {fmSelSize};
 
 {$R *.res}
 

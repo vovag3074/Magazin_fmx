@@ -1,94 +1,37 @@
-object fmSetSize: TfmSetSize
+object fmSelSize: TfmSelSize
   Left = 0
   Top = 0
   ActiveControl = tlSize
+  BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
-  Caption = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1088#1072#1079#1084#1077#1088#1099
-  ClientHeight = 540
-  ClientWidth = 407
+  Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1088#1072#1079#1084#1077#1088
+  ClientHeight = 545
+  ClientWidth = 447
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnActivate = FormActivate
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Panel1: TPanel
-    Align = MostTop
-    Size.Width = 407.000000000000000000
-    Size.Height = 81.000000000000000000
-    Size.PlatformDefault = False
-    StyleLookup = 'TopPanel'
-    TabOrder = 0
-    object lbName: TLabel
-      Align = Client
-      StyledSettings = [Family, Style, FontColor]
-      Margins.Left = 5.000000000000000000
-      Margins.Top = 5.000000000000000000
-      Margins.Right = 5.000000000000000000
-      Margins.Bottom = 5.000000000000000000
-      Size.Width = 397.000000000000000000
-      Size.Height = 71.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 32.000000000000000000
-      TextSettings.HorzAlign = Center
-      Text = 'lbName'
-      TabOrder = 0
-    end
-  end
-  object Panel2: TPanel
-    Align = MostBottom
-    Position.Y = 432.000000000000000000
-    Size.Width = 407.000000000000000000
-    Size.Height = 108.000000000000000000
+    Align = Bottom
+    Position.Y = 408.000000000000000000
+    Size.Width = 447.000000000000000000
+    Size.Height = 137.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
-    TabOrder = 1
+    TabOrder = 0
     object lbCnt: TLabel
-      Align = Top
-      Size.Width = 407.000000000000000000
-      Size.Height = 33.000000000000000000
+      Align = Scale
+      Position.X = 368.000000000000000000
+      Position.Y = 6.849999904632568000
+      Size.Width = 56.000000000000000000
+      Size.Height = 45.209999084472660000
       Size.PlatformDefault = False
-      TextSettings.HorzAlign = Trailing
+      TextSettings.HorzAlign = Center
       Text = '0'
       TabOrder = 0
-    end
-    object TMSFNCButton1: TTMSFNCButton
-      Bitmap.PNG = {
-        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
-        F80000000473424954080808087C08648800000271494441544889C595CD6B13
-        5114C5CF7D53AB4950287EA50A26587063A17425B108AECCDA458296C4ECAC36
-        0511BAF03F7013572606BA6C43C1042D6E535DB42E5257A5903FA001C12C0A52
-        A56913FBE6B8E84C9C269349AB14CFEA7DCDB9F7FEE67D00272CE9B720568C19
-        C1D0E9516DCA3804410000513714D7EBB566B5142FE9BF0A30BB910CEC343823
-        228F01847B2CDB243917F04B3633B6B073E4004FBF24EE08655E444224292202
-        00CEB6B34FB246E1A3FCADC2E74E2FD53990AE24E202298B48A857755D598A84
-        04524E571271CF0AACCCCB00068F6ADEA11685F79C95B403CC6E24038D5D54BD
-        B0F442840E5C7E1F46ED7FD246D4D843FA38587A4944428D3DA4EDBE82B51541
-        4CD1929D9157FB60801592D5AE75C454AC1833DA012E5CF3DD0410164B56269E
-        6D824B9777BFDE85C9972EEBC296A78548307E1C0CA669BEDF3ADB9CFCE6BB7A
-        034A65DC591D782AEB8B600F14AF859C21B9EF185FDA3AD79C1CDA1EB86EC058
-        06187443697B2ABB34371426F1331729E4414942F00BE487FD01DF838B3FCE8C
-        0CA8539F0006BD50FEA980A8BB55A9145E3CA94C3E7F13997F4B8DA8F17DE8E1
-        60AB3502C1B208863D395A9E0A000CC575778CA2943232D36B8967F9DB0B2BE6
-        F9ED90A9F44711B9D2EF3FD99E0A00EAB566D5BAB8BAB72601405E4DAF25DF91
-        5C01307C84EDBC69791E0428C54B9AE49C074F2522F7015C1287DCB85BA779CE
-        BEC6DB2739E0972CC95ABFD2FB89642DE097ACDD6F07C88C2DEC88D629924D8F
-        D20F9DE4AE39B0295AA79C6FC3A1EB3A37B1B82A640A40AB1F0697B996984CE5
-        2616579D9E5DEF412E52288AD6D1E3E0225913ADA3B948A1D839F77F9E4CA7FE
-        F5D13F71FD066531C997119BF0D70000000049454E44AE426082}
-      BitmapSize = 24
-      ShowImage = True
-      Font.Color = claWhite
-      Default = True
-      Size.Width = 130.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      Position.X = 131.000000000000000000
-      Position.Y = 50.000000000000000000
-      TabOrder = 1
-      Text = #1054#1050
-      OnClick = TMSFNCButton1Click
     end
     object TMSFNCButton2: TTMSFNCButton
       Bitmap.PNG = {
@@ -126,20 +69,96 @@ object fmSetSize: TfmSetSize
       Size.Width = 130.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      Anchors = [akRight, akBottom]
       ModalResult = 2
-      Position.X = 269.000000000000000000
-      Position.Y = 50.000000000000000000
+      Position.X = 310.000000000000000000
+      Position.Y = 79.000000000000000000
       TabOrder = 2
       Text = #1054#1090#1082#1072#1079
     end
+    object TMSFNCButton1: TTMSFNCButton
+      Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C08648800000271494441544889C595CD6B13
+        5114C5CF7D53AB4950287EA50A26587063A17425B108AECCDA458296C4ECAC36
+        0511BAF03F7013572606BA6C43C1042D6E535DB42E5257A5903FA001C12C0A52
+        A56913FBE6B8E84C9C269349AB14CFEA7DCDB9F7FEE67D00272CE9B720568C19
+        C1D0E9516DCA3804410000513714D7EBB566B5142FE9BF0A30BB910CEC343823
+        228F01847B2CDB243917F04B3633B6B073E4004FBF24EE08655E444224292202
+        00CEB6B34FB246E1A3FCADC2E74E2FD53990AE24E202298B48A857755D598A84
+        04524E571271CF0AACCCCB00068F6ADEA11685F79C95B403CC6E24038D5D54BD
+        B0F442840E5C7E1F46ED7FD246D4D843FA38587A4944428D3DA4EDBE82B51541
+        4CD1929D9157FB60801592D5AE75C454AC1833DA012E5CF3DD0410164B56269E
+        6D824B9777BFDE85C9972EEBC296A78548307E1C0CA669BEDF3ADB9CFCE6BB7A
+        034A65DC591D782AEB8B600F14AF859C21B9EF185FDA3AD79C1CDA1EB86EC058
+        06187443697B2ABB34371426F1331729E4414942F00BE487FD01DF838B3FCE8C
+        0CA8539F0006BD50FEA980A8BB55A9145E3CA94C3E7F13997F4B8DA8F17DE8E1
+        60AB3502C1B208863D395A9E0A000CC575778CA2943232D36B8967F9DB0B2BE6
+        F9ED90A9F44711B9D2EF3FD99E0A00EAB566D5BAB8BAB72601405E4DAF25DF91
+        5C01307C84EDBC69791E0428C54B9AE49C074F2522F7015C1287DCB85BA779CE
+        BEC6DB2739E0972CC95ABFD2FB89642DE097ACDD6F07C88C2DEC88D629924D8F
+        D20F9DE4AE39B0295AA79C6FC3A1EB3A37B1B82A640A40AB1F0697B996984CE5
+        2616579D9E5DEF412E52288AD6D1E3E0225913ADA3B948A1D839F77F9E4CA7FE
+        F5D13F71FD066531C997119BF0D70000000049454E44AE426082}
+      BitmapSize = 24
+      ShowImage = True
+      Font.Color = claWhite
+      Default = True
+      Size.Width = 130.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Anchors = [akRight, akBottom]
+      Position.X = 172.000000000000000000
+      Position.Y = 79.000000000000000000
+      TabOrder = 1
+      Text = #1054#1050
+      OnClick = TMSFNCButton1Click
+    end
+    object cbIsDog: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 93.000000000000000000
+      Size.Width = 148.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = #1044#1086#1075#1086#1074#1086#1088#1085#1072#1103' '#1094#1077#1085#1072
+    end
+    object eSum: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 5
+      Text = '0'
+      Position.X = 11.000000000000000000
+      Position.Y = 12.000000000000000000
+      Size.Width = 291.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object Panel2: TPanel
+    Align = Top
+    Size.Width = 447.000000000000000000
+    Size.Height = 89.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'TopPanel'
+    TabOrder = 1
+    object lbName: TLabel
+      Align = Client
+      StyledSettings = [Family, Style, FontColor]
+      Size.Width = 447.000000000000000000
+      Size.Height = 89.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 48.000000000000000000
+      TextSettings.HorzAlign = Center
+      Text = 'lbName'
+      TabOrder = 0
+    end
   end
   object tlSize: TTMSFNCDataGrid
-    AdaptToStyle = True
     Align = Client
-    Size.Width = 407.000000000000000000
-    Size.Height = 351.000000000000000000
+    Size.Width = 447.000000000000000000
+    Size.Height = 319.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 3
     ShowAcceleratorChar = False
     Footer.Stroke.Color = xFFF0F0F0
     Footer.Bar.Fill.Color = claWhite
@@ -161,33 +180,23 @@ object fmSetSize: TfmSetSize
     CellAppearance.FilterInverseMatchLayout.Font.Size = 16.000000000000000000
     CellAppearance.BandLayout.Font.Size = 16.000000000000000000
     CellAppearance.BandLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.FixedLayout.Fill.Kind = gfkGradient
-    CellAppearance.FixedLayout.Fill.Color = claWhite
     CellAppearance.FixedLayout.Fill.ColorTo = claWhite
     CellAppearance.FixedLayout.Font.Size = 16.000000000000000000
     CellAppearance.FixedLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.FixedSelectedLayout.Fill.Kind = gfkGradient
-    CellAppearance.FixedSelectedLayout.Fill.Color = x7F2A96FF
     CellAppearance.FixedSelectedLayout.Fill.ColorTo = x7F2A96FF
     CellAppearance.FixedSelectedLayout.Font.Size = 16.000000000000000000
     CellAppearance.FixedSelectedLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.FocusedLayout.Fill.Kind = gfkGradient
-    CellAppearance.FocusedLayout.Fill.Color = x7F2A96FF
     CellAppearance.FocusedLayout.Fill.ColorTo = x7F2A96FF
     CellAppearance.FocusedLayout.Font.Size = 16.000000000000000000
     CellAppearance.FocusedLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.GroupLayout.Fill.Color = claWhite
     CellAppearance.GroupLayout.Font.Size = 16.000000000000000000
     CellAppearance.GroupLayout.Stroke.Color = xFFF0F0F0
     CellAppearance.NormalLayout.Font.Size = 16.000000000000000000
     CellAppearance.NormalLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.SelectedLayout.Fill.Kind = gfkGradient
-    CellAppearance.SelectedLayout.Fill.Color = x7F2A96FF
     CellAppearance.SelectedLayout.Fill.ColorTo = x7F2A96FF
     CellAppearance.SelectedLayout.Font.Size = 16.000000000000000000
     CellAppearance.SelectedLayout.Font.StyleExt = {00070000000000000004000000}
     CellAppearance.SelectedLayout.Stroke.Color = xFFF0F0F0
-    CellAppearance.SummaryLayout.Fill.Color = claWhite
     CellAppearance.SummaryLayout.Font.Size = 16.000000000000000000
     CellAppearance.SummaryLayout.Stroke.Color = xFFF0F0F0
     ColumnCount = 3
@@ -239,11 +248,10 @@ object fmSetSize: TfmSetSize
         Appearance.SummaryLayout.Font.Size = 16.000000000000000000
         Header = #1050'-'#1074#1086
         Settings = [gcsEditor, gcsReadOnly]
-        Width = 188.000000000000000000
+        Width = 228.000000000000000000
       end>
     Designer = False
     FilterActions = <>
-    FilterAppearance.Stroke.Color = xFFF0F0F0
     FixedColumnCount = 2
     GlobalFont.Size = 16.000000000000000000
     Icons.ExpandIcon.PNG = {
@@ -701,7 +709,30 @@ object fmSetSize: TfmSetSize
       3E3C672F3E3C672F3E3C672F3E3C2F7376673E0D0A}
     OnSelectCell = tlSizeSelectCell
     Options.Column.Stretching.Enabled = True
-    Stroke.Color = xFFF0F0F0
+  end
+  object qList: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select NO_SIZE,'
+      '        NO_MST,'
+      '        CNT_MST,'
+      '        NO_MOD,'
+      '        ZENA_DOG,'
+      '        IS_DOG '
+      'from GET_LIST_SIZE_BY_BARCODE(:BARCODE, :NO_ZAKAZ)'
+      '')
+    Left = 16
+    Top = 240
+    ParamData = <
+      item
+        Name = 'BARCODE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_ZAKAZ'
+        ParamType = ptInput
+      end>
   end
   object qInfo: TFDQuery
     Connection = fmMain.IBC
@@ -709,58 +740,46 @@ object fmSetSize: TfmSetSize
     SQL.Strings = (
       'select MT.NAZVAN'
       'from MODEL_TABLE MT'
-      'where MT.NO_MOD = :NM  ')
+      'where MT.NO_MOD = :NM   '
+      '')
     Left = 16
-    Top = 104
+    Top = 312
     ParamData = <
       item
         Name = 'NM'
         ParamType = ptInput
       end>
   end
-  object qList: TFDQuery
-    Connection = fmMain.IBC
-    Transaction = fmMain.IBT_Read
-    FetchOptions.AssignedValues = [evAutoFetchAll]
-    SQL.Strings = (
-      'SELECT S.NO_SIZE,'
-      '       MS.CNT_MOD,'
-      '       M.NO_MST'
-      'FROM MODEL_SIZE_TABLE M'
-      'INNER JOIN SIZE_MOD_TABLE S ON (M.NO_SIZE = S.NO_SMT)'
-      
-        'LEFT OUTER JOIN MODEL_SIZE_IN_SCLAD MS ON (M.NO_MST = MS.NO_MOD_' +
-        'SIZE)'
-      'WHERE ((M.NO_MOD = :NM) AND'
-      '      (M.IS_ENABLE = 1))'
-      'ORDER BY S.NO_SIZE  ')
-    Left = 16
-    Top = 168
-    ParamData = <
-      item
-        Name = 'NM'
-        ParamType = ptInput
-      end>
-  end
-  object qUpd: TFDCommand
+  object qIns: TFDCommand
     Connection = fmMain.IBC
     Transaction = fmMain.IBT
     CommandText.Strings = (
-      'execute procedure UPD_SIZE_IN_SCLAD(:NO_MSIS, :CNT_SIZE, :ISVIT)')
+      
+        'execute procedure INS_SET_ZAKAZ2(:NO_ZAK, :NO_MST, :CNT_MOD, :DO' +
+        'G_CENA, :IS_DOG)'
+      '')
     ParamData = <
       item
-        Name = 'NO_MSIS'
+        Name = 'NO_ZAK'
         ParamType = ptInput
       end
       item
-        Name = 'CNT_SIZE'
+        Name = 'NO_MST'
         ParamType = ptInput
       end
       item
-        Name = 'ISVIT'
+        Name = 'CNT_MOD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DOG_CENA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IS_DOG'
         ParamType = ptInput
       end>
-    Left = 16
-    Top = 225
+    Left = 32
+    Top = 384
   end
 end

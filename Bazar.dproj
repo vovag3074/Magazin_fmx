@@ -471,6 +471,10 @@
             <Form>fmSelAllTov</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelectSize.pas">
+            <Form>fmSelSize</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

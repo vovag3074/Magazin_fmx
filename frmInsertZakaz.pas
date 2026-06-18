@@ -84,7 +84,7 @@ type
 implementation
 
 uses
-  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar;
+  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar, frmSelectSize;
 
 {$R *.fmx}
 
@@ -157,6 +157,7 @@ begin
   if isEdit then
   begin
     qMod.Close;
+    fmMain.StartReadTransaction;
     qMod.Prepare;
     qMod.ParamByName('NZ').AsInteger := FZakaz;
     qMod.Active := true;
@@ -185,17 +186,18 @@ begin
       tlMod.SelectNode(tlMod.Nodes[0]);
     end;
   end;
+  fmMain.EndReadTransaction;
   dxUpd.Enabled := tlMod.Nodes.Count > 0;
   dxDel.Enabled := tlMod.Nodes.Count > 0;
 end;
 
 procedure TfmInsZak.readMyModel(BarCode: String);
 begin
-  ShowInfo(BarCode);
-// if GetMyZize(BarCode, FZakaz) = ID_OK then
-//  begin
-//    ReadModelList;
-//  end;
+//  ShowInfo(BarCode);
+ if GetMyZize(BarCode, FZakaz) = mrOk then
+  begin
+    ReadModelList;
+  end;
 end;
 
 procedure TfmInsZak.SearchEditButton1Click(Sender: TObject);
