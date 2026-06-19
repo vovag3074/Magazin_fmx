@@ -22,7 +22,7 @@ object fmInsZak: TfmInsZak
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
     TabOrder = 0
-    object TMSFNCButton3: TTMSFNCButton
+    object btOK: TTMSFNCButton
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
         F80000000473424954080808087C08648800000295494441544889C5554D4F13
@@ -61,8 +61,8 @@ object fmInsZak: TfmInsZak
       Position.X = 445.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 2
-      Text = 'OK'
-      OnClick = TMSFNCButton3Click
+      Text = 'OK'#13#10'<I>[Ctrl+Enter]</I>'
+      OnClick = btOKClick
     end
     object TMSFNCButton2: TTMSFNCButton
       Bitmap.PNG = {
@@ -125,6 +125,7 @@ object fmInsZak: TfmInsZak
       Size.Height = 38.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #1064#1090#1088#1080#1093'-'#1082#1086#1076' '#1090#1086#1074#1072#1088#1072
+      OnKeyDown = eCodeKeyDown
       object EditButton1: TTMSFNCButton
         Touch.InteractiveGestures = [LongTap]
         ImageAlign = Client
@@ -174,6 +175,7 @@ object fmInsZak: TfmInsZak
         Position.X = 279.000000000000000000
         TabOrder = 0
         Text = #1042#1074#1086#1076
+        OnClick = EditButton1Click
       end
     end
   end
@@ -196,7 +198,7 @@ object fmInsZak: TfmInsZak
       Size.PlatformDefault = False
       StyleLookup = 'TopPanel'
       TabOrder = 0
-      object TMSFNCButton1: TTMSFNCButton
+      object dxAdd: TTMSFNCButton
         ImageAlign = Client
         Bitmap.PNG = {
           89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
@@ -225,10 +227,10 @@ object fmInsZak: TfmInsZak
         Position.X = 2.000000000000000000
         Position.Y = 2.000000000000000000
         TabOrder = 2
-        Text = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1086#1076#1077#1083#1100
-        OnClick = TMSFNCButton1Click
-        OnMouseEnter = TMSFNCButton1MouseEnter
-        OnMouseLeave = TMSFNCButton1MouseLeave
+        Text = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1086#1076#1077#1083#1100' [Insert]'
+        OnClick = dxAddClick
+        OnMouseEnter = dxAddMouseEnter
+        OnMouseLeave = dxAddMouseLeave
       end
       object dxDel: TTMSFNCButton
         ImageAlign = Client
@@ -259,9 +261,10 @@ object fmInsZak: TfmInsZak
         Position.X = 94.000000000000000000
         Position.Y = 2.000000000000000000
         TabOrder = 1
-        Text = #1059#1076#1072#1083#1080#1090#1100' '#1084#1086#1076#1077#1083#1100
-        OnMouseEnter = TMSFNCButton1MouseEnter
-        OnMouseLeave = TMSFNCButton1MouseLeave
+        Text = #1059#1076#1072#1083#1080#1090#1100' '#1084#1086#1076#1077#1083#1100' [Del]'
+        OnClick = dxDelClick
+        OnMouseEnter = dxAddMouseEnter
+        OnMouseLeave = dxAddMouseLeave
       end
       object dxUpd: TTMSFNCButton
         ImageAlign = Client
@@ -307,9 +310,10 @@ object fmInsZak: TfmInsZak
         Position.X = 48.000000000000000000
         Position.Y = 2.000000000000000000
         TabOrder = 0
-        Text = #1048#1079#1084#1077#1085#1080#1090#1100' '#1084#1086#1076#1077#1083#1100
-        OnMouseEnter = TMSFNCButton1MouseEnter
-        OnMouseLeave = TMSFNCButton1MouseLeave
+        Text = #1048#1079#1084#1077#1085#1080#1090#1100' '#1084#1086#1076#1077#1083#1100' [F2]'
+        OnClick = dxUpdClick
+        OnMouseEnter = dxAddMouseEnter
+        OnMouseLeave = dxAddMouseLeave
       end
     end
     object tlMod: TTMSFNCTreeView
@@ -558,7 +562,7 @@ object fmInsZak: TfmInsZak
     Size.Width = 281.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
-    object SearchEditButton1: TSearchEditButton
+    object FindAgent: TSearchEditButton
       Touch.InteractiveGestures = [LongTap]
       CanFocus = False
       Cursor = crArrow
@@ -569,7 +573,7 @@ object fmInsZak: TfmInsZak
       TabOrder = 0
       ParentShowHint = False
       ShowHint = True
-      OnClick = SearchEditButton1Click
+      OnClick = FindAgentClick
     end
   end
   object eData: TDateEdit
@@ -837,6 +841,24 @@ object fmInsZak: TfmInsZak
         ParamType = ptInput
       end>
     Left = 88
+    Top = 376
+  end
+  object qDel: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'EXECUTE PROCEDURE DEL_MOD_FROM_SET_ZAKAZ(:UN_CODE, :NO_ZAK)'
+      '')
+    ParamData = <
+      item
+        Name = 'UN_CODE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_ZAK'
+        ParamType = ptInput
+      end>
+    Left = 136
     Top = 376
   end
 end

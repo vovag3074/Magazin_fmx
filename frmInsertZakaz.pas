@@ -24,23 +24,24 @@ type
     eData: TDateEdit;
     eDop: TEdit;
     EllipsesEditButton1: TEllipsesEditButton;
-    SearchEditButton1: TSearchEditButton;
+    FindAgent: TSearchEditButton;
     tlMod: TTMSFNCTreeView;
     qMod: TFDQuery;
     qRead: TFDQuery;
     qSize: TFDQuery;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
-    TMSFNCButton1: TTMSFNCButton;
+    dxAdd: TTMSFNCButton;
     dxDel: TTMSFNCButton;
     dxUpd: TTMSFNCButton;
     qIns: TFDCommand;
     qUpd: TFDCommand;
-    TMSFNCButton3: TTMSFNCButton;
+    btOK: TTMSFNCButton;
     TMSFNCButton2: TTMSFNCButton;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
     eCode: TEdit;
     EditButton1: TTMSFNCButton;
+    qDel: TFDCommand;
     procedure FormCreate(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
@@ -50,11 +51,16 @@ type
       TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure tlModGetNodeSelectedColor(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
-    procedure SearchEditButton1Click(Sender: TObject);
-    procedure TMSFNCButton1Click(Sender: TObject);
-    procedure TMSFNCButton3Click(Sender: TObject);
-    procedure TMSFNCButton1MouseEnter(Sender: TObject);
-    procedure TMSFNCButton1MouseLeave(Sender: TObject);
+    procedure FindAgentClick(Sender: TObject);
+    procedure dxAddClick(Sender: TObject);
+    procedure btOKClick(Sender: TObject);
+    procedure dxAddMouseEnter(Sender: TObject);
+    procedure dxAddMouseLeave(Sender: TObject);
+    procedure eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
+      Shift: TShiftState);
+    procedure EditButton1Click(Sender: TObject);
+    procedure dxUpdClick(Sender: TObject);
+    procedure dxDelClick(Sender: TObject);
   private
     { Private declarations }
     FAgent, FZakaz: Integer;
@@ -63,7 +69,9 @@ type
     FSumMod: Double;
     procedure ReadModelList;
     function isSave: Boolean;
-    procedure readMyModel(BarCode:String);
+    procedure readMyModel(BarCode: string);
+    procedure goUp;
+    procedure goDown;
   public
     { Public declarations }
     procedure EditZakaz(NoZakaz: Integer);
@@ -84,9 +92,69 @@ type
 implementation
 
 uses
-  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar, frmSelectSize;
+  frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar,
+  frmSelectSize;
 
 {$R *.fmx}
+
+procedure TfmInsZak.eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar:
+  WideChar; Shift: TShiftState);
+begin
+  if Shift = [ssCtrl] then
+  begin
+    if Key = vkReturn then
+    begin
+      btOKClick(Sender);
+      Key := 0;
+    end;
+  end
+  else if Shift = [] then
+  begin
+    if Key = vkF11 then
+    begin
+      FindAgentClick(Sender);
+      Key := 0;
+    end;
+    if Key = vkInsert then
+    begin
+      dxAddClick(Sender);
+      Key := 0;
+    end;
+    if Key = vkF2 then
+    begin
+      Key := 0;
+      if dxUpd.Enabled then
+      begin
+        dxUpd.OnClick(Sender);
+      end;
+    end;
+    if Key = vkDelete then
+    begin
+      Key := 0;
+      if dxDel.Enabled then
+      begin
+        dxDelClick(Sender);
+      end;
+    end;
+    if Key = vkUp then
+    begin
+      goUp;
+      Key := 0;
+    end;
+    if Key = vkDown then
+    begin
+      goDown;
+      Key := 0;
+    end;
+  end;
+end;
+
+procedure TfmInsZak.EditButton1Click(Sender: TObject);
+begin
+  ReadMyModel(eCode.Text.Trim);
+  eCode.Text := '';
+  eCode.SetFocus;
+end;
 
 procedure TfmInsZak.EditZakaz(NoZakaz: Integer);
 begin
@@ -112,6 +180,30 @@ begin
   FCount := 0;
   Caption := 'Новый заказ';
   ReadModelList;
+end;
+
+procedure TfmInsZak.goDown;
+var
+  Node: tTmsFNCTreeViewNode;
+begin
+  Node := tlMod.GetNextNode(tlMod.FocusedNode);
+  if Assigned(Node) then
+  begin
+    tlMod.SelectNode(Node);
+    tlMod.ScrollToNode(Node, True);
+  end;
+end;
+
+procedure TfmInsZak.goUp;
+var
+  Node: tTmsFNCTreeViewNode;
+begin
+  Node := tlMod.GetPreviousNode(tlMod.FocusedNode);
+  if Assigned(Node) then
+  begin
+    tlMod.SelectNode(Node);
+    tlMod.ScrollToNode(Node, True);
+  end;
 end;
 
 function TfmInsZak.isSave: Boolean;
@@ -178,7 +270,7 @@ begin
         Data^.ID_Model := qMod.FieldByName('NO_MOD').AsInteger;
         Data^.ID_Size := -1;
         Data^.ID_Code := qMod.FieldByName('CODE_MOD').AsString;
-        tlMod.AddNode(Node);
+       // tlMod.AddNode(Node);  -- ломается навигация по клавишам
         Node.DataPointer := Data;
         Node.DataBoolean := True;
         qMod.Next;
@@ -191,16 +283,16 @@ begin
   dxDel.Enabled := tlMod.Nodes.Count > 0;
 end;
 
-procedure TfmInsZak.readMyModel(BarCode: String);
+procedure TfmInsZak.readMyModel(BarCode: string);
 begin
 //  ShowInfo(BarCode);
- if GetMyZize(BarCode, FZakaz) = mrOk then
+  if GetMyZize(BarCode, FZakaz) = mrOk then
   begin
     ReadModelList;
   end;
 end;
 
-procedure TfmInsZak.SearchEditButton1Click(Sender: TObject);
+procedure TfmInsZak.FindAgentClick(Sender: TObject);
 begin
   eAgn.Text := '';
   fmSelAgn := TfmSelAgn.Create(fmInsZak);
@@ -275,13 +367,13 @@ begin
   end;
 end;
 
-procedure TfmInsZak.TMSFNCButton1Click(Sender: TObject);
+procedure TfmInsZak.dxAddClick(Sender: TObject);
 var
   S: string;
 begin
   if isSave then
   begin
-    S:=GetAllManualCode;
+    S := GetAllManualCode;
     eCode.Text := S;
     ReadMyModel(S);
     eCode.Text := '';
@@ -289,7 +381,7 @@ begin
   end;
 end;
 
-procedure TfmInsZak.TMSFNCButton1MouseEnter(Sender: TObject);
+procedure TfmInsZak.dxAddMouseEnter(Sender: TObject);
 var
   p, r: TRectF;
   s: string;
@@ -335,12 +427,44 @@ begin
   end;
 end;
 
-procedure TfmInsZak.TMSFNCButton1MouseLeave(Sender: TObject);
+procedure TfmInsZak.dxAddMouseLeave(Sender: TObject);
 begin
   HintPanel.Visible := false;
 end;
 
-procedure TfmInsZak.TMSFNCButton3Click(Sender: TObject);
+procedure TfmInsZak.dxDelClick(Sender: TObject);
+var
+  Data: pNodeData;
+begin
+  if ShowQuestion('Удалить модель из заказа?') then
+  begin
+    if tlMod.Nodes.Count > 0 then
+    begin
+      fmMain.StartMainTransaction;
+      Data := tlMod.FocusedNode.DataPointer;
+      qDel.Active := false;
+      qDel.Prepare;
+      qDel.ParamByName('UN_CODE').AsString := Data^.ID_Code;
+      qDel.ParamByName('NO_ZAK').AsInteger := FZakaz;
+      qDel.Execute;
+      fmMain.EndMainTransaction;
+      ReadModelList;
+    end;
+  end;
+end;
+
+procedure TfmInsZak.dxUpdClick(Sender: TObject);
+var
+  Data: pNodeData;
+begin
+  if tlMod.Nodes.Count > 0 then
+  begin
+    Data := tlMod.FocusedNode.DataPointer;
+    ReadMyModel(Data^.ID_Code);
+  end;
+end;
+
+procedure TfmInsZak.btOKClick(Sender: TObject);
 begin
   if isSave then
   begin

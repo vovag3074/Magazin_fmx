@@ -11,7 +11,8 @@ uses
   FMX.TMSFNCTreeView, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, FMX.Edit, FMX.TMSFNCButton;
+  FireDAC.Comp.Client, FMX.Edit, FMX.TMSFNCButton, FMX.TMSFNCCustomComponent,
+  FMX.TMSFNCBitmapContainer;
 
 type
   TfmSelAllTov = class(TForm)
@@ -25,14 +26,14 @@ type
     qSize: TFDQuery;
     TMSFNCButton4: TTMSFNCButton;
     btOK: TTMSFNCButton;
+    ClearEditButton1: TClearEditButton;
+    TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     procedure FormCreate(Sender: TObject);
-    procedure eFndChange(Sender: TObject);
     procedure tlModGetNodeTextColor(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure eFndKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
       Shift: TShiftState);
-    procedure tlModAfterSelectNode(Sender: TObject;
-      ANode: TTMSFNCTreeViewVirtualNode);
+    procedure tlModAfterSelectNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
   private
     { Private declarations }
     procedure ListChild(ANode: TTMSFNCTreeViewNode);
@@ -40,7 +41,6 @@ type
     procedure goDown;
     procedure showSizeList;
   public
-    { Public declarations }
     { Public declarations }
     /// <summary>
     /// Чтение списка моделей
@@ -62,27 +62,45 @@ uses
 
 { TfmSelAllTov }
 
-procedure TfmSelAllTov.eFndChange(Sender: TObject);
-begin
-  ReadModList;
-  if eFnd.Text.Trim <> '' then
-  begin
-    tlMod.LookupNode(eFnd.Text.Trim, False, 0, False, True);
-  end;
-end;
-
 procedure TfmSelAllTov.eFndKeyDown(Sender: TObject; var Key: Word; var KeyChar:
   WideChar; Shift: TShiftState);
 begin
-  if Key = VKDOWN then
+  if Shift = [ssCtrl] then
   begin
-    goDown;
-    Key := 0;
-  end;
-  if Key = VKUP then
+    if Key = vkReturn then
+    begin
+      ModalResult := mrOk;
+      Key := 0;
+    end;
+  end
+  else if Shift = [] then
   begin
-    goUp;
-    Key := 0;
+    if Key = VKDOWN then
+    begin
+      goDown;
+      Key := 0;
+    end;
+    if Key = VKUP then
+    begin
+      goUp;
+      Key := 0;
+    end;
+    if Key = vkReturn then
+    begin
+      ReadModList;
+      if eFnd.Text.Trim <> '' then
+      begin
+        tlMod.LookupNode(eFnd.Text.Trim, False, 0, False, True);
+        showSizeList;
+        Key := 0;
+      end;
+    end;
+    if Key = vkEscape then
+    begin
+      eFnd.Text := '';
+      ReadModList;
+      Key := 0;
+    end;
   end;
 end;
 
@@ -165,6 +183,8 @@ begin
       Node.Text[0] := qMod.FieldByName('NAZVAN').AsString;
       Node.Text[1] := qMod.FieldByName('CNT_MOD').AsFloat.ToString;
       Node.Text[2] := qMod.FieldByName('M_CENA').AsFloat.ToString;
+      Node.Values[0].CollapsedIconName := 'Item2';
+      Node.Values[0].ExpandedIconName := 'Item2';
       Node.DataBoolean := False;
 //      Node.ImageIndex := 1;
 //      Node.SelectedIndex := Node.ImageIndex;
@@ -192,9 +212,9 @@ begin
         Node.DataInteger := qKat.FieldByName('NO_KAT').AsInteger;
         Node.Text[0] := qKat.FieldByName('NAZVAN').AsString;
         Node.DataBoolean := True;
+        Node.Values[0].CollapsedIconName := 'Item1';
+        Node.Values[0].ExpandedIconName := 'Item1';
         ListChild(Node);
-//        Node.ImageIndex := 0;
-//        Node.SelectedIndex := Node.ImageIndex;
       end;
       qKat.Next;
     until (qKat.Eof);
@@ -206,13 +226,13 @@ begin
 end;
 
 procedure TfmSelAllTov.showSizeList;
- var
-  ANode,Node: TTMSFNCTreeViewNode;
+var
+  ANode, Node: TTMSFNCTreeViewNode;
 begin
   btOK.Enabled := false;
   try
     tlSize.Nodes.Clear;
-    ANode:=tlMod.FocusedNode;
+    ANode := tlMod.FocusedNode;
     if not ANode.DataBoolean then
     begin
       qSize.Close;
@@ -224,11 +244,11 @@ begin
         qSize.First;
         repeat
           Node := tlSize.AddNode;
-          Node.DataInteger:= qSize.FieldByName('NO_MST').AsInteger;
+          Node.DataInteger := qSize.FieldByName('NO_MST').AsInteger;
           Node.Text[0] := qSize.FieldByName('NO_SIZE').AsInteger.ToString;
           Node.Text[1] := qSize.FieldByName('UN_CODE').AsString;
-   //       Node.ImageIndex := 2;
-   //       Node.SelectedIndex := Node.ImageIndex;
+          Node.Values[0].CollapsedIconName := 'Item3';
+          Node.Values[0].ExpandedIconName := 'Item3';
           qSize.Next;
         until (qSize.Eof);
         tlSize.SelectNode(tlSize.Nodes[0]);
@@ -239,10 +259,10 @@ begin
   end;
 end;
 
-procedure TfmSelAllTov.tlModAfterSelectNode(Sender: TObject;
-  ANode: TTMSFNCTreeViewVirtualNode);
+procedure TfmSelAllTov.tlModAfterSelectNode(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode);
 begin
- showSizeList;
+  showSizeList;
 end;
 
 procedure TfmSelAllTov.tlModGetNodeTextColor(Sender: TObject; ANode:

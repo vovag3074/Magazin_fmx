@@ -133,9 +133,15 @@ begin
 end;
 
 function GetMyZize(BarCode: string; No_Zakaz: Integer): Integer;
+var
+  S: string;
+  T: Int64;
 begin
+  T := BarCode.ToInt64;
+  S := T.ToString;
+  //удаляем ведущие нули, если есть
   fmSelSize := TfmSelSize.Create(fmMain);
-  fmSelSize.ReadSize(No_Zakaz, BarCode);
+  fmSelSize.ReadSize(No_Zakaz, S);
   Result := fmSelSize.ShowModal;
   FreeandNil(fmSelSize);
 end;

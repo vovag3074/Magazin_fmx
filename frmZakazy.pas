@@ -51,6 +51,7 @@ type
     TMSFNCButton3: TTMSFNCButton;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
+    cbAutoFind: TCheckBox;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -112,7 +113,10 @@ begin
   begin
     LoadListZak;
     Application.ProcessMessages;
-    lbSearch.Text := fmInsZak.eAgn.Text;
+    if cbAutoFind.IsChecked then
+    begin
+      lbSearch.Text := fmInsZak.eAgn.Text;
+    end;
   end;
   fmInsZak.Free;
   fmInsZak := nil;
@@ -120,7 +124,8 @@ end;
 
 procedure TfmZak.CheckZak;
 begin
- ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag)+'"}]');
+  ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag)
+    + '"}]');
 end;
 
 procedure TfmZak.DoZakItemClick(Sender: TObject);
@@ -150,7 +155,10 @@ begin
   begin
     LoadListZak;
     Application.ProcessMessages;
-    lbSearch.Text := fmInsZak.eAgn.Text;
+    if cbAutoFind.IsChecked then
+    begin
+      lbSearch.Text := fmInsZak.eAgn.Text;
+    end;
   end;
   fmInsZak.Free;
   fmInsZak := nil;
@@ -202,6 +210,7 @@ begin
   tlZakDet.AdaptToStyle := True;
   eData.Text := DateToStr(Now);
   myCalendar.Date := Now;
+  cbAutoFind.IsChecked:= myINI.ReadBool('Zakazy','AutoFind',True);
 end;
 
 procedure TfmZak.LoadListZak;
@@ -249,7 +258,7 @@ end;
 
 procedure TfmZak.SaveINI;
 begin
-
+  myINI.WriteBool('Zakazy','AutoFind',cbAutoFind.IsChecked);
 end;
 
 procedure TfmZak.tlZakDetBeforeExpandNode(Sender: TObject; ANode:
@@ -352,7 +361,8 @@ begin
     begin
       HintPanel.CalloutPosition := TCalloutPosition.Left;
       HintPanel.Position.X := p.Left + TControl(Sender).Width;
-      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height / 2)+50;
+      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height
+        / 2) + 50;
       HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
       HintLabel.Padding.Left := HintPanel.CalloutLength;
       HintLabel.Padding.Top := -HintPanel.CalloutLength;
@@ -365,7 +375,7 @@ end;
 
 procedure TfmZak.TMSFNCButton1MouseLeave(Sender: TObject);
 begin
- HintPanel.Visible := false;
+  HintPanel.Visible := false;
 end;
 
 procedure TfmZak.TMSFNCButton2Click(Sender: TObject);
@@ -375,7 +385,7 @@ end;
 
 procedure TfmZak.TMSFNCButton3Click(Sender: TObject);
 begin
- CheckZak;
+  CheckZak;
 end;
 
 procedure TfmZak.TMSFNCButton5Click(Sender: TObject);
