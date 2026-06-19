@@ -13,7 +13,7 @@ uses
   FMX.SearchBox, FMX.Objects, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl,
   FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
-  FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer;
+  FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer, FMX.Platform, System.Rtti;
 
 type
   TfmZak = class(TFrame)
@@ -52,6 +52,11 @@ type
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
     cbAutoFind: TCheckBox;
+    qDel: TFDCommand;
+    TMSFNCButton4: TTMSFNCButton;
+    TMSFNCButton6: TTMSFNCButton;
+    qProd: TFDStoredProc;
+    qProdCODE_ZAK: TWideStringField;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -69,6 +74,8 @@ type
     procedure TMSFNCButton3Click(Sender: TObject);
     procedure TMSFNCButton1MouseEnter(Sender: TObject);
     procedure TMSFNCButton1MouseLeave(Sender: TObject);
+    procedure TMSFNCButton4Click(Sender: TObject);
+    procedure TMSFNCButton6Click(Sender: TObject);
   private
     { Private declarations }
     FCount: Double;
@@ -79,6 +86,11 @@ type
     procedure UpdZakaz;
     procedure InsZakaz;
     procedure CheckZak;
+     /// <summary>
+    /// Удаляет заказ
+    /// </summary>
+    procedure DelZakaz;
+    procedure ProdZakaz;
   public
     { Public declarations }
     procedure SaveINI;
@@ -126,6 +138,24 @@ procedure TfmZak.CheckZak;
 begin
   ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag)
     + '"}]');
+end;
+
+procedure TfmZak.DelZakaz;
+var
+  Item: TListBoxItem;
+begin
+  if tlZak.Count > 0 then
+  begin
+    if ShowQuestion('Удалить выбранный заказ?') then
+    begin
+      fmMain.StartMainTransaction;
+      Item := tlZak.ItemByIndex(tlZak.ItemIndex);
+      qDel.ParamByName('NZ').AsInteger := Item.Tag;
+      qDel.Execute;
+      fmMain.EndMainTransaction;
+      LoadListZak;
+    end;
+  end;
 end;
 
 procedure TfmZak.DoZakItemClick(Sender: TObject);
@@ -210,7 +240,7 @@ begin
   tlZakDet.AdaptToStyle := True;
   eData.Text := DateToStr(Now);
   myCalendar.Date := Now;
-  cbAutoFind.IsChecked:= myINI.ReadBool('Zakazy','AutoFind',True);
+  cbAutoFind.IsChecked := myINI.ReadBool('Zakazy', 'AutoFind', True);
 end;
 
 procedure TfmZak.LoadListZak;
@@ -256,9 +286,35 @@ begin
   ppCalendar.IsOpen := False;
 end;
 
+procedure TfmZak.ProdZakaz;
+var
+  Item: TListBoxItem;
+  S: string;
+  Res: string;
+  ClipboardService: IFMXClipboardService;
+begin
+  if tlZak.Count = 0 then
+    Exit;
+  Item := tlZak.ItemByIndex(tlZak.ItemIndex);
+  qProd.Active := false;
+  fmMain.StartMainTransaction;
+  qProd.Prepare;
+  qProd.ParamByName('NO_SET_ZAKAZ').AsInteger := Item.Tag;
+  qProd.Active := True;
+  Res := qProd.FieldByName('CODE_ZAK').AsString;
+  fmMain.IBT.Commit;
+  if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService,
+    ClipboardService) then
+  begin
+    ClipboardService.SetClipboard(Res);
+    ShowNotify('Код заказа скопирован в буфер обмена. Перейдите в радел продажи.');
+  end;
+  fmMain.EndMainTransaction;
+end;
+
 procedure TfmZak.SaveINI;
 begin
-  myINI.WriteBool('Zakazy','AutoFind',cbAutoFind.IsChecked);
+  myINI.WriteBool('Zakazy', 'AutoFind', cbAutoFind.IsChecked);
 end;
 
 procedure TfmZak.tlZakDetBeforeExpandNode(Sender: TObject; ANode:
@@ -362,7 +418,7 @@ begin
       HintPanel.CalloutPosition := TCalloutPosition.Left;
       HintPanel.Position.X := p.Left + TControl(Sender).Width;
       HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height
-        / 2) + 50;
+        / 2) + 40;
       HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
       HintLabel.Padding.Left := HintPanel.CalloutLength;
       HintLabel.Padding.Top := -HintPanel.CalloutLength;
@@ -388,9 +444,19 @@ begin
   CheckZak;
 end;
 
+procedure TfmZak.TMSFNCButton4Click(Sender: TObject);
+begin
+  DelZakaz;
+end;
+
 procedure TfmZak.TMSFNCButton5Click(Sender: TObject);
 begin
   fmMain.ClearOldFrame;
+end;
+
+procedure TfmZak.TMSFNCButton6Click(Sender: TObject);
+begin
+ ProdZakaz;
 end;
 
 procedure TfmZak.zakazItemClick;

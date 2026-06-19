@@ -104,6 +104,7 @@ begin
     qInfo.Close;
     // ---------------------------------------------------------------
   end;
+
 end;
 
 procedure TfmSelSize.tlSizeSelectCell(Sender: TObject; AStartCell, AEndCell,
@@ -137,13 +138,24 @@ var
   S: string;
   T: Int64;
 begin
-  T := BarCode.ToInt64;
-  S := T.ToString;
+  try
+    T := BarCode.ToInt64;
+    S := T.ToString;
   //удаляем ведущие нули, если есть
-  fmSelSize := TfmSelSize.Create(fmMain);
-  fmSelSize.ReadSize(No_Zakaz, S);
-  Result := fmSelSize.ShowModal;
-  FreeandNil(fmSelSize);
+    fmSelSize := TfmSelSize.Create(fmMain);
+    fmSelSize.ReadSize(No_Zakaz, S);
+    Result := fmSelSize.ShowModal;
+    fmSelSize.Free;
+    fmSelSize := nil;
+  except
+    on E: Exception do
+    begin
+      fmMain.ShowIBError(E.Message);
+      fmSelSize.Free;
+      fmSelSize := nil;
+      Result := mrCancel;
+    end;
+  end;
 end;
 
 end.

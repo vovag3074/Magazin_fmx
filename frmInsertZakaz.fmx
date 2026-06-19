@@ -315,6 +315,18 @@ object fmInsZak: TfmInsZak
         OnMouseEnter = dxAddMouseEnter
         OnMouseLeave = dxAddMouseLeave
       end
+      object lbSum: TLabel
+        Align = Right
+        Position.X = 248.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 205.000000000000000000
+        Size.Height = 46.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = '0'
+        TabOrder = 4
+      end
     end
     object tlMod: TTMSFNCTreeView
       Align = Client

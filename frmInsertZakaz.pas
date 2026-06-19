@@ -42,6 +42,7 @@ type
     eCode: TEdit;
     EditButton1: TTMSFNCButton;
     qDel: TFDCommand;
+    lbSum: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure tlModBeforeExpandNode(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
@@ -281,6 +282,7 @@ begin
   fmMain.EndReadTransaction;
   dxUpd.Enabled := tlMod.Nodes.Count > 0;
   dxDel.Enabled := tlMod.Nodes.Count > 0;
+  lbSum.Text:='Всего: '+FCount.ToString+' на сумму: '+FSumMod.ToString;
 end;
 
 procedure TfmInsZak.readMyModel(BarCode: string);
