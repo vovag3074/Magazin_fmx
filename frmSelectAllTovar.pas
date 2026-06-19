@@ -28,12 +28,14 @@ type
     btOK: TTMSFNCButton;
     ClearEditButton1: TClearEditButton;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
+    TMSFNCButton1: TTMSFNCButton;
     procedure FormCreate(Sender: TObject);
     procedure tlModGetNodeTextColor(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure eFndKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
       Shift: TShiftState);
     procedure tlModAfterSelectNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
+    procedure TMSFNCButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure ListChild(ANode: TTMSFNCTreeViewNode);
@@ -56,7 +58,7 @@ function GetAllManualCode: string;
 implementation
 
 uses
-  frmMain;
+  frmMain, frmSynhro;
 
 {$R *.fmx}
 
@@ -276,6 +278,14 @@ begin
   begin
     ATextColor := TAlphaColors.Lightgreen;
   end;
+end;
+
+procedure TfmSelAllTov.TMSFNCButton1Click(Sender: TObject);
+begin
+  fmSync := TfmSync.Create(fmSelAllTov);
+  fmSync.ShowModal;
+  fmSync.Free;
+  fmSync:=nil;
 end;
 
 function GetAllManualCode: string;

@@ -485,8 +485,8 @@ var
   I: Integer;
   Data: pNodeData;
 begin
-   tlMove.Nodes.Clear;
-   lbZak.Items.Clear;
+  tlMove.Nodes.Clear;
+  lbZak.Items.Clear;
   if fmMain.IBT_Read.Active then
   begin
     fmMain.IBT_Read.Rollback;
@@ -613,7 +613,8 @@ begin
     // удален.
     // 09.05.2026 - спрашиваем, ибо часто вставлять приходится
     var T: Boolean;
-    T := ShowQuestion('Покупатель ' + AgentName +' '+SityName+ ' новый. Добавить его?');
+    T := ShowQuestion('Покупатель ' + AgentName + ' ' + SityName +
+      ' новый. Добавить его?');
     fmMain.StartMainTransaction;
     qInsAgn.Active := False;
     qInsAgn.Prepare;
@@ -1006,6 +1007,7 @@ begin
   fmSync := TfmSync.Create(fmInpMag);
   fmSync.ShowModal;
   fmSync.Free;
+  fmSync := nil;
 end;
 
 procedure TfmInpMag.TMSFNCButton5Click(Sender: TObject);
