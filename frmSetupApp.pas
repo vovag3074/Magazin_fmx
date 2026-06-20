@@ -53,6 +53,9 @@ type
     qOpl: TFDQuery;
     qRet: TFDQuery;
     lbInfoProt: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btSaveClick(Sender: TObject);
     procedure btTestClick(Sender: TObject);
