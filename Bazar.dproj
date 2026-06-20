@@ -475,6 +475,10 @@
             <Form>fmSelSize</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSetupApp.pas">
+            <Form>fmSetup</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -995,6 +999,34 @@
                     <Platform Name="Win64">
                         <RemoteDir>.\Rep</RemoteDir>
                         <RemoteName>repAnent2.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repZak0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repZak0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repZak0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
+                        <RemoteName>repZak0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repZak0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep\</RemoteDir>
+                        <RemoteName>repZak0.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\repZak0.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>repZak0.fr3</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

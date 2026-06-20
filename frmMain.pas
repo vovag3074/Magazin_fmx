@@ -27,7 +27,7 @@ uses
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox,
-  FMX.Edit;
+  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst;
 
 type
   TfmMain = class(TForm)
@@ -61,6 +61,7 @@ type
     TMSFNCToolBarSeparator4: TTMSFNCToolBarSeparator;
     btZak: TTMSFNCToolBarButton;
     TMSFNCHint1: TTMSFNCHint;
+    mySave: TAESEncryption;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -83,6 +84,8 @@ type
     procedure ShowBank;
     procedure BuildValList;
     procedure ShowProdaga;
+    procedure DoSetup;
+    procedure DoDBConnect;
   public
     { Public declarations }
     procedure StartMainTransaction;
@@ -154,7 +157,7 @@ threadvar
 implementation
 
 uses
-  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents, frmZakazy;
+  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents, frmZakazy, frmSetupApp;
 
 {$R *.fmx}
 
@@ -205,6 +208,38 @@ begin
   end;
 end;
 
+procedure TfmMain.DoDBConnect;
+begin
+   if fmMain.IBC.Connected then
+  begin
+    fmMain.IBC.Connected:=False;
+  end;
+  fmMain.IBC.Params.Database:=myINI.ReadString('DBConnect', 'DataBaseName', '');
+  fmMain.IBC.Params.Values['Server'] := myINI.ReadString('DBConnect', 'ServerName', '');
+  fmMain.IBC.Params.Username := myINI.ReadString('DBConnect', 'UserName', 'sysdba');
+  var T: string;
+  T := myINI.ReadString('DBConnect', 'Password', '');
+  if T.Trim <> '' then
+  begin
+    mySave.inputFormat := TConvertType.raw;
+    mySave.outputFormat := TConvertType.raw;
+    mySave.key := 'Ihello3074Ihello';      //16 char
+    mySave.keyLength := TAESKeyLength.kl128;
+    mySave.inputFormat := TConvertType.hexa;
+    T := mySave.Decrypt(T);
+    fmMain.IBC.Params.Password := T;
+  end;
+  fmMain.IBC.Connected := True;
+end;
+
+procedure TfmMain.DoSetup;
+begin
+ fmSetup := TfmSetup.Create(fmMain);
+ fmSetup.ShowModal;
+ fmSetup.Free;
+ fmSetup:=nil;
+end;
+
 procedure TfmMain.EndAllTransaction;
 begin
   EndMainTransaction;
@@ -234,7 +269,8 @@ end;
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
   myINI := TIniFile.Create(getStartProgrammDir + PathDelim + 'Bazar.ini');
-  IBC.Connected := True;
+  DoDBConnect;
+  //IBC.Connected := True;
   DistValut := TDictionary<integer, string>.Create;
   DistValut.Clear;
   BuildValList;
@@ -360,6 +396,10 @@ begin
   if AItemIndex = 6 then  //заказы
   begin
     btZak.OnClick(Sender);
+  end;
+  if AItemIndex = 7 then  //настройка
+  begin
+    DoSetup;
   end;
 end;
 

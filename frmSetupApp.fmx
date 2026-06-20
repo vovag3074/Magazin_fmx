@@ -1,0 +1,244 @@
+﻿object fmSetup: TfmSetup
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = ToolWindow
+  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = OwnerFormCenter
+  StyleBook = fmMain.stbMain
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Bottom
+    Position.Y = 410.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 70.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'OfficePanel'
+    TabOrder = 0
+  end
+  object TabControl1: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 410.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      640s
+      383s
+      640s
+      383s
+      640s
+      383s
+      640s
+      383s)
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 111.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077
+      object eSrv: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 0
+        Position.X = 32.000000000000000000
+        Position.Y = 41.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object eDB: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.X = 32.000000000000000000
+        Position.Y = 109.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object eUser: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 2
+        Position.X = 32.000000000000000000
+        Position.Y = 177.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object ePass: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 3
+        Password = True
+        Position.X = 32.000000000000000000
+        Position.Y = 245.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        object PasswordEditButton1: TPasswordEditButton
+          Touch.InteractiveGestures = [LongTap]
+          CanFocus = False
+          Cursor = crArrow
+          Size.Width = 28.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
+      end
+      object btTest: TTMSFNCButton
+        Bitmap.PNG = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F80000000473424954080808087C086488000001F1494441544889B5553D6BDB
+          50143D471F8943A043A74CB1F784962C2E94B663BD748DA7A6DA9A42F2733C79
+          73DBC95EBBD44B208542BD84807F80B50502D90A962CEB74D0932C2BAEE436CE
+          01C17BEF5EDD7BEE79F7BD073C3258E570DC97BD5D9F1D92D611C0BD64553752
+          7C15F8EE78D0E6FCBF129C5C6B97D3F85CD447028D553E022614BBAA599D2FCF
+          F97BED04EF7FCD5E5BE467927549224900C88FF373497E2C7DF8FAC2FD518C65
+          1517BC51D4B6C821C97A49E5CB2CC9BA450EBD51D42EADC0301F02D85A377801
+          612CBDCD57922538B9D62E83F9B84C96BB9FDF420078FAF2DD56D196974BDBF6
+          61BA270B89A6F159952CB71783E8F6621095F990AC631A9FA5730BA615419DCA
+          2065747F9C7C957ED4E9715F769660673F3C20D0A08161B2725C66E362D2D8D9
+          0F0F1612D13E5A6303FF0D26A60300B0B98758484B4DCB5D352EB32DF9D9C9A9
+          77909C48D29488BF74C712B90A3FB329442651AC9BCD696360625A49C6F86AD3
+          F1D398160004BE3B1630A96ED3F4E7723F0193C077C75982419B734ADD8DB5A9
+          D44DAF71276355733A08E69FCA4EF39367AFEC6A69E4ABE674323279A3379ABD
+          11F8FD21971DA156AFE95EA60B4BD775AFE95E12F040849532146D4448C0CB07
+          BF972049E2F429B524F9EBD296E4536AF59A4EBF68AB7832A373919B7F32F378
+          E8A3FFE8F803F9AA6FFD07A583580000000049454E44AE426082}
+        BitmapSize = 24
+        ShowImage = True
+        Font.Color = claWhite
+        Size.Width = 130.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        CanFocus = False
+        Position.X = 477.000000000000000000
+        Position.Y = 34.000000000000000000
+        TabOrder = 5
+        Text = #1055#1088#1086#1074#1077#1088#1080#1090#1100
+        OnClick = btTestClick
+      end
+      object btSave: TTMSFNCButton
+        Bitmap.PNG = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F80000000473424954080808087C086488000001E9494441544889ED94BD6F13
+          4110C57F733677A6331F224D6409594848C8A92953816828A0B190524289DB74
+          808440A241A0749446281DA28A044DFE052A8AE87C5294061441A87C7BF6ED50
+          C477DE8B7D77A4802A53EDCCCEBEB7FB6676E0CC4E63BA471087BC36230E9308
+          BBF56225EDF57AD324C22611D68C48B3F8DA5A2F35232666C4D738E27619A6E7
+          3AA6C94BCF63005CF8CB3B7922F4043E9990FBB504281BAA28802AAA5958D125
+          F1DC473987F0DE84DCAB24F0844B220880082232E770E319F83C0F017CF1F810
+          8FB8E56236ABDEDFED9804F09F6FAD4E562E4FFC19AADDD96D4FBB9D38055A27
+          8EF802AF80CF4B093219B2F5FACDDFFE83BB87E6E3978B8DF1D8D3D98DE97662
+          FB6470E02D3B03DC7031C57592089B25669294AD2BF6D4BF4A63690DFE85554A
+          54B7AEDB5B20709FFB2D3C9F3C7BB3AAE17ECB3F561E545545C49155B5DB8993
+          A78303B9DE1DFB273B8CAA1AF41F5F8B4DE235EEAC1F35052DE4E5F088EEECB6
+          A7816FD3EDB77BAD6535286DD370BF153CECFFE051FFBB541419A0F96EFB4A29
+          4E550DC86E5EA3732ECBA96AE06A5DD9A67392855FCEFF68D30281C2CFF950D3
+          822C8561E7FAF9D17C10FE2A27B00CE743AD285171083AFE2C25DFB30C5DCC42
+          0D02CBA6394EDC00DA4E1BBBBA2E1472163BB2966160D9AC17EECC1CFB03FA15
+          153CE9AC8DB20000000049454E44AE426082}
+        BitmapSize = 24
+        ShowImage = True
+        Font.Color = claWhite
+        Size.Width = 130.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        CanFocus = False
+        Position.X = 477.000000000000000000
+        Position.Y = 238.000000000000000000
+        TabOrder = 4
+        Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+        OnClick = btSaveClick
+      end
+      object Label1: TLabel
+        StyledSettings = [Family, Size, FontColor]
+        FocusControl = eSrv
+        Position.X = 32.000000000000000000
+        Position.Y = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Text = #1057#1077#1088#1074#1077#1088
+        TabOrder = 9
+      end
+      object Label2: TLabel
+        StyledSettings = [Family, Size, FontColor]
+        FocusControl = eDB
+        Position.X = 32.000000000000000000
+        Position.Y = 84.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Text = #1041#1072#1079#1072' '#1076#1072#1085#1085#1099#1093
+        TabOrder = 8
+      end
+      object Label3: TLabel
+        StyledSettings = [Family, Size, FontColor]
+        FocusControl = eUser
+        Position.X = 32.000000000000000000
+        Position.Y = 152.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Text = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
+        TabOrder = 7
+      end
+      object Label4: TLabel
+        StyledSettings = [Family, Size, FontColor]
+        FocusControl = ePass
+        Position.X = 32.000000000000000000
+        Position.Y = 220.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Text = #1055#1072#1088#1086#1083#1100
+        TabOrder = 6
+      end
+    end
+    object TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 108.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1041#1077#1079#1086#1087#1072#1089#1085#1086#1089#1090#1100
+    end
+    object Инструменты: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 108.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+    end
+    object Закрытие: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 82.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1047#1072#1082#1088#1099#1090#1080#1077
+    end
+  end
+  object mySave: TAESEncryption
+    Version = '5.1.1.1'
+    Left = 64
+    Top = 328
+  end
+end

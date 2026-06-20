@@ -180,6 +180,7 @@ object fmSelAllTov: TfmSelAllTov
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Align = Right
+      CanFocus = False
       Margins.Left = 10.000000000000000000
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000

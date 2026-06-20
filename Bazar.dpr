@@ -38,7 +38,8 @@ uses
   frmZakazy in 'frmZakazy.pas' {fmZak: TFrame},
   frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak},
   frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov},
-  frmSelectSize in 'frmSelectSize.pas' {fmSelSize};
+  frmSelectSize in 'frmSelectSize.pas' {fmSelSize},
+  frmSetupApp in 'frmSetupApp.pas' {fmSetup};
 
 {$R *.res}
 

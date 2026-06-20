@@ -282,7 +282,7 @@ begin
   fmMain.EndReadTransaction;
   dxUpd.Enabled := tlMod.Nodes.Count > 0;
   dxDel.Enabled := tlMod.Nodes.Count > 0;
-  lbSum.Text:='Всего: '+FCount.ToString+' на сумму: '+FSumMod.ToString;
+  lbSum.Text := 'Всего: ' + FCount.ToString + ' на сумму: ' + FSumMod.ToString;
 end;
 
 procedure TfmInsZak.readMyModel(BarCode: string);
@@ -376,8 +376,11 @@ begin
   if isSave then
   begin
     S := GetAllManualCode;
-    eCode.Text := S;
-    ReadMyModel(S);
+    if S.Trim <> '' then
+    begin
+      eCode.Text := S;
+      ReadMyModel(S);
+    end;
     eCode.Text := '';
     eCode.SetFocus;
   end;
