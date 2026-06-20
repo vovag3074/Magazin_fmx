@@ -404,18 +404,20 @@ object fmInpMag: TfmInpMag
     Position.X = 424.000000000000000000
     Position.Y = 120.000000000000000000
     Size.Width = 225.000000000000000000
-    Size.Height = 68.000000000000000000
+    Size.Height = 82.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     object pnRep: TPanel
       Align = Client
       Size.Width = 225.000000000000000000
-      Size.Height = 68.000000000000000000
+      Size.Height = 82.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
       object TMSFNCButton2: TTMSFNCButton
+        Font.Size = 14.000000000000000000
+        Font.Color = claWhite
         Size.Width = 225.000000000000000000
-        Size.Height = 33.000000000000000000
+        Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         Align = Top
         TabOrder = 0
@@ -423,11 +425,13 @@ object fmInpMag: TfmInpMag
         OnClick = TMSFNCButton2Click
       end
       object TMSFNCButton3: TTMSFNCButton
+        Font.Size = 14.000000000000000000
+        Font.Color = claWhite
         Size.Width = 225.000000000000000000
-        Size.Height = 33.000000000000000000
+        Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         Align = Top
-        Position.Y = 33.000000000000000000
+        Position.Y = 40.000000000000000000
         TabOrder = 1
         Text = #1057#1091#1084#1084#1072#1088#1085#1072#1103' '#1087#1077#1088#1077#1076#1072#1095#1072
         OnClick = TMSFNCButton3Click
@@ -823,8 +827,10 @@ object fmInpMag: TfmInpMag
             B82DECDE0F377926F2BA7F0352F71254C413577E0000000049454E44AE426082}
           BitmapSize = 24
           ShowImage = True
+          Font.Size = 14.000000000000000000
+          Font.Color = claWhite
           Size.Width = 225.000000000000000000
-          Size.Height = 33.000000000000000000
+          Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           Align = Top
           TabOrder = 0
@@ -871,11 +877,13 @@ object fmInpMag: TfmInpMag
             8BB50000000049454E44AE426082}
           BitmapSize = 24
           ShowImage = True
+          Font.Size = 14.000000000000000000
+          Font.Color = claWhite
           Size.Width = 225.000000000000000000
-          Size.Height = 33.000000000000000000
+          Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           Align = Bottom
-          Position.Y = 72.000000000000000000
+          Position.Y = 65.000000000000000000
           TabOrder = 1
           Text = #1059#1076#1072#1083#1080#1090#1100' '#1074#1089#1077
           OnClick = TMSFNCButton8Click

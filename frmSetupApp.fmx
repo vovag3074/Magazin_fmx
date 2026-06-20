@@ -4,7 +4,7 @@
   BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
-  ClientHeight = 480
+  ClientHeight = 345
   ClientWidth = 640
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
@@ -13,37 +13,350 @@
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
-  object Panel1: TPanel
-    Align = Bottom
-    Position.Y = 410.000000000000000000
-    Size.Width = 640.000000000000000000
-    Size.Height = 70.000000000000000000
-    Size.PlatformDefault = False
-    StyleLookup = 'OfficePanel'
-    TabOrder = 0
-  end
   object TabControl1: TTabControl
     Align = Client
     Size.Width = 640.000000000000000000
-    Size.Height = 410.000000000000000000
+    Size.Height = 345.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
-    TabOrder = 1
+    TabIndex = 1
+    TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
       640s
-      383s
+      318s
       640s
-      383s
+      318s
       640s
-      383s
+      318s
       640s
-      383s)
-    object TabItem1: TTabItem
+      318s)
+    object Закрытие: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 82.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1047#1072#1082#1088#1099#1090#1080#1077
+      object Panel2: TPanel
+        Align = Right
+        Position.X = 490.000000000000000000
+        Size.Width = 150.000000000000000000
+        Size.Height = 318.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'OfficePanel'
+        TabOrder = 0
+        object btAdd: TTMSFNCButton
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C0864880000030B494441544889B5564D481C
+            67187EDEEF9BFD896D7E446C9492C66E1352092608ADEDA595D043AAF464A288
+            C585101043F1D086D28360871E7AA9D25E7A6869D1420F25420E2DA8F4502CB4
+            0D3B2B0611EB216A2B181259A2919075DC75BEA717673B7677C71FE8739977DE
+            F799EFF9DEE79D8F19E07F86EC45B069AB8CB3D46A8C39AF446601C0900D4AA9
+            B9EAA6C4982DB639B4804D5B65528B3F10682BF3F0EDEAD75EEA0C13516102AB
+            CE420B813692FDD94DFD2CC97E111123A69D643F81B65567A1256C8D5001055C
+            048093EECAD0C8A511F7A4BB3204001A52EFC73EE75002866201807D6972DBBF
+            92A4A1587ECEE71C4AA01444444C2E74AEBBF9A59237D25D0965AC2B20DF26D0
+            2CC02700600028918F33E9F5C94CEAF1AFF5EFD50D00FC5994FEF0CBA6EFE64A
+            AD55D4DE8D745742793A4DF0B89F2330E0EF8624B30FDCE647331B6F9A1CA78D
+            AEEDFBFAF5CF16CB7550649178AA8DC071D9816F4B30060410DC5FFD4DB56C5A
+            574DD2717F4A3ADB4F93CEF65FC954AE2F5480908A72BB09421F890F59F177B2
+            228D1380D528E020C82951FA8BEE54EE7A598B0A4224CBC7444575E52FAC6B78
+            0B50670CB26F7CDF74EC0F00E876B6C645742F806F4B76E027F6B248D53EB366
+            1DADAC1511CF6CADCFF7DEB9F96EFBAD5B5A8173006ACB5AB42F7BE2EA6F5D71
+            6C53C7E2FF26ADD8CC687B7BD1FB7B60017AF27BD5850B8D939F0F6FE8684504
+            00A2B1AA58E4C4B57B7D0B8842B486407AA61841A91998C0EB585834107B3AFE
+            81F77CC77349273F0BA54E910411BFBFB1FE2200AF70B45C7AD9A4931F3CF00C
+            D696D7EEC2243A44E917C27822A20179FFC0168D768C7A9458749FF44891803F
+            25EEE0BFB1DF67B0E63E5CCE2F0CF6B80F7EFC2A1BCCA3E44926BCB0D60BBC40
+            6DDD99C83F994FC756C786A3DCCEE583F5E2212B9951C1CDEE0395AF5E8E3CF9
+            D3C91D7DF915A322B123C1668B046A9A126399D4E26D9285CFE46E7B76E74832
+            5673DA3AFBD137D6CEFDAE7A91802DB6B16977669CA5561A5EA440FB3E164E91
+            51AE281192F4AD28159374F7FCAB2885AEE9CDD396678D83722E849603F8E93F
+            0C7A7E92A606B9160000000049454E44AE426082}
+          BitmapSize = 24
+          ShowImage = True
+          Font.Size = 14.000000000000000000
+          Font.Color = claWhite
+          Size.Width = 140.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Align = Top
+          CanFocus = False
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 10.000000000000000000
+          TabOrder = 2
+          Text = #1047#1072#1082#1088#1099#1090#1100
+          OnClick = btAddClick
+        end
+        object TMSFNCButton1: TTMSFNCButton
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000003BF494441544889B5955F685B
+            551CC7BFBF73EF4D93B469165C4D5A6C321A41EB9F061DB554AB32447032A674
+            3A43950C0467832F3E080A051704893E6C0F99A3D68EAD737368D789DB44AC30
+            E8860C9248276C13A9B3746DA6D63EAC11B7DCDEE49E9F0FCD2D6993A6A5E0EF
+            E5FCF8F13DE773EFEFCF39C0FF6CB49620C63131979A7C5E4AF9A020BA020092
+            F96121C4B586C75ABE8B514C6E1810E398984BFEFE2503DDAB6CFEBAA12318AE
+            0611D500B3A9EBDB19E866E6BE3B39A58E99FB888824C99799B98F81EED9D4F5
+            EDD5CEA80A10400800BC7A66FFD0B621DDAB67F60380026AB57C4BB321806452
+            0120B66DAC60ADCCCC9249B562966643804A4644248DAA755DAEAF148CA67B5A
+            84547781F939069E26E00300900004D1BEB9F4ADB1B9E4FC85D6B7B6BC4FC005
+            107D2F45E1747FFBC9C93501D1744F8B30953403EED5BE6AFADC5F983E37CB5D
+            9F8596F61390958AD9BE1252963F324537036E22220060665EE90B9B32E5F239
+            06E5D5FC68B0599B086475FD9726AF17395996BB3200839C558643AA798A3FEA
+            F7C51B7D7EF399EC7D5D1ED3BD57013B9FCD6286A51C8BAD05580231F30A5FDA
+            4DF5F5035D474FDC3CDC1FF69ACE381CF0C32C8A1657D338746C4413F4364523
+            7FA3521759012A9AE56B10F1034F1C3D313F30F8A12F5FFB0511052AE8544550
+            D8644EE989A16045C02ABF33E5C951FCE6E1FEB04BD6BCB78E3BAC5953698413
+            899A75011428833B263A4DAFE18C5B87BF337A26F7E94F9772562A67FE99CFF7
+            9C3ABE30FE47C628A62094573645CA6A208B2794D6C0B9A08C6EB617BA701B7E
+            2B1EF46CE681F4257B41CADC0BF73FA4EC3D334C00A8D155BFD47182F06A1940
+            00E0626E2DE15DBA67C26DD8DE4049BCB7FD718761167247C693F6AFAE5C36EB
+            6C361ED8B91B8DAE7ACD6A672684D695A240F6864E10CED21811D18BAD6D8A53
+            D3CCDB79437D3210CCFBDD1E6DD94686B30C604D0A170D007EF379EE2E887CA6
+            343E93BD65BC7976985C363BBFF440E8CEA96B3F3B3E49FDB85413666630CF94
+            4F32C3042D4F5156353B66557D6CD382C3245ABC3DDFFDE15B09B018D8B91B7E
+            B7C75967B3E58E8C27ED6DDE46E3A940D04644C48CF365EDD69B8CEC10CCDF94
+            0214A2D3073B3E7F25D73F74D206110680CB7F660C6F9D8B9A5C6ECDD25DBC31
+            696C6DBA47A9D56C0A11150AC0D63240A5679200B3C17074BE36F54866CBBFCE
+            1480E6B5EAC6843E2DBAE7A38A03633DF42C39C40445005058FC9AE83C36AC1F
+            3A7EAF467204446D952E42007909DEA7F6463E5E6CA40D1827123579B57E8F00
+            F5000881A816CCD3009D3709076BA291AB96F63FFDA7CAA097F327A700000000
+            49454E44AE426082}
+          BitmapSize = 24
+          ShowImage = True
+          Font.Size = 14.000000000000000000
+          Font.Color = claWhite
+          Size.Width = 140.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Align = Bottom
+          CanFocus = False
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 268.000000000000000000
+          TabOrder = 1
+          Text = #1059#1076#1072#1083#1080#1090#1100
+          OnClick = btAddClick
+        end
+        object TMSFNCButton2: TTMSFNCButton
+          Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C0864880000032A494441544889B5564B6814
+            6910FEEAEF8E91CCC451D66082127424C1D1C428684458F1352346080BD1C525
+            AC172F12C4CB82A7800EDE3D0B9EBCF838A80882AC8E62144593F8C047127777
+            2659246E328475E2238F9949FFDF1EA63B9BB1677A346041D3C5FF57D557F555
+            15DDC0771629651065548DF50CEED35AAF5322AF0040938D4AA9BEAAE6E08DA8
+            44F5BC01A28CAAB1EEC425026D459CAF566D59FD8B1788F20248F6C45B08B491
+            EC9C9C32FC243B4544B4E89F497612684BF6C45BBC62780228A00900964D0F9F
+            3EB7F3DCF4B2E9E1D3006040428EEED8CC0B40534C0088EEEC9A71DE24A929A6
+            73E6D8CC0BA0908888E88C675FF3ED0B1D76F4B6079536F783DC4B60BB00A700
+            4003502227C77A535D63DDE3F74247579E10E01E447ED76AE6CA99CD17064B02
+            74F4B6079565F4120814CBEAEDF551BCBD9EE48F679B66FD05F8A00D6BF39720
+            2E8AC4526D0402620B6C5AE6EA765E7977040286A55CE3EC6A10211525B7AF80
+            88E0CFEAF2F18B89C492C072491D52C05499E07CD10920C9E23A73B900429222
+            88D794A722AD3290ADC1F87D011A0820A3117651E41C7C3545C05F35E5A9DDAD
+            3290ADAB1C8C998A8D764502C14F9E335C522CC6AB8C7F23FB7CCF337546F2B6
+            29B9E0B3B4010FBF790F669D1512C6D3E1F0AE05CFD36B543266800D73EF49F4
+            65805F5D1568BB76AF1E18E5120F6DD49196EA27E94D81899861674EC2B1EBCB
+            02117F1049178072BA67739E6BE21C1D48ACD96AEDD9BBEDFD54F38ACF315361
+            BD135C0442A03FCB5C70141A534F5A04434B8D54A4B5B67F32648CDC7282CF56
+            07F4CF0822FE55B9E005018A512482BF971AA9DDAD95CF26436523B74CB0298F
+            16C1401608FB5762F44B46F2B3242C1418CD852A732CBCE0E5A7B5E6C8CD32E1
+            061167932120DE7C948A887F557EF082005AC90B37397C57F939195BEB1B3D66
+            2A6ECCBB21DE24B31591BB13EBF85BF7C1FA9200D5CDC11B025CA52DB9EA71ED
+            E48E2ECB27990324E83C00FEF898A9083FC8365A0F27EA3B163587E22E46DCD9
+            FEFFA1A7661305C6624C5F3EFCC31DA935DEBFB4A9D19A78649938E8ABC53FC7
+            1FB7D7F9B6D4274AFD0078CAA778D991F4105EA71388A6E368F80A1700C07FF8
+            D075ABCFA41FD30000000049454E44AE426082}
+          BitmapSize = 24
+          ShowImage = True
+          Font.Size = 14.000000000000000000
+          Font.Color = claWhite
+          Size.Width = 140.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Align = Bottom
+          CanFocus = False
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 208.000000000000000000
+          TabOrder = 0
+          Text = #1048#1079#1084#1077#1085#1080#1090#1100
+          OnClick = btAddClick
+        end
+      end
+    end
+    object Инструменты: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = True
+      Size.Width = 108.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      object TabControl2: TTabControl
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 318.000000000000000000
+        Size.PlatformDefault = False
+        TabIndex = 0
+        TabOrder = 0
+        TabPosition = Bottom
+        Sizes = (
+          640s
+          291s)
+        object TabItem3: TTabItem
+          CustomIcon = <
+            item
+            end>
+          IsSelected = True
+          Size.Width = 84.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = ''
+          TabOrder = 0
+          Text = #1055#1088#1086#1090#1086#1082#1086#1083
+          object eSave: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 0
+            ReadOnly = True
+            Position.X = 56.000000000000000000
+            Position.Y = 144.000000000000000000
+            Size.Width = 497.000000000000000000
+            Size.Height = 33.000000000000000000
+            Size.PlatformDefault = False
+            object eSaveBtn: TEllipsesEditButton
+              Touch.InteractiveGestures = [LongTap]
+              CanFocus = False
+              Cursor = crArrow
+              Size.Width = 28.000000000000000000
+              Size.Height = 29.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnClick = eSaveBtnClick
+            end
+          end
+          object btOKSave: TTMSFNCToolBarButton
+            AdaptToStyle = True
+            Anchors = [akRight, akBottom]
+            Enabled = False
+            Position.X = 552.000000000000000000
+            Position.Y = 191.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 80.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            OnClick = btOKSaveClick
+            Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100#13#10#1087#1088#1086#1090#1086#1082#1086#1083
+            Bitmaps = <>
+            LargeLayoutBitmaps = <
+              item
+                Bitmap.PNG = {
+                  89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                  F40000000473424954080808087C08648800000366494441545885ED974F6C54
+                  5514C6BFEFBE99378576E8D0168106A425C1A431A044038A9294604894158D98
+                  1092312C688C88802626A2C66ED898261A4D4BB52C0C628CD14413FF24B651C0
+                  9818DA9105218A55426530D2A9A5ADC56967E6BD735C341D4DE7CDEBBC697523
+                  6779DE39E7FBDD7BCFFDF3805BF67F377A390F9C8BDFA12AC7006E2759FD43D7
+                  A00240D3130D9EF100309C18D34B6F0E626BF7DD54C575001FD893A6EDB56D6F
+                  8FF901184F71E837A46921595DD6A88815240E661739A70F7EBD6F5920005539
+                  46B0B61CE14210B3C1B19D5E3F88020080DB17423C2F40AE7723B99ED6C49EBA
+                  9200CA9D763F23CC86901BEA694DEC2EA8ED31031E052CB8E288E317238E38B4
+                  503486E05D9653D136DB1F2A0520D614757E7EF75AF85A4F2A13A9B16D0F7137
+                  F9F990C69AA202205C1C02BB011C090CB07C4B4D643295C9243F1B324EDA2D2C
+                  6C41634D5159175FED5F8F5831DB5512000DD9D8525FD1D8525F2C24EC37F2BF
+                  F559708E94D403FFA6DD0228A9070298AA980F89D82BA925B18BB5E3B9650020
+                  F6ED294BAFACA68C3D1A18404575E8DB1BD9B1EF272C7561F9C556AE89767EF2
+                  F2A787F6F55FDDBB385D7768322497010062AD03323F99F0EFC781AE6000831F
+                  FF96F9B57738BCF4CEA89850F11553D1D109AC39BAF76CEA25A95CD5A6AA3701
+                  2C026800FD938C54B94ED59EE6D3BAFECC36E60FAC3901AE9F1D61C3AE95B955
+                  3B6EABF08B73B3D2DFB5B5F366BCEFF5A754F5CB0A633D3225B9FD80F586A8EE
+                  34D49DA479AEA132B71140FF4CDE9C4DE8A45D3B5263477C4254C5EA74C2F5AD
+                  98BE4BEAA0B8FCD6BDCC11FC910435FDC772777C3401000A2EF967F2BC77818A
+                  757C38F9F06187CF3EF6785FF63D0000F150BCCF795FC0170120F5C53B8753BD
+                  A78E0080922FC4CFB9CFB4A91A2CC42EA0D4B457353EF8B4A0AE3DEF23D70258
+                  3B73EC6552C9FB665E5F049B61D07C25210AE0D579CF40C796F6ABA24B37054E
+                  54DD04EF17918E072A442A60051E881A1A6F00E0ABA0C5CAB199E5290030E451
+                  55BDF15F407802746C3E3940F20151FDA8D4E5D0328455A6B33C7741C7E69303
+                  00F2E7F6850317E62867464A509CED19C182DD86946EA84E15FB6CD7AE643A39
+                  0071728AE9469F12232750ECCFA81C8BF7673742CD7E00B530CC1756D7C5C4A5
+                  EFF0CB89E7B5FA9E1DA8DFF5E428EDC5DDA7EEB7CF2F94F6BCEC2F90B647A5E1
+                  7E1B5C0000000049454E44AE426082}
+              end>
+            Layout = bblLarge
+            BitmapPosition = bbpTop
+            DisabledBitmaps = <>
+            HoverBitmaps = <>
+            LargeLayoutDisabledBitmaps = <>
+            LargeLayoutHoverBitmaps = <>
+            BitmapVisible = True
+            Appearance.InnerStroke.Color = xFFE9E9E9
+            Appearance.NormalFill.Kind = gfkSolid
+            Appearance.NormalFill.Color = claWhite
+            Appearance.NormalStroke.Color = claDarkgray
+            Appearance.HoverFill.Kind = gfkSolid
+            Appearance.HoverFill.Color = x7F2A96FF
+            Appearance.HoverStroke.Color = claDarkgray
+            Appearance.DownFill.Kind = gfkSolid
+            Appearance.DownFill.Color = claWhite
+            Appearance.DownStroke.Color = claDarkgray
+            Appearance.DisabledFill.Color = claWhite
+            Appearance.DisabledStroke.Color = claDarkgray
+            ControlIndex = 0
+          end
+          object eStart: TDateEdit
+            Date = 46193.000000000000000000
+            Position.X = 56.000000000000000000
+            Position.Y = 48.000000000000000000
+            Size.Width = 150.000000000000000000
+            Size.Height = 33.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+          end
+          object eEnd: TDateEdit
+            Date = 46193.000000000000000000
+            Position.X = 401.000000000000000000
+            Position.Y = 48.000000000000000000
+            Size.Width = 150.000000000000000000
+            Size.Height = 33.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+          end
+          object lbInfoProt: TLabel
+            Position.Y = 216.000000000000000000
+            Size.Width = 529.000000000000000000
+            Size.Height = 67.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Center
+            TabOrder = 4
+          end
+        end
+      end
+    end
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
       Size.Width = 111.000000000000000000
       Size.Height = 27.000000000000000000
       Size.PlatformDefault = False
@@ -198,6 +511,12 @@
         Text = #1055#1072#1088#1086#1083#1100
         TabOrder = 6
       end
+      object SD: TSaveDialog
+        DefaultExt = '*.baz'
+        Filter = #1060#1072#1081#1083' '#1087#1088#1086#1090#1086#1082#1086#1083#1072' (*.baz)|*.baz'
+        Left = 208
+        Top = 240
+      end
     end
     object TabItem2: TTabItem
       CustomIcon = <
@@ -211,34 +530,201 @@
       TabOrder = 0
       Text = #1041#1077#1079#1086#1087#1072#1089#1085#1086#1089#1090#1100
     end
-    object Инструменты: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = False
-      Size.Width = 108.000000000000000000
-      Size.Height = 27.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
-    end
-    object Закрытие: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = False
-      Size.Width = 82.000000000000000000
-      Size.Height = 27.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = #1047#1072#1082#1088#1099#1090#1080#1077
-    end
   end
   object mySave: TAESEncryption
     Version = '5.1.1.1'
-    Left = 64
-    Top = 328
+    Left = 80
+    Top = 256
+  end
+  object qStop: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'insert into LOG_START_STOP_SHOP (DATA_STOP)'
+      'values (:DATA_STOP)'
+      '')
+    ParamData = <
+      item
+        Name = 'DATA_STOP'
+        ParamType = ptInput
+      end>
+    Left = 144
+    Top = 248
+  end
+  object qData: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select END_BAZAR, START_BAZAR'
+      'from GET_DIAPAZON_BAZAR'
+      '')
+    Left = 240
+    Top = 51
+  end
+  object qMove: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select MS.UN_CODE, count(LM.NO_SIZE_MOD) COUNT_OF_NO_SIZE_MOD'
+      'from LOG_MOVE_TABLE_2 LM'
+      'inner join MODEL_SIZE_TABLE MS on (LM.NO_SIZE_MOD = MS.NO_MST)'
+      'where ((LM.IS_RET = 0) and'
+      '      (LM.DATA_TIME_MOVE between :SD and :ED))'
+      'group by MS.UN_CODE  '
+      '')
+    Left = 288
+    Top = 51
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+  end
+  object qSity: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select DISTINCT '
+      '       S.BAR_CODE ST_BAR_CODE,'
+      '       S.ST_NAME,'
+      '       S.IS_DEL,'
+      '       S.IS_STAR'
+      'from SITY_TABLE S'
+      'inner join AGENTS AG on (S.NO_ST = AG.NO_SITY)'
+      'inner join LOG_PROD_TABLE LP on (AG.NO_AGN = LP.NO_AGN)'
+      'where ((LP.DATA_PROD between :SD and :ED))'
+      'order by S.ST_NAME  '
+      '')
+    Left = 240
+    Top = 107
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+  end
+  object qAgn: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT DISTINCT '
+      '    V.NAZVAN V_NAZVAN,'
+      '    AG.AG_NAME,'
+      '    AG.BAR_CODE AG_BAR_CODE,'
+      '    AG.AG_DOLG,'
+      '    AG.IS_DEF_PROD,'
+      '    AG.IS_SKIDKA,'
+      '    AG.IS_DEL,'
+      '    AG.AG_DOP,'
+      '    S.BAR_CODE ST_BAR_CODE'
+      'FROM SITY_TABLE S'
+      '   INNER JOIN AGENTS AG ON (S.NO_ST = AG.NO_SITY)'
+      '   INNER JOIN LOG_PROD_TABLE LP ON (AG.NO_AGN = LP.NO_AGN)'
+      '   INNER JOIN VALUT_TABLE V ON (AG.PRED_VAL = V.NO_VAL)'
+      'WHERE '
+      '   ('
+      '      (LP.DATA_PROD BETWEEN :SD AND :ED)'
+      '   )'
+      '')
+    Left = 296
+    Top = 107
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+  end
+  object qProd: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AG.BAR_CODE,'
+      '       V.NAZVAN,'
+      '       MST.UN_CODE,'
+      '       LP.CENA_PROD,'
+      '       LP.OPLATA,'
+      '       LP.DATA_PROD'
+      'FROM LOG_PROD_TABLE LP'
+      'INNER JOIN AGENTS AG ON (LP.NO_AGN = AG.NO_AGN)'
+      'INNER JOIN VALUT_TABLE V ON (LP.NO_VAL = V.NO_VAL)'
+      'INNER JOIN MODEL_SIZE_TABLE MST ON (LP.NO_MOD_SIZE = MST.NO_MST)'
+      'WHERE ((LP.DATA_PROD BETWEEN :SD AND :ED)) '
+      '')
+    Left = 344
+    Top = 51
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+  end
+  object qOpl: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT AG.BAR_CODE,'
+      '       SUM(LP.SUM_OP) SUM_OF_SUM_OP,'
+      '       MST.UN_CODE,'
+      '       LP.DATA_OP,'
+      '       LP.IS_VIRT,'
+      '       LP.IS_PRED'
+      'FROM MODEL_SIZE_TABLE MST'
+      'INNER JOIN LOG_OPLATA LP ON (MST.NO_MST = LP.NO_MSIS)'
+      'INNER JOIN AGENTS AG ON (LP.NO_AGN = AG.NO_AGN)'
+      'WHERE ((LP.DATA_OP BETWEEN :SD AND :ED))'
+      
+        'GROUP BY AG.BAR_CODE, MST.UN_CODE, LP.DATA_OP, LP.IS_VIRT, LP.IS' +
+        '_PRED  '
+      '')
+    Left = 344
+    Top = 115
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+  end
+  object qRet: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select MS.UN_CODE, count(LM.NO_SIZE_MOD) COUNT_OF_NO_SIZE_MOD'
+      'from LOG_MOVE_TABLE_2 LM'
+      'inner join MODEL_SIZE_TABLE MS on (LM.NO_SIZE_MOD = MS.NO_MST)'
+      'where ((LM.IS_RET = 1) and'
+      '      (LM.DATA_TIME_MOVE between :SD and :ED))'
+      'group by MS.UN_CODE  '
+      '')
+    Left = 240
+    Top = 171
+    ParamData = <
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
   end
 end

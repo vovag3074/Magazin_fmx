@@ -214,7 +214,15 @@ begin
   begin
     fmMain.IBC.Connected:=False;
   end;
-  fmMain.IBC.Params.Database:=myINI.ReadString('DBConnect', 'DataBaseName', '');
+  var S:string;
+   S :=myINI.ReadString('DBConnect', 'DataBaseName', '');
+  if S.Trim ='' then
+   begin
+     ShowError('Неуказаны параметры соединения с Базой Данных. Зайдите в настройки и'+
+     'укажите параметры соединения...');
+     Exit;
+   end;
+  fmMain.IBC.Params.Database:=S;
   fmMain.IBC.Params.Values['Server'] := myINI.ReadString('DBConnect', 'ServerName', '');
   fmMain.IBC.Params.Username := myINI.ReadString('DBConnect', 'UserName', 'sysdba');
   var T: string;
@@ -270,7 +278,7 @@ procedure TfmMain.FormCreate(Sender: TObject);
 begin
   myINI := TIniFile.Create(getStartProgrammDir + PathDelim + 'Bazar.ini');
   DoDBConnect;
-  //IBC.Connected := True;
+  //IBC.Connected := True; // соелинение перенесено в процедуру
   DistValut := TDictionary<integer, string>.Create;
   DistValut.Clear;
   BuildValList;
