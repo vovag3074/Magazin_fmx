@@ -27,7 +27,7 @@ uses
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox,
-  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst;
+  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani;
 
 type
   TfmMain = class(TForm)
@@ -164,7 +164,6 @@ uses
 procedure TfmMain.ClearOldFrame;
 begin
   tbMain.Visible := true;
-  myList.Visible := True;
   if Assigned(fmInpMag) then
   begin
     fmInpMag.SaveINI;
@@ -206,6 +205,7 @@ begin
     fmZak.Release;
     fmZak:=nil;
   end;
+  myList.Visible := True;
 end;
 
 procedure TfmMain.DoDBConnect;

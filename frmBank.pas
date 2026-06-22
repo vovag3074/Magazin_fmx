@@ -62,11 +62,11 @@ type
     procedure TMSFNCButton2Click(Sender: TObject);
   private
     { Private declarations }
-    procedure GetBankSum(NBank: string);
-    procedure GetPolSum(NBank: string; NPol: string; myItem: TListBoxItem);
+    procedure GetBankSum(NBank: Widestring);
+    procedure GetPolSum(NBank: Widestring; NPol: widestring; myItem: TListBoxItem);
     procedure ReadBankList;
-    procedure ReadPolList(NBank: string);
-    procedure ListDetail(NBank, NPol: string);
+    procedure ReadPolList(NBank: widestring);
+    procedure ListDetail(NBank, NPol: widestring);
   public
     { Public declarations }
     procedure LoadINI;
@@ -95,7 +95,7 @@ begin
   ReadBankList;
 end;
 
-procedure TfmBank.GetBankSum(NBank: string);
+procedure TfmBank.GetBankSum(NBank: widestring);
 var
   Item: TListBoxGroupFooter;
 begin
@@ -114,12 +114,12 @@ except
 end;
 end;
 
-procedure TfmBank.GetPolSum(NBank, NPol: string; myItem: TListBoxItem);
+procedure TfmBank.GetPolSum(NBank, NPol: widestring; myItem: TListBoxItem);
 begin
   qSumPol.Close;
   qSumPol.ParamByName('SD').AsDate := StrToDate(eData.Text);
-  qSumPol.ParamByName('MU').AsString := NPol;
-  qSumPol.ParamByName('MB').AsString := NBank;
+  qSumPol.ParamByName('MU').AsWideString := NPol;
+  qSumPol.ParamByName('MB').AsWideString := NBank;
   qSumPol.Active := True;
   myItem.BeginUpdate;
   myItem.StylesData['mySum'] := qSumPol.FieldByName('SUM_OF_VSUM_OPL').AsFloat.ToString;
@@ -141,7 +141,7 @@ begin
   end;
 end;
 
-procedure TfmBank.ListDetail(NBank, NPol: string);
+procedure TfmBank.ListDetail(NBank, NPol: widestring);
 var
   Node: TTMSFNCTreeViewNode;
 begin
@@ -150,8 +150,8 @@ begin
   qUsr.Close;
   qUsr.Prepare;
   qUsr.ParamByName('SD').AsDate := StrToDate(eData.Text);
-  qUsr.ParamByName('MY').AsString := NPol;
-  qUsr.ParamByName('MB').AsString := NBank;
+  qUsr.ParamByName('MY').AsWideString := NPol;
+  qUsr.ParamByName('MB').AsWideString := NBank;
   qUsr.Active := True;
   if qUsr.RecordCount > 0 then
   begin
@@ -159,8 +159,8 @@ begin
     repeat
       Node := tlDet.AddNode();
       Node.DataInteger := qUsr.FieldByName('NO_AG').AsInteger;
-      Node.Text[0] := qUsr.FieldByName('AG_NAME').AsString;
-      Node.Text[1] := qUsr.FieldByName('ST_NAME').AsString;
+      Node.Text[0] := qUsr.FieldByName('AG_NAME').AsWideString;
+      Node.Text[1] := qUsr.FieldByName('ST_NAME').AsWideString;
       Node.Text[4] := qUsr.FieldByName('SUM_OPL').AsFloat.ToString;
       Node.Text[5] := DateToStr(qUsr.FieldByName('DATA_NAK').AsDateTime);
       if qUsr.FieldByName('KURS_VAL').IsNull then   // если запись старая то курс = 1, а сумма олаты = сумме с учетом курса
@@ -222,7 +222,7 @@ end;
 procedure TfmBank.ReadBankList;
 var
   Item: TListBoxGroupHeader;
-  S: string;
+  S: widestring;
 begin
   qBank.close;
   tlDop.Items.Clear;
@@ -247,7 +247,7 @@ begin
   fmMain.IBT_Read.Rollback;
 end;
 
-procedure TfmBank.ReadPolList(NBank: string);
+procedure TfmBank.ReadPolList(NBank: widestring);
 var
   Item: TListBoxItem;
 begin
@@ -264,7 +264,7 @@ begin
       Item.Text := qPol.FieldByName('MY_USER').AsWideString;
       Item.TagString := NBank;
       tlDop.AddObject(Item);
-      GetPolSum(NBank, qPol.FieldByName('MY_USER').AsWideString, Item);
+      GetPolSum(NBank, qPol.FieldByName('MY_USER').AsString, Item);
       Item.OnClick := ListBoxItem1Click;
       qPol.Next;
     until qPol.Eof;
