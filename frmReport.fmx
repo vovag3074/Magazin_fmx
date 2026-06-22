@@ -199,4 +199,57 @@ object fmReport: TfmReport
     Left = 560
     Top = 48
   end
+  object frxODSExport1: TfrxODSExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    CreationTime = 0.000000000000000000
+    DataOnly = False
+    PictureType = gpPNG
+    Background = True
+    Creator = 'FastReport'
+    Language = 'en'
+    SuppressPageHeadersFooters = False
+    Left = 312
+    Top = 384
+  end
+  object frxODTExport1: TfrxODTExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    CreationTime = 0.000000000000000000
+    DataOnly = False
+    PictureType = gpPNG
+    Background = True
+    Creator = 'FastReport'
+    Language = 'en'
+    SuppressPageHeadersFooters = False
+    Left = 304
+    Top = 296
+  end
+  object frxPPTXExport1: TfrxPPTXExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PictureType = gpPNG
+    Left = 552
+    Top = 136
+  end
+  object frxTIFFExport1: TfrxTIFFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Left = 368
+    Top = 200
+  end
+  object frxGIFExport1: TfrxGIFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Left = 376
+    Top = 416
+  end
 end

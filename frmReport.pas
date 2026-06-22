@@ -12,7 +12,7 @@ uses
   FMX.fs_idialogsrtti, FMX.fs_ipascal, FMX.frxExportCSV, FMX.frxExportText,
   FMX.frxExportImage, FMX.frxExportHTML, FMX.frxExportPDF, FMX.frxExportRTF,
   FMX.frxExportBaseDialog, FMX.frxExportXML, FMX.frxCross, FMX.frxFDComponents,
-  FMX.frxPrintDialog, FMX.frxCDSComponents;
+  FMX.frxPrintDialog, FMX.frxCDSComponents, FMX.frxExportPPTX, FMX.frxExportODF;
 
 type
   TfmReport = class(TForm)
@@ -38,6 +38,11 @@ type
     frLocalizationController1: TfrLocalizationController;
     frxFDComponents1: TfrxFDComponents;
     frxCDSComponents1: TfrxCDSComponents;
+    frxODSExport1: TfrxODSExport;
+    frxODTExport1: TfrxODTExport;
+    frxPPTXExport1: TfrxPPTXExport;
+    frxTIFFExport1: TfrxTIFFExport;
+    frxGIFExport1: TfrxGIFExport;
     procedure myRepGetValue(const VarName: string; var Value: Variant);
   private
     { Private declarations }

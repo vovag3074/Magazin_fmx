@@ -62,6 +62,7 @@ type
     btZak: TTMSFNCToolBarButton;
     TMSFNCHint1: TTMSFNCHint;
     mySave: TAESEncryption;
+    lbStatus: TLabel;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -214,6 +215,7 @@ begin
   begin
     fmMain.IBC.Connected:=False;
   end;
+  lbStatus.Text:='';
   var S:string;
    S :=myINI.ReadString('DBConnect', 'DataBaseName', '');
   if S.Trim ='' then
@@ -238,6 +240,7 @@ begin
     fmMain.IBC.Params.Password := T;
   end;
   fmMain.IBC.Connected := True;
+  lbStatus.Text:=fmMain.IBC.Params.Values['Server']+':'+fmMain.IBC.Params.Database;
 end;
 
 procedure TfmMain.DoSetup;
