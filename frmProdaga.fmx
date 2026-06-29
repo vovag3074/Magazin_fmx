@@ -1122,6 +1122,7 @@ object fmProd: TfmProd
                 2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
               GlobalFont.Size = 18.000000000000000000
               GlobalFont.Name = 'Segoe UI'
+              OnBeforeExpandNode = tlPModBeforeExpandNode
               OnGetNodeSelectedColor = tlPModGetNodeSelectedColor
               OnGetNodeTextColor = tlPModGetNodeTextColor
               OnGetNodeSelectedTextColor = tlPModGetNodeSelectedTextColor
@@ -1402,6 +1403,22 @@ object fmProd: TfmProd
                       905641A022161CD2346DF873ABE92A88F4EAFB073627C78553BF6CD200000000
                       49454E44AE426082}
                     Name = 'Item7'
+                    Tag = 0
+                  end
+                  item
+                    Bitmap.PNG = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F80000000473424954080808087C08648800000106494441544889ED93C17183
+                      301444DF06933E0245B99274905BDAC878261DA417C6D086716C6F2E600B0563
+                      149C9BF724ED97B4A3277D78E83FD5D6BCB50DEDBEE1D4D654BB8A325EF3B428
+                      41BC0AF26E5628631D2F592D0A302B8383C05FE72DBB012021095D3B6CD60D76
+                      15A532D6881CB37D7E6123719AB377568032BE80A287B16F00F800B02F88C612
+                      672192287B0C124214416D12D19FDE2065D32C4421061B5BE3B59B88FAC6696B
+                      8E61E3841824146E4A42A4A071A4EEE72C541C9A0F66238D93AAC101316B34EE
+                      A7BCC120A067696309E9861FD7EEF64D533489C8774014FFA2C3A063CD61CAA7
+                      F3FBDAD9BF1660F36EF8EEC65B1FF99CF2B9F806EAB3FF508A7E00A602893802
+                      BD66830000000049454E44AE426082}
+                    Name = 'Item8'
                     Tag = 0
                   end>
               end
@@ -4048,6 +4065,42 @@ object fmProd: TfmProd
       end
       item
         Name = 'NM'
+        ParamType = ptInput
+      end>
+  end
+  object qSize: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select S.NO_SIZE,'
+      '       count(LP.NO_LPT) COUNT_OF_NO_LPT,'
+      '       LP.CENA_PROD,'
+      '       sum(LP.OPLATA) OPLATA,'
+      '       sum(LP.CENA_PROD) SUM_PROD,'
+      '       LP.NO_MOD_SIZE'
+      'from LOG_PROD_TABLE LP'
+      'inner join MODEL_SIZE_TABLE M on (LP.NO_MOD_SIZE = M.NO_MST)'
+      'inner join SIZE_MOD_TABLE S on (M.NO_SIZE = S.NO_SMT)'
+      'where ((M.NO_MOD = :MZ) and'
+      '      (LP.NO_AGN = :NG) and'
+      '      (LP.DATA_PROD = :SD) and'
+      '      (LP.IS_TEMP = 0))'
+      'group by S.NO_SIZE, LP.CENA_PROD, LP.NO_MOD_SIZE'
+      'order by S.NO_SIZE  '
+      '')
+    Left = 798
+    Top = 416
+    ParamData = <
+      item
+        Name = 'MZ'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SD'
         ParamType = ptInput
       end>
   end

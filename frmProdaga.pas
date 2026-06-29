@@ -163,6 +163,7 @@ type
     Label29: TLabel;
     Line20: TLine;
     Label30: TLabel;
+    qSize: TFDQuery;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -194,6 +195,8 @@ type
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure brSetSkidClick(Sender: TObject);
     procedure TMSFNCButton13Click(Sender: TObject);
+    procedure tlPModBeforeExpandNode(Sender: TObject;
+      ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -759,7 +762,7 @@ end;
 
 procedure TfmProd.ShowProdMod;
 var
-  Node: TTMSFNCTreeViewNode;
+  Node, ANode: TTMSFNCTreeViewNode;
 begin
   try
     tlPMod.Nodes.Clear;
@@ -781,6 +784,8 @@ begin
         Node.Text[4] := qMod.FieldByName('OPLATA').AsFloat.ToString;
         Node.Values[0].CollapsedIconName := 'Item1';
         Node.Values[0].ExpandedIconName := 'Item1';
+        Node.DataBoolean:=True;
+        ANode := tlPMod.AddNode(Node);
         qMod.Next;
       until (qMod.Eof);
     end;
@@ -802,28 +807,69 @@ begin
   ShowLogOpl;
 end;
 
+procedure TfmProd.tlPModBeforeExpandNode(Sender: TObject;
+  ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+var
+  Node: TTMSFNCTreeViewNode;
+begin
+  ANode.Node.RemoveChildren;
+  tlPMod.SelectNode(ANode.Node);
+  qSize.Close;
+  qSize.Prepare;
+  qSize.ParamByName('SD').AsDate := StrToDate(eData.Text);
+  qSize.ParamByName('MZ').AsInteger := ANode.Node.DataInteger;
+  qSize.ParamByName('NG').AsInteger := FActiveProd;
+  qSize.Active := True;
+  if qSize.RecordCount > 0 then
+  begin
+    qSize.First;
+    repeat
+      Node := tlPMod.AddNode(ANode.Node);
+      Node.DataInteger := qSize.FieldByName('NO_MOD_SIZE').AsInteger;
+      Node.Text[0] := qSize.FieldByName('NO_SIZE').AsString;
+      Node.Text[1] := qSize.FieldByName('COUNT_OF_NO_LPT').AsInteger.ToString;
+      Node.Text[2] := qSize.FieldByName('CENA_PROD').AsFloat.ToString;
+      Node.Text[3] := qSize.FieldByName('SUM_PROD').AsFloat.ToString;
+      Node.Text[4] := qSize.FieldByName('OPLATA').AsFloat.ToString;
+      Node.Values[0].CollapsedIconName := 'Item8';
+      Node.Values[0].ExpandedIconName := 'Item8';
+      Node.DataBoolean:=False;
+      qSize.Next;
+    until (qSize.Eof);
+  end;
+end;
+
 procedure TfmProd.tlPModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
 begin
+try
   var T: Double;
   T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
   if T > 0 then
     AColor := TAlphaColors.Darkmagenta;
+except
+end;
 end;
 
 procedure TfmProd.tlPModGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
+try
   var T: Double;
   T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
   if T > 0 then
     ATextColor := TAlphaColors.White;
+except
+end;
 end;
 
 procedure TfmProd.tlPModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
+try
   var T: Double;
   T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
   if T > 0 then
     ATextColor := TAlphaColors.Deeppink;
+except
+end;
 end;
 
 procedure TfmProd.btPolMoneyClick(Sender: TObject);
