@@ -39,7 +39,8 @@ uses
   frmInsertZakaz in 'frmInsertZakaz.pas' {fmInsZak},
   frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov},
   frmSelectSize in 'frmSelectSize.pas' {fmSelSize},
-  frmSetupApp in 'frmSetupApp.pas' {fmSetup};
+  frmSetupApp in 'frmSetupApp.pas' {fmSetup},
+  frmExportZakaz in 'frmExportZakaz.pas' {fmExpZak};
 
 {$R *.res}
 

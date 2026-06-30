@@ -58,6 +58,7 @@ type
     qProd: TFDStoredProc;
     qProdCODE_ZAK: TWideStringField;
     TMSFNCButton7: TTMSFNCButton;
+    TMSFNCButton8: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -78,6 +79,7 @@ type
     procedure TMSFNCButton4Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton7Click(Sender: TObject);
+    procedure TMSFNCButton8Click(Sender: TObject);
   private
     { Private declarations }
     FCount: Double;
@@ -115,7 +117,7 @@ type
 implementation
 
 uses
-  frmMain, frmInsertZakaz, frmReport;
+  frmMain, frmInsertZakaz, frmReport, frmExportZakaz;
 
 {$R *.fmx}
 
@@ -464,6 +466,17 @@ end;
 procedure TfmZak.TMSFNCButton7Click(Sender: TObject);
 begin
  ShowReportJson('repZak*.fr3','[{"DT":"'+eData.Text+'"}]');
+end;
+
+procedure TfmZak.TMSFNCButton8Click(Sender: TObject);
+begin
+ fmExpZak:=TfmExpZak.Create(fmZak);
+ if fmExpZak.ShowModal=mrOk then
+ begin
+
+ end;
+ fmExpZak.Free;
+ fmExpZak:=nil;
 end;
 
 procedure TfmZak.zakazItemClick;
