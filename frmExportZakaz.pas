@@ -27,11 +27,13 @@ type
     qSize: TFDQuery;
     qZak: TFDQuery;
     qComt: TFDCommand;
+    eInfo: TLabel;
     procedure EllipsesEditButton1Click(Sender: TObject);
     procedure btOKClick(Sender: TObject);
   private
     { Private declarations }
     procedure StartExport;
+    procedure ShowWaitP(isVisible:Boolean;InfoText:string = '');
   public
     { Public declarations }
   end;
@@ -66,6 +68,13 @@ begin
   end;
 end;
 
+procedure TfmExpZak.ShowWaitP(isVisible: Boolean; InfoText: string);
+begin
+ eInfo.Visible:=isVisible;
+ eInfo.Text:=InfoText;
+ Application.ProcessMessages;
+end;
+
 procedure TfmExpZak.StartExport;
 var
   XMLDoc: TNativeXml;
@@ -88,6 +97,7 @@ const
   S_Off = ' where ((SZ.DATA_OTP = :DE)) ';
   S_Ord = ' order by SZ.CODE_ZAKAZA, MST.UN_CODE ';
 begin
+  fmMain.StartReadTransaction;
   qZak.Prepare;
   qZak.SQL.Clear;
   if dxAll.isChecked then
@@ -107,8 +117,7 @@ begin
   // --------------------------------------------------------------------------
   // пишем агентов и города кот участвуют в заказах
   // ---------------------------------------------------------------------------
-//  ShowWaitP(true, 'Пишем участников');
-  Application.ProcessMessages;
+  ShowWaitP(true, 'Пишем участников');
   qExpAgn.Close;
   qExpAgn.Prepare;
   qExpAgn.ParamByName('DE').AsDate := StrToDate(fmZak.eData.Text);
@@ -133,8 +142,7 @@ begin
   // Сверяем модели и размеры по заказу
   // ---------------------------------------------------------------------------
   // 1 - этап - проверяем и копируем модели
- // ShowWaitP(true, 'Пишем модели');
-  Application.ProcessMessages;
+  ShowWaitP(true, 'Пишем модели');
   qExpMod.Close;
   qExpMod.Prepare;
   qExpMod.ParamByName('DE').AsDate := StrToDate(fmZak.eData.Text);
@@ -153,8 +161,7 @@ begin
     until (qExpMod.Eof);
   end;
   // 2 - этап - проверяем и копируем размеры
-//  ShowWaitP(true, 'Пишем размеры');
-  Application.ProcessMessages;
+  ShowWaitP(true, 'Пишем размеры');
   qSize.Close;
   qSize.Prepare;
   qSize.ParamByName('DE').AsDate := StrToDate(fmZak.eData.Text);
@@ -175,8 +182,7 @@ begin
   // Пишем заказы
   // 28.02.2018 добавил экспорт договорной суммы
   // ---------------------------------------------------------------------------
-//  ShowWaitP(true, 'Пишем заказы');
-  Application.ProcessMessages;
+  ShowWaitP(true, 'Пишем заказы');
   qZak.Close;
   qZak.Prepare;
   qZak.ParamByName('DE').AsDate := StrToDate(fmZak.eData.Text);
@@ -218,8 +224,7 @@ begin
   fmMain.EndReadTransaction;
   // XMLDoc.XmlFormat := xfReadable;
   // XMLDoc.SaveToFile(eName.Text);
-//  ShowWaitP(false, '');
-  Application.ProcessMessages;
+  ShowWaitP(false, '');
   ShowInfo('Заказ на выбранную дату экспортирован');
   fmMain.StartMainTransaction;
   qComt.Prepare;

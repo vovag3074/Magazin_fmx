@@ -111,6 +111,18 @@ object fmExpZak: TfmExpZak
       OnClick = btOKClick
       OldFontColor = claWhite
     end
+    object eInfo: TLabel
+      Align = Left
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 313.000000000000000000
+      Size.Height = 60.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+    end
   end
   object eName: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
