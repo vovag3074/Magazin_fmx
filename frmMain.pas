@@ -241,6 +241,7 @@ begin
   end;
   fmMain.IBC.Connected := True;
   lbStatus.Text:=fmMain.IBC.Params.Values['Server']+':'+fmMain.IBC.Params.Database;
+  fmMain.Caption:='Рабочее место: '+fmMain.IBC.Params.Database;
 end;
 
 procedure TfmMain.DoSetup;
