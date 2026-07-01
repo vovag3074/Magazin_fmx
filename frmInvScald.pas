@@ -76,12 +76,10 @@ type
     miRepSize: TMenuItem;
     myZakList: TLayout;
     procedure TMSFNCButton5Click(Sender: TObject);
-    procedure tlModBeforeExpandNode(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure cbAllChange(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
-    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
-      Shift: TShiftState);
+    procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure miCopyCodeClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
@@ -93,11 +91,9 @@ type
     procedure pmModPopup(Sender: TObject);
     procedure repOstClick(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
-    procedure tlModFocusedNodeChanged(Sender: TObject;
-      ANode: TTMSFNCTreeViewVirtualNode);
-    procedure tlModGetNodeTextColor(Sender: TObject;
-      ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer;
-      var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlModFocusedNodeChanged(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
+    procedure tlModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure miRepSizeClick(Sender: TObject);
   private
     { Private declarations }
     function ListDet(ANode: TTMSFNCTreeViewNode): Float64;
@@ -193,8 +189,7 @@ begin
   end;
 end;
 
-procedure TfmInv.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar:
-  WideChar; Shift: TShiftState);
+procedure TfmInv.eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
   if Key = vkReturn then
   begin
@@ -263,8 +258,7 @@ begin
       repeat
         item := TListBoxItem.Create(cxZakList);
         item.StyleLookup := 'myZakListStyle';
-        item.Text := qZakList.FieldByName('AG_NAME').AsString + ' ' + qZakList.FieldByName
-          ('ST_NAME').AsString;
+        item.Text := qZakList.FieldByName('AG_NAME').AsString + ' ' + qZakList.FieldByName('ST_NAME').AsString;
         item.StylesData['myCount'] := qZakList.FieldByName('CNT_MOD').AsFloat.ToString;
         item.StylesData['myCode'] := qZakList.FieldByName('CODE_ZAK').AsString;
         item.Tag := qZakList.FieldByName('NO_ZAK').AsInteger;
@@ -285,12 +279,9 @@ end;
 
 function TfmInv.ListDet(ANode: TTMSFNCTreeViewNode): Float64;
 const
-  mySel = 'select MS.CNT_MOD, M.M_CENA, M.NAZVAN, M.NO_MOD ' +
-    ' from MODEL_IN_SCLAD MS ' + ' inner join MODEL_TABLE M on (MS.NO_MOD = M.NO_MOD) ';
-  WhereStd = ' where ((M.NO_KAT = :NK) and ' +
-    '      (MS.IS_VIT = :IV) and (MS.CNT_MOD > 0)) ';
-  WhereAll = ' where ((M.NO_KAT = :NK) and ' +
-    '      (MS.IS_VIT = :IV) and (MS.CNT_MOD >= 0) ' + ' and (M.IS_DEL = 0))';
+  mySel = 'select MS.CNT_MOD, M.M_CENA, M.NAZVAN, M.NO_MOD ' + ' from MODEL_IN_SCLAD MS ' + ' inner join MODEL_TABLE M on (MS.NO_MOD = M.NO_MOD) ';
+  WhereStd = ' where ((M.NO_KAT = :NK) and ' + '      (MS.IS_VIT = :IV) and (MS.CNT_MOD > 0)) ';
+  WhereAll = ' where ((M.NO_KAT = :NK) and ' + '      (MS.IS_VIT = :IV) and (MS.CNT_MOD >= 0) ' + ' and (M.IS_DEL = 0))';
   myOrder = ' order by M.NAZVAN ';
 var
   Node: TTMSFNCTreeViewNode;
@@ -339,48 +330,46 @@ begin
   tlMod.Nodes.Clear;
   cxZakList.Items.Clear;
   try
-  tlMod.BeginUpdate;
-  fmMain.StartReadTransaction;
-  qKat.Close;
-  qKat.Prepare;
-  qKat.ParamByName('IV').AsSmallInt := 0;
-  qKat.Active := true;
-  if qKat.RecordCount > 0 then
-  begin
-    qKat.First;
-    repeat
-      if qKat.FieldByName('SUM_OF_CNT_MOD').AsInteger > 0 then
-      begin
-        Node := tlMod.AddNode();
-        Node.DataInteger := qKat.FieldByName('NO_KAT').AsInteger;
-        Node.DataBoolean := False;
-        Node.DataString := qKat.FieldByName('NAZVAN').AsString +
-          '<font color = "Yellow">  (' + FloatToStr(qKat.FieldByName('SUM_SKID').AsFloat)
-          + ') </font>';
-        Node.Text[0] := qKat.FieldByName('NAZVAN').AsString;
-        Node.Values[0].CollapsedIconName := 'Item1';
-        Node.Values[0].ExpandedIconName := 'Item1';
-        Node.Extended := True;
-        var F: Double := ListDet(Node);
-        Node.Text[0] := Node.DataString + '<font color = "Cyan"> [' + F.ToString
-          + ']</font>';
-        FSumMod := FSumMod + F;
-      end;
-      qKat.Next;
-    until (qKat.Eof);
-    tlMod.EndUpdate;
-    tlMod.ExpandAll;
-    if tlMod.Nodes.Count > 0 then
+    tlMod.BeginUpdate;
+    fmMain.StartReadTransaction;
+    qKat.Close;
+    qKat.Prepare;
+    qKat.ParamByName('IV').AsSmallInt := 0;
+    qKat.Active := true;
+    if qKat.RecordCount > 0 then
     begin
-      tlMod.SelectNode(tlMod.Nodes[0]);
+      qKat.First;
+      repeat
+        if qKat.FieldByName('SUM_OF_CNT_MOD').AsInteger > 0 then
+        begin
+          Node := tlMod.AddNode();
+          Node.DataInteger := qKat.FieldByName('NO_KAT').AsInteger;
+          Node.DataBoolean := False;
+          Node.DataString := qKat.FieldByName('NAZVAN').AsString + '<font color = "Yellow">  (' + FloatToStr(qKat.FieldByName('SUM_SKID').AsFloat) + ') </font>';
+          Node.Text[0] := qKat.FieldByName('NAZVAN').AsString;
+          Node.Values[0].CollapsedIconName := 'Item1';
+          Node.Values[0].ExpandedIconName := 'Item1';
+          Node.Extended := True;
+          var F: Double := ListDet(Node);
+          Node.Text[0] := Node.DataString + '<font color = "Cyan"> [' + F.ToString + ']</font>';
+          FSumMod := FSumMod + F;
+        end;
+        qKat.Next;
+      until (qKat.Eof);
+      tlMod.EndUpdate;
+      tlMod.ExpandAll;
+      if tlMod.Nodes.Count > 0 then
+      begin
+        tlMod.SelectNode(tlMod.Nodes[0]);
+      end;
+      lbSum.Text := FSumMod.ToString;
     end;
-    lbSum.Text := FSumMod.ToString;
-  end;
-  ListActiveZakaz;
-  except on E:Exception do
-  begin
-    fmMain.ShowIBError(E.Message);
-  end;
+    ListActiveZakaz;
+  except
+    on E: Exception do
+    begin
+      fmMain.ShowIBError(E.Message);
+    end;
   end;
 end;
 
@@ -423,7 +412,7 @@ end;
 
 procedure TfmInv.MenuItem3Click(Sender: TObject);
 begin
- DelAllZakaz;
+  DelAllZakaz;
 end;
 
 procedure TfmInv.MenuItem4Click(Sender: TObject);
@@ -433,12 +422,12 @@ end;
 
 procedure TfmInv.MenuItem5Click(Sender: TObject);
 begin
- btSetModSizeClick(Sender);
+  btSetModSizeClick(Sender);
 end;
 
 procedure TfmInv.MenuItem6Click(Sender: TObject);
 begin
- RepOstSclad;
+  RepOstSclad;
 end;
 
 procedure TfmInv.miCopyCodeClick(Sender: TObject);
@@ -449,8 +438,7 @@ begin
   if cxZakList.Count > 0 then
   begin
     item := cxZakList.ListItems[cxZakList.ItemIndex];
-    if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService,
-      ClipboardService) then
+    if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, ClipboardService) then
     begin
       var S: string;
       S := item.StylesData['myCode'].AsString;
@@ -461,19 +449,30 @@ begin
   end;
 end;
 
+procedure TfmInv.miRepSizeClick(Sender: TObject);
+var
+  Node: TTMSFNCTreeViewNode;
+begin
+  Node := tlMod.FocusedNode;
+  if Node.DataBoolean then
+  begin
+    ShowReportJson('ShModZak.fr3', '[{"NM":"' + Node.DataInteger.ToString + '"}]');
+  end;
+end;
+
 procedure TfmInv.pmModPopup(Sender: TObject);
 begin
- miRepSize.Enabled := not tlMod.FocusedNode.Extended;
+  miRepSize.Enabled := not tlMod.FocusedNode.Extended;
 end;
 
 procedure TfmInv.repOstClick(Sender: TObject);
 begin
- RepOstSclad;
+  RepOstSclad;
 end;
 
 procedure TfmInv.RepOstSclad;
 begin
- ShowReportJson('ShRepOstMag.fr3', '[{"IV":"0"}]');
+  ShowReportJson('ShRepOstMag.fr3', '[{"IV":"0"}]');
 end;
 
 procedure TfmInv.SaveINI;
@@ -491,40 +490,36 @@ begin
     fmSetSize.ListSize(tlMod.FocusedNode.DataInteger, 0);
     if fmSetSize.ShowModal = mrOk then
     begin
-      tlMod.FocusedNode.Text[1]:=fmSetSize.SizeListSum.ToString;
+      tlMod.FocusedNode.Text[1] := fmSetSize.SizeListSum.ToString;
       fmMain.StartReadTransaction;
       ViewDetNode(tlMod.FocusedNode);
       ShowNotify('После изменения размеров не забудьте обновить склад...');
     end;
     fmSetSize.Free;
-    fmSetSize:=nil;
+    fmSetSize := nil;
   end;
 end;
 
-procedure TfmInv.tlModBeforeExpandNode(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+procedure TfmInv.tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 begin
   ListDet(ANode.Node);
 end;
 
-procedure TfmInv.tlModFocusedNodeChanged(Sender: TObject;
-  ANode: TTMSFNCTreeViewVirtualNode);
+procedure TfmInv.tlModFocusedNodeChanged(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
 begin
   fmMain.StartReadTransaction;
   ViewDetNode(ANode.Node);
 end;
 
-procedure TfmInv.tlModGetNodeTextColor(Sender: TObject;
-  ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer;
-  var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmInv.tlModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
-try
- if ANode.Node.Text[1].ToDouble <=0  then
- begin
-   ATextColor := TAlphaColors.Yellow;
- end;
-except
-end;
+  try
+    if ANode.Node.Text[1].ToDouble <= 0 then
+    begin
+      ATextColor := TAlphaColors.Yellow;
+    end;
+  except
+  end;
 end;
 
 procedure TfmInv.TMSFNCButton1Click(Sender: TObject);
@@ -535,14 +530,14 @@ end;
 
 procedure TfmInv.btUpdScladClick(Sender: TObject);
 begin
- fmMain.UpdateSclad;
- ListMod;
+  fmMain.UpdateSclad;
+  ListMod;
 end;
 
 procedure TfmInv.btRepClick(Sender: TObject);
 begin
- repZak.Enabled := not  tlMod.FocusedNode.Extended;
- ppRep.Popup();
+  repZak.Enabled := not tlMod.FocusedNode.Extended;
+  ppRep.Popup();
 end;
 
 procedure TfmInv.btSetModSizeClick(Sender: TObject);
@@ -552,10 +547,10 @@ end;
 
 procedure TfmInv.TMSFNCButton5Click(Sender: TObject);
 begin
- tlMod.Nodes.Clear;
- cxZakList.Items.Clear;
- tlZak.Nodes.Clear;
- fmMain.IBT_Read.Rollback;
+  tlMod.Nodes.Clear;
+  cxZakList.Items.Clear;
+  tlZak.Nodes.Clear;
+  fmMain.IBT_Read.Rollback;
   fmMain.ClearOldFrame;
 end;
 

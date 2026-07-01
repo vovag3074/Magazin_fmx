@@ -1522,6 +1522,7 @@ object fmInv: TfmInv
       object miRepSize: TMenuItem
         Locked = True
         Text = #1047#1072#1082#1072#1079#1099' '#1085#1072' '#1084#1086#1076#1077#1083#1100
+        OnClick = miRepSizeClick
       end
     end
   end
@@ -1792,6 +1793,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'bars-3-filled'
         SVGText = 
@@ -1814,6 +1816,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'button-refresh-filled'
         SVGText = 
@@ -1840,6 +1843,7 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
+            Size = 16
           end>
         IconName = 'report'
         SVGText = 
@@ -1901,24 +1905,18 @@ object fmInv: TfmInv
         Layers = <
           item
             Name = 'bars-3-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'button-refresh-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'report'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 576

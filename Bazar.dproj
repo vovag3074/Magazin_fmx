@@ -836,6 +836,34 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Rep\ShModZak.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>ShModZak.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShModZak.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>ShModZak.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShModZak.fr3" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Rep</RemoteDir>
+                        <RemoteName>ShModZak.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Rep\ShModZak.fr3" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Rep</RemoteDir>
+                        <RemoteName>ShModZak.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Rep\ShRepFullHistAgn.fr3" Configuration="Release" Class="File">
                     <Platform Name="Linux64">
                         <RemoteDir>.\Rep</RemoteDir>
