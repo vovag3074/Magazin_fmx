@@ -1,5 +1,9 @@
 program Bazar;
 
+{$IFDEF Linux}
+  {$R CustomIconResource.DRES}
+{$ENDIF}
+
 uses
   System.StartUpCopy,
   FMX.Forms,
