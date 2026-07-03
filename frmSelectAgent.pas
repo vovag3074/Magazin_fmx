@@ -558,7 +558,7 @@ begin
   end;
   if ANode.Node.Text[1].ToDouble > 0 then
   begin
-    ATextColor := TAlphaColors.Magenta;
+    ATextColor := TAlphaColors.Lightpink;
   end;
 end;
 

@@ -868,7 +868,7 @@ try
   var T: Double;
   T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
   if T > 0 then
-    ATextColor := TAlphaColors.Deeppink;
+    ATextColor := TAlphaColors.Lightpink;
 except
 end;
 end;
