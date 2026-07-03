@@ -13,7 +13,7 @@
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
-  object TabControl1: TTabControl
+  object tbSetup: TTabControl
     Align = Client
     Size.Width = 640.000000000000000000
     Size.Height = 345.000000000000000000
@@ -23,29 +23,31 @@
     TabPosition = PlatformDefault
     Sizes = (
       640s
-      318s
+      315s
       640s
-      318s
+      315s
       640s
-      318s
+      315s
       640s
-      318s)
+      315s)
     object Закрытие: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = True
-      Size.Width = 82.000000000000000000
-      Size.Height = 27.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = #1047#1072#1082#1088#1099#1090#1080#1077
+      ExplicitSize.cx = 82.000000000000000000
+      ExplicitSize.cy = 27.000000000000000000
       object Panel2: TPanel
         Align = Right
         Position.X = 490.000000000000000000
         Size.Width = 150.000000000000000000
-        Size.Height = 318.000000000000000000
+        Size.Height = 315.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'OfficePanel'
         TabOrder = 0
@@ -146,10 +148,10 @@
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
-          Position.Y = 268.000000000000000000
+          Position.Y = 265.000000000000000000
           TabOrder = 1
           Text = #1059#1076#1072#1083#1080#1090#1100
-          OnClick = btAddClick
+          OnClick = TMSFNCButton1Click
         end
         object TMSFNCButton2: TTMSFNCButton
           Bitmap.PNG = {
@@ -195,46 +197,63 @@
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
-          Position.Y = 208.000000000000000000
+          Position.Y = 205.000000000000000000
           TabOrder = 0
           Text = #1048#1079#1084#1077#1085#1080#1090#1100
-          OnClick = btAddClick
         end
       end
+      object tlStartStop: TListBox
+        Align = Client
+        Size.Width = 490.000000000000000000
+        Size.Height = 315.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        DisableFocusEffect = True
+        ItemHeight = 40.000000000000000000
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 486.000000000000000000
+        Viewport.Height = 311.000000000000000000
+      end
     end
-    object Инструменты: TTabItem
+    object tiSaveProt: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = False
-      Size.Width = 108.000000000000000000
-      Size.Height = 27.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      ExplicitSize.cx = 108.000000000000000000
+      ExplicitSize.cy = 27.000000000000000000
       object TabControl2: TTabControl
         Align = Client
         Size.Width = 640.000000000000000000
-        Size.Height = 318.000000000000000000
+        Size.Height = 315.000000000000000000
         Size.PlatformDefault = False
         TabIndex = 0
         TabOrder = 0
         TabPosition = Bottom
         Sizes = (
           640s
-          291s)
+          285s)
         object TabItem3: TTabItem
           CustomIcon = <
             item
             end>
           IsSelected = True
-          Size.Width = 84.000000000000000000
-          Size.Height = 27.000000000000000000
+          Size.Width = 94.000000000000000000
+          Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
           TabOrder = 0
           Text = #1055#1088#1086#1090#1086#1082#1086#1083
+          ExplicitSize.cx = 84.000000000000000000
+          ExplicitSize.cy = 27.000000000000000000
           object eSave: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 0
@@ -260,7 +279,7 @@
             Anchors = [akRight, akBottom]
             Enabled = False
             Position.X = 552.000000000000000000
-            Position.Y = 191.000000000000000000
+            Position.Y = 185.000000000000000000
             Size.Width = 70.000000000000000000
             Size.Height = 80.000000000000000000
             Size.PlatformDefault = False
@@ -314,7 +333,7 @@
             Appearance.NormalFill.Color = claWhite
             Appearance.NormalStroke.Color = claDarkgray
             Appearance.HoverFill.Kind = gfkSolid
-            Appearance.HoverFill.Color = x7F2A96FF
+            Appearance.HoverFill.Color = x7F0078D7
             Appearance.HoverStroke.Color = claDarkgray
             Appearance.DownFill.Kind = gfkSolid
             Appearance.DownFill.Color = claWhite
@@ -375,12 +394,14 @@
         item
         end>
       IsSelected = False
-      Size.Width = 111.000000000000000000
-      Size.Height = 27.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077
+      ExplicitSize.cx = 111.000000000000000000
+      ExplicitSize.cy = 27.000000000000000000
       object eSrv: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 0
@@ -541,12 +562,14 @@
         item
         end>
       IsSelected = False
-      Size.Width = 108.000000000000000000
-      Size.Height = 27.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = #1041#1077#1079#1086#1087#1072#1089#1085#1086#1089#1090#1100
+      ExplicitSize.cx = 108.000000000000000000
+      ExplicitSize.cy = 27.000000000000000000
     end
   end
   object mySave: TAESEncryption
@@ -744,5 +767,32 @@
         Name = 'ED'
         ParamType = ptInput
       end>
+  end
+  object qDss: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'select first (20) DSS.NO_SSS,'
+      '                  DSS.DATA_STOP'
+      'from LOG_START_STOP_SHOP DSS'
+      'order by DSS.DATA_STOP desc  '
+      '')
+    Left = 288
+    Top = 166
+  end
+  object qDelSS: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'delete from LOG_START_STOP_SHOP LSS'
+      'where (LSS.NO_SSS = :NO_SSS)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_SSS'
+        ParamType = ptInput
+      end>
+    Left = 344
+    Top = 174
   end
 end

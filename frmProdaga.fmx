@@ -3913,10 +3913,12 @@ object fmProd: TfmProd
     Connection = fmMain.IBC
     Transaction = fmMain.IBT_Read
     SQL.Strings = (
-      'select first (10) distinct LP.DATA_PROD'
-      'from LOG_PROD_TABLE LP'
-      'where ((LP.DATA_PROD < current_date))'
-      'order by LP.DATA_PROD desc  ')
+      'SELECT first(20)'
+      '    LP.DATA_PROD,'
+      '    COUNT( LP.NO_LPT ) COUNT_OF_NO_LPT'
+      'FROM LOG_PROD_TABLE LP'
+      'GROUP BY LP.DATA_PROD'
+      'ORDER BY LP.DATA_PROD DESC')
     Left = 408
     Top = 408
   end

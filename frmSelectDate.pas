@@ -23,7 +23,7 @@ type
 var
   fmSelData: TfmSelData;
 
-function selectDate(Title:string;Info:string;var myDate:tDate):Integer;
+function selectDate(Title: string; Info: string; var myDate: tDate): Integer;
 
 implementation
 
@@ -32,15 +32,20 @@ uses
 
 {$R *.fmx}
 
-function selectDate(Title:string;Info:string;var myDate:tDate):Integer;
+function selectDate(Title: string; Info: string; var myDate: tDate): Integer;
 begin
   fmSelData := TfmSelData.Create(Application);
   fmSelData.Caption := Title;
-  fmSelData.lbInfo.Text:=Info;
-  fmSelData.eData.Date:=myDate;
+  fmSelData.lbInfo.Text := Info;
+  fmSelData.eData.Date := myDate;
   Result := fmSelData.ShowModal;
+  if Result = mrOk then
+  begin
+    myDate := fmSelData.eData.Date;
+  end;
   fmSelData.Free;
-  fmSelData:=nil;
+  fmSelData := nil;
 end;
 
 end.
+

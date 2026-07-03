@@ -124,6 +124,8 @@ object fmInv: TfmInv
         BD66830000000049454E44AE426082}
       BitmapSize = 24
       ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -161,6 +163,8 @@ object fmInv: TfmInv
         A27FACDA19D3A23DEE4044DC888F6A0C7C644219FA3E306400F09568BE1659B3
         0FE386FEC0F517CD675B53744053890000000049454E44AE426082}
       ShowImage = True
+      Font.Size = 14.000000000000000000
+      Font.Color = claWhite
       Size.Width = 150.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -1793,7 +1797,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'bars-3-filled'
         SVGText = 
@@ -1816,7 +1819,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'button-refresh-filled'
         SVGText = 
@@ -1843,7 +1845,6 @@ object fmInv: TfmInv
       item
         MultiResBitmap = <
           item
-            Size = 16
           end>
         IconName = 'report'
         SVGText = 
@@ -1905,18 +1906,24 @@ object fmInv: TfmInv
         Layers = <
           item
             Name = 'bars-3-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'button-refresh-filled'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'report'
+            SourceRect.Right = 32.000000000000000000
+            SourceRect.Bottom = 32.000000000000000000
           end>
       end>
     Left = 576

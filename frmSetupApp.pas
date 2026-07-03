@@ -11,14 +11,14 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.Comp.Client,
   FMX.TMSFNCTypes, FMX.TMSFNCUtils, FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes,
   FMX.TMSFNCCustomControl, FMX.TMSFNCToolBar, FMX.DateTimeCtrls, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet;
+  Data.DB, FireDAC.Comp.DataSet, FMX.Layouts, FMX.ListBox;
 
 type
   TfmSetup = class(TForm)
-    TabControl1: TTabControl;
+    tbSetup: TTabControl;
     TabItem1: TTabItem;
     TabItem2: TTabItem;
-    Инструменты: TTabItem;
+    tiSaveProt: TTabItem;
     Закрытие: TTabItem;
     eSrv: TEdit;
     eDB: TEdit;
@@ -56,12 +56,16 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    tlStartStop: TListBox;
+    qDss: TFDQuery;
+    qDelSS: TFDCommand;
     procedure FormCreate(Sender: TObject);
     procedure btSaveClick(Sender: TObject);
     procedure btTestClick(Sender: TObject);
     procedure btAddClick(Sender: TObject);
     procedure eSaveBtnClick(Sender: TObject);
     procedure btOKSaveClick(Sender: TObject);
+    procedure TMSFNCButton1Click(Sender: TObject);
   private
     { Private declarations }
     XMLDoc: TNativeXml;
@@ -75,6 +79,8 @@ type
     procedure AxportSityList;
     procedure ExportOplataTovar;
     procedure ExportRetTovar;
+    procedure LoadStartStop;
+    procedure LoadDataProt;
   public
     { Public declarations }
   end;
@@ -85,7 +91,7 @@ var
 implementation
 
 uses
-  frmMain;
+  frmMain, frmSelectDate;
 
 {$R *.fmx}
 
@@ -113,23 +119,29 @@ begin
 end;
 
 procedure TfmSetup.btAddClick(Sender: TObject);
+var D: TDate;
 begin
   try
     if ShowQuestion('Закрыть базар?') then
     begin
       try
-        qStop.Active := false;
-        fmMain.StartMainTransaction;
-        qStop.Prepare;
-        qStop.ParamByName('DATA_STOP').AsDateTime := now;
-        qStop.Execute;
-        fmMain.EndMainTransaction;
+        D := Now;
+        if selectDate('Закрытие базара', 'Укажите дату закрытия', D) = mrOk then
+        begin
+          fmMain.StartMainTransaction;
+          qStop.Prepare;
+          qStop.ParamByName('DATA_STOP').Value := D;
+          qStop.Execute;
+          fmMain.EndMainTransaction;
+          LoadStartStop;
+          LoadDataProt;
+        end;
       except
       end;
       Application.ProcessMessages;
       if ShowQuestion('Сохранить протокол базара?') then
       begin
-        //SaveProtokol;
+        tbSetup.TabIndex:=1;
       end;
     end;
   finally
@@ -228,26 +240,26 @@ procedure TfmSetup.exportFullLogBazar;
 begin
   XMLDoc := TNativeXml.Create(Self);
   XMLDoc.CreateName('LogBazar'); // создали корневой узел
-  lbInfoProt.Text:='Сохраняем перемещения...';
+  lbInfoProt.Text := 'Сохраняем перемещения...';
   Application.ProcessMessages;
   ExportDiapBazar;
   ExportMoveTovar;
-  lbInfoProt.Text:='Сохраняем города...';
+  lbInfoProt.Text := 'Сохраняем города...';
   Application.ProcessMessages;
   AxportSityList;
-  lbInfoProt.Text:='Сохраняем покупателей...';
+  lbInfoProt.Text := 'Сохраняем покупателей...';
   Application.ProcessMessages;
   ExportAgentList;
-  lbInfoProt.Text:='Сохраняем продажу...';
+  lbInfoProt.Text := 'Сохраняем продажу...';
   Application.ProcessMessages;
   ExportProdTov;
-  lbInfoProt.Text:='Сохраняем оплаты...';
+  lbInfoProt.Text := 'Сохраняем оплаты...';
   Application.ProcessMessages;
   ExportOplataTovar;
-  lbInfoProt.Text:='Сохраняем возвраты...';
+  lbInfoProt.Text := 'Сохраняем возвраты...';
   Application.ProcessMessages;
   ExportRetTovar;
-  lbInfoProt.Text:='';
+  lbInfoProt.Text := '';
   Application.ProcessMessages;
   XMLDoc.BinaryMethod := bmZlib;
   XMLDoc.SaveToBinaryFile(eSave.Text);
@@ -289,8 +301,7 @@ begin
     repeat
       Node := XMLDoc.Root.NodeNew('Oplata_Tov');
       Node.AttributeAdd('Code_Agent', qOpl.FieldByName('BAR_CODE').AsString);
-      Node.AttributeAdd('Sum_Oplata', qOpl.FieldByName('SUM_OF_SUM_OP')
-        .AsString);
+      Node.AttributeAdd('Sum_Oplata', qOpl.FieldByName('SUM_OF_SUM_OP').AsString);
       Node.AttributeAdd('Code_Model', qOpl.FieldByName('UN_CODE').AsString);
       Node.AttributeAdd('Data_Opl', DateToStr(qOpl.FieldByName('DATA_OP').AsDateTime));
       Node.AttributeAdd('is_Pred', IntToStr(qOpl.FieldByName('IS_PRED').AsInteger));
@@ -324,7 +335,7 @@ end;
 
 procedure TfmSetup.ExportRetTovar;
 begin
- qRet.Close;
+  qRet.Close;
   qRet.Prepare;
   qRet.ParamByName('SD').AsDate := eStart.Date;
   qRet.ParamByName('ED').AsDate := eEnd.Date;
@@ -335,8 +346,7 @@ begin
     repeat
       Node := XMLDoc.Root.NodeNew('Ret_Tov');
       Node.AttributeAdd('UN_Code', qRet.FieldByName('UN_CODE').AsString);
-      Node.AttributeAdd('Cnt_Mod',
-        IntToStr(qRet.FieldByName('COUNT_OF_NO_SIZE_MOD').AsInteger));
+      Node.AttributeAdd('Cnt_Mod', IntToStr(qRet.FieldByName('COUNT_OF_NO_SIZE_MOD').AsInteger));
       qRet.Next;
     until qRet.Eof;
   end;
@@ -344,15 +354,8 @@ end;
 
 procedure TfmSetup.FormCreate(Sender: TObject);
 begin
-  //---------------Protocol-----------------------------------
-  qData.Close;
-  fmMain.StartReadTransaction;
-  qData.Prepare;
-  qData.Active := True;
-  eStart.Data := qData.FieldByName('START_BAZAR').AsDateTime;
-  eEnd.Data := qData.FieldByName('END_BAZAR').AsDateTime;
-  qData.Close;
-  fmMain.EndReadTransaction;
+  LoadStartStop;
+  LoadDataProt;
   // ---------------DataBase----------------------------------
   eDB.Text := myINI.ReadString('DBConnect', 'DataBaseName', '');
   eSrv.Text := myINI.ReadString('DBConnect', 'ServerName', '');
@@ -369,6 +372,43 @@ begin
     T := mySave.Decrypt(T);
     ePass.Text := T;
   end;
+end;
+
+procedure TfmSetup.LoadDataProt;
+begin
+  //---------------Protocol-----------------------------------
+  qData.Close;
+  fmMain.StartReadTransaction;
+  qData.Prepare;
+  qData.Active := True;
+  eStart.Data := qData.FieldByName('START_BAZAR').AsDateTime;
+  eEnd.Data := qData.FieldByName('END_BAZAR').AsDateTime;
+  qData.Close;
+  fmMain.EndReadTransaction;
+end;
+
+procedure TfmSetup.LoadStartStop;
+var
+  Node: TListBoxItem;
+begin
+  tlStartStop.Items.Clear;
+  fmMain.StartReadTransaction;
+  qDss.Close;
+  qDss.Prepare;
+  qDss.Active := true;
+  if qDss.RecordCount > 0 then
+  begin
+    qDss.First;
+    repeat
+      Node := tListBoxItem.Create(tlStartStop);
+      Node.Tag := qDss.FieldByName('NO_SSS').AsInteger;
+      Node.Text := DateToStr(qDss.FieldByName('DATA_STOP').AsDateTime);
+      tlStartStop.AddObject(Node);
+      qDss.Next;
+    until (qDss.Eof);
+    tlStartStop.ItemIndex := 0;
+  end;
+  fmMain.EndReadTransaction;
 end;
 
 procedure TfmSetup.NormalizeFName(var S: string);
@@ -399,6 +439,26 @@ begin
       insert('_', S, I);
     end;
   until (I = 0);
+end;
+
+procedure TfmSetup.TMSFNCButton1Click(Sender: TObject);
+var
+  S: string;
+begin
+  if tlStartStop.Count = 0 then
+    Exit;
+  S := tlStartStop.ItemByIndex(tlStartStop.ItemIndex).Text;
+  if ShowQuestion('Удалить дату ' + S + ' из списка закрытых базаров?') then
+  begin
+    fmMain.StartMainTransaction;
+    qDelSS.Close;
+    qDelSS.Prepare;
+    qDelSS.ParamByName('NO_SSS').AsInteger := tlStartStop.itemByIndex(tlStartStop.ItemIndex).Tag;
+    qDelSS.Execute;
+    fmMain.EndMainTransaction;
+    LoadStartStop;
+    LoadDataProt;
+  end;
 end;
 
 end.

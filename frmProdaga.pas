@@ -404,7 +404,8 @@ begin
   tlProd.AddObject(Header);
   // вставляем пометки в календарь
   // 29,05,2026 -- без отметок в календаре
-  // showLastProdList;
+  // 03.07.2026 -- поменял запрос по датам продаж. Задержка стала незаметной
+   showLastProdList;
 end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);

@@ -514,9 +514,15 @@ end;
 procedure TfmInv.tlModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
   try
-    if ANode.Node.Text[1].ToDouble <= 0 then
+    if Assigned(ANode.Node) then
     begin
-      ATextColor := TAlphaColors.Yellow;
+      if not ANode.Node.Text[1].IsEmpty then
+      begin
+        if ANode.Node.Text[1].ToDouble <= 0 then
+        begin
+          ATextColor := TAlphaColors.Yellow;
+        end;
+      end;
     end;
   except
   end;
