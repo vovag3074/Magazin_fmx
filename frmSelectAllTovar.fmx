@@ -37,6 +37,7 @@ object fmSelAllTov: TfmSelAllTov
       TextPrompt = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102
       ParentShowHint = False
       ShowHint = True
+      CharCase = ecUpperCase
       OnKeyDown = eFndKeyDown
       object ClearEditButton1: TClearEditButton
         Touch.InteractiveGestures = [LongTap]
