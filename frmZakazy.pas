@@ -6,15 +6,15 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Edit, FMX.TMSFNCButton, FMX.Controls.Presentation, FMX.Calendar,
-  FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FireDAC.Stan.Intf, System.Threading,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Layouts, FMX.ListBox,
-  FMX.SearchBox, FMX.Objects, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
+  FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FireDAC.Stan.Intf,
+  System.Threading, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
+  FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Layouts,
+  FMX.ListBox, FMX.SearchBox, FMX.Objects, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl,
   FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
-  FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style,
-  FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer, FMX.Platform, System.Rtti;
+  FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style, FMX.TMSFNCTreeView,
+  FMX.TMSFNCBitmapContainer, FMX.Platform, System.Rtti;
 
 type
   TfmZak = class(TFrame)
@@ -61,18 +61,19 @@ type
     TMSFNCButton7: TTMSFNCButton;
     TMSFNCButton8: TTMSFNCButton;
     qDataPol: TFDQuery;
+    Layout2: TLayout;
+    Rectangle2: TRectangle;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eDataChange(Sender: TObject);
-    procedure tlZakDetBeforeExpandNode(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
-    procedure tlZakDetGetNodeTextColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
-    procedure tlZakDetGetNodeSelectedTextColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
-    procedure tlZakDetGetNodeSelectedColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+    procedure tlZakDetBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure tlZakDetGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlZakDetGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlZakDetGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure TMSFNCButton3Click(Sender: TObject);
@@ -143,8 +144,7 @@ end;
 
 procedure TfmZak.CheckZak;
 begin
-  ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag)
-    + '"}]');
+  ShowReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(tlZak.ItemByIndex(tlZak.ItemIndex).Tag) + '"}]');
 end;
 
 procedure TfmZak.DelZakaz;
@@ -267,9 +267,15 @@ begin
     qAgent.First;
     repeat
       Node := TListBoxItem.Create(tlZak);
-      Node.StyleLookup := 'zakList';
-      Node.Text := qAgent.FieldByName('AG_NAME').AsString + ' ' + qAgent.FieldByName
-        ('ST_NAME').AsString;
+      if qAgent.FieldByName('IS_OK').AsInteger=1 then
+      begin
+        Node.StyleLookup := 'zakListProd';
+      end
+      else
+      begin
+        Node.StyleLookup := 'zakList';
+      end;
+      Node.Text := qAgent.FieldByName('AG_NAME').AsString + ' ' + qAgent.FieldByName('ST_NAME').AsString;
       Node.StylesData['zakCnt'] := qAgent.FieldByName('M_CNT_MOD').AsFloat.ToString;
       FCount := FCount + qAgent.FieldByName('M_CNT_MOD').AsFloat;
       Node.StylesData['zakOpis'] := qAgent.FieldByName('PRIM_ZAK').AsString;
@@ -311,8 +317,7 @@ begin
   qProd.Active := True;
   Res := qProd.FieldByName('CODE_ZAK').AsString;
   fmMain.IBT.Commit;
-  if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService,
-    ClipboardService) then
+  if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, ClipboardService) then
   begin
     ClipboardService.SetClipboard(Res);
     ShowNotify('Код заказа скопирован в буфер обмена. Перейдите в радел продажи.');
@@ -331,40 +336,39 @@ var
   I: Integer;
 begin
   try
-  TTask.Run(
-    procedure
-    begin
+    TTask.Run(
+      procedure
+      begin
       // 1. Выполнение запроса в фоновом потоке
-      Cursor:= crAppStart;
-      qDataPol.Active := True;
-      I := qDataPol.RecordCount;
-      SetLength(Events, I);
+        Cursor := crAppStart;
+        qDataPol.Active := True;
+        I := qDataPol.RecordCount;
+        SetLength(Events, I);
       // 2. Обновление интерфейса - только через TThread.Synchronize
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          if I > 0 then
+        TThread.Synchronize(nil,
+          procedure
           begin
-            qDataPol.First;
-            I := 0;
-            repeat
-              Events[I] := qDataPol.FieldByName('DATA_OTP').AsDateTime;
-              inc(I);
-              qDataPol.Next;
-            until qDataPol.Eof;
-            myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
-            myCalendar.Model.ShowEvents := True;
-            myCalendar.Model.ShowWeekends := False;
-            Cursor:= crDefault;
-          end;
-        end);
-    end);
-except
-end;
+            if I > 0 then
+            begin
+              qDataPol.First;
+              I := 0;
+              repeat
+                Events[I] := qDataPol.FieldByName('DATA_OTP').AsDateTime;
+                inc(I);
+                qDataPol.Next;
+              until qDataPol.Eof;
+              myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+              myCalendar.Model.ShowEvents := True;
+              myCalendar.Model.ShowWeekends := False;
+              Cursor := crDefault;
+            end;
+          end);
+      end);
+  except
+  end;
 end;
 
-procedure TfmZak.tlZakDetBeforeExpandNode(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+procedure TfmZak.tlZakDetBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 var
   AData, Data: pNodeData;
   Node: TTMSFNCTreeViewNode;
@@ -397,8 +401,7 @@ begin
   end;
 end;
 
-procedure TfmZak.tlZakDetGetNodeSelectedColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+procedure TfmZak.tlZakDetGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -406,8 +409,7 @@ begin
   end;
 end;
 
-procedure TfmZak.tlZakDetGetNodeSelectedTextColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmZak.tlZakDetGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -415,8 +417,7 @@ begin
   end;
 end;
 
-procedure TfmZak.tlZakDetGetNodeTextColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmZak.tlZakDetGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -463,8 +464,7 @@ begin
     begin
       HintPanel.CalloutPosition := TCalloutPosition.Left;
       HintPanel.Position.X := p.Left + TControl(Sender).Width;
-      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height
-        / 2) + 40;
+      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height / 2) + 40;
       HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
       HintLabel.Padding.Left := HintPanel.CalloutLength;
       HintLabel.Padding.Top := -HintPanel.CalloutLength;
@@ -502,23 +502,23 @@ end;
 
 procedure TfmZak.TMSFNCButton6Click(Sender: TObject);
 begin
- ProdZakaz;
+  ProdZakaz;
 end;
 
 procedure TfmZak.TMSFNCButton7Click(Sender: TObject);
 begin
- ShowReportJson('repZak*.fr3','[{"DT":"'+eData.Text+'"}]');
+  ShowReportJson('repZak*.fr3', '[{"DT":"' + eData.Text + '"}]');
 end;
 
 procedure TfmZak.TMSFNCButton8Click(Sender: TObject);
 begin
- fmExpZak:=TfmExpZak.Create(fmZak);
- if fmExpZak.ShowModal=mrOk then
- begin
+  fmExpZak := TfmExpZak.Create(fmZak);
+  if fmExpZak.ShowModal = mrOk then
+  begin
 
- end;
- fmExpZak.Free;
- fmExpZak:=nil;
+  end;
+  fmExpZak.Free;
+  fmExpZak := nil;
 end;
 
 procedure TfmZak.zakazItemClick;
