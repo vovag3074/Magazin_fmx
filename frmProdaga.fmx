@@ -3932,7 +3932,7 @@ object fmProd: TfmProd
       'GROUP BY LP.DATA_PROD'
       'ORDER BY LP.DATA_PROD DESC')
     Left = 408
-    Top = 408
+    Top = 424
   end
   object qInsPol: TFDCommand
     Connection = fmMain.IBC

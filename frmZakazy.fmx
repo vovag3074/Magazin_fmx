@@ -1079,4 +1079,17 @@ object fmZak: TfmZak
       Size = 60
     end
   end
+  object qDataPol: TFDQuery
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT_Read
+    SQL.Strings = (
+      'SELECT FIRST(20)'
+      '    COUNT( SET_ZAKAZ.NO_SZ ) COUNT_OF_NO_SZ,'
+      '    SET_ZAKAZ.DATA_OTP'
+      'FROM SET_ZAKAZ'
+      'GROUP BY SET_ZAKAZ.DATA_OTP'
+      'ORDER BY SET_ZAKAZ.DATA_OTP DESC')
+    Left = 336
+    Top = 560
+  end
 end

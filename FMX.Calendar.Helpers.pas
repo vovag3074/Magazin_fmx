@@ -8,7 +8,7 @@ uses
 type
   TCalendarModelHelpers = class helper for TCalendarModel
   public const
-    DefaultEventsColor = $6F7CFC00;
+    DefaultEventsColor = $6F4CA502;
     DefaultWeekendsColor = $6FFEB1AF;
   private
     function GetShowEvents: Boolean;

@@ -6,13 +6,14 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Edit, FMX.TMSFNCButton, FMX.Controls.Presentation, FMX.Calendar,
-  FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FireDAC.Stan.Intf,
+  FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FireDAC.Stan.Intf, System.Threading,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Layouts, FMX.ListBox,
   FMX.SearchBox, FMX.Objects, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl,
   FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView,
+  FMX.Calendar.Helpers, FMX.CalendarHolidayDays.Style,
   FMX.TMSFNCTreeView, FMX.TMSFNCBitmapContainer, FMX.Platform, System.Rtti;
 
 type
@@ -59,6 +60,7 @@ type
     qProdCODE_ZAK: TWideStringField;
     TMSFNCButton7: TTMSFNCButton;
     TMSFNCButton8: TTMSFNCButton;
+    qDataPol: TFDQuery;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -95,6 +97,7 @@ type
     /// </summary>
     procedure DelZakaz;
     procedure ProdZakaz;
+    procedure showLastZakList;
   public
     { Public declarations }
     procedure SaveINI;
@@ -245,6 +248,7 @@ begin
   eData.Text := DateToStr(Now);
   myCalendar.Date := Now;
   cbAutoFind.IsChecked := myINI.ReadBool('Zakazy', 'AutoFind', True);
+  showLastZakList;
 end;
 
 procedure TfmZak.LoadListZak;
@@ -319,6 +323,44 @@ end;
 procedure TfmZak.SaveINI;
 begin
   myINI.WriteBool('Zakazy', 'AutoFind', cbAutoFind.IsChecked);
+end;
+
+procedure TfmZak.showLastZakList;
+var
+  Events: TArray<TDateTime>;
+  I: Integer;
+begin
+  try
+  TTask.Run(
+    procedure
+    begin
+      // 1. Выполнение запроса в фоновом потоке
+      Cursor:= crAppStart;
+      qDataPol.Active := True;
+      I := qDataPol.RecordCount;
+      SetLength(Events, I);
+      // 2. Обновление интерфейса - только через TThread.Synchronize
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          if I > 0 then
+          begin
+            qDataPol.First;
+            I := 0;
+            repeat
+              Events[I] := qDataPol.FieldByName('DATA_OTP').AsDateTime;
+              inc(I);
+              qDataPol.Next;
+            until qDataPol.Eof;
+            myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+            myCalendar.Model.ShowEvents := True;
+            myCalendar.Model.ShowWeekends := False;
+            Cursor:= crDefault;
+          end;
+        end);
+    end);
+except
+end;
 end;
 
 procedure TfmZak.tlZakDetBeforeExpandNode(Sender: TObject; ANode:

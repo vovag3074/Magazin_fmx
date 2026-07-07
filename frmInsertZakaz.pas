@@ -152,9 +152,15 @@ end;
 
 procedure TfmInsZak.EditButton1Click(Sender: TObject);
 begin
+if eCode.Text.Trim<>'' then
+begin
   ReadMyModel(eCode.Text.Trim);
   eCode.Text := '';
   eCode.SetFocus;
+end else
+begin
+  dxAddClick(Sender);
+end;
 end;
 
 procedure TfmInsZak.EditZakaz(NoZakaz: Integer);
@@ -271,7 +277,7 @@ begin
         Data^.ID_Model := qMod.FieldByName('NO_MOD').AsInteger;
         Data^.ID_Size := -1;
         Data^.ID_Code := qMod.FieldByName('CODE_MOD').AsString;
-       // tlMod.AddNode(Node);  -- ломается навигация по клавишам
+        tlMod.AddNode(Node);  // ломается навигация по клавишам
         Node.DataPointer := Data;
         Node.DataBoolean := True;
         qMod.Next;

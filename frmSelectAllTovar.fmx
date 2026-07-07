@@ -206,9 +206,9 @@ object fmSelAllTov: TfmSelAllTov
     GroupsAppearance.BottomSize = 50.000000000000000000
     GroupsAppearance.TopFill.Kind = gfkNone
     GroupsAppearance.BottomFill.Kind = gfkNone
-    GroupsAppearance.TopFont.Size = 14.000000000000000000
+    GroupsAppearance.TopFont.Size = 16.000000000000000000
     GroupsAppearance.TopFont.Color = xFF454545
-    GroupsAppearance.BottomFont.Size = 14.000000000000000000
+    GroupsAppearance.BottomFont.Size = 16.000000000000000000
     GroupsAppearance.BottomFont.Color = xFF454545
     Columns = <
       item
@@ -371,10 +371,10 @@ object fmSelAllTov: TfmSelAllTov
     ColumnsAppearance.StretchAll = False
     ColumnsAppearance.TopSize = 36.000000000000000000
     ColumnsAppearance.BottomSize = 25.000000000000000000
-    ColumnsAppearance.TopFont.Size = 14.000000000000000000
+    ColumnsAppearance.TopFont.Size = 16.000000000000000000
     ColumnsAppearance.TopFont.Color = xFF454545
     ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
-    ColumnsAppearance.BottomFont.Size = 14.000000000000000000
+    ColumnsAppearance.BottomFont.Size = 16.000000000000000000
     ColumnsAppearance.BottomFont.Color = xFF454545
     ColumnsAppearance.TopFill.Color = xFFEEF2F9
     ColumnsAppearance.BottomFill.Kind = gfkNone
@@ -386,15 +386,15 @@ object fmSelAllTov: TfmSelAllTov
     NodesAppearance.LevelIndent = 20.000000000000000000
     NodesAppearance.FixedHeight = 33.000000000000000000
     NodesAppearance.VariableMinimumHeight = 33.000000000000000000
-    NodesAppearance.Font.Size = 14.000000000000000000
+    NodesAppearance.Font.Size = 16.000000000000000000
     NodesAppearance.Font.Color = xFF7A7A7A
-    NodesAppearance.TitleFont.Size = 14.000000000000000000
+    NodesAppearance.TitleFont.Size = 16.000000000000000000
     NodesAppearance.SelectedFontColor = xFF454545
     NodesAppearance.ExtendedFontColor = xFF454545
     NodesAppearance.SelectedFill.Color = xFFF6F8FC
     NodesAppearance.SelectedStroke.Color = xFF2D9BEF
     NodesAppearance.SelectedStroke.Width = 2.000000000000000000
-    NodesAppearance.ExtendedFont.Size = 14.000000000000000000
+    NodesAppearance.ExtendedFont.Size = 16.000000000000000000
     NodesAppearance.ExpandNodeIcon.PNG = {
       89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
       260000000473424954080808087C0864880000004C49444154189563ACAEADFE
@@ -420,7 +420,7 @@ object fmSelAllTov: TfmSelAllTov
       CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
       2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
       2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
-    GlobalFont.Size = 14.000000000000000000
+    GlobalFont.Size = 16.000000000000000000
     GlobalFont.Name = 'Segoe UI'
     OnAfterSelectNode = tlModAfterSelectNode
     OnGetNodeTextColor = tlModGetNodeTextColor
@@ -563,9 +563,9 @@ object fmSelAllTov: TfmSelAllTov
     GroupsAppearance.BottomSize = 50.000000000000000000
     GroupsAppearance.TopFill.Kind = gfkNone
     GroupsAppearance.BottomFill.Kind = gfkNone
-    GroupsAppearance.TopFont.Size = 14.000000000000000000
+    GroupsAppearance.TopFont.Size = 16.000000000000000000
     GroupsAppearance.TopFont.Color = xFF454545
-    GroupsAppearance.BottomFont.Size = 14.000000000000000000
+    GroupsAppearance.BottomFont.Size = 16.000000000000000000
     GroupsAppearance.BottomFont.Color = xFF454545
     Columns = <
       item
@@ -722,10 +722,10 @@ object fmSelAllTov: TfmSelAllTov
     ColumnsAppearance.StretchAll = False
     ColumnsAppearance.TopSize = 36.000000000000000000
     ColumnsAppearance.BottomSize = 25.000000000000000000
-    ColumnsAppearance.TopFont.Size = 14.000000000000000000
+    ColumnsAppearance.TopFont.Size = 16.000000000000000000
     ColumnsAppearance.TopFont.Color = xFF454545
     ColumnsAppearance.TopFont.StyleExt = {00070000000000000004000000}
-    ColumnsAppearance.BottomFont.Size = 14.000000000000000000
+    ColumnsAppearance.BottomFont.Size = 16.000000000000000000
     ColumnsAppearance.BottomFont.Color = xFF454545
     ColumnsAppearance.TopFill.Color = xFFEEF2F9
     ColumnsAppearance.BottomFill.Kind = gfkNone
@@ -737,15 +737,15 @@ object fmSelAllTov: TfmSelAllTov
     NodesAppearance.LevelIndent = 20.000000000000000000
     NodesAppearance.FixedHeight = 33.000000000000000000
     NodesAppearance.VariableMinimumHeight = 33.000000000000000000
-    NodesAppearance.Font.Size = 14.000000000000000000
+    NodesAppearance.Font.Size = 16.000000000000000000
     NodesAppearance.Font.Color = xFF7A7A7A
-    NodesAppearance.TitleFont.Size = 14.000000000000000000
+    NodesAppearance.TitleFont.Size = 16.000000000000000000
     NodesAppearance.SelectedFontColor = xFF454545
     NodesAppearance.ExtendedFontColor = xFF454545
     NodesAppearance.SelectedFill.Color = xFFF6F8FC
     NodesAppearance.SelectedStroke.Color = xFF2D9BEF
     NodesAppearance.SelectedStroke.Width = 2.000000000000000000
-    NodesAppearance.ExtendedFont.Size = 14.000000000000000000
+    NodesAppearance.ExtendedFont.Size = 16.000000000000000000
     NodesAppearance.ExpandNodeIcon.PNG = {
       89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
       260000000473424954080808087C0864880000004C49444154189563ACAEADFE
@@ -771,7 +771,7 @@ object fmSelAllTov: TfmSelAllTov
       CF4003C0440B431918181858608C96A616AA18585357C3C0404B178F1A3C6A30
       2660C125E1EDE74D94015B376DC52A4E7F17E37209B160E845DEA8C143D860C6
       2157E701007E4C0D31A4A1D5490000000049454E44AE426082}
-    GlobalFont.Size = 14.000000000000000000
+    GlobalFont.Size = 16.000000000000000000
     GlobalFont.Name = 'Segoe UI'
     DefaultViewJSONOptions.NameHTMLTemplate = '<#NAME>'
     DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
