@@ -165,15 +165,19 @@ type
     qSize: TFDQuery;
     ltMoney: TLayout;
     TMSFNCButton1: TTMSFNCButton;
+    qDelSize: TFDCommand;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure eDataChange(Sender: TObject);
     // процедура выводит всплывающее окно со списком продаж
     procedure ListBoxItem1Click(Sender: TObject);
-    procedure tlPModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
-    procedure tlPModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
-    procedure tlPModGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlPModGetNodeTextColor(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlPModGetNodeSelectedColor(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+    procedure tlPModGetNodeSelectedTextColor(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
     procedure tbHistClick(Sender: TObject);
     procedure tbOplClick(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
@@ -196,9 +200,12 @@ type
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure brSetSkidClick(Sender: TObject);
     procedure TMSFNCButton13Click(Sender: TObject);
-    procedure tlPModBeforeExpandNode(Sender: TObject;
-      ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure tlPModBeforeExpandNode(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure tlPModGetNodeColor(Sender: TObject; ANode:
+      TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+    procedure tlPModNodeClick(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -217,6 +224,7 @@ type
     procedure MoveProd;
     procedure ListFullMoneySend(NoVal: Integer);
     procedure SetSkidka;
+    procedure retLastProdModSize;
   public
     { Public declarations }
     procedure LoadINI;
@@ -241,7 +249,7 @@ uses
 
 procedure TfmProd.DropDownEditButton1Click(Sender: TObject);
 begin
-  myCalendar.Date:=StrToDate(eData.Text);
+  myCalendar.Date := StrToDate(eData.Text);
   ppCalendar.Popup;
 end;
 
@@ -287,7 +295,8 @@ begin
       repeat
         Node := TListBoxItem.Create(lbSndMoney);
         Node.Tag := qSnd.FieldByName('NO_LSCB').AsInteger;
-        Node.Text := qSnd.FieldByName('POL_SND').AsString + ' получил: ' + qSnd.FieldByName('SUM_SND').AsFloat.ToString;
+        Node.Text := qSnd.FieldByName('POL_SND').AsString + ' получил: ' + qSnd.FieldByName
+          ('SUM_SND').AsFloat.ToString;
         lbSndMoney.AddObject(Node);
         qSnd.Next;
       until (qSnd.Eof);
@@ -317,7 +326,8 @@ begin
       Node := TListBoxItem.Create(tlProd);
       Node.StyleLookup := 'predItem';
       Node.Tag := qPredBank.FieldByName('NO_PRGN').AsInteger;
-      Node.Text := qPredBank.FieldByName('AG_NAME').AsString + ' ' + qPredBank.FieldByName('SUM_PRED').AsFloat.ToString;
+      Node.Text := qPredBank.FieldByName('AG_NAME').AsString + ' ' + qPredBank.FieldByName
+        ('SUM_PRED').AsFloat.ToString;
       if qPredBank.FieldByName('POL_PRED').IsNull then
         Node.Text := Node.Text + ' <Получатель не назначен>'
       else
@@ -407,7 +417,7 @@ begin
   // вставляем пометки в календарь
   // 29,05,2026 -- без отметок в календаре
   // 03.07.2026 -- поменял запрос по датам продаж. Задержка стала незаметной
-   showLastProdList;
+  showLastProdList;
 end;
 
 procedure TfmProd.MenuItem1Click(Sender: TObject);
@@ -500,24 +510,26 @@ begin
         Node := TListBoxItem.Create(tlProd);
         if qUsr.FieldByName('AG_PRED').AsFloat > 0 then
         begin
-         Node.StyleLookup := 'prodItemP';
-        end else
-        if qUsr.FieldByName('AG_DOLG').AsFloat > 0 then
+          Node.StyleLookup := 'prodItemP';
+        end
+        else if qUsr.FieldByName('AG_DOLG').AsFloat > 0 then
         begin
-         Node.StyleLookup := 'prodItemD';
-        end else
+          Node.StyleLookup := 'prodItemD';
+        end
+        else
         begin
-         Node.StyleLookup := 'prodItem';
+          Node.StyleLookup := 'prodItem';
         end;
         Node.Tag := qUsr.FieldByName('NO_AGN').AsInteger;
 
         Node.TagString := qUsr.FieldByName('NO_AGN').AsInteger.ToString;
-        Node.Text := qUsr.FieldByName('AG_NAME').AsString + ' ' + qUsr.FieldByName('ST_NAME').AsString + ' Валюта: (' + qUsr.FieldByName('NAZVAN').AsString + ')';
+        Node.Text := qUsr.FieldByName('AG_NAME').AsString + ' ' + qUsr.FieldByName
+          ('ST_NAME').AsString + ' Валюта: (' + qUsr.FieldByName('NAZVAN').AsString + ')';
         Node.StylesData['prodCnt'] := qUsr.FieldByName('COUNT_OF_NO_MOD_SIZE').AsInteger;
         Node.StylesData['prodSum'] := qUsr.FieldByName('SUM_TOV').AsFloat;
         Node.StylesData['prodOpl'] := qUsr.FieldByName('SUM_OPL').AsFloat;
 //        Node.StylesData['prodOpl'] := (qUsr.FieldByName('SUM_TOV').AsFloat -qUsr.FieldByName('SUM_OPL').AsFloat);
-          Node.StylesData['sumDolg'] := qUsr.FieldByName('AG_DOLG').AsFloat;
+        Node.StylesData['sumDolg'] := qUsr.FieldByName('AG_DOLG').AsFloat;
 //        Node.Values[10] := qUsr.FieldByName('DOP_OPIS').AsString;
         Node.StylesData['sumPred'] := qUsr.FieldByName('AG_PRED').AsFloat;
 //        if qUsr.FieldByName('IS_SKIDKA').AsInteger = 1 then
@@ -537,7 +549,8 @@ begin
     //-------------------------------------
     Node := TListBoxItem.Create(tlProd);
     Node.StyleLookup := 'ftrProd';
-    Node.Text := 'Продано: ' + FCnt.ToString + ' |  На сумму: ' + FSum.ToString + ' |  Оплачено: ' + FOpl.ToString;
+    Node.Text := 'Продано: ' + FCnt.ToString + ' |  На сумму: ' + FSum.ToString
+      + ' |  Оплачено: ' + FOpl.ToString;
     Node.PopupMenu := nil;
     tlProd.AddObject(Node);
   finally
@@ -549,6 +562,24 @@ begin
     fmMain.EndReadTransaction;
   end;
   tlProd.ShowScrollBars := False;
+end;
+
+procedure TfmProd.retLastProdModSize;
+var
+  Node: TListBoxItem;
+  FAgent: Integer;
+begin
+  Node := tlProd.ItemByIndex(tlProd.ItemIndex);
+  FAgent := Node.TagString.ToInteger;
+  qDelSize.Active := false;
+  fmMain.StartMainTransaction;
+  qDelSize.Prepare;
+  qDelSize.ParamByName('DATA_PROD').AsDate := StrToDate(fmProd.eData.Text);
+  qDelSize.ParamByName('NO_AGN').AsInteger := FAgent;
+  qDelSize.ParamByName('NO_M_SIZE').AsInteger := tlPMod.FocusedNode.DataInteger;
+  qDelSize.Execute;
+  fmMain.EndMainTransaction;
+  ReadProd;
 end;
 
 procedure TfmProd.SaveINI;
@@ -596,10 +627,10 @@ procedure TfmProd.SetSkidka;
 var
   I: Integer;
   Node: TTMSFNCTreeViewNode;
-  D:Double;
+  D: Double;
 begin
-  I := getNumberValue('Скидка','Укажите размер скидки',0, D);
-  if I =mrOk then
+  I := getNumberValue('Скидка', 'Укажите размер скидки', 0, D);
+  if I = mrOk then
   begin
     Node := tlPMod.FocusedNode;
     qUpdSk.Active := false;
@@ -638,37 +669,37 @@ var
   Events: TArray<TDateTime>;
   I: Integer;
 begin
-try
-  TTask.Run(
-    procedure
-    begin
+  try
+    TTask.Run(
+      procedure
+      begin
       // 1. Выполнение запроса в фоновом потоке
-      Cursor:= crAppStart;
-      qDataPol.Active := True;
-      I := qDataPol.RecordCount;
-      SetLength(Events, I);
+        Cursor := crAppStart;
+        qDataPol.Active := True;
+        I := qDataPol.RecordCount;
+        SetLength(Events, I);
       // 2. Обновление интерфейса - только через TThread.Synchronize
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          if I > 0 then
+        TThread.Synchronize(nil,
+          procedure
           begin
-            qDataPol.First;
-            I := 0;
-            repeat
-              Events[I] := qDataPol.FieldByName('DATA_PROD').AsDateTime;
-              inc(I);
-              qDataPol.Next;
-            until qDataPol.Eof;
-            myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
-            myCalendar.Model.ShowEvents := True;
-            myCalendar.Model.ShowWeekends := False;
-            Cursor:= crDefault;
-          end;
-        end);
-    end);
-except
-end;
+            if I > 0 then
+            begin
+              qDataPol.First;
+              I := 0;
+              repeat
+                Events[I] := qDataPol.FieldByName('DATA_PROD').AsDateTime;
+                inc(I);
+                qDataPol.Next;
+              until qDataPol.Eof;
+              myCalendar.Model.Data['Events'] := TValue.From<TArray<TDateTime>>(Events);
+              myCalendar.Model.ShowEvents := True;
+              myCalendar.Model.ShowWeekends := False;
+              Cursor := crDefault;
+            end;
+          end);
+      end);
+  except
+  end;
 end;
 
 procedure TfmProd.ShowLog;
@@ -787,7 +818,7 @@ begin
         Node.Text[4] := qMod.FieldByName('OPLATA').AsFloat.ToString;
         Node.Values[0].CollapsedIconName := 'Item1';
         Node.Values[0].ExpandedIconName := 'Item1';
-        Node.DataBoolean:=True;
+        Node.DataBoolean := True;
         ANode := tlPMod.AddNode(Node);
         qMod.Next;
       until (qMod.Eof);
@@ -810,8 +841,8 @@ begin
   ShowLogOpl;
 end;
 
-procedure TfmProd.tlPModBeforeExpandNode(Sender: TObject;
-  ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+procedure TfmProd.tlPModBeforeExpandNode(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 var
   Node: TTMSFNCTreeViewNode;
 begin
@@ -836,43 +867,60 @@ begin
       Node.Text[4] := qSize.FieldByName('OPLATA').AsFloat.ToString;
       Node.Values[0].CollapsedIconName := 'Item8';
       Node.Values[0].ExpandedIconName := 'Item8';
-      Node.DataBoolean:=False;
+      Node.DataBoolean := False;
       qSize.Next;
     until (qSize.Eof);
   end;
 end;
 
-procedure TfmProd.tlPModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+procedure TfmProd.tlPModGetNodeColor(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
 begin
-try
-  var T: Double;
-  T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
-  if T > 0 then
-    AColor := TAlphaColors.Darkmagenta;
-except
-end;
+  if ANode.Node.DataBoolean then
+  begin
+    AColor := TAlphaColors.Black;
+  end;
 end;
 
-procedure TfmProd.tlPModGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmProd.tlPModGetNodeSelectedColor(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
 begin
-try
-  var T: Double;
-  T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
-  if T > 0 then
-    ATextColor := TAlphaColors.White;
-except
-end;
+  try
+    var T: Double;
+    T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
+    if T > 0 then
+      AColor := TAlphaColors.Darkmagenta;
+  except
+  end;
 end;
 
-procedure TfmProd.tlPModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmProd.tlPModGetNodeSelectedTextColor(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
-try
-  var T: Double;
-  T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
-  if T > 0 then
-    ATextColor := TAlphaColors.Lightpink;
-except
+  try
+    var T: Double;
+    T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
+    if T > 0 then
+      ATextColor := TAlphaColors.White;
+  except
+  end;
 end;
+
+procedure TfmProd.tlPModGetNodeTextColor(Sender: TObject; ANode:
+  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+begin
+  try
+    var T: Double;
+    T := ANode.Text[3].ToDouble - ANode.Text[4].ToDouble;
+    if T > 0 then
+      ATextColor := TAlphaColors.Lightpink;
+  except
+  end;
+end;
+
+procedure TfmProd.tlPModNodeClick(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
+begin
+  btRetMod.Enabled := not ANode.Node.DataBoolean;
 end;
 
 procedure TfmProd.btPolMoneyClick(Sender: TObject);
@@ -903,7 +951,8 @@ end;
 
 procedure TfmProd.btRepProdClick(Sender: TObject);
 begin
-  ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + eData.Text + '"}]');
+  ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) +
+    '", "DT":"' + eData.Text + '"}]');
 end;
 
 procedure TfmProd.btRepProdMouseEnter(Sender: TObject);
@@ -963,7 +1012,10 @@ var
 const
   MyWhere = ' where ((LPT.DATA_PROD = '':DP'')and(';
 const
-  MySelect = 'select AGN.AG_NAME, ' + ' ST.ST_NAME, ' + ' count(LPT.NO_MOD_SIZE) COUNT_OF_NO_MOD_SIZE ' + ' from SITY_TABLE ST ' + ' inner join AGENTS AGN on (ST.NO_ST = AGN.NO_SITY) ' + ' inner join LOG_PROD_TABLE LPT on (AGN.NO_AGN = LPT.NO_AGN) ';
+  MySelect = 'select AGN.AG_NAME, ' + ' ST.ST_NAME, ' +
+    ' count(LPT.NO_MOD_SIZE) COUNT_OF_NO_MOD_SIZE ' + ' from SITY_TABLE ST ' +
+    ' inner join AGENTS AGN on (ST.NO_ST = AGN.NO_SITY) ' +
+    ' inner join LOG_PROD_TABLE LPT on (AGN.NO_AGN = LPT.NO_AGN) ';
 const
   myGroup = ' group by AGN.AG_NAME, ST.ST_NAME ';
 begin
@@ -987,7 +1039,8 @@ begin
         end;
         S := MySelect + MyWhere + S + ')) ' + myGroup;
         S := StringReplace(S, ':DP', eData.Text, [rfReplaceAll]);
-        ShowReportJson('sRepOtpList.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
+        ShowReportJson('sRepOtpList.fr3', '[{"DT":"' + eData.Text + '","WR":"' +
+          S + '"}]');
         MyList.Clear;
         MyList.Free;
       end;
@@ -1004,12 +1057,12 @@ end;
 
 procedure TfmProd.TMSFNCButton13Click(Sender: TObject);
 begin
- ShowReportJson('RepStatProd.fr3','');
+  ShowReportJson('RepStatProd.fr3', '');
 end;
 
 procedure TfmProd.TMSFNCButton1Click(Sender: TObject);
 begin
- ShowReportJson('SRepSendMoney.fr3', '[{"DT":"' + eData.Text + '"}]');
+  ShowReportJson('SRepSendMoney.fr3', '[{"DT":"' + eData.Text + '"}]');
 end;
 
 procedure TfmProd.TMSFNCButton2Click(Sender: TObject);
@@ -1028,7 +1081,7 @@ end;
 
 procedure TfmProd.brSetSkidClick(Sender: TObject);
 begin
- SetSkidka;
+  SetSkidka;
 end;
 
 procedure TfmProd.btOplTovClick(Sender: TObject);
@@ -1057,7 +1110,8 @@ var
   S: string;
   MyList: TStringList;
 const
-  mySelect = 'SELECT AG.NO_AGN, ST.ST_NAME, AG.AG_NAME,  AG.AG_DOLG FROM SITY_TABLE ST ' + '   INNER JOIN AGENTS AG ON (ST.NO_ST = AG.NO_SITY) ';
+  mySelect =
+    'SELECT AG.NO_AGN, ST.ST_NAME, AG.AG_NAME,  AG.AG_DOLG FROM SITY_TABLE ST ' + '   INNER JOIN AGENTS AG ON (ST.NO_ST = AG.NO_SITY) ';
 const
   myWhere = ' WHERE ( ';
 begin
@@ -1079,8 +1133,9 @@ begin
           end;
           S := S + '(AG.NO_AGN = ' + MyList[i] + ')';
         end;
-        S := MySelect +' '+ MyWhere + S + ') ';
-        ShowReportJson('SRepProdDayAllAgn.fr3', '[{"DT":"' + eData.Text + '","WR":"' + S + '"}]');
+        S := MySelect + ' ' + MyWhere + S + ') ';
+        ShowReportJson('SRepProdDayAllAgn.fr3', '[{"DT":"' + eData.Text +
+          '","WR":"' + S + '"}]');
         MyList.Clear;
         MyList.Free;
       end;

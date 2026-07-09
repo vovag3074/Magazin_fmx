@@ -877,7 +877,7 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = True
-            Size.Width = 118.000000000000000000
+            Size.Width = 119.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
@@ -1123,6 +1123,8 @@ object fmProd: TfmProd
               GlobalFont.Size = 18.000000000000000000
               GlobalFont.Name = 'Segoe UI'
               OnBeforeExpandNode = tlPModBeforeExpandNode
+              OnNodeClick = tlPModNodeClick
+              OnGetNodeColor = tlPModGetNodeColor
               OnGetNodeSelectedColor = tlPModGetNodeSelectedColor
               OnGetNodeTextColor = tlPModGetNodeTextColor
               OnGetNodeSelectedTextColor = tlPModGetNodeSelectedTextColor
@@ -1828,17 +1830,20 @@ object fmProd: TfmProd
                 BitmapSize = 32
                 ShowImage = True
                 ShowText = False
+                Font.Color = xFFA0A0A0
                 Size.Width = 38.000000000000000000
                 Size.Height = 40.000000000000000000
                 Size.PlatformDefault = False
                 Align = Top
                 CanFocus = False
+                Enabled = False
                 Position.X = 2.000000000000000000
                 Position.Y = 86.000000000000000000
                 TabOrder = 2
-                Text = #1042#1077#1088#1085#1091#1090#1100' '#1084#1086#1076#1077#1083#1100
+                Text = #1042#1077#1088#1085#1091#1090#1100' '#1086#1076#1085#1091' '#1087#1072#1088#1091
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
+                OldFontColor = claBlack
               end
               object btRepFullInfo: TTMSFNCButton
                 ImageAlign = Client
@@ -4172,5 +4177,29 @@ object fmProd: TfmProd
         Name = 'SD'
         ParamType = ptInput
       end>
+  end
+  object qDelSize: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      
+        'execute procedure RET_PROD_MOD_SIZE(:DATA_PROD, :NO_M_SIZE, :NO_' +
+        'AGN)'
+      '')
+    ParamData = <
+      item
+        Name = 'DATA_PROD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_M_SIZE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_AGN'
+        ParamType = ptInput
+      end>
+    Left = 328
+    Top = 304
   end
 end
