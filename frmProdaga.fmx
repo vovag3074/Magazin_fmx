@@ -1,10 +1,10 @@
 object fmProd: TfmProd
-  Size.Width = 1039.000000000000000000
-  Size.Height = 575.000000000000000000
+  Size.Width = 1040.000000000000000000
+  Size.Height = 576.000000000000000000
   Size.PlatformDefault = False
   object pnTool: TPanel
     Align = Top
-    Size.Width = 1039.000000000000000000
+    Size.Width = 1040.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -66,7 +66,7 @@ object fmProd: TfmProd
       Align = Right
       TabOrder = 4
       ReadOnly = True
-      Position.X = 816.000000000000000000
+      Position.X = 817.000000000000000000
       Position.Y = 10.000000000000000000
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
@@ -310,8 +310,8 @@ object fmProd: TfmProd
   end
   object tlProd: TListBox
     Align = Client
-    Size.Width = 1039.000000000000000000
-    Size.Height = 527.000000000000000000
+    Size.Width = 1040.000000000000000000
+    Size.Height = 528.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     DisableFocusEffect = True
@@ -319,8 +319,8 @@ object fmProd: TfmProd
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 1035.000000000000000000
-    Viewport.Height = 523.000000000000000000
+    Viewport.Width = 1036.000000000000000000
+    Viewport.Height = 524.000000000000000000
     object ltProd: TLayout
       StyleName = 'prodItem'
       Position.X = 16.000000000000000000
@@ -877,7 +877,7 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = True
-            Size.Width = 119.000000000000000000
+            Size.Width = 118.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
@@ -2474,22 +2474,22 @@ object fmProd: TfmProd
     end
     object ppMoney: TPopup
       PlacementTarget = btPolMoney
-      Position.X = 518.000000000000000000
+      Position.X = 496.000000000000000000
       Position.Y = 32.000000000000000000
-      Size.Width = 433.000000000000000000
-      Size.Height = 145.000000000000000000
+      Size.Width = 455.000000000000000000
+      Size.Height = 169.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 9
       object Panel5: TPanel
         Align = Client
-        Size.Width = 433.000000000000000000
-        Size.Height = 145.000000000000000000
+        Size.Width = 455.000000000000000000
+        Size.Height = 169.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object tlSumInfo: TListBox
           Align = Client
-          Size.Width = 391.000000000000000000
-          Size.Height = 145.000000000000000000
+          Size.Width = 407.000000000000000000
+          Size.Height = 169.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           DisableFocusEffect = True
@@ -2497,10 +2497,10 @@ object fmProd: TfmProd
           DefaultItemStyles.ItemStyle = ''
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
-          Viewport.Width = 387.000000000000000000
-          Viewport.Height = 141.000000000000000000
+          Viewport.Width = 403.000000000000000000
+          Viewport.Height = 165.000000000000000000
           object ListBoxItem3: TListBoxItem
-            Size.Width = 387.000000000000000000
+            Size.Width = 403.000000000000000000
             Size.Height = 40.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = 'moneyItem'
@@ -2565,8 +2565,8 @@ object fmProd: TfmProd
           Margins.Bottom = 1.000000000000000000
           Position.X = 1.000000000000000000
           Position.Y = 1.000000000000000000
-          Size.Width = 40.000000000000000000
-          Size.Height = 143.000000000000000000
+          Size.Width = 46.000000000000000000
+          Size.Height = 167.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'TopPanel'
           TabOrder = 1
@@ -2606,7 +2606,7 @@ object fmProd: TfmProd
             BitmapSize = 32
             ShowImage = True
             ShowText = False
-            Size.Width = 34.000000000000000000
+            Size.Width = 40.000000000000000000
             Size.Height = 40.000000000000000000
             Size.PlatformDefault = False
             Align = Top
@@ -2616,9 +2616,64 @@ object fmProd: TfmProd
             Margins.Bottom = 1.000000000000000000
             Position.X = 3.000000000000000000
             Position.Y = 3.000000000000000000
-            TabOrder = 1
+            TabOrder = 2
             Text = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1087#1077#1088#1077#1076#1072#1095#1091
             OnClick = TMSFNCButton8Click
+          end
+          object TMSFNCButton1: TTMSFNCButton
+            StyleName = 'itemSend'
+            ImageAlign = Client
+            Bitmap.PNG = {
+              89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+              F40000000473424954080808087C086488000003E1494441545885ED57DF4F1C
+              5514FECEBD33B3C3026901BBA026F0205B0A3C88461B138D316D7CD08294A4B1
+              5159B6B53531F1D7832FDAC612DB44FF08B341588CF145FB521B3548D427217D
+              40926A5A8C31B4448CD09275979D9D997B7CD85DBA3BCCD059C0273D4F33F7DE
+              73BEEF9E7BCEB9E702FF75A1ED28BDF037B76AD2890B45CD00A004AF3AAE76FD
+              D3065AFED7080CE7F39D42C953008E021427225139CFCC0AE0EB002E2AE1A626
+              4D7361570824321C23E17E08428288B4304699D90123CD4ABE9B6EA43FB74D20
+              91B10F91A44F88A8350CB00F916576F9A574A3FE6DCD044672CE7100E344646C
+              07BC824401407222AA7D169A4062DD3E444C5FEE14BC9204133F9BAEDBEC894D
+              0412198E9174E782DCEEE6B2EECAC5CF9DB51FBE87B574132425A23DBD681918
+              44E3C1C70C22F2DD54F138E483DE98D8B47824EBA448D0493F23D68D457BE18D
+              57B9B0B4A4FB61EC3DFC74A1E3DC795D98A6F425A1786CA25E3B15482099CF3F
+              C04AFBD92FDA9999AFBD72B2909B9F3348D755D333479C685737A9F51CAF7D37
+              8DECFC4F060034F73F6775BCF77EC46F73CCEC9070BAC74DF3D7F258752E2B79
+              3A28D50A4B37EDDCFC9C0E00EDE7CEDB1D674723FB8E3D6FB4264E44E21F8D19
+              ADC9972D0058BD7C49B757FF72FC6C1091C64A9EAE1C139E3547FD1401C0B97D
+              5B012048A9F63CFE44958B8904ED3BFE6271C7AE2B0A7F2C73901D2FC6C66E13
+              198E11DCCE20AD68D70123963861196D6D10D1FA88773E3B3F570665ADA9698B
+              FA429D890CC7CAC1B8414048270E12BEC10300A469E2FED7DF32BDE3CCCCB7BE
+              F9CA5AFCE0820600F57D0FD946DBBD81E94B4492A41307504D4031358B1AAF26
+              379B757FBF306AAF4D4F1900486B6A71DACF8E8AA054ACC42A7F8B8A8F9AE099
+              997F7BE76D7B6D7A2A02801A1E3D58E8FA380DB3BDC32F45ABA412EB4EC413AF
+              D4C2C1BAB1E864667E3400E0BED7DECCC786932689903E245EA920539482D216
+              8A576A4851A5A552AA7B868EC9B0E0CCAC0A4ADBB8AAAB944672F62F44627F48
+              437CEBEBCB055117A53D4F3EA55348F731AB6B1351FD40F9DF5B07BE086304C5
+              68A686871F91D1EE1E1116DC0FA38A80126E8AC1BE55CC2B99D919EBEA503F5D
+              1DEAA7CCEC8C154687C18E126E2A90C0A4692E40211D8AC0955966DB166CDB22
+              736576ABCA774714D2DE56CD7B04B0599E61E6BB36972D038332DAD36B457B7A
+              AD9681C1C0025616665EB6599EF18EFB9E5D72DD3ECC4C9776B32121E223E375
+              FA94776E930700A0B430596AA7760C0E20E9078EBB35A5254F4CEEA42925E2E1
+              20700479A02CE375FA94AD641F2B1E0B9B1D28453B2B1EB395ECDB0A1CB53D4C
+              B8532827E4C3444B4D9AB43B0F133FD9CDA7D9FFF20FD7EBBA1A2A6327C50000
+              000049454E44AE426082}
+            BitmapSize = 32
+            ShowImage = True
+            ShowText = False
+            Size.Width = 40.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Align = Bottom
+            Margins.Left = 1.000000000000000000
+            Margins.Top = 1.000000000000000000
+            Margins.Right = 1.000000000000000000
+            Margins.Bottom = 1.000000000000000000
+            Position.X = 3.000000000000000000
+            Position.Y = 124.000000000000000000
+            TabOrder = 1
+            Text = #1055#1086#1076#1088#1086#1073#1085#1086#1089#1090#1080' '#1086#1087#1083#1072#1090#1099
+            OnClick = TMSFNCButton1Click
           end
         end
       end

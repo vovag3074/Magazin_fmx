@@ -126,7 +126,6 @@ type
     ListBoxItem3: TListBoxItem;
     Panel6: TPanel;
     TMSFNCButton8: TTMSFNCButton;
-    ltMoney: TLayout;
     ppRep: TPopup;
     TMSFNCButton10: TTMSFNCButton;
     TMSFNCButton6: TTMSFNCButton;
@@ -164,6 +163,8 @@ type
     Line20: TLine;
     Label30: TLabel;
     qSize: TFDQuery;
+    ltMoney: TLayout;
+    TMSFNCButton1: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -197,6 +198,7 @@ type
     procedure TMSFNCButton13Click(Sender: TObject);
     procedure tlPModBeforeExpandNode(Sender: TObject;
       ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure TMSFNCButton1Click(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -1003,6 +1005,11 @@ end;
 procedure TfmProd.TMSFNCButton13Click(Sender: TObject);
 begin
  ShowReportJson('RepStatProd.fr3','');
+end;
+
+procedure TfmProd.TMSFNCButton1Click(Sender: TObject);
+begin
+ ShowReportJson('SRepSendMoney.fr3', '[{"DT":"' + eData.Text + '"}]');
 end;
 
 procedure TfmProd.TMSFNCButton2Click(Sender: TObject);
