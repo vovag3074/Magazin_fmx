@@ -105,7 +105,7 @@ type
     qMoveProd: TFDCommand;
     btMoveProd: TTMSFNCButton;
     btRepPartialInfo: TTMSFNCButton;
-    brSetSkid: TTMSFNCButton;
+    btSetSkid: TTMSFNCButton;
     btRep: TTMSFNCButton;
     TMSFNCButton7: TTMSFNCButton;
     btPolMoney: TTMSFNCButton;
@@ -198,7 +198,7 @@ type
     procedure btRepClick(Sender: TObject);
     procedure TMSFNCButton10Click(Sender: TObject);
     procedure TMSFNCButton6Click(Sender: TObject);
-    procedure brSetSkidClick(Sender: TObject);
+    procedure btSetSkidClick(Sender: TObject);
     procedure TMSFNCButton13Click(Sender: TObject);
     procedure tlPModBeforeExpandNode(Sender: TObject; ANode:
       TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
@@ -921,6 +921,7 @@ end;
 procedure TfmProd.tlPModNodeClick(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
 begin
   btRetMod.Enabled := not ANode.Node.DataBoolean;
+  btSetSkid.Enabled := ANode.Node.DataBoolean;
 end;
 
 procedure TfmProd.btPolMoneyClick(Sender: TObject);
@@ -1079,7 +1080,7 @@ begin
   ReadProd;
 end;
 
-procedure TfmProd.brSetSkidClick(Sender: TObject);
+procedure TfmProd.btSetSkidClick(Sender: TObject);
 begin
   SetSkidka;
 end;
