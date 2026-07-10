@@ -877,7 +877,7 @@ object fmProd: TfmProd
               item
               end>
             IsSelected = True
-            Size.Width = 119.000000000000000000
+            Size.Width = 118.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = ''
@@ -1841,6 +1841,7 @@ object fmProd: TfmProd
                 Position.Y = 86.000000000000000000
                 TabOrder = 2
                 Text = #1042#1077#1088#1085#1091#1090#1100' '#1086#1076#1085#1091' '#1087#1072#1088#1091
+                OnClick = btRetModClick
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
                 OldFontColor = claBlack
