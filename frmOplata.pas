@@ -60,6 +60,7 @@ type
     procedure btOKClick(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
     procedure eOplChangeTracking(Sender: TObject);
+    procedure eValChange(Sender: TObject);
   private
     { Private declarations }
     procedure readValutList;
@@ -330,6 +331,13 @@ begin
   fmMain.onEditChangeTracking(Sender);
 end;
 
+procedure TfmOpl.eValChange(Sender: TObject);
+begin
+var tmp:= eVal.ListItems[eVal.ItemIndex].Tag;
+ eCurs.Enabled := not (tmp = FValut);
+ eType.Enabled := not (tmp = FValut);
+end;
+
 procedure TfmOpl.ReadAgent(NoAgent, isTemp: Integer; MyData: tDate);
 begin
   FAgent := NoAgent;
@@ -361,6 +369,8 @@ begin
   FValut := qRead.FieldByName('PRED_VAL').AsInteger;
   fmMain.GetValutFromComboBox(FValut, eVal);
   qRead.Close;
+  eCurs.Enabled:=False;
+  eType.Enabled:=False;
   lbInfo.Text := 'Предоплаты <br> Наличными: <b>' + FPred.ToString +
     '</b><br> По банку: <b>' + FBankPred.ToString + '</b>';
   fmMain.EndReadTransaction;

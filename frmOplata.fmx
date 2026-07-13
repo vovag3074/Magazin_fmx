@@ -4,7 +4,7 @@ object fmOpl: TfmOpl
   ActiveControl = eOpl
   BorderStyle = ToolWindow
   Caption = #1054#1087#1083#1072#1090#1072
-  ClientHeight = 547
+  ClientHeight = 548
   ClientWidth = 780
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
@@ -14,7 +14,7 @@ object fmOpl: TfmOpl
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Align = Bottom
-    Position.Y = 456.000000000000000000
+    Position.Y = 457.000000000000000000
     Size.Width = 780.000000000000000000
     Size.Height = 91.000000000000000000
     Size.PlatformDefault = False
@@ -232,6 +232,7 @@ object fmOpl: TfmOpl
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 12
+    OnChange = eValChange
   end
   object eOpl: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -289,6 +290,7 @@ object fmOpl: TfmOpl
       TabOrder = 8
       Text = '1'
       Position.X = 272.000000000000000000
+      Enabled = False
       Size.Width = 221.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
@@ -337,6 +339,7 @@ object fmOpl: TfmOpl
     end
   end
   object eType: TComboBox
+    Enabled = False
     Items.Strings = (
       #1055#1088#1103#1084#1086#1081' (*)'
       #1054#1073#1088#1072#1090#1085#1099#1081' (/)')
@@ -359,8 +362,8 @@ object fmOpl: TfmOpl
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 15
-    Viewport.Width = 701.000000000000000000
-    Viewport.Height = 113.000000000000000000
+    Viewport.Width = 695.000000000000000000
+    Viewport.Height = 111.000000000000000000
   end
   object btBank: TTMSFNCButton
     Bitmap.PNG = {
