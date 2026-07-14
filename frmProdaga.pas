@@ -166,6 +166,7 @@ type
     ltMoney: TLayout;
     TMSFNCButton1: TTMSFNCButton;
     qDelSize: TFDCommand;
+    btRefr: TTMSFNCButton;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -202,6 +203,7 @@ type
     procedure tlPModGetNodeColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
     procedure tlPModNodeClick(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
     procedure btRetModClick(Sender: TObject);
+    procedure btRefrClick(Sender: TObject);
   private
     { Private declarations }
     FSum, FOpl, FCnt: Double;
@@ -1135,6 +1137,11 @@ begin
       ShowError(E.Message);
     end;
   end;
+end;
+
+procedure TfmProd.btRefrClick(Sender: TObject);
+begin
+  ReadProd;
 end;
 
 procedure TfmProd.btRepClick(Sender: TObject);
