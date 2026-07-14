@@ -63,6 +63,7 @@ type
     procedure btOKClick(Sender: TObject);
     procedure TMSFNCButton8Click(Sender: TObject);
     procedure eSumChangeTracking(Sender: TObject);
+    procedure eValChange(Sender: TObject);
   private
     { Private declarations }
     FAgent: Integer;
@@ -96,7 +97,14 @@ end;
 
 procedure TfmAddDop.eSumChangeTracking(Sender: TObject);
 begin
- fmMain.onEditChangeTracking(Sender);
+  fmMain.onEditChangeTracking(Sender);
+end;
+
+procedure TfmAddDop.eValChange(Sender: TObject);
+begin
+ var tmp:= eVal.ListItems[eVal.ItemIndex].Tag;
+ eCurs.Enabled := not (tmp = FValut);
+ eType.Enabled := not (tmp = FValut);
 end;
 
 procedure TfmAddDop.FormCreate(Sender: TObject);
@@ -137,9 +145,9 @@ var
   FOst: Double;
 begin
   Result := false;
-  if eSum.Text='' then
+  if eSum.Text = '' then
   begin
-    eSum.Text:='0';
+    eSum.Text := '0';
   end;
   // -----03.08.2022 --- добавляем валюту -------------
   // ----- 17.01.2014 --- добавил id транзакции--------
@@ -154,7 +162,7 @@ begin
   if eSum.Text.ToDouble <= 0 then
   begin
     ShowError('Укажите сумму отправки');
-    eSum.Text:='';
+    eSum.Text := '';
     eSum.SetFocus;
     Exit;
   end;
@@ -220,7 +228,8 @@ begin
       begin
         eSum.Text := Round((FDolg * eCurs.Text.ToDouble)).ToString;
       end;
-      if ShowQuestion('Сумма больше долга на ' + FloatToStr(VTmp) + ' Добавить эту сумму в предоплату?') then
+      if ShowQuestion('Сумма больше долга на ' + FloatToStr(VTmp) +
+        ' Добавить эту сумму в предоплату?') then
       begin
         qPred.Active := false;
         qPred.Prepare;
@@ -298,6 +307,9 @@ begin
     end;
   end;
   eCurs.Text := '1';
+  var tmp := eVal.ListItems[eVal.ItemIndex].Tag;
+  eCurs.Enabled := not (tmp = FValut);
+  eType.Enabled := not (tmp = FValut);
   fmMain.IBT_Read.Rollback;
 end;
 
