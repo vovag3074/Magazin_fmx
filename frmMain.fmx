@@ -2,8 +2,8 @@ object fmMain: TfmMain
   Left = 0
   Top = 0
   Caption = #1056#1072#1073#1086#1095#1077#1077' '#1084#1077#1089#1090#1086' '#1087#1088#1086#1076#1072#1074#1094#1072
-  ClientHeight = 605
-  ClientWidth = 914
+  ClientHeight = 604
+  ClientWidth = 916
   Fill.Color = xFF484848
   Fill.Kind = Solid
   StyleBook = stbMain
@@ -17,9 +17,9 @@ object fmMain: TfmMain
   OnClose = FormClose
   DesignerMasterStyle = 0
   object sbMain: TStatusBar
-    Position.Y = 572.000000000000000000
+    Position.Y = 571.000000000000000000
     ShowSizeGrip = False
-    Size.Width = 914.000000000000000000
+    Size.Width = 916.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -28,7 +28,7 @@ object fmMain: TfmMain
     object lbStatus: TLabel
       Align = Right
       Margins.Right = 10.000000000000000000
-      Position.X = 270.000000000000000000
+      Position.X = 272.000000000000000000
       Size.Width = 634.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
@@ -40,7 +40,7 @@ object fmMain: TfmMain
     AdaptToStyle = True
     Color = xB30F1620
     Align = MostTop
-    Size.Width = 914.000000000000000000
+    Size.Width = 916.000000000000000000
     Size.Height = 65.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
@@ -78307,8 +78307,8 @@ object fmMain: TfmMain
   end
   object pMain: TPanel
     Align = Client
-    Size.Width = 914.000000000000000000
-    Size.Height = 507.000000000000000000
+    Size.Width = 916.000000000000000000
+    Size.Height = 506.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'panelstyle'
     TabOrder = 5
@@ -78316,8 +78316,8 @@ object fmMain: TfmMain
       StyleName = 'FNC_DARK'
       Color = xFF212428
       Align = Client
-      Size.Width = 914.000000000000000000
-      Size.Height = 507.000000000000000000
+      Size.Width = 916.000000000000000000
+      Size.Height = 506.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       Items = <
@@ -79588,7 +79588,7 @@ object fmMain: TfmMain
   end
   object mySave: TAESEncryption
     Version = '5.1.1.1'
-    Left = 24
-    Top = 520
+    Left = 40
+    Top = 488
   end
 end

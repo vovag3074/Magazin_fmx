@@ -53,6 +53,7 @@ type
     ltItem: TLayout;
     ltFooter: TLayout;
     qDataPol: TFDQuery;
+    btRefr: TTMSFNCButton;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -60,6 +61,7 @@ type
     procedure ListBoxItem1Click(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
+    procedure btRefrClick(Sender: TObject);
   private
     { Private declarations }
     procedure GetBankSum(NBank: Widestring);
@@ -83,6 +85,11 @@ uses
 
 {$R *.fmx}
 
+procedure TfmBank.btRefrClick(Sender: TObject);
+begin
+ ReadBankList;
+end;
+
 procedure TfmBank.DropDownEditButton1Click(Sender: TObject);
 begin
   ppCalendar.Popup;
@@ -90,9 +97,9 @@ end;
 
 procedure TfmBank.eDataChange(Sender: TObject);
 begin
-  fmMain.StartMainTransaction;
-  fmMain.StartReadTransaction;
+  fmMain.StartAllTransaction;
   ReadBankList;
+  fmMain.EndAllTransaction;
 end;
 
 procedure TfmBank.GetBankSum(NBank: widestring);

@@ -4,8 +4,8 @@
   ActiveControl = eSum
   BorderStyle = ToolWindow
   Caption = #1053#1086#1074#1086#1077' '#1087#1086#1083#1091#1095#1077#1085#1080#1077
-  ClientHeight = 461
-  ClientWidth = 811
+  ClientHeight = 460
+  ClientWidth = 812
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
@@ -392,8 +392,8 @@
   end
   object Panel1: TPanel
     Align = Bottom
-    Position.Y = 389.000000000000000000
-    Size.Width = 811.000000000000000000
+    Position.Y = 388.000000000000000000
+    Size.Width = 812.000000000000000000
     Size.Height = 72.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
@@ -434,7 +434,7 @@
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 491.000000000000000000
+      Position.X = 492.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 2
       Text = #1054#1050
@@ -481,7 +481,7 @@
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 651.000000000000000000
+      Position.X = 652.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 0
       Text = #1054#1090#1082#1072#1079
@@ -965,7 +965,7 @@
         Name = 'IS_MULT'
         ParamType = ptInput
       end>
-    Left = 128
-    Top = 88
+    Left = 136
+    Top = 104
   end
 end

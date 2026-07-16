@@ -236,9 +236,9 @@ begin
         qPred.ParamByName('NG').AsInteger := FAgent;
         qPred.ParamByName('SUM_PRED').Value := VTmp;
         qPred.ParamByName('DATA_PRED').AsDate := eDate.Date;
-        qPred.ParamByName('STR_PRED').AsString := ePol.Text;
+        qPred.ParamByName('STR_PRED').AsWideString := ePol.Text;
         qPred.ParamByName('IS_VIRT').AsSmallInt := 1; // Деньги виртуальные
-        qPred.ParamByName('TRAN_ID').AsString := FTR_ID;
+        qPred.ParamByName('TRAN_ID').AsWideString := FTR_ID;
         qPred.Execute;
         fmMain.IBT.Commit;
         Application.ProcessMessages;
@@ -252,10 +252,10 @@ begin
     qAdd.ParamByName('NO_VAL').AsInteger := eVal.ListItems[eVal.ItemIndex].Tag;
     qAdd.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
     qAdd.ParamByName('VSUM_OPL').Value := eSum.Text.ToDouble;
-    qAdd.ParamByName('MY_BANK').AsString := eBank.Text;
-    qAdd.ParamByName('MY_USER').AsString := ePol.Text;
-    qAdd.ParamByName('DOP_STR').AsString := eDop.Text;
-    qAdd.ParamByName('TR_ID').AsString := FTR_ID;
+    qAdd.ParamByName('MY_BANK').AsWideString := eBank.Text;
+    qAdd.ParamByName('MY_USER').AsWideString := ePol.Text;
+    qAdd.ParamByName('DOP_STR').AsWideString := eDop.Text;
+    qAdd.ParamByName('TR_ID').AsWideString := FTR_ID;
     qAdd.ParamByName('DATA_NAK').AsDate := eDPol.Date;
     qAdd.ParamByName('IS_MULT').asBoolean := eType.ItemIndex = 0;
     qAdd.Execute;
@@ -266,16 +266,16 @@ begin
     qIns.Prepare;
     qIns.ParamByName('NO_AGN').AsInteger := FAgent;
     qIns.ParamByName('DATA_OTP').AsDate := eDPol.Date;
-    qIns.ParamByName('FULL_AGN_NAME').AsString := eAgn.Text;
-    qIns.ParamByName('FULL_SITY_NAME').AsString := 'Банк';
+    qIns.ParamByName('FULL_AGN_NAME').AsWideString := eAgn.Text;
+    qIns.ParamByName('FULL_SITY_NAME').AsWideString := 'Банк';
     qIns.ParamByName('SL_OTP').AsString := eBank.Text;
     qIns.ParamByName('NO_SKL').AsInteger := 0;
     qIns.ParamByName('K_VO_MEST').AsInteger := 0;
-    qIns.ParamByName('NO_DEK').AsString := '';
-    qIns.ParamByName('NAME_BANH').AsString := eBank.Text;
+    qIns.ParamByName('NO_DEK').AsWideString := '';
+    qIns.ParamByName('NAME_BANH').AsWideString := eBank.Text;
     qIns.ParamByName('SUM_OPL').value := eSum.Text.ToDouble;
-    qIns.ParamByName('POL_NAME').AsString := ePol.Text;
-    qIns.ParamByName('NO_POL').AsString := '';
+    qIns.ParamByName('POL_NAME').AsWideString := ePol.Text;
+    qIns.ParamByName('NO_POL').AsWideString := '';
     qIns.Execute;
     fmMain.IBT.Commit;
   except
@@ -331,6 +331,8 @@ end;
 
 procedure TfmAddDop.TMSFNCButton3Click(Sender: TObject);
 begin
+  if eSum.Text.Trim='' then
+    eSum.Text:='0';
   showCalc(eSum);
 end;
 
