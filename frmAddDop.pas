@@ -144,6 +144,7 @@ var
   FVSum: Double; // сумма с курсом
   FOst: Double;
 begin
+try
   Result := false;
   if eSum.Text = '' then
   begin
@@ -282,6 +283,11 @@ begin
   end;
   // если ошибка протокола - игнорируем
   Result := true;
+except on e:Exception do
+ begin
+  fmMain.ShowIBError(E.Message);
+ end;
+end;
 end;
 
 procedure TfmAddDop.ShowDolg;
