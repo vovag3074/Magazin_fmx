@@ -427,6 +427,7 @@ begin
   if (FEdit.Text.IsEmpty) or (FEdit.Text.Equals('-')) then // Если пусто (ничего не введено или все удалено) или только минус, ничего не делаем
     Exit;
   FEdit.Text := FEdit.Text.Replace('.', ','); // Заменяйм точку запятой
+  FEdit.CaretPosition := FEdit.CaretPosition + 2;
   if FEdit.Text.Equals(',') then // Если введен разделитель, добавляем перед ним ноль для красоты (не обязательно)
   begin
     FEdit.Text := '0,';

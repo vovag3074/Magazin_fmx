@@ -135,6 +135,8 @@ begin
     qVal.Close;
   end;
   eVal.ItemIndex := 0;
+  eCurs.OnChangeTracking:=fmMain.onEditChangeTracking;
+  eSum.OnChangeTracking:=fmMain.onEditChangeTracking;
 end;
 
 function TfmAddDop.SaveDop: Boolean;
