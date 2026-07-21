@@ -102,9 +102,9 @@ end;
 
 procedure TfmAddDop.eValChange(Sender: TObject);
 begin
- var tmp:= eVal.ListItems[eVal.ItemIndex].Tag;
- eCurs.Enabled := not (tmp = FValut);
- eType.Enabled := not (tmp = FValut);
+  var tmp := eVal.ListItems[eVal.ItemIndex].Tag;
+  eCurs.Enabled := not (tmp = FValut);
+  eType.Enabled := not (tmp = FValut);
 end;
 
 procedure TfmAddDop.FormCreate(Sender: TObject);
@@ -144,150 +144,154 @@ var
   FVSum: Double; // сумма с курсом
   FOst: Double;
 begin
-try
-  Result := false;
-  if eSum.Text = '' then
-  begin
-    eSum.Text := '0';
-  end;
+  try
+    Result := false;
+    if eSum.Text = '' then
+    begin
+      eSum.Text := '0';
+    end;
   // -----03.08.2022 --- добавляем валюту -------------
   // ----- 17.01.2014 --- добавил id транзакции--------
-  FTR_ID := fmMain.GetTranID;
+    FTR_ID := fmMain.GetTranID;
   // ---------------------------------------------------
-  if FAgent = -1 then
-  begin
-    ShowError('Выберите агента');
-    eAgn.SetFocus;
-    Exit;
-  end;
-  if eSum.Text.ToDouble <= 0 then
-  begin
-    ShowError('Укажите сумму отправки');
-    eSum.Text := '';
-    eSum.SetFocus;
-    Exit;
-  end;
-  if trim(eBank.Text) = '' then
-  begin
-    ShowError('Укажите банк');
-    eBank.SetFocus;
-    Exit;
-  end;
-  if trim(ePol.Text) = '' then
-  begin
-    ShowError('Укажите получателя');
-    ePol.SetFocus;
-    Exit;
-  end;
-  if isEdit then
-  begin
+    if FAgent = -1 then
+    begin
+      ShowError('Выберите агента');
+      eAgn.SetFocus;
+      Exit;
+    end;
+    if eSum.Text.ToDouble <= 0 then
+    begin
+      ShowError('Укажите сумму отправки');
+      eSum.Text := '';
+      eSum.SetFocus;
+      Exit;
+    end;
+    if trim(eBank.Text) = '' then
+    begin
+      ShowError('Укажите банк');
+      eBank.SetFocus;
+      Exit;
+    end;
+    if trim(ePol.Text) = '' then
+    begin
+      ShowError('Укажите получателя');
+      ePol.SetFocus;
+      Exit;
+    end;
+    if isEdit then
+    begin
 
-  end
-  else
-  begin
+    end
+    else
+    begin
    //--------------------------------------
    // 31-avg-2022 предварительный осмотр оплаты
    //--------------------------------------
-    if eType.ItemIndex = 0 then  // учитываем прямой или обратный курс
-    begin
-      FVSum := eSum.Text.ToDouble * eCurs.Text.ToDouble;
-    end
-    else
-    begin
-      FVSum := eSum.Text.ToDouble / eCurs.Text.ToDouble;
-    end;
-    FVSum := Round(FVSum);
-    FTmp := FVSum - FDolg;
-    if FTmp < 0 then
-      FTmp := 0;
-    FOst := FDolg - FVSum;
-    if FOst < 0 then
-      FOst := 0;
-
-    if not ShowInfoOplEx('', FDolg, FOst, eSum.Text.ToDouble, FVSum, FTmp) then
-      Exit;
-      //===================================================================
-
-    if eType.ItemIndex = 0 then
-    begin
-      FVSum := Round((eSum.Text.ToDouble * eCurs.Text.ToDouble));
-    end
-    else
-    begin
-      FVSum := Round((eSum.Text.ToDouble / eCurs.Text.ToDouble));
-    end;
-    if FDolg < FVSum then
-    begin
-       // Сумма внесена большаая чем нужно
-      FTmp := (eSum.Text.ToDouble) - FDolg;
-      VTmp := FVSum - FDolg;
-      if eType.ItemIndex = 0 then
+      if eType.ItemIndex = 0 then  // учитываем прямой или обратный курс
       begin
-        eSum.Text := Round((FDolg / eCurs.Text.ToDouble)).ToString;
+        FVSum := eSum.Text.ToDouble * eCurs.Text.ToDouble;
       end
       else
       begin
-        eSum.Text := Round((FDolg * eCurs.Text.ToDouble)).ToString;
+        FVSum := eSum.Text.ToDouble / eCurs.Text.ToDouble;
       end;
-      if ShowQuestion('Сумма больше долга на ' + FloatToStr(VTmp) +
-        ' Добавить эту сумму в предоплату?') then
+      FVSum := Round(FVSum);
+      FTmp := FVSum - FDolg;
+      if FTmp < 0 then
+        FTmp := 0;
+      FOst := FDolg - FVSum;
+      if FOst < 0 then
+        FOst := 0;
+
+      if not ShowInfoOplEx('', FDolg, FOst, eSum.Text.ToDouble, FVSum, FTmp) then
+        Exit;
+      //===================================================================
+
+      if eType.ItemIndex = 0 then
       begin
-        qPred.Active := false;
-        qPred.Prepare;
-        qPred.ParamByName('NG').AsInteger := FAgent;
-        qPred.ParamByName('SUM_PRED').Value := VTmp;
-        qPred.ParamByName('DATA_PRED').AsDate := eDate.Date;
-        qPred.ParamByName('STR_PRED').AsWideString := ePol.Text;
-        qPred.ParamByName('IS_VIRT').AsSmallInt := 1; // Деньги виртуальные
-        qPred.ParamByName('TRAN_ID').AsWideString := FTR_ID;
-        qPred.Execute;
-        fmMain.IBT.Commit;
-        Application.ProcessMessages;
+        FVSum := Round((eSum.Text.ToDouble * eCurs.Text.ToDouble));
+      end
+      else
+      begin
+        FVSum := Round((eSum.Text.ToDouble / eCurs.Text.ToDouble));
+      end;
+      if FDolg < FVSum then
+      begin
+       // Сумма внесена большаая чем нужно
+        FTmp := (eSum.Text.ToDouble) - FDolg;
+        VTmp := FVSum - FDolg;
+        if eType.ItemIndex = 0 then
+        begin
+          eSum.Text := Round((FDolg / eCurs.Text.ToDouble)).ToString;
+        end
+        else
+        begin
+          eSum.Text := Round((FDolg * eCurs.Text.ToDouble)).ToString;
+        end;
+        if ShowQuestion('Сумма больше долга на ' + FloatToStr(VTmp) + ' Добавить эту сумму в предоплату?') then
+        begin
+          qPred.Active := false;
+          qPred.Prepare;
+          qPred.ParamByName('NG').AsInteger := FAgent;
+          qPred.ParamByName('SUM_PRED').Value := VTmp;
+          qPred.ParamByName('DATA_PRED').AsDate := eDate.Date;
+          qPred.ParamByName('STR_PRED').AsWideString := ePol.Text;
+          qPred.ParamByName('IS_VIRT').AsSmallInt := 1; // Деньги виртуальные
+          qPred.ParamByName('TRAN_ID').AsWideString := FTR_ID;
+          qPred.Execute;
+          fmMain.IBT.Commit;
+          Application.ProcessMessages;
+        end;
+      end;
+      qAdd.Active := false;
+      qAdd.Prepare;
+      qAdd.ParamByName('NO_AGN').AsInteger := FAgent;
+      qAdd.ParamByName('DATA_POL').AsDate := eDate.Date;
+      qAdd.ParamByName('SUM_OPL').Value := eSum.Text.ToDouble;
+      qAdd.ParamByName('NO_VAL').AsInteger := eVal.ListItems[eVal.ItemIndex].Tag;
+      qAdd.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
+      qAdd.ParamByName('VSUM_OPL').Value := eSum.Text.ToDouble;
+      qAdd.ParamByName('MY_BANK').AsWideString := eBank.Text;
+      qAdd.ParamByName('MY_USER').AsWideString := ePol.Text;
+      qAdd.ParamByName('DOP_STR').AsWideString := eDop.Text;
+      qAdd.ParamByName('TR_ID').AsWideString := FTR_ID;
+      qAdd.ParamByName('DATA_NAK').AsDate := eDPol.Date;
+      qAdd.ParamByName('IS_MULT').asBoolean := eType.ItemIndex = 0;
+      qAdd.Execute;
+    end;
+  // 27.08.2016 --- заносим протокол
+    try
+      qIns.Close;
+      qIns.Prepare;
+      qIns.ParamByName('NO_AGN').AsInteger := FAgent;
+      qIns.ParamByName('DATA_OTP').AsDate := eDPol.Date;
+      qIns.ParamByName('FULL_AGN_NAME').AsWideString := eAgn.Text;
+      qIns.ParamByName('FULL_SITY_NAME').AsWideString := 'Банк';
+      qIns.ParamByName('SL_OTP').AsString := eBank.Text;
+      qIns.ParamByName('NO_SKL').AsInteger := 0;
+      qIns.ParamByName('K_VO_MEST').AsInteger := 0;
+      qIns.ParamByName('NO_DEK').AsWideString := '';
+      qIns.ParamByName('NAME_BANH').AsWideString := eBank.Text;
+      qIns.ParamByName('SUM_OPL').value := eSum.Text.ToDouble;
+      qIns.ParamByName('POL_NAME').AsWideString := ePol.Text;
+      qIns.ParamByName('NO_POL').AsWideString := '';
+      qIns.Execute;
+      fmMain.IBT.Commit;
+    except
+      on e: Exception do
+      begin
+        fmMain.ShowIBError('Протокол:'+E.Message);
       end;
     end;
-    qAdd.Active := false;
-    qAdd.Prepare;
-    qAdd.ParamByName('NO_AGN').AsInteger := FAgent;
-    qAdd.ParamByName('DATA_POL').AsDate := eDate.Date;
-    qAdd.ParamByName('SUM_OPL').Value := eSum.Text.ToDouble;
-    qAdd.ParamByName('NO_VAL').AsInteger := eVal.ListItems[eVal.ItemIndex].Tag;
-    qAdd.ParamByName('KURS_VAL').Value := eCurs.Text.ToDouble;
-    qAdd.ParamByName('VSUM_OPL').Value := eSum.Text.ToDouble;
-    qAdd.ParamByName('MY_BANK').AsWideString := eBank.Text;
-    qAdd.ParamByName('MY_USER').AsWideString := ePol.Text;
-    qAdd.ParamByName('DOP_STR').AsWideString := eDop.Text;
-    qAdd.ParamByName('TR_ID').AsWideString := FTR_ID;
-    qAdd.ParamByName('DATA_NAK').AsDate := eDPol.Date;
-    qAdd.ParamByName('IS_MULT').asBoolean := eType.ItemIndex = 0;
-    qAdd.Execute;
-  end;
-  // 27.08.2016 --- заносим протокол
-  try
-    qIns.Close;
-    qIns.Prepare;
-    qIns.ParamByName('NO_AGN').AsInteger := FAgent;
-    qIns.ParamByName('DATA_OTP').AsDate := eDPol.Date;
-    qIns.ParamByName('FULL_AGN_NAME').AsWideString := eAgn.Text;
-    qIns.ParamByName('FULL_SITY_NAME').AsWideString := 'Банк';
-    qIns.ParamByName('SL_OTP').AsString := eBank.Text;
-    qIns.ParamByName('NO_SKL').AsInteger := 0;
-    qIns.ParamByName('K_VO_MEST').AsInteger := 0;
-    qIns.ParamByName('NO_DEK').AsWideString := '';
-    qIns.ParamByName('NAME_BANH').AsWideString := eBank.Text;
-    qIns.ParamByName('SUM_OPL').value := eSum.Text.ToDouble;
-    qIns.ParamByName('POL_NAME').AsWideString := ePol.Text;
-    qIns.ParamByName('NO_POL').AsWideString := '';
-    qIns.Execute;
-    fmMain.IBT.Commit;
-  except
-  end;
   // если ошибка протокола - игнорируем
-  Result := true;
-except on e:Exception do
- begin
-  fmMain.ShowIBError(E.Message);
- end;
-end;
+    Result := true;
+  except
+    on e: Exception do
+    begin
+      fmMain.ShowIBError(E.Message);
+    end;
+  end;
 end;
 
 procedure TfmAddDop.ShowDolg;
@@ -337,8 +341,8 @@ end;
 
 procedure TfmAddDop.TMSFNCButton3Click(Sender: TObject);
 begin
-  if eSum.Text.Trim='' then
-    eSum.Text:='0';
+  if eSum.Text.Trim = '' then
+    eSum.Text := '0';
   showCalc(eSum);
 end;
 
