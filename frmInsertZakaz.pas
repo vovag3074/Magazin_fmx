@@ -1,4 +1,4 @@
-unit frmInsertZakaz;
+п»їunit frmInsertZakaz;
 
 interface
 
@@ -44,24 +44,20 @@ type
     qDel: TFDCommand;
     lbSum: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure tlModBeforeExpandNode(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
-    procedure tlModGetNodeTextColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
-    procedure tlModGetNodeSelectedTextColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
-    procedure tlModGetNodeSelectedColor(Sender: TObject; ANode:
-      TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+    procedure tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+    procedure tlModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlModGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+    procedure tlModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
     procedure FindAgentClick(Sender: TObject);
     procedure dxAddClick(Sender: TObject);
     procedure btOKClick(Sender: TObject);
     procedure dxAddMouseEnter(Sender: TObject);
     procedure dxAddMouseLeave(Sender: TObject);
-    procedure eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar;
-      Shift: TShiftState);
+    procedure eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure EditButton1Click(Sender: TObject);
     procedure dxUpdClick(Sender: TObject);
     procedure dxDelClick(Sender: TObject);
+    procedure EllipsesEditButton1Click(Sender: TObject);
   private
     { Private declarations }
     FAgent, FZakaz: Integer;
@@ -94,12 +90,11 @@ implementation
 
 uses
   frmMain, frmZakazy, frmSelectAgent, frmOplata, frmReport, frmSelectAllTovar,
-  frmSelectSize;
+  frmSelectSize, frmSelDopZakaz;
 
 {$R *.fmx}
 
-procedure TfmInsZak.eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar:
-  WideChar; Shift: TShiftState);
+procedure TfmInsZak.eCodeKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
   if Shift = [ssCtrl] then
   begin
@@ -152,22 +147,23 @@ end;
 
 procedure TfmInsZak.EditButton1Click(Sender: TObject);
 begin
-if eCode.Text.Trim<>'' then
-begin
-  ReadMyModel(eCode.Text.Trim);
-  eCode.Text := '';
-  eCode.SetFocus;
-end else
-begin
-  dxAddClick(Sender);
-end;
+  if eCode.Text.Trim <> '' then
+  begin
+    ReadMyModel(eCode.Text.Trim);
+    eCode.Text := '';
+    eCode.SetFocus;
+  end
+  else
+  begin
+    dxAddClick(Sender);
+  end;
 end;
 
 procedure TfmInsZak.EditZakaz(NoZakaz: Integer);
 begin
   FZakaz := NoZakaz;
   isEdit := true;
-  Caption := 'Изменить заказ';
+  Caption := 'РР·РјРµРЅРёС‚СЊ Р·Р°РєР°Р·';
   qRead.Close;
   qRead.Prepare;
   qRead.ParamByName('SZ').AsInteger := FZakaz;
@@ -179,13 +175,25 @@ begin
   ReadModelList;
 end;
 
+procedure TfmInsZak.EllipsesEditButton1Click(Sender: TObject);
+begin
+  fmSelDopZak := TfmSelDopZak.Create(fmInsZak);
+  fmSelDopZak.InitList;
+  if fmSelDopZak.ShowModal = mrOk then
+  begin
+    eDop.Text := fmSelDopZak.DopStr;
+  end;
+  fmSelDopZak.Free;
+  eCode.SetFocus;
+end;
+
 procedure TfmInsZak.FormCreate(Sender: TObject);
 begin
   tlMod.AdaptToStyle := True;
   eData.Date := StrToDate(fmZak.eData.Text);
   isEdit := false;
   FCount := 0;
-  Caption := 'Новый заказ';
+  Caption := 'РќРѕРІС‹Р№ Р·Р°РєР°Р·';
   ReadModelList;
 end;
 
@@ -218,7 +226,7 @@ begin
   Result := false;
   if FAgent = -1 then
   begin
-    ShowError('Выберите покупателя!');
+    ShowError('Р’С‹Р±РµСЂРёС‚Рµ РїРѕРєСѓРїР°С‚РµР»СЏ!');
     eAgn.SetFocus;
     Exit;
   end;
@@ -269,15 +277,14 @@ begin
         Node.Text[1] := qMod.FieldByName('SUM_OF_CNT_MOD').AsFloat.ToString;
         Node.Text[2] := qMod.FieldByName('M_CENA').AsFloat.ToString;
         FCount := FCount + qMod.FieldByName('SUM_OF_CNT_MOD').AsFloat;
-        FSumMod := FSumMod + (qMod.FieldByName('M_CENA').AsFloat * qMod.FieldByName
-          ('SUM_OF_CNT_MOD').AsFloat);
+        FSumMod := FSumMod + (qMod.FieldByName('M_CENA').AsFloat * qMod.FieldByName('SUM_OF_CNT_MOD').AsFloat);
         Node.Values[0].CollapsedIconName := 'Item1';
         Node.Values[0].ExpandedIconName := 'Item1';
         new(Data);
         Data^.ID_Model := qMod.FieldByName('NO_MOD').AsInteger;
         Data^.ID_Size := -1;
         Data^.ID_Code := qMod.FieldByName('CODE_MOD').AsString;
-        tlMod.AddNode(Node);  // ломается навигация по клавишам
+        tlMod.AddNode(Node);  // Р»РѕРјР°РµС‚СЃСЏ РЅР°РІРёРіР°С†РёСЏ РїРѕ РєР»Р°РІРёС€Р°Рј
         Node.DataPointer := Data;
         Node.DataBoolean := True;
         qMod.Next;
@@ -288,7 +295,7 @@ begin
   fmMain.EndReadTransaction;
   dxUpd.Enabled := tlMod.Nodes.Count > 0;
   dxDel.Enabled := tlMod.Nodes.Count > 0;
-  lbSum.Text := 'Всего: ' + FCount.ToString + ' на сумму: ' + FSumMod.ToString;
+  lbSum.Text := 'Р’СЃРµРіРѕ: ' + FCount.ToString + ' РЅР° СЃСѓРјРјСѓ: ' + FSumMod.ToString;
 end;
 
 procedure TfmInsZak.readMyModel(BarCode: string);
@@ -315,8 +322,7 @@ begin
   eCode.SetFocus;
 end;
 
-procedure TfmInsZak.tlModBeforeExpandNode(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
+procedure TfmInsZak.tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
 var
   Node: TTMSFNCTreeViewNode;
   Data, AData: pNodeData;
@@ -348,8 +354,7 @@ begin
   end;
 end;
 
-procedure TfmInsZak.tlModGetNodeSelectedColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
+procedure TfmInsZak.tlModGetNodeSelectedColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var AColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -357,8 +362,7 @@ begin
   end;
 end;
 
-procedure TfmInsZak.tlModGetNodeSelectedTextColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmInsZak.tlModGetNodeSelectedTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -366,8 +370,7 @@ begin
   end;
 end;
 
-procedure TfmInsZak.tlModGetNodeTextColor(Sender: TObject; ANode:
-  TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
+procedure TfmInsZak.tlModGetNodeTextColor(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; AColumn: Integer; var ATextColor: TTMSFNCGraphicsColor);
 begin
   if ANode.Node.DataBoolean then
   begin
@@ -426,8 +429,7 @@ begin
     begin
       HintPanel.CalloutPosition := TCalloutPosition.Left;
       HintPanel.Position.X := p.Left + TControl(Sender).Width;
-      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height
-        / 2) + 50;
+      HintPanel.Position.Y := p.Top - (HintPanel.Height / 2) - (TControl(Sender).Height / 2) + 50;
       HintPanel.Width := HintPanel.Width + HintPanel.CalloutLength;
       HintLabel.Padding.Left := HintPanel.CalloutLength;
       HintLabel.Padding.Top := -HintPanel.CalloutLength;
@@ -447,7 +449,7 @@ procedure TfmInsZak.dxDelClick(Sender: TObject);
 var
   Data: pNodeData;
 begin
-  if ShowQuestion('Удалить модель из заказа?') then
+  if ShowQuestion('РЈРґР°Р»РёС‚СЊ РјРѕРґРµР»СЊ РёР· Р·Р°РєР°Р·Р°?') then
   begin
     if tlMod.Nodes.Count > 0 then
     begin
@@ -482,12 +484,12 @@ begin
     try
       fmOpl := TfmOpl.Create(fmZak);
       fmOpl.ReadAgent(FAgent, 0, Date);
-      fmOpl.PrintCheck := false; // чек не нужен
+      fmOpl.PrintCheck := false; // С‡РµРє РЅРµ РЅСѓР¶РµРЅ
       fmOpl.ShowModal;
     finally
       FreeAndNil(fmOpl);
     end;
-    if ShowQuestion('Напечатать чек заказа?') then
+    if ShowQuestion('РќР°РїРµС‡Р°С‚Р°С‚СЊ С‡РµРє Р·Р°РєР°Р·Р°?') then
     begin
       PrintReportJson('ShUserZakInfo.fr3', '[{"NZ":"' + IntToStr(FZakaz) + '"}]');
     end;

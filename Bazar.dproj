@@ -483,6 +483,10 @@
             <Form>fmExpZak</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="frmSelDopZakaz.pas">
+            <Form>fmSelDopZak</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,6 +1,6 @@
 object fmZak: TfmZak
   Size.Width = 968.000000000000000000
-  Size.Height = 671.000000000000000000
+  Size.Height = 672.000000000000000000
   Size.PlatformDefault = False
   ParentShowHint = False
   ShowHint = True
@@ -239,7 +239,7 @@ object fmZak: TfmZak
   object tlZak: TListBox
     Align = Client
     Size.Width = 968.000000000000000000
-    Size.Height = 553.000000000000000000
+    Size.Height = 574.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     Columns = 3
@@ -251,7 +251,7 @@ object fmZak: TfmZak
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     Viewport.Width = 964.000000000000000000
-    Viewport.Height = 516.000000000000000000
+    Viewport.Height = 537.000000000000000000
     object ListBoxItem1: TListBoxItem
       IsSelected = True
       Size.Width = 300.000000000000000000
@@ -999,9 +999,9 @@ object fmZak: TfmZak
   end
   object Panel1: TPanel
     Align = Bottom
-    Position.Y = 601.000000000000000000
+    Position.Y = 622.000000000000000000
     Size.Width = 968.000000000000000000
-    Size.Height = 70.000000000000000000
+    Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
     TabOrder = 5
@@ -1011,11 +1011,11 @@ object fmZak: TfmZak
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
-      Margins.Bottom = 30.000000000000000000
+      Margins.Bottom = 20.000000000000000000
       Position.X = 795.000000000000000000
       Position.Y = 5.000000000000000000
       Size.Width = 168.000000000000000000
-      Size.Height = 35.000000000000000000
+      Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Center
@@ -1028,9 +1028,9 @@ object fmZak: TfmZak
       StyledSettings = [Family, Size, Style]
       IsChecked = True
       Position.X = 11.000000000000000000
-      Position.Y = 26.000000000000000000
+      Position.Y = 20.000000000000000000
       Size.Width = 217.000000000000000000
-      Size.Height = 19.000000000000000000
+      Size.Height = 14.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       Text = #1040#1074#1090#1086#1074#1099#1073#1086#1088' '#1074#1074#1077#1076#1077#1085#1085#1086#1075#1086' '#1079#1072#1082#1072#1079#1072

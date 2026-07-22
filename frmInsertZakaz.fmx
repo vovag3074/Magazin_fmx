@@ -5,8 +5,8 @@ object fmInsZak: TfmInsZak
   BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1053#1086#1074#1099#1081' '#1079#1072#1082#1072#1079
-  ClientHeight = 481
-  ClientWidth = 775
+  ClientHeight = 480
+  ClientWidth = 776
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
   FormFactor.Width = 320
@@ -16,8 +16,8 @@ object fmInsZak: TfmInsZak
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Align = Bottom
-    Position.Y = 411.000000000000000000
-    Size.Width = 775.000000000000000000
+    Position.Y = 410.000000000000000000
+    Size.Width = 776.000000000000000000
     Size.Height = 70.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
@@ -58,7 +58,7 @@ object fmInsZak: TfmInsZak
       Margins.Top = 10.000000000000000000
       Margins.Right = 20.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 445.000000000000000000
+      Position.X = 446.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 2
       Text = 'OK'#13#10'<I>[Ctrl+Enter]</I>'
@@ -106,7 +106,7 @@ object fmInsZak: TfmInsZak
       Margins.Top = 10.000000000000000000
       Margins.Right = 10.000000000000000000
       Margins.Bottom = 10.000000000000000000
-      Position.X = 615.000000000000000000
+      Position.X = 616.000000000000000000
       Position.Y = 10.000000000000000000
       TabOrder = 0
       Text = #1054#1090#1082#1072#1079
@@ -181,9 +181,9 @@ object fmInsZak: TfmInsZak
   end
   object Panel2: TPanel
     Align = Right
-    Position.X = 320.000000000000000000
+    Position.X = 321.000000000000000000
     Size.Width = 455.000000000000000000
-    Size.Height = 411.000000000000000000
+    Size.Height = 410.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object Panel3: TPanel
@@ -192,7 +192,7 @@ object fmInsZak: TfmInsZak
       Padding.Top = 2.000000000000000000
       Padding.Right = 2.000000000000000000
       Padding.Bottom = 2.000000000000000000
-      Position.Y = 361.000000000000000000
+      Position.Y = 360.000000000000000000
       Size.Width = 455.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
@@ -331,7 +331,7 @@ object fmInsZak: TfmInsZak
     object tlMod: TTMSFNCTreeView
       Align = Client
       Size.Width = 455.000000000000000000
-      Size.Height = 361.000000000000000000
+      Size.Height = 360.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       Stroke.Color = claDarkgray
@@ -616,6 +616,7 @@ object fmInsZak: TfmInsZak
       TabOrder = 0
       ParentShowHint = False
       ShowHint = True
+      OnClick = EllipsesEditButton1Click
     end
   end
   object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer

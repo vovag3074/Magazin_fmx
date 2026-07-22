@@ -1,4 +1,4 @@
-unit frmZakazy;
+п»їunit frmZakazy;
 
 interface
 
@@ -94,7 +94,7 @@ type
     procedure InsZakaz;
     procedure CheckZak;
      /// <summary>
-    /// Удаляет заказ
+    /// РЈРґР°Р»СЏРµС‚ Р·Р°РєР°Р·
     /// </summary>
     procedure DelZakaz;
     procedure ProdZakaz;
@@ -153,7 +153,7 @@ var
 begin
   if tlZak.Count > 0 then
   begin
-    if ShowQuestion('Удалить выбранный заказ?') then
+    if ShowQuestion('РЈРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Р№ Р·Р°РєР°Р·?') then
     begin
       fmMain.StartMainTransaction;
       Item := tlZak.ItemByIndex(tlZak.ItemIndex);
@@ -231,7 +231,7 @@ begin
       Data^.ID_Key := NoZak;
       Node.DataPointer := Data;
       Node.DataBoolean := True;
-      tlZakDet.AddNode(Node);//добавить дочерний элемент
+      tlZakDet.AddNode(Node);//РґРѕР±Р°РІРёС‚СЊ РґРѕС‡РµСЂРЅРёР№ СЌР»РµРјРµРЅС‚
       qMod.Next;
     until (qMod.Eof);
     if tlZakDet.Nodes.Count > 0 then
@@ -290,7 +290,7 @@ begin
   end;
   tlZak.EndUpdate;
   qAgent.Close;
-  lbSumZak.Text := 'Всего: ' + FCount.ToString;
+  lbSumZak.Text := 'Р’СЃРµРіРѕ: ' + FCount.ToString;
   fmMain.EndReadTransaction;
 end;
 
@@ -320,7 +320,7 @@ begin
   if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, ClipboardService) then
   begin
     ClipboardService.SetClipboard(Res);
-    ShowNotify('Код заказа скопирован в буфер обмена. Перейдите в радел продажи.');
+    ShowNotify('РљРѕРґ Р·Р°РєР°Р·Р° СЃРєРѕРїРёСЂРѕРІР°РЅ РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°. РџРµСЂРµР№РґРёС‚Рµ РІ СЂР°РґРµР» РїСЂРѕРґР°Р¶Рё.');
   end;
   fmMain.EndMainTransaction;
 end;
@@ -339,12 +339,12 @@ begin
     TTask.Run(
       procedure
       begin
-      // 1. Выполнение запроса в фоновом потоке
+      // 1. Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР° РІ С„РѕРЅРѕРІРѕРј РїРѕС‚РѕРєРµ
         Cursor := crAppStart;
         qDataPol.Active := True;
         I := qDataPol.RecordCount;
         SetLength(Events, I);
-      // 2. Обновление интерфейса - только через TThread.Synchronize
+      // 2. РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС‚РµСЂС„РµР№СЃР° - С‚РѕР»СЊРєРѕ С‡РµСЂРµР· TThread.Synchronize
         TThread.Synchronize(nil,
           procedure
           begin

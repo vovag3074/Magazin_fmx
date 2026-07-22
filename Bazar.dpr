@@ -44,7 +44,8 @@ uses
   frmSelectAllTovar in 'frmSelectAllTovar.pas' {fmSelAllTov},
   frmSelectSize in 'frmSelectSize.pas' {fmSelSize},
   frmSetupApp in 'frmSetupApp.pas' {fmSetup},
-  frmExportZakaz in 'frmExportZakaz.pas' {fmExpZak};
+  frmExportZakaz in 'frmExportZakaz.pas' {fmExpZak},
+  frmSelDopZakaz in 'frmSelDopZakaz.pas' {fmSelDopZak};
 
 {$R *.res}
 

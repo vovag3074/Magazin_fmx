@@ -1,10 +1,10 @@
 object fmInpMag: TfmInpMag
-  Size.Width = 953.000000000000000000
+  Size.Width = 952.000000000000000000
   Size.Height = 532.000000000000000000
   Size.PlatformDefault = False
   object Panel1: TPanel
     Align = MostTop
-    Size.Width = 953.000000000000000000
+    Size.Width = 952.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -152,7 +152,7 @@ object fmInpMag: TfmInpMag
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 647.000000000000000000
+      Position.X = 646.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 1
       Text = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
@@ -256,7 +256,7 @@ object fmInpMag: TfmInpMag
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 801.000000000000000000
+      Position.X = 800.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 5
       Text = #1059#1076#1072#1083#1080#1090#1100
@@ -266,7 +266,7 @@ object fmInpMag: TfmInpMag
   object Panel2: TPanel
     Align = MostBottom
     Position.Y = 484.000000000000000000
-    Size.Width = 953.000000000000000000
+    Size.Width = 952.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
@@ -382,7 +382,7 @@ object fmInpMag: TfmInpMag
       Margins.Top = 2.000000000000000000
       Margins.Right = 2.000000000000000000
       Margins.Bottom = 2.000000000000000000
-      Position.X = 801.000000000000000000
+      Position.X = 800.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 2
       Text = #1057#1086#1075#1083#1072#1089#1086#1074#1072#1090#1100
@@ -391,7 +391,7 @@ object fmInpMag: TfmInpMag
     object lbInfo: TLabel
       Align = Client
       StyledSettings = [Family, Size, Style]
-      Size.Width = 476.000000000000000000
+      Size.Width = 475.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       TextSettings.FontColor = claWhite
@@ -504,8 +504,8 @@ object fmInpMag: TfmInpMag
       NodesAppearance.SelectedFontColor = claBlack
       NodesAppearance.SelectedTitleFontColor = claBlack
       NodesAppearance.ExtendedSelectedFontColor = claBlack
-      NodesAppearance.SelectedFill.Color = x7F2A96FF
-      NodesAppearance.SelectedStroke.Color = x7F2A96FF
+      NodesAppearance.SelectedFill.Color = x7F0078D7
+      NodesAppearance.SelectedStroke.Color = x7F0078D7
       NodesAppearance.SelectedStroke.Width = 2.000000000000000000
       NodesAppearance.ExtendedFill.Color = xFFF0F0F0
       NodesAppearance.ExtendedStroke.Color = xFFF0F0F0
@@ -659,7 +659,7 @@ object fmInpMag: TfmInpMag
   end
   object lbZak: TListBox
     Align = Client
-    Size.Width = 637.000000000000000000
+    Size.Width = 636.000000000000000000
     Size.Height = 436.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
@@ -671,7 +671,7 @@ object fmInpMag: TfmInpMag
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 633.000000000000000000
+    Viewport.Width = 632.000000000000000000
     Viewport.Height = 432.000000000000000000
     object ListBoxItem1: TListBoxItem
       IsSelected = True

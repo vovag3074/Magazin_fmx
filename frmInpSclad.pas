@@ -739,7 +739,7 @@ var
   isCena: Boolean;
 begin
   // 28.03.2015 спрашиваем нужно ли учитывать цену
-  isCena := ShowQuestion('Нужно ли при приеме учитывать цену?');
+  isCena := not ShowQuestion('Нужно ли при приеме игнорировать цену?');
   // читаем список моделей
   XMLDoc.Root.FindNodes('Model', NodeList);
   // получаем список узлов Item
