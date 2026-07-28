@@ -73,6 +73,7 @@ type
     { Public declarations }
     procedure LoadINI;
     procedure SaveINI;
+    procedure RefreshList;
   end;
 
 var
@@ -276,6 +277,11 @@ begin
       qPol.Next;
     until qPol.Eof;
   end;
+end;
+
+procedure TfmBank.RefreshList;
+begin
+ ReadBankList;
 end;
 
 procedure TfmBank.SaveINI;

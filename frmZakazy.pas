@@ -83,6 +83,8 @@ type
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton7Click(Sender: TObject);
     procedure TMSFNCButton8Click(Sender: TObject);
+    procedure FrameKeyDown(Sender: TObject; var Key: Word;
+      var KeyChar: WideChar; Shift: TShiftState);
   private
     { Private declarations }
     FCount: Double;
@@ -185,6 +187,16 @@ begin
   LoadListZak;
 end;
 
+procedure TfmZak.FrameKeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: WideChar; Shift: TShiftState);
+begin
+  if Key = vkF11 then
+  begin
+    Key := 0;
+    InsZakaz;
+  end;
+end;
+
 procedure TfmZak.InsZakaz;
 begin
   fmInsZak := TfmInsZak.Create(fmZak);
@@ -220,10 +232,6 @@ begin
       Node.Text[1] := qMod.FieldByName('SUM_OF_CNT_MOD').AsFloat.ToString;
       Node.Values[0].CollapsedIconName := 'Item1';
       Node.Values[0].ExpandedIconName := 'Item1';
-//        if qMod.FieldByName('IS_OK').AsInteger = 1 then
-//          Node.OverlayIndex := 4;
-//        Node.ImageIndex := 1;
-//        Node.HasChildren := True;
       new(Data);
       Data^.ID_Agent := NoAgn;
       Data^.ID_Model := qMod.FieldByName('NO_MOD').AsInteger;
@@ -292,6 +300,7 @@ begin
   qAgent.Close;
   lbSumZak.Text := 'Всего: ' + FCount.ToString;
   fmMain.EndReadTransaction;
+  tlZak.SetFocus;
 end;
 
 procedure TfmZak.myCalendarDateSelected(Sender: TObject);

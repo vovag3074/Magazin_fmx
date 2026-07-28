@@ -9,6 +9,8 @@ object fmProd: TfmProd
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
     TabOrder = 0
+    ParentShowHint = False
+    ShowHint = True
     object TMSFNCButton5: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
@@ -38,6 +40,7 @@ object fmProd: TfmProd
       BitmapSize = 24
       ShowImage = True
       ShowText = False
+      Action = fmMain.acRetMain
       Size.Width = 44.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -50,8 +53,6 @@ object fmProd: TfmProd
       Position.X = 2.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 4
-      Text = #1053#1072' '#1075#1083#1072#1074#1085#1091#1102
-      OnClick = TMSFNCButton5Click
     end
     object eData: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -307,6 +308,7 @@ object fmProd: TfmProd
       BitmapSize = 24
       ShowImage = True
       ShowText = False
+      Action = fmMain.acRefresh
       Size.Width = 44.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -319,7 +321,6 @@ object fmProd: TfmProd
       Position.X = 700.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 3
-      Text = #1054#1073#1085#1086#1074#1080#1090#1100
       OnClick = btRefrClick
     end
   end

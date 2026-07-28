@@ -1,14 +1,16 @@
 object fmInv: TfmInv
-  Size.Width = 893.000000000000000000
+  Size.Width = 892.000000000000000000
   Size.Height = 584.000000000000000000
   Size.PlatformDefault = False
   object Panel1: TPanel
     Align = Top
-    Size.Width = 893.000000000000000000
+    Size.Width = 892.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'TopPanel'
     TabOrder = 0
+    ParentShowHint = False
+    ShowHint = True
     object TMSFNCButton5: TTMSFNCButton
       ImageAlign = Client
       Bitmap.PNG = {
@@ -48,6 +50,7 @@ object fmInv: TfmInv
       BitmapSize = 24
       ShowImage = True
       ShowText = False
+      Action = fmMain.acRetMain
       Size.Width = 44.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
@@ -60,8 +63,6 @@ object fmInv: TfmInv
       Position.X = 2.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 3
-      Text = #1053#1072' '#1075#1083#1072#1074#1085#1091#1102
-      OnClick = TMSFNCButton5Click
     end
     object btUpdSclad: TTMSFNCButton
       Bitmap.PNG = {
@@ -627,7 +628,7 @@ object fmInv: TfmInv
     Align = Right
     Cursor = crHSplit
     MinSize = 20.000000000000000000
-    Position.X = 536.000000000000000000
+    Position.X = 535.000000000000000000
     Position.Y = 48.000000000000000000
     Size.Width = 16.000000000000000000
     Size.Height = 536.000000000000000000
@@ -635,7 +636,7 @@ object fmInv: TfmInv
   end
   object pnZakList: TPanel
     Align = Right
-    Position.X = 552.000000000000000000
+    Position.X = 551.000000000000000000
     Position.Y = 48.000000000000000000
     Size.Width = 341.000000000000000000
     Size.Height = 536.000000000000000000
@@ -747,7 +748,7 @@ object fmInv: TfmInv
   end
   object Panel4: TPanel
     Align = Client
-    Size.Width = 263.000000000000000000
+    Size.Width = 262.000000000000000000
     Size.Height = 536.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
@@ -756,14 +757,14 @@ object fmInv: TfmInv
       Cursor = crVSplit
       MinSize = 20.000000000000000000
       Position.Y = 289.000000000000000000
-      Size.Width = 263.000000000000000000
+      Size.Width = 262.000000000000000000
       Size.Height = 16.000000000000000000
       Size.PlatformDefault = False
     end
     object tlSize: TTMSFNCDataGrid
       Align = Top
       EnableDragHighlight = False
-      Size.Width = 263.000000000000000000
+      Size.Width = 262.000000000000000000
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -851,7 +852,7 @@ object fmInv: TfmInv
           Formatting.Type = gdftFloat
           Header = #1050'-'#1074#1086
           Settings = [gcsEditor, gcsEditorItems, gcsReadOnly, gcsFormatting]
-          Width = 64.000000000000000000
+          Width = 63.000000000000000000
         end
         item
           Appearance.FilterMatchLayout.Font.Size = 14.000000000000000000
@@ -1341,7 +1342,7 @@ object fmInv: TfmInv
     end
     object tlZak: TTMSFNCTreeView
       Align = Client
-      Size.Width = 263.000000000000000000
+      Size.Width = 262.000000000000000000
       Size.Height = 231.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2

@@ -232,6 +232,7 @@ type
     /// выводится список предоплат и передачи налички (инкассации)
     /// </summary>
     procedure ReadProd;
+    procedure RefreshList;
   end;
 
 var
@@ -556,6 +557,11 @@ begin
     fmMain.EndReadTransaction;
   end;
   tlProd.ShowScrollBars := False;
+end;
+
+procedure TfmProd.RefreshList;
+begin
+ ReadProd;
 end;
 
 procedure TfmProd.retLastProdModSize;

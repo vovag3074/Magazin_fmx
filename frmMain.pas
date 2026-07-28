@@ -27,7 +27,8 @@ uses
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox,
-  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani;
+  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions,
+  FMX.ActnList;
 
 type
   TfmMain = class(TForm)
@@ -63,6 +64,9 @@ type
     TMSFNCHint1: TTMSFNCHint;
     mySave: TAESEncryption;
     lbStatus: TLabel;
+    ActionList1: TActionList;
+    acRetMain: TAction;
+    acRefresh: TAction;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -78,6 +82,8 @@ type
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
     procedure tmIdleTimer(Sender: TObject);
     procedure btZakClick(Sender: TObject);
+    procedure acRetMainExecute(Sender: TObject);
+    procedure acRefreshExecute(Sender: TObject);
   private
     { Private declarations }
     procedure LoadFormMoveToSclad;
@@ -580,6 +586,23 @@ begin
   fmZak.Parent := pMain;
   fmZak.Align := TAlignLayout.Client;
   fmZak.LoadINI;
+end;
+
+procedure TfmMain.acRefreshExecute(Sender: TObject);
+begin
+ if Assigned(fmProd) then
+ begin
+   fmProd.RefreshList;
+ end else
+ if Assigned(fmBank) then
+ begin
+   fmBank.RefreshList;
+ end;
+end;
+
+procedure TfmMain.acRetMainExecute(Sender: TObject);
+begin
+ ClearOldFrame;
 end;
 
 procedure TfmMain.ApplicationEvents1Exception(Sender: TObject; E: Exception);
