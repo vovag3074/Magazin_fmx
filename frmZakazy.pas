@@ -200,6 +200,7 @@ end;
 procedure TfmZak.InsZakaz;
 begin
   fmInsZak := TfmInsZak.Create(fmZak);
+  fmInsZak.GetAgent;
   if fmInsZak.ShowModal = mrOk then
   begin
     LoadListZak;

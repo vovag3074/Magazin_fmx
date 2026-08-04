@@ -72,6 +72,7 @@ type
   public
     { Public declarations }
     procedure EditZakaz(NoZakaz: Integer);
+    procedure GetAgent;
   end;
 
 var
@@ -197,6 +198,21 @@ begin
   ReadModelList;
 end;
 
+procedure TfmInsZak.GetAgent;
+begin
+  eAgn.Text := '';
+  fmSelAgn := TfmSelAgn.Create(fmInsZak);
+  fmSelAgn.LoadList;
+  if fmSelAgn.ShowModal = mrOk then
+  begin
+    eAgn.Text := fmSelAgn.NameAgent;
+    FAgent := fmSelAgn.NoAgent;
+  end;
+  fmSelAgn.DisposeOf;
+  fmSelAgn := nil;
+  eCode.SetFocus;
+end;
+
 procedure TfmInsZak.goDown;
 var
   Node: tTmsFNCTreeViewNode;
@@ -309,17 +325,7 @@ end;
 
 procedure TfmInsZak.FindAgentClick(Sender: TObject);
 begin
-  eAgn.Text := '';
-  fmSelAgn := TfmSelAgn.Create(fmInsZak);
-  fmSelAgn.LoadList;
-  if fmSelAgn.ShowModal = mrOk then
-  begin
-    eAgn.Text := fmSelAgn.NameAgent;
-    FAgent := fmSelAgn.NoAgent;
-  end;
-  fmSelAgn.DisposeOf;
-  fmSelAgn := nil;
-  eCode.SetFocus;
+ GetAgent;
 end;
 
 procedure TfmInsZak.tlModBeforeExpandNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode; var ACanExpand: Boolean);
