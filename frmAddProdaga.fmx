@@ -5,7 +5,7 @@ object fmAddProdAgn: TfmAddProdAgn
   BorderIcons = [biSystemMenu]
   BorderStyle = ToolWindow
   Caption = #1055#1088#1086#1076#1072#1078#1072' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1102
-  ClientHeight = 567
+  ClientHeight = 568
   ClientWidth = 1024
   Position = OwnerFormCenter
   StyleBook = fmMain.stbMain
@@ -16,13 +16,13 @@ object fmAddProdAgn: TfmAddProdAgn
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Align = MostBottom
-    Position.Y = 479.000000000000000000
+    Position.Y = 480.000000000000000000
     Size.Width = 1024.000000000000000000
     Size.Height = 88.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'OfficePanel'
     TabOrder = 0
-    object TMSFNCButton3: TTMSFNCButton
+    object btClose: TTMSFNCButton
       Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
         F80000000473424954080808087C08648800000234494441544889ED54316FDA
@@ -59,7 +59,7 @@ object fmAddProdAgn: TfmAddProdAgn
       Position.Y = 20.000000000000000000
       TabOrder = 0
       Text = #1047#1072#1082#1088#1099#1090#1100
-      OnClick = TMSFNCButton3Click
+      OnClick = btCloseClick
     end
     object btSave: TTMSFNCButton
       Bitmap.PNG = {
@@ -112,7 +112,7 @@ object fmAddProdAgn: TfmAddProdAgn
     Align = MostRight
     Position.X = 704.000000000000000000
     Size.Width = 320.000000000000000000
-    Size.Height = 479.000000000000000000
+    Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'listboxstyle'
     TabOrder = 1
@@ -123,7 +123,7 @@ object fmAddProdAgn: TfmAddProdAgn
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     Viewport.Width = 316.000000000000000000
-    Viewport.Height = 475.000000000000000000
+    Viewport.Height = 476.000000000000000000
     object ListBoxItem4: TListBoxItem
       Size.Width = 316.000000000000000000
       Size.Height = 70.000000000000000000
@@ -520,7 +520,7 @@ object fmAddProdAgn: TfmAddProdAgn
       Size.Width = 28.000000000000000000
       Size.Height = 29.000000000000000000
       Size.PlatformDefault = False
-      StyleLookup = 'searchtoolbutton'
+      StyleLookup = 'searcheditbutton'
       TabOrder = 0
       Text = #1055#1086#1080#1089#1082
       OnClick = btSelAgnClick
@@ -531,7 +531,7 @@ object fmAddProdAgn: TfmAddProdAgn
     TabOrder = 4
     Position.X = 32.000000000000000000
     Position.Y = 428.000000000000000000
-    Hint = '<Ins> - '#1087#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#13#10'<Enter> - '#1074#1074#1086#1076' '#1096#1090#1088#1080#1093'-'#1082#1086#1076#1103
+    Hint = '<F11> - '#1087#1086#1080#1089#1082' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#13#10'<Enter> - '#1074#1074#1086#1076' '#1096#1090#1088#1080#1093'-'#1082#1086#1076#1103
     Size.Width = 273.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
@@ -767,7 +767,7 @@ object fmAddProdAgn: TfmAddProdAgn
       item
         MultiResBitmap = <
           item
-            Size = 16
+            Size = 20
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -1047,6 +1047,8 @@ object fmAddProdAgn: TfmAddProdAgn
         Layers = <
           item
             Name = 'people-employee'
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item

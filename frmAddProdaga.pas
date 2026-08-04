@@ -48,7 +48,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    TMSFNCButton3: TTMSFNCButton;
+    btClose: TTMSFNCButton;
     btSave: TTMSFNCButton;
     qLock: TFDCommand;
     Panel2: TPanel;
@@ -66,7 +66,7 @@ type
     procedure btSelAgnClick(Sender: TObject);
     procedure lbZakDblClick(Sender: TObject);
     procedure eEnterClick(Sender: TObject);
-    procedure TMSFNCButton3Click(Sender: TObject);
+    procedure btCloseClick(Sender: TObject);
     procedure eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure btSaveClick(Sender: TObject);
     procedure pmSkidClick(Sender: TObject);
@@ -126,8 +126,9 @@ end;
 
 procedure TfmAddProdAgn.eTxtKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
-  if ((Key = vkSpace) or (Key = vkInsert)) then
+  if ((Key = vkSpace) or (Key = vkF11)) then
   begin
+    Key := 0;
     btSelAgnClick(Sender);
   end;
 end;
@@ -399,7 +400,16 @@ begin
   begin
     try
       if trim(eTxt.Text) = '' then
-        Exit;
+      begin
+       if tlList.Nodes.Count=0 then // ничего не продали
+       begin
+         Exit;
+       end else
+       begin
+         btCloseClick(Sender); // если продажи есть, а кода нет - закрываем окно
+         Exit;
+       end;
+      end;
       qIns.Active := false;
       var T: Int64;
       T := eTxt.Text.ToInt64;
@@ -442,7 +452,7 @@ begin
   Beep;
 end;
 
-procedure TfmAddProdAgn.TMSFNCButton3Click(Sender: TObject);
+procedure TfmAddProdAgn.btCloseClick(Sender: TObject);
 begin
   if eTxt.Text.Trim <> '' then
   begin
