@@ -948,7 +948,7 @@ end;
 
 procedure TfmProd.btRepProdClick(Sender: TObject);
 begin
-  ShowReportJson('SRepProdAgn.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + eData.Text + '"}]');
+  ShowReportJson('SRepProdAgn*.fr3', '[{"NG":"' + IntToStr(FActiveProd) + '", "DT":"' + eData.Text + '"}]');
 end;
 
 procedure TfmProd.btRepProdMouseEnter(Sender: TObject);

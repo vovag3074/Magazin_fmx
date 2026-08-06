@@ -321,7 +321,6 @@ object fmProd: TfmProd
       Position.X = 700.000000000000000000
       Position.Y = 2.000000000000000000
       TabOrder = 3
-      OnClick = btRefrClick
     end
   end
   object ppCalendar: TTMSFNCPopup
