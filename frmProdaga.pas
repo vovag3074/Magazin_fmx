@@ -167,6 +167,7 @@ type
     TMSFNCButton1: TTMSFNCButton;
     qDelSize: TFDCommand;
     btRefr: TTMSFNCButton;
+    qDelMod: TFDCommand;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -223,6 +224,7 @@ type
     procedure ListFullMoneySend(NoVal: Integer);
     procedure SetSkidka;
     procedure retLastProdModSize;
+    procedure DelMod;
   public
     { Public declarations }
     procedure LoadINI;
@@ -245,6 +247,29 @@ uses
   frmSelectDate, frmSendMoney, frmSelUserProd, frmSetFloat;
 
 {$R *.fmx}
+
+procedure TfmProd.DelMod;
+var
+  MainNode: TTMSFNCTreeViewNode;
+  Node: TListBoxItem;
+  FAgent: Integer;
+begin
+  if showQuestion('Вернуть выбранную модель?') then
+  begin
+    Node := tlProd.ItemByIndex(tlProd.ItemIndex);
+    FAgent := Node.TagString.ToInteger;
+    MainNode := tlPMod.FocusedNode;
+    qDelMod.Active := false;
+    qDelMod.Prepare;
+    qDelMod.ParamByName('SD').AsDate := StrToDate(fmProd.eData.Text);
+    qDelMod.ParamByName('ED').AsDate := StrToDate(fmProd.eData.Text);
+    qDelMod.ParamByName('NG').AsInteger := FAgent;
+    qDelMod.ParamByName('NM').AsInteger := MainNode.DataInteger;
+    qDelMod.Execute;
+    fmMain.IBT.Commit;
+    ReadProd;
+  end;
+end;
 
 procedure TfmProd.DropDownEditButton1Click(Sender: TObject);
 begin
@@ -561,7 +586,7 @@ end;
 
 procedure TfmProd.RefreshList;
 begin
- ReadProd;
+  ReadProd;
 end;
 
 procedure TfmProd.retLastProdModSize;
@@ -569,18 +594,21 @@ var
   Node: TListBoxItem;
   FAgent: Integer;
 begin
-  Node := tlProd.ItemByIndex(tlProd.ItemIndex);
-  FAgent := Node.TagString.ToInteger;
-  qDelSize.Active := false;
-  fmMain.StartMainTransaction;
-  qDelSize.Prepare;
-  qDelSize.ParamByName('DATA_PROD').AsDate := StrToDate(fmProd.eData.Text);
-  qDelSize.ParamByName('NO_AGN').AsInteger := FAgent;
-  qDelSize.ParamByName('NO_M_SIZE').AsInteger := tlPMod.FocusedNode.DataInteger;
-  qDelSize.Execute;
-  fmMain.EndMainTransaction;
-  pmProd.IsOpen := False;
-  ReadProd;
+  if showQuestion('Вернуть выбранный размер?') then
+  begin
+    Node := tlProd.ItemByIndex(tlProd.ItemIndex);
+    FAgent := Node.TagString.ToInteger;
+    qDelSize.Active := false;
+    fmMain.StartMainTransaction;
+    qDelSize.Prepare;
+    qDelSize.ParamByName('DATA_PROD').AsDate := StrToDate(fmProd.eData.Text);
+    qDelSize.ParamByName('NO_AGN').AsInteger := FAgent;
+    qDelSize.ParamByName('NO_M_SIZE').AsInteger := tlPMod.FocusedNode.DataInteger;
+    qDelSize.Execute;
+    fmMain.EndMainTransaction;
+    pmProd.IsOpen := False;
+    ReadProd;
+  end;
 end;
 
 procedure TfmProd.SaveINI;
@@ -916,7 +944,6 @@ end;
 
 procedure TfmProd.tlPModNodeClick(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode);
 begin
-  btRetMod.Enabled := not ANode.Node.DataBoolean;
   btSetSkid.Enabled := ANode.Node.DataBoolean;
 end;
 
@@ -1003,7 +1030,14 @@ end;
 
 procedure TfmProd.btRetModClick(Sender: TObject);
 begin
-  retLastProdModSize;
+  if tlPMod.FocusedNode.DataBoolean then
+  begin
+    DelMod;
+  end
+  else
+  begin
+    retLastProdModSize;
+  end;
 end;
 
 procedure TfmProd.TMSFNCButton10Click(Sender: TObject);

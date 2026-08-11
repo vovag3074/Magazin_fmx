@@ -1867,21 +1867,18 @@ object fmProd: TfmProd
                 BitmapSize = 32
                 ShowImage = True
                 ShowText = False
-                Font.Color = xFFA0A0A0
                 Size.Width = 38.000000000000000000
                 Size.Height = 40.000000000000000000
                 Size.PlatformDefault = False
                 Align = Top
                 CanFocus = False
-                Enabled = False
                 Position.X = 2.000000000000000000
                 Position.Y = 86.000000000000000000
                 TabOrder = 2
-                Text = #1042#1077#1088#1085#1091#1090#1100' '#1086#1076#1085#1091' '#1087#1072#1088#1091
+                Text = #1042#1086#1079#1074#1088#1072#1090
                 OnClick = btRetModClick
                 OnMouseEnter = btRepProdMouseEnter
                 OnMouseLeave = btRepProdMouseLeave
-                OldFontColor = claBlack
               end
               object btRepFullInfo: TTMSFNCButton
                 ImageAlign = Client
@@ -4239,5 +4236,31 @@ object fmProd: TfmProd
       end>
     Left = 328
     Top = 304
+  end
+  object qDelMod: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'execute procedure RET_PROD_ALL_MOD(:NM, :NG, :SD, :ED)'
+      '')
+    ParamData = <
+      item
+        Name = 'NM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SD'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ED'
+        ParamType = ptInput
+      end>
+    Left = 392
+    Top = 296
   end
 end
