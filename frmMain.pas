@@ -26,9 +26,8 @@ uses
   Macapi.Helpers, //You need it to use the function StrToNSStr().
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
-  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox,
-  FMX.Edit, CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions,
-  FMX.ActnList;
+  FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox, FMX.Edit,
+  CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions, FMX.ActnList;
 
 type
   TfmMain = class(TForm)
@@ -164,7 +163,8 @@ threadvar
 implementation
 
 uses
-  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents, frmZakazy, frmSetupApp;
+  frmInpSclad, frmInvScald, frmBank, frmProdaga, frmAgents, frmZakazy,
+  frmSetupApp;
 
 {$R *.fmx}
 
@@ -205,32 +205,32 @@ begin
     pMain.SetFocus;
     fmAgn.Release;
     fmAgn := nil;
-  end else if Assigned(fmZak) then
+  end
+  else if Assigned(fmZak) then
   begin
     fmZak.SaveINI;
     pMain.SetFocus;
     fmZak.Release;
-    fmZak:=nil;
+    fmZak := nil;
   end;
   myList.Visible := True;
 end;
 
 procedure TfmMain.DoDBConnect;
 begin
-   if fmMain.IBC.Connected then
+  if fmMain.IBC.Connected then
   begin
-    fmMain.IBC.Connected:=False;
+    fmMain.IBC.Connected := False;
   end;
-  lbStatus.Text:='';
-  var S:string;
-   S :=myINI.ReadString('DBConnect', 'DataBaseName', '');
-  if S.Trim ='' then
-   begin
-     ShowError('Неуказаны параметры соединения с Базой Данных. Зайдите в настройки и'+
-     'укажите параметры соединения...');
-     Exit;
-   end;
-  fmMain.IBC.Params.Database:=S;
+  lbStatus.Text := '';
+  var S: string;
+  S := myINI.ReadString('DBConnect', 'DataBaseName', '');
+  if S.Trim = '' then
+  begin
+    ShowError('Неуказаны параметры соединения с Базой Данных. Зайдите в настройки и' + 'укажите параметры соединения...');
+    Exit;
+  end;
+  fmMain.IBC.Params.Database := S;
   fmMain.IBC.Params.Values['Server'] := myINI.ReadString('DBConnect', 'ServerName', '');
   fmMain.IBC.Params.Username := myINI.ReadString('DBConnect', 'UserName', 'sysdba');
   var T: string;
@@ -246,16 +246,16 @@ begin
     fmMain.IBC.Params.Password := T;
   end;
   fmMain.IBC.Connected := True;
-  lbStatus.Text:=fmMain.IBC.Params.Values['Server']+':'+fmMain.IBC.Params.Database;
-  fmMain.Caption:='Рабочее место: '+fmMain.IBC.Params.Database;
+  lbStatus.Text := fmMain.IBC.Params.Values['Server'] + ':' + fmMain.IBC.Params.Database;
+  fmMain.Caption := 'Рабочее место: ' + fmMain.IBC.Params.Database;
 end;
 
 procedure TfmMain.DoSetup;
 begin
- fmSetup := TfmSetup.Create(fmMain);
- fmSetup.ShowModal;
- fmSetup.Free;
- fmSetup:=nil;
+  fmSetup := TfmSetup.Create(fmMain);
+  fmSetup.ShowModal;
+  fmSetup.Free;
+  fmSetup := nil;
 end;
 
 procedure TfmMain.EndAllTransaction;
@@ -590,19 +590,19 @@ end;
 
 procedure TfmMain.acRefreshExecute(Sender: TObject);
 begin
- if Assigned(fmProd) then
- begin
-   fmProd.RefreshList;
- end else
- if Assigned(fmBank) then
- begin
-   fmBank.RefreshList;
- end;
+  if Assigned(fmProd) then
+  begin
+    fmProd.RefreshList;
+  end
+  else if Assigned(fmBank) then
+  begin
+    fmBank.RefreshList;
+  end;
 end;
 
 procedure TfmMain.acRetMainExecute(Sender: TObject);
 begin
- ClearOldFrame;
+  ClearOldFrame;
 end;
 
 procedure TfmMain.ApplicationEvents1Exception(Sender: TObject; E: Exception);

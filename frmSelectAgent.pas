@@ -44,6 +44,11 @@ type
     qAddSity: TFDCommand;
     HintPanel: TCalloutPanel;
     HintLabel: TLabel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    btFRirst: TTMSFNCButton;
+    TMSFNCButton5: TTMSFNCButton;
+    TMSFNCButton6: TTMSFNCButton;
     procedure FormCreate(Sender: TObject);
     procedure EFindSityTyping(Sender: TObject);
     procedure EditButton1Click(Sender: TObject);
@@ -70,6 +75,9 @@ type
     procedure btFTSMouseEnter(Sender: TObject);
     procedure btFTSMouseLeave(Sender: TObject);
     procedure dxAddClick(Sender: TObject);
+    procedure btFRirstClick(Sender: TObject);
+    procedure TMSFNCButton5Click(Sender: TObject);
+    procedure TMSFNCButton6Click(Sender: TObject);
   private
     { Private declarations }
     FAgNo: Integer;
@@ -104,6 +112,12 @@ threadvar
 {$R *.fmx}
 
 { TfmSelAgn }
+
+procedure TfmSelAgn.btFRirstClick(Sender: TObject);
+begin
+  FPage := 0;
+  ListAgent;
+end;
 
 procedure TfmSelAgn.btFTS2Click(Sender: TObject);
 begin
@@ -272,7 +286,6 @@ var
   ANode: TTMSFNCTreeViewNode;
 begin
   try
-    FPage := 0;
     tlAgn.Nodes.Clear;
     dxAdd.Enabled := tlSity.FocusedNode.DataInteger > 0;
     qUsr.Close;
@@ -571,6 +584,7 @@ procedure TfmSelAgn.tlSityFocusedNodeChanged(Sender: TObject; ANode:
   TTMSFNCTreeViewVirtualNode);
 begin
   eFind.Text := '';
+  FPage := 0;
   ListAgent;
 end;
 
@@ -599,6 +613,20 @@ begin
     LoadList;
     tlSity.LookupNode(SityStr, False, 0, False, true);
   end;
+end;
+
+procedure TfmSelAgn.TMSFNCButton5Click(Sender: TObject);
+begin
+   FPage := FPage - 10;
+  if FPage < 0 then
+    FPage := 0;
+  ListAgent;
+end;
+
+procedure TfmSelAgn.TMSFNCButton6Click(Sender: TObject);
+begin
+ FPage := FPage + 10;
+ ListAgent;
 end;
 
 procedure TfmSelAgn.btOKClick(Sender: TObject);
