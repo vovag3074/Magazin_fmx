@@ -6,6 +6,7 @@ program Bazar;
 
 uses
   System.StartUpCopy,
+  SysUtils,
   FMX.Forms,
   frmMain in 'frmMain.pas' {fmMain},
   frmInpSclad in 'frmInpSclad.pas' {fmInpMag: TFrame},
@@ -50,6 +51,7 @@ uses
 {$R *.res}
 
 begin
+  FormatSettings.DecimalSeparator := ',';
   Application.Initialize;
   Application.CreateForm(TfmMain, fmMain);
   Application.Run;

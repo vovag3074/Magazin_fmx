@@ -320,7 +320,10 @@
         <Icns_MainIcns>Bazar_Icns1.icns</Icns_MainIcns>
         <UWP_DelphiLogo44>..\..\..\..\..\Pictures\MyIcon\png\64px\large\bank.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\..\..\..\Pictures\MyIcon\png\128px\large\bank.png</UWP_DelphiLogo150>
-        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=1.0.0.0;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=2.0.0.1;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_MajorVer>2</VerInfo_MajorVer>
+        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
+        <VerInfo_Build>1</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -328,164 +331,126 @@
         </DelphiCompile>
         <DCCReference Include="frmMain.pas">
             <Form>fmMain</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmInpSclad.pas">
             <Form>fmInpMag</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmSynhro.pas">
             <Form>fmSync</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSaveMove.pas">
             <Form>fmSMove</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmReport.pas">
             <Form>fmReport</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmReportList.pas">
             <Form>fmRepList</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmInvScald.pas">
             <Form>fmInv</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmSetModSizeSclad.pas">
             <Form>fmSetSize</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmBank.pas">
             <Form>fmBank</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmAddDop.pas">
             <Form>fmAddDop</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmCalc.pas">
             <Form>fmCalc</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectAgent.pas">
             <Form>fmSelAgn</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmAddString.pas">
             <Form>fmGetStr</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectBankAttribyte.pas">
             <Form>fmSelBank</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmInfoOplata.pas">
             <Form>fmInfoOpl</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmProdaga.pas">
             <Form>fmProd</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmAddProdaga.pas">
             <Form>fmAddProdAgn</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmOplata.pas">
             <Form>fmOpl</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmPredopByCeh.pas">
             <Form>fmPredByCeh</Form>
         </DCCReference>
         <DCCReference Include="frmLockPredop.pas">
             <Form>fmLockPred</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelForPred.pas">
             <Form>fmSelPred</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectDate.pas">
             <Form>fmSelData</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSendMoney.pas">
             <Form>fmSndMoney</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectPol.pas">
             <Form>fmSelPol</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelUserProd.pas">
             <Form>fmSelProd</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSetFloat.pas">
             <Form>fmSelFloat</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmAgents.pas">
             <Form>fmAgn</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmFullInfoPokup.pas">
             <Form>fmUserInfo</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectTovar.pas">
             <Form>fmSelTov</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmOperationAgent.pas">
             <Form>fmOpAgent</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmPredoplata.pas">
             <Form>fmPred</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmReturnProd.pas">
             <Form>fmRetProd</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmZakazy.pas">
             <Form>fmZak</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frmInsertZakaz.pas">
             <Form>fmInsZak</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectAllTovar.pas">
             <Form>fmSelAllTov</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelectSize.pas">
             <Form>fmSelSize</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSetupApp.pas">
             <Form>fmSetup</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmExportZakaz.pas">
             <Form>fmExpZak</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="frmSelDopZakaz.pas">
             <Form>fmSelDopZak</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

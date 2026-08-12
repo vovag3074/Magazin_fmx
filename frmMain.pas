@@ -433,7 +433,7 @@ begin
   if (FEdit.Text.IsEmpty) or (FEdit.Text.Equals('-')) then // Если пусто (ничего не введено или все удалено) или только минус, ничего не делаем
     Exit;
   FEdit.Text := FEdit.Text.Replace('.', ','); // Заменяйм точку запятой
-  FEdit.CaretPosition := FEdit.CaretPosition + 2;
+  FEdit.CaretPosition := FEdit.Text.Length + 2;
   if FEdit.Text.Equals(',') then // Если введен разделитель, добавляем перед ним ноль для красоты (не обязательно)
   begin
     FEdit.Text := '0,';
@@ -464,7 +464,14 @@ begin
   try
     My := tStringList.Create;
     My.Clear;
-    My.Text := UTF8ToString(SError);
+    if Pos('exception', S) > 0 then
+    begin
+      My.Text := UTF8ToString(SError);
+    end
+    else
+    begin
+      My.Text := SError;
+    end;
     for I := 0 to My.Count - 1 do
     begin
       S := My.Strings[I];
