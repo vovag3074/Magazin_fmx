@@ -273,8 +273,8 @@ begin
     qAgent.First;
     repeat
       Node := TListBoxItem.Create(tlZak);
-      if qAgent.FieldByName('IS_EXP').AsInteger = 0 then
-      begin
+      if ((qAgent.FieldByName('IS_EXP').AsInteger = 0)
+      and (qAgent.FieldByName('IS_OK').AsInteger = 0)) then      begin
         Node.StyleLookup := 'zakListExp';
       end
       else if qAgent.FieldByName('IS_OK').AsInteger = 1 then

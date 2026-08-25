@@ -320,10 +320,10 @@
         <Icns_MainIcns>Bazar_Icns1.icns</Icns_MainIcns>
         <UWP_DelphiLogo44>..\..\..\..\..\Pictures\MyIcon\png\64px\large\bank.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\..\..\..\Pictures\MyIcon\png\128px\large\bank.png</UWP_DelphiLogo150>
-        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=2.0.0.1;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=2.0.0.2;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_MajorVer>2</VerInfo_MajorVer>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Build>2</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
