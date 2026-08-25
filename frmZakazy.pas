@@ -26,11 +26,6 @@ type
     ppCalendar: TTMSFNCPopup;
     qAgent: TFDQuery;
     tlZak: TListBox;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
-    ListBoxItem3: TListBoxItem;
-    ListBoxItem4: TListBoxItem;
-    ListBoxItem5: TListBoxItem;
     lbSearch: TSearchBox;
     ClearEditButton1: TClearEditButton;
     Layout1: TLayout;
@@ -66,6 +61,11 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Layout3: TLayout;
+    Rectangle3: TRectangle;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
@@ -83,8 +83,7 @@ type
     procedure TMSFNCButton6Click(Sender: TObject);
     procedure TMSFNCButton7Click(Sender: TObject);
     procedure TMSFNCButton8Click(Sender: TObject);
-    procedure FrameKeyDown(Sender: TObject; var Key: Word;
-      var KeyChar: WideChar; Shift: TShiftState);
+    procedure FrameKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
   private
     { Private declarations }
     FCount: Double;
@@ -187,8 +186,7 @@ begin
   LoadListZak;
 end;
 
-procedure TfmZak.FrameKeyDown(Sender: TObject; var Key: Word;
-  var KeyChar: WideChar; Shift: TShiftState);
+procedure TfmZak.FrameKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
 begin
   if Key = vkF11 then
   begin
@@ -252,7 +250,6 @@ end;
 
 procedure TfmZak.LoadINI;
 begin
-  tlZak.Items.Clear;
   tlZakDet.AdaptToStyle := True;
   eData.Text := DateToStr(Now);
   myCalendar.Date := Now;
@@ -266,8 +263,8 @@ var
 begin
   fmMain.StartReadTransaction;
   FCount := 0;
-  tlZak.Items.Clear;
   tlZak.BeginUpdate;
+  tlZak.Items.Clear;
   qAgent.Prepare;
   qAgent.ParamByName('ED').AsDate := StrToDate(eData.Text);
   qAgent.Active := True;
@@ -276,7 +273,11 @@ begin
     qAgent.First;
     repeat
       Node := TListBoxItem.Create(tlZak);
-      if qAgent.FieldByName('IS_OK').AsInteger=1 then
+      if qAgent.FieldByName('IS_EXP').AsInteger = 0 then
+      begin
+        Node.StyleLookup := 'zakListExp';
+      end
+      else if qAgent.FieldByName('IS_OK').AsInteger = 1 then
       begin
         Node.StyleLookup := 'zakListProd';
       end
