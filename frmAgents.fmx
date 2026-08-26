@@ -166,6 +166,7 @@ object fmAgn: TfmAgn
     object eFind: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Right
+      StyleLookup = 'transparenteditstyle'
       TabOrder = 7
       Position.X = 768.000000000000000000
       Position.Y = 5.000000000000000000
@@ -526,7 +527,7 @@ object fmAgn: TfmAgn
           TabOrder = 2
           Text = #1044#1086#1073#1072#1074#1080#1090#1100
         end
-        object dxUpdAgn: TTMSFNCButton
+        object dxDelAgn: TTMSFNCButton
           Bitmap.PNG = {
             89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
             F40000000473424954080808087C0864880000049E494441545885E596696C54
@@ -581,9 +582,9 @@ object fmAgn: TfmAgn
           Position.Y = 82.000000000000000000
           TabOrder = 1
           Text = #1059#1076#1072#1083#1080#1090#1100
-          OnClick = dxUpdAgnClick
+          OnClick = dxDelAgnClick
         end
-        object dxDelAgn: TTMSFNCButton
+        object dxUpdAgn: TTMSFNCButton
           Bitmap.PNG = {
             89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
             F40000000473424954080808087C0864880000043C494441545885E5965B6C54
@@ -635,6 +636,7 @@ object fmAgn: TfmAgn
           Position.Y = 42.000000000000000000
           TabOrder = 0
           Text = #1048#1079#1084#1077#1085#1080#1090#1100
+          OnClick = dxUpdAgnClick
         end
       end
     end
@@ -1133,12 +1135,37 @@ object fmAgn: TfmAgn
           end
         end
       end
+      object TD: TTMSFNCTaskDialog
+        Size.Width = 26.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
+        Position.X = 64.000000000000000000
+        Position.Y = 400.000000000000000000
+        Appearance.DialogColor = xFF16212E
+        Appearance.DialogPanelFill.Color = xFF0F0F0F
+        Appearance.DialogPanelStroke.Kind = gskNone
+        Appearance.DialogPanelStroke.Color = xFFDFDFDF
+        Appearance.InstructionColor = xFFFF54C4
+        Appearance.ContentColor = claWhite
+        Appearance.ExpandedTextColor = claBlack
+        Appearance.FooterColor = claBlack
+        Title = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1077
+        Instruction = #1059#1076#1072#1083#1077#1085#1080#1077' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
+        Icon = tdiQuestion
+        Content = #1059#1076#1072#1083#1080#1090#1100' '#1074#1099#1073#1088#1072#1085#1085#1086#1075#1086' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103'?'
+        DefaultButton = 1
+        CommonButtons = [tcbYes, tcbNo]
+        ButtonFont.Size = 14.000000000000000000
+        ButtonFont.Color = claWhite
+        CommandLinkFont.Size = 15.000000000000000000
+        CommandLinkFont.Color = xFF0053C4
+      end
     end
   end
   object pmAgent: TPopupMenu
     Images = SVGIconImageList1
-    Left = 305
-    Top = 560
+    Left = 297
+    Top = 448
     object btAgnManage: TMenuItem
       Text = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077
       ImageIndex = 7
@@ -1341,6 +1368,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'give-money'
         SVGText = 
@@ -1477,6 +1505,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'give-money-clock'
         SVGText = 
@@ -1644,6 +1673,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'people-employee'
         SVGText = 
@@ -2103,6 +2133,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'shopping-basket-cancel-filled'
         SVGText = 
@@ -2198,16 +2229,16 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'give-money'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'give-money-clock'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
@@ -2230,8 +2261,8 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-employee'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
@@ -2310,8 +2341,8 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'shopping-basket-cancel-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end>
     Left = 128

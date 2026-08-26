@@ -526,7 +526,7 @@ begin
   fmExpZak := TfmExpZak.Create(fmZak);
   if fmExpZak.ShowModal = mrOk then
   begin
-
+    LoadListZak;
   end;
   fmExpZak.Free;
   fmExpZak := nil;

@@ -10,7 +10,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.Objects,
-  FMX.Ani, FMX.TabControl, FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FMX.Menus;
+  FMX.Ani, FMX.TabControl, FMX.TMSFNCCustomComponent, FMX.TMSFNCPopup, FMX.Menus,
+  FMX.TMSFNCTaskDialog;
 
 type
   TfmAgn = class(TFrame)
@@ -52,8 +53,8 @@ type
     ppAg: TPopup;
     Panel5: TPanel;
     dxInsAgn: TTMSFNCButton;
-    dxUpdAgn: TTMSFNCButton;
     dxDelAgn: TTMSFNCButton;
+    dxUpdAgn: TTMSFNCButton;
     pmAgent: TPopupMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -91,6 +92,7 @@ type
     Label7: TLabel;
     Label8: TLabel;
     MenuItem4: TMenuItem;
+    TD: TTMSFNCTaskDialog;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure t1Timer(Sender: TObject);
@@ -115,6 +117,7 @@ type
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure ClearEditButton1Click(Sender: TObject);
+    procedure dxDelAgnClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -236,6 +239,12 @@ end;
 /// <summary>
 /// Добавить город
 /// </summary>
+procedure TfmAgn.dxDelAgnClick(Sender: TObject);
+begin
+ var I:Integer := TD.Execute;
+ ShowInfo(I.ToString);
+end;
+
 procedure TfmAgn.dxDelSityClick(Sender: TObject);
 begin
   DelSity;
