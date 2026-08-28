@@ -92,7 +92,8 @@ type
     Label7: TLabel;
     Label8: TLabel;
     MenuItem4: TMenuItem;
-    TD: TTMSFNCTaskDialog;
+    qDelAgn: TFDCommand;
+    qUpdUsrSity: TFDCommand;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure eFindKeyDown(Sender: TObject; var Key: Word; var KeyChar: WideChar; Shift: TShiftState);
     procedure t1Timer(Sender: TObject);
@@ -118,6 +119,8 @@ type
     procedure MenuItem4Click(Sender: TObject);
     procedure ClearEditButton1Click(Sender: TObject);
     procedure dxDelAgnClick(Sender: TObject);
+    procedure pmDelAgnClick(Sender: TObject);
+    procedure pmMoveSityClick(Sender: TObject);
   private
     { Private declarations }
     FSity, FUser: string;
@@ -139,6 +142,10 @@ type
     procedure showRepAgn;
     procedure AddAgent;
     procedure ShowSumDolg;
+    /// <summary>
+    /// Удалить (спрятать) покупателя
+    /// </summary>
+    procedure DelAgent;
   public
     { Public declarations }
     procedure LoadINI;
@@ -156,6 +163,10 @@ type
     /// возврат со старой продажи
     /// </summary>
     procedure retOldProd;
+    /// <summary>
+    /// Поменять город у покупателя
+    /// </summary>
+    procedure MoveUserSity;
   end;
 
 var
@@ -169,7 +180,7 @@ implementation
 
 uses
   frmMain, frmFullInfoPokup, frmOplata, frmAddString, frmReport,
-  frmOperationAgent, frmPredoplata, frmReturnProd;
+  frmOperationAgent, frmPredoplata, frmReturnProd, frmSelectSity;
 
 {$R *.fmx}
 
@@ -204,6 +215,20 @@ begin
  eFind.SetFocus;
 end;
 
+procedure TfmAgn.DelAgent;
+begin
+  if ShowQuestion('Удалить выбранного агента?') then
+  begin
+    fmMain.StartMainTransaction;
+    qDelAgn.Active := false;
+    qDelAgn.Prepare;
+    qDelAgn.ParamByName('NG').AsInteger := tlAgn.ItemByIndex(tlAgn.ItemIndex).tag;
+    qDelAgn.Execute;
+    fmMain.EndMainTransaction;
+    LoadAgentList;
+  end;
+end;
+
 procedure TfmAgn.DelSity;
 var
   Item: TListBoxItem;
@@ -236,13 +261,9 @@ begin
   ShowSumDolg;
 end;
 
-/// <summary>
-/// Добавить город
-/// </summary>
 procedure TfmAgn.dxDelAgnClick(Sender: TObject);
 begin
- var I:Integer := TD.Execute;
- ShowInfo(I.ToString);
+ DelAgent;
 end;
 
 procedure TfmAgn.dxDelSityClick(Sender: TObject);
@@ -502,6 +523,29 @@ begin
  retOldProd;
 end;
 
+procedure TfmAgn.MoveUserSity;
+  var
+  I: Integer;
+begin
+  I := GetSityNo;
+  if I <> -1 then
+  begin
+    fmMain.StartMainTransaction;
+    qUpdUsrSity.Close;
+    qUpdUsrSity.Prepare;
+    qUpdUsrSity.ParamByName('NO_AGN').AsInteger := tlAgn.ItemByIndex(tlAgn.ItemIndex).Tag;
+    qUpdUsrSity.ParamByName('NO_SITY').AsInteger := I;
+    qUpdUsrSity.Execute;
+    fmMain.EndMainTransaction;
+    refrSelAgn;
+  end;
+end;
+
+procedure TfmAgn.pmDelAgnClick(Sender: TObject);
+begin
+ DelAgent;
+end;
+
 procedure TfmAgn.pmDelSityClick(Sender: TObject);
 begin
   DelSity;
@@ -515,6 +559,11 @@ end;
 procedure TfmAgn.pmInsSityClick(Sender: TObject);
 begin
   dxInsSityClick(Sender);
+end;
+
+procedure TfmAgn.pmMoveSityClick(Sender: TObject);
+begin
+ MoveUserSity;
 end;
 
 procedure TfmAgn.pmUpdAgnClick(Sender: TObject);

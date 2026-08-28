@@ -1135,31 +1135,6 @@ object fmAgn: TfmAgn
           end
         end
       end
-      object TD: TTMSFNCTaskDialog
-        Size.Width = 26.000000000000000000
-        Size.Height = 26.000000000000000000
-        Size.PlatformDefault = False
-        Position.X = 64.000000000000000000
-        Position.Y = 400.000000000000000000
-        Appearance.DialogColor = xFF16212E
-        Appearance.DialogPanelFill.Color = xFF0F0F0F
-        Appearance.DialogPanelStroke.Kind = gskNone
-        Appearance.DialogPanelStroke.Color = xFFDFDFDF
-        Appearance.InstructionColor = xFFFF54C4
-        Appearance.ContentColor = claWhite
-        Appearance.ExpandedTextColor = claBlack
-        Appearance.FooterColor = claBlack
-        Title = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1077
-        Instruction = #1059#1076#1072#1083#1077#1085#1080#1077' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
-        Icon = tdiQuestion
-        Content = #1059#1076#1072#1083#1080#1090#1100' '#1074#1099#1073#1088#1072#1085#1085#1086#1075#1086' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103'?'
-        DefaultButton = 1
-        CommonButtons = [tcbYes, tcbNo]
-        ButtonFont.Size = 14.000000000000000000
-        ButtonFont.Color = claWhite
-        CommandLinkFont.Size = 15.000000000000000000
-        CommandLinkFont.Color = xFF0053C4
-      end
     end
   end
   object pmAgent: TPopupMenu
@@ -1185,6 +1160,7 @@ object fmAgn: TfmAgn
         Locked = True
         Text = #1059#1076#1072#1083#1080#1090#1100
         ImageIndex = 6
+        OnClick = pmDelAgnClick
       end
       object MenuItem8: TMenuItem
         Locked = True
@@ -1194,6 +1170,7 @@ object fmAgn: TfmAgn
         Locked = True
         Text = #1057#1084#1077#1085#1080#1090#1100' '#1075#1086#1088#1086#1076
         ImageIndex = 15
+        OnClick = pmMoveSityClick
       end
       object MenuItem10: TMenuItem
         Locked = True
@@ -1572,6 +1549,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'people-man-2-edit-filled'
         SVGText = 
@@ -1616,6 +1594,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'people-man-2-cancel-filled'
         SVGText = 
@@ -1830,6 +1809,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'people-man-2-add-filled'
         SVGText = 
@@ -2017,6 +1997,7 @@ object fmAgn: TfmAgn
       item
         MultiResBitmap = <
           item
+            Size = 20
           end>
         IconName = 'people-man-2-cloud-filled'
         SVGText = 
@@ -2245,16 +2226,16 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-man-2-edit-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
         Layers = <
           item
             Name = 'people-man-2-cancel-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
@@ -2293,8 +2274,8 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-man-2-add-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
@@ -2325,8 +2306,8 @@ object fmAgn: TfmAgn
         Layers = <
           item
             Name = 'people-man-2-cloud-filled'
-            SourceRect.Right = 32.000000000000000000
-            SourceRect.Bottom = 32.000000000000000000
+            SourceRect.Right = 20.000000000000000000
+            SourceRect.Bottom = 20.000000000000000000
           end>
       end
       item
@@ -2510,5 +2491,40 @@ object fmAgn: TfmAgn
       '')
     Left = 561
     Top = 544
+  end
+  object qDelAgn: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update AGENTS'
+      'set IS_DEL = 1'
+      'where (NO_AGN = :NG)')
+    ParamData = <
+      item
+        Name = 'NG'
+        ParamType = ptInput
+      end>
+    Left = 313
+    Top = 392
+  end
+  object qUpdUsrSity: TFDCommand
+    Connection = fmMain.IBC
+    Transaction = fmMain.IBT
+    CommandText.Strings = (
+      'update AGENTS AG'
+      'set AG.NO_SITY = :NO_SITY'
+      'where (AG.NO_AGN = :NO_AGN)'
+      '')
+    ParamData = <
+      item
+        Name = 'NO_SITY'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NO_AGN'
+        ParamType = ptInput
+      end>
+    Left = 32
+    Top = 464
   end
 end

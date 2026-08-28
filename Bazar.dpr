@@ -46,7 +46,8 @@ uses
   frmSelectSize in 'frmSelectSize.pas' {fmSelSize},
   frmSetupApp in 'frmSetupApp.pas' {fmSetup},
   frmExportZakaz in 'frmExportZakaz.pas' {fmExpZak},
-  frmSelDopZakaz in 'frmSelDopZakaz.pas' {fmSelDopZak};
+  frmSelDopZakaz in 'frmSelDopZakaz.pas' {fmSelDopZak},
+  frmSelectSity in 'frmSelectSity.pas' {fmSelSity};
 
 {$R *.res}
 

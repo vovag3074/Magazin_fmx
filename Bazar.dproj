@@ -452,6 +452,10 @@
         <DCCReference Include="frmSelDopZakaz.pas">
             <Form>fmSelDopZak</Form>
         </DCCReference>
+        <DCCReference Include="frmSelectSity.pas">
+            <Form>fmSelSity</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
