@@ -27,7 +27,8 @@ uses
 {$ENDIF}
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox, FMX.Edit,
-  CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions, FMX.ActnList;
+  CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions, FMX.ActnList,
+  FireDAC.FMXUI.Async, FireDAC.Comp.UI;
 
 type
   TfmMain = class(TForm)
@@ -66,6 +67,8 @@ type
     ActionList1: TActionList;
     acRetMain: TAction;
     acRefresh: TAction;
+    FDGUIxAsyncExecuteDialog1: TFDGUIxAsyncExecuteDialog;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     procedure btMoveToScladClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

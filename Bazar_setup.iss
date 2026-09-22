@@ -25,11 +25,11 @@ ArchitecturesAllowed=x64compatible
 ; This means it should use the native 64-bit Program Files directory and the 64-bit view of the registry.
 ArchitecturesInstallIn64BitMode=x64compatible
 ; Uncomment the following line to use a 64-bit installer.
-;SetupArchitecture=x64
+SetupArchitecture=x64
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-OutputBaseFilename=mysetup
+OutputBaseFilename=Bazar_setup
 SetupIconFile=C:\Users\vovag\Documents\Embarcadero\Studio\Projects\Bazar-Fmx\Bazar_Icon1.ico
 SolidCompression=yes
 WizardStyle=modern dark windows11
