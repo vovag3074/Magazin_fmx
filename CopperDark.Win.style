@@ -1,5 +1,4 @@
 object TStyleContainer
-object TStyleContainer
   object TImage
     StyleName = 'CopperDarkstyle.png'
     MultiResBitmap = <

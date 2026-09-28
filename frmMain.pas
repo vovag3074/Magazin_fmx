@@ -28,7 +28,7 @@ uses
   FMX.DialogService, FireDAC.Phys.IBBase, FMX.TMSFNCCustomScrollControl,
   FMX.TMSFNCTileList, FMX.Platform, FMX.ApplicationEvents, FMX.ListBox, FMX.Edit,
   CryptBase, AESObj, MiscObj, CryptoConst, FMX.Ani, System.Actions, FMX.ActnList,
-  FireDAC.FMXUI.Async, FireDAC.Comp.UI;
+  FireDAC.FMXUI.Async, FireDAC.Comp.UI, FMX.Styles;
 
 type
   TfmMain = class(TForm)
@@ -132,6 +132,7 @@ type
     /// </summary>
     procedure GetValutFromComboBox(NoValut: Integer; var myBox: TComboBox);
     procedure onEditChangeTracking(Sender: TObject);
+    procedure DinLoadStyle(StyleName: string);
   end;
 
 procedure ShowInfo(T: string);
@@ -219,6 +220,17 @@ begin
   myList.Visible := True;
 end;
 
+procedure TfmMain.DinLoadStyle(StyleName: string);
+begin
+  if FileExists(StyleName) then
+  begin
+    stbMain.UseStyleManager := False;
+    stbMain.Styles.Clear;
+    stbMain.LoadFromFile(StyleName);
+    TStyleManager.SetStyleFromFile(StyleName);
+  end;
+end;
+
 procedure TfmMain.DoDBConnect;
 begin
   if fmMain.IBC.Connected then
@@ -296,6 +308,15 @@ begin
   DistValut.Clear;
   BuildValList;
   isLowConnect := False;
+  {$IFDEF MSWINDOWS}
+  DinLoadStyle('CopperDark.Win.style');
+  {$ENDIF}
+  {$IFDEF LINUX}
+  DinLoadStyle('CopperDark.Linux.style');
+  {$ENDIF}
+  {$IFDEF MACOS}
+  DinLoadStyle('CopperDark.MacOS.style');
+  {$ENDIF}
 end;
 
 function TfmMain.GetTranID: string;
