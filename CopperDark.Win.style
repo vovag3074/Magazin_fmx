@@ -14944,7 +14944,7 @@ object TStyleContainer
     Size.Width = 50.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
-    Stroke.Color = x32FFFFFF
+    Stroke.Color = claWhite
     Visible = False
     XRadius = 3.000000000000000000
     YRadius = 3.000000000000000000
