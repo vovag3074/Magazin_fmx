@@ -168,6 +168,7 @@ type
     qDelSize: TFDCommand;
     btRefr: TTMSFNCButton;
     qDelMod: TFDCommand;
+    Panel7: TPanel;
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
