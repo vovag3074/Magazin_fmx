@@ -320,10 +320,10 @@
         <Icns_MainIcns>Bazar_Icns1.icns</Icns_MainIcns>
         <UWP_DelphiLogo44>..\..\..\..\..\Pictures\MyIcon\png\64px\large\bank.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\..\..\..\Pictures\MyIcon\png\128px\large\bank.png</UWP_DelphiLogo150>
-        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=2.0.0.2;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=NetDocs;FileDescription=Рабочее место продавца;FileVersion=2.0.0.3;InternalName=Рабочее место продавца;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=Базар;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_MajorVer>2</VerInfo_MajorVer>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Build>3</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -1196,6 +1196,342 @@
                     <Platform Name="Win64">
                         <RemoteDir>.\Rep</RemoteDir>
                         <RemoteName>sRepOtpList.fr3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Coral.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Coral.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Coral.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Coral.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Coral.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Coral.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Coral.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Coral.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkBlue.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkBlue.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkBlue.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkBlue.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkBlue.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkBlue.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkBlue.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkBlue.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkPearl.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkPearl.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkPearl.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkPearl.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkPearl.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkPearl.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkPearl.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkPearl.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkWin11.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkWin11.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkWin11.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkWin11.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkWin11.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>DarkWin11.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\DarkWin11.win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>DarkWin11.win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gnome.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Gnome.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gnome.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Gnome.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gnome.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Gnome.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gnome.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Gnome.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Green.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Green.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Green.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Green.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Green.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Green.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Green.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Green.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\GreenDark.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>GreenDark.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\GreenDark.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>GreenDark.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\GreenDark.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>GreenDark.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\GreenDark.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>GreenDark.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gulf.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Gulf.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gulf.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Gulf.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gulf.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Gulf.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Gulf.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Gulf.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Neon.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Neon.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Neon.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Neon.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Neon.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Neon.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Neon.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Neon.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Nero.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Nero.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Nero.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Nero.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Nero.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Nero.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Nero.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Nero.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Ubuntu.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Ubuntu.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Ubuntu.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Ubuntu.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Ubuntu.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>Ubuntu.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\Ubuntu.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>Ubuntu.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\White11.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>White11.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\White11.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>White11.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\White11.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>White11.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\White11.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>White11.Win.style</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

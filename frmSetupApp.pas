@@ -59,6 +59,10 @@ type
     tlStartStop: TListBox;
     qDss: TFDQuery;
     qDelSS: TFDCommand;
+    TabItem4: TTabItem;
+    lbStyle: TListBox;
+    ListBoxItem1: TListBoxItem;
+    TMSFNCButton3: TTMSFNCButton;
     procedure FormCreate(Sender: TObject);
     procedure btSaveClick(Sender: TObject);
     procedure btTestClick(Sender: TObject);
@@ -66,6 +70,7 @@ type
     procedure eSaveBtnClick(Sender: TObject);
     procedure btOKSaveClick(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure TMSFNCButton3Click(Sender: TObject);
   private
     { Private declarations }
     XMLDoc: TNativeXml;
@@ -81,6 +86,7 @@ type
     procedure ExportRetTovar;
     procedure LoadStartStop;
     procedure LoadDataProt;
+    procedure ReadThemeList;
   public
     { Public declarations }
   end;
@@ -356,6 +362,7 @@ procedure TfmSetup.FormCreate(Sender: TObject);
 begin
   LoadStartStop;
   LoadDataProt;
+  ReadThemeList;
   // ---------------DataBase----------------------------------
   eDB.Text := myINI.ReadString('DBConnect', 'DataBaseName', '');
   eSrv.Text := myINI.ReadString('DBConnect', 'ServerName', '');
@@ -441,6 +448,20 @@ begin
   until (I = 0);
 end;
 
+procedure TfmSetup.ReadThemeList;
+var Item:TListBoxItem;
+    I:Integer;
+begin
+  lbStyle.Items.Clear;
+  for I := 0 to High(myStyleName) do
+   begin
+     Item := TListBoxItem.Create(lbStyle);
+     Item.Text:=myStyleName[I];
+     lbStyle.AddObject(Item);
+   end;
+   lbStyle.ItemIndex:=myStyleIndex;
+end;
+
 procedure TfmSetup.TMSFNCButton1Click(Sender: TObject);
 var
   S: string;
@@ -459,6 +480,12 @@ begin
     LoadStartStop;
     LoadDataProt;
   end;
+end;
+
+procedure TfmSetup.TMSFNCButton3Click(Sender: TObject);
+begin
+ myStyleIndex:=lbStyle.ItemIndex;
+ fmMain.DinLoadStyle(myStyleIndex);
 end;
 
 end.

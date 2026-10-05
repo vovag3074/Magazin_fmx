@@ -2739,7 +2739,7 @@ object fmProd: TfmProd
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
           Align = Top
-          TabOrder = 2
+          TabOrder = 1
           Text = #1055#1091#1090#1077#1074#1086#1081' '#1083#1080#1089#1090
           OnClick = TMSFNCButton10Click
         end
@@ -2751,7 +2751,7 @@ object fmProd: TfmProd
           Size.PlatformDefault = False
           Align = Top
           Position.Y = 100.000000000000000000
-          TabOrder = 3
+          TabOrder = 2
           Text = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1087#1088#1086#1076#1072#1078#1080
           OnClick = TMSFNCButton13Click
         end

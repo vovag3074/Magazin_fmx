@@ -132,9 +132,8 @@ type
     /// </summary>
     procedure GetValutFromComboBox(NoValut: Integer; var myBox: TComboBox);
     procedure onEditChangeTracking(Sender: TObject);
-    procedure DinLoadStyle(StyleName: string);
+    procedure DinLoadStyle(StyleIndex: Integer);
   end;
-
 procedure ShowInfo(T: string);
 
 procedure ShowError(T: string);
@@ -154,6 +153,7 @@ procedure myCreateGUID(var P: string);
 var
   fmMain: TfmMain;
   myINI: TIniFile;
+  myStyleIndex:Integer;
   {$IFDEF MSWINDOWS}
   NtC: TNotificationCenter;
   Nt: TNotification;
@@ -163,6 +163,8 @@ var
 
 threadvar
   isLowConnect: Boolean;
+
+const myStyleName:array of string =['GreenDark', 'Ubuntu','DarkBlue','DarkPearl','Gnome','DarkWin11','White11','Nero','Green','Gulf','Coral','Neon'];
 
 implementation
 
@@ -220,14 +222,25 @@ begin
   myList.Visible := True;
 end;
 
-procedure TfmMain.DinLoadStyle(StyleName: string);
+procedure TfmMain.DinLoadStyle(StyleIndex: Integer);
+var FName:String;
 begin
-  if FileExists(StyleName) then
+  {$IFDEF MSWINDOWS}
+   FName:=myStyleName[StyleIndex]+'.Win.style';
+  {$ENDIF}
+  {$IFDEF LINUX}
+   FName:=myStyleName[StyleIndex]+'.Lin.style';
+  {$ENDIF}
+  {$IFDEF MACOS}
+   FName:=myStyleName[StyleIndex]+'.Mac.style';
+  {$ENDIF}
+  FName := getStartProgrammDir + 'Style' + PathDelim+FName;
+  if FileExists(FName) then
   begin
     stbMain.UseStyleManager := False;
     stbMain.Styles.Clear;
-    stbMain.LoadFromFile(StyleName);
-    TStyleManager.SetStyleFromFile(StyleName);
+    stbMain.LoadFromFile(FName);
+    TStyleManager.SetStyleFromFile(FName);
   end;
 end;
 
@@ -294,6 +307,7 @@ end;
 procedure TfmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   ClearOldFrame;
+  myINI.WriteInteger('Theme','ThemeIndex',myStyleIndex);
   Application.ProcessMessages;
   myINI.Free;
   DistValut.Free;
@@ -303,20 +317,12 @@ procedure TfmMain.FormCreate(Sender: TObject);
 begin
   myINI := TIniFile.Create(getStartProgrammDir + PathDelim + 'Bazar.ini');
   DoDBConnect;
-  //IBC.Connected := True; // соелинение перенесено в процедуру
   DistValut := TDictionary<integer, string>.Create;
   DistValut.Clear;
   BuildValList;
   isLowConnect := False;
-  {$IFDEF MSWINDOWS}
-  DinLoadStyle('CopperDark.Win.style');
-  {$ENDIF}
-  {$IFDEF LINUX}
-  DinLoadStyle('CopperDark.Linux.style');
-  {$ENDIF}
-  {$IFDEF MACOS}
-  DinLoadStyle('CopperDark.MacOS.style');
-  {$ENDIF}
+  myStyleIndex := myINI.ReadInteger('Theme','ThemeIndex',0);
+  DinLoadStyle(myStyleIndex);
 end;
 
 function TfmMain.GetTranID: string;
