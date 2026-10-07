@@ -164,7 +164,7 @@ var
 threadvar
   isLowConnect: Boolean;
 
-const myStyleName:array of string =['GreenDark', 'Ubuntu','DarkBlue','DarkPearl','Gnome','DarkWin11','White11','Nero','Green','Gulf','Coral','Neon'];
+const myStyleName:array of string =['GreenDark', 'Ubuntu','DarkBlue','DarkPearl','Gnome','DarkWin11','White11','Nero','Green','Gulf','Coral','Neon','UbuntuDarkClear'];
 
 implementation
 
