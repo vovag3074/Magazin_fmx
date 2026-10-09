@@ -5,11 +5,10 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Linux64</Platform>
         <TargetedPlatforms>693395</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>Bazar.dpr</MainSource>
-        <ProjectName Condition="'$(ProjectName)'==''">Bazar</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -1504,6 +1503,34 @@
                     <Platform Name="Win64">
                         <RemoteDir>.\Style</RemoteDir>
                         <RemoteName>Ubuntu.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\UbuntuDarkClear.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>UbuntuDarkClear.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\UbuntuDarkClear.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>UbuntuDarkClear.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\UbuntuDarkClear.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>UbuntuDarkClear.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\UbuntuDarkClear.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>UbuntuDarkClear.Win.style</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
