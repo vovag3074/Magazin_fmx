@@ -176,7 +176,7 @@ uses
 
 procedure TfmMain.ClearOldFrame;
 begin
-  tbMain.Visible := true;
+//  tbMain.Visible := true;
   if Assigned(fmInpMag) then
   begin
     fmInpMag.SaveINI;

@@ -411,7 +411,7 @@ begin
         ANode.Tag := qUsr.FieldByName('NO_AGN').AsInteger;
         ANode.StylesData['ItemD'] := qUsr.FieldByName('AG_DOLG').AsFloat;
         ANode.StylesData['ItemP'] := qUsr.FieldByName('AG_PRED').AsFloat;
-        ANode.ImageIndex := 0;
+//        ANode.ImageIndex := 0;
 //          if qUsr.FieldByName('IS_SKIDKA').AsInteger = 1 then
 //            ANode.ImageIndex := 4;
 //          ANode.SelectedIndex := ANode.ImageIndex;
@@ -421,6 +421,13 @@ begin
 //            ANode.OverlayIndex := 13 + qUsr.FieldByName('STATUS').AsInteger;
 //          end;
         ANode.OnClick := DoSelectAgent;
+         if qUsr.FieldByName('AG_DOLG').AsFloat>0 then
+        begin
+          ANode.StyledSettings := ANode.StyledSettings - [TStyledSetting.FontColor];
+          ANode.TextSettings.FontColor := TAlphaColorRec.Yellow;
+        end else
+        begin
+        end;
         tlAgn.AddObject(ANode);
         qUsr.Next;
       until (qUsr.Eof);
