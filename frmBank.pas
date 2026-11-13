@@ -54,6 +54,7 @@ type
     ltFooter: TLayout;
     qDataPol: TFDQuery;
     btRefr: TTMSFNCButton;
+    TMSFNCButton4: TTMSFNCButton;
     procedure TMSFNCButton5Click(Sender: TObject);
     procedure DropDownEditButton1Click(Sender: TObject);
     procedure myCalendarDateSelected(Sender: TObject);
@@ -62,6 +63,7 @@ type
     procedure TMSFNCButton1Click(Sender: TObject);
     procedure TMSFNCButton2Click(Sender: TObject);
     procedure btRefrClick(Sender: TObject);
+    procedure TMSFNCButton4Click(Sender: TObject);
   private
     { Private declarations }
     procedure GetBankSum(NBank: Widestring);
@@ -82,7 +84,7 @@ var
 implementation
 
 uses
-  frmMain, frmAddDop;
+  frmMain, frmAddDop, frmReport;
 
 {$R *.fmx}
 
@@ -307,6 +309,11 @@ begin
   end;
   fmAddDop.Free;
   fmAddDop := nil;
+end;
+
+procedure TfmBank.TMSFNCButton4Click(Sender: TObject);
+begin
+  ShowReportJson('repBank*.fr3', '');
 end;
 
 procedure TfmBank.TMSFNCButton5Click(Sender: TObject);
