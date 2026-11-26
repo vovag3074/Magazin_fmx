@@ -164,7 +164,7 @@ var
 threadvar
   isLowConnect: Boolean;
 
-const myStyleName:array of string =['GreenDark', 'Ubuntu','DarkBlue','DarkPearl','Gnome','DarkWin11','White11','Nero','Green','Gulf','Coral','Neon','UbuntuDarkClear'];
+const myStyleName:array of string =['GreenDark', 'Ubuntu','DarkBlue','DarkPearl','Gnome','DarkWin11','White11','Nero','Green','Gulf','Coral','Neon','UbuntuDarkClear','RegalBlueClear'];
 
 implementation
 
@@ -241,6 +241,8 @@ begin
     stbMain.Styles.Clear;
     stbMain.LoadFromFile(FName);
     TStyleManager.SetStyleFromFile(FName);
+    Application.ProcessMessages;
+    stbMain.UseStyleManager := True;
   end;
 end;
 

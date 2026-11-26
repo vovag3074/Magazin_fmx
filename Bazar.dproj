@@ -517,6 +517,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="..\ShoesMaster-FMX\Style\RegalBlueClear.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteName>RegalBlueClear.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Bazar.entitlements" Configuration="Release" Class="ProjectOSXEntitlements">
                     <Platform Name="OSX64">
                         <Overwrite>true</Overwrite>
@@ -1504,6 +1510,34 @@
                     <Platform Name="Win64">
                         <RemoteDir>.\Style</RemoteDir>
                         <RemoteName>Nero.Win.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\RegalBlueClear.Lin.style" Configuration="Release" Class="File">
+                    <Platform Name="Linux64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>RegalBlueClear.Lin.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\RegalBlueClear.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>RegalBlueClear.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\RegalBlueClear.Mac.style" Configuration="Release" Class="File">
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS\Style\</RemoteDir>
+                        <RemoteName>RegalBlueClear.Mac.style</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Style\RegalBlueClear.Win.style" Configuration="Release" Class="File">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\Style</RemoteDir>
+                        <RemoteName>RegalBlueClear.Win.style</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
